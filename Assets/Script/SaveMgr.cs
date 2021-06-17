@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
+// 이렇게 바꾸면 바뀌나?
 [System.Serializable]
 public class Save
 {
