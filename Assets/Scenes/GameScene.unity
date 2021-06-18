@@ -1372,8 +1372,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 6827138288408359980, guid: 496fb8c8f3d285e4d81b208cbccee7ea,
     type: 3}
-  emptyPrefab: {fileID: 7605825470220574169, guid: 50bd480fd0f577645b328332f5e2d975,
-    type: 3}
   enemyPrefab: {fileID: 1971594108216303233, guid: 41aaa3b17c8ff2e41b5669b903268f12,
     type: 3}
   builderPrefebs: {fileID: 1971594108216303233, guid: 8bf017c3341a2f24fbfc9a4e91e38e7e,
@@ -5101,7 +5099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -20}
+  m_AnchoredPosition: {x: 81, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &477638441
@@ -8968,7 +8966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 850, y: -20}
+  m_AnchoredPosition: {x: 951, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &821131187
@@ -9779,7 +9777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1250, y: -20}
+  m_AnchoredPosition: {x: 1379, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &896328667
@@ -11711,6 +11709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneMgr: {fileID: 0}
   capital: {fileID: 0}
+  playerInfo: {fileID: 0}
 --- !u!1 &1097055473
 GameObject:
   m_ObjectHideFlags: 0
@@ -15607,7 +15606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -20}
+  m_AnchoredPosition: {x: 530, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1556935314
@@ -21538,8 +21537,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

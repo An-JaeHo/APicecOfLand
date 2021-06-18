@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class TileManger : MonoBehaviour
 {
     public GameObject tilePrefab;
-    public GameObject emptyPrefab;
     public GameObject enemyPrefab;
     public GameObject builderPrefebs;
     public List<Transform> tileList;
@@ -53,7 +52,7 @@ public class TileManger : MonoBehaviour
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
 
-        object[] loadedAreaBeta = Resources.LoadAll("AreaBeta", typeof(Sprite));
+        object[] loadedAreaBeta = Resources.LoadAll("StartArea", typeof(Sprite));
         sprites = new Sprite[loadedAreaBeta.Length];
 
         for (int i = 0; i < loadedAreaBeta.Length; i++)
@@ -78,15 +77,14 @@ public class TileManger : MonoBehaviour
 
                     if (land.name == "145")
                     {
-                        land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[4];
+                        land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[1];
                         land.transform.GetChild(0).tag = "Capital";
                         land.GetComponentInChildren<MakeArea>().Movement = true;
                         land.GetComponentInChildren<AreaManger>().pureTag = "Capital";
 
                         activeChildtileList.Add(land.transform);
                     }
-
-                    if (land.name == "127" || land.name == "128" || land.name == "162")
+                    else
                     {
                         land.transform.GetChild(0).tag = "Grass";
                         land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Grass";
@@ -99,31 +97,44 @@ public class TileManger : MonoBehaviour
                         enemyMakeLand.Add(land.transform);
                     }
 
-                    if (land.name == "129" || land.name == "163" || land.name == "144")
-                    {
-                        land.transform.GetChild(0).tag = "Stone";
-                        land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Stone";
-                        land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Stone";
-                        land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
-                        land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[1];
-                        land.transform.GetChild(0).GetComponent<AreaManger>().pureSprite = sprites[1];
-                        activeChildtileList.Add(land.transform);
-                        builderMakeLand.Add(land.transform);
-                        enemyMakeLand.Add(land.transform);
-                    }
+                    //if (land.name == "127" || land.name == "128" || land.name == "162")
+                    //{
+                    //    land.transform.GetChild(0).tag = "Grass";
+                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Grass";
+                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Grass";
+                    //    land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
+                    //    land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[0];
+                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureSprite = sprites[0];
+                    //    activeChildtileList.Add(land.transform);
+                    //    builderMakeLand.Add(land.transform);
+                    //    enemyMakeLand.Add(land.transform);
+                    //}
 
-                    if (land.name == "146" || land.name == "161")
-                    {
-                        land.transform.GetChild(0).tag = "Wood";
-                        land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Wood";
-                        land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Wood";
-                        land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
-                        land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[2];
-                        land.transform.GetChild(0).GetComponent<AreaManger>().pureSprite = sprites[2];
-                        activeChildtileList.Add(land.transform);
-                        builderMakeLand.Add(land.transform);
-                        enemyMakeLand.Add(land.transform);
-                    }
+                    //if (land.name == "129" || land.name == "163" || land.name == "144")
+                    //{
+                    //    land.transform.GetChild(0).tag = "Stone";
+                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Stone";
+                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Stone";
+                    //    land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
+                    //    land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[1];
+                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureSprite = sprites[1];
+                    //    activeChildtileList.Add(land.transform);
+                    //    builderMakeLand.Add(land.transform);
+                    //    enemyMakeLand.Add(land.transform);
+                    //}
+
+                    //if (land.name == "146" || land.name == "161")
+                    //{
+                    //    land.transform.GetChild(0).tag = "Wood";
+                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Wood";
+                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Wood";
+                    //    land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
+                    //    land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[2];
+                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureSprite = sprites[2];
+                    //    activeChildtileList.Add(land.transform);
+                    //    builderMakeLand.Add(land.transform);
+                    //    enemyMakeLand.Add(land.transform);
+                    //}
                 }
                 else
                 {
@@ -266,27 +277,30 @@ public class TileManger : MonoBehaviour
         {
             int rand = UnityEngine.Random.Range(0, 3);
 
-            if (rand == 0)
-            {
-                obj.transform.tag = "Grass";
-                obj.transform.GetComponent<AreaManger>().pureCode = "Grass";
-                obj.transform.GetComponent<AreaManger>().pureTag = "Grass";
-            }
-            else if (rand == 1)
-            {
-                obj.transform.tag = "Stone";
-                obj.transform.GetComponent<AreaManger>().pureCode = "Stone";
-                obj.transform.GetComponent<AreaManger>().pureTag = "Stone";
-            }
-            else if (rand == 2)
-            {
-                obj.transform.tag = "Wood";
-                obj.transform.GetComponent<AreaManger>().pureCode = "Wood";
-                obj.transform.GetComponent<AreaManger>().pureTag = "Wood";
-            }
+            //if (rand == 0)
+            //{
+            //    obj.transform.tag = "Grass";
+            //    obj.transform.GetComponent<AreaManger>().pureCode = "Grass";
+            //    obj.transform.GetComponent<AreaManger>().pureTag = "Grass";
+            //}
+            //else if (rand == 1)
+            //{
+            //    obj.transform.tag = "Stone";
+            //    obj.transform.GetComponent<AreaManger>().pureCode = "Stone";
+            //    obj.transform.GetComponent<AreaManger>().pureTag = "Stone";
+            //}
+            //else if (rand == 2)
+            //{
+            //    obj.transform.tag = "Wood";
+            //    obj.transform.GetComponent<AreaManger>().pureCode = "Wood";
+            //    obj.transform.GetComponent<AreaManger>().pureTag = "Wood";
+            //}
 
-            obj.transform.GetComponent<SpriteRenderer>().sprite = sprites[rand];
-            obj.transform.GetComponent<AreaManger>().pureSprite = sprites[rand];
+            obj.transform.tag = "Grass";
+            obj.transform.GetComponent<AreaManger>().pureCode = "Grass";
+            obj.transform.GetComponent<AreaManger>().pureTag = "Grass";
+            obj.transform.GetComponent<SpriteRenderer>().sprite = sprites[0];
+            obj.transform.GetComponent<AreaManger>().pureSprite = sprites[0];
         }
     }
 

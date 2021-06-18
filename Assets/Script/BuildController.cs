@@ -35,88 +35,131 @@ public class BuildController : MonoBehaviour
 
         if (content.transform.childCount >= 3)
         {
-            if (land.GetComponent<AreaManger>().pureTag== "Grass")
+            if (land.GetComponent<AreaManger>().pureTag == "Grass")
             {
                 content.transform.GetChild(0).name = "농지1";
-                content.transform.GetChild(1).name = "병영1";
-                content.transform.GetChild(2).name = "민가1";
+                content.transform.GetChild(1).name = "채석장 1";
+                content.transform.GetChild(2).name = "벌목장 1";
+                content.transform.GetChild(3).name = "병영1";
+                content.transform.GetChild(4).name = "민가1";
 
                 lands.Add(content.transform.GetChild(0).gameObject);
                 lands.Add(content.transform.GetChild(1).gameObject);
                 lands.Add(content.transform.GetChild(2).gameObject);
-            }
-            else if (land.GetComponent<AreaManger>().pureTag == "Stone")
-            {
-                content.transform.GetChild(0).name = "채석장 1";
-                content.transform.GetChild(1).name = "병영1";
-                content.transform.GetChild(2).name = "민가1";
-
-                lands.Add(content.transform.GetChild(0).gameObject);
-                lands.Add(content.transform.GetChild(1).gameObject);
-                lands.Add(content.transform.GetChild(2).gameObject);
-            }
-            else if (land.GetComponent<AreaManger>().pureTag == "Wood")
-            {
-                content.transform.GetChild(0).name = "벌목장 1";
-                content.transform.GetChild(1).name = "병영1";
-                content.transform.GetChild(2).name = "민가1";
-
-                lands.Add(content.transform.GetChild(0).gameObject);
-                lands.Add(content.transform.GetChild(1).gameObject);
-                lands.Add(content.transform.GetChild(2).gameObject);
+                lands.Add(content.transform.GetChild(3).gameObject);
+                lands.Add(content.transform.GetChild(4).gameObject);
             }
         }
         else
         {
             if (land.GetComponent<AreaManger>().pureTag == "Grass")
             {
-                GameObject testinfo = Instantiate(info, content.transform);
-                testinfo.transform.name = "농지1";
+                GameObject foodInfo = Instantiate(info, content.transform);
+                foodInfo.transform.name = "농지1";
+                lands.Add(foodInfo);
 
-                GameObject ftestinfo = Instantiate(info, content.transform);
-                ftestinfo.transform.name = "병영1";
+                GameObject ironInfo = Instantiate(info, content.transform);
+                ironInfo.transform.name = "채석장 1";
+                lands.Add(ironInfo);
 
-                GameObject htestinfo = Instantiate(info, content.transform);
-                htestinfo.transform.name = "민가1";
+                GameObject woodInfo = Instantiate(info, content.transform);
+                woodInfo.transform.name = "벌목장 1";
+                lands.Add(woodInfo);
 
-                lands.Add(testinfo);
-                lands.Add(ftestinfo);
-                lands.Add(htestinfo);
-            }
-            else if (land.GetComponent<AreaManger>().pureTag == "Stone")
-            {
-                GameObject testinfo = Instantiate(info, content.transform);
-                testinfo.transform.name = "채석장 1";
+                GameObject barrackInfo = Instantiate(info, content.transform);
+                barrackInfo.transform.name = "병영1";
+                lands.Add(barrackInfo);
 
-                GameObject ftestinfo = Instantiate(info, content.transform);
-                ftestinfo.transform.name = "병영1";
-
-                GameObject htestinfo = Instantiate(info, content.transform);
-                htestinfo.transform.name = "민가1";
-
-                lands.Add(testinfo);
-                lands.Add(ftestinfo);
-                lands.Add(htestinfo);
-
-            }
-            else if (land.GetComponent<AreaManger>().pureTag == "Wood")
-            {
-                GameObject testinfo = Instantiate(info, content.transform);
-                testinfo.transform.name = "벌목장 1";
-
-                GameObject ftestinfo = Instantiate(info, content.transform);
-                ftestinfo.transform.name = "병영1";
-
-                GameObject htestinfo = Instantiate(info, content.transform);
-                htestinfo.transform.name = "민가1";
-
-                lands.Add(testinfo);
-                lands.Add(ftestinfo);
-                lands.Add(htestinfo);
+                GameObject houseInfo = Instantiate(info, content.transform);
+                houseInfo.transform.name = "민가1";
+                lands.Add(houseInfo);
             }
         }
 
-        for(int i =0;i<lands.Count;i++)
+        //if (content.transform.childCount >= 3)
+        //{
+        //    if (land.GetComponent<AreaManger>().pureTag== "Grass")
+        //    {
+        //        content.transform.GetChild(0).name = "농지1";
+        //        content.transform.GetChild(1).name = "병영1";
+        //        content.transform.GetChild(2).name = "민가1";
+
+        //        lands.Add(content.transform.GetChild(0).gameObject);
+        //        lands.Add(content.transform.GetChild(1).gameObject);
+        //        lands.Add(content.transform.GetChild(2).gameObject);
+        //    }
+        //    else if (land.GetComponent<AreaManger>().pureTag == "Stone")
+        //    {
+        //        content.transform.GetChild(0).name = "채석장 1";
+        //        content.transform.GetChild(1).name = "병영1";
+        //        content.transform.GetChild(2).name = "민가1";
+
+        //        lands.Add(content.transform.GetChild(0).gameObject);
+        //        lands.Add(content.transform.GetChild(1).gameObject);
+        //        lands.Add(content.transform.GetChild(2).gameObject);
+        //    }
+        //    else if (land.GetComponent<AreaManger>().pureTag == "Wood")
+        //    {
+        //        content.transform.GetChild(0).name = "벌목장 1";
+        //        content.transform.GetChild(1).name = "병영1";
+        //        content.transform.GetChild(2).name = "민가1";
+
+        //        lands.Add(content.transform.GetChild(0).gameObject);
+        //        lands.Add(content.transform.GetChild(1).gameObject);
+        //        lands.Add(content.transform.GetChild(2).gameObject);
+        //    }
+        //}
+        //else
+        //{
+        //    if (land.GetComponent<AreaManger>().pureTag == "Grass")
+        //    {
+        //        GameObject testinfo = Instantiate(info, content.transform);
+        //        testinfo.transform.name = "농지1";
+
+        //        GameObject ftestinfo = Instantiate(info, content.transform);
+        //        ftestinfo.transform.name = "병영1";
+
+        //        GameObject htestinfo = Instantiate(info, content.transform);
+        //        htestinfo.transform.name = "민가1";
+
+        //        lands.Add(testinfo);
+        //        lands.Add(ftestinfo);
+        //        lands.Add(htestinfo);
+        //    }
+        //    else if (land.GetComponent<AreaManger>().pureTag == "Stone")
+        //    {
+        //        GameObject testinfo = Instantiate(info, content.transform);
+        //        testinfo.transform.name = "채석장 1";
+
+        //        GameObject ftestinfo = Instantiate(info, content.transform);
+        //        ftestinfo.transform.name = "병영1";
+
+        //        GameObject htestinfo = Instantiate(info, content.transform);
+        //        htestinfo.transform.name = "민가1";
+
+        //        lands.Add(testinfo);
+        //        lands.Add(ftestinfo);
+        //        lands.Add(htestinfo);
+
+        //    }
+        //    else if (land.GetComponent<AreaManger>().pureTag == "Wood")
+        //    {
+        //        GameObject testinfo = Instantiate(info, content.transform);
+        //        testinfo.transform.name = "벌목장 1";
+
+        //        GameObject ftestinfo = Instantiate(info, content.transform);
+        //        ftestinfo.transform.name = "병영1";
+
+        //        GameObject htestinfo = Instantiate(info, content.transform);
+        //        htestinfo.transform.name = "민가1";
+
+        //        lands.Add(testinfo);
+        //        lands.Add(ftestinfo);
+        //        lands.Add(htestinfo);
+        //    }
+        //}
+
+        for (int i =0;i<lands.Count;i++)
         {
             for(int j=0;j< json.information.area.Length;j++)
             {
