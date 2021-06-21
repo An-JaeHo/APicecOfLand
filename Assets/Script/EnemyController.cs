@@ -112,18 +112,6 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        //for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-        //{
-        //    for (int j = 0; j < FinalNodeList.Count; j++)
-        //    {
-        //        if (tiles.activeChildtileList[i].GetChild(0).position.x == FinalNodeList[j].x
-        //            && (tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f) == FinalNodeList[j].y
-        //            )
-        //        {
-        //            Debug.Log(tiles.activeChildtileList[i].name);
-        //        }
-        //    }
-        //}
 
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
@@ -147,6 +135,30 @@ public class EnemyController : MonoBehaviour
             else
             {
                 findArmy = false;
+            }
+        }
+
+        if (FinalNodeList[FinalNodeList.Count - 2].x == transform.position.x &&
+            FinalNodeList[FinalNodeList.Count - 2].y + 30 == transform.position.y)
+        {
+            for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+            {
+                if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
+                    FinalNodeList[FinalNodeList.Count - 1].y == tiles.activeChildtileList[i].GetChild(0).position.y)
+                {
+                    if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
+                    {
+                        if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
+                        {
+                            findArmy = true;
+                            target = tiles.activeChildtileList[i].GetChild(0);
+                        }
+                        else
+                        {
+                            findArmy = false;
+                        }
+                    }
+                }
             }
         }
 
@@ -313,38 +325,28 @@ public class EnemyController : MonoBehaviour
         }
 
 
-        if (FinalNodeList[FinalNodeList.Count - 2].x == transform.position.x &&
-            FinalNodeList[FinalNodeList.Count - 2].y + 30 == transform.position.y)
-        {
-            for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-            {
-                if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
-                    FinalNodeList[FinalNodeList.Count - 1].y == tiles.activeChildtileList[i].GetChild(0).position.y)
-                {
-                    if (tiles.activeChildtileList[i].GetChild(0).childCount !=0)
-                    {
-                        if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
-                        {
-                            findArmy = true;
-                            target = tiles.activeChildtileList[i].GetChild(0);
-                        }
-                        else
-                        {
-                            findArmy = false;
-                        }
-                    }
-                }
-            }
-        }
-
-        //if (FinalNodeList[FinalNodeList.Count - 1].x == transform.position.x && FinalNodeList[FinalNodeList.Count - 1].y + 30 == transform.position.y)
+        //if (FinalNodeList[FinalNodeList.Count - 2].x == transform.position.x &&
+        //    FinalNodeList[FinalNodeList.Count - 2].y + 30 == transform.position.y)
         //{
-        //    finishMove = true;
-        //    Debug.Log(FinalNodeList.Count);
-        //}
-        //else
-        //{
-        //    finishMove = false;
+        //    for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+        //    {
+        //        if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
+        //            FinalNodeList[FinalNodeList.Count - 1].y == tiles.activeChildtileList[i].GetChild(0).position.y)
+        //        {
+        //            if (tiles.activeChildtileList[i].GetChild(0).childCount !=0)
+        //            {
+        //                if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
+        //                {
+        //                    findArmy = true;
+        //                    target = tiles.activeChildtileList[i].GetChild(0);
+        //                }
+        //                else
+        //                {
+        //                    findArmy = false;
+        //                }
+        //            }
+        //        }
+        //    }
         //}
         
         yield return null;
@@ -353,10 +355,9 @@ public class EnemyController : MonoBehaviour
     IEnumerator Attack()
     {
         float randnum = Random.Range(0.8f, 1.2f);
-        target.GetComponent<MakeSoldier>().HelthPoint -=
-            (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
-        target.GetComponent<SoldierManger>().HpBarScale();
-        target.GetComponent<SoldierManger>().Dead();
+        //target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
+        //target.GetComponent<SoldierManger>().HpBarScale();
+        //target.GetComponent<SoldierManger>().Dead();
 
         yield return null;
     }
@@ -452,8 +453,6 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
-
-        
     }
 
     void OpenListAdd(int checkX, int checkY, Node node)
