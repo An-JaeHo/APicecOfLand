@@ -113,54 +113,54 @@ public class EnemyController : MonoBehaviour
         }
 
 
-        for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-        {
-            if(FinalNodeList.Count >= 2)
-            {
-                if (tiles.activeChildtileList[i].GetChild(0).position.x == FinalNodeList[1].x
-                    && (tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f) == FinalNodeList[1].y)
-                {
-                    if(tiles.activeChildtileList[i].GetChild(0).childCount !=0 
-                        && tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Builder")
-                    {
-                        findArmy = true;
-                    }
-                    else
-                    {
-                        findArmy = false;
-                    }
+        //for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+        //{
+        //    if(FinalNodeList.Count >= 2)
+        //    {
+        //        if (tiles.activeChildtileList[i].GetChild(0).position.x == FinalNodeList[1].x
+        //            && (tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f) == FinalNodeList[1].y)
+        //        {
+        //            if(tiles.activeChildtileList[i].GetChild(0).childCount !=0 
+        //                && tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Builder")
+        //            {
+        //                findArmy = true;
+        //            }
+        //            else
+        //            {
+        //                findArmy = false;
+        //            }
                   
-                }
-            }
-            else
-            {
-                findArmy = false;
-            }
-        }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        findArmy = false;
+        //    }
+        //}
 
-        if (FinalNodeList[FinalNodeList.Count - 2].x == transform.position.x &&
-            FinalNodeList[FinalNodeList.Count - 2].y + 30 == transform.position.y)
-        {
-            for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-            {
-                if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
-                    FinalNodeList[FinalNodeList.Count - 1].y == tiles.activeChildtileList[i].GetChild(0).position.y)
-                {
-                    if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
-                    {
-                        if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
-                        {
-                            findArmy = true;
-                            target = tiles.activeChildtileList[i].GetChild(0);
-                        }
-                        else
-                        {
-                            findArmy = false;
-                        }
-                    }
-                }
-            }
-        }
+        //if (FinalNodeList[FinalNodeList.Count - 2].x == transform.position.x &&
+        //    FinalNodeList[FinalNodeList.Count - 2].y + 30 == transform.position.y)
+        //{
+        //    for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+        //    {
+        //        if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
+        //            FinalNodeList[FinalNodeList.Count - 1].y == tiles.activeChildtileList[i].GetChild(0).position.y)
+        //        {
+        //            if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
+        //            {
+        //                if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
+        //                {
+        //                    findArmy = true;
+        //                    target = tiles.activeChildtileList[i].GetChild(0);
+        //                }
+        //                else
+        //                {
+        //                    findArmy = false;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         if (findArmy)
         {

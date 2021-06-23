@@ -24,10 +24,10 @@ public class SupplyManger : MonoBehaviour
         updateWood = playerInfo.updateWood;
         updateIron = playerInfo.updateIron;
         updatePeople = playerInfo.updatePeople;
-        
+
         if (updatePeople > 0)
         {
-            transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString() + " + " + updatePeople.ToString();
+            transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString() + " +" + updatePeople.ToString();
         }
         else if (updatePeople == 0)
         {
@@ -35,13 +35,12 @@ public class SupplyManger : MonoBehaviour
         }
         else
         {
-            transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString() + " - " + updatePeople.ToString();
+            transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString() + " " + updatePeople.ToString();
         }
 
         if (updateFood > 0)
         {
-            transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.food.ToString() + " + " + updateFood.ToString();
-
+            transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.food.ToString() + " +" + updateFood.ToString();
         }
         else if (updateFood == 0)
         {
@@ -49,25 +48,25 @@ public class SupplyManger : MonoBehaviour
         }
         else
         {
-            transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.food.ToString() + " - " + updateFood.ToString();
+            transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.food.ToString() + " " + updateFood.ToString();
         }
 
         if (updateWood > 0)
         {
-            transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.wood.ToString() + " + " + updateWood.ToString();
+            transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.wood.ToString() + " +" + updateWood.ToString();
         }
-        else if (updateWood == 0)
+        else if (updateWood <= 0)
         {
             transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.wood.ToString();
         }
         else
         {
-            transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.wood.ToString() + " - " + updateWood.ToString();
+            transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.wood.ToString() + " " + updateWood.ToString();
         }
 
         if (updateIron > 0)
         {
-            transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.iron.ToString() + " + " + updateIron.ToString();
+            transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.iron.ToString() + " +" + updateIron.ToString();
         }
         else if (updateIron == 0)
         {
@@ -75,7 +74,7 @@ public class SupplyManger : MonoBehaviour
         }
         else
         {
-            transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.iron.ToString() + " - " + updateIron.ToString();
+            transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.iron.ToString() + " " + updateIron.ToString();
         }
     }
 }

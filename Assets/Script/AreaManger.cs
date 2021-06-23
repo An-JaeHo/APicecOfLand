@@ -101,7 +101,6 @@ public class AreaManger : MonoBehaviour
                     player.updateIron += 1;
                     break;
             }
-
         }
     }
 
