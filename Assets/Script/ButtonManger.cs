@@ -452,7 +452,7 @@ public class ButtonManger : MonoBehaviour
 
     public void TurnEnd()
     {
-        if(playerInfo.turnPoint == 20)
+        if(playerInfo.turnPoint == 50)
         {
             int rand = Random.Range(200, 270);
             playerInfo.killingPoint = rand;
@@ -485,92 +485,7 @@ public class ButtonManger : MonoBehaviour
 
         button.GetComponent<Button>().interactable = true;
 
-
-
-        //if (playerInfo.turnPoint == 5)
-        //{
-        //    //적군타일 위치 정하기 if라서 제일 위에꺼만 됨 꼭 고치길
-        //    for (int i = 0; i < tileManger.tileParentList.Count; i++)
-        //    {
-        //        for (int j = 0; j < tileManger.activeTileList.Count; j++)
-        //        {
-        //            int name = System.Convert.ToInt32(tileManger.activeTileList[j].name);
-
-        //            if (tileManger.tileParentList[i].activeSelf != true)
-        //            {
-        //                if ((name - 7).ToString() == tileManger.tileParentList[i].name)
-        //                {
-        //                    enemyTiles.Add(tileManger.tileParentList[i]);
-        //                }
-        //                else if ((name + 7).ToString() == tileManger.tileParentList[i].name)
-        //                {
-        //                    enemyTiles.Add(tileManger.tileParentList[i]);
-        //                }
-        //                else if ((name - 1).ToString() == tileManger.tileParentList[i].name)
-        //                {
-        //                    enemyTiles.Add(tileManger.tileParentList[i]);
-        //                }
-        //                else if ((name + 1).ToString() == tileManger.tileParentList[i].name)
-        //                {
-        //                    enemyTiles.Add(tileManger.tileParentList[i]);
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    // 색 코드 C572FA 197 114 250
-        //    int randomNum = Random.Range(0, (tileManger.activeTileList.Count-1));
-
-        //    enemyTileWls = enemyTiles[randomNum];
-        //    enemyTileWls.GetComponent<SpriteRenderer>().color = Color.gray;
-
-        //    for(int j=0; j< enemyTileWls.transform.childCount;j++)
-        //    {
-        //        enemyTileWls.transform.GetChild(j).GetComponent<SpriteRenderer>().color = Color.gray;
-        //        enemyTileWls.transform.GetChild(j).GetComponent<AreaManger>().pureColor = Color.gray;
-        //    }
-
-        //    enemyTileWls.SetActive(true);
-
-        //    //GameObject obj = enemyTileWls.GetComponent<RandomArea>().MakeEnemy();
-
-        //    //if (obj != null)
-        //    //{
-        //    //    enemys.Add(obj);
-        //    //}
-
-        //    for (int i =0; i< enemyTileWls.transform.childCount; i++)
-        //    {
-        //        enemyTileWls.transform.GetChild(i).tag = "EnemyTile";
-        //        tileManger.activeChildtileList.Add(enemyTileWls.transform.GetChild(i));
-        //    }
-
-        //    StartCoroutine(moveEnemy());
-
-        //}else if (playerInfo.turnPoint > 5)
-        //{
-        //    GameObject obj = enemyTileWls.GetComponent<RandomArea>().MakeEnemy();
-
-        //    if (obj != null)
-        //    {
-        //        enemys.Add(obj);
-        //    }
-
-        //    StartCoroutine(moveEnemy());
-        //}
-        //else
-        //{
-        //    button.GetComponent<Button>().interactable = true;
-        //}
-
         StartCoroutine(moveEnemy());
-        //if(playerInfo.turnPoint > 10)
-        //{
-        //    for (int i = 0; i < enemys.Count; i++)
-        //    {
-        //        enemys[i].GetComponent<EnemyController>().HpBarScale();
-        //    }
-        //}
 
         for (int i = 0; i < amrys.Count; i++)
         {

@@ -16,7 +16,7 @@ public class TileManger : MonoBehaviour
     public List<Transform> builderMakeLand;
     public List<Transform> enemyMakeLand;
     GameObject tileInfo;
-    
+    public JsonManger json;
 
     public int wight;
     public int hight;
@@ -30,6 +30,9 @@ public class TileManger : MonoBehaviour
     // 타일 구분용 list
     List<Transform> nextLand;
     public Sprite[] sprites;
+    public List<String> enemy1Code;
+    public List<String> enemy2Code;
+    public List<String> enemy3Code;
 
     private void Awake()
     {
@@ -51,7 +54,7 @@ public class TileManger : MonoBehaviour
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
-
+        json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         object[] loadedAreaBeta = Resources.LoadAll("StartArea", typeof(Sprite));
         sprites = new Sprite[loadedAreaBeta.Length];
 
@@ -96,45 +99,6 @@ public class TileManger : MonoBehaviour
                         builderMakeLand.Add(land.transform);
                         enemyMakeLand.Add(land.transform);
                     }
-
-                    //if (land.name == "127" || land.name == "128" || land.name == "162")
-                    //{
-                    //    land.transform.GetChild(0).tag = "Grass";
-                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Grass";
-                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Grass";
-                    //    land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
-                    //    land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[0];
-                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureSprite = sprites[0];
-                    //    activeChildtileList.Add(land.transform);
-                    //    builderMakeLand.Add(land.transform);
-                    //    enemyMakeLand.Add(land.transform);
-                    //}
-
-                    //if (land.name == "129" || land.name == "163" || land.name == "144")
-                    //{
-                    //    land.transform.GetChild(0).tag = "Stone";
-                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Stone";
-                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Stone";
-                    //    land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
-                    //    land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[1];
-                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureSprite = sprites[1];
-                    //    activeChildtileList.Add(land.transform);
-                    //    builderMakeLand.Add(land.transform);
-                    //    enemyMakeLand.Add(land.transform);
-                    //}
-
-                    //if (land.name == "146" || land.name == "161")
-                    //{
-                    //    land.transform.GetChild(0).tag = "Wood";
-                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Wood";
-                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Wood";
-                    //    land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
-                    //    land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[2];
-                    //    land.transform.GetChild(0).GetComponent<AreaManger>().pureSprite = sprites[2];
-                    //    activeChildtileList.Add(land.transform);
-                    //    builderMakeLand.Add(land.transform);
-                    //    enemyMakeLand.Add(land.transform);
-                    //}
                 }
                 else
                 {
@@ -149,6 +113,7 @@ public class TileManger : MonoBehaviour
         }
 
         MakeBulider();
+        SortGrade();
     }
 
     public void CheckTile()
@@ -180,42 +145,48 @@ public class TileManger : MonoBehaviour
         //5x5
         if (playerInfo.turnPoint == 15)
         {
+            enemyMakeLand.Clear();
             startNum = 109;
             maxnum = 4;
             lengthLand = 5;
         }
         else if (playerInfo.turnPoint == 25)
         {
+            enemyMakeLand.Clear();
             startNum = 91;
             maxnum = 6;
             lengthLand = 7;
         }
         else if (playerInfo.turnPoint == 45)
         {
+            enemyMakeLand.Clear();
             startNum = 73;
             maxnum = 8;
             lengthLand = 9;
         }
         else if (playerInfo.turnPoint == 75)
         {
+            enemyMakeLand.Clear();
             startNum = 55;
             maxnum = 10;
             lengthLand = 11;
         }
         else if (playerInfo.turnPoint == 110)
         {
+            enemyMakeLand.Clear();
             startNum = 37;
             maxnum = 12;
             lengthLand = 13;
         }
         else if (playerInfo.turnPoint == 150)
         {
+            enemyMakeLand.Clear();
             startNum = 19;
             maxnum = 14;
             lengthLand = 15;
         }
         else if (playerInfo.turnPoint == 200)
-        {
+        {enemyMakeLand.Clear();
             startNum = 1;
             maxnum = 16;
             lengthLand = 17;
@@ -263,7 +234,7 @@ public class TileManger : MonoBehaviour
 
     public void RandomLand(GameObject obj)
     {
-        object[] loadedAreaBeta = Resources.LoadAll("AreaBeta", typeof(Sprite));
+        object[] loadedAreaBeta = Resources.LoadAll("StartArea", typeof(Sprite));
         sprites = new Sprite[loadedAreaBeta.Length];
 
         for (int i = 0; i < loadedAreaBeta.Length; i++)
@@ -271,30 +242,9 @@ public class TileManger : MonoBehaviour
             sprites[i] = (Sprite)loadedAreaBeta[i];
         }
 
-
-
         if (sprites != null)
         {
             int rand = UnityEngine.Random.Range(0, 3);
-
-            //if (rand == 0)
-            //{
-            //    obj.transform.tag = "Grass";
-            //    obj.transform.GetComponent<AreaManger>().pureCode = "Grass";
-            //    obj.transform.GetComponent<AreaManger>().pureTag = "Grass";
-            //}
-            //else if (rand == 1)
-            //{
-            //    obj.transform.tag = "Stone";
-            //    obj.transform.GetComponent<AreaManger>().pureCode = "Stone";
-            //    obj.transform.GetComponent<AreaManger>().pureTag = "Stone";
-            //}
-            //else if (rand == 2)
-            //{
-            //    obj.transform.tag = "Wood";
-            //    obj.transform.GetComponent<AreaManger>().pureCode = "Wood";
-            //    obj.transform.GetComponent<AreaManger>().pureTag = "Wood";
-            //}
 
             obj.transform.tag = "Grass";
             obj.transform.GetComponent<AreaManger>().pureCode = "Grass";
@@ -325,21 +275,42 @@ public class TileManger : MonoBehaviour
 
         for(int i=0; i< noChildLand.Count;i++)
         {
-            if(noChildLand[i].GetChild(0).childCount !=0)
+            if(noChildLand[i].GetChild(0).childCount !=0 || noChildLand[i].tag == "Area")
             {
                 noChildLand.RemoveAt(i);
             }
         }
 
-        if (playerInfo.turnPoint == 10)
+        if (playerInfo.turnPoint % 5 == 0 && playerInfo.turnPoint >= 10)
         {
             int rand = UnityEngine.Random.Range(0, noChildLand.Count);
             noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 27");
 
-            GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x,noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
             enemy.transform.SetParent(noChildLand[rand].GetChild(0));
             enemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
             buttonManger.enemys.Add(enemy);
+        }
+    }
+
+    public void SortGrade()
+    {
+        for (int i = 0; i < json.information.enemy.Length; i++)
+        {
+            if (json.information.enemy[i].Grade == 1)
+            {
+                enemy1Code.Add(json.information.enemy[i].Code);
+            }
+
+            if (json.information.enemy[i].Grade == 2)
+            {
+                enemy2Code.Add(json.information.enemy[i].Code);
+            }
+
+            if (json.information.enemy[i].Grade == 3)
+            {
+                enemy3Code.Add(json.information.enemy[i].Code);
+            }
         }
     }
 }

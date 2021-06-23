@@ -11,12 +11,12 @@ public class MakeArea : AreaInfo
     private void Start()
     {
         areaInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-        areaInfoImage = GetComponent<SpriteRenderer>();
     }
 
     public void InputAreaInfo(string code)
     {
         areaInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
+        areaInfoImage = GetComponent<SpriteRenderer>();
         for (int i = 0; i < areaInfo.information.area.Length; i++)
         {
             if (areaInfo.information.area[i].Code == code)
@@ -36,7 +36,7 @@ public class MakeArea : AreaInfo
                 Effect = areaInfo.information.area[i].Effect;
                 BuildTurn = areaInfo.information.area[i].BuildTurn;
 
-                areaInfoImage.sprite = Picture;
+                areaInfoImage.sprite = areaInfo.information.area[i].Picture;
                 if(areaInfo.information.area[i].Type == "Barracks")
                 {
                     transform.tag = "Barracks";
