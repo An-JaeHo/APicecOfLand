@@ -6,16 +6,16 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
 {
     public string day;
     public string name;
-    public int food;
-    public int wood;
-    public int iron;
+    public int milk;
+    public int flour;
+    public int sugar;
     public int people;
     public int maxArea;
     public int myArea;
 
-    public int updateFood;
-    public int updateWood;
-    public int updateIron;
+    public int updateMilk;
+    public int updateFlour;
+    public int updateSugar;
     public int updatePeople;
 
     public int turnPoint;
@@ -24,15 +24,13 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
     public bool playerBuffCheck;
     public bool playerDeBuffCheck;
     public bool playerGuardianCheck;
-    public Buff playerBuff;
-    public DeBuff playerDebuff;
     public Boss playerGuardian;
 
     private void Start()
     {
-        food = 500;
-        wood = 500;
-        iron = 500;
+        milk = 500;
+        flour = 500;
+        sugar = 500;
         people = 500;
         turnPoint = 0;
         killingPoint = 0;

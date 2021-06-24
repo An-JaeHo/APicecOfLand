@@ -65,40 +65,40 @@ public class AreaManger : MonoBehaviour
             switch (area.Code)
             {
                 case "Area 1":
-                    player.updateFood += area.Output;
+                    player.updateMilk += area.MilkOutput;
                     break;
                 case "Area 2":
-                    player.updateFood += 1;
+                    player.updateMilk += 1;
                     break;
                 case "Area 3":
-                    player.updateFood += 1;
+                    player.updateMilk += 1;
                     break;
                 case "Area 4":
-                    player.updateFood += 1;
+                    player.updateMilk += 1;
                     break;
                 case "Area 5":
-                    player.updateWood += area.Output;
+                    player.updateFlour += area.FlourOutput;
                     break;
                 case "Area 6":
-                    player.updateWood += 1;
+                    player.updateFlour += 1;
                     break;
                 case "Area 7":
-                    player.updateWood += 1;
+                    player.updateFlour += 1;
                     break;
                 case "Area 8":
-                    player.updateWood += 1;
+                    player.updateFlour += 1;
                     break;
                 case "Area 9":
-                    player.updateIron += area.Output;
+                    player.updateSugar += area.SugarOutput;
                     break;
                 case "Area 10":
-                    player.updateIron += 1;
+                    player.updateSugar += 1;
                     break;
                 case "Area 11":
-                    player.updateIron += 1;
+                    player.updateSugar += 1;
                     break;
                 case "Area 12":
-                    player.updateIron += 1;
+                    player.updateSugar += 1;
                     break;
             }
         }
@@ -191,10 +191,11 @@ public class AreaManger : MonoBehaviour
             transform.GetComponent<MakeArea>().areaInfoImage.sprite = pureSprite;
             transform.GetComponent<MakeArea>().Type = null;
             transform.GetComponent<MakeArea>().Grade = 0;
-            transform.GetComponent<MakeArea>().UpgradeWood = 0;
-            transform.GetComponent<MakeArea>().UpgradeIron = 0;
-            transform.GetComponent<MakeArea>().Health = 0;
-            transform.GetComponent<MakeArea>().Output = 0;
+            transform.GetComponent<MakeArea>().UpgradeFlour = 0;
+            transform.GetComponent<MakeArea>().UpgradeSugar = 0;
+            transform.GetComponent<MakeArea>().MilkOutput = 0;
+            transform.GetComponent<MakeArea>().FlourOutput = 0;
+            transform.GetComponent<MakeArea>().SugarOutput = 0;
             transform.GetComponent<MakeArea>().Movement = false;
             transform.GetComponent<MakeArea>().Destroy = true;
             transform.GetComponent<MakeArea>().Repair = false;

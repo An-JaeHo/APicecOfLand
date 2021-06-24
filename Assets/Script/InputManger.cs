@@ -138,21 +138,23 @@ public class InputManger : MonoBehaviour
                                                 bulidUi.GetComponent<BuildController>().CreateWindow();
 
                                             }
-                                            else if (hit.transform.GetComponent<AreaManger>().pureTag == "Wood")
-                                            {
-                                                bulidUi.GetComponent<BuildController>().land = hit.transform;
-                                                bulidUi.GetComponent<BuildController>().CreateWindow();
-                                            }
-                                            else if (hit.transform.GetComponent<AreaManger>().pureTag == "Stone")
-                                            {
-                                                bulidUi.GetComponent<BuildController>().land = hit.transform;
-                                                bulidUi.GetComponent<BuildController>().CreateWindow();
-                                            }
                                             else if (hit.transform.GetComponent<AreaManger>().pureTag == "Area"
                                                 && hit.transform.GetComponent<MakeArea>().Destroy != true)
                                             {
+                                                if(hit.transform.name == "우유")
+                                                {
+                                                    bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
+                                                }
+                                                else if(hit.transform.name == "밀가루")
+                                                {
+                                                    bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
+                                                }
+                                                else if (hit.transform.name == "설탕")
+                                                {
+                                                    bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
+                                                }
+
                                                 bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
-                                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().Output;
                                                 bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
                                             }
 

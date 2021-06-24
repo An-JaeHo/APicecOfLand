@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
         invenManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InvenManger>();
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         enemy = GetComponent<MakeEnemy>();
-        totalHp = enemy.HelthPoint;
+        totalHp = enemy.BaseHelthPoint;
         finishMove = false;
         findArmy = false;
 
@@ -533,7 +533,7 @@ public class EnemyController : MonoBehaviour
 
     public void Dead()
     {
-        if (transform.GetComponent<MakeEnemy>().HelthPoint <= 0)
+        if (transform.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
         {
             gameObject.SetActive(false);
             invenManger.InputCard(GetComponent<MakeEnemy>().Grade);

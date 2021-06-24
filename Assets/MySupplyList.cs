@@ -15,8 +15,8 @@ public class MySupplyList : MonoBehaviour
 
     public void UpdateSupply()
     {
-        transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.food.ToString();
-        transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.wood.ToString();
-        transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.iron.ToString();
+        transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString();
+        transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString();
+        transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString();
     }
 }

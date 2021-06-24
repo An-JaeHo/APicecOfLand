@@ -39,9 +39,9 @@ public class RangeManger : MonoBehaviour
                         tileManger.tileList[i].tag = "SelectLand";
                         rangeList.Add(tileManger.tileList[i]);
 
-                        if (hitobj.GetComponent<MakeSoldier>().MovementSpace >= 2)
+                        if (hitobj.GetComponent<MakeSoldier>().Movement >= 2)
                         {
-                            for (int j = 1; j < hitobj.GetComponent<MakeSoldier>().MovementSpace; j++)
+                            for (int j = 1; j < hitobj.GetComponent<MakeSoldier>().Movement; j++)
                             {
                                 int nameOfLand = Int32.Parse(tileManger.tileList[i].parent.name) - 1;
 
@@ -87,9 +87,9 @@ public class RangeManger : MonoBehaviour
                         tileManger.tileList[i].tag = "SelectLand";
                         rangeList.Add(tileManger.tileList[i]);
 
-                        if (hitobj.GetComponent<MakeSoldier>().MovementSpace >= 2)
+                        if (hitobj.GetComponent<MakeSoldier>().Movement >= 2)
                         {
-                            for (int j = 1; j < hitobj.GetComponent<MakeSoldier>().MovementSpace; j++)
+                            for (int j = 1; j < hitobj.GetComponent<MakeSoldier>().Movement; j++)
                             {
                                 int nameOfLand = Int32.Parse(tileManger.tileList[i].parent.name) - 1;
 
@@ -136,9 +136,9 @@ public class RangeManger : MonoBehaviour
                         tileManger.tileList[i].tag = "SelectLand";
                         rangeList.Add(tileManger.tileList[i]);
 
-                        if (hitobj.GetComponent<MakeSoldier>().MovementSpace >= 2)
+                        if (hitobj.GetComponent<MakeSoldier>().Movement >= 2)
                         {
-                            for (int j = 1; j < hitobj.GetComponent<MakeSoldier>().MovementSpace; j++)
+                            for (int j = 1; j < hitobj.GetComponent<MakeSoldier>().Movement; j++)
                             {
                                 int nameOfLand = Int32.Parse(tileManger.tileList[i].parent.name) - 1;
 
@@ -185,9 +185,9 @@ public class RangeManger : MonoBehaviour
                         tileManger.tileList[i].tag = "SelectLand";
                         rangeList.Add(tileManger.tileList[i]);
 
-                        if (hitobj.GetComponent<MakeSoldier>().MovementSpace >= 2)
+                        if (hitobj.GetComponent<MakeSoldier>().Movement >= 2)
                         {
-                            for (int j = 1; j < hitobj.GetComponent<MakeSoldier>().MovementSpace; j++)
+                            for (int j = 1; j < hitobj.GetComponent<MakeSoldier>().Movement; j++)
                             {
                                 int nameOfLand = Int32.Parse(tileManger.tileList[i].parent.name) - 1;
 

@@ -13,8 +13,6 @@ public class Save
     public Boss cavalryGuardian;
 
     public List<Boss> guardians;
-    public List<Buff> buffs = new List<Buff>();
-    public List<DeBuff> deBuffs = new List<DeBuff>();
 }
 
 public class SaveMgr : MonoBehaviour
@@ -25,8 +23,6 @@ public class SaveMgr : MonoBehaviour
     public SceneMgr sceneMgr;
     public JsonManger json;
     public GameObject abilityUi;
-    public List<Buff> buffs;
-    public List<DeBuff> deBuffs;
 
 
     private void Start()
@@ -49,11 +45,6 @@ public class SaveMgr : MonoBehaviour
             save.bowGuardian = json.information.boss[1];
             save.spearGuardian = json.information.boss[2];
             save.cavalryGuardian = json.information.boss[3];
-            save.buffs.Add(json.information.buff[0]);
-            save.buffs.Add(json.information.buff[5]);
-
-            save.deBuffs.Add(json.information.debuff[0]);
-            save.deBuffs.Add(json.information.debuff[2]);
         }
 
         string saveString = JsonUtility.ToJson(save);
@@ -76,24 +67,6 @@ public class SaveMgr : MonoBehaviour
             string loadFile = File.ReadAllText(fonlderPath + "/save.txt");
 
             Save save = JsonUtility.FromJson<Save>(loadFile);
-
-            if(save.buffs.Count !=0)
-            {
-                for(int i=0; i< save.buffs.Count; i++)
-                {
-                    buffs.Add(save.buffs[i]);
-                }
-            }
-
-            if (save.deBuffs.Count != 0)
-            {
-                for (int i = 0; i < save.deBuffs.Count; i++)
-                {
-                    deBuffs.Add(save.deBuffs[i]);
-                }
-            }
-
-            Debug.Log("afafaf");
         }
     }
 

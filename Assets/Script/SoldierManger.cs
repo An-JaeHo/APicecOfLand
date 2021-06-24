@@ -90,7 +90,7 @@ public class SoldierManger : MonoBehaviour
             float randnum = Random.Range(0.8f, 1.2f);
             //적이 받는 데미지
             //enemy.GetComponent<MakeEnemy>().HelthPoint -=                (int)((soldier.BaseAttack * randnum) - ((enemy.GetComponent<MakeEnemy>().Defensive)));
-            enemy.GetComponent<MakeEnemy>().HelthPoint = 0;
+            enemy.GetComponent<MakeEnemy>().BaseHelthPoint = 0;
             attack = false;
             movePoint = false;
             enemy.GetComponent<EnemyController>().Dead();

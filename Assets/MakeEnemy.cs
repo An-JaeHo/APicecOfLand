@@ -9,14 +9,20 @@ public class EnemyInfo : MonoBehaviour
     public string Name;
     public int Grade;
     public string Specialities;
-    public int HelthPoint;
-    public int BaseTroop;
+    public int MaxLevel;
+    public int BaseHelthPoint;
+    public int RiseHelthPoint;
     public float BaseAttack;
-    public float Defensive;
+    public float RiseAttack;
+    public float BaseDefensive;
+    public float RiseDefensive;
     public int AttackRange;
-    public int MovementSpace;
-    public string DropExperiencePoint;
-    public string DropItem;
+    public int AttackNumber;
+    public int Movement;
+    public string Spone1;
+    public string Spone2;
+    public string Spone3;
+    public string Drop;
 }
 
 public class MakeEnemy : EnemyInfo
@@ -36,14 +42,20 @@ public class MakeEnemy : EnemyInfo
                 Name = enemyInfo.information.enemy[i].Name;
                 Grade = enemyInfo.information.enemy[i].Grade;
                 Specialities = enemyInfo.information.enemy[i].Specialities;
-                HelthPoint = enemyInfo.information.enemy[i].HelthPoint;
+                MaxLevel = enemyInfo.information.enemy[i].MaxLevel;
+                BaseHelthPoint = enemyInfo.information.enemy[i].BaseHelthPoint;
+                RiseHelthPoint = enemyInfo.information.enemy[i].RiseHelthPoint;
                 BaseAttack = enemyInfo.information.enemy[i].BaseAttack;
-                Defensive = enemyInfo.information.enemy[i].Defensive;
+                RiseAttack = enemyInfo.information.enemy[i].RiseAttack;
+                BaseDefensive = enemyInfo.information.enemy[i].BaseDefensive;
+                RiseDefensive = enemyInfo.information.enemy[i].RiseDefensive;
                 AttackRange = enemyInfo.information.enemy[i].AttackRange;
-                BaseTroop = enemyInfo.information.enemy[i].BaseTroop;
-                MovementSpace = enemyInfo.information.enemy[i].MovementSpace;
-                DropExperiencePoint = enemyInfo.information.enemy[i].DropExperiencePoint;
-                DropItem = enemyInfo.information.enemy[i].DropItem;
+                AttackNumber = enemyInfo.information.enemy[i].AttackNumber;
+                Movement = enemyInfo.information.enemy[i].Movement;
+                Spone1 = enemyInfo.information.enemy[i].Code;
+                Spone2 = enemyInfo.information.enemy[i].Code;
+                Spone3 = enemyInfo.information.enemy[i].Code;
+                Drop = enemyInfo.information.enemy[i].Code;
             }
         }
     }

@@ -7,8 +7,6 @@ public class Information
     public Enemy[] enemy;
     public Boss[] boss;
     public Card[] card;
-    public Buff[] buff;
-    public DeBuff[] debuff;
     public Monster[] monster;
 }
 
@@ -17,18 +15,21 @@ public class Area
 {
     public string Code;
     public Sprite Picture;
-    public string Type;
     public string Name;
     public int Grade;
-    public int UpgradeWood;
-    public int UpgradeIron;
-    public int Health;
-    public int Output;
-    public bool Movement;
+    public string Type;
+    public int UpgradeFlour;
+    public int BaseSugar;
+    public int UpgradeSugar;
+    public int MilkOutput;
+    public int FlourOutput;
+    public int SugarOutput;
+    public int Population;
     public bool Destroy;
     public bool Repair;
-    public string Effect;
     public int BuildTurn;
+    public string Effect;
+    public int Attack;
 }
 
 [System.Serializable]
@@ -39,14 +40,20 @@ public class Enemy
     public string Name;
     public int Grade;
     public string Specialities;
-    public int HelthPoint;
-    public int BaseTroop;
+    public int MaxLevel;
+    public int BaseHelthPoint;
+    public int RiseHelthPoint;
     public float BaseAttack;
-    public float Defensive;
+    public float RiseAttack;
+    public float BaseDefensive;
+    public float RiseDefensive;
     public int AttackRange;
-    public int MovementSpace;
-    public string DropExperiencePoint;
-    public string DropItem;
+    public int AttackNumber;
+    public int Movement;
+    public string Spone1;
+    public string Spone2;
+    public string Spone3;
+    public string Drop;
 }
 
 [System.Serializable]
@@ -55,15 +62,19 @@ public class Boss
     public string Code;
     public Sprite Picture;
     public string Name;
-    public string Specialities;
-    public int Level;
+    public string Type;
     public int MaxLevel;
-    public float ExperiencePoint;
-    public float RiseExperiencePoint;
     public int HelthPoint;
-    public float BaseAttack;
-    public float Defensive;
+    public int BaseAttack;
+    public int RiseAttack;
+    public int Defensive;
+    public int RiseDefensive;
+    public int AttackRange;
+    public int AttackNumber;
+    public int Movement;
+    public int turn;
     public string InherentAbiltiy;
+    public string Drop;
 }
 
 [System.Serializable]
@@ -74,33 +85,21 @@ public class Card
     public string Type;
     public string Name;
     public int Grade;
-    public string Kind;
-    public string Acquisition;
-    public string Effect;
-    public string Superposition;
-    public int MaxStack;
-}
-
-[System.Serializable]
-public class Buff
-{
-    public string Code;
-    public string Type;
-    public string Name;
-    public int Grade;
-    public string Acquisition;
-    public string Effect;
-}
-
-[System.Serializable]
-public class DeBuff
-{
-    public string Code;
-    public string Type;
-    public string Name;
-    public int Grade;
-    public string Acquisition;
-    public string Effect;
+    public int Turn;
+    public int AllAttack;
+    public int AttackRange;
+    public int AttackNumber;
+    public int HelthPoint;
+    public int Movement;
+    public int Milk;
+    public int Milk2;
+    public int Flour;
+    public int Flour2;
+    public int Sugar;
+    public int Sugar2;
+    public int Population;
+    public int CountAttack;
+    public int Stack;
 }
 
 [System.Serializable]
@@ -111,17 +110,19 @@ public class Monster
     public string Name;
     public int Grade;
     public string Specialities;
-    public int ProductionExpense;
-    public int ConsumeFood;
-    public int Level;
     public int MaxLevel;
     public int HelthPoint;
     public int populationNumber;
-    public int ExperiencePoint;
+    public int ProductionExpense;
+    public int ConsumeFood;
+    public string UnderEvolutin;
+    public int EvolutionLevel;
     public float BaseAttack;
     public float RiseAttack;
     public float Defensive;
     public float RiseDefensive;
+    public string Critical;
+    public string RiseCritical;
     public int AttackRange;
-    public int MovementSpace;
+    public int Movement;
 }

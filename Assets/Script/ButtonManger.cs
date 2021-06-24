@@ -16,7 +16,6 @@ public class ButtonManger : MonoBehaviour
     private RangeManger rangeManger;
     private GameObject game;
     public InputManger input;
-    public MiniCheck check;
     public SupplyManger supplyManger;
     public List<GameObject> amrys;
     public List<GameObject> builders;
@@ -51,7 +50,6 @@ public class ButtonManger : MonoBehaviour
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         rangeManger = transform.GetComponent<RangeManger>();
-        check = GetComponent<MiniCheck>();
         enemys = new List<GameObject>();
         enemyTiles = new List<GameObject>();
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
@@ -204,7 +202,7 @@ public class ButtonManger : MonoBehaviour
 
     public void NeedArmyUpgrade()
     {
-        if (playerInfo.people > 1 && playerInfo.food > armyUpgradeUi.GetComponent<ArmyUpgrade>().armyinfo.ProductionExpense)
+        if (playerInfo.people > 1 && playerInfo.milk > armyUpgradeUi.GetComponent<ArmyUpgrade>().armyinfo.ProductionExpense)
         {
             switch (armyUpgradeUi.GetComponent<ArmyUpgrade>().armyinfo.Code)
             {
@@ -285,7 +283,7 @@ public class ButtonManger : MonoBehaviour
             }
             
             playerInfo.people -= 1;
-            playerInfo.food -= armyUpgradeUi.GetComponent<ArmyUpgrade>().armyinfo.ProductionExpense;
+            playerInfo.milk -= armyUpgradeUi.GetComponent<ArmyUpgrade>().armyinfo.ProductionExpense;
             supplyManger.UpdateSupply();
             armyUpgradeUi.SetActive(false);
             input.mouseCheck = true;
@@ -296,8 +294,8 @@ public class ButtonManger : MonoBehaviour
     public void CheckNeedButton()
     {
         panel = CreateAreaPrefab.GetComponent<PanelController>();
-        playerInfo.wood -= panel.upgradeWood;
-        playerInfo.iron -= panel.upgradeIron;
+        playerInfo.flour -= panel.upgradeWood;
+        playerInfo.sugar -= panel.upgradeIron;
         input.army.transform.SetParent(input.hitObj.transform);
         input.moveSoldier.move = true;
 
@@ -315,7 +313,6 @@ public class ButtonManger : MonoBehaviour
             panel.baseLand.GetComponent<AreaManger>().pureSprite = panel.baseLand.GetComponent<SpriteRenderer>().sprite;
         }
 
-        check.CheckArea(panel.baseLand);
         panel.baseLand.GetComponent<AreaManger>().CheckUpdateMaterial();
         supplyManger.UpdateSupply();
         panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
@@ -325,7 +322,7 @@ public class ButtonManger : MonoBehaviour
 
     public void CheckUpgradeResources()
     {
-        if (playerInfo.wood >= UpgradeLand.GetComponent<MakeArea>().UpgradeWood && playerInfo.iron >= UpgradeLand.GetComponent<MakeArea>().UpgradeIron)
+        if (playerInfo.flour >= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && playerInfo.sugar >= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar)
         {
             switch(UpgradeLand.GetComponent<MakeArea>().Code)
             {
@@ -402,8 +399,8 @@ public class ButtonManger : MonoBehaviour
                     break;
             }
 
-            playerInfo.wood -= UpgradeLand.GetComponent<MakeArea>().UpgradeWood;
-            playerInfo.iron -= UpgradeLand.GetComponent<MakeArea>().UpgradeIron;
+            playerInfo.flour -= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour;
+            playerInfo.sugar -= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar;
 
             input.army.transform.SetParent(input.hitObj.transform);
             input.moveSoldier.move = true;
@@ -413,7 +410,6 @@ public class ButtonManger : MonoBehaviour
                 rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
             }
 
-            check.CheckArea(UpgradeLand);
             UpgradeLand.GetComponent<AreaManger>().CheckUpdateMaterial();
             supplyManger.UpdateSupply();
             input.mouseCheck = true;
@@ -471,9 +467,9 @@ public class ButtonManger : MonoBehaviour
             builds.GetComponent<SoldierManger>().CheckBuildCount();
         }
 
-        playerInfo.food += playerInfo.updateFood;
-        playerInfo.wood += playerInfo.updateWood;
-        playerInfo.iron += playerInfo.updateIron;
+        playerInfo.milk += playerInfo.updateMilk;
+        playerInfo.flour += playerInfo.updateFlour;
+        playerInfo.sugar += playerInfo.updateSugar;
 
         
         playerInfo.turnPoint++;

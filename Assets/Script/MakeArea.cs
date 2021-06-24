@@ -2,6 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class AreaInfo : MonoBehaviour
+{
+    public string Code;
+    public Sprite Picture;
+    public string Name;
+    public int Grade;
+    public string Type;
+    public int UpgradeFlour;
+    public int BaseSugar;
+    public int UpgradeSugar;
+    public int MilkOutput;
+    public int FlourOutput;
+    public int SugarOutput;
+    public int Population;
+    public bool Destroy;
+    public bool Repair;
+    public int BuildTurn;
+    public string Effect;
+    public int Attack;
+    public bool Movement;
+}
+
 public class MakeArea : AreaInfo
 {
     public string findCode;
@@ -23,18 +45,22 @@ public class MakeArea : AreaInfo
             {
                 Code = areaInfo.information.area[i].Code;
                 Picture = areaInfo.information.area[i].Picture;
-                Type = areaInfo.information.area[i].Type;
                 Name = areaInfo.information.area[i].Name;
                 Grade = areaInfo.information.area[i].Grade;
-                UpgradeWood = areaInfo.information.area[i].UpgradeWood;
-                UpgradeIron = areaInfo.information.area[i].UpgradeIron;
-                Health = areaInfo.information.area[i].Health;
-                Output = areaInfo.information.area[i].Output;
-                Movement = areaInfo.information.area[i].Movement;
+                Type = areaInfo.information.area[i].Type;
+                UpgradeFlour = areaInfo.information.area[i].UpgradeFlour;
+                BaseSugar = areaInfo.information.area[i].BaseSugar;
+                UpgradeSugar = areaInfo.information.area[i].UpgradeSugar;
+                MilkOutput = areaInfo.information.area[i].MilkOutput;
+                FlourOutput = areaInfo.information.area[i].FlourOutput;
+                SugarOutput = areaInfo.information.area[i].SugarOutput;
+                Population = areaInfo.information.area[i].Population;
                 Destroy = areaInfo.information.area[i].Destroy;
                 Repair = areaInfo.information.area[i].Repair;
-                Effect = areaInfo.information.area[i].Effect;
                 BuildTurn = areaInfo.information.area[i].BuildTurn;
+                Effect = areaInfo.information.area[i].Effect;
+                Attack = areaInfo.information.area[i].Attack;
+                Movement = true;
 
                 areaInfoImage.sprite = areaInfo.information.area[i].Picture;
                 if(areaInfo.information.area[i].Type == "Barracks")

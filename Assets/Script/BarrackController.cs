@@ -40,14 +40,14 @@ public class BarrackController : MonoBehaviour
 
     public void MakeSoldierInPlace()
     {
-        if (playerInfo.food > soldierInfo.ProductionExpense)
+        if (playerInfo.milk > soldierInfo.ProductionExpense)
         {
             GameObject prefebSoldier = Instantiate(soldierPrefeb,land);
 
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
             prefebSoldier.name = prefebSoldier.GetComponent<MakeSoldier>().Name;
             prefebSoldier.GetComponent<SpriteRenderer>().sprite = prefebSoldier.GetComponent<MakeSoldier>().Picture;
-            playerInfo.updateFood -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
+            playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
 
             monsters.Add(prefebSoldier);
             buttonManger.amrys.Add(prefebSoldier);
@@ -67,10 +67,11 @@ public class BarrackController : MonoBehaviour
     {
         GameObject obj = Instantiate(monsterStateUi, uiParentContent.transform);
         obj.transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = name.GetComponent<MakeSoldier>().Picture;
-        obj.transform.GetChild(2).GetChild(0).GetComponent<Text>().text= name.GetComponent<MakeSoldier>().Level.ToString();
         obj.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = name.GetComponent<MakeSoldier>().Name.ToString();
         obj.transform.GetChild(5).GetChild(0).GetComponent<Image>().fillAmount = name.GetComponent<MakeSoldier>().HelthPoint*0.01f;
-        obj.transform.GetChild(6).GetChild(0).GetComponent<Text>().text = name.GetComponent<MakeSoldier>().ExperiencePoint.ToString();
+        //둘다 먼기능인지 모르겠음
+        //obj.transform.GetChild(2).GetChild(0).GetComponent<Text>().text= name.GetComponent<MakeSoldier>().Level.ToString();
+        //obj.transform.GetChild(6).GetChild(0).GetComponent<Text>().text = name.GetComponent<MakeSoldier>().ExperiencePoint.ToString();
 
         obj.transform.position = new Vector3(obj.transform.position.x, (obj.transform.position.y -(i * 80)));
 
@@ -85,11 +86,11 @@ public class BarrackController : MonoBehaviour
         // 1 5 9 13
         for (int i = 0; i < json.information.monster.Length; i++)
         {
-            if(json.information.monster[i].Specialities == "Attack")
+            if(json.information.monster[i].Specialities == "Unit")
             {
                 if (monsterUi.Count >= 5)
                 {
-                    if (json.information.monster[i].Code == "Mon1")
+                    if (json.information.monster[i].Code == "Mon 1")
                     {
                         monsterUi[0].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monsterUi[0].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
@@ -98,7 +99,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi[0].transform.position = new Vector3(monsterUi[0].transform.parent.position.x+30, monsterUi[0].transform.parent.position.y-55);
                     }
 
-                    if (json.information.monster[i].Code == "Mon2")
+                    if (json.information.monster[i].Code == "Mon 2")
                     {
                         monsterUi[1].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monsterUi[1].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
@@ -107,7 +108,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi[1].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 100, monsterUi[0].transform.parent.position.y - 55);
                     }
 
-                    if (json.information.monster[i].Code == "Mon3")
+                    if (json.information.monster[i].Code == "Mon 3")
                     {
                         monsterUi[2].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monsterUi[2].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
@@ -116,7 +117,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi[2].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 170, monsterUi[0].transform.parent.position.y - 55);
                     }
 
-                    if (json.information.monster[i].Code == "Mon4")
+                    if (json.information.monster[i].Code == "Mon 4")
                     {
                         monsterUi[3].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monsterUi[3].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
@@ -125,7 +126,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi[3].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 240, monsterUi[0].transform.parent.position.y - 55);
                     }
 
-                    if (json.information.monster[i].Code == "Mon6")
+                    if (json.information.monster[i].Code == "Mon 6")
                     {
                         monsterUi[4].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monsterUi[4].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
@@ -136,7 +137,7 @@ public class BarrackController : MonoBehaviour
                 }
                 else
                 {
-                    if (json.information.monster[i].Code == "Mon1")
+                    if (json.information.monster[i].Code == "Mon 1")
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
@@ -147,7 +148,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi.Add(monster);
                     }
 
-                    if (json.information.monster[i].Code == "Mon2")
+                    if (json.information.monster[i].Code == "Mon 2")
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
@@ -159,7 +160,7 @@ public class BarrackController : MonoBehaviour
                     }
 
 
-                    if (json.information.monster[i].Code == "Mon3")
+                    if (json.information.monster[i].Code == "Mon 3")
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
@@ -170,7 +171,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi.Add(monster);
                     }
 
-                    if (json.information.monster[i].Code == "Mon4")
+                    if (json.information.monster[i].Code == "Mon 4")
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
@@ -182,7 +183,7 @@ public class BarrackController : MonoBehaviour
                     }
 
 
-                    if (json.information.monster[i].Code == "Mon6")
+                    if (json.information.monster[i].Code == "Mon 6")
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
