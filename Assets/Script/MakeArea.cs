@@ -63,12 +63,12 @@ public class MakeArea : AreaInfo
                 Movement = true;
 
                 areaInfoImage.sprite = areaInfo.information.area[i].Picture;
-                if(areaInfo.information.area[i].Type == "Barracks")
+                if(areaInfo.information.area[i].Code == "Area 17" || areaInfo.information.area[i].Code == "Area 18" || areaInfo.information.area[i].Code == "Area 19")
                 {
                     transform.tag = "Barracks";
                     Destroy = true;
                 }
-                else if(areaInfo.information.area[i].Type == "Enemy Base")
+                else if(areaInfo.information.area[i].Code == "Area 30" || areaInfo.information.area[i].Code == "Area 31" || areaInfo.information.area[i].Code == "Area 32")
                 {
                     transform.tag = "Enemy Base";
                 }

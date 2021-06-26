@@ -56,6 +56,8 @@ public class MakeEnemy : EnemyInfo
                 Spone2 = enemyInfo.information.enemy[i].Code;
                 Spone3 = enemyInfo.information.enemy[i].Code;
                 Drop = enemyInfo.information.enemy[i].Code;
+
+                GetComponent<SpriteRenderer>().sprite = Picture;
             }
         }
     }

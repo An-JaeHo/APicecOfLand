@@ -22,10 +22,8 @@ public class BarrackController : MonoBehaviour
 
     //Prefebs
     public GameObject soldierPrefeb;
-    public GameObject monsterStateUi;
 
     //StateUi
-    public GameObject uiParentContent;
     public GameObject myContent;
     public int i;
 
@@ -51,7 +49,6 @@ public class BarrackController : MonoBehaviour
 
             monsters.Add(prefebSoldier);
             buttonManger.amrys.Add(prefebSoldier);
-            Checkmonster(prefebSoldier.transform);
             supplyManger.UpdateSupply();
             gameObject.SetActive(false);
         }
@@ -61,23 +58,6 @@ public class BarrackController : MonoBehaviour
         }
 
 
-    }
-
-    public void Checkmonster(Transform name)
-    {
-        GameObject obj = Instantiate(monsterStateUi, uiParentContent.transform);
-        obj.transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = name.GetComponent<MakeSoldier>().Picture;
-        obj.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = name.GetComponent<MakeSoldier>().Name.ToString();
-        obj.transform.GetChild(5).GetChild(0).GetComponent<Image>().fillAmount = name.GetComponent<MakeSoldier>().HelthPoint*0.01f;
-        //둘다 먼기능인지 모르겠음
-        //obj.transform.GetChild(2).GetChild(0).GetComponent<Text>().text= name.GetComponent<MakeSoldier>().Level.ToString();
-        //obj.transform.GetChild(6).GetChild(0).GetComponent<Text>().text = name.GetComponent<MakeSoldier>().ExperiencePoint.ToString();
-
-        obj.transform.position = new Vector3(obj.transform.position.x, (obj.transform.position.y -(i * 80)));
-
-        uiParentContent.GetComponent<RectTransform>().sizeDelta = new Vector2(uiParentContent.GetComponent<RectTransform>().sizeDelta.x, (monsters.Count) * 137);
-
-        i++;
     }
 
     #region 검사나오는 버튼

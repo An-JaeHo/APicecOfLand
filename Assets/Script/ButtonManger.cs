@@ -298,6 +298,7 @@ public class ButtonManger : MonoBehaviour
         playerInfo.sugar -= panel.upgradeIron;
         input.army.transform.SetParent(input.hitObj.transform);
         input.moveSoldier.move = true;
+        input.army.GetComponent<SoldierManger>().SoldierAction();
 
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {

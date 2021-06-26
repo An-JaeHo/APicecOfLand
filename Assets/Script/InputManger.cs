@@ -126,6 +126,7 @@ public class InputManger : MonoBehaviour
                                     case "Enemy":
                                         moveSoldier.enemy = hit.transform;
                                         moveSoldier.attack = true;
+                                        army.transform.GetComponent<SoldierManger>().SoldierAction();
                                         ChangeLandInfo();
 
                                         break;
@@ -136,7 +137,6 @@ public class InputManger : MonoBehaviour
                                             {
                                                 bulidUi.GetComponent<BuildController>().land = hit.transform;
                                                 bulidUi.GetComponent<BuildController>().CreateWindow();
-
                                             }
                                             else if (hit.transform.GetComponent<AreaManger>().pureTag == "Area"
                                                 && hit.transform.GetComponent<MakeArea>().Destroy != true)
@@ -164,7 +164,8 @@ public class InputManger : MonoBehaviour
                                         {
                                             army.transform.SetParent(hit.transform);
                                             moveSoldier.move = true;
-
+                                            army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                            
                                             ChangeLandInfo();
                                         }
 
