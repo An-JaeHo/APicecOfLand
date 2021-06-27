@@ -84,12 +84,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 33
-  m_Sprite: {fileID: 21300000, guid: a6334d39bfd2afb41bb43934ebf812c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b92648dcdcffaf54b993f306ac200020, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.75, y: 0.75}
+  m_Size: {x: 3.13, y: 3.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -112,19 +112,22 @@ MonoBehaviour:
   Name: "\uC219\uB828 \uCC3D\uBCD1"
   Grade: 2
   Specialities: "\uCC3D\uBCD1"
-  ProductionExpense: 25
-  ConsumeFood: 2
-  Level: 1
   MaxLevel: 10
   HelthPoint: 0
   populationNumber: 0
-  ExperiencePoint: 3
+  ProductionExpense: 25
+  ConsumeFood: 2
+  UnderEvolutin: 
+  EvolutionLevel: 0
   BaseAttack: 15
   RiseAttack: 1.5
   Defensive: 10
   RiseDefensive: 0.8
+  Critical: 
+  RiseCritical: 
   AttackRange: 1
-  MovementSpace: 1
+  Movement: 0
+  Level: 1
   pureAttack: 15
   pureDefensive: 10
   pureRange: 1
@@ -157,6 +160,7 @@ MonoBehaviour:
   buffIconPrefeb: {fileID: 8689413950977551159, guid: 0e80d8e740b392049afdc027aaf530a2,
     type: 3}
   buffList: []
+  buffPrefebList: []
   totalHp: 0
   movePoint: 0
   builderPoint: 0

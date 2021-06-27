@@ -284,7 +284,7 @@ public class TileManger : MonoBehaviour
         if (playerInfo.turnPoint % 5 == 0 && playerInfo.turnPoint >= 10)
         {
             int rand = UnityEngine.Random.Range(0, noChildLand.Count);
-            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 27");
+            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
 
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
             enemy.transform.SetParent(noChildLand[rand].GetChild(0));

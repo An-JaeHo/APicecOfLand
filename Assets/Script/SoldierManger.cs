@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoldierManger : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class SoldierManger : MonoBehaviour
     private int moveUpPosition;
     private int y;
     private Vector3 movePosition;
+    private ButtonManger buttonManger;
 
     public TileManger tileManger;
     public InputManger input;
@@ -33,6 +35,7 @@ public class SoldierManger : MonoBehaviour
     void Start()
     {
         tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
+        buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         input = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
         soldier = GetComponent<MakeSoldier>();
         totalHp = soldier.HelthPoint;
@@ -46,7 +49,7 @@ public class SoldierManger : MonoBehaviour
         builderPoint = 0;
     }
 
-    private void Update()
+    public void SoldierAction()
     {
         if (move)
         {
@@ -62,23 +65,27 @@ public class SoldierManger : MonoBehaviour
     public IEnumerator Move()
     {
         movePosition = new Vector3(transform.parent.position.x, transform.parent.position.y + 24, transform.parent.position.z - 10);
-        transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 100f);
-        movePoint = false;
-        stayTime++;
+
+        while (transform.position != movePosition)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 300f);
+            movePoint = false;
+            stayTime++;
+            buttonManger.button.GetComponent<Button>().interactable = false;
+            yield return new WaitForSeconds(0.008f);
+        }
 
         if (transform.position == movePosition)
         {
             input.armyMove = true;
             move = false;
             stayTime = 0;
-
+            buttonManger.button.GetComponent<Button>().interactable = true;
             if (transform.parent.tag == "Enemy Base")
             {
                 transform.parent.GetComponent<AreaManger>().TurnArea();
             }
         }
-
-
 
         yield return null;
     }
@@ -118,8 +125,7 @@ public class SoldierManger : MonoBehaviour
 
     public void CheckBuildCount()
     {
-        if (transform.parent.tag == "Area"
-            && transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
+        if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
             && transform.parent.GetComponent<MakeArea>().Destroy == true)
         {
             movePoint = false;
