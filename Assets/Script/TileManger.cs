@@ -33,6 +33,7 @@ public class TileManger : MonoBehaviour
     public List<String> enemy1Code;
     public List<String> enemy2Code;
     public List<String> enemy3Code;
+    public List<String> enemy4Code;
 
     private void Awake()
     {
@@ -310,6 +311,11 @@ public class TileManger : MonoBehaviour
             if (json.information.enemy[i].Grade == 3)
             {
                 enemy3Code.Add(json.information.enemy[i].Code);
+            }
+
+            if (json.information.enemy[i].Grade == 4)
+            {
+                enemy4Code.Add(json.information.enemy[i].Code);
             }
         }
     }
