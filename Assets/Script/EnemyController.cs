@@ -68,15 +68,16 @@ public class EnemyController : MonoBehaviour
     {
         parentTile = transform.parent;
         tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
+        int myName = int.Parse(transform.parent.parent.name);
+
+        rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
+        rangeTiles = rangeManger.EnemyRange(gameObject);
+        string code = transform.GetComponent<MakeEnemy>().Code;
 
         if (parentTile)
         {
             transform.SetParent(parentTile);
         }
-
-        rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
-        rangeTiles = rangeManger.EnemyRange(gameObject);
-        string code = transform.GetComponent<MakeEnemy>().Code;
 
         switch (code)
         {
@@ -96,103 +97,44 @@ public class EnemyController : MonoBehaviour
 
         PathFinding();
 
-        if (FinalNodeList.Count == 1)
-        {
-            for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-            {
-                if (FinalNodeList[1].x == tiles.activeChildtileList[i].GetChild(0).position.x
-                    && FinalNodeList[1].y == tiles.activeChildtileList[i].GetChild(0).position.y
-                    && tiles.activeChildtileList[i].GetChild(0).childCount != 0)
-                {
-                    if (tiles.activeChildtileList[i].GetChild(0).tag == "Monster")
-                    {
-                        findArmy = true;
-                    }
-                }
-            }
-        }
-
-
-        //for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+        //if (FinalNodeList.Count == 2)
         //{
-        //    if (FinalNodeList.Count >= 2)
+        //    for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         //    {
-        //        if (tiles.activeChildtileList[i].GetChild(0).position.x == FinalNodeList[1].x
-        //            && (tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f) == FinalNodeList[1].y)
+        //        if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
+        //            FinalNodeList[FinalNodeList.Count - 1].y == (int)tiles.activeChildtileList[i].GetChild(0).position.y)
         //        {
-        //            if (tiles.activeChildtileList[i].GetChild(0).childCount != 0
-        //                && tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Builder")
+        //            if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
         //            {
-        //                findArmy = true;
-        //            }
-        //            else
-        //            {
-        //                findArmy = false;
+        //                if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
+        //                {
+        //                    findArmy = true;
+        //                    target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
+        //                }
+        //                else
+        //                {
+        //                    findArmy = false;
+        //                }
         //            }
         //        }
         //    }
-        //    else
-        //    {
-        //        findArmy = false;
-        //    }
         //}
 
-        
-        if (FinalNodeList.Count != 0)
+        for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+            //위아래 17 양옆 1
+            if(tiles.activeChildtileList[i].GetChild(0).childCount !=0)
             {
-                if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
-                    FinalNodeList[FinalNodeList.Count - 1].y + 30 == tiles.activeChildtileList[i].GetChild(0).position.y)
+                if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
+                || tiles.activeChildtileList[i].name == (myName + 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
                 {
-                    Debug.Log("bbb");
-                    if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
-                    {
-                        if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
-                        {
-                            findArmy = true;
-                            target = tiles.activeChildtileList[i].GetChild(0);
-                            Debug.Log(FinalNodeList.Count);
-                        }
-                        else
-                        {
-                            Debug.Log("afaf");
-                            findArmy = false;
-                        }
-                    }
+                    findArmy = true;
+                    target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
                 }
             }
-
-            //if (FinalNodeList[FinalNodeList.Count - 2].x == transform.position.x &&
-            //    FinalNodeList[FinalNodeList.Count - 2].y + 30 == transform.position.y)
-            //{
-            //    Debug.Log("aaa");
-            //    for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-            //    {
-            //        if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
-            //            FinalNodeList[FinalNodeList.Count - 1].y + 30 == tiles.activeChildtileList[i].GetChild(0).position.y)
-            //        {
-            //            Debug.Log("bbb");
-            //            if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
-            //            {
-            //                if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
-            //                {
-            //                    findArmy = true;
-            //                    target = tiles.activeChildtileList[i].GetChild(0);
-            //                    Debug.Log(FinalNodeList.Count);
-            //                }
-            //                else
-            //                {
-            //                    Debug.Log("afaf");
-            //                    findArmy = false;
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
         }
 
-        
+
 
         if (findArmy)
         {
@@ -356,31 +298,6 @@ public class EnemyController : MonoBehaviour
             yield return new WaitForSeconds(0.008f);
         }
 
-
-        //if (FinalNodeList[FinalNodeList.Count - 2].x == transform.position.x &&
-        //    FinalNodeList[FinalNodeList.Count - 2].y + 30 == transform.position.y)
-        //{
-        //    for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-        //    {
-        //        if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
-        //            FinalNodeList[FinalNodeList.Count - 1].y == tiles.activeChildtileList[i].GetChild(0).position.y)
-        //        {
-        //            if (tiles.activeChildtileList[i].GetChild(0).childCount !=0)
-        //            {
-        //                if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
-        //                {
-        //                    findArmy = true;
-        //                    target = tiles.activeChildtileList[i].GetChild(0);
-        //                }
-        //                else
-        //                {
-        //                    findArmy = false;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-        
         yield return null;
     }
 
@@ -390,6 +307,7 @@ public class EnemyController : MonoBehaviour
         target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
         target.GetComponent<SoldierManger>().HpBarScale();
         target.GetComponent<SoldierManger>().Dead();
+        findArmy = false;
 
         yield return null;
     }
@@ -400,12 +318,12 @@ public class EnemyController : MonoBehaviour
         NodeArray = new List<Node>();
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
-            NodeArray.Add(tileNode);
-
-            //if (tiles.activeChildtileList[i].childCount == 0 || tiles.activeChildtileList[i].GetChild(0).tag == "GD")
+            if (tiles.activeChildtileList[i].GetChild(0).childCount == 0)
+            {
+                Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
+                NodeArray.Add(tileNode);
+            }
         }
-        
         
         // 시작과 끝 노드, 열린리스트와 닫힌리스트, 마지막리스트 초기화
         StartNode = new Node((int)transform.parent.position.x, (int)transform.parent.position.y);
@@ -414,13 +332,9 @@ public class EnemyController : MonoBehaviour
         ClosedList = new List<Node>();
         FinalNodeList = new List<Node>();
 
-
-
-
         while (OpenList.Count > 0)
         {
             // 열린리스트 중 가장 F가 작고 F가 같다면 H가 작은 걸 현재노드로 하고 열린리스트에서 닫힌리스트로 옮기기
-
             CurNode = OpenList[0];
 
             for (int i = 1; i < OpenList.Count; i++)

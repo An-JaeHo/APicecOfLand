@@ -475,17 +475,14 @@ public class ButtonManger : MonoBehaviour
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
 
-        
+        StartCoroutine(moveEnemy());
         playerInfo.turnPoint++;
         rangeManger.rangeList.Clear();
         supplyManger.UpdateSupply();
         GameObject.Find("ButtonMgr").transform.GetChild(6).GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
-
         button.GetComponent<Button>().interactable = true;
-
-        StartCoroutine(moveEnemy());
 
         for (int i = 0; i < amrys.Count; i++)
         {
