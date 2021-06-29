@@ -318,11 +318,13 @@ public class EnemyController : MonoBehaviour
         NodeArray = new List<Node>();
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            if (tiles.activeChildtileList[i].GetChild(0).childCount == 0)
-            {
-                Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
-                NodeArray.Add(tileNode);
-            }
+            //if (tiles.activeChildtileList[i].GetChild(0).childCount == 0)
+            //{
+            //    Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
+            //    NodeArray.Add(tileNode);
+            //}
+            Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
+            NodeArray.Add(tileNode);
         }
         
         // 시작과 끝 노드, 열린리스트와 닫힌리스트, 마지막리스트 초기화

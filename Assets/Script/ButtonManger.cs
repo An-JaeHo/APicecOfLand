@@ -433,6 +433,7 @@ public class ButtonManger : MonoBehaviour
                 if (enemys[i].transform.parent.tag == "Area" 
                     || enemys[i].transform.parent.tag == "Barrack")
                 {
+                    Debug.Log("aa");
                     enemys[i].transform.parent.GetComponent<AreaManger>().TurnArea();
                     
                 }
