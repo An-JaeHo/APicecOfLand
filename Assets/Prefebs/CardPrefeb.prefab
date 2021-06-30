@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4794915923203318139
 CanvasRenderer:
@@ -66,11 +66,21 @@ MonoBehaviour:
   Type: Land
   Name: "\uC219\uB828 \uAD81\uBCD1 \uC0DD\uC131"
   Grade: 2
-  Kind: "\uC0DD\uC131 \uCE74\uB4DC"
-  Acquisition: "2~3\uB808\uBCA8 \uAC70\uC810\uC804 \uC810\uB839"
-  Effect: "\uC219\uB828 \uAD81\uBCD1\uC744 1\uAE30 \uC18C\uD658\uD569\uB2C8\uB2E4."
-  Superposition: X
-  MaxStack: 3
+  Turn: 0
+  AllAttack: 0
+  AttackRange: 0
+  AttackNumber: 0
+  HelthPoint: 0
+  Movement: 0
+  Milk: 0
+  Milk2: 0
+  Flour: 0
+  Flour2: 0
+  Sugar: 0
+  Sugar2: 0
+  Population: 0
+  CountAttack: 0
+  Stack: 0
   skillList: {fileID: 0}
   card: {fileID: 0}
   image: {fileID: 4685464986201776183}
@@ -91,6 +101,7 @@ MonoBehaviour:
   image: {fileID: 0}
   inputManger: {fileID: 0}
   skill: {fileID: 0}
+  card: {fileID: 0}
   skillInven: {fileID: 0}
   invenManger: {fileID: 0}
 --- !u!114 &4685464986201776183
@@ -108,10 +119,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d857e39eadc1a2449a33ddf2539304d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79f398050770e5d4fbfe5825381c2c4e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

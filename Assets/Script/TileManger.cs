@@ -35,6 +35,9 @@ public class TileManger : MonoBehaviour
     public List<String> enemy3Code;
     public List<String> enemy4Code;
 
+    //아몰랑 ㅅㅂ
+    public GameObject[] enemyObj;
+
     private void Awake()
     {
         tileList = new List<Transform>();
@@ -59,9 +62,18 @@ public class TileManger : MonoBehaviour
         object[] loadedAreaBeta = Resources.LoadAll("StartArea", typeof(Sprite));
         sprites = new Sprite[loadedAreaBeta.Length];
 
+
+        object[] loadEnemy = Resources.LoadAll("Enemy", typeof(GameObject));
+        enemyObj = new GameObject[loadEnemy.Length];
+
         for (int i = 0; i < loadedAreaBeta.Length; i++)
         {
             sprites[i] = (Sprite)loadedAreaBeta[i];
+        }
+
+        for (int i = 0; i < loadEnemy.Length; i++)
+        {
+            enemyObj[i] = (GameObject)loadEnemy[i];
         }
 
         for (int i = 0; i < 17; i++)
@@ -290,6 +302,16 @@ public class TileManger : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
             enemy.transform.SetParent(noChildLand[rand].GetChild(0));
             enemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
+
+            for (int i = 0; i < enemyObj.Length; i++)
+            {
+                if(enemyObj[i].name == "Enemy 1")
+                {
+                    GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x + 8, enemy.transform.position.y -55), Quaternion.identity);
+                    enemyPicture.transform.SetParent(enemy.transform);
+                }
+            }
+            
             buttonManger.enemys.Add(enemy);
         }
     }
