@@ -15,6 +15,7 @@ public class TileManger : MonoBehaviour
     public List<Transform> activeChildtileList;
     public List<Transform> builderMakeLand;
     public List<Transform> enemyMakeLand;
+    public List<Transform> enemyLand;
     GameObject tileInfo;
     public JsonManger json;
 
@@ -199,7 +200,8 @@ public class TileManger : MonoBehaviour
             lengthLand = 15;
         }
         else if (playerInfo.turnPoint == 200)
-        {enemyMakeLand.Clear();
+        {
+            enemyMakeLand.Clear();
             startNum = 1;
             maxnum = 16;
             lengthLand = 17;
@@ -279,14 +281,17 @@ public class TileManger : MonoBehaviour
             bulider.name = "Bulider";
             buttonManger.builders.Add(bulider);
         }
+
         builderMakeLand.Clear();
     }
 
     public void SpawnEnemy()
     {
         List<Transform> noChildLand = enemyMakeLand;
+        int rand = UnityEngine.Random.Range(0, noChildLand.Count);
+        int enemyRandRand = UnityEngine.Random.Range(0, 100);
 
-        for(int i=0; i< noChildLand.Count;i++)
+        for (int i=0; i< noChildLand.Count;i++)
         {
             if(noChildLand[i].GetChild(0).childCount !=0 || noChildLand[i].tag == "Area")
             {
@@ -294,26 +299,91 @@ public class TileManger : MonoBehaviour
             }
         }
 
-        if (playerInfo.turnPoint % 5 == 0 && playerInfo.turnPoint >= 10)
+        if (playerInfo.turnPoint % 5 == 0 && playerInfo.turnPoint >= 15)
         {
-            int rand = UnityEngine.Random.Range(0, noChildLand.Count);
-            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
-
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
             enemy.transform.SetParent(noChildLand[rand].GetChild(0));
-            enemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
+
+            if (playerInfo.turnPoint >= 15)
+            {
+                noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
+            }
+            else if (playerInfo.turnPoint >= 45)
+            {
+                if (enemyRandRand > 50)
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
+                }
+                else
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                }
+            }
+            else if (playerInfo.turnPoint >= 75)
+            {
+                if (enemyRandRand < 80)
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                }
+                else
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
+                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                }
+            }
+            else if (playerInfo.turnPoint >= 150)
+            {
+                if (enemyRandRand > 50)
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                }
+                else
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
+                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                }
+            }
+
+
 
             for (int i = 0; i < enemyObj.Length; i++)
             {
-                if(enemyObj[i].name == "Enemy 1")
+                if (enemyObj[i].name == enemy.GetComponent<MakeEnemy>().Code)
                 {
-                    GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x + 8, enemy.transform.position.y -55), Quaternion.identity);
+                    GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x + 8, enemy.transform.position.y - 55), Quaternion.identity);
                     enemyPicture.transform.SetParent(enemy.transform);
                 }
             }
-            
+
             buttonManger.enemys.Add(enemy);
         }
+
+
+        //if (playerInfo.turnPoint % 5 == 0 && playerInfo.turnPoint >= 10)
+        //{
+        //    int rand = UnityEngine.Random.Range(0, noChildLand.Count);
+        //    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+
+        //    GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
+        //    enemy.transform.SetParent(noChildLand[rand].GetChild(0));
+        //    enemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
+
+        //    for (int i = 0; i < enemyObj.Length; i++)
+        //    {
+        //        if(enemyObj[i].name == "Enemy 1")
+        //        {
+        //            GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x + 8, enemy.transform.position.y -55), Quaternion.identity);
+        //            enemyPicture.transform.SetParent(enemy.transform);
+        //        }
+        //    }
+            
+        //    buttonManger.enemys.Add(enemy);
+        //}
     }
 
     public void SortGrade()
