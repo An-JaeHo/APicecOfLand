@@ -303,13 +303,15 @@ public class TileManger : MonoBehaviour
         {
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
             enemy.transform.SetParent(noChildLand[rand].GetChild(0));
-
-            if (playerInfo.turnPoint >= 15)
+            
+            if(playerInfo.turnPoint <= 25)
             {
-                noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
-                enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
+                //noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
+                noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
             }
-            else if (playerInfo.turnPoint >= 45)
+            else if (playerInfo.turnPoint <= 45)
             {
                 if (enemyRandRand > 50)
                 {
@@ -322,7 +324,7 @@ public class TileManger : MonoBehaviour
                     enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
                 }
             }
-            else if (playerInfo.turnPoint >= 75)
+            else if (playerInfo.turnPoint <= 75)
             {
                 if (enemyRandRand < 80)
                 {
@@ -335,7 +337,20 @@ public class TileManger : MonoBehaviour
                     enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
                 }
             }
-            else if (playerInfo.turnPoint >= 150)
+            else if (playerInfo.turnPoint <= 150)
+            {
+                if (enemyRandRand > 50)
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                }
+                else
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
+                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                }
+            }
+            else if (playerInfo.turnPoint <= 200)
             {
                 if (enemyRandRand > 50)
                 {
@@ -355,7 +370,7 @@ public class TileManger : MonoBehaviour
             {
                 if (enemyObj[i].name == enemy.GetComponent<MakeEnemy>().Code)
                 {
-                    GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x + 8, enemy.transform.position.y - 55), Quaternion.identity);
+                    GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x, enemy.transform.position.y - 55), Quaternion.identity);
                     enemyPicture.transform.SetParent(enemy.transform);
                 }
             }

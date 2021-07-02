@@ -8,7 +8,7 @@ public class AreaInfo : MonoBehaviour
     public Sprite Picture;
     public string Name;
     public int Grade;
-    public string Type;
+    public string Type = "Grass";
     public int UpgradeFlour;
     public int BaseSugar;
     public int UpgradeSugar;
@@ -33,6 +33,7 @@ public class MakeArea : AreaInfo
     private void Start()
     {
         areaInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
+        Type = "Grass";
     }
 
     public void InputAreaInfo(string code)

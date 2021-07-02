@@ -15,7 +15,9 @@ public class BarrackController : MonoBehaviour
     public GameObject soldierMakeButton;
     public SupplyManger supplyManger;
     public ButtonManger buttonManger;
+    public InputManger inputManger;
 
+    public GameObject[] MonsterObj;
 
     //land
     public Transform land;
@@ -33,19 +35,36 @@ public class BarrackController : MonoBehaviour
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
+        inputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
         i = 0;
+
+        object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
+        MonsterObj = new GameObject[loadMonster.Length];
+        for (int i = 0; i < loadMonster.Length; i++)
+        {
+            MonsterObj[i] = (GameObject)loadMonster[i];
+        }
     }
 
     public void MakeSoldierInPlace()
     {
         if (playerInfo.milk > soldierInfo.ProductionExpense)
         {
-            GameObject prefebSoldier = Instantiate(soldierPrefeb,land);
+            GameObject prefebSoldier = Instantiate(soldierPrefeb,land.position, Quaternion.identity);
+            prefebSoldier.transform.SetParent(land);
 
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
             prefebSoldier.name = prefebSoldier.GetComponent<MakeSoldier>().Name;
-            prefebSoldier.GetComponent<SpriteRenderer>().sprite = prefebSoldier.GetComponent<MakeSoldier>().Picture;
             playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
+
+            for (int i = 0; i < MonsterObj.Length; i++)
+            {
+                if (MonsterObj[i].name == prefebSoldier.GetComponent<MakeSoldier>().Code)
+                {
+                    GameObject enemyPicture = Instantiate(MonsterObj[i], new Vector3(prefebSoldier.transform.position.x, prefebSoldier.transform.position.y - 55), Quaternion.identity);
+                    enemyPicture.transform.SetParent(prefebSoldier.transform);
+                }
+            }
 
             monsters.Add(prefebSoldier);
             buttonManger.amrys.Add(prefebSoldier);
@@ -57,7 +76,7 @@ public class BarrackController : MonoBehaviour
             //checkButton.GetComponent<Button>().interactable = false;
         }
 
-
+        inputManger.mouseCheck = true;
     }
 
     #region 검사나오는 버튼

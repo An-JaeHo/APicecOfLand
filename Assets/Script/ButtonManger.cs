@@ -424,7 +424,6 @@ public class ButtonManger : MonoBehaviour
                 if (enemys[i].transform.parent.tag == "Area" 
                     || enemys[i].transform.parent.tag == "Barrack")
                 {
-                    Debug.Log("aa");
                     enemys[i].transform.parent.GetComponent<AreaManger>().TurnArea();
                     
                 }
@@ -448,7 +447,6 @@ public class ButtonManger : MonoBehaviour
             playerInfo.killingPoint = rand;
             SceneManager.LoadScene(3);
         }
-        //button.GetComponent<Button>().interactable = false;
 
         foreach (var armys in barrackWindow.GetComponent<BarrackController>().monsters)
         {
@@ -463,7 +461,6 @@ public class ButtonManger : MonoBehaviour
                 builds.GetComponent<SoldierManger>().CheckBuildCount();
             }
         }
-        
 
         playerInfo.milk += playerInfo.updateMilk;
         playerInfo.flour += playerInfo.updateFlour;
@@ -476,7 +473,6 @@ public class ButtonManger : MonoBehaviour
         GameObject.Find("ButtonMgr").transform.GetChild(6).GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
-        //button.GetComponent<Button>().interactable = true;
 
         for (int i = 0; i < amrys.Count; i++)
         {
