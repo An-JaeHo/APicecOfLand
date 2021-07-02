@@ -116,10 +116,10 @@ public class SoldierManger : MonoBehaviour
 
     public void HpBarScale()
     {
-        Transform hpBar = transform.GetChild(0).GetChild(0);
+        //Transform hpBar = transform.GetChild(0).GetChild(0);
 
-        float nowHp = soldier.HelthPoint / totalHp;
-        hpBar.localScale = new Vector3(nowHp, 1f);
+        //float nowHp = soldier.HelthPoint / totalHp;
+        //hpBar.localScale = new Vector3(nowHp, 1f);
         //hpBar.localScale = new Vector3(nowHp, 1f);
     }
 

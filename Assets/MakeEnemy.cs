@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyInfo : MonoBehaviour
 {
     public string Code;
-    public Sprite Picture;
+    //public Sprite Picture;
     public string Name;
     public int Grade;
     public string Specialities;
@@ -38,7 +38,7 @@ public class MakeEnemy : EnemyInfo
             if (enemyInfo.information.enemy[i].Code == code)
             {
                 Code = enemyInfo.information.enemy[i].Code;
-                Picture = enemyInfo.information.enemy[i].Picture;
+                //Picture = enemyInfo.information.enemy[i].Picture;
                 Name = enemyInfo.information.enemy[i].Name;
                 Grade = enemyInfo.information.enemy[i].Grade;
                 Specialities = enemyInfo.information.enemy[i].Specialities;
@@ -57,7 +57,7 @@ public class MakeEnemy : EnemyInfo
                 Spone3 = enemyInfo.information.enemy[i].Code;
                 Drop = enemyInfo.information.enemy[i].Code;
 
-                GetComponent<SpriteRenderer>().sprite = Picture;
+                //GetComponent<SpriteRenderer>().sprite = Picture;
             }
         }
     }

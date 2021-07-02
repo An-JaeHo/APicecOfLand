@@ -43,6 +43,7 @@ public class EnemyController : MonoBehaviour
     public PlayerInfo playerInfo;
     public float totalHp;
     public MakeEnemy enemy;
+    public Animator ani;
 
     void Start()
     {
@@ -60,7 +61,7 @@ public class EnemyController : MonoBehaviour
         totalHp = enemy.BaseHelthPoint;
         finishMove = false;
         findArmy = false;
-
+        ani = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         //HpBarScale();
     }
 
@@ -133,8 +134,6 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
-
-
 
         if (findArmy)
         {
@@ -303,12 +302,14 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Attack()
     {
+        ani.SetBool("Attack", findArmy);
+        yield return new WaitForSeconds(0.5f);
+
         float randnum = Random.Range(0.8f, 1.2f);
         target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
         target.GetComponent<SoldierManger>().HpBarScale();
         target.GetComponent<SoldierManger>().Dead();
         findArmy = false;
-
         yield return null;
     }
 
