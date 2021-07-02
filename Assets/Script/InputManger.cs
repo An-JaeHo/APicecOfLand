@@ -9,6 +9,7 @@ public class InputManger : MonoBehaviour
     public TileManger Land;
     public LayerMask layerMask;
     public Transform hitObj;
+    public Transform landObj;
     public Transform hitObjPreFeb;
     public GameObject objectPool;
     public Button button;
@@ -54,14 +55,13 @@ public class InputManger : MonoBehaviour
             gameCamera.transform.position = gameCamera.transform.position - (MouseMove - MouseStart);
         }
 
-        
-
         if (mouseCheck)
         {
-            Ray ray = gameCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition = gameCamera.ScreenToWorldPoint(mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, gameCamera.transform.forward, Mathf.Infinity);
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+            if (hit)
             {
                 if (Input.GetMouseButton(0))
                 {
@@ -84,7 +84,6 @@ public class InputManger : MonoBehaviour
                         if (hit.transform.childCount == 0)
                         {
                             hitObj = hit.transform;
-
                             if (armyMove)
                             {
                                 if (hitObjPreFeb != null && hitObjPreFeb.GetComponent<SpriteRenderer>().color == Color.red)
@@ -135,17 +134,18 @@ public class InputManger : MonoBehaviour
                                         {
                                             if (hit.transform.GetComponent<AreaManger>().pureTag == "Grass")
                                             {
+                                                landObj = hit.transform;
                                                 bulidUi.GetComponent<BuildController>().land = hit.transform;
                                                 bulidUi.GetComponent<BuildController>().CreateWindow();
                                             }
                                             else if (hit.transform.GetComponent<AreaManger>().pureTag == "Area"
                                                 && hit.transform.GetComponent<MakeArea>().Destroy != true)
                                             {
-                                                if(hit.transform.name == "우유")
+                                                if (hit.transform.name == "우유")
                                                 {
                                                     bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
                                                 }
-                                                else if(hit.transform.name == "밀가루")
+                                                else if (hit.transform.name == "밀가루")
                                                 {
                                                     bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
                                                 }
@@ -165,13 +165,13 @@ public class InputManger : MonoBehaviour
                                             army.transform.SetParent(hit.transform);
                                             moveSoldier.move = true;
                                             army.transform.GetComponent<SoldierManger>().SoldierAction();
-                                            
+
                                             ChangeLandInfo();
                                         }
 
                                         break;
 
-                                    
+
                                     default:
                                         ChangeLandInfo();
                                         break;
@@ -209,6 +209,160 @@ public class InputManger : MonoBehaviour
                 }
             }
         }
+
+        //if (mouseCheck)
+        //{
+        //    Ray ray = gameCamera.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
+
+        //    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        //    {
+        //        if (Input.GetMouseButton(0))
+        //        {
+        //            time += Time.deltaTime;
+
+        //            if (time >= 3)
+        //            {
+        //                switch (hit.transform.tag)
+        //                {
+        //                    case "Army":
+        //                        armyUpgradeUi.SetActive(true);
+        //                        armyUpgradeUi.GetComponent<ArmyUpgrade>().UpdateArmyInfo(hit.transform);
+        //                        break;
+        //                }
+        //                return;
+        //            }
+
+        //            if (Input.GetMouseButtonDown(0))
+        //            {
+        //                if (hit.transform.childCount == 0)
+        //                {
+        //                    hitObj = hit.transform;
+        //                    Debug.Log(hit.transform.name);
+        //                    if (armyMove)
+        //                    {
+        //                        if (hitObjPreFeb != null && hitObjPreFeb.GetComponent<SpriteRenderer>().color == Color.red)
+        //                        {
+        //                            hitObjPreFeb.GetComponent<SpriteRenderer>().color = Color.white;
+        //                        }
+
+        //                        switch (hit.transform.tag)
+        //                        {
+        //                            case "Barracks":
+        //                                if (hit.transform.GetComponent<MakeArea>().Destroy == false)
+        //                                {
+        //                                    BarrackUi.SetActive(true);
+        //                                    BarrackUi.GetComponent<BarrackController>().land = hit.transform;
+
+        //                                }
+        //                                break;
+
+        //                            case "Builder":
+        //                                if (hit.transform.GetComponent<SoldierManger>().movePoint)
+        //                                {
+        //                                    rangeManger.PlayerMoveRange(hit.transform);
+        //                                    armyMove = false;
+        //                                    moveSoldier = hit.transform.GetComponent<SoldierManger>();
+        //                                }
+        //                                break;
+        //                            default:
+        //                                ChangeLandInfo();
+        //                                time = 0;
+        //                                break;
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        hitObj = hit.transform;
+        //                        Debug.Log(hit.transform.name);
+        //                        switch (hit.transform.tag)
+        //                        {
+        //                            case "Enemy":
+        //                                moveSoldier.enemy = hit.transform;
+        //                                moveSoldier.attack = true;
+        //                                army.transform.GetComponent<SoldierManger>().SoldierAction();
+        //                                ChangeLandInfo();
+
+        //                                break;
+        //                            case "SelectLand":
+        //                                if (army.tag == "Builder")
+        //                                {
+        //                                    if (hit.transform.GetComponent<AreaManger>().pureTag == "Grass")
+        //                                    {
+        //                                        bulidUi.GetComponent<BuildController>().land = hit.transform;
+        //                                        bulidUi.GetComponent<BuildController>().CreateWindow();
+        //                                    }
+        //                                    else if (hit.transform.GetComponent<AreaManger>().pureTag == "Area"
+        //                                        && hit.transform.GetComponent<MakeArea>().Destroy != true)
+        //                                    {
+        //                                        if(hit.transform.name == "우유")
+        //                                        {
+        //                                            bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
+        //                                        }
+        //                                        else if(hit.transform.name == "밀가루")
+        //                                        {
+        //                                            bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
+        //                                        }
+        //                                        else if (hit.transform.name == "설탕")
+        //                                        {
+        //                                            bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
+        //                                        }
+
+        //                                        bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
+        //                                        bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
+        //                                    }
+
+        //                                    ChangeLandInfo();
+        //                                }
+        //                                else
+        //                                {
+        //                                    army.transform.SetParent(hit.transform);
+        //                                    moveSoldier.move = true;
+        //                                    army.transform.GetComponent<SoldierManger>().SoldierAction();
+
+        //                                    ChangeLandInfo();
+        //                                }
+
+        //                                break;
+
+
+        //                            default:
+        //                                ChangeLandInfo();
+        //                                break;
+        //                        }
+        //                        armyMove = true;
+        //                    }
+        //                }
+        //            }
+
+        //        }
+
+        //        if (Input.GetMouseButtonUp(0))
+        //        {
+        //            time = 0;
+
+        //            switch (hit.transform.tag)
+        //            {
+        //                case "Army":
+        //                    if (hit.transform.GetComponent<SoldierManger>().movePoint)
+        //                    {
+        //                        rangeManger.PlayerMoveRange(hit.transform);
+        //                        armyMove = false;
+        //                        moveSoldier = hit.transform.GetComponent<SoldierManger>();
+        //                        //mouseCheck = true;
+        //                    }
+        //                    break;
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (Input.GetMouseButtonDown(0))
+        //        {
+        //            ChangeLandInfo();
+        //        }
+        //    }
+        //}
     }
 
 

@@ -296,7 +296,7 @@ public class ButtonManger : MonoBehaviour
         panel = CreateAreaPrefab.GetComponent<PanelController>();
         playerInfo.flour -= panel.upgradeWood;
         playerInfo.sugar -= panel.upgradeIron;
-        input.army.transform.SetParent(input.hitObj.transform);
+        input.army.transform.SetParent(input.landObj);
         input.moveSoldier.move = true;
         input.army.GetComponent<SoldierManger>().SoldierAction();
 
@@ -306,14 +306,6 @@ public class ButtonManger : MonoBehaviour
         }
 
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
-
-        if(panel.baseLand.tag == "Area" || panel.baseLand.tag == "Barracks")
-        {
-            panel.baseLand.GetComponent<AreaManger>().pureTag = panel.baseLand.GetComponent<MakeArea>().tag;
-            panel.baseLand.GetComponent<AreaManger>().pureCode = panel.baseLand.GetComponent<MakeArea>().Code;
-            panel.baseLand.GetComponent<AreaManger>().pureSprite = panel.baseLand.GetComponent<SpriteRenderer>().sprite;
-        }
-
         panel.baseLand.GetComponent<AreaManger>().CheckUpdateMaterial();
         supplyManger.UpdateSupply();
         panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
@@ -428,7 +420,6 @@ public class ButtonManger : MonoBehaviour
             for (int i = 0; i < enemys.Count; i++)
             {
                 enemys[i].GetComponent<EnemyController>().EnemyMove();
-                button.GetComponent<Button>().interactable = false;
                 
                 if (enemys[i].transform.parent.tag == "Area" 
                     || enemys[i].transform.parent.tag == "Barrack")
@@ -446,8 +437,6 @@ public class ButtonManger : MonoBehaviour
                 }
             }
         }
-
-        button.GetComponent<Button>().interactable = true;
         yield return null;
     }
 
@@ -459,7 +448,7 @@ public class ButtonManger : MonoBehaviour
             playerInfo.killingPoint = rand;
             SceneManager.LoadScene(3);
         }
-        button.GetComponent<Button>().interactable = false;
+        //button.GetComponent<Button>().interactable = false;
 
         foreach (var armys in barrackWindow.GetComponent<BarrackController>().monsters)
         {
@@ -467,10 +456,14 @@ public class ButtonManger : MonoBehaviour
             armys.GetComponent<SoldierManger>().HpBarScale();
         }
 
-        foreach(var builds in builders)
+        if(builders.Count !=0)
         {
-            builds.GetComponent<SoldierManger>().CheckBuildCount();
+            foreach (var builds in builders)
+            {
+                builds.GetComponent<SoldierManger>().CheckBuildCount();
+            }
         }
+        
 
         playerInfo.milk += playerInfo.updateMilk;
         playerInfo.flour += playerInfo.updateFlour;
@@ -483,7 +476,7 @@ public class ButtonManger : MonoBehaviour
         GameObject.Find("ButtonMgr").transform.GetChild(6).GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
-        button.GetComponent<Button>().interactable = true;
+        //button.GetComponent<Button>().interactable = true;
 
         for (int i = 0; i < amrys.Count; i++)
         {

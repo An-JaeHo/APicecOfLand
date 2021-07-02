@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8227265949129094906}
   - component: {fileID: 8227265949129094905}
   - component: {fileID: 3971041695162761242}
-  - component: {fileID: 7497318113430970768}
+  - component: {fileID: 487199255135975861}
   m_Layer: 5
   m_Name: AreaPrefeb
   m_TagString: Untagged
@@ -48,6 +48,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -97,17 +99,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Code: 
   Picture: {fileID: 0}
-  Type: 
   Name: 
-  UpgradeMaterial: 
-  Health: 0
-  Occupation: 0
-  Movement: 0
+  Grade: 0
+  Type: 
+  UpgradeFlour: 0
+  BaseSugar: 0
+  UpgradeSugar: 0
+  MilkOutput: 0
+  FlourOutput: 0
+  SugarOutput: 0
+  Population: 0
   Destroy: 0
   Repair: 0
-  Output: 0
+  BuildTurn: 0
   Effect: 
-  code: Area 6
+  Attack: 0
+  Movement: 0
+  findCode: 
   areaInfo: {fileID: 0}
   areaInfoImage: {fileID: 0}
 --- !u!114 &3971041695162761242
@@ -125,16 +133,34 @@ MonoBehaviour:
   rangeManger: {fileID: 0}
   player: {fileID: 0}
   area: {fileID: 0}
---- !u!65 &7497318113430970768
-BoxCollider:
+  pureCode: 
+  pureSprite: {fileID: 0}
+  pureTag: 
+  pureColor: {r: 0, g: 0, b: 0, a: 0}
+  buildTurn: 0
+--- !u!61 &487199255135975861
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8227265949129094911}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8, z: 0}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0

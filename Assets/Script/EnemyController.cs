@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Node
@@ -21,7 +22,7 @@ public class EnemyController : MonoBehaviour
     public Vector2Int bottomLeft, topRight, targetPos;
     public List<Node> FinalNodeList;
     public bool dontCrossCorner;
-    public ButtonManger army;
+    public ButtonManger buttonManger;
     public TileManger tiles;
     public List<Node> NodeArray;
     Node StartNode, TargetNode;
@@ -53,7 +54,7 @@ public class EnemyController : MonoBehaviour
         topRight.x = 1583;
         topRight.y = 150;
         rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
-        army = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
+        buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
         invenManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InvenManger>();
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
@@ -288,8 +289,9 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Move()
     {
+        buttonManger.button.GetComponent<Button>().interactable = false;
         Vector3 vector3 = new Vector3(FinalNodeList[1].x, (float)(FinalNodeList[1].y + 30f), -10f);
-        
+
         while (transform.position != vector3 && !finishMove)
         {
             transform.position = Vector3.MoveTowards(transform.position, vector3, Time.deltaTime * 300f);
@@ -297,19 +299,28 @@ public class EnemyController : MonoBehaviour
             yield return new WaitForSeconds(0.008f);
         }
 
+        yield return new WaitForSeconds(1f);
+        buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }
 
     IEnumerator Attack()
     {
+        buttonManger.button.GetComponent<Button>().interactable = false;
         ani.SetBool("Attack", findArmy);
-        yield return new WaitForSeconds(0.5f);
-
         float randnum = Random.Range(0.8f, 1.2f);
         target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
         target.GetComponent<SoldierManger>().HpBarScale();
-        target.GetComponent<SoldierManger>().Dead();
+
+        if(target.GetComponent<SoldierManger>().totalHp <=0)
+        {
+            buttonManger.builders.Remove(target.gameObject);
+            Destroy(target.gameObject);
+        }
+        yield return new WaitForSeconds(1f);
         findArmy = false;
+        ani.SetBool("Attack", findArmy);
+        buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }
 
@@ -319,11 +330,6 @@ public class EnemyController : MonoBehaviour
         NodeArray = new List<Node>();
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            //if (tiles.activeChildtileList[i].GetChild(0).childCount == 0)
-            //{
-            //    Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
-            //    NodeArray.Add(tileNode);
-            //}
             Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
             NodeArray.Add(tileNode);
         }
@@ -454,7 +460,7 @@ public class EnemyController : MonoBehaviour
         {
             gameObject.SetActive(false);
             invenManger.InputCard(GetComponent<MakeEnemy>().Grade);
-            army.enemys.Remove(gameObject);
+            buttonManger.enemys.Remove(gameObject);
             transform.SetParent(GameObject.Find("ArmyPool").transform);
             playerInfo.killingPoint++;
         }

@@ -100,6 +100,18 @@ public class AreaManger : MonoBehaviour
                 case "Area 12":
                     player.updateSugar += 1;
                     break;
+                case "Area 20":
+                    player.updatePeople += area.Population;
+                    break;
+                case "Area 21":
+                    player.updatePeople += 1;
+                    break;
+                case "Area 22":
+                    player.updatePeople += 1;
+                    break;
+                case "Area 23":
+                    player.updatePeople += 1;
+                    break;
             }
         }
     }
@@ -196,11 +208,12 @@ public class AreaManger : MonoBehaviour
             transform.GetComponent<MakeArea>().MilkOutput = 0;
             transform.GetComponent<MakeArea>().FlourOutput = 0;
             transform.GetComponent<MakeArea>().SugarOutput = 0;
-            transform.GetComponent<MakeArea>().Movement = false;
+            transform.GetComponent<MakeArea>().Movement = true;
             transform.GetComponent<MakeArea>().Destroy = true;
             transform.GetComponent<MakeArea>().Repair = false;
             transform.GetComponent<MakeArea>().Effect = null;
             transform.GetComponent<SpriteRenderer>().sprite = pureSprite;
+            transform.GetComponent<SpriteRenderer>().color = Color.white;
             transform.tag = tag;
         }
     }

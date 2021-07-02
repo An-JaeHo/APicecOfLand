@@ -65,7 +65,7 @@ public class SoldierManger : MonoBehaviour
     public IEnumerator Move()
     {
         movePosition = new Vector3(transform.parent.position.x, transform.parent.position.y + 24, transform.parent.position.z - 10);
-
+        Debug.Log(transform.parent.parent.name);
         while (transform.position != movePosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 300f);
@@ -106,12 +106,6 @@ public class SoldierManger : MonoBehaviour
         HpBarScale();
 
         yield return null;
-    }
-
-    public void Dead()
-    {
-        transform.SetParent(GameObject.Find("ArmyPool").transform);
-        gameObject.SetActive(false);
     }
 
     public void HpBarScale()
