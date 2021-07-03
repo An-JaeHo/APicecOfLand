@@ -95,6 +95,7 @@ public class InputManger : MonoBehaviour
                                     {
                                         BarrackUi.SetActive(true);
                                         BarrackUi.GetComponent<BarrackController>().land = hit.transform;
+                                        BarrackUi.GetComponent<BarrackController>().SwordButton();
                                         mouseCheck = false;
                                     }
                                     break;

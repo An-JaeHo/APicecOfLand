@@ -36,7 +36,7 @@ public class ButtonManger : MonoBehaviour
     public Transform UpgradeLand;
     public GameObject bulidUpgradeUi;
     public GameObject armyUpgradeUi;
-
+    public BarrackController barrackController;
     //창
     public GameObject buildUi;
     public GameObject armyCheckWindow;
@@ -55,6 +55,7 @@ public class ButtonManger : MonoBehaviour
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
         tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
         input = GetComponent<InputManger>();
+        barrackController = barrackWindow.GetComponent<BarrackController>();
     }
 
     #region 일반적인 버튼모음
@@ -206,84 +207,110 @@ public class ButtonManger : MonoBehaviour
         {
             switch (armyUpgradeUi.GetComponent<ArmyUpgrade>().armyinfo.Code)
             {
-                case "Troop 1":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 5");
+                case "Mon 1":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 2";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
                     armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 2":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 3";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 4":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 5";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 5":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 6";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 7":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 8";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 8":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 9";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 10":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 11";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 11":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 12";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 13":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 14";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 14":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 15";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 16":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 17";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
+                    break;
+                case "Mon 17":
+                    barrackController.land = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.parent;
+                    barrackController.soldierInfo.Code = "Mon 18";
+                    Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetChild(1).gameObject);
+                    amrys.Remove(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
+                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
+                    barrackController.MakeSoldierInPlace();
                     break;
 
-                case "Troop 2":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 6");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 3":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 7");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 4":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 8");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 5":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 9");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 6":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 10");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 7":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 11");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 8":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 12");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 9":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 13");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 10":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 14");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 11":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 15");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
-
-                case "Troop 12":
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().SuperMagic("Troop 16");
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.name = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Name;
-                    armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<SpriteRenderer>().sprite = armyUpgradeUi.GetComponent<ArmyUpgrade>().army.GetComponent<MakeSoldier>().Picture;
-                    break;
 
                 default:
                     break;
             }
             
             playerInfo.people -= 1;
-            playerInfo.milk -= armyUpgradeUi.GetComponent<ArmyUpgrade>().armyinfo.ProductionExpense;
+            playerInfo.milk -= armyUpgradeUi.GetComponent<ArmyUpgrade>().upgradeMilk;
             supplyManger.UpdateSupply();
             armyUpgradeUi.SetActive(false);
             input.mouseCheck = true;

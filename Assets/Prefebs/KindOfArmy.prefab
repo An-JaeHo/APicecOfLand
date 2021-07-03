@@ -58,8 +58,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -142,10 +144,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a5f6f616241f32e4c993a468241ac965, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6e5656de0ceb9d49ab1f21fd03a4461, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -169,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -199,6 +204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7336464778381655215}
+        m_TargetAssemblyTypeName: 
         m_MethodName: HowMuchProduce
         m_Mode: 1
         m_Arguments:
@@ -226,22 +232,22 @@ MonoBehaviour:
   Name: 
   Grade: 0
   Specialities: 
-  ProductionExpense: 
-  PromotionExpense: 
-  ConsumeFood: 0
-  Level: 0
   MaxLevel: 0
-  BaseTroop: 0
-  ExperiencePoint: 0
+  HelthPoint: 0
+  populationNumber: 0
+  ProductionExpense: 0
+  ConsumeFood: 0
+  UnderEvolutin: 
+  EvolutionLevel: 0
   BaseAttack: 0
   RiseAttack: 0
   Defensive: 0
   RiseDefensive: 0
+  Critical: 
+  RiseCritical: 
   AttackRange: 0
-  MovementSpace: 0
-  Effect: 
-  DropItem: 
-  DropProbability: 
+  Movement: 0
+  Level: 0
   pureAttack: 0
   pureDefensive: 0
   pureRange: 0
@@ -261,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   makeSoldier: {fileID: 0}
   need: {fileID: 0}
+  barrackController: {fileID: 0}
 --- !u!1 &8416159862515061654
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +303,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8416159862515061649
 CanvasRenderer:
@@ -321,10 +328,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ad4c416a479513439153e43aeb89b41, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85d935a26d2bad745aac90b21918b457, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -395,10 +404,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a5f6f616241f32e4c993a468241ac965, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ee3783614d193d4c87c80b1eb6c184f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

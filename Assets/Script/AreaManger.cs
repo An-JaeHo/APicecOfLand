@@ -187,8 +187,20 @@ public class AreaManger : MonoBehaviour
             case "Area 24":
                 Code = "Area 25";
                 break;
-            case "Area 26":
-                Code = "Area 27";
+            case "Area 25":
+                Code = "Area 26";
+                break;
+            case "Area 27":
+                Code = "Area 28";
+                break;
+            case "Area 28":
+                Code = "Area 29";
+                break;
+            case "Area 30":
+                Code = "Area 31";
+                break;
+            case "Area 31":
+                Code = "Area 32";
                 break;
         }
 
