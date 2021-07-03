@@ -81,6 +81,7 @@ public class BarrackController : MonoBehaviour
     #region 검사나오는 버튼
     public void SwordButton()
     {
+        json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         // 1 5 9 13
         for (int i = 0; i < json.information.monster.Length; i++)
         {

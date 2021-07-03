@@ -20,6 +20,7 @@ public class BuildController : MonoBehaviour
     public MakeArea makeArea;
     public int nowPoint;
     public int futurePoint;
+    public Transform upgradeLand;
 
 
     void Start()
@@ -114,32 +115,32 @@ public class BuildController : MonoBehaviour
         {
             if(land.GetComponent<MakeArea>().Code == json.information.area[i].Code)
             {
-                transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = json.information.area[i].Picture;
-                transform.GetChild(3).GetChild(2).GetComponent<Text>().text =  "밀가루 : " + json.information.area[i].UpgradeFlour;
-                transform.GetChild(3).GetChild(3).GetComponent<Text>().text = "설탕 : " + json.information.area[i].UpgradeSugar;
+                upgradeLand.GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = json.information.area[i].Picture;
+                upgradeLand.GetChild(3).GetChild(0).GetComponent<Text>().text =  "밀가루 : " + json.information.area[i].UpgradeFlour;
+                upgradeLand.GetChild(3).GetChild(1).GetComponent<Text>().text = "설탕 : " + json.information.area[i].UpgradeSugar;
             }
 
             if(land.GetComponent<AreaManger>().FindNextGrade(land.GetComponent<MakeArea>().Code) == json.information.area[i].Code)
             {
-                transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<Image>().sprite = json.information.area[i].Picture;
+                upgradeLand.GetChild(2).GetChild(1).GetChild(0).GetComponent<Image>().sprite = json.information.area[i].Picture;
             }
         }
 
         if (makeArea.Repair)
         {
-            transform.GetChild(5).GetComponent<Button>().interactable = true;
+            upgradeLand.GetChild(5).GetComponent<Button>().interactable = true;
         }
         else
         {
-            transform.GetChild(5).GetComponent<Button>().interactable = false;
+            upgradeLand.GetChild(5).GetComponent<Button>().interactable = false;
         }
-        transform.GetChild(4).GetChild(0).GetChild(0).GetComponent<Text>().text = nowPoint.ToString();
-        transform.GetChild(4).GetChild(1).GetChild(0).GetComponent<Text>().text = (nowPoint+5).ToString();
+
+        upgradeLand.GetChild(4).GetChild(0).GetChild(0).GetComponent<Text>().text = (land.GetComponent<MakeArea>().Grade * 5).ToString();
+        upgradeLand.GetChild(4).GetChild(1).GetChild(0).GetComponent<Text>().text = ((land.GetComponent<MakeArea>().Grade+1)*5).ToString();
 
         gameObject.SetActive(true);
 
-        transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = land.GetComponent<SpriteRenderer>().sprite;
+        upgradeLand.GetChild(1).GetChild(0).GetComponent<Image>().sprite = land.GetComponent<SpriteRenderer>().sprite;
         buttonManger.UpgradeLand = land;
-        //buttonManger.buildUi = gameObject;
     }
 }
