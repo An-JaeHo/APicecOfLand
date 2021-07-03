@@ -50,19 +50,18 @@ public class BarrackController : MonoBehaviour
     {
         if (playerInfo.milk > soldierInfo.ProductionExpense)
         {
-            GameObject prefebSoldier = Instantiate(soldierPrefeb,land.position, Quaternion.identity);
+            GameObject prefebSoldier = Instantiate(soldierPrefeb,new Vector3(land.position.x +10f, land.position.y +25f), Quaternion.identity);
             prefebSoldier.transform.SetParent(land);
 
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
-            prefebSoldier.name = prefebSoldier.GetComponent<MakeSoldier>().Name;
             playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
 
             for (int i = 0; i < MonsterObj.Length; i++)
             {
                 if (MonsterObj[i].name == prefebSoldier.GetComponent<MakeSoldier>().Code)
                 {
-                    GameObject enemyPicture = Instantiate(MonsterObj[i], new Vector3(prefebSoldier.transform.position.x, prefebSoldier.transform.position.y - 55), Quaternion.identity);
-                    enemyPicture.transform.SetParent(prefebSoldier.transform);
+                    GameObject monsterPicture = Instantiate(MonsterObj[i], new Vector3(prefebSoldier.transform.position.x, prefebSoldier.transform.position.y - 55), Quaternion.identity);
+                    monsterPicture.transform.SetParent(prefebSoldier.transform);
                 }
             }
 

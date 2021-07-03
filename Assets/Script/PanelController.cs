@@ -34,9 +34,9 @@ public class PanelController : MonoBehaviour
         //BuildImage
         GameObject buildImgae = GameObject.Find("BuildImage");
 
-        checkUpgradeMaterial.transform.GetChild(2).GetComponent<Text>().text = "밀가루 : " + upgradeWood;
-        checkUpgradeMaterial.transform.GetChild(3).GetComponent<Text>().text = "설탕 : " + upgradeIron;
-        checkOutPut.transform.GetChild(1).GetComponent<Text>().text = effect.ToString();
+        checkUpgradeMaterial.transform.GetChild(0).GetComponent<Text>().text = "밀가루 : " + upgradeWood;
+        checkUpgradeMaterial.transform.GetChild(1).GetComponent<Text>().text = "설탕 : " + upgradeIron;
+        checkOutPut.transform.GetChild(0).GetComponent<Text>().text = effect.ToString();
         buildImgae.transform.GetChild(0).GetComponent<Image>().sprite = picture;
 
         if (playerInfo.flour > upgradeWood && playerInfo.sugar> upgradeIron)

@@ -99,29 +99,6 @@ public class EnemyController : MonoBehaviour
 
         PathFinding();
 
-        //if (FinalNodeList.Count == 2)
-        //{
-        //    for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-        //    {
-        //        if (FinalNodeList[FinalNodeList.Count - 1].x == tiles.activeChildtileList[i].GetChild(0).position.x &&
-        //            FinalNodeList[FinalNodeList.Count - 1].y == (int)tiles.activeChildtileList[i].GetChild(0).position.y)
-        //        {
-        //            if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
-        //            {
-        //                if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Enemy")
-        //                {
-        //                    findArmy = true;
-        //                    target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
-        //                }
-        //                else
-        //                {
-        //                    findArmy = false;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
             //위아래 17 양옆 1

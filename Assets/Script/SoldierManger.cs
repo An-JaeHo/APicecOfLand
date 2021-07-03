@@ -10,6 +10,7 @@ public class SoldierManger : MonoBehaviour
     private int y;
     private Vector3 movePosition;
     private ButtonManger buttonManger;
+    public Animator ani;
 
     public TileManger tileManger;
     public InputManger input;
@@ -38,6 +39,7 @@ public class SoldierManger : MonoBehaviour
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         input = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
         soldier = GetComponent<MakeSoldier>();
+        ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         totalHp = soldier.HelthPoint;
         stayTime = 0;
         move = false;
@@ -64,7 +66,7 @@ public class SoldierManger : MonoBehaviour
 
     public IEnumerator Move()
     {
-        movePosition = new Vector3(transform.parent.position.x, transform.parent.position.y + 24, transform.parent.position.z - 10);
+        movePosition = new Vector3(transform.parent.position.x + 10, transform.parent.position.y + 25, transform.parent.position.z - 10);
         while (transform.position != movePosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 300f);
@@ -96,10 +98,14 @@ public class SoldierManger : MonoBehaviour
             float randnum = Random.Range(0.8f, 1.2f);
             //적이 받는 데미지
             //enemy.GetComponent<MakeEnemy>().HelthPoint -=                (int)((soldier.BaseAttack * randnum) - ((enemy.GetComponent<MakeEnemy>().Defensive)));
+            ani.SetBool("Attack", true);
             enemy.GetComponent<MakeEnemy>().BaseHelthPoint = 0;
             attack = false;
             movePoint = false;
             enemy.GetComponent<EnemyController>().Dead();
+            yield return new WaitForSeconds(1f);
+
+            ani.SetBool("Attack", false);
         }
 
         HpBarScale();
