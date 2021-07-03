@@ -68,19 +68,11 @@ public class ArmyUpgrade : MonoBehaviour
             upgradeMilk = 0;
         }
 
-        if (upgradeMilk < playerInfo.milk)
+        if (upgradeMilk > playerInfo.milk)
         {
             button.GetComponent<Button>().interactable = false;
-
-            if(armyinfo.Grade != 3)
-            {
-                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "우유가 " + (upgradeMilk - playerInfo.milk) + "만 큼 부족합니다.";
-            }
-            else
-            {
-                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "최대 등급의 유닛입니다.";
-            }
-            
+            transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "우유가 " + (upgradeMilk - playerInfo.milk) + "만 큼 부족합니다.";
+            transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "최대 등급의 유닛입니다.";
         }
         else
         {
