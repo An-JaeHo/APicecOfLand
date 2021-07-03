@@ -38,6 +38,7 @@ public class TileManger : MonoBehaviour
 
     //아몰랑 ㅅㅂ
     public GameObject[] enemyObj;
+    public GameObject[] MonsterObj;
 
     private void Awake()
     {
@@ -63,6 +64,8 @@ public class TileManger : MonoBehaviour
         object[] loadedAreaBeta = Resources.LoadAll("StartArea", typeof(Sprite));
         sprites = new Sprite[loadedAreaBeta.Length];
 
+        object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
+        MonsterObj = new GameObject[loadMonster.Length];
 
         object[] loadEnemy = Resources.LoadAll("Enemy", typeof(GameObject));
         enemyObj = new GameObject[loadEnemy.Length];
@@ -75,6 +78,12 @@ public class TileManger : MonoBehaviour
         for (int i = 0; i < loadEnemy.Length; i++)
         {
             enemyObj[i] = (GameObject)loadEnemy[i];
+        }
+
+        
+        for (int i = 0; i < loadMonster.Length; i++)
+        {
+            MonsterObj[i] = (GameObject)loadMonster[i];
         }
 
         for (int i = 0; i < 17; i++)
@@ -275,10 +284,22 @@ public class TileManger : MonoBehaviour
 
         if (builderMakeLand[rand].GetChild(0).childCount == 0)
         {
-            GameObject bulider = Instantiate(builderPrefebs,
-                new Vector3(builderMakeLand[rand].GetChild(0).position.x, builderMakeLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
+            GameObject bulider = Instantiate(builderPrefebs,new Vector3(builderMakeLand[rand].GetChild(0).position.x+10f, builderMakeLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
             bulider.transform.SetParent(builderMakeLand[rand].GetChild(0));
-            bulider.name = "Bulider";
+            bulider.name = "Mon 19";
+            bulider.GetComponent<MakeSoldier>().SuperMagic(bulider.name);
+            playerInfo.updateMilk -= bulider.GetComponent<MakeSoldier>().ConsumeFood;
+            
+
+            for (int i = 0; i < MonsterObj.Length; i++)
+            {
+                if (MonsterObj[i].name == bulider.GetComponent<MakeSoldier>().Code)
+                {
+                    GameObject monsterPicture = Instantiate(MonsterObj[i], new Vector3(bulider.transform.position.x, bulider.transform.position.y - 55), Quaternion.identity);
+                    monsterPicture.transform.SetParent(bulider.transform);
+                }
+            }
+            
             buttonManger.builders.Add(bulider);
         }
 
@@ -306,10 +327,8 @@ public class TileManger : MonoBehaviour
             
             if(playerInfo.turnPoint <= 25)
             {
-                //noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
-                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
-                noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
-                enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
             }
             else if (playerInfo.turnPoint <= 45)
             {
@@ -377,28 +396,6 @@ public class TileManger : MonoBehaviour
 
             buttonManger.enemys.Add(enemy);
         }
-
-
-        //if (playerInfo.turnPoint % 5 == 0 && playerInfo.turnPoint >= 10)
-        //{
-        //    int rand = UnityEngine.Random.Range(0, noChildLand.Count);
-        //    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
-
-        //    GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
-        //    enemy.transform.SetParent(noChildLand[rand].GetChild(0));
-        //    enemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
-
-        //    for (int i = 0; i < enemyObj.Length; i++)
-        //    {
-        //        if(enemyObj[i].name == "Enemy 1")
-        //        {
-        //            GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x + 8, enemy.transform.position.y -55), Quaternion.identity);
-        //            enemyPicture.transform.SetParent(enemy.transform);
-        //        }
-        //    }
-            
-        //    buttonManger.enemys.Add(enemy);
-        //}
     }
 
     public void SortGrade()
