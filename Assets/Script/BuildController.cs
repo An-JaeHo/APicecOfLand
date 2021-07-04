@@ -101,6 +101,8 @@ public class BuildController : MonoBehaviour
         }
 
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().sprite = land.GetComponent<SpriteRenderer>().sprite;
+        transform.GetChild(0).GetChild(5).GetChild(0).GetComponent<Text>().text = "필요한 밀가루";
+        transform.GetChild(0).GetChild(5).GetChild(1).GetComponent<Text>().text = "필요한 설탕";
         lands.Clear();
         gameObject.SetActive(true);
     }

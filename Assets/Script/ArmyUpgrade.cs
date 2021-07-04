@@ -28,8 +28,22 @@ public class ArmyUpgrade : MonoBehaviour
         transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = armyinfo.Picture;
         transform.GetChild(2).GetChild(0).GetComponent<Text>().text = armyinfo.Level.ToString();
         transform.GetChild(3).GetChild(0).GetComponent<Text>().text = armyinfo.Name;
-        
-        
+
+        if (upgradeMilk > playerInfo.milk 
+            && armyinfo.Level != armyinfo.EvolutionLevel)
+        {
+            button.GetComponent<Button>().interactable = false;
+
+            if (armyinfo.Grade != 3)
+            {
+                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "우유가 " + (upgradeMilk - playerInfo.milk) + "만 큼 부족합니다.";
+            }
+
+        }
+        else
+        {
+            button.GetComponent<Button>().interactable = true;
+        }
 
         if (armyinfo.Grade != 3)
         {
@@ -49,7 +63,15 @@ public class ArmyUpgrade : MonoBehaviour
             transform.GetChild(4).GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = upgradeArmy.Defensive.ToString();
             transform.GetChild(4).GetChild(4).GetChild(1).GetChild(0).GetComponent<Text>().text = upgradeArmy.Critical.ToString();
 
-            transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "우유 : " + upgradeMilk;
+            if (armyinfo.Level != armyinfo.EvolutionLevel)
+            {
+                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "레벨이 " + (armyinfo.EvolutionLevel - armyinfo.Level) + "만 큼 부족합니다.";
+                button.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "우유 : " + upgradeMilk;
+            }
         }
         else
         {
@@ -65,27 +87,13 @@ public class ArmyUpgrade : MonoBehaviour
             transform.GetChild(4).GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = "MAX";
             transform.GetChild(4).GetChild(4).GetChild(1).GetChild(0).GetComponent<Text>().text = "MAX";
 
+            transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "최대 등급의 유닛입니다.";
             upgradeMilk = 0;
-        }
 
-        if (upgradeMilk < playerInfo.milk)
-        {
             button.GetComponent<Button>().interactable = false;
+        }
 
-            if(armyinfo.Grade != 3)
-            {
-                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "우유가 " + (upgradeMilk - playerInfo.milk) + "만 큼 부족합니다.";
-            }
-            else
-            {
-                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "최대 등급의 유닛입니다.";
-            }
-            
-        }
-        else
-        {
-            button.GetComponent<Button>().interactable = true;
-        }
+        
     }
 
 
