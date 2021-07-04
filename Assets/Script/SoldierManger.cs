@@ -98,14 +98,13 @@ public class SoldierManger : MonoBehaviour
             float randnum = Random.Range(0.8f, 1.2f);
             //적이 받는 데미지
             //enemy.GetComponent<MakeEnemy>().HelthPoint -=                (int)((soldier.BaseAttack * randnum) - ((enemy.GetComponent<MakeEnemy>().Defensive)));
-            ani.SetBool("Attack", true);
+            ani.SetTrigger("Attack");
+            enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
+            yield return new WaitForSeconds(1f);
             enemy.GetComponent<MakeEnemy>().BaseHelthPoint = 0;
             attack = false;
             movePoint = false;
             enemy.GetComponent<EnemyController>().Dead();
-            yield return new WaitForSeconds(1f);
-
-            ani.SetBool("Attack", false);
         }
 
         HpBarScale();

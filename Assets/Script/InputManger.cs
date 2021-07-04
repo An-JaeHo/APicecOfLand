@@ -213,7 +213,7 @@ public class InputManger : MonoBehaviour
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {
             rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = Color.white;
-            rangeManger.rangeList[i].transform.tag = rangeManger.rangeList[i].GetComponent<MakeArea>().Type;
+            //rangeManger.rangeList[i].transform.tag = rangeManger.rangeList[i].GetComponent<MakeArea>().Type;
 
             if (rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
             {
