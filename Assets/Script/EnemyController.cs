@@ -268,15 +268,16 @@ public class EnemyController : MonoBehaviour
     {
         buttonManger.button.GetComponent<Button>().interactable = false;
         Vector3 vector3 = new Vector3(FinalNodeList[1].x, (float)(FinalNodeList[1].y + 30f), -10f);
-
+        ani.SetBool("Move",true);
         while (transform.position != vector3 && !finishMove)
         {
             transform.position = Vector3.MoveTowards(transform.position, vector3, Time.deltaTime * 300f);
 
             yield return new WaitForSeconds(0.008f);
         }
+        yield return new WaitForSeconds(0.05f);
 
-        yield return new WaitForSeconds(1f);
+        ani.SetBool("Move", false);
         buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }
@@ -284,7 +285,7 @@ public class EnemyController : MonoBehaviour
     IEnumerator Attack()
     {
         buttonManger.button.GetComponent<Button>().interactable = false;
-        ani.SetBool("Attack", findArmy);
+        ani.SetTrigger("Attack");
         float randnum = Random.Range(0.8f, 1.2f);
         target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
         target.GetComponent<SoldierManger>().HpBarScale();
@@ -296,7 +297,6 @@ public class EnemyController : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         findArmy = false;
-        ani.SetBool("Attack", findArmy);
         buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }
