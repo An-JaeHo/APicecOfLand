@@ -309,12 +309,12 @@ public class TileManger : MonoBehaviour
     public void SpawnEnemy()
     {
         List<Transform> noChildLand = enemyMakeLand;
-        int rand = UnityEngine.Random.Range(0, noChildLand.Count);
+        int rand = UnityEngine.Random.Range(0, noChildLand.Count-1);
         int enemyRandRand = UnityEngine.Random.Range(0, 100);
 
         for (int i=0; i< noChildLand.Count;i++)
         {
-            if(noChildLand[i].GetChild(0).childCount !=0 || noChildLand[i].tag == "Area")
+            if(noChildLand[i].GetChild(0).childCount !=0)
             {
                 noChildLand.RemoveAt(i);
             }

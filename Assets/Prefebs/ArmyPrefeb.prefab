@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf006c4adbe58734e9995487f303ece9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ani: {fileID: 0}
   tileManger: {fileID: 0}
   input: {fileID: 0}
   rangePrefeb: {fileID: 8689413950977551159, guid: eb3d0ac406a32b24c8c7e0a81647ae9c,
@@ -174,7 +175,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

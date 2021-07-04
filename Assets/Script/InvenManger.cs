@@ -60,7 +60,8 @@ public class InvenManger : MonoBehaviour
                 if (slot.transform.GetChild(j).childCount == 0)
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
-                    cardInfo.GetComponent<InputSkill>().MakeCard("Skill 1");
+                    cardInfo.GetComponent<InputSkill>().MakeCard("Card 1");
+                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                     cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
                     cardCount++;
                     break;
@@ -77,6 +78,8 @@ public class InvenManger : MonoBehaviour
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
                     cardInfo.GetComponent<InputSkill>().MakeCard(twoGradeCard[rand].Code);
+                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
+                    cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
                     cardCount++;
                     break;
                 }
@@ -92,6 +95,8 @@ public class InvenManger : MonoBehaviour
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
                     cardInfo.GetComponent<InputSkill>().MakeCard(threeGradeCard[rand].Code);
+                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
+                    cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
                     cardCount++;
                     break;
                 }
@@ -107,6 +112,8 @@ public class InvenManger : MonoBehaviour
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
                     cardInfo.GetComponent<InputSkill>().MakeCard(fourGradeCard[rand].Code);
+                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
+                    cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
                     cardCount++;
                     break;
                 }
@@ -122,29 +129,12 @@ public class InvenManger : MonoBehaviour
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
                     cardInfo.GetComponent<InputSkill>().MakeCard(fiveGradeCard[rand].Code);
+                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
+                    cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
                     cardCount++;
                     break;
                 }
             }
-        }
-
-
-
-
-        ////iconPrefeb에 빈 카드 컴포넌트를 넣고 정이 것에 적혀잇는 내용을 넣는다
-        //for (int j = 0; j < slot.transform.childCount; j++)
-        //{
-        //    if (slot.transform.GetChild(j).childCount == 0)
-        //    {
-        //        Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
-        //        cardCount++;
-        //        break;
-        //    }
-        //}
-
-        if(cardCount == 15)
-        {
-            Debug.Log("더 이상 카드를 넣을수 없습니다");
         }
     }
 }
