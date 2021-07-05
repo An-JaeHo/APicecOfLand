@@ -26,13 +26,17 @@ public class SoldierManger : MonoBehaviour
     public Sprite buffIconPrefeb;
     public List<Sprite> buffList;
     public List<GameObject> buffPrefebList;
+    public int buffCount;
 
     float pureattack;
     float puredefend;
+    float pureMoveRange;
     public float totalHp;
     public bool movePoint;
     public bool cardMovePoint;
     public int builderPoint;
+
+    public float countAttack;
 
     void Start()
     {
@@ -47,9 +51,11 @@ public class SoldierManger : MonoBehaviour
         movePoint = true;
         cardMovePoint = false;
         capitalPoint = false;
+        countAttack = 0;
 
         pureattack = transform.GetComponent<MakeSoldier>().BaseAttack;
         puredefend = transform.GetComponent<MakeSoldier>().Defensive;
+        pureMoveRange = transform.GetComponent<MakeSoldier>().Movement;
         builderPoint = 0;
     }
 
@@ -91,6 +97,12 @@ public class SoldierManger : MonoBehaviour
             }
         }
 
+        if(cardMovePoint)
+        {
+            movePoint = true;
+            cardMovePoint = false;
+        }
+
         yield return null;
     }
 
@@ -112,6 +124,12 @@ public class SoldierManger : MonoBehaviour
         }
 
         HpBarScale();
+
+        if (cardMovePoint)
+        {
+            movePoint = true;
+            cardMovePoint = false;
+        }
 
         yield return null;
     }
@@ -142,14 +160,50 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
-    public void MakeBuffIcon(Sprite cardPicture)
+    public void MakeBuffIcon(string code)
     {
         int i = buffPrefebList.Count;
         GameObject icon = Instantiate(buffIconGameObj, transform);
+        icon.GetComponent<InputSkill>().MakeCard(code);
         icon.GetComponent<SpriteRenderer>().sortingOrder = transform.GetComponent<SpriteRenderer>().sortingOrder + 1;
-        icon.GetComponent<SpriteRenderer>().sprite = cardPicture;
+        icon.GetComponent<SpriteRenderer>().sprite = icon.GetComponent<InputSkill>().Picture;
+        buffCount = icon.GetComponent<InputSkill>().Turn;
 
-        icon.transform.position = new Vector3(icon.transform.position.x - 40+((i-1)*25), icon.transform.position.y + 30);
+        icon.transform.position = new Vector3(icon.transform.position.x - 10+((i-1)*25), icon.transform.position.y + 20);
         buffPrefebList.Add(icon);
+    }
+
+    public void ReturnPure()
+    {
+        soldier.BaseAttack = pureattack;
+        soldier.Defensive = puredefend;
+        soldier.Movement = (int)pureMoveRange;
+    }
+
+    public void CheckBuff()
+    {
+        for (int i = 0; i < buffPrefebList.Count; i++)
+        {
+            if(buffPrefebList[i].GetComponent<InputSkill>().Turn!= 0)
+            {
+                switch (buffPrefebList[i].GetComponent<InputSkill>().Code)
+                {
+                    case "Card 10":
+                        soldier.Movement++;
+                        break;
+                    case "Card 11":
+                        soldier.Movement++;
+                        break;
+                    case "Card 22":
+                        cardMovePoint = true;
+                        break;
+                    case "Card 23":
+                        cardMovePoint = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }

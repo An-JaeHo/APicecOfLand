@@ -95,7 +95,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             armyCheck = true;
             card.AreaPrefeb = collision.gameObject;
-            Debug.Log(collision.transform.tag);
         }
 
         if (collision.transform.tag == "WasteBasket")
@@ -104,7 +103,7 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
 
         inputManger.hitObj = collision.transform;
-        
+        Debug.Log(collision.transform.tag);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

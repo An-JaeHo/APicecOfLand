@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6129318765696646218}
   - component: {fileID: 277974220818091554}
   - component: {fileID: 6129318765696646217}
+  - component: {fileID: 3416828061415550589}
   m_Layer: 5
   m_Name: GDPrefeb
   m_TagString: GD
@@ -90,7 +91,7 @@ SpriteRenderer:
   m_Size: {x: 0.75, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!65 &277974220818091554
@@ -121,16 +122,64 @@ MonoBehaviour:
   Code: 
   Picture: {fileID: 0}
   Name: 
-  Specialities: 
-  Level: 0
+  Type: 
   MaxLevel: 0
-  ExperiencePoint: 0
-  RiseExperiencePoint: 0
   HelthPoint: 0
   BaseAttack: 0
   RiseAttack: 0
   Defensive: 0
   RiseDefensive: 0
+  AttackRange: 0
+  AttackNumber: 0
+  Movement: 0
+  turn: 0
   InherentAbiltiy: 
+  Drop: 
   TroopInfo: {fileID: 0}
   troopInfoImage: {fileID: 0}
+--- !u!114 &3416828061415550589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6129318765696646219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608f25788b0b6e646a12b1302578351c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeManger: {fileID: 0}
+  bottomLeft: {x: 0, y: 0}
+  topRight: {x: 0, y: 0}
+  targetPos: {x: 0, y: 0}
+  FinalNodeList: []
+  dontCrossCorner: 0
+  buttonManger: {fileID: 0}
+  tiles: {fileID: 0}
+  NodeArray: []
+  CurNode:
+    x: 0
+    y: 0
+    G: 0
+    H: 0
+    childCheck: 0
+  OpenList: []
+  ClosedList: []
+  rangeTiles: []
+  finishMove: 0
+  findArmy: 0
+  parentTile: {fileID: 0}
+  invenManger: {fileID: 0}
+  target: {fileID: 0}
+  playerInfo: {fileID: 0}
+  totalHp: 0
+  enemy: {fileID: 0}
+  ani: {fileID: 0}
+  buffCount: 0
+  buffIconGameObj: {fileID: 0}
+  buffIconPrefeb: {fileID: 0}
+  buffList: []
+  buffPrefebList: []
+  movePoint: 0
+  pureDefend: 0

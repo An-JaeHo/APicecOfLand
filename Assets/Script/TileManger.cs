@@ -39,6 +39,10 @@ public class TileManger : MonoBehaviour
     //아몰랑 ㅅㅂ
     public GameObject[] enemyObj;
     public GameObject[] MonsterObj;
+    public GameObject[] bossObj;
+
+    //보스
+    public GameObject bossPrefeb;
 
     private void Awake()
     {
@@ -70,6 +74,9 @@ public class TileManger : MonoBehaviour
         object[] loadEnemy = Resources.LoadAll("Enemy", typeof(GameObject));
         enemyObj = new GameObject[loadEnemy.Length];
 
+        object[] loadBoss = Resources.LoadAll("Boss", typeof(GameObject));
+        bossObj = new GameObject[loadBoss.Length];
+
         for (int i = 0; i < loadedAreaBeta.Length; i++)
         {
             sprites[i] = (Sprite)loadedAreaBeta[i];
@@ -79,11 +86,15 @@ public class TileManger : MonoBehaviour
         {
             enemyObj[i] = (GameObject)loadEnemy[i];
         }
-
         
         for (int i = 0; i < loadMonster.Length; i++)
         {
             MonsterObj[i] = (GameObject)loadMonster[i];
+        }
+
+        for (int i = 0; i < loadBoss.Length; i++)
+        {
+            bossObj[i] = (GameObject)loadBoss[i];
         }
 
         for (int i = 0; i < 17; i++)
@@ -324,7 +335,24 @@ public class TileManger : MonoBehaviour
         {
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
             enemy.transform.SetParent(noChildLand[rand].GetChild(0));
-            
+
+            if(playerInfo.turnPoint == 20)
+            {
+                GameObject boss = Instantiate(bossPrefeb, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
+                boss.transform.SetParent(noChildLand[rand].GetChild(0));
+                noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                boss.GetComponent<GDController>().MakeGD("Boss 1");
+
+                for (int i = 0; i < bossObj.Length; i++)
+                {
+                    if (bossObj[i].name == boss.GetComponent<GDController>().Code)
+                    {
+                        GameObject enemyPicture = Instantiate(bossObj[i], new Vector3(boss.transform.position.x, boss.transform.position.y - 55), Quaternion.identity);
+                        enemyPicture.transform.SetParent(boss.transform);
+                    }
+                }
+            }
+
             if(playerInfo.turnPoint <= 25)
             {
                 noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
@@ -382,8 +410,6 @@ public class TileManger : MonoBehaviour
                     enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
                 }
             }
-
-
 
             for (int i = 0; i < enemyObj.Length; i++)
             {

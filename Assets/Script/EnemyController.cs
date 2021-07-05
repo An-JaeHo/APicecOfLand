@@ -45,6 +45,16 @@ public class EnemyController : MonoBehaviour
     public float totalHp;
     public MakeEnemy enemy;
     public Animator ani;
+    
+
+    //버프 카운트
+    public int buffCount;
+    public GameObject buffIconGameObj;
+    public Sprite buffIconPrefeb;
+    public List<Sprite> buffList;
+    public List<GameObject> buffPrefebList;
+    public bool movePoint;
+    public int pureDefend;
 
     void Start()
     {
@@ -58,83 +68,100 @@ public class EnemyController : MonoBehaviour
         tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
         invenManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InvenManger>();
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        enemy = GetComponent<MakeEnemy>();
-        totalHp = enemy.BaseHelthPoint;
         finishMove = false;
         findArmy = false;
-        ani = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
+
+        
         //HpBarScale();
+        movePoint = true;
+
+        if(transform.tag == "Enemy")
+        {
+            ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
+            enemy = GetComponent<MakeEnemy>();
+            totalHp = enemy.BaseHelthPoint;
+            pureDefend = (int)enemy.BaseDefensive;
+        }
     }
 
     public void EnemyMove()
     {
-        parentTile = transform.parent;
-        tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
-        int myName = int.Parse(transform.parent.parent.name);
-
-        rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
-        rangeTiles = rangeManger.EnemyRange(gameObject);
-        string code = transform.GetComponent<MakeEnemy>().Code;
-
-        if (parentTile)
+        if (movePoint)
         {
-            transform.SetParent(parentTile);
-        }
+            parentTile = transform.parent;
+            tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
+            int myName = int.Parse(transform.parent.parent.name);
 
-        switch (code)
-        {
-            case "Enemy 1":
-                Sword();
-                break;
-            case "Enemy 2":
-                Bow();
-                break;
-            case "Enemy 3":
-                SpearMan();
-                break;
-            case "Enemy 4":
-                CavalryMan();
-                break;
-        }
+            rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
+            rangeTiles = rangeManger.EnemyRange(gameObject);
+            string code = transform.GetComponent<MakeEnemy>().Code;
 
-        PathFinding();
-
-        for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-        {
-            //위아래 17 양옆 1
-            if(tiles.activeChildtileList[i].GetChild(0).childCount !=0)
+            if (parentTile)
             {
-                if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
-                || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
-                {
-                    findArmy = true;
-                    target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
+                transform.SetParent(parentTile);
             }
-        }
 
-        if (findArmy)
-        {
-            StartCoroutine(Attack());
-        }
-        else
-        {
-            if (FinalNodeList.Count != 0)
+            Sword();
+
+            //switch (code)
+            //{
+            //    case "Enemy 1":
+            //        Sword();
+            //        break;
+            //    case "Enemy 2":
+            //        Bow();
+            //        break;
+            //    case "Enemy 3":
+            //        SpearMan();
+            //        break;
+            //    case "Enemy 4":
+            //        CavalryMan();
+            //        break;
+            //}
+
+            PathFinding();
+
+            for (int i = 0; i < tiles.activeChildtileList.Count; i++)
             {
-                for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+                //위아래 17 양옆 1
+                if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
                 {
-                    if (FinalNodeList[1].x == tiles.activeChildtileList[i].GetChild(0).position.x 
-                        && FinalNodeList[1].y == tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f)
+                    if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
+                    || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
                     {
-                        transform.SetParent(tiles.activeChildtileList[i].GetChild(0));
+                        if(tiles.activeChildtileList[i].tag !="Enemy")
+                        {
+                            findArmy = true;
+                            target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
+                        }
                     }
                 }
-                
-                parentTile = transform.parent;
-                StartCoroutine(Move());
             }
-            rangeTiles.Clear();
+
+            if (findArmy)
+            {
+                StartCoroutine(Attack());
+            }
+            else
+            {
+                if (FinalNodeList.Count != 0)
+                {
+                    for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+                    {
+                        if (FinalNodeList[1].x == tiles.activeChildtileList[i].GetChild(0).position.x
+                            && FinalNodeList[1].y == tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f)
+                        {
+                            transform.SetParent(tiles.activeChildtileList[i].GetChild(0));
+                        }
+                    }
+
+                    parentTile = transform.parent;
+                    StartCoroutine(Move());
+                }
+                rangeTiles.Clear();
+            }
         }
+        
     }
 
     #region  상대병력 이동
@@ -192,75 +219,6 @@ public class EnemyController : MonoBehaviour
         //    }
         //}
     }
-
-    private void Bow()
-    {
-        for (int i = 0; i < rangeTiles.Count; i++)
-        {
-            if (rangeTiles[i].tag == "Army")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                return;
-            }
-
-            if (rangeTiles[i].tag == "Area" || rangeTiles[i].tag == "Barrack")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                return;
-            }
-
-            //if (rangeTiles[i].tag == "Area")
-            //{
-
-            //}
-        }
-    }
-
-    private void SpearMan()
-    {
-        for (int i = 0; i < rangeTiles.Count; i++)
-        {
-            if (rangeTiles[i].tag == "Army")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                return;
-            }
-
-            if (rangeTiles[i].tag == "Area" || rangeTiles[i].tag == "Barrack")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y); 
-                return;
-            }
-
-            //if (rangeTiles[i].tag == "Area")
-            //{
-
-            //}
-        }
-    }
-
-    private void CavalryMan()
-    {
-        for (int i = 0; i < rangeTiles.Count; i++)
-        {
-            if (rangeTiles[i].tag == "Area" || rangeTiles[i].tag == "Barrack")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                return;
-            }
-
-            if (rangeTiles[i].tag == "Army")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y); 
-                return;
-            }
-
-            //if (rangeTiles[i].tag == "Area")
-            //{
-
-            //}
-        }
-    }
     #endregion
 
 
@@ -278,13 +236,13 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
 
         ani.SetBool("Move", false);
-        buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }
 
     IEnumerator Attack()
     {
         float randnum = Random.Range(0.8f, 1.2f);
+
         target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
         target.GetComponent<SoldierManger>().HpBarScale();
         ani.SetTrigger("Attack");
@@ -295,9 +253,13 @@ public class EnemyController : MonoBehaviour
             buttonManger.builders.Remove(target.gameObject);
             Destroy(target.gameObject);
         }
-        yield return new WaitForSeconds(1f);
-        findArmy = false;
-        buttonManger.button.GetComponent<Button>().interactable = true;
+
+        if (target.GetComponent<SoldierManger>().countAttack > 0)
+        {
+            transform.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack * target.GetComponent<SoldierManger>().countAttack);
+            target.GetComponent<SoldierManger>().countAttack = 0;
+        }
+
         yield return null;
     }
 
@@ -443,14 +405,46 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //public void HpBarScale()
-    //{
-    //    Transform hpBar = transform.GetChild(0).GetChild(0);
+    public void HpBarScale()
+    {
+        Transform hpBar = transform.GetChild(0).GetChild(0);
 
-    //    float nowHp = enemy.HelthPoint / totalHp;
-    //    hpBar.localScale = new Vector3(nowHp, 1f);
-    //    //hpBar.localScale = new Vector3(nowHp, 1f);
-    //}
+        float nowHp = enemy.BaseHelthPoint / totalHp;
+        hpBar.localScale = new Vector3(nowHp, 1f);
+    }
+
+    public void MakeBuffIcon(string code)
+    {
+        int i = buffPrefebList.Count;
+        GameObject icon = Instantiate(buffIconGameObj, transform);
+        icon.GetComponent<InputSkill>().MakeCard(code);
+        icon.GetComponent<SpriteRenderer>().sortingOrder = transform.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        icon.GetComponent<SpriteRenderer>().sprite = icon.GetComponent<InputSkill>().Picture;
+
+        icon.transform.position = new Vector3(icon.transform.position.x - 10 + ((i - 1) * 25), icon.transform.position.y + 20);
+        buffPrefebList.Add(icon);
+    }
+
+    public void CheckBuff()
+    {
+        for (int i = 0; i < buffPrefebList.Count; i++)
+        {
+            if (buffPrefebList[i].GetComponent<InputSkill>().Turn != 0)
+            {
+                switch (buffPrefebList[i].GetComponent<InputSkill>().Code)
+                {
+                    case "Card 33":
+                        movePoint = false;
+                        break;
+                    case "Card 34":
+                        movePoint = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
 }
 
 

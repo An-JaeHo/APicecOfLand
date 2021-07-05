@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7009334466250115569}
   - component: {fileID: 3969435431518774290}
   - component: {fileID: 2799270733187107855}
+  - component: {fileID: 4027931907631956088}
   m_Layer: 0
   m_Name: CardIconPrefeb
   m_TagString: card
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8689413950977551159}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -140,3 +141,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4027931907631956088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689413950977551159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cc804479f079f4e93bc44cea8880bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: 
+  Picture: {fileID: 0}
+  Type: 
+  Name: 
+  Grade: 0
+  Turn: 0
+  AllAttack: 0
+  AttackRange: 0
+  AttackNumber: 0
+  HelthPoint: 0
+  Movement: 0
+  Milk: 0
+  Milk2: 0
+  Flour: 0
+  Flour2: 0
+  Sugar: 0
+  Sugar2: 0
+  Population: 0
+  CountAttack: 0
+  Stack: 0
+  skillList: {fileID: 0}
+  card: {fileID: 0}
+  image: {fileID: 0}
+  test: {fileID: 0}

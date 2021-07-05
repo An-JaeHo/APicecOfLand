@@ -19,6 +19,7 @@ public class ButtonManger : MonoBehaviour
     public SupplyManger supplyManger;
     public List<GameObject> amrys;
     public List<GameObject> builders;
+    public Timer timer;
 
     //타일 구매용
     public int food;
@@ -56,6 +57,7 @@ public class ButtonManger : MonoBehaviour
         tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
         input = GetComponent<InputManger>();
         barrackController = barrackWindow.GetComponent<BarrackController>();
+        timer = GameObject.Find("GameTime").GetComponent<Timer>();
     }
 
     #region 일반적인 버튼모음
@@ -461,8 +463,48 @@ public class ButtonManger : MonoBehaviour
                 {
                     enemys[i].transform.GetComponent<GameEnd>().GameEnding();
                 }
+
+                for (int j = 0; j < enemys[i].GetComponent<EnemyController>().buffPrefebList.Count; j++)
+                {
+                    enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
+
+                    if (enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Turn == 0)
+                    {
+                        GameObject.Destroy(enemys[i].GetComponent<EnemyController>().buffPrefebList[j]);
+                        enemys[i].GetComponent<EnemyController>().buffPrefebList.Remove(enemys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
+                    }
+
+                }
+                
+                //enemys[i].GetComponent<EnemyController>().HpBarScale();
+                enemys[i].GetComponent<EnemyController>().enemy.BaseDefensive = enemys[i].GetComponent<EnemyController>().pureDefend;
+                enemys[i].GetComponent<EnemyController>().CheckBuff();
             }
         }
+
+
+        for (int i = 0; i < amrys.Count; i++)
+        {
+
+            for (int j = 0; j < amrys[i].GetComponent<SoldierManger>().buffPrefebList.Count; j++)
+            {
+                amrys[i].GetComponent<SoldierManger>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
+
+                if (amrys[i].GetComponent<SoldierManger>().buffPrefebList[j].GetComponent<InputSkill>().Turn == 0)
+                {
+                    GameObject.Destroy(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
+                    amrys[i].GetComponent<SoldierManger>().buffPrefebList.Remove(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
+                }
+
+            }
+            amrys[i].GetComponent<SoldierManger>().movePoint = true;
+            amrys[i].GetComponent<SoldierManger>().HpBarScale();
+            amrys[i].GetComponent<SoldierManger>().ReturnPure();
+            amrys[i].GetComponent<SoldierManger>().CheckBuff();
+        }
+        button.GetComponent<Button>().interactable = true;
+        timer.limitTime = 60;
+        timer.timerCheck = true;
         yield return null;
     }
 
@@ -475,12 +517,6 @@ public class ButtonManger : MonoBehaviour
             int rand = Random.Range(200, 270);
             playerInfo.killingPoint = rand;
             SceneManager.LoadScene(3);
-        }
-
-        foreach (var armys in barrackWindow.GetComponent<BarrackController>().monsters)
-        {
-            armys.GetComponent<SoldierManger>().movePoint = true;
-            armys.GetComponent<SoldierManger>().HpBarScale();
         }
 
         if(builders.Count !=0)
@@ -500,17 +536,8 @@ public class ButtonManger : MonoBehaviour
         GameObject.Find("ButtonMgr").transform.GetChild(6).GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
-
-        for (int i = 0; i < amrys.Count; i++)
-        {
-            for (int j = 0; j < amrys[i].GetComponent<SoldierManger>().buffPrefebList.Count; j++)
-            {
-                GameObject.Destroy(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
-            }
-            amrys[i].GetComponent<SoldierManger>().buffList.Clear();
-            amrys[i].GetComponent<SoldierManger>().buffPrefebList.Clear();
-        }
-
         StartCoroutine(moveEnemy());
+
+        
     }
 }

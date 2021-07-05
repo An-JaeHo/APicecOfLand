@@ -8,25 +8,33 @@ public class Timer : MonoBehaviour
     public float limitTime;
     public int hourTime;
     public Text text;
+    public ButtonManger buttonManger;
+    public bool timerCheck;
 
     // Start is called before the first frame update
     void Start()
     {
-        text= transform.GetChild(0).GetComponent<Text>();
+        timerCheck = true;
+        text = transform.GetChild(0).GetComponent<Text>();
+        buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         hourTime = 0;
+        limitTime = 60;
     }
 
     // Update is called once per frame
     void Update()
     {
-        limitTime += Time.deltaTime;
-
-        if(limitTime >= 60)
+        if (timerCheck)
         {
-            hourTime++;
-            limitTime = 0;
+            limitTime -= Time.deltaTime;
+
+            if (limitTime <=0)
+            {
+                timerCheck = false;
+                buttonManger.TurnEnd();
+            }
         }
 
-        text.text = hourTime + " : " + (int)limitTime;
+        text.text = ((int)limitTime).ToString();
     }
 }
