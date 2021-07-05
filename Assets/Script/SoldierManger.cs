@@ -31,6 +31,7 @@ public class SoldierManger : MonoBehaviour
     float puredefend;
     public float totalHp;
     public bool movePoint;
+    public bool cardMovePoint;
     public int builderPoint;
 
     void Start()
@@ -44,6 +45,7 @@ public class SoldierManger : MonoBehaviour
         stayTime = 0;
         move = false;
         movePoint = true;
+        cardMovePoint = false;
         capitalPoint = false;
 
         pureattack = transform.GetComponent<MakeSoldier>().BaseAttack;
@@ -140,15 +142,14 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
-    public void MakeBuffIcon()
+    public void MakeBuffIcon(Sprite cardPicture)
     {
-        int i = buffList.Count;
+        int i = buffPrefebList.Count;
         GameObject icon = Instantiate(buffIconGameObj, transform);
         icon.GetComponent<SpriteRenderer>().sortingOrder = transform.GetComponent<SpriteRenderer>().sortingOrder + 1;
-        icon.GetComponent<SpriteRenderer>().sprite = buffIconPrefeb;
+        icon.GetComponent<SpriteRenderer>().sprite = cardPicture;
 
-
-        icon.transform.position = new Vector3(icon.transform.position.x - 35+((i-1)*25), icon.transform.position.y + 50);
+        icon.transform.position = new Vector3(icon.transform.position.x - 40+((i-1)*25), icon.transform.position.y + 30);
         buffPrefebList.Add(icon);
     }
 }

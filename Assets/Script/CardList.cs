@@ -195,114 +195,137 @@ public class CardList : MonoBehaviour
     private void Card1(GameObject soldier)
     {
         soldier.GetComponent<MakeSoldier>().BaseAttack += 3;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card2(GameObject soldier)
     {
-        soldier.GetComponent<MakeSoldier>().BaseAttack += 3;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        soldier.GetComponent<MakeSoldier>().BaseAttack += 5;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card3(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().BaseAttack += 5;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        soldier.GetComponent<SoldierInfo>().BaseAttack += 7;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card4(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().BaseAttack += 7;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        soldier.GetComponent<SoldierInfo>().BaseAttack += 10;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card5(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().BaseAttack += 10;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        //soldier.GetComponent<SoldierInfo>().BaseAttack += 10;
+        //soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card6(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().Defensive += 2;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        //soldier.GetComponent<SoldierInfo>().Defensive += 2;
+        //soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card7(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().Defensive += 3;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        //soldier.GetComponent<SoldierInfo>().Defensive += 3;
+        //soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card8(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().Defensive += 5;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        //soldier.GetComponent<SoldierInfo>().Defensive += 5;
+        //soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card9(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().Defensive += 7;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        soldier.GetComponent<SoldierInfo>().AttackRange += 1;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card10(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().Defensive += 10;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        soldier.GetComponent<SoldierInfo>().AttackRange += 1;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card11(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().AttackRange += 1;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card12(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().AttackRange += 2;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        soldier.GetComponent<SoldierInfo>().HelthPoint += 500;
+
+        if (soldier.GetComponent<SoldierManger>().totalHp < soldier.GetComponent<SoldierInfo>().HelthPoint)
+        {
+            soldier.GetComponent<SoldierInfo>().HelthPoint = (int)soldier.GetComponent<SoldierManger>().totalHp;
+        }
+        
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card13(GameObject soldier)
     {
-        soldier.GetComponent<SoldierInfo>().AttackRange += 3;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+        soldier.GetComponent<SoldierInfo>().HelthPoint += 1000;
+
+        if (soldier.GetComponent<SoldierManger>().totalHp < soldier.GetComponent<SoldierInfo>().HelthPoint)
+        {
+            soldier.GetComponent<SoldierInfo>().HelthPoint = (int)soldier.GetComponent<SoldierManger>().totalHp;
+        }
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card14(GameObject soldier)
     {
-        //1~2등급 적을 한턴간 공격하지 못하게 합니다.
+        soldier.GetComponent<SoldierInfo>().HelthPoint += 2000;
+
+        if (soldier.GetComponent<SoldierManger>().totalHp < soldier.GetComponent<SoldierInfo>().HelthPoint)
+        {
+            soldier.GetComponent<SoldierInfo>().HelthPoint = (int)soldier.GetComponent<SoldierManger>().totalHp;
+        }
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card15(GameObject soldier)
     {
-        //3등급 적을 한 턴간 공격하지 못하게 합니다.
+        soldier.GetComponent<SoldierInfo>().Movement += 1;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card16(GameObject soldier)
     {
-        //4등급 적을 한 턴간 공격하지 못하게 합니다.
+        soldier.GetComponent<SoldierInfo>().Movement += 2;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card17(GameObject soldier)
     {
-        //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -2 합니다.
+        soldier.GetComponent<SoldierInfo>().Movement += 3;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card18(GameObject soldier)
     {
-        //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -3 합니다.
+        soldier.GetComponent<SoldierManger>().movePoint = true;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card19(GameObject soldier)
     {
-        //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -5 합니다.
+        soldier.GetComponent<SoldierManger>().movePoint = true;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card20(GameObject soldier)
     {
-        //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -7 합니다.
+        soldier.GetComponent<SoldierManger>().movePoint = true;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
     }
 
     private void Card21(GameObject soldier)
@@ -378,7 +401,8 @@ public class CardList : MonoBehaviour
 
     private void Card35(GameObject area)
     {
-        //숙련 기병을 1기 소환합니다.
+        area.GetComponent<AreaManger>().player.milk += 50;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
     private void Card36(GameObject area)
@@ -435,7 +459,8 @@ public class CardList : MonoBehaviour
 
     private void Card47(GameObject area)
     {
-        //아군 1부대에 부대 인원 + 1000을 추가합니다.
+        area.GetComponent<AreaManger>().player.milk += (int)(area.GetComponent<AreaManger>().player.milk *0.1f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
     private void Card48(GameObject area)

@@ -105,7 +105,7 @@ public class EnemyController : MonoBehaviour
             if(tiles.activeChildtileList[i].GetChild(0).childCount !=0)
             {
                 if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
-                || tiles.activeChildtileList[i].name == (myName + 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
+                || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
                 {
                     findArmy = true;
                     target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
@@ -284,13 +284,13 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Attack()
     {
-        buttonManger.button.GetComponent<Button>().interactable = false;
-        ani.SetTrigger("Attack");
         float randnum = Random.Range(0.8f, 1.2f);
         target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
         target.GetComponent<SoldierManger>().HpBarScale();
+        ani.SetTrigger("Attack");
+        buttonManger.button.GetComponent<Button>().interactable = false;
 
-        if(target.GetComponent<SoldierManger>().totalHp <=0)
+        if (target.GetComponent<SoldierManger>().totalHp <=0)
         {
             buttonManger.builders.Remove(target.gameObject);
             Destroy(target.gameObject);
