@@ -64,7 +64,8 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else
         {
-            if (inputManger.hitObj.GetChild(0).tag == skill.Type)
+
+            if (inputManger.hitObj.tag == skill.Type)
             {
                 card.carInfo = skill.Picture;
                 card.FindCard(skill.Code);
@@ -90,10 +91,11 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             armyCheck = true;
             card.EnemyPrefeb = collision.gameObject;
         }
-        else
+        else if(collision.transform.tag == "Capital")
         {
             armyCheck = true;
             card.AreaPrefeb = collision.gameObject;
+            Debug.Log(collision.transform.tag);
         }
 
         if (collision.transform.tag == "WasteBasket")
@@ -102,6 +104,7 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
 
         inputManger.hitObj = collision.transform;
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -116,7 +119,7 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             armyCheck = false;
             card.EnemyPrefeb = null;
         }
-        else
+        else if (collision.transform.tag == "Capital")
         {
             armyCheck = false;
             card.AreaPrefeb = null;
