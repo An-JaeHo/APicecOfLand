@@ -67,6 +67,7 @@ public class SoldierManger : MonoBehaviour
     public IEnumerator Move()
     {
         movePosition = new Vector3(transform.parent.position.x + 10, transform.parent.position.y + 25, transform.parent.position.z - 10);
+
         while (transform.position != movePosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 300f);
@@ -99,8 +100,9 @@ public class SoldierManger : MonoBehaviour
             //적이 받는 데미지
             //enemy.GetComponent<MakeEnemy>().HelthPoint -=                (int)((soldier.BaseAttack * randnum) - ((enemy.GetComponent<MakeEnemy>().Defensive)));
             ani.SetTrigger("Attack");
+            yield return new WaitForSeconds(0.5f);
             enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             enemy.GetComponent<MakeEnemy>().BaseHelthPoint = 0;
             attack = false;
             movePoint = false;

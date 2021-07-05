@@ -447,15 +447,15 @@ public class ButtonManger : MonoBehaviour
             for (int i = 0; i < enemys.Count; i++)
             {
                 enemys[i].GetComponent<EnemyController>().EnemyMove();
-                
+
+                yield return new WaitForSeconds(1f);
+
                 if (enemys[i].transform.parent.tag == "Area" 
                     || enemys[i].transform.parent.tag == "Barrack")
                 {
                     enemys[i].transform.parent.GetComponent<AreaManger>().TurnArea();
                     
                 }
-
-                yield return new WaitForSeconds(2f);
 
                 if (enemys[i].transform.parent.tag == "Capital")
                 {
@@ -468,7 +468,9 @@ public class ButtonManger : MonoBehaviour
 
     public void TurnEnd()
     {
-        if(playerInfo.turnPoint == 50)
+        playerInfo.turnPoint++;
+
+        if (playerInfo.turnPoint == 50)
         {
             int rand = Random.Range(200, 270);
             playerInfo.killingPoint = rand;
@@ -492,9 +494,7 @@ public class ButtonManger : MonoBehaviour
         playerInfo.milk += playerInfo.updateMilk;
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
-
-        StartCoroutine(moveEnemy());
-        playerInfo.turnPoint++;
+        
         rangeManger.rangeList.Clear();
         supplyManger.UpdateSupply();
         GameObject.Find("ButtonMgr").transform.GetChild(6).GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
@@ -510,6 +510,7 @@ public class ButtonManger : MonoBehaviour
             amrys[i].GetComponent<SoldierManger>().buffList.Clear();
             amrys[i].GetComponent<SoldierManger>().buffPrefebList.Clear();
         }
-        
+
+        StartCoroutine(moveEnemy());
     }
 }

@@ -57,51 +57,69 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (inputManger.hitObj.tag == skill.Type)
+        if (deleteCheck)
         {
-            card.hitTransform = inputManger.hitObj.transform;
-            card.carInfo = skill.Picture;
-            card.hitTransform.GetComponent<SoldierManger>().buffIconPrefeb = skill.Picture;
-            card.hitTransform.GetComponent<SoldierManger>().buffList.Add(skill.Picture);
-            card.FindSkill(transform.name);
-            gameObject.SetActive(false);
+            invenManger.cardCount--;
+            Destroy(gameObject);
         }
         else
         {
-            transform.position = slot.transform.position;
-            transform.SetParent(slot.transform);
-            image.raycastTarget = true;
-        }
-        
-
-        if (deleteCheck)
-        {
-            gameObject.SetActive(false);
-            transform.parent = GameObject.Find("CardPool").transform;
-            invenManger.cardCount--;
+            if (inputManger.hitObj.GetChild(0).tag == skill.Type)
+            {
+                card.carInfo = skill.Picture;
+                card.FindCard(skill.Code);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                transform.position = slot.transform.position;
+                transform.SetParent(slot.transform);
+                image.raycastTarget = true;
+            }
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Army")
         {
             armyCheck = true;
+            card.SoldierPrefeb = collision.gameObject;
+        }
+        else if(collision.transform.tag == "Enemy")
+        {
+            armyCheck = true;
+            card.EnemyPrefeb = collision.gameObject;
+        }
+        else
+        {
+            armyCheck = true;
+            card.AreaPrefeb = collision.gameObject;
         }
 
-        if(collision.transform.tag == "WasteBasket")
+        if (collision.transform.tag == "WasteBasket")
         {
             deleteCheck = true;
         }
-        
+
         inputManger.hitObj = collision.transform;
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform.tag == "Army")
         {
             armyCheck = false;
+            card.SoldierPrefeb = null;
+        }
+        else if (collision.transform.tag == "Enemy")
+        {
+            armyCheck = false;
+            card.EnemyPrefeb = null;
+        }
+        else
+        {
+            armyCheck = false;
+            card.AreaPrefeb = null;
         }
 
         if (collision.transform.tag == "WasteBasket")

@@ -4,533 +4,491 @@ using UnityEngine;
 
 public class CardList : MonoBehaviour
 {
-    public Transform hitTransform;
+    //public Transform hitTransform;
     public Sprite carInfo;
     public GameObject SoldierPrefeb;
+    public GameObject EnemyPrefeb;
     public GameObject AreaPrefeb;
 
-    public void FindSkill(string skillCode)
+    public void FindCard(string CardCode)
     {
 
-        switch (skillCode)
+        switch (CardCode)
         {
-            case "Skill 1":
-                Skill1(hitTransform);
+            case "Card 1":
+                Card1(SoldierPrefeb);
                 break;
-            case "Skill 2":
-                Skill2(hitTransform);
+            case "Card 2":
+                Card2(SoldierPrefeb);
                 break;
-            case "Skill 3":
-                Skill3(hitTransform);
+            case "Card 3":
+                Card3(SoldierPrefeb);
                 break;
-            case "Skill 4":
-                Skill4(hitTransform);
+            case "Card 4":
+                Card4(SoldierPrefeb);
                 break;
-            case "Skill 5":
-                Skill5(hitTransform);
+            case "Card 5":
+                Card5(SoldierPrefeb);
                 break;
-            case "Skill 6":
-                Skill6(hitTransform);
+            case "Card 6":
+                Card6(SoldierPrefeb);
                 break;
-            case "Skill 7":
-                Skill7(hitTransform);
+            case "Card 7":
+                Card7(SoldierPrefeb);
                 break;
-            case "Skill 8":
-                Skill8(hitTransform);
+            case "Card 8":
+                Card8(SoldierPrefeb);
                 break;
-            case "Skill 9":
-                Skill9(hitTransform);
+            case "Card 9":
+                Card9(SoldierPrefeb);
                 break;
-            case "Skill 10":
-                Skill10(hitTransform);
+            case "Card 10":
+                Card10(SoldierPrefeb);
                 break;
-            case "Skill 11":
-                Skill11(hitTransform);
+            case "Card 11":
+                Card11(SoldierPrefeb);
                 break;
-            case "Skill 12":
-                Skill12(hitTransform);
+            case "Card 12":
+                Card12(SoldierPrefeb);
                 break;
-            case "Skill 13":
-                Skill13(hitTransform);
+            case "Card 13":
+                Card13(SoldierPrefeb);
                 break;
-            case "Skill 14":
-                Skill14();
+            case "Card 14":
+                Card14(SoldierPrefeb);
                 break;
-            case "Skill 15":
-                Skill15();
+            case "Card 15":
+                Card15(SoldierPrefeb);
                 break;
-            case "Skill 16":
-                Skill16();
+            case "Card 16":
+                Card16(SoldierPrefeb);
                 break;
-            case "Skill 17":
-                Skill17();
+            case "Card 17":
+                Card17(SoldierPrefeb);
                 break;
-            case "Skill 18":
-                Skill18();
+            case "Card 18":
+                Card18(SoldierPrefeb);
                 break;
-            case "Skill 19":
-                Skill19();
+            case "Card 19":
+                Card19(SoldierPrefeb);
                 break;
-            case "Skill 20":
-                Skill20();
+            case "Card 20":
+                Card20(SoldierPrefeb);
                 break;
-            case "Skill 21":
-                Skill21();
+            case "Card 21":
+                Card21(SoldierPrefeb);
                 break;
-            case "Skill 22":
-                Skill22();
+            case "Card 22":
+                Card22(SoldierPrefeb);
                 break;
-            case "Skill 23":
-                Skill23();
+            case "Card 23":
+                Card23(SoldierPrefeb);
                 break;
-            case "Skill 24":
-                Skill24();
+            case "Card 24":
+                Card24(EnemyPrefeb);
                 break;
-            case "Skill 25":
-                Skill25();
+            case "Card 25":
+                Card25(EnemyPrefeb);
                 break;
-            case "Skill 26":
-                Skill26();
+            case "Card 26":
+                Card26(EnemyPrefeb);
                 break;
-            case "Skill 27":
-                Skill27();
+            case "Card 27":
+                Card27(EnemyPrefeb);
                 break;
-            case "Skill 28":
-                Skill28(hitTransform);
+            case "Card 28":
+                Card28(AreaPrefeb);
                 break;
-            case "Skill 29":
-                Skill29(hitTransform);
+            case "Card 29":
+                Card29(AreaPrefeb);
                 break;
-            case "Skill 30":
-                Skill30(hitTransform);
+            case "Card 30":
+                Card30(AreaPrefeb);
                 break;
-            case "Skill 31":
-                Skill31(hitTransform);
+            case "Card 31":
+                Card31(AreaPrefeb);
                 break;
-            case "Skill 32":
-                Skill32(hitTransform);
+            case "Card 32":
+                Card32(AreaPrefeb);
                 break;
-            case "Skill 33":
-                Skill33(hitTransform);
+            case "Card 33":
+                Card33(AreaPrefeb);
                 break;
-            case "Skill 34":
-                Skill34(hitTransform);
+            case "Card 34":
+                Card34(AreaPrefeb);
                 break;
-            case "Skill 35":
-                Skill35(hitTransform);
+            case "Card 35":
+                Card35(AreaPrefeb);
                 break;
-            case "Skill 36":
-                Skill36(hitTransform);
+            case "Card 36":
+                Card36(AreaPrefeb);
                 break;
-            case "Skill 37":
-                Skill37(hitTransform);
+            case "Card 37":
+                Card37(AreaPrefeb);
                 break;
-            case "Skill 38":
-                Skill38(hitTransform);
+            case "Card 38":
+                Card38(AreaPrefeb);
                 break;
-            case "Skill 39":
-                Skill39(hitTransform);
+            case "Card 39":
+                Card39(AreaPrefeb);
                 break;
-            case "Skill 40":
-                Skill40(hitTransform);
+            case "Card 40":
+                Card40(AreaPrefeb);
                 break;
-            case "Skill 41":
-                Skill41(hitTransform);
+            case "Card 41":
+                Card41(AreaPrefeb);
                 break;
-            case "Skill 42":
-                Skill42(hitTransform);
+            case "Card 42":
+                Card42(AreaPrefeb);
                 break;
-            case "Skill 43":
-                Skill43(hitTransform);
+            case "Card 43":
+                Card43(AreaPrefeb);
                 break;
-            case "Skill 44":
-                Skill44();
+            case "Card 44":
+                Card44(AreaPrefeb);
                 break;
-            case "Skill 45":
-                Skill45(hitTransform);
+            case "Card 45":
+                Card45(AreaPrefeb);
                 break;
-            case "Skill 46":
-                Skill46();
+            case "Card 46":
+                Card46(AreaPrefeb);
                 break;
-            case "Skill 47":
-                Skill47();
+            case "Card 47":
+                Card47(AreaPrefeb);
                 break;
-            case "Skill 48":
-                Skill48();
+            case "Card 48":
+                Card48(AreaPrefeb);
                 break;
-            case "Skill 49":
-                Skill49();
+            case "Card 49":
+                Card49(AreaPrefeb);
                 break;
-            case "Skill 50":
-                Skill50();
+            case "Card 50":
+                Card50(AreaPrefeb);
                 break;
-            case "Skill 51":
-                Skill51();
+            case "Card 51":
+                Card51(AreaPrefeb);
                 break;
-            case "Skill 52":
-                Skill52();
+            case "Card 52":
+                Card52(AreaPrefeb);
                 break;
-            case "Skill 53":
-                Skill53();
+            case "Card 53":
+                Card53(AreaPrefeb);
                 break;
-            case "Skill 54":
-                Skill54();
+            case "Card 54":
+                Card54(AreaPrefeb);
                 break;
-            case "Skill 55":
-                Skill55();
+            case "Card 55":
+                Card55(AreaPrefeb);
                 break;
-            case "Skill 56":
-                Skill56();
+            case "Card 56":
+                Card56(AreaPrefeb);
                 break;
-            case "Skill 57":
-                Skill57();
+            case "Card 57":
+                Card57(AreaPrefeb);
                 break;
-            case "Skill 58":
-                Skill58();
-                break;
-            case "Skill 59":
-                Skill59();
-                break;
-            case "Skill 60":
-                Skill60();
-                break;
-            case "Skill 61":
-                Skill61();
-                break;
-            case "Skill 62":
-                Skill62();
-                break;
-            case "Skill 63":
-                Skill63();
+            case "Card 58":
+                Card58(AreaPrefeb);
                 break;
         }
     }
 
-    private void Skill1(Transform soldier)
-    {
-        soldier.GetComponent<MakeSoldier>().BaseAttack += 2;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
-    }
-
-    private void Skill2(Transform soldier)
+    private void Card1(GameObject soldier)
     {
         soldier.GetComponent<MakeSoldier>().BaseAttack += 3;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill3(Transform soldier)
+    private void Card2(GameObject soldier)
+    {
+        soldier.GetComponent<MakeSoldier>().BaseAttack += 3;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon();
+    }
+
+    private void Card3(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().BaseAttack += 5;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill4(Transform soldier)
+    private void Card4(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().BaseAttack += 7;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill5(Transform soldier)
+    private void Card5(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().BaseAttack += 10;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill6(Transform soldier)
+    private void Card6(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().Defensive += 2;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill7(Transform soldier)
+    private void Card7(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().Defensive += 3;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill8(Transform soldier)
+    private void Card8(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().Defensive += 5;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill9(Transform soldier)
+    private void Card9(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().Defensive += 7;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill10(Transform soldier)
+    private void Card10(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().Defensive += 10;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill11(Transform soldier)
+    private void Card11(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().AttackRange += 1;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill12(Transform soldier)
+    private void Card12(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().AttackRange += 2;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill13(Transform soldier)
+    private void Card13(GameObject soldier)
     {
         soldier.GetComponent<SoldierInfo>().AttackRange += 3;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon();
     }
 
-    private void Skill14()
+    private void Card14(GameObject soldier)
     {
         //1~2등급 적을 한턴간 공격하지 못하게 합니다.
     }
 
-    private void Skill15()
+    private void Card15(GameObject soldier)
     {
         //3등급 적을 한 턴간 공격하지 못하게 합니다.
     }
 
-    private void Skill16()
+    private void Card16(GameObject soldier)
     {
         //4등급 적을 한 턴간 공격하지 못하게 합니다.
     }
 
-    private void Skill17()
+    private void Card17(GameObject soldier)
     {
         //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -2 합니다.
     }
 
-    private void Skill18()
+    private void Card18(GameObject soldier)
     {
         //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -3 합니다.
     }
 
-    private void Skill19()
+    private void Card19(GameObject soldier)
     {
         //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -5 합니다.
     }
 
-    private void Skill20()
+    private void Card20(GameObject soldier)
     {
         //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -7 합니다.
     }
 
-    private void Skill21()
+    private void Card21(GameObject soldier)
     {
         //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -10 합니다.
     }
 
-    private void Skill22()
+    private void Card22(GameObject soldier)
     {
         //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -2 합니다.
     }
 
-    private void Skill23()
+    private void Card23(GameObject soldier)
     {
         //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -3 합니다.
     }
 
-    private void Skill24()
+    private void Card24(GameObject enemy)
     {
         //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -5 합니다.
     }
 
-    private void Skill25()
+    private void Card25(GameObject enemy)
     {
         //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -7 합니다.
     }
 
-    private void Skill26()
+    private void Card26(GameObject enemy)
     {
         //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -10 합니다.
     }
 
-    private void Skill27()
+    private void Card27(GameObject enemy)
     {
         //해당 유닛을 가장 가까운 요새 또는 수도로 귀환 시킵니다.
     }
 
-    private void Skill28(Transform soldier)
+    private void Card28(GameObject area)
     {
         //훈련 검병을 1기 소환합니다.
     }
 
-    private void Skill29(Transform soldier)
+    private void Card29(GameObject area)
     {
         //훈련 창병을 1기 소환합니다.
     }
 
-    private void Skill30(Transform soldier)
+    private void Card30(GameObject area)
     {
         //훈련 궁병을 1기 소환합니다.
     }
 
-    private void Skill31(Transform soldier)
+    private void Card31(GameObject area)
     {
         //훈련 기병을 1기 소환합니다.
     }
 
-    private void Skill32(Transform soldier)
+    private void Card32(GameObject area)
     {
         //숙련 검병을 1기 소환합니다.
     }
 
-    private void Skill33(Transform soldier)
+    private void Card33(GameObject area)
     {
         //숙련 창병을 1기 소환합니다.
         
     }
 
-    private void Skill34(Transform soldier)
+    private void Card34(GameObject area)
     {
         //숙련 궁병을 1기 소환합니다.
     }
 
-    private void Skill35(Transform soldier)
+    private void Card35(GameObject area)
     {
         //숙련 기병을 1기 소환합니다.
     }
 
-    private void Skill36(Transform soldier)
+    private void Card36(GameObject area)
     {
         //정예 검병을 1기 소환합니다.
     }
 
-    private void Skill37(Transform soldier)
+    private void Card37(GameObject area)
     {
         //정예 창병을 1기 소환합니다.
     }
 
-    private void Skill38(Transform soldier)
+    private void Card38(GameObject area)
     {
     }
 
-    private void Skill39(Transform soldier)
+    private void Card39(GameObject area)
     {
     }
 
-    private void Skill40(Transform soldier)
+    private void Card40(GameObject area)
     {
         //적의 검병을 1기 소환합니다.
     }
 
-    private void Skill41(Transform soldier)
+    private void Card41(GameObject area)
     {
         //청의 창병을 1기 소환합니다.
     }
 
-    private void Skill42(Transform soldier)
+    private void Card42(GameObject area)
     {
         //녹의 궁병을 1기 소환합니다.
     }
 
-    private void Skill43(Transform soldier)
+    private void Card43(GameObject area)
     {
         //백의 기병을 1기 소환합니다.
     }
 
-    private void Skill44()
+    private void Card44(GameObject area)
     {
         //수도를 이전 할 수있습니다.
     }
 
-    private void Skill45(Transform soldier)
+    private void Card45(GameObject area)
     {
-        //수도 건설을 할 수 있습니다.
-        AreaPrefeb.GetComponent<MakeArea>().findCode = "Area 1";
-        Instantiate(AreaPrefeb, soldier);
     }
 
-    private void Skill46()
+    private void Card46(GameObject area)
     {
         //아군 1부대에 부대 인원 + 500을 추가합니다.
     }
 
-    private void Skill47()
+    private void Card47(GameObject area)
     {
         //아군 1부대에 부대 인원 + 1000을 추가합니다.
     }
 
-    private void Skill48()
+    private void Card48(GameObject area)
     {
         //아군 2부대에 부대 인원 + 1000을 추가합니다.
     }
 
-    private void Skill49()
+    private void Card49(GameObject area)
     {
         //아군 1부대에 부대 인원 + 2000을 추가합니다.
     }
 
-    private void Skill50()
+    private void Card50(GameObject area)
     {
         //아군 2부대에 부대 인원 + 2000을 추가합니다.
     }
 
-    private void Skill51()
+    private void Card51(GameObject area)
     {
         //적군 1부대에 부대 인원 - 500을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
     }
 
-    private void Skill52()
+    private void Card52(GameObject area)
     {
         //적군 1부대에 부대 인원 -1000을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
     }
 
-    private void Skill53()
+    private void Card53(GameObject area)
     {
         //적군 1부대에 부대 인원 -1500을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
     }
 
-    private void Skill54()
+    private void Card54(GameObject area)
     {
         //적군 1부대에 부대 인원 -2000을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
     }
 
-    private void Skill55()
+    private void Card55(GameObject area)
     {
         //적군 1부대에 부대 인원 -2500을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
     }
 
-    private void Skill56()
+    private void Card56(GameObject area)
     {
         //1칸을 건너 띌 수 있게 해줍니다.
     }
 
-    private void Skill57()
+    private void Card57(GameObject area)
     {
 
     }
 
-    private void Skill58()
-    {
-
-    }
-
-    private void Skill59()
-    {
-
-    }
-
-    private void Skill60()
-    {
-
-    }
-
-    private void Skill61()
-    {
-
-    }
-
-    private void Skill62()
-    {
-
-    }
-
-    private void Skill63()
+    private void Card58(GameObject area)
     {
 
     }
