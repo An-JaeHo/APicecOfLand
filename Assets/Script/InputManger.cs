@@ -124,6 +124,12 @@ public class InputManger : MonoBehaviour
                                     moveSoldier.attack = true;
                                     army.transform.GetComponent<SoldierManger>().SoldierAction();
                                     ChangeLandInfo();
+                                    break;
+                                case "GD":
+                                    moveSoldier.enemy = hit.transform;
+                                    moveSoldier.attack = true;
+                                    army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                    ChangeLandInfo();
 
                                     break;
                                 case "SelectLand":
@@ -235,8 +241,6 @@ public class InputManger : MonoBehaviour
             {
                 rangeManger.rangeList[i].transform.tag = "Capital";
             }
-
-            
         }
 
         rangeManger.rangeList.Clear();

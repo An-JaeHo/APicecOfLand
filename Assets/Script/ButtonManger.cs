@@ -347,6 +347,16 @@ public class ButtonManger : MonoBehaviour
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {
             rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
+
+            if(rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
+            {
+                rangeManger.rangeList[i].tag = "Baarack";
+            }
+            else
+            {
+                rangeManger.rangeList[i].tag = rangeManger.rangeList[i].GetComponent<MakeArea>().Type;
+            }
+            
         }
 
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
@@ -361,7 +371,10 @@ public class ButtonManger : MonoBehaviour
     {
         if (playerInfo.flour >= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && playerInfo.sugar >= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar)
         {
-            switch(UpgradeLand.GetComponent<MakeArea>().Code)
+            playerInfo.flour -= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour;
+            playerInfo.sugar -= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar;
+
+            switch (UpgradeLand.GetComponent<MakeArea>().Code)
             {
                 case "Area 1":
                     UpgradeLand.GetComponent<MakeArea>().InputAreaInfo("Area 2");
@@ -436,8 +449,7 @@ public class ButtonManger : MonoBehaviour
                     break;
             }
 
-            playerInfo.flour -= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour;
-            playerInfo.sugar -= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar;
+            
 
             input.army.transform.SetParent(input.hitObj.transform);
             
@@ -448,6 +460,15 @@ public class ButtonManger : MonoBehaviour
             for (int i = 0; i < rangeManger.rangeList.Count; i++)
             {
                 rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
+
+                if (rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
+                {
+                    rangeManger.rangeList[i].tag = "Baarack";
+                }
+                else
+                {
+                    rangeManger.rangeList[i].tag = rangeManger.rangeList[i].GetComponent<MakeArea>().Type;
+                }
             }
 
             UpgradeLand.GetComponent<AreaManger>().CheckUpdateMaterial();

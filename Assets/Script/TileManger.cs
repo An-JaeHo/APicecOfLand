@@ -40,6 +40,7 @@ public class TileManger : MonoBehaviour
     public GameObject[] enemyObj;
     public GameObject[] MonsterObj;
     public GameObject[] bossObj;
+    public GameObject particlePrefeb;
 
     //보스
     public GameObject bossPrefeb;

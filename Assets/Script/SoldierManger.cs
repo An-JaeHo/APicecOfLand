@@ -35,7 +35,6 @@ public class SoldierManger : MonoBehaviour
     public bool movePoint;
     public bool cardMovePoint;
     public int builderPoint;
-
     public float countAttack;
 
     void Start()
@@ -44,6 +43,7 @@ public class SoldierManger : MonoBehaviour
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         input = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
         soldier = GetComponent<MakeSoldier>();
+
         ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         totalHp = soldier.HelthPoint;
         stayTime = 0;
@@ -114,7 +114,15 @@ public class SoldierManger : MonoBehaviour
         {
             float randnum = Random.Range(0.8f, 1.2f);
             //적이 받는 데미지
-            enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(soldier.BaseAttack * 10);
+            if(enemy.tag == "Enemy")
+            {
+                enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(soldier.BaseAttack * 10);
+            }
+            else
+            {
+                enemy.GetComponent<GDController>().HelthPoint-= (int)(soldier.BaseAttack * 10);
+            }
+            
             ani.SetTrigger("Attack");
             yield return new WaitForSeconds(0.5f);
             enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
@@ -155,7 +163,7 @@ public class SoldierManger : MonoBehaviour
             if(transform.tag == "Army")
             {
                 buttonManger.amrys.Remove(gameObject);
-                
+                input.BarrackUi.GetComponent<BarrackController>().usingPeople--;
             }
             else
             {

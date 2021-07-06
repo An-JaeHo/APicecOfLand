@@ -118,6 +118,8 @@ MonoBehaviour:
   findCode: 
   areaInfo: {fileID: 0}
   areaInfoImage: {fileID: 0}
+  areaManger: {fileID: 0}
+  firstBuild: 0
 --- !u!114 &3971041695162761242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +141,9 @@ MonoBehaviour:
   pureColor: {r: 0, g: 0, b: 0, a: 0}
   buildTurn: 0
   readyBuild: {fileID: 21300000, guid: f19bda5724fe659448eed60896d4abcf, type: 3}
+  tileManger: {fileID: 0}
+  particle: {fileID: 4342981342814604622, guid: fde7fafe2779e58429c6816b7d6bc09f,
+    type: 3}
 --- !u!61 &487199255135975861
 BoxCollider2D:
   m_ObjectHideFlags: 0

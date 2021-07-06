@@ -22,7 +22,7 @@ public class GameEnd : MonoBehaviour
 
         if (capital.transform.childCount != 0)
         {
-            if (capital.transform.GetChild(0).tag == "Enemy")
+            if (capital.transform.GetChild(0).tag == "Enemy" || capital.transform.GetChild(0).tag == "GD")
             {
                 SceneManager.LoadScene(3);
             }

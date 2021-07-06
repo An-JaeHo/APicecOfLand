@@ -62,7 +62,7 @@ public class RangeManger : MonoBehaviour
                     }
                     else
                     {
-                        if(tileManger.tileList[i].GetChild(0).transform.tag == "Enemy")
+                        if(tileManger.tileList[i].GetChild(0).transform.tag == "Enemy" || tileManger.tileList[i].GetChild(0).transform.tag == "GD")
                         {
                             tileManger.tileList[i].GetComponent<SpriteRenderer>().color = Color.red;
                             tileManger.tileList[i].tag = "SelectLand";
@@ -109,7 +109,7 @@ public class RangeManger : MonoBehaviour
                     }
                     else
                     {
-                        if (tileManger.tileList[i].GetChild(0).transform.tag == "Enemy")
+                        if (tileManger.tileList[i].GetChild(0).transform.tag == "Enemy" || tileManger.tileList[i].GetChild(0).transform.tag == "GD")
                         {
                             tileManger.tileList[i].GetComponent<SpriteRenderer>().color = Color.red;
                             tileManger.tileList[i].tag = "SelectLand";
@@ -158,7 +158,7 @@ public class RangeManger : MonoBehaviour
                     }
                     else
                     {
-                        if (tileManger.tileList[i].GetChild(0).transform.tag == "Enemy")
+                        if (tileManger.tileList[i].GetChild(0).transform.tag == "Enemy" || tileManger.tileList[i].GetChild(0).transform.tag == "GD")
                         {
                             tileManger.tileList[i].GetComponent<SpriteRenderer>().color = Color.red;
                             tileManger.tileList[i].tag = "SelectLand";
@@ -207,7 +207,7 @@ public class RangeManger : MonoBehaviour
                     }
                     else
                     {
-                        if (tileManger.tileList[i].GetChild(0).transform.tag == "Enemy")
+                        if (tileManger.tileList[i].GetChild(0).transform.tag == "Enemy" || tileManger.tileList[i].GetChild(0).transform.tag == "GD")
                         {
                             tileManger.tileList[i].GetComponent<SpriteRenderer>().color = Color.red;
                             tileManger.tileList[i].tag = "SelectLand";

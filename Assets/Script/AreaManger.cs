@@ -16,7 +16,6 @@ public class AreaManger : MonoBehaviour
     public int buildTurn;
     public Sprite readyBuild;
     public TileManger tileManger;
-    public ParticleSystem particle;
 
     bool turnArea;
 
@@ -199,6 +198,8 @@ public class AreaManger : MonoBehaviour
             transform.GetComponent<MakeArea>().Effect = null;
             transform.GetComponent<SpriteRenderer>().color = Color.gray;
 
+            //GameObject particlePrefeb = Instantiate(tileManger.particlePrefeb, transform);
+            //particlePrefeb.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
             transform.tag = "Grass";
         }
     }
