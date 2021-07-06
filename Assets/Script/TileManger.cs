@@ -161,6 +161,7 @@ public class TileManger : MonoBehaviour
             if (alpha > 0)
             {
                 bossText.GetComponent<Image>().color = new Color(1, 1, 1, alpha);
+                bossText.transform.GetChild(0).GetComponent<Text>().color = new Color(1, 1, 1, alpha);
                 alpha -= Time.deltaTime * speed;
             }
             else

@@ -75,7 +75,7 @@ public class SoldierManger : MonoBehaviour
     public IEnumerator Move()
     {
         movePosition = new Vector3(transform.parent.position.x + 10, transform.parent.position.y + 25, transform.parent.position.z - 10);
-
+        ani.SetBool("Move", true);
         while (transform.position != movePosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 300f);
@@ -91,13 +91,15 @@ public class SoldierManger : MonoBehaviour
             move = false;
             stayTime = 0;
             buttonManger.button.GetComponent<Button>().interactable = true;
+            ani.SetBool("Move", false);
             if (transform.parent.tag == "Enemy Base")
             {
                 transform.parent.GetComponent<AreaManger>().TurnArea();
             }
         }
 
-        if(cardMovePoint)
+        
+        if (cardMovePoint)
         {
             movePoint = true;
             cardMovePoint = false;
@@ -112,18 +114,16 @@ public class SoldierManger : MonoBehaviour
         {
             float randnum = Random.Range(0.8f, 1.2f);
             //적이 받는 데미지
-            //enemy.GetComponent<MakeEnemy>().HelthPoint -=                (int)((soldier.BaseAttack * randnum) - ((enemy.GetComponent<MakeEnemy>().Defensive)));
+            enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(soldier.BaseAttack * 10);
             ani.SetTrigger("Attack");
             yield return new WaitForSeconds(0.5f);
             enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
             yield return new WaitForSeconds(0.5f);
-            enemy.GetComponent<MakeEnemy>().BaseHelthPoint = 0;
             attack = false;
             movePoint = false;
             enemy.GetComponent<EnemyController>().Dead();
+            enemy.GetComponent<EnemyController>().HpBarScale();
         }
-
-        HpBarScale();
 
         if (cardMovePoint)
         {
@@ -136,11 +136,28 @@ public class SoldierManger : MonoBehaviour
 
     public void HpBarScale()
     {
-        //Transform hpBar = transform.GetChild(0).GetChild(0);
+        Transform hpBar = transform.GetChild(0).GetChild(0);
 
-        //float nowHp = soldier.HelthPoint / totalHp;
-        //hpBar.localScale = new Vector3(nowHp, 1f);
-        //hpBar.localScale = new Vector3(nowHp, 1f);
+        float nowHp = soldier.HelthPoint / totalHp;
+        hpBar.localScale = new Vector3(nowHp, 1f);
+        hpBar.localScale = new Vector3(nowHp, 1f);
+    }
+
+    public void Dead()
+    {
+        if (transform.GetComponent<MakeSoldier>().HelthPoint <= 0)
+        {
+            if(transform.tag == "Army")
+            {
+                buttonManger.amrys.Remove(gameObject);
+            }
+            else
+            {
+                buttonManger.builders.Remove(gameObject);
+            }
+            
+            Destroy(this.gameObject);
+        }
     }
 
     public void CheckBuildCount()

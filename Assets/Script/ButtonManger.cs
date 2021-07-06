@@ -20,6 +20,7 @@ public class ButtonManger : MonoBehaviour
     public List<GameObject> amrys;
     public List<GameObject> builders;
     public Timer timer;
+    float buttonTimer;
 
     //타일 구매용
     public int food;
@@ -58,8 +59,22 @@ public class ButtonManger : MonoBehaviour
         input = GetComponent<InputManger>();
         barrackController = barrackWindow.GetComponent<BarrackController>();
         timer = GameObject.Find("GameTime").GetComponent<Timer>();
+        buttonTimer = 1;
     }
 
+    private void Update()
+    {
+        buttonTimer += Time.deltaTime;
+
+        //if (buttonTimer > 1f)
+        //{
+        //    button.GetComponent<Button>().interactable = true;
+        //}
+        //else
+        //{
+        //    button.GetComponent<Button>().interactable = false;
+        //}
+    }
     #region 일반적인 버튼모음
     public void SkillInvenButton()
     {
@@ -476,7 +491,7 @@ public class ButtonManger : MonoBehaviour
 
                 }
 
-                enemys[i].GetComponent<EnemyController>().HpBarScale();
+                //enemys[i].GetComponent<EnemyController>().HpBarScale();
                 if(enemys[i].tag == "Enemy")
                 {
                     enemys[i].GetComponent<EnemyController>().enemy.BaseDefensive = enemys[i].GetComponent<EnemyController>().pureDefend;
@@ -487,6 +502,7 @@ public class ButtonManger : MonoBehaviour
                 }
                 
                 enemys[i].GetComponent<EnemyController>().CheckBuff();
+                enemys[i].GetComponent<EnemyController>().firstStart = false;
             }
         }
 
@@ -506,7 +522,7 @@ public class ButtonManger : MonoBehaviour
 
             }
             amrys[i].GetComponent<SoldierManger>().movePoint = true;
-            amrys[i].GetComponent<SoldierManger>().HpBarScale();
+            //amrys[i].GetComponent<SoldierManger>().HpBarScale();
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
         }
@@ -519,7 +535,7 @@ public class ButtonManger : MonoBehaviour
     public void TurnEnd()
     {
         playerInfo.turnPoint++;
-
+        buttonTimer = 0;
         if (playerInfo.turnPoint == 50)
         {
             int rand = Random.Range(200, 270);
@@ -545,7 +561,5 @@ public class ButtonManger : MonoBehaviour
         tileManger.NextLand();
         tileManger.SpawnEnemy();
         StartCoroutine(moveEnemy());
-
-        
     }
 }

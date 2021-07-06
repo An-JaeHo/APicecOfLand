@@ -224,6 +224,11 @@ public class InputManger : MonoBehaviour
             {
                 rangeManger.rangeList[i].transform.tag = "Capital";
             }
+
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type== "Area")
+            {
+                rangeManger.rangeList[i].transform.tag = "Area";
+            }
         }
 
         rangeManger.rangeList.Clear();
