@@ -34,7 +34,6 @@ public class GDController : GDInfo
 
         for (int i = 0; i < TroopInfo.information.boss.Length; i++)
         {
-            Debug.Log(TroopInfo.information.boss[i].Code);
             if (TroopInfo.information.boss[i].Code == code)
             {
                 Code = TroopInfo.information.boss[i].Code;

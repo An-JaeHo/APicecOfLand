@@ -475,9 +475,17 @@ public class ButtonManger : MonoBehaviour
                     }
 
                 }
+
+                enemys[i].GetComponent<EnemyController>().HpBarScale();
+                if(enemys[i].tag == "Enemy")
+                {
+                    enemys[i].GetComponent<EnemyController>().enemy.BaseDefensive = enemys[i].GetComponent<EnemyController>().pureDefend;
+                }
+                else
+                {
+                    enemys[i].GetComponent<EnemyController>().gd.Defensive= enemys[i].GetComponent<EnemyController>().pureDefend;
+                }
                 
-                //enemys[i].GetComponent<EnemyController>().HpBarScale();
-                enemys[i].GetComponent<EnemyController>().enemy.BaseDefensive = enemys[i].GetComponent<EnemyController>().pureDefend;
                 enemys[i].GetComponent<EnemyController>().CheckBuff();
             }
         }

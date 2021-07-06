@@ -44,6 +44,7 @@ public class EnemyController : MonoBehaviour
     public PlayerInfo playerInfo;
     public float totalHp;
     public MakeEnemy enemy;
+    public GDController gd;
     public Animator ani;
     
 
@@ -74,13 +75,19 @@ public class EnemyController : MonoBehaviour
         
         //HpBarScale();
         movePoint = true;
+        ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
 
-        if(transform.tag == "Enemy")
+        if (transform.tag == "Enemy")
         {
-            ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
             enemy = GetComponent<MakeEnemy>();
             totalHp = enemy.BaseHelthPoint;
             pureDefend = (int)enemy.BaseDefensive;
+        }
+        else
+        {
+            gd = GetComponent<GDController>();
+            totalHp = gd.HelthPoint;
+            pureDefend = (int)gd.Defensive;
         }
     }
 
@@ -94,7 +101,7 @@ public class EnemyController : MonoBehaviour
 
             rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
             rangeTiles = rangeManger.EnemyRange(gameObject);
-            string code = transform.GetComponent<MakeEnemy>().Code;
+            //string code = transform.GetComponent<MakeEnemy>().Code;
 
             if (parentTile)
             {
@@ -102,22 +109,6 @@ public class EnemyController : MonoBehaviour
             }
 
             Sword();
-
-            //switch (code)
-            //{
-            //    case "Enemy 1":
-            //        Sword();
-            //        break;
-            //    case "Enemy 2":
-            //        Bow();
-            //        break;
-            //    case "Enemy 3":
-            //        SpearMan();
-            //        break;
-            //    case "Enemy 4":
-            //        CavalryMan();
-            //        break;
-            //}
 
             PathFinding();
 
@@ -129,7 +120,7 @@ public class EnemyController : MonoBehaviour
                     if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
                     || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
                     {
-                        if(tiles.activeChildtileList[i].tag !="Enemy")
+                        if(tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag =="Army" || tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Builder")
                         {
                             findArmy = true;
                             target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
@@ -243,7 +234,27 @@ public class EnemyController : MonoBehaviour
     {
         float randnum = Random.Range(0.8f, 1.2f);
 
-        target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
+        if(transform.tag == "Enemy")
+        {
+            target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
+
+            if (target.GetComponent<SoldierManger>().countAttack > 0)
+            {
+                transform.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack * target.GetComponent<SoldierManger>().countAttack);
+                target.GetComponent<SoldierManger>().countAttack = 0;
+            }
+        }
+        else
+        {
+            target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<GDController>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
+
+            if (target.GetComponent<SoldierManger>().countAttack > 0)
+            {
+                transform.GetComponent<GDController>().HelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack * target.GetComponent<SoldierManger>().countAttack);
+                target.GetComponent<SoldierManger>().countAttack = 0;
+            }
+        }
+        
         target.GetComponent<SoldierManger>().HpBarScale();
         ani.SetTrigger("Attack");
         buttonManger.button.GetComponent<Button>().interactable = false;
@@ -252,12 +263,6 @@ public class EnemyController : MonoBehaviour
         {
             buttonManger.builders.Remove(target.gameObject);
             Destroy(target.gameObject);
-        }
-
-        if (target.GetComponent<SoldierManger>().countAttack > 0)
-        {
-            transform.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack * target.GetComponent<SoldierManger>().countAttack);
-            target.GetComponent<SoldierManger>().countAttack = 0;
         }
 
         yield return null;
@@ -269,8 +274,11 @@ public class EnemyController : MonoBehaviour
         NodeArray = new List<Node>();
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
-            NodeArray.Add(tileNode);
+            if(tiles.activeChildtileList[i].transform.GetChild(0).childCount ==0)
+            {
+                Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
+                NodeArray.Add(tileNode);
+            }
         }
         
         // 시작과 끝 노드, 열린리스트와 닫힌리스트, 마지막리스트 초기화
@@ -395,22 +403,47 @@ public class EnemyController : MonoBehaviour
 
     public void Dead()
     {
-        if (transform.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
+        if(transform.tag =="Enemy")
         {
-            gameObject.SetActive(false);
-            invenManger.InputCard(GetComponent<MakeEnemy>().Grade);
-            buttonManger.enemys.Remove(gameObject);
-            transform.SetParent(GameObject.Find("ArmyPool").transform);
-            playerInfo.killingPoint++;
+            if (transform.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
+            {
+                invenManger.InputCard(GetComponent<MakeEnemy>().Grade);
+                buttonManger.enemys.Remove(gameObject);
+                playerInfo.killingPoint++;
+                Destroy(this.gameObject);
+            }
         }
+        else
+        {
+            if (transform.GetComponent<GDController>().HelthPoint <= 0)
+            {
+                invenManger.InputCard(4);
+                buttonManger.enemys.Remove(gameObject);
+                playerInfo.killingPoint++;
+                Destroy(this.gameObject);
+            }
+        }
+
+        
     }
 
     public void HpBarScale()
     {
-        Transform hpBar = transform.GetChild(0).GetChild(0);
+        if(transform.tag == "Enemy")
+        {
+            Transform hpBar = transform.GetChild(0).GetChild(0);
+            float nowHp = enemy.BaseHelthPoint / totalHp;
+            hpBar.localScale = new Vector3(nowHp, 1f);
+        }
+        else
+        {
+            Transform hpBar = tiles.bossHP.transform.GetChild(0).GetChild(0);
+            float nowHp = transform.GetComponent<GDController>().HelthPoint / totalHp;
+            hpBar.localScale = new Vector3(nowHp, 1f);
 
-        float nowHp = enemy.BaseHelthPoint / totalHp;
-        hpBar.localScale = new Vector3(nowHp, 1f);
+            tiles.bossHP.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = ((int)(nowHp * 100)).ToString()+"%";
+        }
+        
     }
 
     public void MakeBuffIcon(string code)
