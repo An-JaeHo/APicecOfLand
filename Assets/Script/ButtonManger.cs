@@ -328,7 +328,7 @@ public class ButtonManger : MonoBehaviour
             
             playerInfo.people -= 1;
             playerInfo.milk -= armyUpgradeUi.GetComponent<ArmyUpgrade>().upgradeMilk;
-            supplyManger.UpdateSupply();
+            supplyManger.JustUpdateSupply();
             armyUpgradeUi.SetActive(false);
             input.mouseCheck = true;
         }
@@ -451,7 +451,7 @@ public class ButtonManger : MonoBehaviour
             }
 
             UpgradeLand.GetComponent<AreaManger>().CheckUpdateMaterial();
-            supplyManger.UpdateSupply();
+            supplyManger.JustUpdateSupply();
             input.mouseCheck = true;
             bulidUpgradeUi.SetActive(false);
         }

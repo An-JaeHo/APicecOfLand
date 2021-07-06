@@ -139,8 +139,13 @@ public class SoldierManger : MonoBehaviour
         Transform hpBar = transform.GetChild(0).GetChild(0);
 
         float nowHp = soldier.HelthPoint / totalHp;
+        if(nowHp <=0)
+        {
+            nowHp = 0;
+        }
+
         hpBar.localScale = new Vector3(nowHp, 1f);
-        hpBar.localScale = new Vector3(nowHp, 1f);
+
     }
 
     public void Dead()
@@ -150,20 +155,37 @@ public class SoldierManger : MonoBehaviour
             if(transform.tag == "Army")
             {
                 buttonManger.amrys.Remove(gameObject);
+                
             }
             else
             {
                 buttonManger.builders.Remove(gameObject);
+                tileManger.MakeBulider();
             }
-            
+
             Destroy(this.gameObject);
+
         }
     }
 
     public void CheckBuildCount()
     {
+        //if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
+        //    && transform.parent.GetComponent<MakeArea>().Destroy == true)
+        //{
+        //    movePoint = false;
+        //    builderPoint++;
+        //}
+        //else
+        //{
+        //    movePoint = true;
+        //    transform.parent.GetComponent<SpriteRenderer>().color = Color.white;
+        //    transform.parent.GetComponent<MakeArea>().Destroy = false;
+        //    builderPoint = 0;
+        //}
+
         if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
-            && transform.parent.GetComponent<MakeArea>().Destroy == true)
+            && transform.parent.GetComponent<MakeArea>().firstBuild == true)
         {
             movePoint = false;
             builderPoint++;
@@ -171,7 +193,8 @@ public class SoldierManger : MonoBehaviour
         else
         {
             movePoint = true;
-            transform.parent.GetComponent<SpriteRenderer>().color = Color.white;
+            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
+            transform.parent.GetComponent<MakeArea>().firstBuild = false;
             transform.parent.GetComponent<MakeArea>().Destroy = false;
             builderPoint = 0;
         }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6129318765696646217}
   - component: {fileID: 3416828061415550589}
   - component: {fileID: 5116976504170280600}
+  - component: {fileID: 7850351058569188702}
   m_Layer: 5
   m_Name: GDPrefeb
   m_TagString: GD
@@ -163,6 +164,7 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   totalHp: 0
   enemy: {fileID: 0}
+  gd: {fileID: 0}
   ani: {fileID: 0}
   buffCount: 0
   buffIconGameObj: {fileID: 0}
@@ -170,6 +172,7 @@ MonoBehaviour:
   buffList: []
   buffPrefebList: []
   movePoint: 0
+  firstStart: 0
   pureDefend: 0
 --- !u!61 &5116976504170280600
 BoxCollider2D:
@@ -197,6 +200,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &7850351058569188702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6129318765696646219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5d51865f711fd44bc863baa687ba6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneMgr: {fileID: 0}
+  capital: {fileID: 0}
+  playerInfo: {fileID: 0}
 --- !u!1001 &2565262165170355584
 PrefabInstance:
   m_ObjectHideFlags: 0

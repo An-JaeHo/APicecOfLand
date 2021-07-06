@@ -131,10 +131,17 @@ public class InputManger : MonoBehaviour
                                     {
                                         if (hit.transform.GetComponent<MakeArea>().Type == "Grass")
                                         {
-                                            landObj = hit.transform;
-                                            mouseCheck = false;
-                                            bulidUi.GetComponent<BuildController>().land = hit.transform;
-                                            bulidUi.GetComponent<BuildController>().CreateWindow();
+                                            if(hit.transform.GetComponent<MakeArea>().Destroy == true)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                landObj = hit.transform;
+                                                mouseCheck = false;
+                                                bulidUi.GetComponent<BuildController>().land = hit.transform;
+                                                bulidUi.GetComponent<BuildController>().CreateWindow();
+                                            }
                                         }
                                         else if (hit.transform.GetComponent<MakeArea>().Type == "Area"
                                             && hit.transform.GetComponent<MakeArea>().Destroy != true)
@@ -213,7 +220,11 @@ public class InputManger : MonoBehaviour
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {
             rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = Color.white;
-            //rangeManger.rangeList[i].transform.tag = rangeManger.rangeList[i].GetComponent<MakeArea>().Type;
+
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Area")
+            {
+                rangeManger.rangeList[i].transform.tag = "Area";
+            }
 
             if (rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
             {
@@ -225,10 +236,7 @@ public class InputManger : MonoBehaviour
                 rangeManger.rangeList[i].transform.tag = "Capital";
             }
 
-            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type== "Area")
-            {
-                rangeManger.rangeList[i].transform.tag = "Area";
-            }
+            
         }
 
         rangeManger.rangeList.Clear();

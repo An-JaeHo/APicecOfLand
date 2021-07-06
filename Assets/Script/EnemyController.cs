@@ -171,17 +171,18 @@ public class EnemyController : MonoBehaviour
         {
             if (tiles.activeChildtileList[i].GetChild(0).tag == "Area" || tiles.activeChildtileList[i].GetChild(0).tag == "Barrack")
             {
+                Debug.Log("에이");
                 targets.Add(tiles.activeChildtileList[i].GetChild(0));
-                Debug.Log("진짜");
             }
 
             if (tiles.activeChildtileList[i].GetChild(0).tag == "Capital")
             {
-                Debug.Log("좇같다");
+                Debug.Log("시발");
                 targets.Add(tiles.activeChildtileList[i].GetChild(0));
             }
 
         }
+
         float num = Mathf.Infinity;
 
         for(int i=0; i< targets.Count; i++)
@@ -220,21 +221,21 @@ public class EnemyController : MonoBehaviour
 
         if (transform.tag == "Enemy")
         {
-            target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<MakeEnemy>().BaseAttack * 10);
+            target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<MakeEnemy>().BaseAttack);
 
             if (target.GetComponent<SoldierManger>().countAttack > 0)
             {
-                transform.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack*10 * target.GetComponent<SoldierManger>().countAttack);
+                transform.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack * target.GetComponent<SoldierManger>().countAttack);
                 target.GetComponent<SoldierManger>().countAttack = 0;
             }
         }
         else
         {
-            target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<GDController>().BaseAttack * 10);
+            target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<GDController>().BaseAttack);
 
             if (target.GetComponent<SoldierManger>().countAttack > 0)
             {
-                transform.GetComponent<GDController>().HelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack*10 * target.GetComponent<SoldierManger>().countAttack);
+                transform.GetComponent<GDController>().HelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack * target.GetComponent<SoldierManger>().countAttack);
                 target.GetComponent<SoldierManger>().countAttack = 0;
             }
         }
@@ -261,10 +262,18 @@ public class EnemyController : MonoBehaviour
         NodeArray = new List<Node>();
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            if(tiles.activeChildtileList[i].transform.GetChild(0).childCount ==0)
+            if (tiles.activeChildtileList[i].transform.GetChild(0).childCount ==0)
             {
                 Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
                 NodeArray.Add(tileNode);
+            }
+            else
+            {
+                if (tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag == "Enemy")
+                {
+                    Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
+                    NodeArray.Add(tileNode);
+                }
             }
         }
         
@@ -420,16 +429,28 @@ public class EnemyController : MonoBehaviour
         {
             Transform hpBar = transform.GetChild(0).GetChild(0);
             float nowHp = enemy.BaseHelthPoint / totalHp;
+
+            if (nowHp <= 0)
+            {
+                nowHp = 0;
+            }
             hpBar.localScale = new Vector3(nowHp, 1f);
         }
         else
         {
             Transform hpBar = tiles.bossHP.transform.GetChild(0).GetChild(0);
             float nowHp = transform.GetComponent<GDController>().HelthPoint / totalHp;
+
+            if (nowHp <= 0)
+            {
+                nowHp = 0;
+            }
             hpBar.localScale = new Vector3(nowHp, 1f);
 
             tiles.bossHP.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = ((int)(nowHp * 100)).ToString()+"%";
         }
+
+
         
     }
 

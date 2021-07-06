@@ -28,10 +28,10 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
 
     private void Start()
     {
-        milk = 500;
-        flour = 500;
-        sugar = 500;
-        people = 500;
+        milk = 150;
+        flour = 150;
+        sugar = 150;
+        people = 3;
         turnPoint = 0;
         killingPoint = 0;
     }

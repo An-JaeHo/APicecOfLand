@@ -19,6 +19,8 @@ public class BarrackController : MonoBehaviour
 
     public GameObject[] MonsterObj;
 
+    public int usingPeople;
+
     //land
     public Transform land;
 
@@ -37,7 +39,7 @@ public class BarrackController : MonoBehaviour
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         inputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
         i = 0;
-
+        usingPeople = 0;
         object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
         MonsterObj = new GameObject[loadMonster.Length];
         for (int i = 0; i < loadMonster.Length; i++)
@@ -67,12 +69,9 @@ public class BarrackController : MonoBehaviour
 
             monsters.Add(prefebSoldier);
             buttonManger.amrys.Add(prefebSoldier);
+            usingPeople++;
             supplyManger.UpdateSupply();
             gameObject.SetActive(false);
-        }
-        else
-        {
-            //checkButton.GetComponent<Button>().interactable = false;
         }
 
         inputManger.mouseCheck = true;

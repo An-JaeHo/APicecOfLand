@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SupplyManger : MonoBehaviour
 {
     public PlayerInfo playerInfo;
+    public BarrackController barrackController;
 
     public int updateFood;
     public int updateWood;
@@ -23,20 +24,8 @@ public class SupplyManger : MonoBehaviour
         updateFood = playerInfo.updateMilk;
         updateWood = playerInfo.updateFlour;
         updateIron = playerInfo.updateSugar;
-        updatePeople = playerInfo.updatePeople;
 
-        if (updatePeople > 0)
-        {
-            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString() + " +" + updatePeople.ToString();
-        }
-        else if (updatePeople == 0)
-        {
-            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString();
-        }
-        else
-        {
-            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString() + " " + updatePeople.ToString();
-        }
+        transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
 
         if (updateFood > 0)
         {
@@ -80,18 +69,7 @@ public class SupplyManger : MonoBehaviour
 
     public void JustUpdateSupply()
     {
-        if (updatePeople > 0)
-        {
-            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString() + " +" + updatePeople.ToString();
-        }
-        else if (updatePeople == 0)
-        {
-            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString();
-        }
-        else
-        {
-            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.people.ToString() + " " + updatePeople.ToString();
-        }
+        transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
 
         if (updateFood > 0)
         {

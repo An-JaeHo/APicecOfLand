@@ -14,6 +14,9 @@ public class AreaManger : MonoBehaviour
     public string pureTag;
     public Color pureColor;
     public int buildTurn;
+    public Sprite readyBuild;
+    public TileManger tileManger;
+    public ParticleSystem particle;
 
     bool turnArea;
 
@@ -21,6 +24,7 @@ public class AreaManger : MonoBehaviour
     {
         rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
         player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+        tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
         area = GetComponent<MakeArea>();
         buildTurn = 0;
         turnArea = false;
@@ -71,16 +75,16 @@ public class AreaManger : MonoBehaviour
                     player.updateSugar += 1;
                     break;
                 case "Area 20":
-                    player.updatePeople += area.Population;
+                    player.people += area.Population;
                     break;
                 case "Area 21":
-                    player.updatePeople += 1;
+                    player.people += 1;
                     break;
                 case "Area 22":
-                    player.updatePeople += 1;
+                    player.people += 1;
                     break;
                 case "Area 23":
-                    player.updatePeople += 1;
+                    player.people += 1;
                     break;
             }
         }
@@ -182,7 +186,6 @@ public class AreaManger : MonoBehaviour
         if (transform.tag != "Capital" || transform.tag != "Enemy Base")
         {
             transform.GetComponent<MakeArea>().Code = pureCode;
-            transform.GetComponent<MakeArea>().areaInfoImage.sprite = pureSprite;
             transform.GetComponent<MakeArea>().Type = null;
             transform.GetComponent<MakeArea>().Grade = 0;
             transform.GetComponent<MakeArea>().UpgradeFlour = 0;
@@ -194,8 +197,7 @@ public class AreaManger : MonoBehaviour
             transform.GetComponent<MakeArea>().Destroy = true;
             transform.GetComponent<MakeArea>().Repair = false;
             transform.GetComponent<MakeArea>().Effect = null;
-            transform.GetComponent<SpriteRenderer>().sprite = pureSprite;
-            transform.GetComponent<SpriteRenderer>().color = Color.white;
+            transform.GetComponent<SpriteRenderer>().color = Color.gray;
 
             transform.tag = "Grass";
         }

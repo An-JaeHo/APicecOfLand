@@ -29,10 +29,14 @@ public class MakeArea : AreaInfo
     public string findCode;
     public JsonManger areaInfo;
     public SpriteRenderer areaInfoImage;
+    public AreaManger areaManger;
+    public bool firstBuild;
 
     private void Start()
     {
         areaInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
+        areaManger = GetComponent<AreaManger>();
+        firstBuild = true;
         Type = "Grass";
     }
 
@@ -40,6 +44,7 @@ public class MakeArea : AreaInfo
     {
         areaInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         areaInfoImage = GetComponent<SpriteRenderer>();
+
         for (int i = 0; i < areaInfo.information.area.Length; i++)
         {
             if (areaInfo.information.area[i].Code == code)
@@ -73,10 +78,12 @@ public class MakeArea : AreaInfo
                 else if(areaInfo.information.area[i].Code == "Area 30" || areaInfo.information.area[i].Code == "Area 31" || areaInfo.information.area[i].Code == "Area 32")
                 {
                     transform.tag = "Enemy Base";
+                    firstBuild = false;
                 }
                 else
                 {
                     transform.tag = "Area";
+                    Destroy = true;
                 }
                 
             }
@@ -84,7 +91,14 @@ public class MakeArea : AreaInfo
 
         if(Destroy == true)
         {
-            transform.GetComponent<SpriteRenderer>().color = Color.gray;
+            if(firstBuild)
+            {
+                areaInfoImage.sprite = areaManger.tileManger.sprites[2];
+            }
+            else
+            {
+                transform.GetComponent<SpriteRenderer>().color = Color.gray;
+            }
         }
     }
 }

@@ -18,7 +18,9 @@ public class Hwomuch : MonoBehaviour
         need.transform.GetChild(0).GetComponent<Text>().text = "식량 : "+makeSoldier.ProductionExpense.ToString();
         barrackController.soldierInfo = makeSoldier;
 
-        if (barrackController.playerInfo.milk > barrackController.soldierInfo.ProductionExpense)
+        int canUsePeople = barrackController.playerInfo.people - barrackController.usingPeople;
+
+        if (barrackController.playerInfo.milk > barrackController.soldierInfo.ProductionExpense && canUsePeople >0)
         {
             barrackController.soldierMakeButton.GetComponent<Button>().interactable = true;
         }
