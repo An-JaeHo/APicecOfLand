@@ -340,9 +340,20 @@ public class ButtonManger : MonoBehaviour
         panel = CreateAreaPrefab.GetComponent<PanelController>();
         playerInfo.flour -= panel.upgradeWood;
         playerInfo.sugar -= panel.upgradeIron;
+
+        //if (int.Parse(input.army.parent.parent.name) + 1 == int.Parse(input.landObj.transform.parent.name))
+        //{
+        //    input.army.transform.localScale = new Vector3(1, 1);
+        //}
+        //else if (int.Parse(input.army.parent.parent.name) - 1 == int.Parse(input.landObj.transform.parent.name))
+        //{
+        //    input.army.transform.localScale = new Vector3(-1, 1);
+        //}
         input.army.transform.SetParent(input.landObj);
         input.moveSoldier.move = true;
         input.army.GetComponent<SoldierManger>().SoldierAction();
+
+        
 
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {
@@ -360,7 +371,7 @@ public class ButtonManger : MonoBehaviour
         }
 
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
-        panel.baseLand.GetComponent<AreaManger>().CheckUpdateMaterial();
+        //panel.baseLand.GetComponent<AreaManger>().CheckUpdateMaterial();
         supplyManger.UpdateSupply();
         panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
         input.mouseCheck = true;
@@ -371,6 +382,18 @@ public class ButtonManger : MonoBehaviour
     {
         if (playerInfo.flour >= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && playerInfo.sugar >= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar)
         {
+            //if (int.Parse(input.army.parent.parent.name) + 1 == int.Parse(UpgradeLand.transform.parent.name))
+            //{
+            //    input.army.transform.localScale = new Vector3(1, 1);
+            //}
+            //else if (int.Parse(input.army.parent.parent.name) - 1 == int.Parse(UpgradeLand.transform.parent.name))
+            //{
+            //    input.army.transform.localScale = new Vector3(-1, 1);
+            //}
+
+            input.army.transform.SetParent(UpgradeLand);
+            input.moveSoldier.move = true;
+            input.army.transform.GetComponent<SoldierManger>().SoldierAction();
             playerInfo.flour -= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour;
             playerInfo.sugar -= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar;
 
@@ -449,13 +472,8 @@ public class ButtonManger : MonoBehaviour
                     break;
             }
 
+            UpgradeLand.GetComponent<MakeArea>().firstBuild = true;
             
-
-            input.army.transform.SetParent(input.hitObj.transform);
-            
-            input.moveSoldier.enemy = input.hitObj.transform;
-            input.moveSoldier.move = true;
-            input.army.transform.GetComponent<SoldierManger>().SoldierAction();
 
             for (int i = 0; i < rangeManger.rangeList.Count; i++)
             {
@@ -486,13 +504,16 @@ public class ButtonManger : MonoBehaviour
             {
                 enemys[i].GetComponent<EnemyController>().EnemyMove();
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1.5f);
 
                 if (enemys[i].transform.parent.tag == "Area" 
-                    || enemys[i].transform.parent.tag == "Barrack")
+                    || enemys[i].transform.parent.tag == "Barracks")
                 {
                     enemys[i].transform.parent.GetComponent<AreaManger>().TurnArea();
-                    
+                    //효과음
+                    enemys[i].transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
+                    enemys[i].transform.GetComponent<AudioSource>().Play();
+                    yield return new WaitForSeconds(0.5f);
                 }
 
                 if (enemys[i].transform.parent.tag == "Capital")

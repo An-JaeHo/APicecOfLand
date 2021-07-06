@@ -90,8 +90,16 @@ public class SoldierManger : MonoBehaviour
             input.armyMove = true;
             move = false;
             stayTime = 0;
-            buttonManger.button.GetComponent<Button>().interactable = true;
             ani.SetBool("Move", false);
+            if (transform.tag == "Builder")
+            {
+                transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
+                transform.GetComponent<AudioSource>().Play();
+                yield return new WaitForSeconds(1f);
+                buttonManger.button.GetComponent<Button>().interactable = true;
+            }
+
+            buttonManger.button.GetComponent<Button>().interactable = true;
             if (transform.parent.tag == "Enemy Base")
             {
                 transform.parent.GetComponent<AreaManger>().TurnArea();
@@ -124,6 +132,16 @@ public class SoldierManger : MonoBehaviour
             }
             
             ani.SetTrigger("Attack");
+
+            for (int i = 0; i < SoundController.instance.monsterSounds.Length; i++)
+            {
+                if(SoundController.instance.monsterSounds[i].name == transform.GetComponent<MakeSoldier>().Name)
+                {
+                    AudioClip audio = SoundController.instance.monsterSounds[i].audio;
+                    transform.GetComponent<AudioSource>().clip = audio;
+                    transform.GetComponent<AudioSource>().Play();
+                }
+            }
             yield return new WaitForSeconds(0.5f);
             enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
             yield return new WaitForSeconds(0.5f);
@@ -164,34 +182,19 @@ public class SoldierManger : MonoBehaviour
             {
                 buttonManger.amrys.Remove(gameObject);
                 input.BarrackUi.GetComponent<BarrackController>().usingPeople--;
+                Destroy(this.gameObject);
             }
             else
             {
                 buttonManger.builders.Remove(gameObject);
+                Destroy(this.gameObject);
                 tileManger.MakeBulider();
             }
-
-            Destroy(this.gameObject);
-
         }
     }
 
     public void CheckBuildCount()
     {
-        //if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
-        //    && transform.parent.GetComponent<MakeArea>().Destroy == true)
-        //{
-        //    movePoint = false;
-        //    builderPoint++;
-        //}
-        //else
-        //{
-        //    movePoint = true;
-        //    transform.parent.GetComponent<SpriteRenderer>().color = Color.white;
-        //    transform.parent.GetComponent<MakeArea>().Destroy = false;
-        //    builderPoint = 0;
-        //}
-
         if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
             && transform.parent.GetComponent<MakeArea>().firstBuild == true)
         {
@@ -202,10 +205,19 @@ public class SoldierManger : MonoBehaviour
         {
             movePoint = true;
             transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
-            transform.parent.GetComponent<MakeArea>().firstBuild = false;
             transform.parent.GetComponent<MakeArea>().Destroy = false;
+            transform.parent.GetComponent<MakeArea>().firstBuild = false;
+
+            if (transform.parent.GetComponent<MakeArea>().BuildTurn == builderPoint
+            && !transform.parent.GetComponent<MakeArea>().Destroy)
+            {
+                transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
+            }
+
             builderPoint = 0;
         }
+
+        
     }
 
     public void MakeBuffIcon(string code)

@@ -313,7 +313,7 @@ public class TileManger : MonoBehaviour
 
     public void MakeBulider()
     {
-        int rand = UnityEngine.Random.Range(0, builderMakeLand.Count);
+        int rand = UnityEngine.Random.Range(0, builderMakeLand.Count-1);
 
         if (builderMakeLand[rand].GetChild(0).childCount == 0)
         {

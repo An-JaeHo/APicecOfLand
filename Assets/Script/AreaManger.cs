@@ -197,9 +197,27 @@ public class AreaManger : MonoBehaviour
             transform.GetComponent<MakeArea>().Repair = false;
             transform.GetComponent<MakeArea>().Effect = null;
             transform.GetComponent<SpriteRenderer>().color = Color.gray;
-
+            pureColor = Color.gray;
             //GameObject particlePrefeb = Instantiate(tileManger.particlePrefeb, transform);
             //particlePrefeb.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+            transform.tag = "Grass";
+        }
+        else if(transform.tag == "Enemy Base")
+        {
+            transform.GetComponent<MakeArea>().Code = pureCode;
+            transform.GetComponent<MakeArea>().Type = "Grass";
+            transform.GetComponent<MakeArea>().Grade = 0;
+            transform.GetComponent<MakeArea>().UpgradeFlour = 0;
+            transform.GetComponent<MakeArea>().UpgradeSugar = 0;
+            transform.GetComponent<MakeArea>().MilkOutput = 0;
+            transform.GetComponent<MakeArea>().FlourOutput = 0;
+            transform.GetComponent<MakeArea>().SugarOutput = 0;
+            transform.GetComponent<MakeArea>().Movement = true;
+            transform.GetComponent<MakeArea>().Destroy = false;
+            transform.GetComponent<MakeArea>().Repair = false;
+            transform.GetComponent<MakeArea>().Effect = null;
+            transform.GetComponent<SpriteRenderer>().color = Color.white;
+            pureColor = Color.white;
             transform.tag = "Grass";
         }
     }

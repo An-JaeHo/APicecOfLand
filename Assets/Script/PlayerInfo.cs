@@ -26,7 +26,7 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
     public bool playerGuardianCheck;
     public Boss playerGuardian;
 
-    private void Start()
+    private void Awake()
     {
         milk = 150;
         flour = 150;

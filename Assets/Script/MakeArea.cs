@@ -91,14 +91,7 @@ public class MakeArea : AreaInfo
 
         if(Destroy == true)
         {
-            if(firstBuild)
-            {
-                areaInfoImage.sprite = areaManger.tileManger.sprites[2];
-            }
-            else
-            {
-                transform.GetComponent<SpriteRenderer>().color = Color.gray;
-            }
+            areaInfoImage.sprite = areaManger.tileManger.sprites[2];
         }
     }
 }

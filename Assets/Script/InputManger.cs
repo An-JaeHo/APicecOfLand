@@ -172,6 +172,14 @@ public class InputManger : MonoBehaviour
                                     }
                                     else
                                     {
+                                        //if(int.Parse(army.parent.parent.name) +1  == int.Parse(hit.transform.parent.name))
+                                        //{
+                                        //    army.transform.localScale = new Vector3(1, 1);
+                                        //}
+                                        //else if (int.Parse(army.parent.parent.name) - 1 == int.Parse(hit.transform.parent.name))
+                                        //{
+                                        //    army.transform.localScale = new Vector3(-1, 1);
+                                        //}
                                         army.transform.SetParent(hit.transform);
                                         moveSoldier.move = true;
                                         army.transform.GetComponent<SoldierManger>().SoldierAction();

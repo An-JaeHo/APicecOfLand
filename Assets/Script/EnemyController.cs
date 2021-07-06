@@ -187,9 +187,9 @@ public class EnemyController : MonoBehaviour
 
         for(int i=0; i< targets.Count; i++)
         {
-            if (num > Mathf.Abs((int)Vector2.Distance(transform.position, targets[i].position)))
+            if (num > (int)Vector2.Distance(transform.position, targets[i].position))
             {
-                num = Mathf.Abs((int)Vector2.Distance(transform.position, targets[i].position));
+                num = (int)Vector2.Distance(transform.position, targets[i].position);
                 targetPos = new Vector2Int((int)targets[i].position.x, (int)targets[i].position.y);
             }
         }
@@ -242,7 +242,18 @@ public class EnemyController : MonoBehaviour
         
         target.GetComponent<SoldierManger>().HpBarScale();
         ani.SetTrigger("Attack");
-
+        if(transform.tag == "Enemy")
+        {
+            for (int i = 0; i < SoundController.instance.enemySounds.Length; i++)
+            {
+                if (SoundController.instance.enemySounds[i].name == transform.GetComponent<MakeEnemy>().Code)
+                {
+                    AudioClip audio = SoundController.instance.enemySounds[i].audio;
+                    transform.GetComponent<AudioSource>().clip = audio;
+                    transform.GetComponent<AudioSource>().Play();
+                }
+            }
+        }
         yield return new WaitForSeconds(0.8f);
         target.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
         yield return new WaitForSeconds(0.7f);
@@ -250,9 +261,9 @@ public class EnemyController : MonoBehaviour
         if (target.GetComponent<MakeSoldier>().HelthPoint <= 0)
         {
             target.GetComponent<SoldierManger>().Dead();
-            findArmy = false;
         }
 
+        findArmy = false;
         yield return null;
     }
 
@@ -269,7 +280,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                if (tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag == "Enemy")
+                if (tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag != "Enemy")
                 {
                     Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
                     NodeArray.Add(tileNode);
@@ -419,8 +430,6 @@ public class EnemyController : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-
-        
     }
 
     public void HpBarScale()

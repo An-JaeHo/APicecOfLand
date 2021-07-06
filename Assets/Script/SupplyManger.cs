@@ -16,7 +16,7 @@ public class SupplyManger : MonoBehaviour
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        UpdateSupply();
+        JustUpdateSupply();
     }
 
     public void UpdateSupply()
