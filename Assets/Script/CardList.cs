@@ -16,505 +16,543 @@ public class CardList : MonoBehaviour
         switch (CardCode)
         {
             case "Card 1":
-                Card1(SoldierPrefeb);
+                Card1(SoldierPrefeb, CardCode);
                 break;
             case "Card 2":
-                Card2(SoldierPrefeb);
+                Card2(SoldierPrefeb, CardCode);
                 break;
             case "Card 3":
-                Card3(SoldierPrefeb);
+                Card3(SoldierPrefeb, CardCode);
                 break;
             case "Card 4":
-                Card4(SoldierPrefeb);
+                Card4(SoldierPrefeb, CardCode);
                 break;
             case "Card 5":
-                Card5(SoldierPrefeb);
+                Card5(SoldierPrefeb, CardCode);
                 break;
             case "Card 6":
-                Card6(SoldierPrefeb);
+                Card6(SoldierPrefeb, CardCode);
                 break;
             case "Card 7":
-                Card7(SoldierPrefeb);
+                Card7(SoldierPrefeb, CardCode);
                 break;
             case "Card 8":
-                Card8(SoldierPrefeb);
+                Card8(SoldierPrefeb, CardCode);
                 break;
             case "Card 9":
-                Card9(SoldierPrefeb);
+                Card9(SoldierPrefeb, CardCode);
                 break;
             case "Card 10":
-                Card10(SoldierPrefeb);
+                Card10(SoldierPrefeb, CardCode);
                 break;
             case "Card 11":
-                Card11(SoldierPrefeb);
+                Card11(SoldierPrefeb, CardCode);
                 break;
             case "Card 12":
-                Card12(SoldierPrefeb);
+                Card12(SoldierPrefeb, CardCode);
                 break;
             case "Card 13":
-                Card13(SoldierPrefeb);
+                Card13(SoldierPrefeb, CardCode);
                 break;
             case "Card 14":
-                Card14(SoldierPrefeb);
+                Card14(SoldierPrefeb, CardCode);
                 break;
             case "Card 15":
-                Card15(SoldierPrefeb);
+                Card15(SoldierPrefeb, CardCode);
                 break;
             case "Card 16":
-                Card16(SoldierPrefeb);
+                Card16(SoldierPrefeb, CardCode);
                 break;
             case "Card 17":
-                Card17(SoldierPrefeb);
+                Card17(SoldierPrefeb, CardCode);
                 break;
             case "Card 18":
-                Card18(SoldierPrefeb);
+                Card18(SoldierPrefeb, CardCode);
                 break;
             case "Card 19":
-                Card19(SoldierPrefeb);
+                Card19(SoldierPrefeb, CardCode);
                 break;
             case "Card 20":
-                Card20(SoldierPrefeb);
+                Card20(SoldierPrefeb, CardCode);
                 break;
             case "Card 21":
-                Card21(SoldierPrefeb);
+                Card21(SoldierPrefeb, CardCode);
                 break;
             case "Card 22":
-                Card22(SoldierPrefeb);
+                Card22(SoldierPrefeb, CardCode);
                 break;
             case "Card 23":
-                Card23(SoldierPrefeb);
+                Card23(SoldierPrefeb, CardCode);
                 break;
             case "Card 24":
-                Card24(EnemyPrefeb);
+                Card24(EnemyPrefeb, CardCode);
                 break;
             case "Card 25":
-                Card25(EnemyPrefeb);
+                Card25(EnemyPrefeb, CardCode);
                 break;
             case "Card 26":
-                Card26(EnemyPrefeb);
+                Card26(EnemyPrefeb, CardCode);
                 break;
             case "Card 27":
-                Card27(EnemyPrefeb);
+                Card27(EnemyPrefeb, CardCode);
                 break;
             case "Card 28":
-                Card28(AreaPrefeb);
+                Card28(EnemyPrefeb, CardCode);
                 break;
             case "Card 29":
-                Card29(AreaPrefeb);
+                Card29(EnemyPrefeb, CardCode);
                 break;
             case "Card 30":
-                Card30(AreaPrefeb);
+                Card30(EnemyPrefeb, CardCode);
                 break;
             case "Card 31":
-                Card31(AreaPrefeb);
+                Card31(EnemyPrefeb, CardCode);
                 break;
             case "Card 32":
-                Card32(AreaPrefeb);
+                Card32(EnemyPrefeb, CardCode);
                 break;
             case "Card 33":
-                Card33(AreaPrefeb);
+                Card33(EnemyPrefeb, CardCode);
                 break;
             case "Card 34":
-                Card34(AreaPrefeb);
+                Card34(EnemyPrefeb, CardCode);
                 break;
             case "Card 35":
-                Card35(AreaPrefeb);
+                Card35(AreaPrefeb, CardCode);
                 break;
             case "Card 36":
-                Card36(AreaPrefeb);
+                Card36(AreaPrefeb, CardCode);
                 break;
             case "Card 37":
-                Card37(AreaPrefeb);
+                Card37(AreaPrefeb, CardCode);
                 break;
             case "Card 38":
-                Card38(AreaPrefeb);
+                Card38(AreaPrefeb, CardCode);
                 break;
             case "Card 39":
-                Card39(AreaPrefeb);
+                Card39(AreaPrefeb, CardCode);
                 break;
             case "Card 40":
-                Card40(AreaPrefeb);
+                Card40(AreaPrefeb, CardCode);
                 break;
             case "Card 41":
-                Card41(AreaPrefeb);
+                Card41(AreaPrefeb, CardCode);
                 break;
             case "Card 42":
-                Card42(AreaPrefeb);
+                Card42(AreaPrefeb, CardCode);
                 break;
             case "Card 43":
-                Card43(AreaPrefeb);
+                Card43(AreaPrefeb, CardCode);
                 break;
             case "Card 44":
-                Card44(AreaPrefeb);
+                Card44(AreaPrefeb, CardCode);
                 break;
             case "Card 45":
-                Card45(AreaPrefeb);
+                Card45(AreaPrefeb, CardCode);
                 break;
             case "Card 46":
-                Card46(AreaPrefeb);
+                Card46(AreaPrefeb, CardCode);
                 break;
             case "Card 47":
-                Card47(AreaPrefeb);
+                Card47(AreaPrefeb, CardCode);
                 break;
             case "Card 48":
-                Card48(AreaPrefeb);
+                Card48(AreaPrefeb, CardCode);
                 break;
             case "Card 49":
-                Card49(AreaPrefeb);
+                Card49(AreaPrefeb, CardCode);
                 break;
             case "Card 50":
-                Card50(AreaPrefeb);
+                Card50(AreaPrefeb, CardCode);
                 break;
             case "Card 51":
-                Card51(AreaPrefeb);
+                Card51(AreaPrefeb, CardCode);
                 break;
             case "Card 52":
-                Card52(AreaPrefeb);
+                Card52(AreaPrefeb, CardCode);
                 break;
             case "Card 53":
-                Card53(AreaPrefeb);
+                Card53(AreaPrefeb, CardCode);
                 break;
             case "Card 54":
-                Card54(AreaPrefeb);
+                Card54(AreaPrefeb, CardCode);
                 break;
             case "Card 55":
-                Card55(AreaPrefeb);
+                Card55(AreaPrefeb, CardCode);
                 break;
             case "Card 56":
-                Card56(AreaPrefeb);
+                Card56(AreaPrefeb, CardCode);
                 break;
             case "Card 57":
-                Card57(AreaPrefeb);
+                Card57(AreaPrefeb, CardCode);
                 break;
             case "Card 58":
-                Card58(AreaPrefeb);
+                Card58(AreaPrefeb, CardCode);
                 break;
         }
     }
 
-    private void Card1(GameObject soldier)
+    private void Card1(GameObject soldier, string code)
     {
         soldier.GetComponent<MakeSoldier>().BaseAttack += 3;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card2(GameObject soldier)
+    private void Card2(GameObject soldier, string code)
     {
         soldier.GetComponent<MakeSoldier>().BaseAttack += 5;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card3(GameObject soldier)
+    private void Card3(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().BaseAttack += 7;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().BaseAttack += 7;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card4(GameObject soldier)
+    private void Card4(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().BaseAttack += 10;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().BaseAttack += 10;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card5(GameObject soldier)
+    private void Card5(GameObject soldier, string code)
     {
-        //soldier.GetComponent<SoldierInfo>().BaseAttack += 10;
-        //soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Defensive += 3;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card6(GameObject soldier)
+    private void Card6(GameObject soldier, string code)
     {
-        //soldier.GetComponent<SoldierInfo>().Defensive += 2;
-        //soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Defensive += 5;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card7(GameObject soldier)
+    private void Card7(GameObject soldier, string code)
     {
-        //soldier.GetComponent<SoldierInfo>().Defensive += 3;
-        //soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Defensive += 7;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card8(GameObject soldier)
+    private void Card8(GameObject soldier, string code)
     {
-        //soldier.GetComponent<SoldierInfo>().Defensive += 5;
-        //soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Defensive += 10;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card9(GameObject soldier)
+    private void Card9(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().AttackRange += 1;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Movement += 1;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card10(GameObject soldier)
+    private void Card10(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().AttackRange += 1;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Movement += 1;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card11(GameObject soldier)
+    private void Card11(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().AttackRange += 1;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Movement += 1;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card12(GameObject soldier)
+    private void Card12(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().HelthPoint += 500;
+        soldier.GetComponent<MakeSoldier>().HelthPoint += 500;
 
-        if (soldier.GetComponent<SoldierManger>().totalHp < soldier.GetComponent<SoldierInfo>().HelthPoint)
+        if (soldier.GetComponent<SoldierManger>().totalHp < soldier.GetComponent<MakeSoldier>().HelthPoint)
         {
-            soldier.GetComponent<SoldierInfo>().HelthPoint = (int)soldier.GetComponent<SoldierManger>().totalHp;
+            soldier.GetComponent<MakeSoldier>().HelthPoint = (int)soldier.GetComponent<SoldierManger>().totalHp;
         }
         
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card13(GameObject soldier)
+    private void Card13(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().HelthPoint += 1000;
+        soldier.GetComponent<MakeSoldier>().HelthPoint += 1000;
 
-        if (soldier.GetComponent<SoldierManger>().totalHp < soldier.GetComponent<SoldierInfo>().HelthPoint)
+        if (soldier.GetComponent<SoldierManger>().totalHp < soldier.GetComponent<MakeSoldier>().HelthPoint)
         {
-            soldier.GetComponent<SoldierInfo>().HelthPoint = (int)soldier.GetComponent<SoldierManger>().totalHp;
+            soldier.GetComponent<MakeSoldier>().HelthPoint = (int)soldier.GetComponent<SoldierManger>().totalHp;
         }
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card14(GameObject soldier)
+    private void Card14(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().HelthPoint += 2000;
+        soldier.GetComponent<MakeSoldier>().HelthPoint += 2000;
 
-        if (soldier.GetComponent<SoldierManger>().totalHp < soldier.GetComponent<SoldierInfo>().HelthPoint)
+        if (soldier.GetComponent<SoldierManger>().totalHp < soldier.GetComponent<MakeSoldier>().HelthPoint)
         {
-            soldier.GetComponent<SoldierInfo>().HelthPoint = (int)soldier.GetComponent<SoldierManger>().totalHp;
+            soldier.GetComponent<MakeSoldier>().HelthPoint = (int)soldier.GetComponent<SoldierManger>().totalHp;
         }
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card15(GameObject soldier)
+    private void Card15(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().Movement += 1;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Movement += 1;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card16(GameObject soldier)
+    private void Card16(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().Movement += 2;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Movement += 2;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card17(GameObject soldier)
+    private void Card17(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierInfo>().Movement += 3;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<MakeSoldier>().Movement += 3;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card18(GameObject soldier)
+    private void Card18(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierManger>().movePoint = true;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<SoldierManger>().countAttack = 0.2f;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card19(GameObject soldier)
+    private void Card19(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierManger>().movePoint = true;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<SoldierManger>().countAttack = 0.4f;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card20(GameObject soldier)
+    private void Card20(GameObject soldier, string code)
     {
-        soldier.GetComponent<SoldierManger>().movePoint = true;
-        soldier.GetComponent<SoldierManger>().MakeBuffIcon(carInfo);
+        soldier.GetComponent<SoldierManger>().countAttack = 0.6f;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card21(GameObject soldier)
+    private void Card21(GameObject soldier, string code)
     {
-        //스킬을 사용한 유닛을 공격 할 때 공격 유닛의 공격력을 -10 합니다.
+        soldier.GetComponent<SoldierManger>().cardMovePoint = true;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card22(GameObject soldier)
+    private void Card22(GameObject soldier, string code)
     {
-        //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -2 합니다.
+        soldier.GetComponent<SoldierManger>().cardMovePoint = true;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card23(GameObject soldier)
+    private void Card23(GameObject soldier, string code)
     {
-        //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -3 합니다.
+        soldier.GetComponent<SoldierManger>().cardMovePoint = true;
+        soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }
 
-    private void Card24(GameObject enemy)
+    private void Card24(GameObject enemy, string code)
     {
-        //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -5 합니다.
+        enemy.GetComponent<MakeEnemy>().BaseDefensive -= 3;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card25(GameObject enemy)
+    private void Card25(GameObject enemy, string code)
     {
-        //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -7 합니다.
+        enemy.GetComponent<MakeEnemy>().BaseDefensive -= 5;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card26(GameObject enemy)
+    private void Card26(GameObject enemy, string code)
     {
-        //스킬을 사용한 유닛이 적을 공격 할 때 방어 유닛의 방어력을 -10 합니다.
+        enemy.GetComponent<MakeEnemy>().BaseDefensive -= 7;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card27(GameObject enemy)
+    private void Card27(GameObject enemy, string code)
     {
-        //해당 유닛을 가장 가까운 요새 또는 수도로 귀환 시킵니다.
+        enemy.GetComponent<MakeEnemy>().BaseDefensive -= 10;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card28(GameObject area)
+    private void Card28(GameObject enemy, string code)
     {
-        //훈련 검병을 1기 소환합니다.
+        enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 500;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card29(GameObject area)
+    private void Card29(GameObject enemy, string code)
     {
-        //훈련 창병을 1기 소환합니다.
+        enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 1000;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card30(GameObject area)
+    private void Card30(GameObject enemy, string code)
     {
-        //훈련 궁병을 1기 소환합니다.
+        enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 1500;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card31(GameObject area)
+    private void Card31(GameObject enemy, string code)
     {
-        //훈련 기병을 1기 소환합니다.
+        enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 2000;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card32(GameObject area)
+    private void Card32(GameObject enemy, string code)
     {
-        //숙련 검병을 1기 소환합니다.
+        enemy.GetComponent<EnemyController>().movePoint = false;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card33(GameObject area)
+    private void Card33(GameObject enemy, string code)
     {
-        //숙련 창병을 1기 소환합니다.
-        
+        enemy.GetComponent<EnemyController>().movePoint = false;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card34(GameObject area)
+    private void Card34(GameObject enemy, string code)
     {
-        //숙련 궁병을 1기 소환합니다.
+        enemy.GetComponent<EnemyController>().movePoint = false;
+        enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
-    private void Card35(GameObject area)
+    private void Card35(GameObject area, string code)
     {
         area.GetComponent<AreaManger>().player.milk += 50;
         GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card36(GameObject area)
+    private void Card36(GameObject area, string code)
     {
-        //정예 검병을 1기 소환합니다.
-    }
-
-    private void Card37(GameObject area)
-    {
-        //정예 창병을 1기 소환합니다.
-    }
-
-    private void Card38(GameObject area)
-    {
-    }
-
-    private void Card39(GameObject area)
-    {
-    }
-
-    private void Card40(GameObject area)
-    {
-        //적의 검병을 1기 소환합니다.
-    }
-
-    private void Card41(GameObject area)
-    {
-        //청의 창병을 1기 소환합니다.
-    }
-
-    private void Card42(GameObject area)
-    {
-        //녹의 궁병을 1기 소환합니다.
-    }
-
-    private void Card43(GameObject area)
-    {
-        //백의 기병을 1기 소환합니다.
-    }
-
-    private void Card44(GameObject area)
-    {
-        //수도를 이전 할 수있습니다.
-    }
-
-    private void Card45(GameObject area)
-    {
-    }
-
-    private void Card46(GameObject area)
-    {
-        //아군 1부대에 부대 인원 + 500을 추가합니다.
-    }
-
-    private void Card47(GameObject area)
-    {
-        area.GetComponent<AreaManger>().player.milk += (int)(area.GetComponent<AreaManger>().player.milk *0.1f);
+        area.GetComponent<AreaManger>().player.milk += 100;
         GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card48(GameObject area)
+    private void Card37(GameObject area, string code)
     {
-        //아군 2부대에 부대 인원 + 1000을 추가합니다.
+        area.GetComponent<AreaManger>().player.milk += 200;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card49(GameObject area)
+    private void Card38(GameObject area, string code)
     {
-        //아군 1부대에 부대 인원 + 2000을 추가합니다.
+        area.GetComponent<AreaManger>().player.flour += 50;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card50(GameObject area)
+    private void Card39(GameObject area, string code)
     {
-        //아군 2부대에 부대 인원 + 2000을 추가합니다.
+        area.GetComponent<AreaManger>().player.flour += 100;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card51(GameObject area)
+    private void Card40(GameObject area, string code)
     {
-        //적군 1부대에 부대 인원 - 500을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
+        area.GetComponent<AreaManger>().player.flour += 200;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card52(GameObject area)
+    private void Card41(GameObject area, string code)
     {
-        //적군 1부대에 부대 인원 -1000을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
+        area.GetComponent<AreaManger>().player.sugar += 50;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card53(GameObject area)
+    private void Card42(GameObject area, string code)
     {
-        //적군 1부대에 부대 인원 -1500을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
+        area.GetComponent<AreaManger>().player.sugar +=100;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card54(GameObject area)
+    private void Card43(GameObject area, string code)
     {
-        //적군 1부대에 부대 인원 -2000을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
+        area.GetComponent<AreaManger>().player.sugar += 200;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card55(GameObject area)
+    private void Card44(GameObject area, string code)
     {
-        //적군 1부대에 부대 인원 -2500을 합니다. 1등급 100%적용. 2등급 60% 적용,3등급 40% 적용, 4등급 20% 적용
+        area.GetComponent<AreaManger>().player.people += 1;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card56(GameObject area)
+    private void Card45(GameObject area, string code)
     {
-        //1칸을 건너 띌 수 있게 해줍니다.
+        area.GetComponent<AreaManger>().player.people += 2;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card57(GameObject area)
+    private void Card46(GameObject area, string code)
     {
-
+        area.GetComponent<AreaManger>().player.people += 3;
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
-    private void Card58(GameObject area)
+    private void Card47(GameObject area, string code)
     {
+        area.GetComponent<AreaManger>().player.milk += (int)(area.GetComponent<AreaManger>().player.milk * 0.1f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
 
+    private void Card48(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.milk += (int)(area.GetComponent<AreaManger>().player.milk * 0.2f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card49(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.milk += (int)(area.GetComponent<AreaManger>().player.milk * 0.3f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card50(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.milk += (int)(area.GetComponent<AreaManger>().player.milk * 0.5f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card51(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.flour += (int)(area.GetComponent<AreaManger>().player.flour * 0.1f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card52(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.flour += (int)(area.GetComponent<AreaManger>().player.flour * 0.2f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card53(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.flour += (int)(area.GetComponent<AreaManger>().player.flour * 0.3f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card54(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.flour += (int)(area.GetComponent<AreaManger>().player.flour * 0.5f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card55(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.sugar += (int)(area.GetComponent<AreaManger>().player.sugar * 0.1f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card56(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.sugar += (int)(area.GetComponent<AreaManger>().player.sugar * 0.2f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card57(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.sugar += (int)(area.GetComponent<AreaManger>().player.sugar * 0.3f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void Card58(GameObject area, string code)
+    {
+        area.GetComponent<AreaManger>().player.sugar += (int)(area.GetComponent<AreaManger>().player.sugar * 0.5f);
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 }

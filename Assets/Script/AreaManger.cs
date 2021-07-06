@@ -28,36 +28,6 @@ public class AreaManger : MonoBehaviour
         pureColor = transform.GetComponent<SpriteRenderer>().color;
     }
 
-    private void Start()
-    {
-        if (transform.tag == "Buliding")
-        {
-            switch (area.Code)
-            {
-                case "Area 14":
-                    rangeManger.BulidingRange(transform);
-                    break;
-                case "Area 15":
-                    break;
-                case "Area 16":
-                    break;
-                case "Area 17":
-                    break;
-                case "Area 18":
-                    break;
-                case "Area 19":
-                    break;
-                case "Area 20":
-                    break;
-                case "Area 24":
-                    break;
-                case "Area 25":
-                    break;
-            }
-        }
-
-    }
-
     public void CheckUpdateMaterial()
     {
         if (transform.tag == "Area")
@@ -226,7 +196,8 @@ public class AreaManger : MonoBehaviour
             transform.GetComponent<MakeArea>().Effect = null;
             transform.GetComponent<SpriteRenderer>().sprite = pureSprite;
             transform.GetComponent<SpriteRenderer>().color = Color.white;
-            transform.tag = tag;
+
+            transform.tag = "Grass";
         }
     }
 }

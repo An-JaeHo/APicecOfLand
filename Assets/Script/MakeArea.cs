@@ -64,6 +64,7 @@ public class MakeArea : AreaInfo
                 Movement = true;
 
                 areaInfoImage.sprite = areaInfo.information.area[i].Picture;
+
                 if(areaInfo.information.area[i].Code == "Area 17" || areaInfo.information.area[i].Code == "Area 18" || areaInfo.information.area[i].Code == "Area 19")
                 {
                     transform.tag = "Barracks";

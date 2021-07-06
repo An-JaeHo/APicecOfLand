@@ -71,7 +71,7 @@ public class MakeSoldier : SoldierInfo
                 AttackRange = TroopInfo.information.monster[i].AttackRange;
                 Movement = TroopInfo.information.monster[i].Movement;
 
-                Level = 0;
+                Level = 1;
                 pureAttack = TroopInfo.information.monster[i].BaseAttack;
                 pureDefensive = TroopInfo.information.monster[i].Defensive;
                 pureRange = TroopInfo.information.monster[i].AttackRange;

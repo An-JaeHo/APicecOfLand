@@ -26,7 +26,7 @@ public class GDController : GDInfo
 {
     public JsonManger TroopInfo;
     public SpriteRenderer troopInfoImage;
-    
+
     public void MakeGD(string code)
     {
         troopInfoImage = GetComponent<SpriteRenderer>();

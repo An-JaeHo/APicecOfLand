@@ -26,13 +26,17 @@ public class SoldierManger : MonoBehaviour
     public Sprite buffIconPrefeb;
     public List<Sprite> buffList;
     public List<GameObject> buffPrefebList;
+    public int buffCount;
 
     float pureattack;
     float puredefend;
+    float pureMoveRange;
     public float totalHp;
     public bool movePoint;
     public bool cardMovePoint;
     public int builderPoint;
+
+    public float countAttack;
 
     void Start()
     {
@@ -47,9 +51,11 @@ public class SoldierManger : MonoBehaviour
         movePoint = true;
         cardMovePoint = false;
         capitalPoint = false;
+        countAttack = 0;
 
         pureattack = transform.GetComponent<MakeSoldier>().BaseAttack;
         puredefend = transform.GetComponent<MakeSoldier>().Defensive;
+        pureMoveRange = transform.GetComponent<MakeSoldier>().Movement;
         builderPoint = 0;
     }
 
@@ -69,7 +75,7 @@ public class SoldierManger : MonoBehaviour
     public IEnumerator Move()
     {
         movePosition = new Vector3(transform.parent.position.x + 10, transform.parent.position.y + 25, transform.parent.position.z - 10);
-
+        ani.SetBool("Move", true);
         while (transform.position != movePosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 300f);
@@ -85,10 +91,18 @@ public class SoldierManger : MonoBehaviour
             move = false;
             stayTime = 0;
             buttonManger.button.GetComponent<Button>().interactable = true;
+            ani.SetBool("Move", false);
             if (transform.parent.tag == "Enemy Base")
             {
                 transform.parent.GetComponent<AreaManger>().TurnArea();
             }
+        }
+
+        
+        if (cardMovePoint)
+        {
+            movePoint = true;
+            cardMovePoint = false;
         }
 
         yield return null;
@@ -100,29 +114,50 @@ public class SoldierManger : MonoBehaviour
         {
             float randnum = Random.Range(0.8f, 1.2f);
             //적이 받는 데미지
-            //enemy.GetComponent<MakeEnemy>().HelthPoint -=                (int)((soldier.BaseAttack * randnum) - ((enemy.GetComponent<MakeEnemy>().Defensive)));
+            enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(soldier.BaseAttack * 10);
             ani.SetTrigger("Attack");
             yield return new WaitForSeconds(0.5f);
             enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
             yield return new WaitForSeconds(0.5f);
-            enemy.GetComponent<MakeEnemy>().BaseHelthPoint = 0;
             attack = false;
             movePoint = false;
             enemy.GetComponent<EnemyController>().Dead();
+            enemy.GetComponent<EnemyController>().HpBarScale();
         }
 
-        HpBarScale();
+        if (cardMovePoint)
+        {
+            movePoint = true;
+            cardMovePoint = false;
+        }
 
         yield return null;
     }
 
     public void HpBarScale()
     {
-        //Transform hpBar = transform.GetChild(0).GetChild(0);
+        Transform hpBar = transform.GetChild(0).GetChild(0);
 
-        //float nowHp = soldier.HelthPoint / totalHp;
-        //hpBar.localScale = new Vector3(nowHp, 1f);
-        //hpBar.localScale = new Vector3(nowHp, 1f);
+        float nowHp = soldier.HelthPoint / totalHp;
+        hpBar.localScale = new Vector3(nowHp, 1f);
+        hpBar.localScale = new Vector3(nowHp, 1f);
+    }
+
+    public void Dead()
+    {
+        if (transform.GetComponent<MakeSoldier>().HelthPoint <= 0)
+        {
+            if(transform.tag == "Army")
+            {
+                buttonManger.amrys.Remove(gameObject);
+            }
+            else
+            {
+                buttonManger.builders.Remove(gameObject);
+            }
+            
+            Destroy(this.gameObject);
+        }
     }
 
     public void CheckBuildCount()
@@ -142,14 +177,50 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
-    public void MakeBuffIcon(Sprite cardPicture)
+    public void MakeBuffIcon(string code)
     {
         int i = buffPrefebList.Count;
         GameObject icon = Instantiate(buffIconGameObj, transform);
+        icon.GetComponent<InputSkill>().MakeCard(code);
         icon.GetComponent<SpriteRenderer>().sortingOrder = transform.GetComponent<SpriteRenderer>().sortingOrder + 1;
-        icon.GetComponent<SpriteRenderer>().sprite = cardPicture;
+        icon.GetComponent<SpriteRenderer>().sprite = icon.GetComponent<InputSkill>().Picture;
+        buffCount = icon.GetComponent<InputSkill>().Turn;
 
-        icon.transform.position = new Vector3(icon.transform.position.x - 40+((i-1)*25), icon.transform.position.y + 30);
+        icon.transform.position = new Vector3(icon.transform.position.x - 10+((i-1)*25), icon.transform.position.y + 20);
         buffPrefebList.Add(icon);
+    }
+
+    public void ReturnPure()
+    {
+        soldier.BaseAttack = pureattack;
+        soldier.Defensive = puredefend;
+        soldier.Movement = (int)pureMoveRange;
+    }
+
+    public void CheckBuff()
+    {
+        for (int i = 0; i < buffPrefebList.Count; i++)
+        {
+            if(buffPrefebList[i].GetComponent<InputSkill>().Turn!= 0)
+            {
+                switch (buffPrefebList[i].GetComponent<InputSkill>().Code)
+                {
+                    case "Card 10":
+                        soldier.Movement++;
+                        break;
+                    case "Card 11":
+                        soldier.Movement++;
+                        break;
+                    case "Card 22":
+                        cardMovePoint = true;
+                        break;
+                    case "Card 23":
+                        cardMovePoint = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }

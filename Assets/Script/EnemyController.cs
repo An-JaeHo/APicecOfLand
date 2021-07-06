@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour
     public bool finishMove;
     public bool findArmy;
     public Transform parentTile;
+    List<Transform> targets;
 
     //카드 생성
     public InvenManger invenManger;
@@ -44,7 +45,19 @@ public class EnemyController : MonoBehaviour
     public PlayerInfo playerInfo;
     public float totalHp;
     public MakeEnemy enemy;
+    public GDController gd;
     public Animator ani;
+    
+
+    //버프 카운트
+    public int buffCount;
+    public GameObject buffIconGameObj;
+    public Sprite buffIconPrefeb;
+    public List<Sprite> buffList;
+    public List<GameObject> buffPrefebList;
+    public bool movePoint;
+    public bool firstStart;
+    public int pureDefend;
 
     void Start()
     {
@@ -58,207 +71,126 @@ public class EnemyController : MonoBehaviour
         tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
         invenManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InvenManger>();
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        enemy = GetComponent<MakeEnemy>();
-        totalHp = enemy.BaseHelthPoint;
         finishMove = false;
         findArmy = false;
-        ani = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
+        firstStart = true;
+
+
         //HpBarScale();
+        movePoint = true;
+        ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
+
+        if (transform.tag == "Enemy")
+        {
+            enemy = GetComponent<MakeEnemy>();
+            totalHp = enemy.BaseHelthPoint;
+            pureDefend = (int)enemy.BaseDefensive;
+        }
+        else
+        {
+            gd = GetComponent<GDController>();
+            totalHp = gd.HelthPoint;
+            pureDefend = (int)gd.Defensive;
+        }
     }
 
     public void EnemyMove()
     {
-        parentTile = transform.parent;
-        tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
-        int myName = int.Parse(transform.parent.parent.name);
-
-        rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
-        rangeTiles = rangeManger.EnemyRange(gameObject);
-        string code = transform.GetComponent<MakeEnemy>().Code;
-
-        if (parentTile)
+        if (movePoint && !firstStart)
         {
-            transform.SetParent(parentTile);
-        }
+            parentTile = transform.parent;
+            tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
+            int myName = int.Parse(transform.parent.parent.name);
 
-        switch (code)
-        {
-            case "Enemy 1":
-                Sword();
-                break;
-            case "Enemy 2":
-                Bow();
-                break;
-            case "Enemy 3":
-                SpearMan();
-                break;
-            case "Enemy 4":
-                CavalryMan();
-                break;
-        }
+            rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
+            rangeTiles = rangeManger.EnemyRange(gameObject);
+            //string code = transform.GetComponent<MakeEnemy>().Code;
 
-        PathFinding();
-
-        for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-        {
-            //위아래 17 양옆 1
-            if(tiles.activeChildtileList[i].GetChild(0).childCount !=0)
+            if (parentTile)
             {
-                if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
-                || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
-                {
-                    findArmy = true;
-                    target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
+                transform.SetParent(parentTile);
             }
-        }
 
-        if (findArmy)
-        {
-            StartCoroutine(Attack());
-        }
-        else
-        {
-            if (FinalNodeList.Count != 0)
+            Sword();
+
+            PathFinding();
+
+            for (int i = 0; i < tiles.activeChildtileList.Count; i++)
             {
-                for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+                //위아래 17 양옆 1
+                if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
                 {
-                    if (FinalNodeList[1].x == tiles.activeChildtileList[i].GetChild(0).position.x 
-                        && FinalNodeList[1].y == tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f)
+                    if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
+                    || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
                     {
-                        transform.SetParent(tiles.activeChildtileList[i].GetChild(0));
+                        if(tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag =="Army" || tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Builder")
+                        {
+                            findArmy = true;
+                            target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
+                        }
+                        else
+                        {
+                            findArmy = false;
+                            target = null;
+                        }
                     }
                 }
-                
-                parentTile = transform.parent;
-                StartCoroutine(Move());
             }
-            rangeTiles.Clear();
+
+            if (findArmy)
+            {
+                StartCoroutine(Attack());
+            }
+            else
+            {
+                if (FinalNodeList.Count != 0)
+                {
+                    for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+                    {
+                        if (FinalNodeList[1].x == tiles.activeChildtileList[i].GetChild(0).position.x
+                            && FinalNodeList[1].y == tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f)
+                        {
+                            transform.SetParent(tiles.activeChildtileList[i].GetChild(0));
+                        }
+                    }
+
+                    parentTile = transform.parent;
+                    StartCoroutine(Move());
+                }
+                rangeTiles.Clear();
+            }
         }
     }
 
     #region  상대병력 이동
     private void Sword()
     {
-        List<Transform> target = new List<Transform>();
-        
-        for (int i = 0; i < rangeTiles.Count; i++)
-        {
-            if (rangeTiles[i].childCount != 0)
-            {
-                if (rangeTiles[i].GetChild(0).tag == "Monster")
-                {
-                    //target.Add(rangeTiles[i]);
-                    targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                    return;
-                }
-                
-                if (rangeTiles[i].tag == "Capital")
-                {
-                    //target.Add(rangeTiles[i]);
-                    targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                    return;
-                }
-            }
-            else
-            {
-                if (rangeTiles[i].tag == "Area" || rangeTiles[i].tag == "Barrack")
-                {
-                    //target.Add(rangeTiles[i]);
-                    targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                    return;
-                }
+        targets = new List<Transform>();
 
-                if (rangeTiles[i].tag == "Capital")
-                {
-                    //target.Add(rangeTiles[i]);
-                    targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                    return;
-                }
+        for (int i = 0; i < tiles.activeChildtileList.Count; i++)
+        {
+            if (tiles.activeChildtileList[i].GetChild(0).tag == "Area" || tiles.activeChildtileList[i].GetChild(0).tag == "Barrack")
+            {
+                targets.Add(tiles.activeChildtileList[i].GetChild(0));
+                Debug.Log("진짜");
             }
+
+            if (tiles.activeChildtileList[i].GetChild(0).tag == "Capital")
+            {
+                Debug.Log("좇같다");
+                targets.Add(tiles.activeChildtileList[i].GetChild(0));
+            }
+
         }
+        float num = Mathf.Infinity;
 
-        //Mathf.Abs((int)Vector3.Distance(obj.transform.parent.position, tileInfo.transform.position)
-
-        //int num = Mathf.Abs((int)Vector3.Distance(transform.position, target[0].position));
-
-        //for(int i=0; i< target.Count; i++)
-        //{
-        //    if (num >= Mathf.Abs((int)Vector3.Distance(transform.position, target[i].position)))
-        //    {
-        //        num = Mathf.Abs((int)Vector3.Distance(transform.position, target[i].position));
-        //        targetPos = new Vector2Int((int)target[i].position.x, (int)target[i].position.y);
-        //        //Debug.Log(target[i].name + " " + Mathf.Abs((int)Vector3.Distance(transform.position, target[i].position)));
-        //    }
-        //}
-    }
-
-    private void Bow()
-    {
-        for (int i = 0; i < rangeTiles.Count; i++)
+        for(int i=0; i< targets.Count; i++)
         {
-            if (rangeTiles[i].tag == "Army")
+            if (num > Mathf.Abs((int)Vector2.Distance(transform.position, targets[i].position)))
             {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                return;
+                num = Mathf.Abs((int)Vector2.Distance(transform.position, targets[i].position));
+                targetPos = new Vector2Int((int)targets[i].position.x, (int)targets[i].position.y);
             }
-
-            if (rangeTiles[i].tag == "Area" || rangeTiles[i].tag == "Barrack")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                return;
-            }
-
-            //if (rangeTiles[i].tag == "Area")
-            //{
-
-            //}
-        }
-    }
-
-    private void SpearMan()
-    {
-        for (int i = 0; i < rangeTiles.Count; i++)
-        {
-            if (rangeTiles[i].tag == "Army")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                return;
-            }
-
-            if (rangeTiles[i].tag == "Area" || rangeTiles[i].tag == "Barrack")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y); 
-                return;
-            }
-
-            //if (rangeTiles[i].tag == "Area")
-            //{
-
-            //}
-        }
-    }
-
-    private void CavalryMan()
-    {
-        for (int i = 0; i < rangeTiles.Count; i++)
-        {
-            if (rangeTiles[i].tag == "Area" || rangeTiles[i].tag == "Barrack")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y);
-                return;
-            }
-
-            if (rangeTiles[i].tag == "Army")
-            {
-                targetPos = new Vector2Int((int)rangeTiles[i].position.x, (int)rangeTiles[i].position.y); 
-                return;
-            }
-
-            //if (rangeTiles[i].tag == "Area")
-            //{
-
-            //}
         }
     }
     #endregion
@@ -278,26 +210,48 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
 
         ani.SetBool("Move", false);
-        buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }
 
     IEnumerator Attack()
     {
         float randnum = Random.Range(0.8f, 1.2f);
-        target.GetComponent<MakeSoldier>().HelthPoint -= (int)((transform.GetComponent<MakeEnemy>().BaseAttack * randnum) - (target.GetComponent<MakeSoldier>().Defensive));
-        target.GetComponent<SoldierManger>().HpBarScale();
-        ani.SetTrigger("Attack");
         buttonManger.button.GetComponent<Button>().interactable = false;
 
-        if (target.GetComponent<SoldierManger>().totalHp <=0)
+        if (transform.tag == "Enemy")
         {
-            buttonManger.builders.Remove(target.gameObject);
-            Destroy(target.gameObject);
+            target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<MakeEnemy>().BaseAttack * 10);
+
+            if (target.GetComponent<SoldierManger>().countAttack > 0)
+            {
+                transform.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack*10 * target.GetComponent<SoldierManger>().countAttack);
+                target.GetComponent<SoldierManger>().countAttack = 0;
+            }
         }
-        yield return new WaitForSeconds(1f);
-        findArmy = false;
-        buttonManger.button.GetComponent<Button>().interactable = true;
+        else
+        {
+            target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<GDController>().BaseAttack * 10);
+
+            if (target.GetComponent<SoldierManger>().countAttack > 0)
+            {
+                transform.GetComponent<GDController>().HelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack*10 * target.GetComponent<SoldierManger>().countAttack);
+                target.GetComponent<SoldierManger>().countAttack = 0;
+            }
+        }
+        
+        target.GetComponent<SoldierManger>().HpBarScale();
+        ani.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(0.8f);
+        target.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
+        yield return new WaitForSeconds(0.7f);
+
+        if (target.GetComponent<MakeSoldier>().HelthPoint <= 0)
+        {
+            target.GetComponent<SoldierManger>().Dead();
+            findArmy = false;
+        }
+
         yield return null;
     }
 
@@ -307,8 +261,11 @@ public class EnemyController : MonoBehaviour
         NodeArray = new List<Node>();
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
-            NodeArray.Add(tileNode);
+            if(tiles.activeChildtileList[i].transform.GetChild(0).childCount ==0)
+            {
+                Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
+                NodeArray.Add(tileNode);
+            }
         }
         
         // 시작과 끝 노드, 열린리스트와 닫힌리스트, 마지막리스트 초기화
@@ -433,24 +390,81 @@ public class EnemyController : MonoBehaviour
 
     public void Dead()
     {
-        if (transform.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
+        if(transform.tag =="Enemy")
         {
-            gameObject.SetActive(false);
-            invenManger.InputCard(GetComponent<MakeEnemy>().Grade);
-            buttonManger.enemys.Remove(gameObject);
-            transform.SetParent(GameObject.Find("ArmyPool").transform);
-            playerInfo.killingPoint++;
+            if (transform.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
+            {
+                invenManger.InputCard(GetComponent<MakeEnemy>().Grade);
+                buttonManger.enemys.Remove(gameObject);
+                playerInfo.killingPoint++;
+                Destroy(this.gameObject);
+            }
         }
+        else
+        {
+            if (transform.GetComponent<GDController>().HelthPoint <= 0)
+            {
+                invenManger.InputCard(4);
+                buttonManger.enemys.Remove(gameObject);
+                playerInfo.killingPoint++;
+                Destroy(this.gameObject);
+            }
+        }
+
+        
     }
 
-    //public void HpBarScale()
-    //{
-    //    Transform hpBar = transform.GetChild(0).GetChild(0);
+    public void HpBarScale()
+    {
+        if(transform.tag == "Enemy")
+        {
+            Transform hpBar = transform.GetChild(0).GetChild(0);
+            float nowHp = enemy.BaseHelthPoint / totalHp;
+            hpBar.localScale = new Vector3(nowHp, 1f);
+        }
+        else
+        {
+            Transform hpBar = tiles.bossHP.transform.GetChild(0).GetChild(0);
+            float nowHp = transform.GetComponent<GDController>().HelthPoint / totalHp;
+            hpBar.localScale = new Vector3(nowHp, 1f);
 
-    //    float nowHp = enemy.HelthPoint / totalHp;
-    //    hpBar.localScale = new Vector3(nowHp, 1f);
-    //    //hpBar.localScale = new Vector3(nowHp, 1f);
-    //}
+            tiles.bossHP.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = ((int)(nowHp * 100)).ToString()+"%";
+        }
+        
+    }
+
+    public void MakeBuffIcon(string code)
+    {
+        int i = buffPrefebList.Count;
+        GameObject icon = Instantiate(buffIconGameObj, transform);
+        icon.GetComponent<InputSkill>().MakeCard(code);
+        icon.GetComponent<SpriteRenderer>().sortingOrder = transform.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        icon.GetComponent<SpriteRenderer>().sprite = icon.GetComponent<InputSkill>().Picture;
+
+        icon.transform.position = new Vector3(icon.transform.position.x - 10 + ((i - 1) * 25), icon.transform.position.y + 20);
+        buffPrefebList.Add(icon);
+    }
+
+    public void CheckBuff()
+    {
+        for (int i = 0; i < buffPrefebList.Count; i++)
+        {
+            if (buffPrefebList[i].GetComponent<InputSkill>().Turn != 0)
+            {
+                switch (buffPrefebList[i].GetComponent<InputSkill>().Code)
+                {
+                    case "Card 33":
+                        movePoint = false;
+                        break;
+                    case "Card 34":
+                        movePoint = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
 }
 
 
