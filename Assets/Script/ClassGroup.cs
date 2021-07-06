@@ -54,6 +54,7 @@ public class Enemy
     public string Spone2;
     public string Spone3;
     public string Drop;
+    public int DropExperiencePoint;
 }
 
 [System.Serializable]

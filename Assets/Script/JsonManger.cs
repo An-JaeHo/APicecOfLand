@@ -54,11 +54,13 @@ public class JsonManger : GenericSingletonClass<JsonManger>
         if (www.error != null)
         {
             //에러상황 던져줌
-            throw new Exception("www downloaded : " + www.error);
+            //throw new Exception("www downloaded : " + www.error);
         }
 
         //jsonString에다가 받은 데이터를 string으로 넣어줌
         jsonString = www.text;
+
+        information = JsonUtility.FromJson<Information>(jsonString);
 
         LoadItem();
         loadAllImg();

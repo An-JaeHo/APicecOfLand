@@ -16,7 +16,7 @@ public class BarrackController : MonoBehaviour
     public SupplyManger supplyManger;
     public ButtonManger buttonManger;
     public InputManger inputManger;
-
+    public TileManger tileManger;
     public GameObject[] MonsterObj;
 
     public int usingPeople;
@@ -38,6 +38,7 @@ public class BarrackController : MonoBehaviour
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         inputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
+        tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
         i = 0;
         usingPeople = 0;
         object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
@@ -73,7 +74,7 @@ public class BarrackController : MonoBehaviour
             supplyManger.UpdateSupply();
             gameObject.SetActive(false);
         }
-
+        tileManger.CheckTile();
         inputManger.mouseCheck = true;
     }
 

@@ -24,6 +24,7 @@ public class EnemyInfo : MonoBehaviour
     public string Spone2;
     public string Spone3;
     public string Drop;
+    public int DropExperiencePoint;
 }
 
 public class MakeEnemy : EnemyInfo
@@ -60,7 +61,7 @@ public class MakeEnemy : EnemyInfo
                 Spone2 = enemyInfo.information.enemy[i].Code;
                 Spone3 = enemyInfo.information.enemy[i].Code;
                 Drop = enemyInfo.information.enemy[i].Code;
-
+                DropExperiencePoint = enemyInfo.information.enemy[i].DropExperiencePoint; 
                 //GetComponent<SpriteRenderer>().sprite = Picture;
             }
         }

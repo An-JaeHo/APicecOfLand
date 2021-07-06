@@ -64,7 +64,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else
         {
-
             if (inputManger.hitObj.tag == skill.Type)
             {
                 card.carInfo = skill.Picture;
@@ -103,7 +102,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
 
         inputManger.hitObj = collision.transform;
-        Debug.Log(collision.transform.tag);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

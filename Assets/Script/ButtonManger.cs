@@ -20,7 +20,7 @@ public class ButtonManger : MonoBehaviour
     public List<GameObject> amrys;
     public List<GameObject> builders;
     public Timer timer;
-    float buttonTimer;
+    public float buttonTimer;
 
     //타일 구매용
     public int food;
@@ -66,14 +66,14 @@ public class ButtonManger : MonoBehaviour
     {
         buttonTimer += Time.deltaTime;
 
-        //if (buttonTimer > 1f)
-        //{
-        //    button.GetComponent<Button>().interactable = true;
-        //}
-        //else
-        //{
-        //    button.GetComponent<Button>().interactable = false;
-        //}
+        if (buttonTimer > 1f)
+        {
+            button.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            button.GetComponent<Button>().interactable = false;
+        }
     }
     #region 일반적인 버튼모음
     public void SkillInvenButton()
@@ -340,7 +340,7 @@ public class ButtonManger : MonoBehaviour
         panel = CreateAreaPrefab.GetComponent<PanelController>();
         playerInfo.flour -= panel.upgradeWood;
         playerInfo.sugar -= panel.upgradeIron;
-
+        tileManger.CheckTile();
         //if (int.Parse(input.army.parent.parent.name) + 1 == int.Parse(input.landObj.transform.parent.name))
         //{
         //    input.army.transform.localScale = new Vector3(1, 1);
@@ -390,7 +390,7 @@ public class ButtonManger : MonoBehaviour
             //{
             //    input.army.transform.localScale = new Vector3(-1, 1);
             //}
-
+            tileManger.CheckTile();
             input.army.transform.SetParent(UpgradeLand);
             input.moveSoldier.move = true;
             input.army.transform.GetComponent<SoldierManger>().SoldierAction();
@@ -509,10 +509,15 @@ public class ButtonManger : MonoBehaviour
                 if (enemys[i].transform.parent.tag == "Area" 
                     || enemys[i].transform.parent.tag == "Barracks")
                 {
-                    enemys[i].transform.parent.GetComponent<AreaManger>().TurnArea();
                     //효과음
-                    enemys[i].transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
-                    enemys[i].transform.GetComponent<AudioSource>().Play();
+                    if (!enemys[i].transform.parent.GetComponent<MakeArea>().Destroy)
+                    {
+                        enemys[i].transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
+                        enemys[i].transform.GetComponent<AudioSource>().Play();
+                    }
+
+                    enemys[i].transform.parent.GetComponent<AreaManger>().TurnArea();
+                    
                     yield return new WaitForSeconds(0.5f);
                 }
 
@@ -544,7 +549,6 @@ public class ButtonManger : MonoBehaviour
                 }
                 
                 enemys[i].GetComponent<EnemyController>().CheckBuff();
-                enemys[i].GetComponent<EnemyController>().firstStart = false;
             }
         }
 
@@ -577,7 +581,13 @@ public class ButtonManger : MonoBehaviour
     public void TurnEnd()
     {
         playerInfo.turnPoint++;
+        playerInfo.milk += playerInfo.updateMilk;
+        playerInfo.flour += playerInfo.updateFlour;
+        playerInfo.sugar += playerInfo.updateSugar;
+
         buttonTimer = 0;
+        
+
         if (playerInfo.turnPoint == 50)
         {
             int rand = Random.Range(200, 270);
@@ -593,15 +603,13 @@ public class ButtonManger : MonoBehaviour
             }
         }
 
-        playerInfo.milk += playerInfo.updateMilk;
-        playerInfo.flour += playerInfo.updateFlour;
-        playerInfo.sugar += playerInfo.updateSugar;
-        
+        StartCoroutine(moveEnemy());
         rangeManger.rangeList.Clear();
         supplyManger.UpdateSupply();
         GameObject.Find("ButtonMgr").transform.GetChild(6).GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
-        StartCoroutine(moveEnemy());
+        tileManger.CheckTile();
+        
     }
 }

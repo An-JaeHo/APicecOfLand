@@ -174,13 +174,15 @@ public class TileManger : MonoBehaviour
 
     public void CheckTile()
     {
-        activeChildtileList.Clear();
-
-        for (int i = 0; i < activeTileList.Count; i++)
+        for (int i = 0; i < tileList.Count; i++)
         {
-            for (int j = 0; j < activeTileList[i].transform.childCount; j++)
+            if(tileList[i].childCount !=0)
             {
-                activeChildtileList.Add(activeTileList[i].transform.GetChild(j));
+                tileList[i].GetComponent<BoxCollider2D>().enabled = false;
+            }
+            else
+            {
+                tileList[i].GetComponent<BoxCollider2D>().enabled = true;
             }
         }
     }
@@ -309,6 +311,30 @@ public class TileManger : MonoBehaviour
             obj.transform.GetComponent<SpriteRenderer>().sprite = sprites[0];
             obj.transform.GetComponent<AreaManger>().pureSprite = sprites[0];
         }
+    }
+
+    public void DeadBulider(GameObject builder)
+    {
+        List<Transform> builderLand = activeChildtileList;
+
+        for (int i = 0; i < activeChildtileList.Count; i++)
+        {
+            if(activeChildtileList[i].childCount ==0)
+            {
+                builderLand.Add(activeChildtileList[i]);
+            }
+        }
+
+        int rand = UnityEngine.Random.Range(0, builderLand.Count - 2);
+
+        //Debug.Log(builderLand[0].GetChild(0).position.x);
+        builder.SetActive(false);
+        builder.transform.position = new Vector3(builderLand[rand].GetChild(0).position.x + 10f, builderLand[rand].GetChild(0).position.y + 25f);
+        builder.transform.SetParent(builderLand[0].GetChild(0));
+        builder.GetComponent<MakeSoldier>().HelthPoint = 500;
+        builder.GetComponent<SoldierManger>().HpBarScale();
+        builder.SetActive(true);
+
     }
 
     public void MakeBulider()

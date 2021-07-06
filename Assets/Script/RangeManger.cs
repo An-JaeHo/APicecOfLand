@@ -223,51 +223,6 @@ public class RangeManger : MonoBehaviour
         
         input.army = hitobj;
     }
-
-    public List<Transform> EnemyRange(GameObject obj)
-    {
-        //List<Transform> mylist = new List<Transform>(); ;
-        tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
-
-        //대각 2칸거리 282
-        foreach (var tileInfo in tileManger.activeChildtileList)
-        {
-            if ((Mathf.Abs((int)Vector3.Distance(obj.transform.parent.position, tileInfo.GetChild(0).transform.position)) <= 141*10)
-                && obj.transform.parent.position != tileInfo.GetChild(0).transform.GetComponent<Transform>().position)
-            {
-                //tileTag.Add(tileInfo.transform.tag);
-                enemyRangeList.Add(tileInfo.GetChild(0));
-            }
-        }
-        
-        return enemyRangeList;
-    }
-
-    public List<Transform> BulidingRange(Transform transform)
-    {
-        Transform rect = transform.parent.GetComponent<Transform>();
-
-        List<Transform> mylist = new List<Transform>(); ;
-
-        //대각 2칸거리 282
-        foreach (var tileInfo in tileManger.activeChildtileList)
-        {
-            if ((Mathf.Abs((int)Vector3.Distance(rect.position, tileInfo.transform.position)) <= 282)
-                && rect.position != tileInfo.transform.GetComponent<Transform>().position)
-            {
-                mylist.Add(tileInfo);
-            }
-        }
-
-        return mylist;
-    }
-
-    public bool DeleteSkillRange(Transform my)
-    {
-
-        return true;
-    }
-
 }
 
     

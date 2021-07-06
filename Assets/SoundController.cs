@@ -18,8 +18,27 @@ public class SoundController : MonoBehaviour
 
     public static SoundController instance;
 
+    public SettingController setting;
+
     private void Start()
     {
         instance = this;
+
+        for(int i=0; i< buildSounds.Length;i++)
+        {
+            setting.soundEffects.Add(buildSounds[i].audio);
+        }
+        for (int i = 0; i < bossSounds.Length; i++)
+        {
+            setting.soundEffects.Add(bossSounds[i].audio);
+        }
+        for (int i = 0; i < monsterSounds.Length; i++)
+        {
+            setting.soundEffects.Add(monsterSounds[i].audio);
+        }
+        for (int i = 0; i < enemySounds.Length; i++)
+        {
+            setting.soundEffects.Add(enemySounds[i].audio);
+        }
     }
 }

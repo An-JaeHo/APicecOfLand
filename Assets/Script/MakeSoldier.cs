@@ -26,6 +26,7 @@ public class SoldierInfo : MonoBehaviour
     public int AttackRange;
     public int Movement;
     public int Level;
+    public int exp;
     public float pureAttack;
     public float pureDefensive;
     public int pureRange;

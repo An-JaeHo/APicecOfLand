@@ -41,37 +41,37 @@ public class AreaManger : MonoBehaviour
                     player.updateMilk += area.MilkOutput;
                     break;
                 case "Area 2":
-                    player.updateMilk += 1;
+                    player.updateMilk += (area.MilkOutput-5);
                     break;
                 case "Area 3":
-                    player.updateMilk += 1;
+                    player.updateMilk += (area.MilkOutput-10);
                     break;
                 case "Area 4":
-                    player.updateMilk += 1;
+                    player.updateMilk += (area.MilkOutput - 15);
                     break;
                 case "Area 5":
                     player.updateFlour += area.FlourOutput;
                     break;
                 case "Area 6":
-                    player.updateFlour += 1;
+                    player.updateFlour += area.FlourOutput-5;
                     break;
                 case "Area 7":
-                    player.updateFlour += 1;
+                    player.updateFlour += area.FlourOutput - 10;
                     break;
                 case "Area 8":
-                    player.updateFlour += 1;
+                    player.updateFlour += area.FlourOutput - 15;
                     break;
                 case "Area 9":
                     player.updateSugar += area.SugarOutput;
                     break;
                 case "Area 10":
-                    player.updateSugar += 1;
+                    player.updateSugar += area.SugarOutput-5;
                     break;
                 case "Area 11":
-                    player.updateSugar += 1;
+                    player.updateSugar += area.SugarOutput-10;
                     break;
                 case "Area 12":
-                    player.updateSugar += 1;
+                    player.updateSugar += area.SugarOutput-15;
                     break;
                 case "Area 20":
                     player.people += area.Population;
@@ -182,30 +182,37 @@ public class AreaManger : MonoBehaviour
 
     public void TurnArea()
     {
-        if (transform.tag != "Capital" || transform.tag != "Enemy Base")
+        if (transform.tag != "Enemy Base")
         {
-            transform.GetComponent<MakeArea>().Code = pureCode;
-            transform.GetComponent<MakeArea>().Type = null;
-            transform.GetComponent<MakeArea>().Grade = 0;
-            transform.GetComponent<MakeArea>().UpgradeFlour = 0;
-            transform.GetComponent<MakeArea>().UpgradeSugar = 0;
-            transform.GetComponent<MakeArea>().MilkOutput = 0;
-            transform.GetComponent<MakeArea>().FlourOutput = 0;
-            transform.GetComponent<MakeArea>().SugarOutput = 0;
-            transform.GetComponent<MakeArea>().Movement = true;
-            transform.GetComponent<MakeArea>().Destroy = true;
-            transform.GetComponent<MakeArea>().Repair = false;
-            transform.GetComponent<MakeArea>().Effect = null;
-            transform.GetComponent<SpriteRenderer>().color = Color.gray;
-            pureColor = Color.gray;
-            //GameObject particlePrefeb = Instantiate(tileManger.particlePrefeb, transform);
-            //particlePrefeb.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
-            transform.tag = "Grass";
+            if(transform.tag != "Capital" )
+            {
+                ReturnUpdateSouce();
+                transform.GetComponent<MakeArea>().Code = pureCode;
+                transform.GetComponent<MakeArea>().Type = null;
+                transform.GetComponent<MakeArea>().Picture = pureSprite;
+                transform.GetComponent<MakeArea>().Grade = 0;
+                transform.GetComponent<MakeArea>().UpgradeFlour = 0;
+                transform.GetComponent<MakeArea>().UpgradeSugar = 0;
+                transform.GetComponent<MakeArea>().MilkOutput = 0;
+                transform.GetComponent<MakeArea>().FlourOutput = 0;
+                transform.GetComponent<MakeArea>().SugarOutput = 0;
+                transform.GetComponent<MakeArea>().Movement = true;
+                transform.GetComponent<MakeArea>().Destroy = true;
+                transform.GetComponent<MakeArea>().Repair = false;
+                transform.GetComponent<MakeArea>().Effect = null;
+                transform.GetComponent<SpriteRenderer>().color = Color.gray;
+                pureColor = Color.gray;
+                //GameObject particlePrefeb = Instantiate(tileManger.particlePrefeb, transform);
+                //particlePrefeb.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+                transform.tag = "Grass";
+            }
         }
-        else if(transform.tag == "Enemy Base")
+        
+        if(area.Name == "우주선")
         {
             transform.GetComponent<MakeArea>().Code = pureCode;
             transform.GetComponent<MakeArea>().Type = "Grass";
+            transform.GetComponent<MakeArea>().Picture = readyBuild;
             transform.GetComponent<MakeArea>().Grade = 0;
             transform.GetComponent<MakeArea>().UpgradeFlour = 0;
             transform.GetComponent<MakeArea>().UpgradeSugar = 0;
@@ -217,8 +224,67 @@ public class AreaManger : MonoBehaviour
             transform.GetComponent<MakeArea>().Repair = false;
             transform.GetComponent<MakeArea>().Effect = null;
             transform.GetComponent<SpriteRenderer>().color = Color.white;
+            transform.GetComponent<SpriteRenderer>().sprite = readyBuild;
             pureColor = Color.white;
             transform.tag = "Grass";
+        }
+    }
+
+    public void ReturnUpdateSouce()
+    {
+        if (transform.tag == "Area")
+        {
+            switch (area.Code)
+            {
+                case "Area 1":
+                    player.updateMilk -= area.MilkOutput;
+                    break;
+                case "Area 2":
+                    player.updateMilk -= area.MilkOutput;
+                    break;
+                case "Area 3":
+                    player.updateMilk -= area.MilkOutput;
+                    break;
+                case "Area 4":
+                    player.updateMilk -= area.MilkOutput;
+                    break;
+                case "Area 5":
+                    player.updateFlour -= area.FlourOutput;
+                    break;
+                case "Area 6":
+                    player.updateFlour -= area.FlourOutput;
+                    break;
+                case "Area 7":
+                    player.updateFlour -= area.FlourOutput;
+                    break;
+                case "Area 8":
+                    player.updateFlour -= area.FlourOutput;
+                    break;
+                case "Area 9":
+                    player.updateSugar -= area.SugarOutput;
+                    break;
+                case "Area 10":
+                    player.updateSugar -= area.SugarOutput;
+                    break;
+                case "Area 11":
+                    player.updateSugar -= area.SugarOutput;
+                    break;
+                case "Area 12":
+                    player.updateSugar -= area.SugarOutput;
+                    break;
+                case "Area 20":
+                    player.people -= area.Population;
+                    break;
+                case "Area 21":
+                    player.people -= area.Population;
+                    break;
+                case "Area 22":
+                    player.people -= area.Population;
+                    break;
+                case "Area 23":
+                    player.people -= area.Population;
+                    break;
+            }
         }
     }
 }

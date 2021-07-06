@@ -56,8 +56,8 @@ public class EnemyController : MonoBehaviour
     public List<Sprite> buffList;
     public List<GameObject> buffPrefebList;
     public bool movePoint;
-    public bool firstStart;
     public int pureDefend;
+    public bool first;
 
     void Start()
     {
@@ -73,8 +73,7 @@ public class EnemyController : MonoBehaviour
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         finishMove = false;
         findArmy = false;
-        firstStart = true;
-
+        first = true;
 
         //HpBarScale();
         movePoint = true;
@@ -96,15 +95,12 @@ public class EnemyController : MonoBehaviour
 
     public void EnemyMove()
     {
-        if (movePoint && !firstStart)
+        if (movePoint&&!first)
         {
             parentTile = transform.parent;
             tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
             int myName = int.Parse(transform.parent.parent.name);
-
             rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
-            rangeTiles = rangeManger.EnemyRange(gameObject);
-            //string code = transform.GetComponent<MakeEnemy>().Code;
 
             if (parentTile)
             {
@@ -120,25 +116,41 @@ public class EnemyController : MonoBehaviour
                 //위아래 17 양옆 1
                 if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
                 {
-                    if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
-                    || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
+                    if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString())
                     {
                         if(tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag =="Army" || tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Builder")
                         {
                             findArmy = true;
                             target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
+                            
                         }
                         else
                         {
-                            findArmy = false;
+                            target = null;
+                        }
+                    }
+
+                    if(tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
+                    {
+                        if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Army" || tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Builder")
+                        {
+                            findArmy = true;
+                            target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
+                            
+                        }
+                        else
+                        {
                             target = null;
                         }
                     }
                 }
             }
 
-            if (findArmy)
+
+
+            if (findArmy && target != null)
             {
+                Debug.Log(target.name);
                 StartCoroutine(Attack());
             }
             else
@@ -160,6 +172,8 @@ public class EnemyController : MonoBehaviour
                 rangeTiles.Clear();
             }
         }
+
+        first = false;
     }
 
     #region  상대병력 이동
@@ -171,13 +185,11 @@ public class EnemyController : MonoBehaviour
         {
             if (tiles.activeChildtileList[i].GetChild(0).tag == "Area" || tiles.activeChildtileList[i].GetChild(0).tag == "Barrack")
             {
-                Debug.Log("에이");
                 targets.Add(tiles.activeChildtileList[i].GetChild(0));
             }
 
             if (tiles.activeChildtileList[i].GetChild(0).tag == "Capital")
             {
-                Debug.Log("시발");
                 targets.Add(tiles.activeChildtileList[i].GetChild(0));
             }
 
@@ -199,71 +211,79 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Move()
     {
+        yield return null;
         buttonManger.button.GetComponent<Button>().interactable = false;
         Vector3 vector3 = new Vector3(FinalNodeList[1].x, (float)(FinalNodeList[1].y + 30f), -10f);
         ani.SetBool("Move",true);
+
         while (transform.position != vector3 && !finishMove)
         {
             transform.position = Vector3.MoveTowards(transform.position, vector3, Time.deltaTime * 300f);
 
-            yield return new WaitForSeconds(0.008f);
+            yield return new WaitForSeconds(0.01f);
         }
-        yield return new WaitForSeconds(0.05f);
-
         ani.SetBool("Move", false);
-        yield return null;
     }
 
     IEnumerator Attack()
     {
+        Debug.Log("af");
         float randnum = Random.Range(0.8f, 1.2f);
         buttonManger.button.GetComponent<Button>().interactable = false;
-
-        if (transform.tag == "Enemy")
+        if (target != null)
         {
-            target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<MakeEnemy>().BaseAttack);
-
-            if (target.GetComponent<SoldierManger>().countAttack > 0)
+            if (transform.tag == "Enemy")
             {
-                transform.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack * target.GetComponent<SoldierManger>().countAttack);
-                target.GetComponent<SoldierManger>().countAttack = 0;
+                target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<MakeEnemy>().BaseAttack);
+
+                if (target.GetComponent<SoldierManger>().countAttack > 0)
+                {
+                    transform.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack * target.GetComponent<SoldierManger>().countAttack);
+                    target.GetComponent<SoldierManger>().countAttack = 0;
+                }
             }
-        }
-        else
-        {
-            target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<GDController>().BaseAttack);
-
-            if (target.GetComponent<SoldierManger>().countAttack > 0)
+            else
             {
-                transform.GetComponent<GDController>().HelthPoint -= (int)(target.GetComponent<MakeSoldier>().BaseAttack * target.GetComponent<SoldierManger>().countAttack);
-                target.GetComponent<SoldierManger>().countAttack = 0;
+                target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<GDController>().BaseAttack/2);
+
+                if (target.GetComponent<SoldierManger>().countAttack > 0)
+                {
+                    transform.GetComponent<GDController>().HelthPoint -= (int)((target.GetComponent<MakeSoldier>().BaseAttack) * target.GetComponent<SoldierManger>().countAttack);
+                    target.GetComponent<SoldierManger>().countAttack = 0;
+                }
+            }
+
+            target.GetComponent<SoldierManger>().HpBarScale();
+            ani.SetTrigger("Attack");
+            if (transform.tag == "Enemy")
+            {
+                for (int i = 0; i < SoundController.instance.enemySounds.Length; i++)
+                {
+                    if (SoundController.instance.enemySounds[i].name == transform.GetComponent<MakeEnemy>().Code)
+                    {
+                        AudioClip audio = SoundController.instance.enemySounds[i].audio;
+                        transform.GetComponent<AudioSource>().clip = audio;
+                        transform.GetComponent<AudioSource>().Play();
+                    }
+                }
+            }
+            yield return new WaitForSeconds(0.8f);
+
+
+            target.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
+
+
+            yield return new WaitForSeconds(0.7f);
+
+            if (target.GetComponent<MakeSoldier>().HelthPoint <= 0)
+            {
+                target.GetComponent<SoldierManger>().Dead();
             }
         }
         
-        target.GetComponent<SoldierManger>().HpBarScale();
-        ani.SetTrigger("Attack");
-        if(transform.tag == "Enemy")
-        {
-            for (int i = 0; i < SoundController.instance.enemySounds.Length; i++)
-            {
-                if (SoundController.instance.enemySounds[i].name == transform.GetComponent<MakeEnemy>().Code)
-                {
-                    AudioClip audio = SoundController.instance.enemySounds[i].audio;
-                    transform.GetComponent<AudioSource>().clip = audio;
-                    transform.GetComponent<AudioSource>().Play();
-                }
-            }
-        }
-        yield return new WaitForSeconds(0.8f);
-        target.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
-        yield return new WaitForSeconds(0.7f);
-
-        if (target.GetComponent<MakeSoldier>().HelthPoint <= 0)
-        {
-            target.GetComponent<SoldierManger>().Dead();
-        }
 
         findArmy = false;
+
         yield return null;
     }
 
@@ -408,7 +428,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Dead()
+    public void Dead(Transform monster)
     {
         if(transform.tag =="Enemy")
         {
@@ -416,6 +436,7 @@ public class EnemyController : MonoBehaviour
             {
                 invenManger.InputCard(GetComponent<MakeEnemy>().Grade);
                 buttonManger.enemys.Remove(gameObject);
+                monster.GetComponent<MakeSoldier>().exp += transform.GetComponent<MakeEnemy>().DropExperiencePoint;
                 playerInfo.killingPoint++;
                 Destroy(this.gameObject);
             }

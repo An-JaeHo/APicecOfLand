@@ -348,49 +348,106 @@ public class CardList : MonoBehaviour
 
     private void Card24(GameObject enemy, string code)
     {
-        enemy.GetComponent<MakeEnemy>().BaseDefensive -= 3;
+        if (enemy.tag == "Enemy")
+        {
+            enemy.GetComponent<MakeEnemy>().BaseDefensive -= 3;
+        }
+        else
+        {
+            enemy.GetComponent<GDController>().Defensive -= 3;
+        }
         enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
     private void Card25(GameObject enemy, string code)
     {
-        enemy.GetComponent<MakeEnemy>().BaseDefensive -= 5;
+        if (enemy.tag == "Enemy")
+        {
+            enemy.GetComponent<MakeEnemy>().BaseDefensive -= 5;
+        }
+        else
+        {
+            enemy.GetComponent<GDController>().Defensive -= 5;
+        }
         enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
     private void Card26(GameObject enemy, string code)
     {
-        enemy.GetComponent<MakeEnemy>().BaseDefensive -= 7;
+        if(enemy.tag == "Enemy")
+        {
+            enemy.GetComponent<MakeEnemy>().BaseDefensive -= 7;
+        }
+        else
+        {
+            enemy.GetComponent<GDController>().Defensive -= 7;
+        }
+        
         enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
     private void Card27(GameObject enemy, string code)
     {
-        enemy.GetComponent<MakeEnemy>().BaseDefensive -= 10;
+        if (enemy.tag == "Enemy")
+        {
+            enemy.GetComponent<MakeEnemy>().BaseDefensive -= 10;
+        }
+        else
+        {
+            enemy.GetComponent<GDController>().Defensive -= 10;
+        }
         enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
     private void Card28(GameObject enemy, string code)
     {
-        enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 500;
+        if (enemy.tag == "Enemy")
+        {
+            enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 500;
+        }
+        else
+        {
+            enemy.GetComponent<GDController>().HelthPoint -= 500;
+        }
         enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
     private void Card29(GameObject enemy, string code)
     {
-        enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 1000;
+        if (enemy.tag == "Enemy")
+        {
+            enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 1000;
+        }
+        else
+        {
+            enemy.GetComponent<GDController>().HelthPoint -= 1000;
+        }
         enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
     private void Card30(GameObject enemy, string code)
     {
-        enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 1500;
+         if (enemy.tag == "Enemy")
+        {
+            enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 1500;
+        }
+        else
+        {
+            enemy.GetComponent<GDController>().HelthPoint -= 1500;
+        }
         enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 
     private void Card31(GameObject enemy, string code)
     {
-        enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 2000;
+        if (enemy.tag == "Enemy")
+        {
+            enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= 2000;
+        }
+        else
+        {
+            enemy.GetComponent<GDController>().HelthPoint -= 2000;
+        }
         enemy.GetComponent<EnemyController>().MakeBuffIcon(code);
     }
 

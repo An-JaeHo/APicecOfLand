@@ -59,7 +59,7 @@ public class InputManger : MonoBehaviour
         {
             Vector3 mousePosition = Input.mousePosition;
             mousePosition = gameCamera.ScreenToWorldPoint(mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mousePosition, gameCamera.transform.forward, Mathf.Infinity);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, gameCamera.transform.forward, 800);
 
             if (hit)
             {
@@ -137,7 +137,7 @@ public class InputManger : MonoBehaviour
                                     {
                                         if (hit.transform.GetComponent<MakeArea>().Type == "Grass")
                                         {
-                                            if(hit.transform.GetComponent<MakeArea>().Destroy == true)
+                                            if (hit.transform.GetComponent<MakeArea>().Destroy == true)
                                             {
 
                                             }
@@ -180,6 +180,7 @@ public class InputManger : MonoBehaviour
                                         //{
                                         //    army.transform.localScale = new Vector3(-1, 1);
                                         //}
+
                                         army.transform.SetParent(hit.transform);
                                         moveSoldier.move = true;
                                         army.transform.GetComponent<SoldierManger>().SoldierAction();
@@ -243,6 +244,11 @@ public class InputManger : MonoBehaviour
             if (rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
             {
                 rangeManger.rangeList[i].transform.tag = "Barracks";
+            }
+
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Grass")
+            {
+                rangeManger.rangeList[i].transform.tag = "Grass";
             }
 
             if (rangeManger.rangeList[i].GetComponent<AreaManger>().pureTag == "Capital")

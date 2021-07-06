@@ -9,18 +9,20 @@ public class GameEndController : MonoBehaviour
     int killingPoint;
     int turnPoint;
     public Text text;
+    public GameObject supply;
 
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         CheckPoint();
         CheckRank();
+        ResulttGame();
     }
 
     public void CheckRank()
     {
         int sumPoint = killingPoint + turnPoint;
-        text = GameObject.Find("RankText").GetComponent<Text>();
+        text = GameObject.Find("Rank").transform.GetChild(0).GetComponent<Text>();
 
 
         if (sumPoint < 3)
@@ -160,5 +162,17 @@ public class GameEndController : MonoBehaviour
         {
             killingPoint = 17;
         }
+    }
+
+    public void ResulttGame()
+    {
+        supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString();
+        supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString();
+        supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString();
+    }
+
+    public void ResetGame()
+    {
+        playerInfo.ResetGame();
     }
 }

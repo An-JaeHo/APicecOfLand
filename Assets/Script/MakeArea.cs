@@ -36,6 +36,7 @@ public class MakeArea : AreaInfo
     {
         areaInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         areaManger = GetComponent<AreaManger>();
+        areaManger.pureSprite = GetComponent<SpriteRenderer>().sprite;
         firstBuild = true;
         Type = "Grass";
     }
@@ -44,6 +45,7 @@ public class MakeArea : AreaInfo
     {
         areaInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         areaInfoImage = GetComponent<SpriteRenderer>();
+        //areaManger.pureSprite = GetComponent<SpriteRenderer>().sprite;
 
         for (int i = 0; i < areaInfo.information.area.Length; i++)
         {

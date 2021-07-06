@@ -76,13 +76,15 @@ public class SoldierManger : MonoBehaviour
     {
         movePosition = new Vector3(transform.parent.position.x + 10, transform.parent.position.y + 25, transform.parent.position.z - 10);
         ani.SetBool("Move", true);
+        tileManger.CheckTile();
+
         while (transform.position != movePosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 300f);
             movePoint = false;
             stayTime++;
             buttonManger.button.GetComponent<Button>().interactable = false;
-            yield return new WaitForSeconds(0.008f);
+            yield return new WaitForSeconds(0.01f);
         }
 
         if (transform.position == movePosition)
@@ -95,13 +97,13 @@ public class SoldierManger : MonoBehaviour
             {
                 transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
                 transform.GetComponent<AudioSource>().Play();
-                yield return new WaitForSeconds(1f);
-                buttonManger.button.GetComponent<Button>().interactable = true;
+                yield return new WaitForSeconds(0.5f);
             }
 
-            buttonManger.button.GetComponent<Button>().interactable = true;
-            if (transform.parent.tag == "Enemy Base")
+            if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
             {
+                transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
+                transform.GetComponent<AudioSource>().Play();
                 transform.parent.GetComponent<AreaManger>().TurnArea();
             }
         }
@@ -112,12 +114,13 @@ public class SoldierManger : MonoBehaviour
             movePoint = true;
             cardMovePoint = false;
         }
-
+        buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }
 
     IEnumerator Attack()
     {
+        buttonManger.button.GetComponent<Button>().interactable = false;
         if (enemy != null)
         {
             float randnum = Random.Range(0.8f, 1.2f);
@@ -147,7 +150,7 @@ public class SoldierManger : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             attack = false;
             movePoint = false;
-            enemy.GetComponent<EnemyController>().Dead();
+            enemy.GetComponent<EnemyController>().Dead(transform);
             enemy.GetComponent<EnemyController>().HpBarScale();
         }
 
@@ -157,6 +160,7 @@ public class SoldierManger : MonoBehaviour
             cardMovePoint = false;
         }
 
+        buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }
 
@@ -182,13 +186,13 @@ public class SoldierManger : MonoBehaviour
             {
                 buttonManger.amrys.Remove(gameObject);
                 input.BarrackUi.GetComponent<BarrackController>().usingPeople--;
+                input.BarrackUi.GetComponent<BarrackController>().supplyManger.updateFood +=  soldier.ConsumeFood;
+                input.BarrackUi.GetComponent<BarrackController>().supplyManger.JustUpdateSupply();
                 Destroy(this.gameObject);
             }
             else
             {
-                buttonManger.builders.Remove(gameObject);
-                Destroy(this.gameObject);
-                tileManger.MakeBulider();
+                tileManger.DeadBulider(gameObject);
             }
         }
     }
@@ -264,6 +268,17 @@ public class SoldierManger : MonoBehaviour
                         break;
                 }
             }
+        }
+    }
+
+    public void LevelCheck()
+    {
+        if(transform.GetComponent<MakeSoldier>().exp >10)
+        {
+            transform.GetComponent<MakeSoldier>().Level++;
+            transform.GetComponent<MakeSoldier>().BaseAttack += transform.GetComponent<MakeSoldier>().RiseAttack;
+            transform.GetComponent<MakeSoldier>().Critical += transform.GetComponent<MakeSoldier>().RiseCritical;
+            transform.GetComponent<MakeSoldier>().Defensive += transform.GetComponent<MakeSoldier>().RiseDefensive;
         }
     }
 }

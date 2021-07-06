@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneMgr : MonoBehaviour
 {
-    public void GoGameMainScene()
+    
+    public static void GoGameMainScene()
     {
+        Debug.Log("afaf");
         SceneManager.LoadScene(0);
     }
 
-    public void GoChareterScene()
+    public void GoLodingScene()
     {
-        SceneManager.LoadScene(1);
+        LoadingSceneController.LoadScene("GameScene");
     }
 
     public void GoGameScene()
