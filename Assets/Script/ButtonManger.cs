@@ -609,7 +609,5 @@ public class ButtonManger : MonoBehaviour
         GameObject.Find("ButtonMgr").transform.GetChild(6).GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
-        tileManger.CheckTile();
-        
     }
 }

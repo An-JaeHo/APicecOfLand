@@ -150,7 +150,6 @@ public class EnemyController : MonoBehaviour
 
             if (findArmy && target != null)
             {
-                Debug.Log(target.name);
                 StartCoroutine(Attack());
             }
             else
@@ -173,6 +172,7 @@ public class EnemyController : MonoBehaviour
             }
         }
 
+        
         first = false;
     }
 
@@ -219,10 +219,10 @@ public class EnemyController : MonoBehaviour
         while (transform.position != vector3 && !finishMove)
         {
             transform.position = Vector3.MoveTowards(transform.position, vector3, Time.deltaTime * 300f);
-
             yield return new WaitForSeconds(0.01f);
         }
         ani.SetBool("Move", false);
+        tiles.CheckTile();
     }
 
     IEnumerator Attack()
@@ -283,7 +283,7 @@ public class EnemyController : MonoBehaviour
         
 
         findArmy = false;
-
+        tiles.CheckTile();
         yield return null;
     }
 

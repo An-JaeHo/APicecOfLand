@@ -76,7 +76,7 @@ public class SoldierManger : MonoBehaviour
     {
         movePosition = new Vector3(transform.parent.position.x + 10, transform.parent.position.y + 25, transform.parent.position.z - 10);
         ani.SetBool("Move", true);
-        tileManger.CheckTile();
+        
 
         while (transform.position != movePosition)
         {
@@ -93,11 +93,12 @@ public class SoldierManger : MonoBehaviour
             move = false;
             stayTime = 0;
             ani.SetBool("Move", false);
+
             if (transform.tag == "Builder")
             {
                 transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
                 transform.GetComponent<AudioSource>().Play();
-                yield return new WaitForSeconds(0.5f);
+                //yield return new WaitForSeconds(0.5f);
             }
 
             if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
@@ -105,6 +106,7 @@ public class SoldierManger : MonoBehaviour
                 transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
                 transform.GetComponent<AudioSource>().Play();
                 transform.parent.GetComponent<AreaManger>().TurnArea();
+                transform.parent.GetComponent<MakeArea>().Name = "Grass";
             }
         }
 
@@ -115,6 +117,7 @@ public class SoldierManger : MonoBehaviour
             cardMovePoint = false;
         }
         buttonManger.button.GetComponent<Button>().interactable = true;
+        tileManger.CheckTile();
         yield return null;
     }
 
@@ -147,7 +150,6 @@ public class SoldierManger : MonoBehaviour
             }
             yield return new WaitForSeconds(0.5f);
             enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
-            yield return new WaitForSeconds(0.5f);
             attack = false;
             movePoint = false;
             enemy.GetComponent<EnemyController>().Dead(transform);
@@ -161,6 +163,7 @@ public class SoldierManger : MonoBehaviour
         }
 
         buttonManger.button.GetComponent<Button>().interactable = true;
+        tileManger.CheckTile();
         yield return null;
     }
 
