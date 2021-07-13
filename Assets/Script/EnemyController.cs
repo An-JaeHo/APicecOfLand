@@ -59,6 +59,8 @@ public class EnemyController : MonoBehaviour
     public int pureDefend;
     public bool first;
 
+    public bool move;
+    Vector3 targetPostion;
     void Start()
     {
         bottomLeft.x = -150;
@@ -74,6 +76,8 @@ public class EnemyController : MonoBehaviour
         finishMove = false;
         findArmy = false;
         first = true;
+        move = false;
+
 
         //HpBarScale();
         movePoint = true;
@@ -90,6 +94,24 @@ public class EnemyController : MonoBehaviour
             gd = GetComponent<GDController>();
             totalHp = gd.HelthPoint;
             pureDefend = (int)gd.Defensive;
+        }
+    }
+
+    private void Update()
+    {
+        if (move && !finishMove)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPostion, Time.deltaTime * 100f);
+
+            if (transform.position == targetPostion)
+            {
+                move = false;
+                tiles.CheckTile();
+            }
+        }
+        else
+        {
+            ani.SetBool("Move", false);
         }
     }
 
@@ -116,27 +138,14 @@ public class EnemyController : MonoBehaviour
                 //위아래 17 양옆 1
                 if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
                 {
-                    if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString())
+                    if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
+                        || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
                     {
                         if(tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag =="Army" || tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Builder")
                         {
                             findArmy = true;
                             target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
-                            
-                        }
-                        else
-                        {
-                            target = null;
-                        }
-                    }
-
-                    if(tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
-                    {
-                        if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Army" || tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Builder")
-                        {
-                            findArmy = true;
-                            target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
-                            
+                            break;
                         }
                         else
                         {
@@ -146,9 +155,7 @@ public class EnemyController : MonoBehaviour
                 }
             }
 
-
-
-            if (findArmy && target != null)
+            if (findArmy)
             {
                 StartCoroutine(Attack());
             }
@@ -166,12 +173,14 @@ public class EnemyController : MonoBehaviour
                     }
 
                     parentTile = transform.parent;
-                    StartCoroutine(Move());
+                    buttonManger.button.GetComponent<Button>().interactable = false;
+                    targetPostion = new Vector3(FinalNodeList[1].x, (float)(FinalNodeList[1].y + 30f), -10f);
+                    ani.SetBool("Move", true);
+                    move = true;
                 }
                 rangeTiles.Clear();
             }
         }
-
         
         first = false;
     }
@@ -209,25 +218,10 @@ public class EnemyController : MonoBehaviour
     #endregion
 
 
-    IEnumerator Move()
-    {
-        yield return null;
-        buttonManger.button.GetComponent<Button>().interactable = false;
-        Vector3 vector3 = new Vector3(FinalNodeList[1].x, (float)(FinalNodeList[1].y + 30f), -10f);
-        ani.SetBool("Move",true);
-
-        while (transform.position != vector3 && !finishMove)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, vector3, Time.deltaTime * 300f);
-            yield return new WaitForSeconds(0.01f);
-        }
-        ani.SetBool("Move", false);
-        tiles.CheckTile();
-    }
+    
 
     IEnumerator Attack()
     {
-        Debug.Log("af");
         float randnum = Random.Range(0.8f, 1.2f);
         buttonManger.button.GetComponent<Button>().interactable = false;
         if (target != null)
@@ -300,7 +294,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                if (tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag != "Enemy")
+                if (tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag != "Enemy" && tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag != "GD")
                 {
                     Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
                     NodeArray.Add(tileNode);
