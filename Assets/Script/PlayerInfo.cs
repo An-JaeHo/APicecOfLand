@@ -42,7 +42,7 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
         flour = 150;
         sugar = 150;
         people = 3;
-        turnPoint = 10;
+        turnPoint = 0;
         killingPoint = 0;
     }
 

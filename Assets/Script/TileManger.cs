@@ -196,54 +196,54 @@ public class TileManger : MonoBehaviour
         int pureStrartnum = 0;
 
         //차례에 따라 5, 7, 9, 11, 13, 15, 17
-        //턴에   타라 15,25,45,75,110,150,200
+        //턴에   따라 8, 15, 30, 50, 70, 100, 120
         int count = 0;
         int lengthLand = 0;
 
         //5x5
-        if (playerInfo.turnPoint == 15)
+        if (playerInfo.turnPoint == 8)
         {
             enemyMakeLand.Clear();
             startNum = 109;
             maxnum = 4;
             lengthLand = 5;
         }
-        else if (playerInfo.turnPoint == 25)
+        else if (playerInfo.turnPoint == 15)
         {
             enemyMakeLand.Clear();
             startNum = 91;
             maxnum = 6;
             lengthLand = 7;
         }
-        else if (playerInfo.turnPoint == 45)
+        else if (playerInfo.turnPoint == 30)
         {
             enemyMakeLand.Clear();
             startNum = 73;
             maxnum = 8;
             lengthLand = 9;
         }
-        else if (playerInfo.turnPoint == 75)
+        else if (playerInfo.turnPoint == 50)
         {
             enemyMakeLand.Clear();
             startNum = 55;
             maxnum = 10;
             lengthLand = 11;
         }
-        else if (playerInfo.turnPoint == 110)
+        else if (playerInfo.turnPoint == 70)
         {
             enemyMakeLand.Clear();
             startNum = 37;
             maxnum = 12;
             lengthLand = 13;
         }
-        else if (playerInfo.turnPoint == 150)
+        else if (playerInfo.turnPoint == 100)
         {
             enemyMakeLand.Clear();
             startNum = 19;
             maxnum = 14;
             lengthLand = 15;
         }
-        else if (playerInfo.turnPoint == 200)
+        else if (playerInfo.turnPoint == 120)
         {
             enemyMakeLand.Clear();
             startNum = 1;
@@ -281,7 +281,7 @@ public class TileManger : MonoBehaviour
                     RandomLand(tileList[i].gameObject);
                 }
 
-                if (count == lengthLand)
+                if (count == lengthLand && playerInfo.turnPoint <= 70)
                 {
                     count = 0;
                     MakeBulider();
@@ -327,7 +327,6 @@ public class TileManger : MonoBehaviour
 
         int rand = UnityEngine.Random.Range(0, builderLand.Count - 2);
 
-        //Debug.Log(builderLand[0].GetChild(0).position.x);
         builder.SetActive(false);
         builder.transform.position = new Vector3(builderLand[rand].GetChild(0).position.x + 10f, builderLand[rand].GetChild(0).position.y + 25f);
         builder.transform.SetParent(builderLand[0].GetChild(0));
@@ -399,7 +398,17 @@ public class TileManger : MonoBehaviour
                                 noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
                                 break;
                             case 3:
-                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+
+                                int enemyrand = UnityEngine.Random.Range(0, 100);
+
+                                if (enemyrand > 90)
+                                {
+                                    noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                                }
+                                else
+                                {
+                                    noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
+                                }
                                 break;
                             default:
                                 break;
@@ -446,12 +455,13 @@ public class TileManger : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
             enemy.transform.SetParent(noChildLand[rand].GetChild(0));
 
-            if (playerInfo.turnPoint <= 25)
+            // 8 15 30 50 70 100 120
+            if (playerInfo.turnPoint < 30)
             {
                 noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
                 enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
             }
-            else if (playerInfo.turnPoint <= 45)
+            else if (playerInfo.turnPoint < 50)
             {
                 if (enemyRandRand > 50)
                 {
@@ -464,7 +474,7 @@ public class TileManger : MonoBehaviour
                     enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
                 }
             }
-            else if (playerInfo.turnPoint <= 75)
+            else if (playerInfo.turnPoint < 70)
             {
                 if (enemyRandRand < 80)
                 {
@@ -474,10 +484,21 @@ public class TileManger : MonoBehaviour
                 else
                 {
                     noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
-                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+
+                    int enemyrand = UnityEngine.Random.Range(0, 100);
+
+                    if(enemyrand > 90)
+                    {
+                        enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                    }
+                    else
+                    {
+                        enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
+                    }
+                    
                 }
             }
-            else if (playerInfo.turnPoint <= 150)
+            else if (playerInfo.turnPoint < 100)
             {
                 if (enemyRandRand > 50)
                 {
@@ -487,10 +508,19 @@ public class TileManger : MonoBehaviour
                 else
                 {
                     noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
-                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                    int enemyrand = UnityEngine.Random.Range(0, 100);
+
+                    if (enemyrand > 90)
+                    {
+                        enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                    }
+                    else
+                    {
+                        enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
+                    }
                 }
             }
-            else if (playerInfo.turnPoint <= 200)
+            else if (playerInfo.turnPoint < 120)
             {
                 if (enemyRandRand > 50)
                 {
@@ -500,7 +530,38 @@ public class TileManger : MonoBehaviour
                 else
                 {
                     noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
-                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                    int enemyrand = UnityEngine.Random.Range(0, 100);
+
+                    if(enemyrand > 90)
+                    {
+                        enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                    }
+                    else
+                    {
+                        enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
+                    }
+                }
+            }
+            else
+            {
+                if (enemyRandRand > 80)
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                    enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                }
+                else
+                {
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
+                    int enemyrand = UnityEngine.Random.Range(0, 100);
+
+                    if (enemyrand > 90)
+                    {
+                        enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                    }
+                    else
+                    {
+                        enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
+                    }
                 }
             }
 
