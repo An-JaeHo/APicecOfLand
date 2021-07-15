@@ -342,7 +342,7 @@ public class TileManger : MonoBehaviour
 
         if (builderMakeLand[rand].GetChild(0).childCount == 0)
         {
-            GameObject bulider = Instantiate(builderPrefebs,new Vector3(builderMakeLand[rand].GetChild(0).position.x+10f, builderMakeLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
+            GameObject bulider = Instantiate(builderPrefebs,new Vector3(builderMakeLand[rand].GetChild(0).position.x, builderMakeLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
             bulider.transform.SetParent(builderMakeLand[rand].GetChild(0));
             bulider.name = "Mon 19";
             bulider.GetComponent<MakeSoldier>().SuperMagic(bulider.name);

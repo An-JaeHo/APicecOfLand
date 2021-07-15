@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1971594108216303233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.3, z: -10}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalScale: {x: 70, y: 70, z: 1}
   m_Children:
   - {fileID: 4769146200518556521}
   m_Father: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   AttackRange: 1
   Movement: 0
   Level: 1
+  exp: 0
   pureAttack: 15
   pureDefensive: 10
   pureRange: 1
@@ -318,12 +319,12 @@ PrefabInstance:
     - target: {fileID: 6366969659907652197, guid: d43b5348a76c8dc40b00341f804f041b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6366969659907652197, guid: d43b5348a76c8dc40b00341f804f041b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6366969659907652197, guid: d43b5348a76c8dc40b00341f804f041b,
         type: 3}
