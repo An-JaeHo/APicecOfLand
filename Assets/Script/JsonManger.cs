@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class JsonManger : GenericSingletonClass<JsonManger>
@@ -16,6 +17,7 @@ public class JsonManger : GenericSingletonClass<JsonManger>
     public Sprite[] bossImg;
     public Sprite[] enemyImg;
 
+    
 
     public override void Awake()
     {
@@ -29,15 +31,12 @@ public class JsonManger : GenericSingletonClass<JsonManger>
 
     private IEnumerator CallDate()
     {
-        string jsonString = File.ReadAllText(streamingAssetsPath);
+        //string jsonString = File.ReadAllText(streamingAssetsPath);
 
 #if UNITY_EDITOR || UNITY_IOS
 
-        string jsonFile = File.ReadAllText(streamingAssetsPath);
+        //string jsonfile = File.ReadAllText(streamingAssetsPath);
 
-#elif UNITY_ANDROID
-
-        //path경로에서 데이터를 불어옴
         WWW www = new WWW(streamingAssetsPath);
 
         //만약에 www의 처리가 완료 되었다면
@@ -48,22 +47,41 @@ public class JsonManger : GenericSingletonClass<JsonManger>
         }
 
         //www가 완료 될때까지 기다려줌
-        yield return www;
+        //yield return www;
 
         //만약에 에러가 발생했다면
-        if (www.error != null)
-        {
-            //에러상황 던져줌
-            //throw new Exception("www downloaded : " + www.error);
-        }
+        //if (www.error != null)
+        //{
+        //    //에러상황 던져줌
+        //    throw new Exception("www downloaded : " + www.error);
+        //}
 
         //jsonString에다가 받은 데이터를 string으로 넣어줌
-        jsonString = www.text;
+        string jsonString = www.text;
 
-        information = JsonUtility.FromJson<Information>(jsonString);
+#elif UNITY_ANDROID
 
-        LoadItem();
-        loadAllImg();
+       WWW www = new WWW(streamingAssetsPath);
+
+        //만약에 www의 처리가 완료 되었다면
+        if (www.isDone)
+        {
+            //디버그 로그
+            Debug.Log("Downloaded");
+        }
+
+        //www가 완료 될때까지 기다려줌
+        //yield return www;
+
+        //만약에 에러가 발생했다면
+        //if (www.error != null)
+        //{
+        //    //에러상황 던져줌
+        //    throw new Exception("www downloaded : " + www.error);
+        //}
+
+        //jsonString에다가 받은 데이터를 string으로 넣어줌
+        string jsonString = www.text;
 
 #endif
 
@@ -73,6 +91,8 @@ public class JsonManger : GenericSingletonClass<JsonManger>
         loadAllImg();
 
         yield return null;
+
+        
     }
 
 
