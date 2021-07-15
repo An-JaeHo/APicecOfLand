@@ -446,6 +446,8 @@ public class EnemyController : MonoBehaviour
                 invenManger.InputCard(4);
                 buttonManger.enemys.Remove(gameObject);
                 playerInfo.killingPoint++;
+                tiles.bossHP.SetActive(false);
+                tiles.bossText.SetActive(false);
                 Destroy(this.gameObject);
             }
         }

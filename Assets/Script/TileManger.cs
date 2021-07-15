@@ -378,54 +378,55 @@ public class TileManger : MonoBehaviour
             }
         }
 
-        if (playerInfo.turnPoint % 5 == 0 && playerInfo.turnPoint >= 15)
+        if (enemyLand.Count != 0)
         {
-            if(enemyLand.Count !=0)
+            for (int i = 0; i < enemyLand.Count; i++)
             {
-                for (int i = 0; i < enemyLand.Count; i++)
+                if (enemyLand[i].childCount == 0 && enemyLand[i].tag == "Enemy Base")
                 {
-                    if (enemyLand[i].childCount == 0 && enemyLand[i].tag == "Enemy Base")
+                    GameObject noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyLand[i].position.x, enemyLand[i].position.y + 25f), Quaternion.identity);
+                    noChildEnemy.transform.SetParent(enemyLand[i]);
+
+                    switch (enemyLand[i].GetComponent<MakeArea>().Grade)
                     {
-                        GameObject noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyLand[i].position.x, enemyLand[i].position.y + 25f), Quaternion.identity);
-                        noChildEnemy.transform.SetParent(enemyLand[i]);
+                        case 1:
+                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
+                            break;
+                        case 2:
+                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                            break;
+                        case 3:
 
-                        switch (enemyLand[i].GetComponent<MakeArea>().Grade)
-                        {
-                            case 1:
-                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
-                                break;
-                            case 2:
-                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
-                                break;
-                            case 3:
+                            int enemyrand = UnityEngine.Random.Range(0, 100);
 
-                                int enemyrand = UnityEngine.Random.Range(0, 100);
-
-                                if (enemyrand > 90)
-                                {
-                                    noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
-                                }
-                                else
-                                {
-                                    noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
-                                }
-                                break;
-                            default:
-                                break;
-                        }
-
-                        for (int j = 0; j < enemyObj.Length; j++)
-                        {
-                            if (enemyObj[j].name == noChildEnemy.GetComponent<MakeEnemy>().Code)
+                            if (enemyrand > 90)
                             {
-                                GameObject enemyPicture = Instantiate(enemyObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
-                                enemyPicture.transform.SetParent(noChildEnemy.transform);
+                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
                             }
-                        }
-                        buttonManger.enemys.Add(noChildEnemy);
+                            else
+                            {
+                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
+                            }
+                            break;
+                        default:
+                            break;
                     }
+
+                    for (int j = 0; j < enemyObj.Length; j++)
+                    {
+                        if (enemyObj[j].name == noChildEnemy.GetComponent<MakeEnemy>().Code)
+                        {
+                            GameObject enemyPicture = Instantiate(enemyObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
+                            enemyPicture.transform.SetParent(noChildEnemy.transform);
+                        }
+                    }
+                    buttonManger.enemys.Add(noChildEnemy);
                 }
             }
+        }
+
+        if (playerInfo.turnPoint % 5 == 0 && playerInfo.turnPoint >= 8)
+        {
 
             if(playerInfo.turnPoint == 20)
             {
