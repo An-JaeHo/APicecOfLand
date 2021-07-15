@@ -82,23 +82,29 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (collision.transform.tag == "Army")
         {
-            armyCheck = true;
             card.SoldierPrefeb = collision.gameObject;
+
+            if (collision.transform.parent.tag == "Capital")
+            {
+                card.AreaPrefeb = collision.transform.parent.gameObject;
+            }
         }
         else if(collision.transform.tag == "Enemy")
         {
-            armyCheck = true;
             card.EnemyPrefeb = collision.gameObject;
         }
         else if(collision.transform.tag == "Capital")
         {
-            armyCheck = true;
             card.AreaPrefeb = collision.gameObject;
         }
 
         if (collision.transform.tag == "WasteBasket")
         {
             deleteCheck = true;
+        }
+        else
+        {
+            armyCheck = true;
         }
 
         inputManger.hitObj = collision.transform;
@@ -108,21 +114,27 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (collision.transform.tag == "Army")
         {
-            armyCheck = false;
             card.SoldierPrefeb = null;
+
+            if (collision.transform.parent.tag == "Capital")
+            {
+                card.AreaPrefeb = null;
+            }
         }
         else if (collision.transform.tag == "Enemy")
         {
-            armyCheck = false;
             card.EnemyPrefeb = null;
         }
         else if (collision.transform.tag == "Capital")
         {
-            armyCheck = false;
             card.AreaPrefeb = null;
         }
 
         if (collision.transform.tag == "WasteBasket")
+        {
+            deleteCheck = false;
+        }
+        else
         {
             deleteCheck = false;
         }

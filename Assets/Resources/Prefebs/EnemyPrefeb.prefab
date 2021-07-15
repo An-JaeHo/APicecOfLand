@@ -93,8 +93,9 @@ MonoBehaviour:
   buffList: []
   buffPrefebList: []
   movePoint: 0
-  firstStart: 0
   pureDefend: 0
+  first: 0
+  move: 0
 --- !u!114 &1545827267550520764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +193,7 @@ MonoBehaviour:
   Spone2: 
   Spone3: 
   Drop: 
+  DropExperiencePoint: 0
   enemyInfo: {fileID: 0}
 --- !u!61 &8101608281751512447
 BoxCollider2D:
@@ -330,7 +332,7 @@ PrefabInstance:
     - target: {fileID: 6366969659907652197, guid: d43b5348a76c8dc40b00341f804f041b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 6366969659907652197, guid: d43b5348a76c8dc40b00341f804f041b,
         type: 3}

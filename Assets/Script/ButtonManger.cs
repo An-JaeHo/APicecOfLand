@@ -504,7 +504,7 @@ public class ButtonManger : MonoBehaviour
             {
                 enemys[i].GetComponent<EnemyController>().EnemyMove();
 
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(2f);
 
                 if (enemys[i].transform.parent.tag == "Area" 
                     || enemys[i].transform.parent.tag == "Barracks")
@@ -517,8 +517,6 @@ public class ButtonManger : MonoBehaviour
                     }
 
                     enemys[i].transform.parent.GetComponent<AreaManger>().TurnArea();
-                    
-                    yield return new WaitForSeconds(0.5f);
                 }
 
                 if (enemys[i].transform.parent.tag == "Capital")
@@ -572,6 +570,7 @@ public class ButtonManger : MonoBehaviour
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
         }
+
         button.GetComponent<Button>().interactable = true;
         timer.limitTime = 60;
         timer.timerCheck = true;

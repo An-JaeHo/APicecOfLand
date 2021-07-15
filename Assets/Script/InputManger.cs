@@ -234,7 +234,7 @@ public class InputManger : MonoBehaviour
     {
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {
-            rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = Color.white;
+            rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
 
             if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Area")
             {
