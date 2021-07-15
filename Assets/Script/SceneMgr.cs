@@ -9,7 +9,6 @@ public class SceneMgr : MonoBehaviour
     
     public static void GoGameMainScene()
     {
-        Debug.Log("afaf");
         SceneManager.LoadScene(0);
     }
 
