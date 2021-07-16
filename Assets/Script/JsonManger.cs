@@ -8,7 +8,7 @@ public class JsonManger : GenericSingletonClass<JsonManger>
 {
     public const string fileName = "Information.json";
 
-    public string streamingAssetsPath;
+    public TextAsset streamingAssetsPath;
     public Information information;
 
     public Sprite[] item;
@@ -23,69 +23,46 @@ public class JsonManger : GenericSingletonClass<JsonManger>
     {
         base.Awake();
 
-        streamingAssetsPath = Application.streamingAssetsPath;
-        streamingAssetsPath += "/" + fileName;
+        streamingAssetsPath = Resources.Load("information") as TextAsset;
+        //streamingAssetsPath += "/" + fileName;
         StartCoroutine(CallDate());
     }
 
 
     private IEnumerator CallDate()
     {
-        //string jsonString = File.ReadAllText(streamingAssetsPath);
-
+        //string jsonString = File.ReadAllText(streamingAssetsPath.text);
 #if UNITY_EDITOR || UNITY_IOS
-
-        //string jsonfile = File.ReadAllText(streamingAssetsPath);
-
-        WWW www = new WWW(streamingAssetsPath);
-
-        //만약에 www의 처리가 완료 되었다면
-        if (www.isDone)
-        {
-            //디버그 로그
-            Debug.Log("Downloaded");
-        }
-
-        //www가 완료 될때까지 기다려줌
-        //yield return www;
-
-        //만약에 에러가 발생했다면
-        //if (www.error != null)
-        //{
-        //    //에러상황 던져줌
-        //    throw new Exception("www downloaded : " + www.error);
-        //}
-
-        //jsonString에다가 받은 데이터를 string으로 넣어줌
-        string jsonString = www.text;
-
+        //string jsonfile = File.ReadAllText(streamingAssetsPath.text);
 #elif UNITY_ANDROID
 
-       WWW www = new WWW(streamingAssetsPath);
+       //WWW www = new WWW(streamingAssetsPath);
 
-        //만약에 www의 처리가 완료 되었다면
-        if (www.isDone)
-        {
-            //디버그 로그
-            Debug.Log("Downloaded");
-        }
+       // //만약에 www의 처리가 완료 되었다면
+       // if (www.isDone)
+       // {
+       //     //디버그 로그
+       //     Debug.Log("Downloaded");
+       // }
 
-        //www가 완료 될때까지 기다려줌
-        //yield return www;
+       // //www가 완료 될때까지 기다려줌
+       // //yield return www;
 
-        //만약에 에러가 발생했다면
-        //if (www.error != null)
-        //{
-        //    //에러상황 던져줌
-        //    throw new Exception("www downloaded : " + www.error);
-        //}
+       // //만약에 에러가 발생했다면
+       // //if (www.error != null)
+       // //{
+       // //    //에러상황 던져줌
+       // //    throw new Exception("www downloaded : " + www.error);
+       // //}
 
-        //jsonString에다가 받은 데이터를 string으로 넣어줌
-        string jsonString = www.text;
+       // //jsonString에다가 받은 데이터를 string으로 넣어줌
+       // jsonString = www.text;
+
+        information = JsonUtility.FromJson<Information>(streamingAssetsPath.text);
 
 #endif
 
-        information = JsonUtility.FromJson<Information>(jsonString);
+        information = JsonUtility.FromJson<Information>(streamingAssetsPath.text);
         
         LoadItem();
         loadAllImg();
@@ -109,8 +86,6 @@ public class JsonManger : GenericSingletonClass<JsonManger>
         monsterImg = new Sprite[loadedmonster.Length];
         bossImg = new Sprite[loadedGD.Length];
         enemyImg = new Sprite[loadEnemy.Length];
-
-
 
         for (int i = 0; i < loadedItem.Length; i++)
         {
