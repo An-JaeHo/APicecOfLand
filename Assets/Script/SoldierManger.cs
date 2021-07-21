@@ -163,7 +163,6 @@ public class SoldierManger : MonoBehaviour
         }
 
         buttonManger.button.GetComponent<Button>().interactable = true;
-        tileManger.CheckTile();
         yield return null;
     }
 
