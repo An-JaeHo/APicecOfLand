@@ -124,6 +124,7 @@ public class SoldierManger : MonoBehaviour
     IEnumerator Attack()
     {
         buttonManger.button.GetComponent<Button>().interactable = false;
+
         if (enemy != null)
         {
             float randnum = Random.Range(0.8f, 1.2f);
@@ -154,6 +155,8 @@ public class SoldierManger : MonoBehaviour
             movePoint = false;
             enemy.GetComponent<EnemyController>().Dead(transform);
             enemy.GetComponent<EnemyController>().HpBarScale();
+
+            tileManger.CheckTile();
         }
 
         if (cardMovePoint)
@@ -162,6 +165,7 @@ public class SoldierManger : MonoBehaviour
             cardMovePoint = false;
         }
 
+        
         buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }

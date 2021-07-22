@@ -436,6 +436,7 @@ public class EnemyController : MonoBehaviour
                 buttonManger.enemys.Remove(gameObject);
                 monster.GetComponent<MakeSoldier>().exp += transform.GetComponent<MakeEnemy>().DropExperiencePoint;
                 playerInfo.killingPoint++;
+                transform.parent.GetComponent<BoxCollider2D>().enabled = true;
                 Destroy(this.gameObject);
             }
         }
@@ -448,9 +449,12 @@ public class EnemyController : MonoBehaviour
                 playerInfo.killingPoint++;
                 tiles.bossHP.SetActive(false);
                 tiles.bossText.SetActive(false);
+                transform.parent.GetComponent<BoxCollider2D>().enabled = true;
                 Destroy(this.gameObject);
             }
         }
+
+        
     }
 
     public void HpBarScale()
