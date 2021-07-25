@@ -21,6 +21,8 @@ public class ButtonManger : MonoBehaviour
     public List<GameObject> builders;
     public Timer timer;
     public float buttonTimer;
+    public GameObject turnCountText;
+
 
     //타일 구매용
     public int food;
@@ -563,8 +565,14 @@ public class ButtonManger : MonoBehaviour
                     GameObject.Destroy(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
                     amrys[i].GetComponent<SoldierManger>().buffPrefebList.Remove(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
                 }
+                else
+                {
+                    //버프 위치 앞으로 땡기기
+
+                }
 
             }
+
             amrys[i].GetComponent<SoldierManger>().movePoint = true;
             //amrys[i].GetComponent<SoldierManger>().HpBarScale();
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
@@ -605,7 +613,7 @@ public class ButtonManger : MonoBehaviour
         StartCoroutine(moveEnemy());
         rangeManger.rangeList.Clear();
         supplyManger.UpdateSupply();
-        GameObject.Find("ButtonMgr").transform.GetChild(6).GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
+        turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
     }
