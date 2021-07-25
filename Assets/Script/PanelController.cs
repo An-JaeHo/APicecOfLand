@@ -39,7 +39,7 @@ public class PanelController : MonoBehaviour
         checkOutPut.transform.GetChild(0).GetComponent<Text>().text = effect.ToString();
         buildImgae.transform.GetChild(0).GetComponent<Image>().sprite = picture;
 
-        if (playerInfo.flour > upgradeWood && playerInfo.sugar> upgradeIron)
+        if (playerInfo.flour >= upgradeWood && playerInfo.sugar>= upgradeIron)
         {
             checkButton.GetComponent<Button>().interactable = true;
         }
