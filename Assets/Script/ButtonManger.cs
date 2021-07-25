@@ -383,6 +383,14 @@ public class ButtonManger : MonoBehaviour
         if (playerInfo.flour >= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && playerInfo.sugar >= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar)
         {
             tileManger.CheckTile();
+            if (int.Parse(input.army.parent.parent.name) > int.Parse(input.landObj.transform.parent.name))
+            {
+                input.army.transform.localScale = new Vector3(-1, 1);
+            }
+            else
+            {
+                input.army.transform.localScale = new Vector3(1, 1);
+            }
             input.army.transform.SetParent(UpgradeLand);
             input.moveSoldier.move = true;
             input.army.transform.GetComponent<SoldierManger>().SoldierAction();

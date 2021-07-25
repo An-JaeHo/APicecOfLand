@@ -472,7 +472,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Transform hpBar = tiles.bossHP.transform.GetChild(0).GetChild(0);
+            Transform hpBar = tiles.bossHP.transform.GetChild(1).GetChild(0);
             float nowHp = transform.GetComponent<GDController>().HelthPoint / totalHp;
 
             if (nowHp <= 0)
@@ -481,7 +481,7 @@ public class EnemyController : MonoBehaviour
             }
             hpBar.localScale = new Vector3(nowHp, 1f);
 
-            tiles.bossHP.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = ((int)(nowHp * 100)).ToString()+"%";
+            tiles.bossHP.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = ((int)(nowHp * 100)).ToString()+"%";
         }
 
 
