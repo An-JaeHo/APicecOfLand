@@ -21,6 +21,8 @@ public class ButtonManger : MonoBehaviour
     public List<GameObject> builders;
     public Timer timer;
     public float buttonTimer;
+    public GameObject turnCountText;
+
 
     //타일 구매용
     public int food;
@@ -382,6 +384,7 @@ public class ButtonManger : MonoBehaviour
     {
         if (playerInfo.flour >= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && playerInfo.sugar >= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar)
         {
+            tileManger.CheckTile();
             if (int.Parse(input.army.parent.parent.name) > int.Parse(input.landObj.transform.parent.name))
             {
                 input.army.transform.localScale = new Vector3(-1, 1);
@@ -390,8 +393,6 @@ public class ButtonManger : MonoBehaviour
             {
                 input.army.transform.localScale = new Vector3(1, 1);
             }
-
-            tileManger.CheckTile();
             input.army.transform.SetParent(UpgradeLand);
             input.moveSoldier.move = true;
             input.army.transform.GetComponent<SoldierManger>().SoldierAction();
@@ -507,6 +508,11 @@ public class ButtonManger : MonoBehaviour
 
                 yield return new WaitForSeconds(2f);
 
+                if (enemys[i].transform.parent.tag == "Capital")
+                {
+                    enemys[i].transform.GetComponent<GameEnd>().GameEnding();
+                }
+
                 if (enemys[i].transform.parent.tag == "Area" 
                     || enemys[i].transform.parent.tag == "Barracks")
                 {
@@ -520,11 +526,6 @@ public class ButtonManger : MonoBehaviour
                     enemys[i].transform.parent.GetComponent<AreaManger>().TurnArea();
                 }
 
-                if (enemys[i].transform.parent.tag == "Capital")
-                {
-                    enemys[i].transform.GetComponent<GameEnd>().GameEnding();
-                }
-
                 for (int j = 0; j < enemys[i].GetComponent<EnemyController>().buffPrefebList.Count; j++)
                 {
                     enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
@@ -534,7 +535,6 @@ public class ButtonManger : MonoBehaviour
                         GameObject.Destroy(enemys[i].GetComponent<EnemyController>().buffPrefebList[j]);
                         enemys[i].GetComponent<EnemyController>().buffPrefebList.Remove(enemys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
                     }
-
                 }
 
                 //enemys[i].GetComponent<EnemyController>().HpBarScale();
@@ -554,7 +554,6 @@ public class ButtonManger : MonoBehaviour
 
         for (int i = 0; i < amrys.Count; i++)
         {
-
             for (int j = 0; j < amrys[i].GetComponent<SoldierManger>().buffPrefebList.Count; j++)
             {
                 amrys[i].GetComponent<SoldierManger>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
@@ -564,8 +563,14 @@ public class ButtonManger : MonoBehaviour
                     GameObject.Destroy(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
                     amrys[i].GetComponent<SoldierManger>().buffPrefebList.Remove(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
                 }
+                else
+                {
+                    //버프 위치 앞으로 땡기기
+
+                }
 
             }
+
             amrys[i].GetComponent<SoldierManger>().movePoint = true;
             //amrys[i].GetComponent<SoldierManger>().HpBarScale();
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
@@ -606,7 +611,7 @@ public class ButtonManger : MonoBehaviour
         StartCoroutine(moveEnemy());
         rangeManger.rangeList.Clear();
         supplyManger.UpdateSupply();
-        GameObject.Find("ButtonMgr").transform.GetChild(6).GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
+        turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
     }
