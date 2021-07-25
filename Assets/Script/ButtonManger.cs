@@ -508,6 +508,11 @@ public class ButtonManger : MonoBehaviour
 
                 yield return new WaitForSeconds(2f);
 
+                if (enemys[i].transform.parent.tag == "Capital")
+                {
+                    enemys[i].transform.GetComponent<GameEnd>().GameEnding();
+                }
+
                 if (enemys[i].transform.parent.tag == "Area" 
                     || enemys[i].transform.parent.tag == "Barracks")
                 {
@@ -521,11 +526,6 @@ public class ButtonManger : MonoBehaviour
                     enemys[i].transform.parent.GetComponent<AreaManger>().TurnArea();
                 }
 
-                if (enemys[i].transform.parent.tag == "Capital")
-                {
-                    enemys[i].transform.GetComponent<GameEnd>().GameEnding();
-                }
-
                 for (int j = 0; j < enemys[i].GetComponent<EnemyController>().buffPrefebList.Count; j++)
                 {
                     enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
@@ -535,7 +535,6 @@ public class ButtonManger : MonoBehaviour
                         GameObject.Destroy(enemys[i].GetComponent<EnemyController>().buffPrefebList[j]);
                         enemys[i].GetComponent<EnemyController>().buffPrefebList.Remove(enemys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
                     }
-
                 }
 
                 //enemys[i].GetComponent<EnemyController>().HpBarScale();
@@ -555,7 +554,6 @@ public class ButtonManger : MonoBehaviour
 
         for (int i = 0; i < amrys.Count; i++)
         {
-
             for (int j = 0; j < amrys[i].GetComponent<SoldierManger>().buffPrefebList.Count; j++)
             {
                 amrys[i].GetComponent<SoldierManger>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
