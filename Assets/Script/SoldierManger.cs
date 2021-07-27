@@ -153,10 +153,8 @@ public class SoldierManger : MonoBehaviour
             enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
             attack = false;
             movePoint = false;
-            enemy.GetComponent<EnemyController>().Dead(transform);
             enemy.GetComponent<EnemyController>().HpBarScale();
-
-            tileManger.CheckTile();
+            enemy.GetComponent<EnemyController>().Dead(transform);
         }
 
         if (cardMovePoint)
@@ -164,7 +162,6 @@ public class SoldierManger : MonoBehaviour
             movePoint = true;
             cardMovePoint = false;
         }
-
         
         buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
@@ -181,7 +178,6 @@ public class SoldierManger : MonoBehaviour
         }
 
         hpBar.localScale = new Vector3(nowHp, 1f);
-
     }
 
     public void Dead()

@@ -373,7 +373,6 @@ public class ButtonManger : MonoBehaviour
         }
 
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
-        //panel.baseLand.GetComponent<AreaManger>().CheckUpdateMaterial();
         supplyManger.UpdateSupply();
         panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
         input.mouseCheck = true;
@@ -614,5 +613,6 @@ public class ButtonManger : MonoBehaviour
         turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
+        tileManger.CheckTile();
     }
 }

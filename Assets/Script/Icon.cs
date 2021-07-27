@@ -80,8 +80,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.transform.name);
-
         if (collision.transform.tag == "Army")
         {
             card.SoldierPrefeb = collision.gameObject;

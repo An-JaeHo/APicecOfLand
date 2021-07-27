@@ -213,7 +213,7 @@ public class InputManger : MonoBehaviour
                                 rangeManger.PlayerMoveRange(hit.transform);
                                 armyMove = false;
                                 moveSoldier = hit.transform.GetComponent<SoldierManger>();
-                                //mouseCheck = true;
+                                Land.CheckTile();
                             }
                             break;
                     }
@@ -257,6 +257,7 @@ public class InputManger : MonoBehaviour
             }
         }
 
+        
         rangeManger.rangeList.Clear();
     }
 }

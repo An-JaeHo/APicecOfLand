@@ -162,11 +162,10 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monster.transform.name = json.information.monster[i].Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 160, monster.transform.parent.position.y - 70);
+                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 150, monster.transform.parent.position.y - 70);
                         monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         monsterUi.Add(monster);
                     }
-
 
                     if (json.information.monster[i].Code == "Mon 7")
                     {
@@ -174,7 +173,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monster.transform.name = json.information.monster[i].Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 260, monster.transform.parent.position.y - 70);
+                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 240, monster.transform.parent.position.y - 70);
                         monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         monsterUi.Add(monster);
                     }
@@ -185,7 +184,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monster.transform.name = json.information.monster[i].Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 360, monster.transform.parent.position.y - 70);
+                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 330, monster.transform.parent.position.y - 70);
                         monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         monsterUi.Add(monster);
                     }
@@ -197,7 +196,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monster.transform.name = json.information.monster[i].Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 460, monster.transform.parent.position.y - 70);
+                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 420, monster.transform.parent.position.y - 70);
                         monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         monsterUi.Add(monster);
                     }
@@ -208,7 +207,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monster.transform.name = json.information.monster[i].Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 560, monster.transform.parent.position.y - 70);
+                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 510, monster.transform.parent.position.y - 70);
                         monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         monsterUi.Add(monster);
                     }
@@ -216,7 +215,7 @@ public class BarrackController : MonoBehaviour
             }
         }
 
-        myContent.GetComponent<RectTransform>().sizeDelta = new Vector2(420 + (monsterUi.Count - 3) * 230, myContent.GetComponent<RectTransform>().sizeDelta.y);
+        myContent.GetComponent<RectTransform>().sizeDelta = new Vector2(420 + (monsterUi.Count - 3) * 200, myContent.GetComponent<RectTransform>().sizeDelta.y);
 
     }
     #endregion
