@@ -454,7 +454,7 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        
+        tiles.CheckTile();
     }
 
     public void HpBarScale()
@@ -483,9 +483,6 @@ public class EnemyController : MonoBehaviour
 
             tiles.bossHP.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = ((int)(nowHp * 100)).ToString()+"%";
         }
-
-
-        
     }
 
     public void MakeBuffIcon(string code)
