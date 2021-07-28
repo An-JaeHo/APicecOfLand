@@ -103,7 +103,7 @@ public class InputManger : MonoBehaviour
                                 case "Builder":
                                     if (hit.transform.GetComponent<SoldierManger>().movePoint)
                                     {
-                                        rangeManger.PlayerMoveRange(hit.transform);
+                                        rangeManger.BuilderMoveRange(hit.transform);
                                         armyMove = false;
                                         moveSoldier = hit.transform.GetComponent<SoldierManger>();
                                     }
