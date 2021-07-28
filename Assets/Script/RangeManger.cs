@@ -176,6 +176,10 @@ public class RangeManger : MonoBehaviour
                         }
                     }
                 }
+                else
+                {
+                    break;
+                }
             }
 
             for (int j = 0; j < hitobj.GetComponent<MakeSoldier>().Movement; j++)
@@ -203,6 +207,10 @@ public class RangeManger : MonoBehaviour
                             break;
                         }
                     }
+                }
+                else
+                {
+                    break;
                 }
             }
 
@@ -232,6 +240,10 @@ public class RangeManger : MonoBehaviour
                         }
                     }
                 }
+                else
+                {
+                    break;
+                }
             }
 
             for (int j = 0; j < hitobj.GetComponent<MakeSoldier>().Movement; j++)
@@ -259,6 +271,10 @@ public class RangeManger : MonoBehaviour
                             break;
                         }
                     }
+                }
+                else
+                {
+                    break;
                 }
             }
         }
