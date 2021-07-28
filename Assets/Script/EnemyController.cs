@@ -228,11 +228,25 @@ public class EnemyController : MonoBehaviour
     {
         float randnum = Random.Range(0.8f, 1.2f);
         buttonManger.button.GetComponent<Button>().interactable = false;
+
+        //AenemyhelthPoint - (Baseatack + (Atack_sum / (Defend_sum + 10)) + 치명타대미지)
+        //
+        //공격자: (BaseAttack + (RiseAttack * Level)) = Atack_sum
+        //
+        //방어자: ((BaseDefend + (RiseDefend * Level)) = Defend_sum
+        //
+        //치명타 대미지:(치명타 확률)> (Atack_sum * (0.7~11))
+
+        float randCritical = Random.Range(0.7f, 1.1f);
+
+        float defendSum = target.GetComponent<MakeSoldier>().Defensive + (target.GetComponent<MakeSoldier>().RiseAttack * target.GetComponent<MakeSoldier>().Level);
+
         if (target != null)
         {
             if (transform.tag == "Enemy")
             {
-                target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<MakeEnemy>().BaseAttack);
+                float attackSum = enemy.BaseAttack + (enemy.RiseAttack * enemy.Level);
+                target.GetComponent<MakeSoldier>().HelthPoint -= (int)(enemy.BaseAttack - (attackSum / (defendSum + 10)) + attackSum * randCritical);
 
                 if (target.GetComponent<SoldierManger>().countAttack > 0)
                 {
@@ -242,7 +256,8 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                target.GetComponent<MakeSoldier>().HelthPoint -= (int)(transform.GetComponent<GDController>().BaseAttack/2);
+                float attackSum = gd.BaseAttack + (gd.RiseAttack * 1);
+                target.GetComponent<MakeSoldier>().HelthPoint -= (int)(gd.BaseAttack - (attackSum / (defendSum + 10)) + attackSum * randCritical);
 
                 if (target.GetComponent<SoldierManger>().countAttack > 0)
                 {

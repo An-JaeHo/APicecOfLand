@@ -442,7 +442,7 @@ public class TileManger : MonoBehaviour
                 {
                     if (bossObj[i].name == boss.GetComponent<GDController>().Code)
                     {
-                        GameObject enemyPicture = Instantiate(bossObj[i], new Vector3(boss.transform.position.x+20, boss.transform.position.y - 55), Quaternion.identity);
+                        GameObject enemyPicture = Instantiate(bossObj[i], new Vector3(boss.transform.position.x, boss.transform.position.y - 55), Quaternion.identity);
                         enemyPicture.transform.SetParent(boss.transform);
                     }
                 }
