@@ -425,7 +425,7 @@ public class TileManger : MonoBehaviour
             }
         }
 
-        if (playerInfo.turnPoint % 5 == 0 && playerInfo.turnPoint >= 8)
+        if (playerInfo.turnPoint % 4 == 0 && playerInfo.turnPoint >= 8)
         {
 
             if(playerInfo.turnPoint == 20)

@@ -208,7 +208,17 @@ public class SoldierManger : MonoBehaviour
             nowExp = 0;
         }
 
+        if(nowExp >= 1)
+        {
+            nowExp = 1;
+        }
+        
         expBar.localScale = new Vector3(nowExp, 1f);
+
+        if(nowExp == 1)
+        {
+            LevelCheck();
+        }
     }
 
     public void Dead()
@@ -304,9 +314,10 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
+    //레벨에 따른 이미지도 변경 해야함
     public void LevelCheck()
     {
-        if(transform.GetComponent<MakeSoldier>().nowExp == transform.GetComponent<MakeSoldier>().Experience)
+        if(transform.GetComponent<MakeSoldier>().nowExp >= transform.GetComponent<MakeSoldier>().Experience)
         {
             transform.GetComponent<MakeSoldier>().Level++;
             transform.GetComponent<MakeSoldier>().BaseAttack += transform.GetComponent<MakeSoldier>().RiseAttack;
