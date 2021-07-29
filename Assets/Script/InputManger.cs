@@ -174,12 +174,21 @@ public class InputManger : MonoBehaviour
                                     {
                                         if(int.Parse(army.parent.parent.name) +1  == int.Parse(hit.transform.parent.name))
                                         {
-                                            army.transform.localScale = new Vector3(1, 1);
+                                            army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
                                         }
                                         else if (int.Parse(army.parent.parent.name) - 1 == int.Parse(hit.transform.parent.name))
                                         {
-                                            army.transform.localScale = new Vector3(-1, 1);
+                                            army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
                                         }
+
+                                        //if (int.Parse(input.army.parent.parent.name) > int.Parse(input.landObj.transform.parent.name))
+                                        //{
+                                        //    input.army.GetChild(1).transform.localScale = new Vector3(-0.8f, 1);
+                                        //}
+                                        //else
+                                        //{
+                                        //    input.army.GetChild(1).transform.localScale = new Vector3(0.8f, 1);
+                                        //}
 
                                         army.transform.SetParent(hit.transform);
                                         moveSoldier.move = true;

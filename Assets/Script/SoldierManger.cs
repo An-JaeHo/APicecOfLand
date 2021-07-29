@@ -125,7 +125,7 @@ public class SoldierManger : MonoBehaviour
     {
         buttonManger.button.GetComponent<Button>().interactable = false;
 
-        //AenemyhelthPoint - (Baseatack + (Atack_sum / (Defend_sum + 10)) + 치명타대미지)
+        //AenemyhelthPoint – (((Atack_sum/Defend_sum)*30)*치명타대미지))
         //
         //공격자: (BaseAttack + (RiseAttack * Level)) = Atack_sum
         //
@@ -144,13 +144,13 @@ public class SoldierManger : MonoBehaviour
             {
                 float defendSum = enemy.GetComponent<MakeEnemy>().BaseDefensive + (enemy.GetComponent<MakeEnemy>().RiseAttack * enemy.GetComponent<MakeEnemy>().Level);
 
-                enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(soldier.BaseAttack - (attackSum / (defendSum +10)) + attackSum*randCritical) ;
+                enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)((((attackSum / defendSum) * 30)) *randCritical) ;
             }
             else
             {
                 float defendSum = enemy.GetComponent<GDController>().Defensive + (enemy.GetComponent<GDController>().RiseAttack);
 
-                enemy.GetComponent<GDController>().HelthPoint-= (int)(soldier.BaseAttack - (attackSum / (defendSum + 10)) + attackSum * randCritical);
+                enemy.GetComponent<GDController>().HelthPoint-= (int)((((attackSum / defendSum) * 30)) * randCritical);
             }
             
             ani.SetTrigger("Attack");
@@ -184,15 +184,31 @@ public class SoldierManger : MonoBehaviour
 
     public void HpBarScale()
     {
-        Transform hpBar = transform.GetChild(0).GetChild(0);
+        Transform hpBar = transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0);
 
         float nowHp = soldier.HelthPoint / totalHp;
-        if(nowHp <=0)
+
+        if (nowHp <=0)
         {
             nowHp = 0;
         }
 
         hpBar.localScale = new Vector3(nowHp, 1f);
+    }
+
+    public void ExpBarScale()
+    {
+        Transform expBar = transform.GetChild(0).GetChild(2).GetChild(0).GetChild(0);
+        int exp = soldier.nowExp;
+        float totalexp = soldier.Experience;
+        float nowExp = soldier.nowExp / totalexp;
+
+        if (nowExp <= 0)
+        {
+            nowExp = 0;
+        }
+
+        expBar.localScale = new Vector3(nowExp, 1f);
     }
 
     public void Dead()
@@ -290,7 +306,7 @@ public class SoldierManger : MonoBehaviour
 
     public void LevelCheck()
     {
-        if(transform.GetComponent<MakeSoldier>().exp >10)
+        if(transform.GetComponent<MakeSoldier>().nowExp == transform.GetComponent<MakeSoldier>().Experience)
         {
             transform.GetComponent<MakeSoldier>().Level++;
             transform.GetComponent<MakeSoldier>().BaseAttack += transform.GetComponent<MakeSoldier>().RiseAttack;

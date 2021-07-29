@@ -126,4 +126,5 @@ public class Monster
     public string RiseCritical;
     public int AttackRange;
     public int Movement;
+    public int Experience;
 }
