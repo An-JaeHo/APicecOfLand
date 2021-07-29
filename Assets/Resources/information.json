@@ -727,7 +727,7 @@
       "RiseHelthPoint": 100,
       "BaseAttack": 25,
       "RiseAttack": 10,
-      "BaseDefensive": 20,
+      "BaseDefensive": 5,
       "RiseDefensive": 10,
       "AttackRange": 1,
       "AttackNumber": 1,
@@ -748,9 +748,9 @@
       "BaseHelthPoint": 1000,
       "RiseHelthPoint": 100,
       "BaseAttack": 40,
-      "RiseAttack": 15,
-      "BaseDefensive": 40,
-      "RiseDefensive": 10,
+      "RiseAttack": 20,
+      "BaseDefensive": 20,
+      "RiseDefensive": 15,
       "AttackRange": 1,
       "AttackNumber": 1,
       "Movement": 1,
@@ -769,10 +769,10 @@
       "MaxLevel": 20,
       "BaseHelthPoint": 2000,
       "RiseHelthPoint": 100,
-      "BaseAttack": 60,
-      "RiseAttack": 20,
-      "BaseDefensive": 50,
-      "RiseDefensive": 10,
+      "BaseAttack": 70,
+      "RiseAttack": 25,
+      "BaseDefensive": 40,
+      "RiseDefensive": 25,
       "AttackRange": 1,
       "AttackNumber": 1,
       "Movement": 1,
@@ -792,9 +792,9 @@
       "BaseHelthPoint": 3000,
       "RiseHelthPoint": 100,
       "BaseAttack": 100,
-      "RiseAttack": 20,
-      "BaseDefensive": 80,
-      "RiseDefensive": 15,
+      "RiseAttack": 30,
+      "BaseDefensive": 60,
+      "RiseDefensive": 35,
       "AttackRange": 1,
       "AttackNumber": 1,
       "Movement": 1,
@@ -2244,7 +2244,8 @@
       "Critical": 0.1,
       "RiseCritical": 0.02,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 4
     },
     {
       "Code": "Mon 2",
@@ -2259,14 +2260,15 @@
       "ConsumeFood": 5,
       "UnderEvolutin": "Mon 1",
       "EvolutionLevel": 5,
-      "BaseAttack": 40,
+      "BaseAttack": 50,
       "RiseAttack": 10,
-      "Defensive": 30,
+      "Defensive": 40,
       "RiseDefensive": 10,
       "Critical": 0.2,
       "RiseCritical": 0.03,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 5
     },
     {
       "Code": "Mon 3",
@@ -2281,14 +2283,15 @@
       "ConsumeFood": 7,
       "UnderEvolutin": "Mon 2",
       "EvolutionLevel": "Null",
-      "BaseAttack": 50,
+      "BaseAttack": 100,
       "RiseAttack": 15,
-      "Defensive": 50,
+      "Defensive": 90,
       "RiseDefensive": 15,
       "Critical": 0.3,
       "RiseCritical": 0.05,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 7
     },
     {
       "Code": "Mon 4",
@@ -2303,14 +2306,15 @@
       "ConsumeFood": 4,
       "UnderEvolutin": "Null",
       "EvolutionLevel": 5,
-      "BaseAttack": 30,
+      "BaseAttack": 25,
       "RiseAttack": 10,
       "Defensive": 10,
       "RiseDefensive": 5,
       "Critical": 0.15,
       "RiseCritical": 0.03,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 4
     },
     {
       "Code": "Mon 5",
@@ -2325,14 +2329,15 @@
       "ConsumeFood": 7,
       "UnderEvolutin": "Mon 4",
       "EvolutionLevel": 5,
-      "BaseAttack": 50,
-      "RiseAttack": 20,
-      "Defensive": 10,
+      "BaseAttack": 75,
+      "RiseAttack": 10,
+      "Defensive": 35,
       "RiseDefensive": 5,
       "Critical": 0.3,
       "RiseCritical": 0.05,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 5
     },
     {
       "Code": "Mon 6",
@@ -2347,14 +2352,15 @@
       "ConsumeFood": 13,
       "UnderEvolutin": "Mon 5",
       "EvolutionLevel": "Null",
-      "BaseAttack": 80,
+      "BaseAttack": 125,
       "RiseAttack": 30,
-      "Defensive": 10,
+      "Defensive": 60,
       "RiseDefensive": 5,
       "Critical": 0.5,
       "RiseCritical": 0.05,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 7
     },
     {
       "Code": "Mon 7",
@@ -2376,7 +2382,8 @@
       "Critical": 0.1,
       "RiseCritical": 0.02,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 4
     },
     {
       "Code": "Mon 8",
@@ -2393,12 +2400,13 @@
       "EvolutionLevel": 5,
       "BaseAttack": 40,
       "RiseAttack": 5,
-      "Defensive": 10,
+      "Defensive": 35,
       "RiseDefensive": 5,
       "Critical": 0.3,
       "RiseCritical": 0.04,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 5
     },
     {
       "Code": "Mon 9",
@@ -2413,14 +2421,15 @@
       "ConsumeFood": 8,
       "UnderEvolutin": "Mon 8",
       "EvolutionLevel": "Null",
-      "BaseAttack": 70,
+      "BaseAttack": 65,
       "RiseAttack": 20,
-      "Defensive": 20,
+      "Defensive": 60,
       "RiseDefensive": 10,
       "Critical": 0.5,
       "RiseCritical": 0.06,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 7
     },
     {
       "Code": "Mon 10",
@@ -2442,7 +2451,8 @@
       "Critical": 0.15,
       "RiseCritical": 0.04,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 4
     },
     {
       "Code": "Mon 11",
@@ -2457,14 +2467,15 @@
       "ConsumeFood": 5,
       "UnderEvolutin": "Mon 11",
       "EvolutionLevel": 5,
-      "BaseAttack": 35,
+      "BaseAttack": 45,
       "RiseAttack": 10,
-      "Defensive": 25,
+      "Defensive": 40,
       "RiseDefensive": 10,
       "Critical": 0.3,
       "RiseCritical": 0.05,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 5
     },
     {
       "Code": "Mon 12",
@@ -2479,14 +2490,15 @@
       "ConsumeFood": 10,
       "UnderEvolutin": "Mon 12",
       "EvolutionLevel": "Null",
-      "BaseAttack": 55,
+      "BaseAttack": 95,
       "RiseAttack": 15,
-      "Defensive": 25,
+      "Defensive": 90,
       "RiseDefensive": 10,
       "Critical": 0.3,
       "RiseCritical": 0.05,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 7
     },
     {
       "Code": "Mon 13",
@@ -2508,7 +2520,8 @@
       "Critical": 0.1,
       "RiseCritical": 0.03,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 4
     },
     {
       "Code": "Mon 14",
@@ -2523,14 +2536,15 @@
       "ConsumeFood": 9,
       "UnderEvolutin": "Mon 13",
       "EvolutionLevel": 5,
-      "BaseAttack": 35,
+      "BaseAttack": 45,
       "RiseAttack": 10,
-      "Defensive": 25,
+      "Defensive": 45,
       "RiseDefensive": 5,
       "Critical": 0.2,
       "RiseCritical": 0.04,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 5
     },
     {
       "Code": "Mon 15",
@@ -2545,14 +2559,15 @@
       "ConsumeFood": 15,
       "UnderEvolutin": "Mon 14",
       "EvolutionLevel": "Null",
-      "BaseAttack": 50,
+      "BaseAttack": 95,
       "RiseAttack": 20,
-      "Defensive": 40,
+      "Defensive": 70,
       "RiseDefensive": 15,
       "Critical": 0.2,
       "RiseCritical": 0.05,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 7
     },
     {
       "Code": "Mon 16",
@@ -2574,7 +2589,8 @@
       "Critical": 0.1,
       "RiseCritical": 0.03,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 4
     },
     {
       "Code": "Mon 17",
@@ -2589,14 +2605,15 @@
       "ConsumeFood": 5,
       "UnderEvolutin": "Mon 17",
       "EvolutionLevel": 5,
-      "BaseAttack": 15,
+      "BaseAttack": 35,
       "RiseAttack": 5,
-      "Defensive": 50,
+      "Defensive": 80,
       "RiseDefensive": 10,
       "Critical": 0.1,
       "RiseCritical": 0.04,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 5
     },
     {
       "Code": "Mon 18",
@@ -2611,14 +2628,15 @@
       "ConsumeFood": 7,
       "UnderEvolutin": "Mon 18",
       "EvolutionLevel": 10,
-      "BaseAttack": 20,
+      "BaseAttack": 60,
       "RiseAttack": 5,
-      "Defensive": 70,
+      "Defensive": 130,
       "RiseDefensive": 20,
       "Critical": 0.1,
       "RiseCritical": 0.05,
       "AttackRange": 1,
-      "Movement": 1
+      "Movement": 1,
+      "Experience": 7
     },
     {
       "Code": "Mon 19",
@@ -2640,7 +2658,8 @@
       "Critical": null,
       "RiseCritical": "Null",
       "AttackRange": 1,
-      "Movement": 3
+      "Movement": 3,
+      "Experience": "Null"
     }
   ]
 }

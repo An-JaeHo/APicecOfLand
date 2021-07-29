@@ -229,7 +229,7 @@ public class EnemyController : MonoBehaviour
         float randnum = Random.Range(0.8f, 1.2f);
         buttonManger.button.GetComponent<Button>().interactable = false;
 
-        //AenemyhelthPoint - (Baseatack + (Atack_sum / (Defend_sum + 10)) + 치명타대미지)
+        //AenemyhelthPoint – (((Atack_sum/Defend_sum)*30)*치명타대미지))
         //
         //공격자: (BaseAttack + (RiseAttack * Level)) = Atack_sum
         //
@@ -246,7 +246,7 @@ public class EnemyController : MonoBehaviour
             if (transform.tag == "Enemy")
             {
                 float attackSum = enemy.BaseAttack + (enemy.RiseAttack * enemy.Level);
-                target.GetComponent<MakeSoldier>().HelthPoint -= (int)(enemy.BaseAttack - (attackSum / (defendSum + 10)) + attackSum * randCritical);
+                target.GetComponent<MakeSoldier>().HelthPoint -= (int)((((attackSum / defendSum) * 30)) * randCritical);
 
                 if (target.GetComponent<SoldierManger>().countAttack > 0)
                 {
@@ -257,7 +257,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 float attackSum = gd.BaseAttack + (gd.RiseAttack * 1);
-                target.GetComponent<MakeSoldier>().HelthPoint -= (int)(gd.BaseAttack - (attackSum / (defendSum + 10)) + attackSum * randCritical);
+                target.GetComponent<MakeSoldier>().HelthPoint -= (int)((((attackSum / defendSum) * 30))* randCritical);
 
                 if (target.GetComponent<SoldierManger>().countAttack > 0)
                 {
@@ -449,7 +449,8 @@ public class EnemyController : MonoBehaviour
             {
                 invenManger.InputCard(GetComponent<MakeEnemy>().Grade);
                 buttonManger.enemys.Remove(gameObject);
-                monster.GetComponent<MakeSoldier>().exp += transform.GetComponent<MakeEnemy>().DropExperiencePoint;
+                monster.GetComponent<MakeSoldier>().nowExp += transform.GetComponent<MakeEnemy>().DropExperiencePoint;
+                monster.GetComponent<SoldierManger>().ExpBarScale();
                 playerInfo.killingPoint++;
                 transform.parent.GetComponent<BoxCollider2D>().enabled = true;
                 Destroy(this.gameObject);
@@ -462,6 +463,8 @@ public class EnemyController : MonoBehaviour
                 invenManger.InputCard(4);
                 buttonManger.enemys.Remove(gameObject);
                 playerInfo.killingPoint++;
+                //monster.GetComponent<MakeSoldier>().exp += transform.GetComponent<GDController>().exp;
+                monster.GetComponent<SoldierManger>().ExpBarScale();
                 tiles.bossHP.SetActive(false);
                 tiles.bossText.SetActive(false);
                 transform.parent.GetComponent<BoxCollider2D>().enabled = true;
@@ -476,7 +479,7 @@ public class EnemyController : MonoBehaviour
     {
         if(transform.tag == "Enemy")
         {
-            Transform hpBar = transform.GetChild(0).GetChild(0);
+            Transform hpBar = transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0);
             float nowHp = enemy.BaseHelthPoint / totalHp;
 
             if (nowHp <= 0)

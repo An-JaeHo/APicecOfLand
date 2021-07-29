@@ -343,13 +343,14 @@ public class ButtonManger : MonoBehaviour
         playerInfo.flour -= panel.upgradeWood;
         playerInfo.sugar -= panel.upgradeIron;
         tileManger.CheckTile();
+
         if (int.Parse(input.army.parent.parent.name) > int.Parse(input.landObj.transform.parent.name))
         {
-            input.army.transform.localScale = new Vector3(-1, 1);
+            input.army.GetChild(1).transform.localScale = new Vector3(-0.4f, 0.4f);
         }
         else
         {
-            input.army.transform.localScale = new Vector3(1, 1);
+            input.army.GetChild(1).transform.localScale = new Vector3(0.4f, 0.4f);
         }
         input.army.transform.SetParent(input.landObj);
         input.moveSoldier.move = true;
@@ -384,13 +385,14 @@ public class ButtonManger : MonoBehaviour
         if (playerInfo.flour >= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && playerInfo.sugar >= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar)
         {
             tileManger.CheckTile();
+
             if (int.Parse(input.army.parent.parent.name) > int.Parse(input.landObj.transform.parent.name))
             {
-                input.army.transform.localScale = new Vector3(-1, 1);
+                input.army.GetChild(1).transform.localScale = new Vector3(-0.4f, 0.4f);
             }
             else
             {
-                input.army.transform.localScale = new Vector3(1, 1);
+                input.army.GetChild(1).transform.localScale = new Vector3(0.4f, 0.4f);
             }
             input.army.transform.SetParent(UpgradeLand);
             input.moveSoldier.move = true;

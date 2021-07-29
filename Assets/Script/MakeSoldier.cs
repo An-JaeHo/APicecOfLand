@@ -26,7 +26,7 @@ public class SoldierInfo : MonoBehaviour
     public int AttackRange;
     public int Movement;
     public int Level;
-    public int exp;
+    public int Experience;
     public float pureAttack;
     public float pureDefensive;
     public int pureRange;
@@ -36,11 +36,13 @@ public class MakeSoldier : SoldierInfo
 {
     public JsonManger TroopInfo;
     public SpriteRenderer troopInfoImage;
+    public int nowExp;
 
     private void Start()
     {
         //TroopInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         troopInfoImage = GetComponent<SpriteRenderer>();
+        nowExp = 0;
     }
 
     public void SuperMagic(string code)
@@ -71,6 +73,7 @@ public class MakeSoldier : SoldierInfo
                 RiseCritical = TroopInfo.information.monster[i].RiseCritical;
                 AttackRange = TroopInfo.information.monster[i].AttackRange;
                 Movement = TroopInfo.information.monster[i].Movement;
+                Experience = TroopInfo.information.monster[i].Experience;
 
                 Level = 1;
                 pureAttack = TroopInfo.information.monster[i].BaseAttack;
