@@ -73,10 +73,7 @@ public class BarrackController : MonoBehaviour
             usingPeople++;
             supplyManger.UpdateSupply();
             gameObject.SetActive(false);
-            prefebSoldier.GetComponent<SoldierManger>().LevelCheck();
-            prefebSoldier.GetComponent<SoldierManger>().ExpBarScale();
         }
-
         tileManger.CheckTile();
         inputManger.mouseCheck = true;
     }

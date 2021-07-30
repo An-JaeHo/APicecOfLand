@@ -315,7 +315,7 @@ public class TileManger : MonoBehaviour
 
     public void DeadBulider(GameObject builder)
     {
-        List<Transform> builderLand = new List<Transform>();
+        List<Transform> builderLand = activeChildtileList;
 
         for (int i = 0; i < activeChildtileList.Count; i++)
         {
