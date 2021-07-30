@@ -422,6 +422,7 @@ public class TileManger : MonoBehaviour
                                 enemyPicture.transform.SetParent(noChildEnemy.transform);
                             }
                         }
+                        LevelCheck(noChildEnemy);
                         buttonManger.enemys.Add(noChildEnemy);
                     }
                 }
@@ -578,7 +579,7 @@ public class TileManger : MonoBehaviour
                     enemyPicture.transform.SetParent(enemy.transform);
                 }
             }
-
+            LevelCheck(enemy);
             buttonManger.enemys.Add(enemy);
             enemyLand.Add(noChildLand[rand].GetChild(0));
         }
@@ -608,5 +609,37 @@ public class TileManger : MonoBehaviour
                 enemy4Code.Add(json.information.enemy[i].Code);
             }
         }
+    }
+
+    public void LevelCheck(GameObject Enemy)
+    {
+        int randLevel = new int();
+
+        Debug.Log("ss");
+        if (playerInfo.turnPoint <= 20)
+        {
+            randLevel = UnityEngine.Random.Range(1, 6);
+        }
+        else if (playerInfo.turnPoint <= 50)
+        {
+            randLevel = UnityEngine.Random.Range(5, 21);
+        }
+        else if (playerInfo.turnPoint <= 100)
+        {
+            randLevel = UnityEngine.Random.Range(15, 31);
+        }
+        else if (playerInfo.turnPoint <= 150)
+        {
+            randLevel = UnityEngine.Random.Range(20, 51);
+        }
+        else if (playerInfo.turnPoint <= 200)
+        {
+            randLevel = UnityEngine.Random.Range(30, 50);
+        }
+
+        Enemy.GetComponent<MakeEnemy>().BaseAttack += Enemy.GetComponent<MakeEnemy>().RiseAttack * randLevel;
+        Enemy.GetComponent<MakeEnemy>().BaseDefensive += Enemy.GetComponent<MakeEnemy>().RiseDefensive * randLevel;
+        Enemy.GetComponent<MakeEnemy>().BaseHelthPoint += Enemy.GetComponent<MakeEnemy>().RiseHelthPoint * randLevel;
+        Enemy.GetComponent<MakeEnemy>().Level += randLevel;
     }
 }
