@@ -37,6 +37,13 @@ public class SoldierManger : MonoBehaviour
     public int builderPoint;
     public float countAttack;
 
+    //레벨에따른 다른 이미지
+    public Sprite level1;
+    public Sprite level2;
+    public Sprite level3;
+    public Sprite level4;
+    public Sprite level5;
+
     void Start()
     {
         tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
@@ -323,6 +330,28 @@ public class SoldierManger : MonoBehaviour
             transform.GetComponent<MakeSoldier>().BaseAttack += transform.GetComponent<MakeSoldier>().RiseAttack;
             transform.GetComponent<MakeSoldier>().Critical += transform.GetComponent<MakeSoldier>().RiseCritical;
             transform.GetComponent<MakeSoldier>().Defensive += transform.GetComponent<MakeSoldier>().RiseDefensive;
+            transform.GetComponent<MakeSoldier>().nowExp = 0;
+        }
+
+        switch (transform.GetComponent<MakeSoldier>().Level)
+        {
+            case 1:
+                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
+                break;
+            case 2:
+                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level2;
+                break;
+            case 3:
+                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level3;
+                break;
+            case 4:
+                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level4;
+                break;
+            case 5:
+                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level5;
+                break;
+            default:
+                break;
         }
     }
 }

@@ -380,47 +380,50 @@ public class TileManger : MonoBehaviour
 
         if (enemyLand.Count != 0)
         {
-            for (int i = 0; i < enemyLand.Count; i++)
+            if (playerInfo.turnPoint % 2 == 0)
             {
-                if (enemyLand[i].childCount == 0 && enemyLand[i].tag == "Enemy Base")
+                for (int i = 0; i < enemyLand.Count; i++)
                 {
-                    GameObject noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyLand[i].position.x, enemyLand[i].position.y + 25f), Quaternion.identity);
-                    noChildEnemy.transform.SetParent(enemyLand[i]);
-
-                    switch (enemyLand[i].GetComponent<MakeArea>().Grade)
+                    if (enemyLand[i].childCount == 0 && enemyLand[i].tag == "Enemy Base")
                     {
-                        case 1:
-                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
-                            break;
-                        case 2:
-                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
-                            break;
-                        case 3:
+                        GameObject noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyLand[i].position.x, enemyLand[i].position.y + 25f), Quaternion.identity);
+                        noChildEnemy.transform.SetParent(enemyLand[i]);
 
-                            int enemyrand = UnityEngine.Random.Range(0, 100);
-
-                            if (enemyrand > 90)
-                            {
-                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
-                            }
-                            else
-                            {
-                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-
-                    for (int j = 0; j < enemyObj.Length; j++)
-                    {
-                        if (enemyObj[j].name == noChildEnemy.GetComponent<MakeEnemy>().Code)
+                        switch (enemyLand[i].GetComponent<MakeArea>().Grade)
                         {
-                            GameObject enemyPicture = Instantiate(enemyObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
-                            enemyPicture.transform.SetParent(noChildEnemy.transform);
+                            case 1:
+                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
+                                break;
+                            case 2:
+                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                                break;
+                            case 3:
+
+                                int enemyrand = UnityEngine.Random.Range(0, 100);
+
+                                if (enemyrand > 90)
+                                {
+                                    noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                                }
+                                else
+                                {
+                                    noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
+                                }
+                                break;
+                            default:
+                                break;
                         }
+
+                        for (int j = 0; j < enemyObj.Length; j++)
+                        {
+                            if (enemyObj[j].name == noChildEnemy.GetComponent<MakeEnemy>().Code)
+                            {
+                                GameObject enemyPicture = Instantiate(enemyObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
+                                enemyPicture.transform.SetParent(noChildEnemy.transform);
+                            }
+                        }
+                        buttonManger.enemys.Add(noChildEnemy);
                     }
-                    buttonManger.enemys.Add(noChildEnemy);
                 }
             }
         }
