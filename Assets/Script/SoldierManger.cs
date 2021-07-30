@@ -324,13 +324,14 @@ public class SoldierManger : MonoBehaviour
     //레벨에 따른 이미지도 변경 해야함
     public void LevelCheck()
     {
-        if(transform.GetComponent<MakeSoldier>().nowExp >= transform.GetComponent<MakeSoldier>().Experience)
+        if(soldier.nowExp >= soldier.Experience)
         {
-            transform.GetComponent<MakeSoldier>().Level++;
-            transform.GetComponent<MakeSoldier>().BaseAttack += transform.GetComponent<MakeSoldier>().RiseAttack;
-            transform.GetComponent<MakeSoldier>().Critical += transform.GetComponent<MakeSoldier>().RiseCritical;
-            transform.GetComponent<MakeSoldier>().Defensive += transform.GetComponent<MakeSoldier>().RiseDefensive;
-            transform.GetComponent<MakeSoldier>().nowExp = 0;
+            soldier.Level++;
+            soldier.BaseAttack += soldier.RiseAttack;
+            soldier.Critical += soldier.RiseCritical;
+            soldier.Defensive += soldier.RiseDefensive;
+            soldier.HelthPoint = (int)totalHp;
+            soldier.nowExp = 0;
         }
 
         switch (transform.GetComponent<MakeSoldier>().Level)
