@@ -150,14 +150,24 @@ public class SoldierManger : MonoBehaviour
             if (enemy.tag == "Enemy")
             {
                 float defendSum = enemy.GetComponent<MakeEnemy>().BaseDefensive + (enemy.GetComponent<MakeEnemy>().RiseAttack * enemy.GetComponent<MakeEnemy>().Level);
+                enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)((((attackSum / defendSum) * 30))) ;
 
-                enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)((((attackSum / defendSum) * 30)) *randCritical) ;
+                float randCri= Random.Range(0,100);
+                if (randCri <= soldier.Critical)
+                {
+                    enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(attackSum+randCritical);
+                }
             }
             else
             {
                 float defendSum = enemy.GetComponent<GDController>().Defensive + (enemy.GetComponent<GDController>().RiseAttack);
+                enemy.GetComponent<GDController>().HelthPoint-= (int)((((attackSum / defendSum) * 30)));
 
-                enemy.GetComponent<GDController>().HelthPoint-= (int)((((attackSum / defendSum) * 30)) * randCritical);
+                float randCri = Random.Range(0, 100);
+                if (randCri <= soldier.Critical)
+                {
+                    enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(attackSum + randCritical);
+                }
             }
             
             ani.SetTrigger("Attack");

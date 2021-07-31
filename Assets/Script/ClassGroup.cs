@@ -122,8 +122,8 @@ public class Monster
     public float RiseAttack;
     public float Defensive;
     public float RiseDefensive;
-    public string Critical;
-    public string RiseCritical;
+    public int Critical;
+    public int RiseCritical;
     public int AttackRange;
     public int Movement;
     public int Experience;

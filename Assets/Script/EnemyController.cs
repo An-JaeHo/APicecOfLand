@@ -246,7 +246,7 @@ public class EnemyController : MonoBehaviour
             if (transform.tag == "Enemy")
             {
                 float attackSum = enemy.BaseAttack + (enemy.RiseAttack * enemy.Level);
-                target.GetComponent<MakeSoldier>().HelthPoint -= (int)((((attackSum / defendSum) * 30)) * randCritical);
+                target.GetComponent<MakeSoldier>().HelthPoint -= (int)((((attackSum / defendSum) * 30)));
 
                 if (target.GetComponent<SoldierManger>().countAttack > 0)
                 {
@@ -257,7 +257,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 float attackSum = gd.BaseAttack + (gd.RiseAttack * 1);
-                target.GetComponent<MakeSoldier>().HelthPoint -= (int)((((attackSum / defendSum) * 30))* randCritical);
+                target.GetComponent<MakeSoldier>().HelthPoint -= (int)((((attackSum / defendSum) * 30)));
 
                 if (target.GetComponent<SoldierManger>().countAttack > 0)
                 {
