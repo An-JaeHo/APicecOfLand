@@ -329,7 +329,7 @@ public class TileManger : MonoBehaviour
 
         builder.SetActive(false);
         builder.transform.position = new Vector3(builderLand[rand].GetChild(0).position.x + 10f, builderLand[rand].GetChild(0).position.y + 25f);
-        builder.transform.SetParent(builderLand[0].GetChild(0));
+        builder.transform.SetParent(builderLand[rand].GetChild(0));
         builder.GetComponent<MakeSoldier>().HelthPoint = 500;
         builder.GetComponent<SoldierManger>().HpBarScale();
         builder.SetActive(true);
