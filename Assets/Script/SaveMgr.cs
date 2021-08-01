@@ -7,12 +7,9 @@ using System.IO;
 [System.Serializable]
 public class Save
 {
-    public Boss swordGuardian;
-    public Boss bowGuardian;
-    public Boss spearGuardian;
-    public Boss cavalryGuardian;
-
-    public List<Boss> guardians;
+    public int milk;
+    public int sugar;
+    public int flour;
 }
 
 public class SaveMgr : MonoBehaviour
@@ -37,20 +34,23 @@ public class SaveMgr : MonoBehaviour
 
     public void Save()
     {
-        Save save = CreateSave();
+        Save save = new Save();
 
         if (!File.Exists(fonlderPath + "/save.txt"))
         {
-            save.swordGuardian = json.information.boss[0];
-            save.bowGuardian = json.information.boss[1];
-            save.spearGuardian = json.information.boss[2];
-            save.cavalryGuardian = json.information.boss[3];
+            save.flour = player.flour;
+            save.sugar = player.sugar;
+            save.milk = player.milk;
+        }
+        else
+        {
+            save.flour += player.flour;
+            save.sugar += player.sugar;
+            save.milk += player.milk;
         }
 
         string saveString = JsonUtility.ToJson(save);
         File.WriteAllText(fonlderPath + "/save.txt", saveString);
-
-        sceneMgr.GoGameScene();
     }
 
 
@@ -58,8 +58,6 @@ public class SaveMgr : MonoBehaviour
     {
         if (!File.Exists(fonlderPath + "/save.txt"))
         {
-            //파일이 없습니다 창을 띠우자
-            Debug.Log(json.information.boss[0].Name);
             Save();
         }
         else
@@ -68,36 +66,5 @@ public class SaveMgr : MonoBehaviour
 
             Save save = JsonUtility.FromJson<Save>(loadFile);
         }
-    }
-
-    public Save CreateSave()
-    {
-        Save save = new Save();
-
-        //save.name = player.name;
-        //save.day = player.day;
-        //save.food = player.food;
-        //save.maxArea = player.maxArea;
-        //save.myArea = player.myArea;
-
-        //if (player.areaPosition.Count != 0)
-        //{
-        //    for(int i =0; i< player.areaPosition.Count; i++)
-        //    {
-        //        save.areaPosition.Add(player.areaPosition[i]);
-        //        save.areaCode.Add(player.areaCode[i]);
-        //    }
-        //}
-
-        //if (player.armyPosition.Count != 0)
-        //{
-        //    for (int i = 0; i < player.armyPosition.Count; i++)
-        //    {
-        //        save.armyPosition.Add(player.armyPosition[i]);
-        //        save.armyCode.Add(player.armyCode[i]);
-        //    }
-        //}
-
-        return save;
     }
 }

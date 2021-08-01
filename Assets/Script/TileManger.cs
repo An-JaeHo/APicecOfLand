@@ -319,7 +319,8 @@ public class TileManger : MonoBehaviour
 
         for (int i = 0; i < activeChildtileList.Count; i++)
         {
-            if(activeChildtileList[i].childCount ==0)
+            if(activeChildtileList[i].GetChild(0).childCount ==0
+                && activeChildtileList[i].tag != "Capital")
             {
                 builderLand.Add(activeChildtileList[i]);
             }

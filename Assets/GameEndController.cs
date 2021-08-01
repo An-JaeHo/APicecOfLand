@@ -11,10 +11,12 @@ public class GameEndController : MonoBehaviour
     public GameObject supply;
     public List<Sprite> rankSprites;
     public GameObject rankImage;
+    public SaveMgr saveMgr;
 
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+        saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
         CheckPoint();
         CheckRank();
         ResulttGame();
@@ -173,6 +175,7 @@ public class GameEndController : MonoBehaviour
 
     public void ResetGame()
     {
+        saveMgr.Save();
         playerInfo.ResetGame();
     }
 }
