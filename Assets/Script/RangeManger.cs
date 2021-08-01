@@ -166,14 +166,7 @@ public class RangeManger : MonoBehaviour
                     }
                     else
                     {
-                        if (tileManger.tileList[nameOfLand + (1 + j)].GetChild(0).transform.tag == "Enemy"
-                            || tileManger.tileList[nameOfLand + (1 + j)].GetChild(0).transform.tag == "GD")
-                        {
-                            tileManger.tileList[nameOfLand + (1 + j)].GetComponent<SpriteRenderer>().color = Color.red;
-                            tileManger.tileList[nameOfLand + (1 + j)].tag = "SelectLand";
-                            rangeList.Add(tileManger.tileList[nameOfLand + (1 + j)]);
-                            break;
-                        }
+                        break;
                     }
                 }
                 else
@@ -198,14 +191,7 @@ public class RangeManger : MonoBehaviour
                     }
                     else
                     {
-                        if (tileManger.tileList[nameOfLand - (1 + j)].GetChild(0).transform.tag == "Enemy"
-                            || tileManger.tileList[nameOfLand - (1 + j)].GetChild(0).transform.tag == "GD")
-                        {
-                            tileManger.tileList[nameOfLand - (1 + j)].GetComponent<SpriteRenderer>().color = Color.red;
-                            tileManger.tileList[nameOfLand - (1 + j)].tag = "SelectLand";
-                            rangeList.Add(tileManger.tileList[nameOfLand - (1 + j)]);
-                            break;
-                        }
+                        break;
                     }
                 }
                 else
@@ -230,14 +216,7 @@ public class RangeManger : MonoBehaviour
                     }
                     else
                     {
-                        if (tileManger.tileList[nameOfLand + (17 * (1 + j))].GetChild(0).transform.tag == "Enemy"
-                            || tileManger.tileList[nameOfLand + (17 * (1 + j))].GetChild(0).transform.tag == "GD")
-                        {
-                            tileManger.tileList[nameOfLand + (17 * (1 + j))].GetComponent<SpriteRenderer>().color = Color.red;
-                            tileManger.tileList[nameOfLand + (17 * (1 + j))].tag = "SelectLand";
-                            rangeList.Add(tileManger.tileList[nameOfLand + (17 * (1 + j))]);
-                            break;
-                        }
+                        break;
                     }
                 }
                 else
@@ -262,14 +241,7 @@ public class RangeManger : MonoBehaviour
                     }
                     else
                     {
-                        if (tileManger.tileList[nameOfLand - (17 * (1 + j))].GetChild(0).transform.tag == "Enemy"
-                            || tileManger.tileList[nameOfLand - (17 * (1 + j))].GetChild(0).transform.tag == "GD")
-                        {
-                            tileManger.tileList[nameOfLand - (17 * (1 + j))].GetComponent<SpriteRenderer>().color = Color.red;
-                            tileManger.tileList[nameOfLand - (17 * (1 + j))].tag = "SelectLand";
-                            rangeList.Add(tileManger.tileList[nameOfLand - (17 * (1 + j))]);
-                            break;
-                        }
+                        break;
                     }
                 }
                 else
