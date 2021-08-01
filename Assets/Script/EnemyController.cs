@@ -239,7 +239,7 @@ public class EnemyController : MonoBehaviour
 
         float randCritical = Random.Range(0.7f, 1.1f);
 
-        float defendSum = target.GetComponent<MakeSoldier>().Defensive + (target.GetComponent<MakeSoldier>().RiseAttack * target.GetComponent<MakeSoldier>().Level);
+        float defendSum = target.GetComponent<MakeSoldier>().Defensive + (target.GetComponent<MakeSoldier>().RiseDefensive * target.GetComponent<MakeSoldier>().Level);
 
         if (target != null)
         {
