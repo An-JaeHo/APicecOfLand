@@ -8,8 +8,9 @@ public class GameEndController : MonoBehaviour
     public PlayerInfo playerInfo;
     int killingPoint;
     int turnPoint;
-    public Text text;
     public GameObject supply;
+    public List<Sprite> rankSprites;
+    public GameObject rankImage;
 
     void Start()
     {
@@ -22,48 +23,47 @@ public class GameEndController : MonoBehaviour
     public void CheckRank()
     {
         int sumPoint = killingPoint + turnPoint;
-        text = GameObject.Find("Rank").transform.GetChild(0).GetComponent<Text>();
 
 
         if (sumPoint < 3)
         {
-            text.text= "Fail";
+            rankImage.GetComponent<Image>().sprite = rankSprites[0];
         }
         else if (sumPoint <= 4)
         {
-            text.text = "F";
+            rankImage.GetComponent<Image>().sprite = rankSprites[1];
         }
         else if (sumPoint <= 5)
         {
-            text.text = "E";
+            rankImage.GetComponent<Image>().sprite = rankSprites[2];
         }
         else if (sumPoint <= 7)
         {
-            text.text = "D";
+            rankImage.GetComponent<Image>().sprite = rankSprites[3];
         }
         else if (sumPoint <= 9)
         {
-            text.text = "C";
+            rankImage.GetComponent<Image>().sprite = rankSprites[4];
         }
         else if (sumPoint <= 11)
         {
-            text.text = "B";
+            rankImage.GetComponent<Image>().sprite = rankSprites[5];
         }
         else if (sumPoint <= 15)
         {
-            text.text = "A";
+            rankImage.GetComponent<Image>().sprite = rankSprites[6];
         }
         else if (sumPoint <= 17)
         {
-            text.text = "A+";
+            rankImage.GetComponent<Image>().sprite = rankSprites[7];
         }
         else if (sumPoint > 17)
         {
-            text.text = "S";
+            rankImage.GetComponent<Image>().sprite = rankSprites[8];
         }
         else if (sumPoint >= 27)
         {
-            text.text = "SS";
+            rankImage.GetComponent<Image>().sprite = rankSprites[9];
         }
     }
 
