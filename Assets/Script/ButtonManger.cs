@@ -66,14 +66,16 @@ public class ButtonManger : MonoBehaviour
     private void Update()
     {
         buttonTimer += Time.deltaTime;
-
-        if (buttonTimer > 1f)
+        if (playerInfo.turnPoint < 9)
         {
-            button.GetComponent<Button>().interactable = true;
-        }
-        else
-        {
-            button.GetComponent<Button>().interactable = false;
+            if (buttonTimer > 1f)
+            {
+                button.GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                button.GetComponent<Button>().interactable = false;
+            }
         }
     }
     #region 일반적인 버튼모음
