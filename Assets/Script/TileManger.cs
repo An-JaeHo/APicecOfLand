@@ -319,22 +319,21 @@ public class TileManger : MonoBehaviour
 
         for (int i = 0; i < activeChildtileList.Count; i++)
         {
-            if(activeChildtileList[i].GetChild(0).childCount ==0
+            if (activeChildtileList[i].GetChild(0).childCount == 0
                 && activeChildtileList[i].tag != "Capital")
             {
                 builderLand.Add(activeChildtileList[i]);
             }
         }
 
-        int rand = UnityEngine.Random.Range(0, builderLand.Count - 2);
+        //int rand = UnityEngine.Random.Range(0, builderLand.Count - 2);
 
-        builder.SetActive(false);
-        builder.transform.position = new Vector3(builderLand[rand].GetChild(0).position.x + 10f, builderLand[rand].GetChild(0).position.y + 25f);
-        builder.transform.SetParent(builderLand[rand].GetChild(0));
-        builder.GetComponent<MakeSoldier>().HelthPoint = 500;
-        builder.GetComponent<SoldierManger>().HpBarScale();
-        builder.SetActive(true);
-
+        //builder.SetActive(false);
+        //builder.transform.position = new Vector3(builderLand[rand].GetChild(0).position.x + 10f, builderLand[rand].GetChild(0).position.y + 25f);
+        //builder.transform.SetParent(builderLand[rand].GetChild(0));
+        //builder.GetComponent<MakeSoldier>().HelthPoint = 500;
+        //builder.GetComponent<SoldierManger>().HpBarScale();
+        //builder.SetActive(true);
     }
 
     public void MakeBulider()
