@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class InputManger : MonoBehaviour
 {
-    public Camera gameCamera;
     public TileManger Land;
     public LayerMask layerMask;
     public Transform hitObj;
@@ -29,13 +28,25 @@ public class InputManger : MonoBehaviour
 
     public bool mouseCheck;
 
+    //카메라이동제한
+    public Camera gameCamera;
+    public Vector3 startPos;
+    public float minPosX;
+    public float maxPosX;
+    public float minPosY;
+    public float maxPosY;
+
     private void Start()
     {
         gameCamera = Camera.main;
         Land = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
         rangeManger = GetComponent<RangeManger>();
         armyMove = true;
-
+        minPosX = -200;
+        maxPosX = 1200;
+        minPosY = -1600;
+        maxPosY = -200;
+        startPos = new Vector3(550, -900);
         mouseCheck = true;
     }
 
@@ -43,16 +54,44 @@ public class InputManger : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            MouseStart = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameCamera.transform.position.z);
+            MouseStart = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
             MouseStart = Camera.main.ScreenToWorldPoint(MouseStart);
-            MouseStart.z = gameCamera.transform.position.z;
+            MouseStart.z = 0;
         }
         else if (Input.GetMouseButton(1))
         {
-            var MouseMove = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameCamera.transform.position.z);
-            MouseMove = Camera.main.ScreenToWorldPoint(MouseMove);
-            MouseMove.z = gameCamera.transform.position.z;
-            gameCamera.transform.position = gameCamera.transform.position - (MouseMove - MouseStart);
+
+            if (gameCamera.transform.position.x < maxPosX + 50
+                && gameCamera.transform.position.x > minPosX - 50
+                && gameCamera.transform.position.y < maxPosY + 50
+                && gameCamera.transform.position.y > minPosY - 50)
+            {
+                Vector3 MouseMove = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+                MouseMove = Camera.main.ScreenToWorldPoint(MouseMove);
+                MouseMove.z = 0;
+                gameCamera.transform.position = gameCamera.transform.position - (MouseMove - MouseStart);
+            }
+
+            if (gameCamera.transform.position.x > maxPosX)
+            {
+                gameCamera.transform.position = new Vector3(maxPosX, gameCamera.transform.position.y, -800);
+            }
+
+            if (gameCamera.transform.position.x < minPosX)
+            {
+                gameCamera.transform.position = new Vector3(minPosX, gameCamera.transform.position.y, -800);
+            }
+
+            if (gameCamera.transform.position.y > maxPosY)
+            {
+                gameCamera.transform.position = new Vector3(gameCamera.transform.position.x, maxPosY, -800);
+            }
+
+            if (gameCamera.transform.position.y < minPosY)
+            {
+                gameCamera.transform.position = new Vector3(gameCamera.transform.position.x, minPosY, -800);
+            }
+
         }
 
         if (mouseCheck)
@@ -269,4 +308,6 @@ public class InputManger : MonoBehaviour
         
         rangeManger.rangeList.Clear();
     }
+
+    
 }
