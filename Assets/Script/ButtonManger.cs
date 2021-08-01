@@ -23,7 +23,6 @@ public class ButtonManger : MonoBehaviour
     public float buttonTimer;
     public GameObject turnCountText;
 
-
     //타일 구매용
     public int food;
     public int wood;
@@ -501,6 +500,8 @@ public class ButtonManger : MonoBehaviour
 
     IEnumerator moveEnemy()
     {
+        List<string> turnSkill = new List<string>();
+
         if (enemys.Count != 0)
         {
             for (int i = 0; i < enemys.Count; i++)
@@ -531,15 +532,33 @@ public class ButtonManger : MonoBehaviour
                 {
                     enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
 
-                    if (enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Turn == 0)
+                    if (enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Turn > 0)
                     {
-                        GameObject.Destroy(enemys[i].GetComponent<EnemyController>().buffPrefebList[j]);
-                        enemys[i].GetComponent<EnemyController>().buffPrefebList.Remove(enemys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
+                        turnSkill.Add(enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Code);
                     }
+
+                    Destroy(enemys[i].GetComponent<EnemyController>().buffPrefebList[j]);
+                }
+
+                enemys[i].GetComponent<EnemyController>().buffPrefebList.Clear();
+
+                if (turnSkill.Count != 0)
+                {
+                    for (int j = 0; j < turnSkill.Count; j++)
+                    {
+                        enemys[i].GetComponent<EnemyController>().MakeBuffIcon(turnSkill[j]);
+                    }
+
+                    for (int j = 0; j < enemys[i].GetComponent<EnemyController>().buffPrefebList.Count; j++)
+                    {
+                        enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
+                    }
+
+                    turnSkill.Clear();
                 }
 
                 //enemys[i].GetComponent<EnemyController>().HpBarScale();
-                if(enemys[i].tag == "Enemy")
+                if (enemys[i].tag == "Enemy")
                 {
                     enemys[i].GetComponent<EnemyController>().enemy.BaseDefensive = enemys[i].GetComponent<EnemyController>().pureDefend;
                 }
@@ -552,28 +571,40 @@ public class ButtonManger : MonoBehaviour
             }
         }
 
-
         for (int i = 0; i < amrys.Count; i++)
         {
             for (int j = 0; j < amrys[i].GetComponent<SoldierManger>().buffPrefebList.Count; j++)
             {
                 amrys[i].GetComponent<SoldierManger>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
 
-                if (amrys[i].GetComponent<SoldierManger>().buffPrefebList[j].GetComponent<InputSkill>().Turn == 0)
+                if (amrys[i].GetComponent<SoldierManger>().buffPrefebList[j].GetComponent<InputSkill>().Turn > 0)
                 {
-                    GameObject.Destroy(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
-                    amrys[i].GetComponent<SoldierManger>().buffPrefebList.Remove(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
-                }
-                else
-                {
-                    //버프 위치 앞으로 땡기기
-
+                    turnSkill.Add(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j].GetComponent<InputSkill>().Code);
                 }
 
+                Destroy(amrys[i].GetComponent<SoldierManger>().buffPrefebList[j]);
             }
 
+            amrys[i].GetComponent<SoldierManger>().buffPrefebList.Clear();
+
+            if(turnSkill.Count !=0)
+            {
+                for (int j = 0; j < turnSkill.Count; j++)
+                {
+                    amrys[i].GetComponent<SoldierManger>().MakeBuffIcon(turnSkill[j]);
+                }
+
+                for (int j = 0; j < amrys[i].GetComponent<SoldierManger>().buffPrefebList.Count; j++)
+                {
+                    amrys[i].GetComponent<SoldierManger>().buffPrefebList[j].GetComponent<InputSkill>().Turn--;
+                }
+
+                turnSkill.Clear();
+            }
+
+
+
             amrys[i].GetComponent<SoldierManger>().movePoint = true;
-            //amrys[i].GetComponent<SoldierManger>().HpBarScale();
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
         }

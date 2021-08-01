@@ -293,7 +293,7 @@ public class SoldierManger : MonoBehaviour
         icon.GetComponent<SpriteRenderer>().sprite = icon.GetComponent<InputSkill>().Picture;
         buffCount = icon.GetComponent<InputSkill>().Turn;
 
-        icon.transform.position = new Vector3(icon.transform.position.x - 10+((i-1)*25), transform.GetChild(0).position.y - 12);
+        icon.transform.position = new Vector3(icon.transform.position.x - 10+((i-1)*15), transform.GetChild(0).position.y - 15);
         buffPrefebList.Add(icon);
     }
 
@@ -308,7 +308,7 @@ public class SoldierManger : MonoBehaviour
     {
         for (int i = 0; i < buffPrefebList.Count; i++)
         {
-            if(buffPrefebList[i].GetComponent<InputSkill>().Turn!= 0)
+            if(buffPrefebList[i].GetComponent<InputSkill>().Turn> 0)
             {
                 switch (buffPrefebList[i].GetComponent<InputSkill>().Code)
                 {

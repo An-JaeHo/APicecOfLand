@@ -60,7 +60,7 @@ public class InvenManger : MonoBehaviour
                 if (slot.transform.GetChild(j).childCount == 0)
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
-                    cardInfo.GetComponent<InputSkill>().MakeCard(oneGradeCard[rand].Code);
+                    cardInfo.GetComponent<InputSkill>().MakeCard("Card 10");
                     cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                     cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
                     cardCount++;
