@@ -138,13 +138,21 @@ public class InputManger : MonoBehaviour
                                         mouseCheck = false;
                                     }
                                     break;
-
                                 case "Builder":
                                     if (hit.transform.GetComponent<SoldierManger>().movePoint)
                                     {
                                         rangeManger.BuilderMoveRange(hit.transform);
                                         armyMove = false;
                                         moveSoldier = hit.transform.GetComponent<SoldierManger>();
+                                    }
+                                    break;
+                                case "Army":
+                                    if (hit.transform.GetComponent<SoldierManger>().movePoint)
+                                    {
+                                        rangeManger.PlayerMoveRange(hit.transform);
+                                        armyMove = false;
+                                        moveSoldier = hit.transform.GetComponent<SoldierManger>();
+                                        Land.CheckTile();
                                     }
                                     break;
                                 default:
@@ -220,15 +228,6 @@ public class InputManger : MonoBehaviour
                                             army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
                                         }
 
-                                        //if (int.Parse(input.army.parent.parent.name) > int.Parse(input.landObj.transform.parent.name))
-                                        //{
-                                        //    input.army.GetChild(1).transform.localScale = new Vector3(-0.8f, 1);
-                                        //}
-                                        //else
-                                        //{
-                                        //    input.army.GetChild(1).transform.localScale = new Vector3(0.8f, 1);
-                                        //}
-
                                         army.transform.SetParent(hit.transform);
                                         moveSoldier.move = true;
                                         army.transform.GetComponent<SoldierManger>().SoldierAction();
@@ -253,18 +252,18 @@ public class InputManger : MonoBehaviour
                 {
                     time = 0;
 
-                    switch (hit.transform.tag)
-                    {
-                        case "Army":
-                            if (hit.transform.GetComponent<SoldierManger>().movePoint)
-                            {
-                                rangeManger.PlayerMoveRange(hit.transform);
-                                armyMove = false;
-                                moveSoldier = hit.transform.GetComponent<SoldierManger>();
-                                Land.CheckTile();
-                            }
-                            break;
-                    }
+                    //switch (hit.transform.tag)
+                    //{
+                    //    case "Army":
+                    //        if (hit.transform.GetComponent<SoldierManger>().movePoint)
+                    //        {
+                    //            rangeManger.PlayerMoveRange(hit.transform);
+                    //            armyMove = false;
+                    //            moveSoldier = hit.transform.GetComponent<SoldierManger>();
+                    //            Land.CheckTile();
+                    //        }
+                    //        break;
+                    //}
                 }
             }
             else

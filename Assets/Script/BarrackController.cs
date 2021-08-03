@@ -104,7 +104,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi[1].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monsterUi[1].transform.name = json.information.monster[i].Name;
                         monsterUi[1].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                        monsterUi[1].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 160, monsterUi[0].transform.parent.position.y - 70);
+                        monsterUi[1].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 150, monsterUi[0].transform.parent.position.y - 70);
                     }
 
                     if (json.information.monster[i].Code == "Mon 7")
@@ -113,7 +113,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi[2].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monsterUi[2].transform.name = json.information.monster[i].Name;
                         monsterUi[2].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                        monsterUi[2].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 260, monsterUi[0].transform.parent.position.y - 70);
+                        monsterUi[2].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 240, monsterUi[0].transform.parent.position.y - 70);
                     }
 
                     if (json.information.monster[i].Code == "Mon 10")
@@ -122,7 +122,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi[3].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monsterUi[3].transform.name = json.information.monster[i].Name;
                         monsterUi[3].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                        monsterUi[3].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 360, monsterUi[0].transform.parent.position.y - 70);
+                        monsterUi[3].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 330, monsterUi[0].transform.parent.position.y - 70);
                     }
 
                     if (json.information.monster[i].Code == "Mon 13")
@@ -131,7 +131,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi[4].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monsterUi[4].transform.name = json.information.monster[i].Name;
                         monsterUi[4].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                        monsterUi[4].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 460, monsterUi[0].transform.parent.position.y - 70);
+                        monsterUi[4].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 420, monsterUi[0].transform.parent.position.y - 70);
                     }
 
                     if (json.information.monster[i].Code == "Mon 16")
@@ -140,7 +140,7 @@ public class BarrackController : MonoBehaviour
                         monsterUi[5].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
                         monsterUi[5].transform.name = json.information.monster[i].Name;
                         monsterUi[5].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                        monsterUi[5].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 560, monsterUi[0].transform.parent.position.y - 70);
+                        monsterUi[5].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 510, monsterUi[0].transform.parent.position.y - 70);
                     }
                 }
                 else
