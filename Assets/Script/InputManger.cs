@@ -52,64 +52,13 @@ public class InputManger : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1) || Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount > 0)
         {
-            if (Input.touchCount > 0)
-            {
-                MouseStart = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y);
-                MouseStart = Camera.main.ScreenToWorldPoint(MouseStart);
-                MouseStart.z = 0;
-            }
-            else
-            {
-                MouseStart = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-                MouseStart = Camera.main.ScreenToWorldPoint(MouseStart);
-                MouseStart.z = 0;
-            }
-
+            
         }
-        else if (Input.GetMouseButton(1) || Input.GetTouch(0).phase == TouchPhase.Moved)
+        else
         {
-            if (gameCamera.transform.position.x < maxPosX + 50
-            && gameCamera.transform.position.x > minPosX - 50
-            && gameCamera.transform.position.y < maxPosY + 50
-            && gameCamera.transform.position.y > minPosY - 50)
-            {
-                if (Input.touchCount > 0)
-                {
-                    Vector3 MouseMove = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y);
-                    MouseMove = Camera.main.ScreenToWorldPoint(MouseMove);
-                    MouseMove.z = 0;
-                    gameCamera.transform.position = gameCamera.transform.position - (MouseMove - MouseStart);
-                }
-                else
-                {
-                    Vector3 MouseMove = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-                    MouseMove = Camera.main.ScreenToWorldPoint(MouseMove);
-                    MouseMove.z = 0;
-                    gameCamera.transform.position = gameCamera.transform.position - (MouseMove - MouseStart);
-                }
-            }
-
-            if (gameCamera.transform.position.x > maxPosX)
-            {
-                gameCamera.transform.position = new Vector3(maxPosX, gameCamera.transform.position.y, -800);
-            }
-
-            if (gameCamera.transform.position.x < minPosX)
-            {
-                gameCamera.transform.position = new Vector3(minPosX, gameCamera.transform.position.y, -800);
-            }
-
-            if (gameCamera.transform.position.y > maxPosY)
-            {
-                gameCamera.transform.position = new Vector3(gameCamera.transform.position.x, maxPosY, -800);
-            }
-
-            if (gameCamera.transform.position.y < minPosY)
-            {
-                gameCamera.transform.position = new Vector3(gameCamera.transform.position.x, minPosY, -800);
-            }
+            
         }
 
         if (mouseCheck)
@@ -117,10 +66,12 @@ public class InputManger : MonoBehaviour
             if (Input.touchCount > 0)
             {
                 TouchHit();
+                TouchCameraMove();
             }
             else
             {
                 MouseHit();
+                MouseCameraMove();
             }
         }
     }
@@ -481,6 +432,96 @@ public class InputManger : MonoBehaviour
                 if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     ChangeLandInfo();
+                }
+            }
+        }
+    }
+
+    private void MouseCameraMove()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            MouseStart = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+            MouseStart = Camera.main.ScreenToWorldPoint(MouseStart);
+            MouseStart.z = 0;
+        }
+        else if (Input.GetMouseButton(1))
+        {
+            if (gameCamera.transform.position.x < maxPosX + 50
+            && gameCamera.transform.position.x > minPosX - 50
+            && gameCamera.transform.position.y < maxPosY + 50
+            && gameCamera.transform.position.y > minPosY - 50)
+            {
+                Vector3 MouseMove = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+                MouseMove = Camera.main.ScreenToWorldPoint(MouseMove);
+                MouseMove.z = 0;
+                gameCamera.transform.position = gameCamera.transform.position - (MouseMove - MouseStart);
+
+            }
+
+            if (gameCamera.transform.position.x > maxPosX)
+            {
+                gameCamera.transform.position = new Vector3(maxPosX, gameCamera.transform.position.y, -800);
+            }
+
+            if (gameCamera.transform.position.x < minPosX)
+            {
+                gameCamera.transform.position = new Vector3(minPosX, gameCamera.transform.position.y, -800);
+            }
+
+            if (gameCamera.transform.position.y > maxPosY)
+            {
+                gameCamera.transform.position = new Vector3(gameCamera.transform.position.x, maxPosY, -800);
+            }
+
+            if (gameCamera.transform.position.y < minPosY)
+            {
+                gameCamera.transform.position = new Vector3(gameCamera.transform.position.x, minPosY, -800);
+            }
+        }
+    }
+
+    private void TouchCameraMove()
+    {
+        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            MouseStart = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y);
+            MouseStart = Camera.main.ScreenToWorldPoint(MouseStart);
+            MouseStart.z = 0;
+        }
+
+        if (Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            if (gameCamera.transform.position.x < maxPosX + 50
+            && gameCamera.transform.position.x > minPosX - 50
+            && gameCamera.transform.position.y < maxPosY + 50
+            && gameCamera.transform.position.y > minPosY - 50)
+            {
+                Vector3 MouseMove = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y);
+                MouseMove = Camera.main.ScreenToWorldPoint(MouseMove);
+                MouseMove.z = 0;
+                gameCamera.transform.position = gameCamera.transform.position - (MouseMove - MouseStart);
+            }
+            else
+            {
+                if (gameCamera.transform.position.x > maxPosX)
+                {
+                    gameCamera.transform.position = new Vector3(maxPosX, gameCamera.transform.position.y, -800);
+                }
+
+                if (gameCamera.transform.position.x < minPosX)
+                {
+                    gameCamera.transform.position = new Vector3(minPosX, gameCamera.transform.position.y, -800);
+                }
+
+                if (gameCamera.transform.position.y > maxPosY)
+                {
+                    gameCamera.transform.position = new Vector3(gameCamera.transform.position.x, maxPosY, -800);
+                }
+
+                if (gameCamera.transform.position.y < minPosY)
+                {
+                    gameCamera.transform.position = new Vector3(gameCamera.transform.position.x, minPosY, -800);
                 }
             }
         }

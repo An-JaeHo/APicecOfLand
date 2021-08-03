@@ -19,11 +19,11 @@ public class SceneMgr : MonoBehaviour
 
     public void GoGameScene()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void GoGameEndScene()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 }
