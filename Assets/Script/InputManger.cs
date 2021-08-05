@@ -52,14 +52,6 @@ public class InputManger : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount > 0)
-        {
-            
-        }
-        else
-        {
-            
-        }
 
         if (mouseCheck)
         {
