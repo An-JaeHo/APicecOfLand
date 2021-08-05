@@ -6,14 +6,12 @@ using UnityEngine.UI;
 public class GuardianSceneManger : MonoBehaviour
 {
     public GameObject guardianPictureUi;
-    public SceneMgr sceneMgr;
     public PlayerInfo player;
     public GameObject goGameScene;
     public SaveMgr saveMgr;
 
     void Start()
     {
-        sceneMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SceneMgr>();
         player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
     }
@@ -38,6 +36,6 @@ public class GuardianSceneManger : MonoBehaviour
 
     public void CheckGameScene()
     {
-            sceneMgr.GoGameScene();
+        SceneMgr.GoGameScene();
     }
 }

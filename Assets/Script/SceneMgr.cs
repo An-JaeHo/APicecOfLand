@@ -12,18 +12,23 @@ public class SceneMgr : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void GoLodingScene()
+    public static void GoLodingScene()
     {
         LoadingSceneController.LoadScene("GameScene");
     }
 
-    public void GoGameScene()
+    public static void GoGameScene()
     {
         SceneManager.LoadScene(3);
     }
 
-    public void GoGameEndScene()
+    public static void GoGameEndScene()
     {
         SceneManager.LoadScene(4);
+    }
+
+    public static void GoUpGradeScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }
