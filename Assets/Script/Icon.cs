@@ -53,6 +53,7 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         p.z = 800;
         Vector3 pos = Camera.main.ScreenToWorldPoint(p);
         transform.position = pos;
+        inputManger.mouseCheck = false;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -77,6 +78,8 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 image.raycastTarget = true;
             }
         }
+
+        inputManger.mouseCheck = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

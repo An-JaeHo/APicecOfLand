@@ -52,7 +52,6 @@ public class InputManger : MonoBehaviour
 
     private void Update()
     {
-
         if (mouseCheck)
         {
             if (Input.touchCount > 0)
@@ -110,7 +109,6 @@ public class InputManger : MonoBehaviour
 
             if (hit)
             {
-
                 time += Time.deltaTime;
 
                 if (time >= 3)
