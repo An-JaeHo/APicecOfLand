@@ -41,7 +41,6 @@ public class UpGradeInputManger : MonoBehaviour
                     switch (hit.transform.tag)
                     {
                         case "Army":
-                            Debug.Log(hit.transform.tag);
                             break;
                     }
                 }

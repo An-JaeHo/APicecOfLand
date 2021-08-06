@@ -10,17 +10,16 @@ public class Save
     public int milk;
     public int sugar;
     public int flour;
+    public Dictionary<string, int> monsterLevels;
 }
 
 public class SaveMgr : MonoBehaviour
 {
     public string fonlderPath;
     public PlayerInfo player;
-    public InputField inputField;
     public SceneMgr sceneMgr;
     public JsonManger json;
     public GameObject abilityUi;
-
 
     private void Start()
     {
@@ -28,29 +27,40 @@ public class SaveMgr : MonoBehaviour
         fonlderPath = Application.streamingAssetsPath;
         sceneMgr = GetComponent<SceneMgr>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-
     }
 
 
     public void Save()
     {
-        Save save = new Save();
-
         if (!File.Exists(fonlderPath + "/save.txt"))
         {
+            Save save = new Save();
             save.flour = player.flour;
             save.sugar = player.sugar;
             save.milk = player.milk;
+
+            save.monsterLevels = player.monsterLevels;
+
+
+            string saveString = JsonUtility.ToJson(save);
+            File.WriteAllText(fonlderPath + "/save.txt", saveString);
         }
         else
         {
+            string loadFile = File.ReadAllText(fonlderPath + "/save.txt");
+            Save save = JsonUtility.FromJson<Save>(loadFile);
             save.flour += player.flour;
             save.sugar += player.sugar;
             save.milk += player.milk;
+
+            save.monsterLevels.Clear();
+            save.monsterLevels = player.monsterLevels;
+
+            string saveString = JsonUtility.ToJson(save);
+            File.WriteAllText(fonlderPath + "/save.txt", saveString);
         }
 
-        string saveString = JsonUtility.ToJson(save);
-        File.WriteAllText(fonlderPath + "/save.txt", saveString);
+        
     }
 
 
@@ -63,8 +73,12 @@ public class SaveMgr : MonoBehaviour
         else
         {
             string loadFile = File.ReadAllText(fonlderPath + "/save.txt");
-
             Save save = JsonUtility.FromJson<Save>(loadFile);
+
+            player.playerMilk = save.milk;
+            player.playerSugar = save.sugar;
+            player.playerFlour = save.flour;
+            player.monsterLevels = save.monsterLevels;
         }
     }
 }

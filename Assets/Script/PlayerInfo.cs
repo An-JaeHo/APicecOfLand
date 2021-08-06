@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class PlayerInfo : GenericSingletonClass<PlayerInfo>
 {
-    public string day;
-    public string name;
     public int milk;
     public int flour;
     public int sugar;
     public int people;
-    public int maxArea;
-    public int myArea;
 
     public int updateMilk;
     public int updateFlour;
@@ -20,11 +16,11 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
 
     public int turnPoint;
     public int killingPoint;
-
-    public bool playerBuffCheck;
-    public bool playerDeBuffCheck;
-    public bool playerGuardianCheck;
-    public Boss playerGuardian;
+    //세이브용
+    public int playerMilk;
+    public int playerFlour;
+    public int playerSugar;
+    public Dictionary<string, int> monsterLevels = new Dictionary<string, int>();
 
     public void StartGame()
     {
