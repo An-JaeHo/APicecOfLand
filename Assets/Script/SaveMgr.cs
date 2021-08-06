@@ -59,10 +59,7 @@ public class SaveMgr : MonoBehaviour
             string saveString = JsonUtility.ToJson(save);
             File.WriteAllText(fonlderPath + "/save.txt", saveString);
         }
-
-        
     }
-
 
     public void Load()
     {
