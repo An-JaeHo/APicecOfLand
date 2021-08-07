@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class UpGradeSceneWindow : MonoBehaviour
 {
+    public JsonManger jsonManger;
+    public PlayerInfo playerInfo;
+    public GameObject upGradeButton;
     public int needUpGradeMilk;
     public int needUpGradeSugar;
     public int needUpGradeFlour;
+    private GameObject monster;
 
     public void UpGradeCheck(Transform obj)
     {
@@ -38,591 +42,59 @@ public class UpGradeSceneWindow : MonoBehaviour
         }
 
         NeedUpGradeSouce(obj);
-    }
 
+        if (playerInfo.playerMilk >= needUpGradeMilk
+            && playerInfo.playerSugar >= needUpGradeSugar
+            && playerInfo.playerFlour >= needUpGradeFlour)
+        {
+            upGradeButton.GetComponent<Button>().interactable = true;
+
+            if (obj.GetComponent<MakeSoldier>().Level == 5)
+            {
+                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "다음 단계로 승급이 가능합니다.";
+                upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "승급";
+            }
+            else
+            {
+                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "레벨"+(obj.GetComponent<MakeSoldier>().Level + 1) + "로 진화가 가능합니다.";
+                upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "진화";
+            }
+                
+        }
+        else
+        {
+            upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "진화";
+            upGradeButton.GetComponent<Button>().interactable = false;
+            transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "자원이 부족합니다.";
+        }
+    }
 
     public void NeedUpGradeSouce(Transform monster)
     {
-        switch (monster.GetComponent<MakeSoldier>().Code)
+        jsonManger = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
+        playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+
+        for (int i = 0; i < jsonManger.information.unitUpgrade.Length; i++)
         {
-            case "Mons 1":
-                if(monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 50;
-                    needUpGradeSugar = 30;
-                    needUpGradeFlour = 20;
-                }
-                else if(monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 65;
-                    needUpGradeSugar = 70;
-                    needUpGradeFlour = 40;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 80;
-                    needUpGradeSugar = 150;
-                    needUpGradeFlour = 100;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if(monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                    break;
-            case "Mons 2":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 3":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 4":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 5":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 6":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 7":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 8":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 9":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 10":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 11":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 12":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 13":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 14":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 15":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 16":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 17":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            case "Mons 18":
-                if (monster.GetComponent<MakeSoldier>().Level == 1)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 2)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 3)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 4)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                else if (monster.GetComponent<MakeSoldier>().Level == 5)
-                {
-                    needUpGradeMilk = 1;
-                    needUpGradeSugar = 2;
-                    needUpGradeFlour = 3;
-                }
-                break;
-            default:
-                break;
+            if(monster.GetComponent<MakeSoldier>().Level == jsonManger.information.unitUpgrade[i].NowLevel
+                && monster.GetComponent<MakeSoldier>().Code == jsonManger.information.unitUpgrade[i].Code)
+            {
+                needUpGradeMilk = jsonManger.information.unitUpgrade[i].UpgradeMilk;
+                needUpGradeSugar = jsonManger.information.unitUpgrade[i].UpgradeSugar;
+                needUpGradeFlour = jsonManger.information.unitUpgrade[i].UpgradeFlour;
+            }
+        }
+    }
+
+    public void LevelUpButton()
+    {
+        if(monster.GetComponent<MakeSoldier>().Level == 5)
+        {
+            
+        }
+        else
+        {
+
         }
     }
 }

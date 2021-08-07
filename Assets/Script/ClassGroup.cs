@@ -8,6 +8,7 @@ public class Information
     public Boss[] boss;
     public Card[] card;
     public Monster[] monster;
+    public UnitUpgrade[] unitUpgrade;
 }
 
 [System.Serializable]
@@ -127,4 +128,16 @@ public class Monster
     public int AttackRange;
     public int Movement;
     public int Experience;
+}
+
+[System.Serializable]
+public class UnitUpgrade
+{
+    public string Code;
+    public Sprite Picture;
+    public string Name;
+    public int NowLevel;
+    public int UpgradeMilk;
+    public int UpgradeFlour;
+    public int UpgradeSugar;
 }

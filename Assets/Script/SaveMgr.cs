@@ -10,7 +10,7 @@ public class Save
     public int milk;
     public int sugar;
     public int flour;
-    public Dictionary<string, int> monsterLevels;
+    //public Dictionary<string, int> monsterLevels;
 }
 
 public class SaveMgr : MonoBehaviour
@@ -39,8 +39,6 @@ public class SaveMgr : MonoBehaviour
             save.sugar = player.sugar;
             save.milk = player.milk;
 
-            save.monsterLevels = player.monsterLevels;
-
 
             string saveString = JsonUtility.ToJson(save);
             File.WriteAllText(fonlderPath + "/save.txt", saveString);
@@ -52,9 +50,6 @@ public class SaveMgr : MonoBehaviour
             save.flour += player.flour;
             save.sugar += player.sugar;
             save.milk += player.milk;
-
-            save.monsterLevels.Clear();
-            save.monsterLevels = player.monsterLevels;
 
             string saveString = JsonUtility.ToJson(save);
             File.WriteAllText(fonlderPath + "/save.txt", saveString);
@@ -75,7 +70,6 @@ public class SaveMgr : MonoBehaviour
             player.playerMilk = save.milk;
             player.playerSugar = save.sugar;
             player.playerFlour = save.flour;
-            player.monsterLevels = save.monsterLevels;
         }
     }
 }

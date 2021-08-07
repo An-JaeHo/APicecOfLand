@@ -99,7 +99,6 @@ public class ArmyUpgrade : MonoBehaviour
     {
         MakeSoldier nextArmy = new MakeSoldier();
 
-
         switch (armyCode)
         {
             case "Mon 1":
