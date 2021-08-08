@@ -8,6 +8,7 @@ public class UpGradeSceneWindow : MonoBehaviour
     public JsonManger jsonManger;
     public PlayerInfo playerInfo;
     public GameObject upGradeButton;
+    public GameObject supply;
     public UpGradeInputManger upGradeInputManger;
     public int needUpGradeMilk;
     public int needUpGradeSugar;
@@ -164,6 +165,12 @@ public class UpGradeSceneWindow : MonoBehaviour
                     break;
             }
         }
+
+        playerInfo.playerMilk -= needUpGradeMilk;
+        playerInfo.playerSugar -= needUpGradeSugar;
+        playerInfo.playerFlour -= needUpGradeFlour;
+
+        supply.GetComponent<MySupplyList>().UpdateSupply();
         gameObject.SetActive(false);
         upGradeInputManger.mouseCheck = true;
     }
@@ -172,10 +179,8 @@ public class UpGradeSceneWindow : MonoBehaviour
     {
         Transform monsterParent = monster.parent;
         string nextCode;
-
         Destroy(monster.gameObject);
         nextCode = GetComponent<ArmyUpgrade>().UpGradeFinder(monster.GetComponent<MakeSoldier>().Code).Code;
-
 
         for (int i = 0; i < MonsterObj.Length; i++)
         {
@@ -193,6 +198,5 @@ public class UpGradeSceneWindow : MonoBehaviour
         monster.gameObject.AddComponent<BoxCollider2D>().size = new Vector2(2,2);
         monster.gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 1.4f);
         monster.tag = "Army";
-
     }
 }
