@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SoldierManger : MonoBehaviour
 {
@@ -344,25 +345,6 @@ public class SoldierManger : MonoBehaviour
             soldier.nowExp = 0;
         }
 
-        switch (transform.GetComponent<MakeSoldier>().Level)
-        {
-            case 1:
-                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
-                break;
-            case 2:
-                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level2;
-                break;
-            case 3:
-                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level3;
-                break;
-            case 4:
-                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level4;
-                break;
-            case 5:
-                transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level5;
-                break;
-            default:
-                break;
-        }
+        transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = transform.GetComponent<MakeSoldier>().Level.ToString(); ;
     }
 }

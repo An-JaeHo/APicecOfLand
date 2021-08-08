@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UpGradeSceneWindow : MonoBehaviour
 {
@@ -144,26 +145,29 @@ public class UpGradeSceneWindow : MonoBehaviour
             monster.GetComponent<MakeSoldier>().Critical += monster.GetComponent<MakeSoldier>().RiseCritical;
             monster.GetComponent<MakeSoldier>().Defensive += monster.GetComponent<MakeSoldier>().RiseDefensive;
 
-            switch (monster.GetComponent<MakeSoldier>().Level)
-            {
-                case 1:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
-                    break;
-                case 2:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level2;
-                    break;
-                case 3:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level3;
-                    break;
-                case 4:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level4;
-                    break;
-                case 5:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level5;
-                    break;
-                default:
-                    break;
-            }
+
+            monster.parent.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString(); ;
+
+            //switch (monster.GetComponent<MakeSoldier>().Level)
+            //{
+            //    case 1:
+            //        monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
+            //        break;
+            //    case 2:
+            //        monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level2;
+            //        break;
+            //    case 3:
+            //        monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level3;
+            //        break;
+            //    case 4:
+            //        monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level4;
+            //        break;
+            //    case 5:
+            //        monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level5;
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
 
         playerInfo.playerMilk -= needUpGradeMilk;
@@ -193,8 +197,8 @@ public class UpGradeSceneWindow : MonoBehaviour
             }
         }
 
-        monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
         monster.gameObject.AddComponent<MakeSoldier>().SuperMagic(nextCode);
+        monster.parent.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString();
         monster.gameObject.AddComponent<BoxCollider2D>().size = new Vector2(2,2);
         monster.gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 1.4f);
         monster.tag = "Army";
