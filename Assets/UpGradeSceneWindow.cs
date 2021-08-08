@@ -13,13 +13,25 @@ public class UpGradeSceneWindow : MonoBehaviour
     public int needUpGradeSugar;
     public int needUpGradeFlour;
     private Transform monster;
-
+    public GameObject[] MonsterObj;
 
     public Sprite level1;
     public Sprite level2;
     public Sprite level3;
     public Sprite level4;
     public Sprite level5;
+
+    
+
+    void Start()
+    {
+        object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
+        MonsterObj = new GameObject[loadMonster.Length];
+                for (int i = 0; i < loadMonster.Length; i++)
+        {
+            MonsterObj[i] = (GameObject)loadMonster[i];
+        }
+    }
 
     public void UpGradeCheck(Transform obj)
     {
@@ -76,7 +88,6 @@ public class UpGradeSceneWindow : MonoBehaviour
                     transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "레벨" + (obj.GetComponent<MakeSoldier>().Level + 1) + "로 진화가 가능합니다.";
                     upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "진화";
                 }
-                
             }
                 
         }
@@ -96,7 +107,6 @@ public class UpGradeSceneWindow : MonoBehaviour
             }
                 
         }
-
         monster = obj;
     }
 
@@ -124,7 +134,7 @@ public class UpGradeSceneWindow : MonoBehaviour
         if (monster.GetComponent<MakeSoldier>().Level == 5 
             && monster.GetComponent<MakeSoldier>().Grade != 3)
         {
-            //GetComponent<ArmyUpgrade>().UpGradeFinder(monster.GetComponent<MakeSoldier>().Code);
+            UpGradeMonster();
         }
         else
         {
@@ -136,26 +146,53 @@ public class UpGradeSceneWindow : MonoBehaviour
             switch (monster.GetComponent<MakeSoldier>().Level)
             {
                 case 1:
-                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
+                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
                     break;
                 case 2:
-                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level2;
+                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level2;
                     break;
                 case 3:
-                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level3;
+                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level3;
                     break;
                 case 4:
-                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level4;
+                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level4;
                     break;
                 case 5:
-                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level5;
+                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level5;
                     break;
                 default:
                     break;
             }
-
-            gameObject.SetActive(false);
-            upGradeInputManger.mouseCheck = true;
         }
+        gameObject.SetActive(false);
+        upGradeInputManger.mouseCheck = true;
+    }
+
+    public void UpGradeMonster()
+    {
+        Transform monsterParent = monster.parent;
+        string nextCode;
+
+        Destroy(monster.gameObject);
+        nextCode = GetComponent<ArmyUpgrade>().UpGradeFinder(monster.GetComponent<MakeSoldier>().Code).Code;
+
+
+        for (int i = 0; i < MonsterObj.Length; i++)
+        {
+            if (MonsterObj[i].name == nextCode)
+            {
+                GameObject monsterPicture = Instantiate(MonsterObj[i], new Vector3(monsterParent.position.x, monsterParent.position.y-0.4f), Quaternion.identity);
+                monsterPicture.transform.localScale = new Vector2(0.55f, 0.55f);
+                monsterPicture.transform.SetParent(monsterParent);
+                monster = monsterPicture.transform;
+            }
+        }
+
+        monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
+        monster.gameObject.AddComponent<MakeSoldier>().SuperMagic(nextCode);
+        monster.gameObject.AddComponent<BoxCollider2D>().size = new Vector2(2,2);
+        monster.gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 1.4f);
+        monster.tag = "Army";
+
     }
 }

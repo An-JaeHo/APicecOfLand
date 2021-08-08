@@ -18,7 +18,7 @@ public class UpGradeInputManger : MonoBehaviour
 
         for (int i = 0; i < content.childCount; i++)
         {
-            content.GetChild(i).GetChild(0).GetComponent<MakeSoldier>().SuperMagic(content.GetChild(i).GetChild(0).name);
+            content.GetChild(i).GetChild(1).GetComponent<MakeSoldier>().SuperMagic(content.GetChild(i).GetChild(1).name);
         }
     }
 
