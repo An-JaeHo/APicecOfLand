@@ -37,6 +37,7 @@ public class SaveMgr : MonoBehaviour
     public SceneMgr sceneMgr;
     public JsonManger json;
     public GameObject abilityUi;
+    public Save playerSave;
 
     private void Start()
     {
@@ -44,6 +45,26 @@ public class SaveMgr : MonoBehaviour
         fonlderPath = Application.streamingAssetsPath;
         sceneMgr = GetComponent<SceneMgr>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
+
+        playerSave.cherryLevel=1;
+        playerSave.cherryGrade = 1;
+
+        playerSave.candyLevel = 1;
+        playerSave.candyGrade = 1;
+
+        playerSave.skittlesLevel = 1;
+        playerSave.skittlesGrade = 1;
+
+        playerSave.donutsLevel = 1;
+        playerSave.donutsGrade = 1;
+
+        playerSave.schneeballenLevel = 1;
+        playerSave.schneeballenGrade = 1;
+
+        playerSave.chocoLevel = 1;
+        playerSave.chocoGrade = 1;
+
+        Load();
     }
 
 
@@ -51,24 +72,19 @@ public class SaveMgr : MonoBehaviour
     {
         if (!File.Exists(fonlderPath + "/save.txt"))
         {
-            Save save = new Save();
-            save.flour = player.flour;
-            save.sugar = player.sugar;
-            save.milk = player.milk;
-
-
-            string saveString = JsonUtility.ToJson(save);
+            playerSave.flour = player.flour;
+            playerSave.sugar = player.sugar;
+            playerSave.milk = player.milk;
+            string saveString = JsonUtility.ToJson(playerSave);
             File.WriteAllText(fonlderPath + "/save.txt", saveString);
         }
         else
         {
-            string loadFile = File.ReadAllText(fonlderPath + "/save.txt");
-            Save save = JsonUtility.FromJson<Save>(loadFile);
-            save.flour += player.flour;
-            save.sugar += player.sugar;
-            save.milk += player.milk;
-
-            string saveString = JsonUtility.ToJson(save);
+            playerSave.flour += player.flour;
+            playerSave.sugar += player.sugar;
+            playerSave.milk += player.milk;
+            
+            string saveString = JsonUtility.ToJson(playerSave);
             File.WriteAllText(fonlderPath + "/save.txt", saveString);
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TileManger : MonoBehaviour
 {
@@ -573,7 +574,6 @@ public class TileManger : MonoBehaviour
             {
                 if (enemyObj[i].name == enemy.GetComponent<MakeEnemy>().Code)
                 {
-                    
                     GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x, enemy.transform.position.y - 55), Quaternion.identity);
                     enemyPicture.transform.SetParent(enemy.transform);
                 }
@@ -614,7 +614,6 @@ public class TileManger : MonoBehaviour
     {
         int randLevel = new int();
 
-        Debug.Log("ss");
         if (playerInfo.turnPoint <= 20)
         {
             randLevel = UnityEngine.Random.Range(1, 6);
@@ -639,6 +638,7 @@ public class TileManger : MonoBehaviour
         Enemy.GetComponent<MakeEnemy>().BaseAttack += Enemy.GetComponent<MakeEnemy>().RiseAttack * randLevel;
         Enemy.GetComponent<MakeEnemy>().BaseDefensive += Enemy.GetComponent<MakeEnemy>().RiseDefensive * randLevel;
         Enemy.GetComponent<MakeEnemy>().BaseHelthPoint += Enemy.GetComponent<MakeEnemy>().RiseHelthPoint * randLevel;
-        Enemy.GetComponent<MakeEnemy>().Level += randLevel;
+        Enemy.GetComponent<MakeEnemy>().Level = randLevel;
+        transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = Enemy.GetComponent<MakeEnemy>().Level.ToString();
     }
 }

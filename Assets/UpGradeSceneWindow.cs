@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UpGradeSceneWindow : MonoBehaviour
 {
@@ -15,18 +16,15 @@ public class UpGradeSceneWindow : MonoBehaviour
     public int needUpGradeFlour;
     private Transform monster;
     public GameObject[] MonsterObj;
-
-    public Sprite level1;
-    public Sprite level2;
-    public Sprite level3;
-    public Sprite level4;
-    public Sprite level5;
+    public SaveMgr saveMgr;
 
     
 
     void Start()
     {
+        saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
         object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
+
         MonsterObj = new GameObject[loadMonster.Length];
                 for (int i = 0; i < loadMonster.Length; i++)
         {
@@ -144,26 +142,7 @@ public class UpGradeSceneWindow : MonoBehaviour
             monster.GetComponent<MakeSoldier>().Critical += monster.GetComponent<MakeSoldier>().RiseCritical;
             monster.GetComponent<MakeSoldier>().Defensive += monster.GetComponent<MakeSoldier>().RiseDefensive;
 
-            switch (monster.GetComponent<MakeSoldier>().Level)
-            {
-                case 1:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
-                    break;
-                case 2:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level2;
-                    break;
-                case 3:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level3;
-                    break;
-                case 4:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level4;
-                    break;
-                case 5:
-                    monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level5;
-                    break;
-                default:
-                    break;
-            }
+            monster.parent.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString(); ;
         }
 
         playerInfo.playerMilk -= needUpGradeMilk;
@@ -171,6 +150,7 @@ public class UpGradeSceneWindow : MonoBehaviour
         playerInfo.playerFlour -= needUpGradeFlour;
 
         supply.GetComponent<MySupplyList>().UpdateSupply();
+        SaveLevelAndRank(monster);
         gameObject.SetActive(false);
         upGradeInputManger.mouseCheck = true;
     }
@@ -193,10 +173,45 @@ public class UpGradeSceneWindow : MonoBehaviour
             }
         }
 
-        monster.parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
         monster.gameObject.AddComponent<MakeSoldier>().SuperMagic(nextCode);
+        monster.parent.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString();
         monster.gameObject.AddComponent<BoxCollider2D>().size = new Vector2(2,2);
         monster.gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 1.4f);
         monster.tag = "Army";
+    }
+
+    public void SaveLevelAndRank(Transform monster)
+    {
+        switch (monster.GetComponent<MakeSoldier>().Name)
+        {
+            case "√º∏Æ∏”«…":
+                saveMgr.playerSave.cherryGrade= monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.cherryLevel = monster.GetComponent<MakeSoldier>().Level;
+                break;
+            case "ªÁ≈¡∏∑¥Î":
+                saveMgr.playerSave.candyGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.candyLevel = monster.GetComponent<MakeSoldier>().Level;
+                break;
+            case "Ω∫≈∞∆≤¡Óƒ…¿Ã≈©":
+                saveMgr.playerSave.skittlesGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.skittlesLevel = monster.GetComponent<MakeSoldier>().Level;
+                break;
+            case "µµ≥”√˜":
+                saveMgr.playerSave.donutsGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.donutsLevel = monster.GetComponent<MakeSoldier>().Level;
+                break;
+            case "Ω¥¥œπﬂ∑ª":
+                saveMgr.playerSave.schneeballenGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.schneeballenLevel = monster.GetComponent<MakeSoldier>().Level;
+                break;
+            case "√ ƒ⁄ƒ®ƒÌ≈∞":
+                saveMgr.playerSave.chocoGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.chocoLevel = monster.GetComponent<MakeSoldier>().Level;
+                break;
+            default:
+                break;
+        }
+
+        //saveMgr
     }
 }
