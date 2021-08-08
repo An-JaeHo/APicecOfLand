@@ -10,7 +10,24 @@ public class Save
     public int milk;
     public int sugar;
     public int flour;
-    //public Dictionary<string, int> monsterLevels;
+
+    public int cherryLevel;
+    public int cherryGrade;
+
+    public int candyLevel;
+    public int candyGrade;
+
+    public int skittlesLevel;
+    public int skittlesGrade;
+
+    public int donutsLevel;
+    public int donutsGrade;
+
+    public int schneeballenLevel;
+    public int schneeballenGrade;
+
+    public int chocoLevel;
+    public int chocoGrade;
 }
 
 public class SaveMgr : MonoBehaviour

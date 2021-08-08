@@ -15,6 +15,7 @@ public class UpGradeInputManger : MonoBehaviour
     {
         gameCamera = Camera.main;
         mouseCheck = true;
+
         for (int i = 0; i < content.childCount; i++)
         {
             content.GetChild(i).GetChild(0).GetComponent<MakeSoldier>().SuperMagic(content.GetChild(i).GetChild(0).name);

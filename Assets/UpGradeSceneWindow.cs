@@ -8,10 +8,18 @@ public class UpGradeSceneWindow : MonoBehaviour
     public JsonManger jsonManger;
     public PlayerInfo playerInfo;
     public GameObject upGradeButton;
+    public UpGradeInputManger upGradeInputManger;
     public int needUpGradeMilk;
     public int needUpGradeSugar;
     public int needUpGradeFlour;
-    private GameObject monster;
+    private Transform monster;
+
+
+    public Sprite level1;
+    public Sprite level2;
+    public Sprite level3;
+    public Sprite level4;
+    public Sprite level5;
 
     public void UpGradeCheck(Transform obj)
     {
@@ -49,24 +57,47 @@ public class UpGradeSceneWindow : MonoBehaviour
         {
             upGradeButton.GetComponent<Button>().interactable = true;
 
-            if (obj.GetComponent<MakeSoldier>().Level == 5)
+            if (obj.GetComponent<MakeSoldier>().Level == 5
+                && obj.GetComponent<MakeSoldier>().Grade != 3)
             {
                 transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "다음 단계로 승급이 가능합니다.";
                 upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "승급";
             }
             else
             {
-                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "레벨"+(obj.GetComponent<MakeSoldier>().Level + 1) + "로 진화가 가능합니다.";
-                upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "진화";
+                if(obj.GetComponent<MakeSoldier>().Level == 10)
+                {
+                    transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "최대레벨 입니다.";
+                    upGradeButton.GetComponent<Button>().interactable = false;
+                    upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "만렙";
+                }
+                else
+                {
+                    transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "레벨" + (obj.GetComponent<MakeSoldier>().Level + 1) + "로 진화가 가능합니다.";
+                    upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "진화";
+                }
+                
             }
                 
         }
         else
         {
-            upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "진화";
-            upGradeButton.GetComponent<Button>().interactable = false;
-            transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "자원이 부족합니다.";
+            if (obj.GetComponent<MakeSoldier>().Level == 10)
+            {
+                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "최대레벨 입니다.";
+                upGradeButton.GetComponent<Button>().interactable = false;
+                upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "만렙";
+            }
+            else
+            {
+                upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "진화";
+                upGradeButton.GetComponent<Button>().interactable = false;
+                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "자원이 부족합니다.";
+            }
+                
         }
+
+        monster = obj;
     }
 
     public void NeedUpGradeSouce(Transform monster)
@@ -88,13 +119,43 @@ public class UpGradeSceneWindow : MonoBehaviour
 
     public void LevelUpButton()
     {
-        if(monster.GetComponent<MakeSoldier>().Level == 5)
+        upGradeInputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<UpGradeInputManger>();
+
+        if (monster.GetComponent<MakeSoldier>().Level == 5 
+            && monster.GetComponent<MakeSoldier>().Grade != 3)
         {
-            
+            //GetComponent<ArmyUpgrade>().UpGradeFinder(monster.GetComponent<MakeSoldier>().Code);
         }
         else
         {
+            monster.GetComponent<MakeSoldier>().Level++;
+            monster.GetComponent<MakeSoldier>().BaseAttack += monster.GetComponent<MakeSoldier>().RiseAttack;
+            monster.GetComponent<MakeSoldier>().Critical += monster.GetComponent<MakeSoldier>().RiseCritical;
+            monster.GetComponent<MakeSoldier>().Defensive += monster.GetComponent<MakeSoldier>().RiseDefensive;
 
+            switch (monster.GetComponent<MakeSoldier>().Level)
+            {
+                case 1:
+                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level1;
+                    break;
+                case 2:
+                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level2;
+                    break;
+                case 3:
+                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level3;
+                    break;
+                case 4:
+                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level4;
+                    break;
+                case 5:
+                    monster.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>().sprite = level5;
+                    break;
+                default:
+                    break;
+            }
+
+            gameObject.SetActive(false);
+            upGradeInputManger.mouseCheck = true;
         }
     }
 }
