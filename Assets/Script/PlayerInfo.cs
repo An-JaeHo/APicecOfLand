@@ -20,7 +20,6 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
     public int playerMilk;
     public int playerFlour;
     public int playerSugar;
-    public Dictionary<string, int> monsterLevels = new Dictionary<string, int>();
 
     public void StartGame()
     {

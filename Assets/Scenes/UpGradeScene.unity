@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 71746292}
   - component: {fileID: 71746291}
   m_Layer: 5
-  m_Name: Mon 4
+  m_Name: Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,6 +437,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278415550}
   m_CullTransparentMesh: 1
+--- !u!114 &285608525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2640121383826606843, guid: 51c7ac8340575c7469c52c854b089005,
+    type: 3}
+  m_PrefabInstance: {fileID: 621381151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9620e1e46f5a2fb4f8f44e5c52de065f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &366117838
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +889,7 @@ GameObject:
   - component: {fileID: 759599968}
   - component: {fileID: 759599967}
   m_Layer: 5
-  m_Name: Mon 16
+  m_Name: Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1730,7 +1742,7 @@ MonoBehaviour:
   m_Content: {fileID: 897799068}
   m_Horizontal: 1
   m_Vertical: 0
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -1851,6 +1863,7 @@ RectTransform:
   - {fileID: 1360669454}
   - {fileID: 4571371883410187564}
   - {fileID: 466134064}
+  - {fileID: 1968270937}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1997,7 +2010,7 @@ GameObject:
   - component: {fileID: 1517695853}
   - component: {fileID: 1517695852}
   m_Layer: 5
-  m_Name: Mon 13
+  m_Name: Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2129,6 +2142,85 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 0}
+--- !u!1 &1602266942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1602266943}
+  - component: {fileID: 1602266945}
+  - component: {fileID: 1602266944}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1602266943
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602266942}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1968270937}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1602266944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602266942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!222 &1602266945
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602266942}
+  m_CullTransparentMesh: 1
 --- !u!1 &1638366055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,7 +2233,7 @@ GameObject:
   - component: {fileID: 1638366058}
   - component: {fileID: 1638366057}
   m_Layer: 5
-  m_Name: Mon 1
+  m_Name: Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2308,7 +2400,7 @@ GameObject:
   - component: {fileID: 1708745682}
   - component: {fileID: 1708745681}
   m_Layer: 5
-  m_Name: Mon 10
+  m_Name: Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2436,7 +2528,7 @@ GameObject:
   - component: {fileID: 1827225489}
   - component: {fileID: 1827225488}
   m_Layer: 5
-  m_Name: Mon 7
+  m_Name: Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2590,6 +2682,139 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960092323}
+  m_CullTransparentMesh: 1
+--- !u!1 &1968270936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1968270937}
+  - component: {fileID: 1968270940}
+  - component: {fileID: 1968270939}
+  - component: {fileID: 1968270938}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1968270937
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968270936}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1602266943}
+  m_Father: {fileID: 1380534799}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1968270938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968270936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1968270939}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 285608525}
+        m_TargetAssemblyTypeName: SaveMgr, Assembly-CSharp
+        m_MethodName: Save
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1968270939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968270936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1968270940
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968270936}
   m_CullTransparentMesh: 1
 --- !u!1 &2115551765
 GameObject:
@@ -2756,7 +2981,7 @@ GameObject:
   - component: {fileID: 2146187193}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2788,10 +3013,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingButton: {fileID: 4571371883410187563}
+  upGradeWindow: {fileID: 2251516085230011937}
   soundBgm: {fileID: 0}
   bgmBar: {fileID: 4571371883276010161}
   bgmVolume: 0
   buttonManger: {fileID: 0}
+  upGradeInputManger: {fileID: 0}
   check: 0
 --- !u!114 &2146187193
 MonoBehaviour:
@@ -2807,6 +3034,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 0}
   hitObj: {fileID: 0}
+  upGradeWindow: {fileID: 2251516085230011937}
+  mouseCheck: 0
+  content: {fileID: 897799068}
 --- !u!95 &32886168750694537
 Animator:
   serializedVersion: 3
@@ -4465,6 +4695,7 @@ GameObject:
   - component: {fileID: 2695411005533825593}
   - component: {fileID: 2841824155912572320}
   - component: {fileID: 2024004421913545040}
+  - component: {fileID: 2024004421913545041}
   m_Layer: 5
   m_Name: Mon 10
   m_TagString: Army
@@ -4498,6 +4729,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &2024004421913545041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024004421913545039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801efa96a87a29249907c7bac7ad9dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: 
+  Picture: {fileID: 0}
+  Name: 
+  Grade: 0
+  Specialities: 
+  MaxLevel: 0
+  HelthPoint: 0
+  populationNumber: 0
+  ProductionExpense: 0
+  ConsumeFood: 0
+  UnderEvolutin: 
+  EvolutionLevel: 0
+  BaseAttack: 0
+  RiseAttack: 0
+  Defensive: 0
+  RiseDefensive: 0
+  Critical: 0
+  RiseCritical: 0
+  AttackRange: 0
+  Movement: 0
+  Level: 0
+  Experience: 0
+  pureAttack: 0
+  pureDefensive: 0
+  pureRange: 0
+  TroopInfo: {fileID: 0}
+  troopInfoImage: {fileID: 0}
+  nowExp: 0
 --- !u!212 &2047774734827301240
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4684,7 +4955,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -4763,7 +5034,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -5096,7 +5367,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -5228,9 +5499,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ArmyUpgradeButton
+      - m_Target: {fileID: 2146187192}
+        m_TargetAssemblyTypeName: UpGradeButtonManger, Assembly-CSharp
+        m_MethodName: UpGradeWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5369,7 +5640,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2251516084268544159}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -5382,9 +5653,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31326b7263fff3e429c69ff6828830c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efee3f8f31f790e479e7bba786546325, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5460,7 +5731,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -5615,7 +5886,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -5908,7 +6179,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2251516084549173015}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -5921,9 +6192,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31326b7263fff3e429c69ff6828830c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efee3f8f31f790e479e7bba786546325, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5964,7 +6235,7 @@ GameObject:
   - component: {fileID: 2251516084549173012}
   - component: {fileID: 2251516084549173013}
   m_Layer: 5
-  m_Name: Troop (3)
+  m_Name: Critical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5999,7 +6270,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -6078,7 +6349,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -6309,7 +6580,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -6580,7 +6851,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -6645,7 +6916,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2251516085157352559}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -6658,9 +6929,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31326b7263fff3e429c69ff6828830c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efee3f8f31f790e479e7bba786546325, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6701,7 +6972,7 @@ GameObject:
   - component: {fileID: 2251516085157352556}
   - component: {fileID: 2251516085157352557}
   m_Layer: 5
-  m_Name: Troop
+  m_Name: Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6821,13 +7092,14 @@ GameObject:
   - component: {fileID: 2251516085230011966}
   - component: {fileID: 2251516085230011967}
   - component: {fileID: 2251516085230011938}
+  - component: {fileID: 2251516085230011939}
   m_Layer: 5
   m_Name: ArmyUpgradeUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2251516085230011938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6840,6 +7112,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe839eadb861254898f3c6609a6936d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonManger: {fileID: 0}
+  playerInfo: {fileID: 0}
+  upGradeButton: {fileID: 2251516084000931538}
+  needUpGradeMilk: 0
+  needUpGradeSugar: 0
+  needUpGradeFlour: 0
+--- !u!114 &2251516085230011939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2251516085230011937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b875370cc349e4ca7752789d70b34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armyinfo: {fileID: 0}
+  army: {fileID: 0}
+  upgradeArmy: {fileID: 0}
+  button: {fileID: 0}
+  playerInfo: {fileID: 0}
+  upgradeMilk: 0
 --- !u!222 &2251516085230011966
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6925,7 +7221,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -6986,7 +7282,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -6998,7 +7294,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 500
+  m_Text: 11213
 --- !u!224 &2251516085291368594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7293,7 +7589,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -7372,7 +7668,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -7437,7 +7733,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2251516085645534092}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7450,9 +7746,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31326b7263fff3e429c69ff6828830c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efee3f8f31f790e479e7bba786546325, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7493,7 +7789,7 @@ GameObject:
   - component: {fileID: 2251516085645534089}
   - component: {fileID: 2251516085645534090}
   m_Layer: 5
-  m_Name: Troop (1)
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7607,7 +7903,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a2f446b50a11ec4992927a0361a1fe2, type: 3}
+    m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -7672,7 +7968,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2251516085878487455}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7685,9 +7981,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31326b7263fff3e429c69ff6828830c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efee3f8f31f790e479e7bba786546325, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7728,7 +8024,7 @@ GameObject:
   - component: {fileID: 2251516085878487452}
   - component: {fileID: 2251516085878487453}
   m_Layer: 5
-  m_Name: Troop (2)
+  m_Name: Defend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7990,6 +8286,7 @@ GameObject:
   - component: {fileID: 1966024602984928134}
   - component: {fileID: 1824115018234786847}
   - component: {fileID: 2465170760393027825}
+  - component: {fileID: 2465170760393027826}
   m_Layer: 5
   m_Name: Mon 13
   m_TagString: Army
@@ -8023,6 +8320,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &2465170760393027826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2465170760393027824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801efa96a87a29249907c7bac7ad9dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: 
+  Picture: {fileID: 0}
+  Name: 
+  Grade: 0
+  Specialities: 
+  MaxLevel: 0
+  HelthPoint: 0
+  populationNumber: 0
+  ProductionExpense: 0
+  ConsumeFood: 0
+  UnderEvolutin: 
+  EvolutionLevel: 0
+  BaseAttack: 0
+  RiseAttack: 0
+  Defensive: 0
+  RiseDefensive: 0
+  Critical: 0
+  RiseCritical: 0
+  AttackRange: 0
+  Movement: 0
+  Level: 0
+  Experience: 0
+  pureAttack: 0
+  pureDefensive: 0
+  pureRange: 0
+  TroopInfo: {fileID: 0}
+  troopInfoImage: {fileID: 0}
+  nowExp: 0
 --- !u!114 &2563392128281338084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8180,6 +8517,7 @@ GameObject:
   - component: {fileID: 2194130710575976161}
   - component: {fileID: 2047774734827301240}
   - component: {fileID: 2814095602816101784}
+  - component: {fileID: 2814095602816101785}
   m_Layer: 5
   m_Name: Mon 16
   m_TagString: Army
@@ -8213,6 +8551,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &2814095602816101785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814095602816101783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801efa96a87a29249907c7bac7ad9dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: 
+  Picture: {fileID: 0}
+  Name: 
+  Grade: 0
+  Specialities: 
+  MaxLevel: 0
+  HelthPoint: 0
+  populationNumber: 0
+  ProductionExpense: 0
+  ConsumeFood: 0
+  UnderEvolutin: 
+  EvolutionLevel: 0
+  BaseAttack: 0
+  RiseAttack: 0
+  Defensive: 0
+  RiseDefensive: 0
+  Critical: 0
+  RiseCritical: 0
+  AttackRange: 0
+  Movement: 0
+  Level: 0
+  Experience: 0
+  pureAttack: 0
+  pureDefensive: 0
+  pureRange: 0
+  TroopInfo: {fileID: 0}
+  troopInfoImage: {fileID: 0}
+  nowExp: 0
 --- !u!114 &2821136990223168539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9069,6 +9447,7 @@ GameObject:
   - component: {fileID: 1027908781382212337}
   - component: {fileID: 890564368532782440}
   - component: {fileID: 3980459537721538952}
+  - component: {fileID: 3980459537721538953}
   m_Layer: 5
   m_Name: Mon 1
   m_TagString: Army
@@ -9102,6 +9481,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &3980459537721538953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3980459537721538951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801efa96a87a29249907c7bac7ad9dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: 
+  Picture: {fileID: 0}
+  Name: 
+  Grade: 0
+  Specialities: 
+  MaxLevel: 0
+  HelthPoint: 0
+  populationNumber: 0
+  ProductionExpense: 0
+  ConsumeFood: 0
+  UnderEvolutin: 
+  EvolutionLevel: 0
+  BaseAttack: 0
+  RiseAttack: 0
+  Defensive: 0
+  RiseDefensive: 0
+  Critical: 0
+  RiseCritical: 0
+  AttackRange: 0
+  Movement: 0
+  Level: 0
+  Experience: 0
+  pureAttack: 0
+  pureDefensive: 0
+  pureRange: 0
+  TroopInfo: {fileID: 0}
+  troopInfoImage: {fileID: 0}
+  nowExp: 0
 --- !u!1 &4003661757222951198
 GameObject:
   m_ObjectHideFlags: 0
@@ -11533,6 +11952,7 @@ GameObject:
   - component: {fileID: 9043129770937315149}
   - component: {fileID: 9180465353257699540}
   - component: {fileID: 4900221879178349628}
+  - component: {fileID: 4900221879178349629}
   m_Layer: 5
   m_Name: Mon 4
   m_TagString: Army
@@ -11566,6 +11986,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &4900221879178349629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900221879178349627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801efa96a87a29249907c7bac7ad9dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: 
+  Picture: {fileID: 0}
+  Name: 
+  Grade: 0
+  Specialities: 
+  MaxLevel: 0
+  HelthPoint: 0
+  populationNumber: 0
+  ProductionExpense: 0
+  ConsumeFood: 0
+  UnderEvolutin: 
+  EvolutionLevel: 0
+  BaseAttack: 0
+  RiseAttack: 0
+  Defensive: 0
+  RiseDefensive: 0
+  Critical: 0
+  RiseCritical: 0
+  AttackRange: 0
+  Movement: 0
+  Level: 0
+  Experience: 0
+  pureAttack: 0
+  pureDefensive: 0
+  pureRange: 0
+  TroopInfo: {fileID: 0}
+  troopInfoImage: {fileID: 0}
+  nowExp: 0
 --- !u!4 &4919296640111696633
 Transform:
   m_ObjectHideFlags: 0
@@ -17067,6 +17527,7 @@ GameObject:
   - component: {fileID: 8529924805492951868}
   - component: {fileID: 8392554038851136677}
   - component: {fileID: 5701225221018413131}
+  - component: {fileID: 5701225221018413132}
   m_Layer: 5
   m_Name: Mon 7
   m_TagString: Army
@@ -17100,6 +17561,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &5701225221018413132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701225221018413130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801efa96a87a29249907c7bac7ad9dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: 
+  Picture: {fileID: 0}
+  Name: 
+  Grade: 0
+  Specialities: 
+  MaxLevel: 0
+  HelthPoint: 0
+  populationNumber: 0
+  ProductionExpense: 0
+  ConsumeFood: 0
+  UnderEvolutin: 
+  EvolutionLevel: 0
+  BaseAttack: 0
+  RiseAttack: 0
+  Defensive: 0
+  RiseDefensive: 0
+  Critical: 0
+  RiseCritical: 0
+  AttackRange: 0
+  Movement: 0
+  Level: 0
+  Experience: 0
+  pureAttack: 0
+  pureDefensive: 0
+  pureRange: 0
+  TroopInfo: {fileID: 0}
+  troopInfoImage: {fileID: 0}
+  nowExp: 0
 --- !u!114 &5740053195106326225
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,12 +33,10 @@ public class ArmyUpgrade : MonoBehaviour
             && armyinfo.Level != armyinfo.EvolutionLevel)
         {
             button.GetComponent<Button>().interactable = false;
-
             if (armyinfo.Grade != 3)
             {
                 transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "우유가 " + (upgradeMilk - playerInfo.milk) + "만 큼 부족합니다.";
             }
-
         }
         else
         {
@@ -100,7 +98,6 @@ public class ArmyUpgrade : MonoBehaviour
     public MakeSoldier UpGradeFinder(string armyCode)
     {
         MakeSoldier nextArmy = new MakeSoldier();
-
 
         switch (armyCode)
         {

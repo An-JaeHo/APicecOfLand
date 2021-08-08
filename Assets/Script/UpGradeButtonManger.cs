@@ -6,16 +6,19 @@ using UnityEngine.UI;
 public class UpGradeButtonManger : MonoBehaviour
 {
     public GameObject settingButton;
+    public GameObject upGradeWindow;
     public AudioSource soundBgm;
     public Slider bgmBar;
     public float bgmVolume;
     public UpGradeButtonManger buttonManger;
+    public UpGradeInputManger upGradeInputManger;
 
     public bool check;
 
     private void Start()
     {
         soundBgm = GameObject.FindGameObjectWithTag("GameManger").GetComponent<AudioSource>();
+        upGradeInputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<UpGradeInputManger>();
         bgmVolume = 1f;
         check = true;
     }
@@ -46,12 +49,27 @@ public class UpGradeButtonManger : MonoBehaviour
         if(settingButton.activeSelf == false)
         {
             settingButton.SetActive(true);
+            upGradeInputManger.mouseCheck = false;
         }
         else
         {
             settingButton.SetActive(false);
+            upGradeInputManger.mouseCheck = true;
         }
     }
 
 
+    public void UpGradeWindow()
+    {
+        if (upGradeWindow.activeSelf == true)
+        {
+            upGradeWindow.SetActive(false);
+            upGradeInputManger.mouseCheck = true;
+        }
+        else
+        {
+            upGradeWindow.SetActive(true);
+            upGradeInputManger.mouseCheck = false;
+        }
+    }
 }

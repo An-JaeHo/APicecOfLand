@@ -6,23 +6,36 @@ public class UpGradeInputManger : MonoBehaviour
 {
     public Camera gameCamera;
     public Transform hitObj;
+    public GameObject upGradeWindow;
+    public bool mouseCheck;
+    //¾Æ±×µé 
+    public Transform content;
 
     void Start()
     {
         gameCamera = Camera.main;
+        mouseCheck = true;
+        for (int i = 0; i < content.childCount; i++)
+        {
+            content.GetChild(i).GetChild(0).GetComponent<MakeSoldier>().SuperMagic(content.GetChild(i).GetChild(0).name);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if(mouseCheck)
         {
-            TouchHit();
+            if (Input.touchCount > 0)
+            {
+                TouchHit();
+            }
+            else
+            {
+                Mounshit();
+            }
         }
-        else
-        {
-            Mounshit();
-        }
+        
     }
 
     private void Mounshit()
@@ -35,12 +48,14 @@ public class UpGradeInputManger : MonoBehaviour
 
             if (hit)
             {
-
                 if (Input.GetMouseButtonDown(0))
                 {
                     switch (hit.transform.tag)
                     {
                         case "Army":
+                            upGradeWindow.SetActive(true);
+                            upGradeWindow.GetComponent<UpGradeSceneWindow>().UpGradeCheck(hit.transform);
+                            mouseCheck = false;
                             break;
                     }
                 }
@@ -58,7 +73,6 @@ public class UpGradeInputManger : MonoBehaviour
 
             if (hit)
             {
-
                 if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     hitObj = hit.transform;
@@ -66,9 +80,9 @@ public class UpGradeInputManger : MonoBehaviour
                     switch (hit.transform.tag)
                     {
                         case "Army":
-                            if (hit.transform.GetComponent<SoldierManger>().movePoint)
-                            {
-                            }
+                            upGradeWindow.SetActive(true);
+                            upGradeWindow.GetComponent<UpGradeSceneWindow>().UpGradeCheck(hit.transform);
+                            mouseCheck = false;
                             break;
                     }
                 }
