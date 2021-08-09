@@ -98,11 +98,11 @@ public class SaveMgr : MonoBehaviour
         else
         {
             string loadFile = File.ReadAllText(fonlderPath + "/save.txt");
-            Save save = JsonUtility.FromJson<Save>(loadFile);
+            playerSave = JsonUtility.FromJson<Save>(loadFile);
 
-            player.playerMilk = save.milk;
-            player.playerSugar = save.sugar;
-            player.playerFlour = save.flour;
+            player.playerMilk = playerSave.milk;
+            player.playerSugar = playerSave.sugar;
+            player.playerFlour = playerSave.flour;
         }
     }
 }

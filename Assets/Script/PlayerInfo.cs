@@ -36,9 +36,6 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
         milk = 150;
         flour = 150;
         sugar = 150;
-        playerMilk = 100000;
-        playerFlour = 100000;
-        playerSugar = 100000;
         people = 3;
         turnPoint = 0;
         killingPoint = 0;
