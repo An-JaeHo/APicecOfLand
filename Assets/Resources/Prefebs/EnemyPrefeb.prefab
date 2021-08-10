@@ -108,7 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5d51865f711fd44bc863baa687ba6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMgr: {fileID: 0}
   capital: {fileID: 0}
   playerInfo: {fileID: 0}
 --- !u!212 &4293685484950453724
@@ -208,7 +207,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2, y: -0.1}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.45, y: 0.5}
@@ -219,7 +218,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.75}
+  m_Size: {x: 0.7, y: 1}
   m_EdgeRadius: 0
 --- !u!82 &2516367074385836537
 AudioSource:
@@ -332,12 +331,12 @@ PrefabInstance:
     - target: {fileID: 6366969659907652197, guid: d43b5348a76c8dc40b00341f804f041b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6366969659907652197, guid: d43b5348a76c8dc40b00341f804f041b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.809
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 6366969659907652197, guid: d43b5348a76c8dc40b00341f804f041b,
         type: 3}

@@ -66,6 +66,7 @@ public class ButtonManger : MonoBehaviour
     private void Update()
     {
         buttonTimer += Time.deltaTime;
+
         if (playerInfo.turnPoint < 9)
         {
             if (buttonTimer > 1f)
@@ -169,11 +170,13 @@ public class ButtonManger : MonoBehaviour
         {
             armyUpgradeUi.SetActive(false);
             input.mouseCheck = true;
+            input.time = 0;
         }
         else
         {
             armyUpgradeUi.SetActive(true);
             input.mouseCheck = false;
+            input.time = 0;
         }
     }
 
