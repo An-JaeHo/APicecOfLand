@@ -348,11 +348,11 @@ public class ButtonManger : MonoBehaviour
         playerInfo.sugar -= panel.upgradeIron;
         tileManger.CheckTile();
 
-        if (int.Parse(input.army.parent.parent.name) > int.Parse(input.landObj.transform.parent.name))
+        if (int.Parse(input.army.parent.parent.name) -1 == int.Parse(input.landObj.transform.parent.name))
         {
             input.army.GetChild(1).transform.localScale = new Vector3(-0.4f, 0.4f);
         }
-        else
+        else if (int.Parse(input.army.parent.parent.name) + 1 == int.Parse(input.landObj.transform.parent.name))
         {
             input.army.GetChild(1).transform.localScale = new Vector3(0.4f, 0.4f);
         }
@@ -390,11 +390,11 @@ public class ButtonManger : MonoBehaviour
         {
             tileManger.CheckTile();
 
-            if (int.Parse(input.army.parent.parent.name) > int.Parse(input.landObj.transform.parent.name))
+            if (int.Parse(input.army.parent.parent.name) - 1 == int.Parse(input.landObj.transform.parent.name))
             {
                 input.army.GetChild(1).transform.localScale = new Vector3(-0.4f, 0.4f);
             }
-            else
+            else if (int.Parse(input.army.parent.parent.name) + 1 == int.Parse(input.landObj.transform.parent.name))
             {
                 input.army.GetChild(1).transform.localScale = new Vector3(0.4f, 0.4f);
             }

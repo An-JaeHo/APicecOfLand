@@ -332,7 +332,6 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
-    //레벨에 따른 이미지도 변경 해야함
     public void LevelCheck()
     {
         if(soldier.nowExp >= soldier.Experience)
