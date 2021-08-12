@@ -256,6 +256,16 @@ public class EnemyController : MonoBehaviour
 
         if (target != null)
         {
+            if (int.Parse(transform.parent.parent.name) + 1 == int.Parse(target.parent.parent.name))
+            {
+                transform.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
+            }
+            else if (int.Parse(transform.parent.parent.name) - 1 == int.Parse(target.parent.parent.name))
+            {
+                transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
+            }
+
+
             if (transform.tag == "Enemy")
             {
                 float attackSum = enemy.BaseAttack + (enemy.RiseAttack * enemy.Level);
