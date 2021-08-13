@@ -327,8 +327,6 @@ public class TileManger : MonoBehaviour
         }
 
         int rand = UnityEngine.Random.Range(0, builderLand.Count - 2);
-
-        builder.SetActive(false);
         builder.transform.position = new Vector3(builderLand[rand].GetChild(0).position.x, builderLand[rand].GetChild(0).position.y + 25f);
         builder.transform.SetParent(builderLand[rand].GetChild(0));
         builder.GetComponent<MakeSoldier>().HelthPoint = 500;

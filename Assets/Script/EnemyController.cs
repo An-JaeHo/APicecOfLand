@@ -291,6 +291,7 @@ public class EnemyController : MonoBehaviour
 
             target.GetComponent<SoldierManger>().HpBarScale();
             ani.SetTrigger("Attack");
+
             if (transform.tag == "Enemy")
             {
                 for (int i = 0; i < SoundController.instance.enemySounds.Length; i++)

@@ -84,7 +84,6 @@ public class SoldierManger : MonoBehaviour
     {
         movePosition = new Vector3(transform.parent.position.x, transform.parent.position.y + 25, transform.parent.position.z - 10);
         ani.SetBool("Move", true);
-        
 
         while (transform.position != movePosition)
         {
