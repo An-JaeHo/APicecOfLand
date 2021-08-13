@@ -84,7 +84,6 @@ public class SoldierManger : MonoBehaviour
     {
         movePosition = new Vector3(transform.parent.position.x, transform.parent.position.y + 25, transform.parent.position.z - 10);
         ani.SetBool("Move", true);
-        
 
         while (transform.position != movePosition)
         {
@@ -145,6 +144,16 @@ public class SoldierManger : MonoBehaviour
 
         if (enemy != null)
         {
+            if (int.Parse(transform.parent.parent.name) + 1 == int.Parse(enemy.parent.parent.name))
+            {
+                transform.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
+            }
+            else if (int.Parse(transform.parent.parent.name) - 1 == int.Parse(enemy.parent.parent.name))
+            {
+                transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
+            }
+
+
             float randnum = Random.Range(0.8f, 1.2f);
             float randCritical = Random.Range(0.7f, 1.1f);
             //적이 받는 데미지
@@ -332,7 +341,6 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
-    //레벨에 따른 이미지도 변경 해야함
     public void LevelCheck()
     {
         if(soldier.nowExp >= soldier.Experience)

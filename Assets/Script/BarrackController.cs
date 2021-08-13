@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BarrackController : MonoBehaviour
 {
@@ -56,8 +57,8 @@ public class BarrackController : MonoBehaviour
         {
             GameObject prefebSoldier = Instantiate(soldierPrefeb,new Vector3(land.position.x, land.position.y +25f), Quaternion.identity);
             prefebSoldier.transform.SetParent(land);
-
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
+            LevelCheck(prefebSoldier);
             playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
 
             for (int i = 0; i < MonsterObj.Length; i++)
@@ -199,11 +200,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (saveMgr.playerSave.schneeballenGrade == 1)
+                        if (saveMgr.playerSave.skittlesGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (saveMgr.playerSave.schneeballenGrade == 2)
+                        else if (saveMgr.playerSave.skittlesGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 5");
                         }
@@ -299,24 +300,33 @@ public class BarrackController : MonoBehaviour
 
     public void LevelCheck(GameObject Monster)
     {
-        saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
-
         switch (Monster.GetComponent<MakeSoldier>().Name)
         {
             case "체리머핀":
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.cherryLevel;
                 break;
             case "사탕막대":
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.candyLevel;
                 break;
             case "스키틀즈케이크":
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.skittlesLevel;
                 break;
             case "도넛츠":
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.donutsLevel;
                 break;
             case "슈니발렌":
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.schneeballenLevel;
                 break;
             case "초코칩쿠키":
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.chocoLevel;
                 break;
             default:
                 break;
         }
+
+        Monster.GetComponent<MakeSoldier>().BaseAttack += Monster.GetComponent<MakeSoldier>().RiseAttack * (Monster.GetComponent<MakeSoldier>().Level-1);
+        Monster.GetComponent<MakeSoldier>().Defensive += Monster.GetComponent<MakeSoldier>().RiseDefensive * (Monster.GetComponent<MakeSoldier>().Level - 1);
+        Monster.GetComponent<MakeSoldier>().HelthPoint += Monster.GetComponent<MakeSoldier>().HelthPoint;
+        Monster.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = Monster.GetComponent<MakeSoldier>().Level.ToString();
     }
 }

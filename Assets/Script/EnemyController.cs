@@ -117,8 +117,9 @@ public class EnemyController : MonoBehaviour
 
     public void EnemyMove()
     {
-        if (movePoint&&!first)
+        if (movePoint)
         {
+
             parentTile = transform.parent;
             tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
             int myName = int.Parse(transform.parent.parent.name);
@@ -168,6 +169,15 @@ public class EnemyController : MonoBehaviour
                         if (FinalNodeList[1].x == tiles.activeChildtileList[i].GetChild(0).position.x
                             && FinalNodeList[1].y == tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f)
                         {
+                            if (int.Parse(transform.parent.parent.name) + 1 == int.Parse(tiles.activeChildtileList[i].name))
+                            {
+                                transform.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
+                            }
+                            else if (int.Parse(transform.parent.parent.name) - 1 == int.Parse(tiles.activeChildtileList[i].name))
+                            {
+                                transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
+                            }
+
                             transform.SetParent(tiles.activeChildtileList[i].GetChild(0));
                         }
                     }
@@ -175,6 +185,9 @@ public class EnemyController : MonoBehaviour
                     parentTile = transform.parent;
                     buttonManger.button.GetComponent<Button>().interactable = false;
                     targetPostion = new Vector3(FinalNodeList[1].x, (float)(FinalNodeList[1].y + 30f), -10f);
+
+                    
+
                     ani.SetBool("Move", true);
                     move = true;
                 }
@@ -243,6 +256,16 @@ public class EnemyController : MonoBehaviour
 
         if (target != null)
         {
+            if (int.Parse(transform.parent.parent.name) + 1 == int.Parse(target.parent.parent.name))
+            {
+                transform.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
+            }
+            else if (int.Parse(transform.parent.parent.name) - 1 == int.Parse(target.parent.parent.name))
+            {
+                transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
+            }
+
+
             if (transform.tag == "Enemy")
             {
                 float attackSum = enemy.BaseAttack + (enemy.RiseAttack * enemy.Level);
@@ -268,6 +291,7 @@ public class EnemyController : MonoBehaviour
 
             target.GetComponent<SoldierManger>().HpBarScale();
             ani.SetTrigger("Attack");
+
             if (transform.tag == "Enemy")
             {
                 for (int i = 0; i < SoundController.instance.enemySounds.Length; i++)

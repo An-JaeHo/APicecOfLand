@@ -327,8 +327,6 @@ public class TileManger : MonoBehaviour
         }
 
         int rand = UnityEngine.Random.Range(0, builderLand.Count - 2);
-
-        builder.SetActive(false);
         builder.transform.position = new Vector3(builderLand[rand].GetChild(0).position.x, builderLand[rand].GetChild(0).position.y + 25f);
         builder.transform.SetParent(builderLand[rand].GetChild(0));
         builder.GetComponent<MakeSoldier>().HelthPoint = 500;
@@ -635,9 +633,9 @@ public class TileManger : MonoBehaviour
             randLevel = UnityEngine.Random.Range(30, 50);
         }
 
-        Enemy.GetComponent<MakeEnemy>().BaseAttack += Enemy.GetComponent<MakeEnemy>().RiseAttack * randLevel;
-        Enemy.GetComponent<MakeEnemy>().BaseDefensive += Enemy.GetComponent<MakeEnemy>().RiseDefensive * randLevel;
-        Enemy.GetComponent<MakeEnemy>().BaseHelthPoint += Enemy.GetComponent<MakeEnemy>().RiseHelthPoint * randLevel;
+        Enemy.GetComponent<MakeEnemy>().BaseAttack += Enemy.GetComponent<MakeEnemy>().RiseAttack * (randLevel-1);
+        Enemy.GetComponent<MakeEnemy>().BaseDefensive += Enemy.GetComponent<MakeEnemy>().RiseDefensive * (randLevel - 1);
+        Enemy.GetComponent<MakeEnemy>().BaseHelthPoint += Enemy.GetComponent<MakeEnemy>().RiseHelthPoint * (randLevel - 1);
         Enemy.GetComponent<MakeEnemy>().Level = randLevel;
         Enemy.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = Enemy.GetComponent<MakeEnemy>().Level.ToString();
     }
