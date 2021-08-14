@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneMgr : MonoBehaviour
 {
-    
+    public static SaveMgr save;
+
+    private void Start()
+    {
+        
+    }
+
     public static void GoGameMainScene()
     {
         SceneManager.LoadScene(0);
@@ -29,6 +35,8 @@ public class SceneMgr : MonoBehaviour
 
     public static void GoUpGradeScene()
     {
+        save = GameObject.FindGameObjectWithTag("GameController").GetComponent<SaveMgr>();
+        save.Load();
         SceneManager.LoadScene(1);
     }
 }

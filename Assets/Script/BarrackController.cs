@@ -206,11 +206,11 @@ public class BarrackController : MonoBehaviour
                         }
                         else if (saveMgr.playerSave.skittlesGrade == 2)
                         {
-                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 5");
+                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 8");
                         }
                         else
                         {
-                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 6");
+                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 9");
                         }
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;

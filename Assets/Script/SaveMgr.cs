@@ -42,11 +42,11 @@ public class SaveMgr : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        fonlderPath = Application.streamingAssetsPath;
+        fonlderPath = Application.persistentDataPath;
         sceneMgr = GetComponent<SceneMgr>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
 
-        playerSave.cherryLevel=1;
+        playerSave.cherryLevel = 1;
         playerSave.cherryGrade = 1;
 
         playerSave.candyLevel = 1;
@@ -63,8 +63,6 @@ public class SaveMgr : MonoBehaviour
 
         playerSave.chocoLevel = 1;
         playerSave.chocoGrade = 1;
-
-        Load();
     }
 
 
@@ -75,6 +73,9 @@ public class SaveMgr : MonoBehaviour
             playerSave.flour = player.flour;
             playerSave.sugar = player.sugar;
             playerSave.milk = player.milk;
+
+            
+            Debug.Log(playerSave.chocoLevel);
             string saveString = JsonUtility.ToJson(playerSave);
             File.WriteAllText(fonlderPath + "/save.txt", saveString);
         }
