@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 938187462}
   m_Layer: 0
   m_Name: GameCntroller
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -439,10 +439,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fonlderPath: 
   player: {fileID: 0}
-  inputField: {fileID: 0}
   sceneMgr: {fileID: 0}
   json: {fileID: 0}
   abilityUi: {fileID: 0}
+  playerSave:
+    milk: 0
+    sugar: 0
+    flour: 0
+    cherryLevel: 0
+    cherryGrade: 0
+    candyLevel: 0
+    candyGrade: 0
+    skittlesLevel: 0
+    skittlesGrade: 0
+    donutsLevel: 0
+    donutsGrade: 0
+    schneeballenLevel: 0
+    schneeballenGrade: 0
+    chocoLevel: 0
+    chocoGrade: 0
 --- !u!1 &946688243
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,29 +42,9 @@ public class SaveMgr : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        fonlderPath = Application.streamingAssetsPath;
+        fonlderPath = Application.persistentDataPath;
         sceneMgr = GetComponent<SceneMgr>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-
-        playerSave.cherryLevel=1;
-        playerSave.cherryGrade = 1;
-
-        playerSave.candyLevel = 1;
-        playerSave.candyGrade = 1;
-
-        playerSave.skittlesLevel = 1;
-        playerSave.skittlesGrade = 1;
-
-        playerSave.donutsLevel = 1;
-        playerSave.donutsGrade = 1;
-
-        playerSave.schneeballenLevel = 1;
-        playerSave.schneeballenGrade = 1;
-
-        playerSave.chocoLevel = 1;
-        playerSave.chocoGrade = 1;
-
-        Load();
     }
 
 
@@ -72,9 +52,29 @@ public class SaveMgr : MonoBehaviour
     {
         if (!File.Exists(fonlderPath + "/save.txt"))
         {
+            Debug.Log(fonlderPath);
             playerSave.flour = player.flour;
             playerSave.sugar = player.sugar;
             playerSave.milk = player.milk;
+
+            playerSave.cherryLevel = 1;
+            playerSave.cherryGrade = 1;
+
+            playerSave.candyLevel = 1;
+            playerSave.candyGrade = 1;
+
+            playerSave.skittlesLevel = 1;
+            playerSave.skittlesGrade = 1;
+
+            playerSave.donutsLevel = 1;
+            playerSave.donutsGrade = 1;
+
+            playerSave.schneeballenLevel = 1;
+            playerSave.schneeballenGrade = 1;
+
+            playerSave.chocoLevel = 1;
+            playerSave.chocoGrade = 1;
+            Debug.Log(playerSave.chocoLevel);
             string saveString = JsonUtility.ToJson(playerSave);
             File.WriteAllText(fonlderPath + "/save.txt", saveString);
         }
