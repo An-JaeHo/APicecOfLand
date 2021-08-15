@@ -169,11 +169,13 @@ public class EnemyController : MonoBehaviour
                         if (FinalNodeList[1].x == tiles.activeChildtileList[i].GetChild(0).position.x
                             && FinalNodeList[1].y == tiles.activeChildtileList[i].GetChild(0).position.y + 0.5f)
                         {
-                            if (int.Parse(transform.parent.parent.name) + 1 == int.Parse(tiles.activeChildtileList[i].name))
+                            if (int.Parse(transform.parent.parent.name) <= int.Parse(tiles.activeChildtileList[i].name)
+                                && Mathf.Abs(int.Parse(transform.parent.parent.name) - int.Parse(tiles.activeChildtileList[i].name)) <= 10)
                             {
                                 transform.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
                             }
-                            else if (int.Parse(transform.parent.parent.name) - 1 == int.Parse(tiles.activeChildtileList[i].name))
+                            else if (int.Parse(transform.parent.parent.name) > int.Parse(tiles.activeChildtileList[i].name)
+                                && Mathf.Abs(int.Parse(transform.parent.parent.name) - int.Parse(tiles.activeChildtileList[i].name)) <= 10)
                             {
                                 transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
                             }
@@ -256,11 +258,13 @@ public class EnemyController : MonoBehaviour
 
         if (target != null)
         {
-            if (int.Parse(transform.parent.parent.name) + 1 == int.Parse(target.parent.parent.name))
+            if (int.Parse(transform.parent.parent.name) <= int.Parse(target.parent.parent.name)
+            && Mathf.Abs(int.Parse(transform.parent.parent.name) - int.Parse(target.parent.parent.name)) <= 10)
             {
                 transform.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
             }
-            else if (int.Parse(transform.parent.parent.name) - 1 == int.Parse(target.parent.parent.name))
+            else if (int.Parse(transform.parent.parent.name) > int.Parse(target.parent.parent.name)
+                && Mathf.Abs(int.Parse(transform.parent.parent.name) - int.Parse(target.parent.parent.name)) <= 10)
             {
                 transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
             }

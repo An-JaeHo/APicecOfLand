@@ -348,11 +348,13 @@ public class ButtonManger : MonoBehaviour
         playerInfo.sugar -= panel.upgradeIron;
         tileManger.CheckTile();
 
-        if (int.Parse(input.army.parent.parent.name) -1 == int.Parse(input.landObj.transform.parent.name))
+        if (int.Parse(input.army.parent.parent.name) >= int.Parse(input.landObj.transform.parent.name)
+            && Mathf.Abs(int.Parse(input.army.parent.parent.name) - int.Parse(input.landObj.transform.parent.name)) <= 10)
         {
             input.army.GetChild(1).transform.localScale = new Vector3(-0.4f, 0.4f);
         }
-        else if (int.Parse(input.army.parent.parent.name) + 1 == int.Parse(input.landObj.transform.parent.name))
+        else if (int.Parse(input.army.parent.parent.name) < int.Parse(input.landObj.transform.parent.name)
+            && Mathf.Abs(int.Parse(input.army.parent.parent.name) - int.Parse(input.landObj.transform.parent.name)) <= 10)
         {
             input.army.GetChild(1).transform.localScale = new Vector3(0.4f, 0.4f);
         }
@@ -390,11 +392,13 @@ public class ButtonManger : MonoBehaviour
         {
             tileManger.CheckTile();
 
-            if (int.Parse(input.army.parent.parent.name) - 1 == int.Parse(input.landObj.transform.parent.name))
+            if (int.Parse(input.army.parent.parent.name) >= int.Parse(input.landObj.transform.parent.name)
+            && Mathf.Abs(int.Parse(input.army.parent.parent.name) - int.Parse(input.landObj.transform.parent.name)) <= 10)
             {
                 input.army.GetChild(1).transform.localScale = new Vector3(-0.4f, 0.4f);
             }
-            else if (int.Parse(input.army.parent.parent.name) + 1 == int.Parse(input.landObj.transform.parent.name))
+            else if (int.Parse(input.army.parent.parent.name) < int.Parse(input.landObj.transform.parent.name)
+                && Mathf.Abs(int.Parse(input.army.parent.parent.name) - int.Parse(input.landObj.transform.parent.name)) <= 10)
             {
                 input.army.GetChild(1).transform.localScale = new Vector3(0.4f, 0.4f);
             }
