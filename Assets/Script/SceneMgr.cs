@@ -35,7 +35,7 @@ public class SceneMgr : MonoBehaviour
 
     public static void GoUpGradeScene()
     {
-        save = GameObject.FindGameObjectWithTag("GameController").GetComponent<SaveMgr>();
+        save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
         save.Load();
         SceneManager.LoadScene(1);
     }

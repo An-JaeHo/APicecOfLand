@@ -209,12 +209,12 @@ public class InputManger : MonoBehaviour
                             }
                             else
                             {
-                                if (int.Parse(army.parent.parent.name) <= int.Parse(hit.transform.parent.name)
+                                if (int.Parse(army.parent.parent.name) >= int.Parse(hit.transform.parent.name)
                                          && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
                                 {
-                                    army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
+                                    army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
                                 }
-                                else if (int.Parse(army.parent.parent.name) > int.Parse(hit.transform.parent.name)
+                                else if (int.Parse(army.parent.parent.name) < int.Parse(hit.transform.parent.name)
                                     && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
                                 {
                                     army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);

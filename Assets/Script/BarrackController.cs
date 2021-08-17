@@ -84,7 +84,7 @@ public class BarrackController : MonoBehaviour
     public void SwordButton()
     {
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-        saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
+        playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
 
         // 1 5 9 13
         for (int i = 0; i < json.information.monster.Length; i++)
@@ -153,11 +153,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (saveMgr.playerSave.cherryGrade == 1)
+                        if (playerInfo.GameCherryGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (saveMgr.playerSave.cherryGrade == 2)
+                        else if (playerInfo.GameCherryGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 2");
                         }
@@ -177,11 +177,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (saveMgr.playerSave.candyGrade == 1)
+                        if (playerInfo.GameCandyGrade== 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (saveMgr.playerSave.candyGrade == 2)
+                        else if (playerInfo.GameCandyGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 5");
                         }
@@ -200,11 +200,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (saveMgr.playerSave.skittlesGrade == 1)
+                        if (playerInfo.GameSkittlesGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (saveMgr.playerSave.skittlesGrade == 2)
+                        else if (playerInfo.GameSkittlesGrade== 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 8");
                         }
@@ -223,11 +223,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (saveMgr.playerSave.donutsGrade == 1)
+                        if (playerInfo.GameDonutsGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (saveMgr.playerSave.donutsGrade == 2)
+                        else if (playerInfo.GameDonutsGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 11");
                         }
@@ -247,11 +247,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (saveMgr.playerSave.schneeballenGrade == 1)
+                        if (playerInfo.GameSchneeballenGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (saveMgr.playerSave.schneeballenGrade == 2)
+                        else if (playerInfo.GameSchneeballenGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 14");
                         }
@@ -271,11 +271,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (saveMgr.playerSave.chocoGrade == 1)
+                        if (playerInfo.GameChocoGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (saveMgr.playerSave.chocoGrade == 2)
+                        else if (playerInfo.GameChocoGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 17");
                         }
@@ -303,22 +303,22 @@ public class BarrackController : MonoBehaviour
         switch (Monster.GetComponent<MakeSoldier>().Name)
         {
             case "체리머핀":
-                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.cherryLevel;
+                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameCherryLevel;
                 break;
             case "사탕막대":
-                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.candyLevel;
+                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameCandyLevel;
                 break;
             case "스키틀즈케이크":
-                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.skittlesLevel;
+                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameSkittlesLevel;
                 break;
             case "도넛츠":
-                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.donutsLevel;
+                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameDonutsLevel;
                 break;
             case "슈니발렌":
-                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.schneeballenLevel;
+                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameSchneeballenLevel;
                 break;
             case "초코칩쿠키":
-                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.chocoLevel;
+                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameChocoLevel;
                 break;
             default:
                 break;
