@@ -11,26 +11,26 @@ public class Save
     public int sugar;
     public int flour;
 
-    public int cherryLevel;
-    public int cherryGrade;
+    public int SaveCherryLevel;
+    public int SaveCherryGrade;
 
-    public int candyLevel;
-    public int candyGrade;
+    public int SaveCandyLevel;
+    public int SaveCandyGrade;
 
-    public int skittlesLevel;
-    public int skittlesGrade;
+    public int SaveSkittlesLevel;
+    public int SaveSkittlesGrade;
 
-    public int donutsLevel;
-    public int donutsGrade;
+    public int SaveDonutsLevel;
+    public int SaveDonutsGrade;
 
-    public int schneeballenLevel;
-    public int schneeballenGrade;
+    public int SaveSchneeballenLevel;
+    public int SaveSchneeballenGrade;
 
-    public int chocoLevel;
-    public int chocoGrade;
+    public int SaveChocoLevel;
+    public int SaveChocoGrade;
 }
 
-public class SaveMgr : MonoBehaviour
+public class SaveMgr : GenericSingletonClass<SaveMgr>
 {
     public string fonlderPath;
     public PlayerInfo player;
@@ -45,24 +45,6 @@ public class SaveMgr : MonoBehaviour
         fonlderPath = Application.persistentDataPath;
         sceneMgr = GetComponent<SceneMgr>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-
-        playerSave.cherryLevel = 1;
-        playerSave.cherryGrade = 1;
-
-        playerSave.candyLevel = 1;
-        playerSave.candyGrade = 1;
-
-        playerSave.skittlesLevel = 1;
-        playerSave.skittlesGrade = 1;
-
-        playerSave.donutsLevel = 1;
-        playerSave.donutsGrade = 1;
-
-        playerSave.schneeballenLevel = 1;
-        playerSave.schneeballenGrade = 1;
-
-        playerSave.chocoLevel = 1;
-        playerSave.chocoGrade = 1;
     }
 
 
@@ -74,20 +56,51 @@ public class SaveMgr : MonoBehaviour
             playerSave.sugar = player.sugar;
             playerSave.milk = player.milk;
 
-            
-            Debug.Log(playerSave.chocoLevel);
-            string saveString = JsonUtility.ToJson(playerSave);
-            File.WriteAllText(fonlderPath + "/save.txt", saveString);
+            player.GameCherryGrade = 1;
+            player.GameCherryLevel = 1;
+
+            player.GameCandyGrade = 1;
+            player.GameCandyLevel = 1;
+
+            player.GameSkittlesGrade = 1;
+            player.GameSkittlesLevel = 1;
+
+            player.GameDonutsGrade = 1;
+            player.GameDonutsLevel = 1;
+
+            player.GameSchneeballenGrade = 1;
+            player.GameSchneeballenLevel = 1;
+
+            player.GameChocoGrade = 1;
+            player.GameChocoLevel = 1;
         }
         else
         {
             playerSave.flour += player.flour;
             playerSave.sugar += player.sugar;
             playerSave.milk += player.milk;
-            
-            string saveString = JsonUtility.ToJson(playerSave);
-            File.WriteAllText(fonlderPath + "/save.txt", saveString);
         }
+
+        playerSave.SaveCherryGrade = player.GameCherryGrade;
+        playerSave.SaveCherryLevel = player.GameCherryLevel;
+
+        playerSave.SaveCandyGrade = player.GameCandyGrade;
+        playerSave.SaveCandyLevel = player.GameCandyLevel;
+
+        playerSave.SaveSkittlesGrade = player.GameSkittlesGrade;
+        playerSave.SaveSkittlesLevel = player.GameSkittlesLevel;
+
+        playerSave.SaveDonutsGrade = player.GameDonutsGrade;
+        playerSave.SaveDonutsLevel = player.GameDonutsLevel;
+
+        playerSave.SaveSchneeballenGrade = player.GameSchneeballenGrade;
+        playerSave.SaveSchneeballenLevel = player.GameSchneeballenLevel;
+
+        playerSave.SaveChocoGrade = player.GameChocoGrade;
+        playerSave.SaveChocoLevel = player.GameChocoLevel;
+
+        string saveString = JsonUtility.ToJson(playerSave);
+        File.WriteAllText(fonlderPath + "/save.txt", saveString);
     }
 
     public void Load()
@@ -104,6 +117,24 @@ public class SaveMgr : MonoBehaviour
             player.playerMilk = playerSave.milk;
             player.playerSugar = playerSave.sugar;
             player.playerFlour = playerSave.flour;
+
+            player.GameCherryGrade = playerSave.SaveCherryGrade;
+            player.GameCherryLevel = playerSave.SaveCherryLevel;
+
+            player.GameCandyGrade =playerSave.SaveCandyGrade;
+            player.GameCandyLevel = playerSave.SaveCandyLevel ;
+
+            player.GameSkittlesGrade = playerSave.SaveSkittlesGrade;
+            player.GameSkittlesLevel = playerSave.SaveSkittlesLevel;
+
+            player.GameDonutsGrade = playerSave.SaveDonutsGrade;
+            player.GameDonutsLevel =playerSave.SaveDonutsLevel ;
+
+            player.GameSchneeballenGrade = playerSave.SaveSchneeballenGrade;
+            player.GameSchneeballenLevel = playerSave.SaveSchneeballenLevel;
+
+            player.GameChocoGrade = playerSave.SaveChocoGrade ;
+            player.GameChocoLevel = playerSave.SaveChocoLevel;
         }
     }
 }

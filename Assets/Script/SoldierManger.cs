@@ -116,7 +116,6 @@ public class SoldierManger : MonoBehaviour
                 transform.parent.GetComponent<MakeArea>().Name = "Grass";
             }
         }
-
         
         if (cardMovePoint)
         {
@@ -144,11 +143,13 @@ public class SoldierManger : MonoBehaviour
 
         if (enemy != null)
         {
-            if (int.Parse(transform.parent.parent.name) + 1 == int.Parse(enemy.parent.parent.name))
+            if (int.Parse(transform.parent.parent.name) <= int.Parse(enemy.parent.parent.name)
+            && Mathf.Abs(int.Parse(transform.parent.parent.name) - int.Parse(enemy.parent.parent.name)) <= 10)
             {
                 transform.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
             }
-            else if (int.Parse(transform.parent.parent.name) - 1 == int.Parse(enemy.parent.parent.name))
+            else if (int.Parse(transform.parent.parent.name) > int.Parse(enemy.parent.parent.name)
+                && Mathf.Abs(int.Parse(transform.parent.parent.name) - int.Parse(enemy.parent.parent.name)) <= 10)
             {
                 transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
             }
