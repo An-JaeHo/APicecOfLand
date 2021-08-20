@@ -14,7 +14,7 @@ public class UpGradeSceneWindow : MonoBehaviour
     public int needUpGradeMilk;
     public int needUpGradeSugar;
     public int needUpGradeFlour;
-    private Transform monster;
+    public Transform monster;
     public GameObject[] MonsterObj;
     public SaveMgr saveMgr;
 
@@ -142,7 +142,7 @@ public class UpGradeSceneWindow : MonoBehaviour
             monster.GetComponent<MakeSoldier>().Critical += monster.GetComponent<MakeSoldier>().RiseCritical;
             monster.GetComponent<MakeSoldier>().Defensive += monster.GetComponent<MakeSoldier>().RiseDefensive;
 
-            monster.parent.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString(); ;
+            monster.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString(); ;
         }
 
         playerInfo.playerMilk -= needUpGradeMilk;
@@ -159,25 +159,21 @@ public class UpGradeSceneWindow : MonoBehaviour
     {
         Transform monsterParent = monster.parent;
         string nextCode;
-        Destroy(monster.gameObject);
+        Destroy(monster.GetChild(1).gameObject);
         nextCode = GetComponent<ArmyUpgrade>().UpGradeFinder(monster.GetComponent<MakeSoldier>().Code).Code;
 
         for (int i = 0; i < MonsterObj.Length; i++)
         {
             if (MonsterObj[i].name == nextCode)
             {
-                GameObject monsterPicture = Instantiate(MonsterObj[i], new Vector3(monsterParent.position.x, monsterParent.position.y-0.4f), Quaternion.identity);
-                monsterPicture.transform.localScale = new Vector2(0.55f, 0.55f);
-                monsterPicture.transform.SetParent(monsterParent);
-                monster = monsterPicture.transform;
+                GameObject monsterPicture = Instantiate(MonsterObj[i], monster);
+                monsterPicture.transform.localScale = new Vector2(0.35f, 0.35f);
+                monsterPicture.transform.position = new Vector3(monsterPicture.transform.position.x+0.1f, monsterPicture.transform.position.y - 0.4f);
             }
         }
 
-        monster.gameObject.AddComponent<MakeSoldier>().SuperMagic(nextCode);
-        monster.parent.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString();
-        monster.gameObject.AddComponent<BoxCollider2D>().size = new Vector2(2,2);
-        monster.gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 1.4f);
-        monster.tag = "Army";
+        monster.GetComponent<MakeSoldier>().SuperMagic(nextCode);
+        monster.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString();
     }
 
     public void SaveLevelAndRank(Transform monster)
