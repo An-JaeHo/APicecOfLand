@@ -8,18 +8,11 @@ public class UpGradeInputManger : MonoBehaviour
     public Transform hitObj;
     public GameObject upGradeWindow;
     public bool mouseCheck;
-    //¾Æ±×µé 
-    public Transform content;
 
     void Start()
     {
         gameCamera = Camera.main;
         mouseCheck = true;
-
-        for (int i = 0; i < content.childCount; i++)
-        {
-            content.GetChild(i).GetChild(1).GetComponent<MakeSoldier>().SuperMagic(content.GetChild(i).GetChild(1).name);
-        }
     }
 
     // Update is called once per frame
