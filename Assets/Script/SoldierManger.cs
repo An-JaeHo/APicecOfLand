@@ -350,6 +350,7 @@ public class SoldierManger : MonoBehaviour
             soldier.BaseAttack += soldier.RiseAttack;
             soldier.Critical += soldier.RiseCritical;
             soldier.Defensive += soldier.RiseDefensive;
+            soldier.Critical += soldier.RiseCritical;
             soldier.HelthPoint = (int)totalHp;
             soldier.nowExp = 0;
         }
