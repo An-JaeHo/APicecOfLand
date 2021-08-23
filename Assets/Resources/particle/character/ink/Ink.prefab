@@ -50,7 +50,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4870,6 +4870,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4927671800255818551, guid: 8be97f7f425a40746945255bd2b1d2d0,
         type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927671800255818551, guid: 8be97f7f425a40746945255bd2b1d2d0,
+        type: 3}
       propertyPath: UVModule.mode
       value: 1
       objectReference: {fileID: 0}
@@ -4951,6 +4956,11 @@ PrefabInstance:
     - target: {fileID: 4374775143202855415, guid: ab9d07474802d034790ac7d2023d5d9e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980470425250401850, guid: ab9d07474802d034790ac7d2023d5d9e,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6980470425250401850, guid: ab9d07474802d034790ac7d2023d5d9e,

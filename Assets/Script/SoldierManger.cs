@@ -22,7 +22,7 @@ public class SoldierManger : MonoBehaviour
     public bool move;
     public bool attack;
     public bool capitalPoint;
-
+    public MyParticle myParticle;
     public GameObject buffIconGameObj;
     public Sprite buffIconPrefeb;
     public List<Sprite> buffList;
@@ -51,6 +51,7 @@ public class SoldierManger : MonoBehaviour
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         input = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
         soldier = GetComponent<MakeSoldier>();
+        myParticle = transform.GetChild(1).GetComponent<MyParticle>();
 
         ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         totalHp = soldier.HelthPoint;
@@ -182,6 +183,16 @@ public class SoldierManger : MonoBehaviour
             }
             
             ani.SetTrigger("Attack");
+
+            if(myParticle.myParticles.Count !=0)
+            {
+                for (int i = 0; i < myParticle.myParticles.Count; i++)
+                {
+                    Debug.Log("af");
+                    myParticle.myParticles[i].GetComponent<ParticleSystem>().Play();
+                }
+            }
+            
 
             for (int i = 0; i < SoundController.instance.monsterSounds.Length; i++)
             {
