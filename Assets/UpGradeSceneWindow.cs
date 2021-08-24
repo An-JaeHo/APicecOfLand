@@ -67,24 +67,24 @@ public class UpGradeSceneWindow : MonoBehaviour
             && playerInfo.playerFlour >= needUpGradeFlour)
         {
             upGradeButton.GetComponent<Button>().interactable = true;
+            transform.GetChild(5).GetChild(0).GetChild(1).GetComponent<Text>().text = needUpGradeMilk.ToString();
+            transform.GetChild(5).GetChild(1).GetChild(1).GetComponent<Text>().text = needUpGradeSugar.ToString();
+            transform.GetChild(5).GetChild(2).GetChild(1).GetComponent<Text>().text = needUpGradeFlour.ToString();
 
             if (obj.GetComponent<MakeSoldier>().Level == 5
                 && obj.GetComponent<MakeSoldier>().Grade != 3)
             {
-                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "다음 단계로 승급이 가능합니다.";
                 upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "승급";
             }
             else
             {
                 if(obj.GetComponent<MakeSoldier>().Level == 10)
                 {
-                    transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "최대레벨 입니다.";
                     upGradeButton.GetComponent<Button>().interactable = false;
                     upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "만렙";
                 }
                 else
                 {
-                    transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "레벨" + (obj.GetComponent<MakeSoldier>().Level + 1) + "로 진화가 가능합니다.";
                     upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "진화";
                 }
             }
@@ -92,9 +92,13 @@ public class UpGradeSceneWindow : MonoBehaviour
         }
         else
         {
+
+            transform.GetChild(5).GetChild(0).GetChild(1).GetComponent<Text>().text = needUpGradeMilk.ToString();
+            transform.GetChild(5).GetChild(1).GetChild(1).GetComponent<Text>().text = needUpGradeSugar.ToString();
+            transform.GetChild(5).GetChild(2).GetChild(1).GetComponent<Text>().text = needUpGradeFlour.ToString();
+
             if (obj.GetComponent<MakeSoldier>().Level == 10)
             {
-                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "최대레벨 입니다.";
                 upGradeButton.GetComponent<Button>().interactable = false;
                 upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "만렙";
             }
@@ -102,7 +106,6 @@ public class UpGradeSceneWindow : MonoBehaviour
             {
                 upGradeButton.transform.GetChild(0).GetComponent<Text>().text = "진화";
                 upGradeButton.GetComponent<Button>().interactable = false;
-                transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "자원이 부족합니다.";
             }
                 
         }
