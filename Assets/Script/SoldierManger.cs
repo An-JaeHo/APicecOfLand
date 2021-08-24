@@ -22,7 +22,6 @@ public class SoldierManger : MonoBehaviour
     public bool move;
     public bool attack;
     public bool capitalPoint;
-    public MyParticle myParticle;
     public GameObject buffIconGameObj;
     public Sprite buffIconPrefeb;
     public List<Sprite> buffList;
@@ -37,6 +36,7 @@ public class SoldierManger : MonoBehaviour
     public bool cardMovePoint;
     public int builderPoint;
     public float countAttack;
+    public bool directionCheck;
 
     //레벨에따른 다른 이미지
     public Sprite level1;
@@ -51,7 +51,7 @@ public class SoldierManger : MonoBehaviour
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         input = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
         soldier = GetComponent<MakeSoldier>();
-        myParticle = transform.GetChild(1).GetComponent<MyParticle>();
+        directionCheck = true;
 
         ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         totalHp = soldier.HelthPoint;
@@ -147,11 +147,13 @@ public class SoldierManger : MonoBehaviour
             if (int.Parse(transform.parent.parent.name) <= int.Parse(enemy.parent.parent.name)
             && Mathf.Abs(int.Parse(transform.parent.parent.name) - int.Parse(enemy.parent.parent.name)) <= 10)
             {
+                directionCheck = true;
                 transform.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
             }
             else if (int.Parse(transform.parent.parent.name) > int.Parse(enemy.parent.parent.name)
                 && Mathf.Abs(int.Parse(transform.parent.parent.name) - int.Parse(enemy.parent.parent.name)) <= 10)
             {
+                directionCheck = false;
                 transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
             }
 
@@ -183,16 +185,6 @@ public class SoldierManger : MonoBehaviour
             }
             
             ani.SetTrigger("Attack");
-
-            if(myParticle.myParticles.Count !=0)
-            {
-                for (int i = 0; i < myParticle.myParticles.Count; i++)
-                {
-                    Debug.Log("af");
-                    myParticle.myParticles[i].GetComponent<ParticleSystem>().Play();
-                }
-            }
-            
 
             for (int i = 0; i < SoundController.instance.monsterSounds.Length; i++)
             {
