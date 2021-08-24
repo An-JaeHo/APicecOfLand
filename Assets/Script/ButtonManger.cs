@@ -619,6 +619,7 @@ public class ButtonManger : MonoBehaviour
         }
 
         button.GetComponent<Button>().interactable = true;
+        input.mouseCheck = true;
         timer.limitTime = 60;
         timer.timerCheck = true;
         yield return null;
@@ -630,7 +631,7 @@ public class ButtonManger : MonoBehaviour
         playerInfo.milk += playerInfo.updateMilk;
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
-
+        input.mouseCheck = false;
         buttonTimer = 0;
         
 
