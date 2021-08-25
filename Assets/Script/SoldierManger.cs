@@ -68,6 +68,40 @@ public class SoldierManger : MonoBehaviour
         builderPoint = 0;
     }
 
+    private void Update()
+    {
+        if(move)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 100f);
+            stayTime++;
+
+            if (transform.position == movePosition)
+            {
+                ani.SetBool("Move", false);
+                input.armyMove = true;
+                stayTime = 0;
+                buttonManger.button.GetComponent<Button>().interactable = true;
+                if (transform.tag == "Builder")
+                {
+                    transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
+                    transform.GetComponent<AudioSource>().Play();
+                    //yield return new WaitForSeconds(0.5f);
+                }
+
+                if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
+                {
+                    transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
+                    transform.GetComponent<AudioSource>().Play();
+                    transform.parent.GetComponent<AreaManger>().TurnArea();
+                    transform.parent.GetComponent<MakeArea>().Name = "Grass";
+                }
+
+                move = false;
+            }
+        }
+        
+    }
+
     public void SoldierAction()
     {
         if (move)
@@ -85,45 +119,14 @@ public class SoldierManger : MonoBehaviour
     {
         movePosition = new Vector3(transform.parent.position.x, transform.parent.position.y + 25, transform.parent.position.z - 10);
         ani.SetBool("Move", true);
-
-        while (transform.position != movePosition)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, movePosition, Time.deltaTime * 300f);
-            movePoint = false;
-            stayTime++;
-            buttonManger.button.GetComponent<Button>().interactable = false;
-            yield return new WaitForSeconds(0.01f);
-        }
-
-        if (transform.position == movePosition)
-        {
-            input.armyMove = true;
-            move = false;
-            stayTime = 0;
-            ani.SetBool("Move", false);
-
-            if (transform.tag == "Builder")
-            {
-                transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
-                transform.GetComponent<AudioSource>().Play();
-                //yield return new WaitForSeconds(0.5f);
-            }
-
-            if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
-            {
-                transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
-                transform.GetComponent<AudioSource>().Play();
-                transform.parent.GetComponent<AreaManger>().TurnArea();
-                transform.parent.GetComponent<MakeArea>().Name = "Grass";
-            }
-        }
+        buttonManger.button.GetComponent<Button>().interactable = false;
         
         if (cardMovePoint)
         {
             movePoint = true;
             cardMovePoint = false;
         }
-        buttonManger.button.GetComponent<Button>().interactable = true;
+        
         tileManger.CheckTile();
         yield return null;
     }

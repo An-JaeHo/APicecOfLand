@@ -119,7 +119,6 @@ public class EnemyController : MonoBehaviour
     {
         if (movePoint)
         {
-
             parentTile = transform.parent;
             tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
             int myName = int.Parse(transform.parent.parent.name);
