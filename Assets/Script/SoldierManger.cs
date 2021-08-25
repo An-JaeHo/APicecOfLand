@@ -307,7 +307,7 @@ public class SoldierManger : MonoBehaviour
         icon.GetComponent<SpriteRenderer>().sprite = icon.GetComponent<InputSkill>().Picture;
         buffCount = icon.GetComponent<InputSkill>().Turn;
 
-        icon.transform.position = new Vector3(icon.transform.position.x - 10+((i-1)*15), transform.GetChild(0).position.y - 15);
+        icon.transform.position = new Vector3(icon.transform.position.x - 10+((i-1)*15), transform.GetChild(0).position.y +100);
         buffPrefebList.Add(icon);
     }
 
