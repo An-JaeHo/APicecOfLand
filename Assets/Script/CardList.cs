@@ -248,6 +248,7 @@ public class CardList : MonoBehaviour
 
     private void Card10(GameObject soldier, string code)
     {
+        Debug.Log(soldier.name);
         soldier.GetComponent<MakeSoldier>().Movement += 1;
         soldier.GetComponent<SoldierManger>().MakeBuffIcon(code);
     }

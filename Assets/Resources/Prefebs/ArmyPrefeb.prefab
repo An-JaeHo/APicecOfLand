@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1971594108216303232}
   - component: {fileID: -2618849060856947091}
   - component: {fileID: -1675065414346589092}
-  - component: {fileID: 2020556970931746041}
   - component: {fileID: 4965967467838940323}
+  - component: {fileID: 2903876592132181935}
   m_Layer: 5
   m_Name: ArmyPrefeb
   m_TagString: Army
@@ -171,37 +171,12 @@ MonoBehaviour:
   cardMovePoint: 0
   builderPoint: 0
   countAttack: 0
+  directionCheck: 0
   level1: {fileID: 21300000, guid: adcdd39175f6b5f44a0f25bf07c1ec98, type: 3}
   level2: {fileID: 21300000, guid: 630bc60bbea4d214782b440d0143641a, type: 3}
   level3: {fileID: 21300000, guid: ae02234114b5f7f4aa18a025f9019ae4, type: 3}
   level4: {fileID: 21300000, guid: 8f41e28d110fcf7489809d34018ea041, type: 3}
   level5: {fileID: 21300000, guid: 871e126289ec69f46aba4ca3dad232af, type: 3}
---- !u!61 &2020556970931746041
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971594108216303233}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.45, y: 0.5}
-    oldSize: {x: 1.5515151, y: 1.1636363}
-    newSize: {x: 1.5515151, y: 1.1636363}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7, y: 1}
-  m_EdgeRadius: 0
 --- !u!82 &4965967467838940323
 AudioSource:
   m_ObjectHideFlags: 0
@@ -298,6 +273,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &2903876592132181935
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971594108216303233}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.1, y: -0.15}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.45, y: 0.5}
+    oldSize: {x: 1.5515151, y: 1.1636363}
+    newSize: {x: 1.5515151, y: 1.1636363}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &5574172125721852092
 PrefabInstance:
   m_ObjectHideFlags: 0

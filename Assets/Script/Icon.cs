@@ -65,6 +65,8 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else
         {
+            Debug.Log(inputManger.hitObj.tag);
+
             if (inputManger.hitObj.tag == skill.Type)
             {
                 card.carInfo = skill.Picture;
@@ -115,24 +117,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Army")
-        {
-            card.SoldierPrefeb = null;
-
-            if (collision.transform.parent.tag == "Capital")
-            {
-                card.AreaPrefeb = null;
-            }
-        }
-        else if (collision.transform.tag == "Enemy")
-        {
-            card.EnemyPrefeb = null;
-        }
-        else if (collision.transform.tag == "Capital")
-        {
-            card.AreaPrefeb = null;
-        }
-
         if (collision.transform.tag == "WasteBasket")
         {
             deleteCheck = false;

@@ -318,6 +318,8 @@ public class TileManger : MonoBehaviour
     {
         List<Transform> builderLand = new List<Transform>();
 
+        builder.transform.parent.GetComponent<AreaManger>().BuilderDead();
+
         for (int i = 0; i < activeChildtileList.Count; i++)
         {
             if (activeChildtileList[i].GetChild(0).childCount == 0 && activeChildtileList[i].GetChild(0).tag != "Capital")

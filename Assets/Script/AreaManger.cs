@@ -180,6 +180,27 @@ public class AreaManger : MonoBehaviour
         return Code;
     }
 
+    public void BuilderDead()
+    {
+        transform.GetComponent<MakeArea>().Code = pureCode;
+        transform.GetComponent<MakeArea>().Type = "Grass";
+        transform.GetComponent<MakeArea>().Picture = pureSprite;
+        transform.GetComponent<MakeArea>().Grade = 0;
+        transform.GetComponent<MakeArea>().UpgradeFlour = 0;
+        transform.GetComponent<MakeArea>().UpgradeSugar = 0;
+        transform.GetComponent<MakeArea>().MilkOutput = 0;
+        transform.GetComponent<MakeArea>().FlourOutput = 0;
+        transform.GetComponent<MakeArea>().SugarOutput = 0;
+        transform.GetComponent<MakeArea>().Movement = true;
+        transform.GetComponent<MakeArea>().Destroy = true;
+        transform.GetComponent<MakeArea>().Repair = false;
+        transform.GetComponent<MakeArea>().Effect = null;
+        transform.GetComponent<SpriteRenderer>().color = Color.white;
+        transform.GetComponent<SpriteRenderer>().sprite = pureSprite;
+        pureColor = Color.white;
+        transform.tag = "Grass";
+    }
+
     public void TurnArea()
     {
         if (transform.tag != "Enemy Base")
@@ -189,7 +210,7 @@ public class AreaManger : MonoBehaviour
                 ReturnUpdateSouce();
                 transform.GetComponent<MakeArea>().Code = pureCode;
                 transform.GetComponent<MakeArea>().Type = "Grass";
-                transform.GetComponent<MakeArea>().Picture = readyBuild;
+                transform.GetComponent<MakeArea>().Picture = pureSprite;
                 transform.GetComponent<MakeArea>().Grade = 0;
                 transform.GetComponent<MakeArea>().UpgradeFlour = 0;
                 transform.GetComponent<MakeArea>().UpgradeSugar = 0;
@@ -201,7 +222,7 @@ public class AreaManger : MonoBehaviour
                 transform.GetComponent<MakeArea>().Repair = false;
                 transform.GetComponent<MakeArea>().Effect = null;
                 transform.GetComponent<SpriteRenderer>().color = Color.white;
-                transform.GetComponent<SpriteRenderer>().sprite = readyBuild;
+                transform.GetComponent<SpriteRenderer>().sprite = pureSprite;
                 pureColor = Color.white;
                 transform.tag = "Grass";
             }
@@ -211,7 +232,7 @@ public class AreaManger : MonoBehaviour
         {
             transform.GetComponent<MakeArea>().Code = pureCode;
             transform.GetComponent<MakeArea>().Type = "Grass";
-            transform.GetComponent<MakeArea>().Picture = readyBuild;
+            transform.GetComponent<MakeArea>().Picture = pureSprite;
             transform.GetComponent<MakeArea>().Grade = 0;
             transform.GetComponent<MakeArea>().UpgradeFlour = 0;
             transform.GetComponent<MakeArea>().UpgradeSugar = 0;
@@ -223,7 +244,7 @@ public class AreaManger : MonoBehaviour
             transform.GetComponent<MakeArea>().Repair = false;
             transform.GetComponent<MakeArea>().Effect = null;
             transform.GetComponent<SpriteRenderer>().color = Color.white;
-            transform.GetComponent<SpriteRenderer>().sprite = readyBuild;
+            transform.GetComponent<SpriteRenderer>().sprite = pureSprite;
             pureColor = Color.white;
             transform.tag = "Grass";
         }
