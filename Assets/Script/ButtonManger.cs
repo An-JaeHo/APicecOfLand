@@ -360,6 +360,7 @@ public class ButtonManger : MonoBehaviour
         }
         input.army.transform.SetParent(input.landObj);
         input.moveSoldier.move = true;
+        input.army.GetComponent<SoldierManger>().movePoint = false;
         input.army.GetComponent<SoldierManger>().SoldierAction();
 
         
