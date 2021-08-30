@@ -277,7 +277,6 @@ public class UpGradeMonsterInfo : MonoBehaviour
         soldier.GetComponent<MakeSoldier>().Critical += (soldier.GetComponent<MakeSoldier>().RiseCritical * (level - 1));
 
         soldier.transform.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = soldier.GetComponent<MakeSoldier>().Level.ToString();
-        Debug.Log("sf");
     }
 
 }

@@ -138,4 +138,55 @@ public class SaveMgr : GenericSingletonClass<SaveMgr>
             player.GameChocoLevel = playerSave.SaveChocoLevel;
         }
     }
+
+    public void DeleteSave()
+    {
+        if (File.Exists(fonlderPath + "/save.txt"))
+        {
+            playerSave.flour = 0;
+            playerSave.sugar = 0;
+            playerSave.milk = 0;
+
+            player.GameCherryGrade = 1;
+            player.GameCherryLevel = 1;
+
+            player.GameCandyGrade = 1;
+            player.GameCandyLevel = 1;
+
+            player.GameSkittlesGrade = 1;
+            player.GameSkittlesLevel = 1;
+
+            player.GameDonutsGrade = 1;
+            player.GameDonutsLevel = 1;
+
+            player.GameSchneeballenGrade = 1;
+            player.GameSchneeballenLevel = 1;
+
+            player.GameChocoGrade = 1;
+            player.GameChocoLevel = 1;
+        }
+
+        playerSave.SaveCherryGrade = player.GameCherryGrade;
+        playerSave.SaveCherryLevel = player.GameCherryLevel;
+
+        playerSave.SaveCandyGrade = player.GameCandyGrade;
+        playerSave.SaveCandyLevel = player.GameCandyLevel;
+
+        playerSave.SaveSkittlesGrade = player.GameSkittlesGrade;
+        playerSave.SaveSkittlesLevel = player.GameSkittlesLevel;
+
+        playerSave.SaveDonutsGrade = player.GameDonutsGrade;
+        playerSave.SaveDonutsLevel = player.GameDonutsLevel;
+
+        playerSave.SaveSchneeballenGrade = player.GameSchneeballenGrade;
+        playerSave.SaveSchneeballenLevel = player.GameSchneeballenLevel;
+
+        playerSave.SaveChocoGrade = player.GameChocoGrade;
+        playerSave.SaveChocoLevel = player.GameChocoLevel;
+
+        string saveString = JsonUtility.ToJson(playerSave);
+        File.WriteAllText(fonlderPath + "/save.txt", saveString);
+
+        SceneMgr.GoUpGradeScene();
+    }
 }
