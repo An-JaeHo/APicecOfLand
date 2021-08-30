@@ -47,13 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ff014a226ab544193110725e9f4a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingAssetsPath: 
+  streamingAssetsPath: {fileID: 0}
   information:
     area: []
     enemy: []
     boss: []
     card: []
     monster: []
+    unitUpgrade: []
   item: []
   cardImg: []
   monsterImg: []
@@ -71,40 +72,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a728d4cef536bd4bb1d5f6e10ec24f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  day: 
-  name: 
   milk: 0
   flour: 0
   sugar: 0
   people: 0
-  maxArea: 0
-  myArea: 0
   updateMilk: 0
   updateFlour: 0
   updateSugar: 0
   updatePeople: 0
   turnPoint: 0
   killingPoint: 0
-  playerBuffCheck: 0
-  playerDeBuffCheck: 0
-  playerGuardianCheck: 0
-  playerGuardian:
-    Code: 
-    Picture: {fileID: 0}
-    Name: 
-    Type: 
-    MaxLevel: 0
-    HelthPoint: 0
-    BaseAttack: 0
-    RiseAttack: 0
-    Defensive: 0
-    RiseDefensive: 0
-    AttackRange: 0
-    AttackNumber: 0
-    Movement: 0
-    turn: 0
-    InherentAbiltiy: 
-    Drop: 
+  playerMilk: 0
+  playerFlour: 0
+  playerSugar: 0
+  GameCherryLevel: 0
+  GameCherryGrade: 0
+  GameCandyLevel: 0
+  GameCandyGrade: 0
+  GameSkittlesLevel: 0
+  GameSkittlesGrade: 0
+  GameDonutsLevel: 0
+  GameDonutsGrade: 0
+  GameSchneeballenLevel: 0
+  GameSchneeballenGrade: 0
+  GameChocoLevel: 0
+  GameChocoGrade: 0
 --- !u!114 &2640121383826606843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,10 +111,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fonlderPath: 
   player: {fileID: 0}
-  inputField: {fileID: 0}
   sceneMgr: {fileID: 0}
   json: {fileID: 0}
   abilityUi: {fileID: 0}
+  playerSave:
+    milk: 0
+    sugar: 0
+    flour: 0
+    SaveCherryLevel: 0
+    SaveCherryGrade: 0
+    SaveCandyLevel: 0
+    SaveCandyGrade: 0
+    SaveSkittlesLevel: 0
+    SaveSkittlesGrade: 0
+    SaveDonutsLevel: 0
+    SaveDonutsGrade: 0
+    SaveSchneeballenLevel: 0
+    SaveSchneeballenGrade: 0
+    SaveChocoLevel: 0
+    SaveChocoGrade: 0
 --- !u!114 &2430175180261222700
 MonoBehaviour:
   m_ObjectHideFlags: 0
