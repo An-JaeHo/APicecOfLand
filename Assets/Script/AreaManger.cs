@@ -209,6 +209,7 @@ public class AreaManger : MonoBehaviour
             {
                 ReturnUpdateSouce();
                 transform.GetComponent<MakeArea>().Code = pureCode;
+                transform.GetComponent<MakeArea>().Name = null;
                 transform.GetComponent<MakeArea>().Type = "Grass";
                 transform.GetComponent<MakeArea>().Picture = pureSprite;
                 transform.GetComponent<MakeArea>().Grade = 0;
@@ -231,6 +232,7 @@ public class AreaManger : MonoBehaviour
         if(area.Name == "우주선")
         {
             transform.GetComponent<MakeArea>().Code = pureCode;
+            transform.GetComponent<MakeArea>().Name = null;
             transform.GetComponent<MakeArea>().Type = "Grass";
             transform.GetComponent<MakeArea>().Picture = pureSprite;
             transform.GetComponent<MakeArea>().Grade = 0;
