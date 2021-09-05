@@ -67,38 +67,9 @@ public class InputManger : MonoBehaviour
         }
     }
 
-    public void ChangeLandInfo()
-    {
-        for (int i = 0; i < rangeManger.rangeList.Count; i++)
-        {
-            rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
+    
 
-            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Area")
-            {
-                rangeManger.rangeList[i].transform.tag = "Area";
-            }
-
-            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
-            {
-                rangeManger.rangeList[i].transform.tag = "Barracks";
-            }
-
-            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Grass")
-            {
-                rangeManger.rangeList[i].transform.tag = "Grass";
-            }
-
-            if (rangeManger.rangeList[i].GetComponent<AreaManger>().pureTag == "Capital")
-            {
-                rangeManger.rangeList[i].transform.tag = "Capital";
-            }
-        }
-
-        
-        rangeManger.rangeList.Clear();
-    }
-
-
+    //클릭 용도
     private void MouseHit()
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -223,7 +194,7 @@ public class InputManger : MonoBehaviour
                                 army.transform.SetParent(hit.transform);
                                 moveSoldier.move = true;
                                 army.transform.GetComponent<SoldierManger>().SoldierAction();
-
+                                army.transform.GetComponent<SoldierManger>().movePoint = false;
                                 ChangeLandInfo();
                             }
 
@@ -265,7 +236,7 @@ public class InputManger : MonoBehaviour
         }
     }
     
-
+    //터치 용도
     private void TouchHit()
     {
         if (Input.GetTouch(0).phase == TouchPhase.Began)
@@ -392,12 +363,12 @@ public class InputManger : MonoBehaviour
                                 }
                                 else
                                 {
-                                    if (int.Parse(army.parent.parent.name) <= int.Parse(hit.transform.parent.name)
-                                        && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
+                                    if (int.Parse(army.parent.parent.name) >= int.Parse(hit.transform.parent.name)
+                                         && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
                                     {
-                                        army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
+                                        army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
                                     }
-                                    else if (int.Parse(army.parent.parent.name) > int.Parse(hit.transform.parent.name)
+                                    else if (int.Parse(army.parent.parent.name) < int.Parse(hit.transform.parent.name)
                                         && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
                                     {
                                         army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
@@ -406,6 +377,7 @@ public class InputManger : MonoBehaviour
                                     army.transform.SetParent(hit.transform);
                                     moveSoldier.move = true;
                                     army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                    army.transform.GetComponent<SoldierManger>().movePoint = false;
 
                                     ChangeLandInfo();
                                 }
@@ -430,6 +402,37 @@ public class InputManger : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ChangeLandInfo()
+    {
+        for (int i = 0; i < rangeManger.rangeList.Count; i++)
+        {
+            rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
+
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Area")
+            {
+                rangeManger.rangeList[i].transform.tag = "Area";
+            }
+
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
+            {
+                rangeManger.rangeList[i].transform.tag = "Barracks";
+            }
+
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Grass")
+            {
+                rangeManger.rangeList[i].transform.tag = "Grass";
+            }
+
+            if (rangeManger.rangeList[i].GetComponent<AreaManger>().pureTag == "Capital")
+            {
+                rangeManger.rangeList[i].transform.tag = "Capital";
+            }
+        }
+
+
+        rangeManger.rangeList.Clear();
     }
 
     private void MouseCameraMove()
