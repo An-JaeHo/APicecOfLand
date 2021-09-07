@@ -302,10 +302,10 @@ public class BarrackController : MonoBehaviour
     {
         switch (Monster.GetComponent<MakeSoldier>().Name)
         {
-            case "체리머핀":
+            case "양초머핀":
                 Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameCherryLevel;
                 break;
-            case "사탕막대":
+            case "진저쿠키":
                 Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameCandyLevel;
                 break;
             case "스키틀즈케이크":

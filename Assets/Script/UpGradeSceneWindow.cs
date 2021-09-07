@@ -184,32 +184,62 @@ public class UpGradeSceneWindow : MonoBehaviour
         switch (monster.GetComponent<MakeSoldier>().Name)
         {
             case "√º∏Æ∏”«…":
-                playerInfo.GameCherryGrade= monster.GetComponent<MakeSoldier>().Grade;
-                playerInfo.GameCherryLevel= monster.GetComponent<MakeSoldier>().Level;
+                saveMgr.playerSave.SaveCherryGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.SaveCherryLevel = monster.GetComponent<MakeSoldier>().Level;
                 break;
             case "ªÁ≈¡∏∑¥Î":
-                playerInfo.GameCandyGrade = monster.GetComponent<MakeSoldier>().Grade;
-                playerInfo.GameCandyLevel = monster.GetComponent<MakeSoldier>().Level;
+                saveMgr.playerSave.SaveCandyGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.SaveCandyLevel = monster.GetComponent<MakeSoldier>().Level;
                 break;
             case "Ω∫≈∞∆≤¡Óƒ…¿Ã≈©":
-                playerInfo.GameSkittlesGrade= monster.GetComponent<MakeSoldier>().Grade;
-                playerInfo.GameSkittlesLevel = monster.GetComponent<MakeSoldier>().Level;
+                saveMgr.playerSave.SaveSkittlesGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.SaveSkittlesLevel = monster.GetComponent<MakeSoldier>().Level;
                 break;
             case "µµ≥”√˜":
-                playerInfo.GameDonutsGrade = monster.GetComponent<MakeSoldier>().Grade;
-                playerInfo.GameDonutsLevel = monster.GetComponent<MakeSoldier>().Level;
+                saveMgr.playerSave.SaveDonutsGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.SaveDonutsLevel = monster.GetComponent<MakeSoldier>().Level;
                 break;
             case "Ω¥¥œπﬂ∑ª":
-                playerInfo.GameSchneeballenGrade= monster.GetComponent<MakeSoldier>().Grade;
-                playerInfo.GameSchneeballenLevel= monster.GetComponent<MakeSoldier>().Level;
+                saveMgr.playerSave.SaveSchneeballenGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.SaveSchneeballenLevel = monster.GetComponent<MakeSoldier>().Level;
                 break;
             case "√ ƒ⁄ƒ®ƒÌ≈∞":
-                playerInfo.GameChocoGrade = monster.GetComponent<MakeSoldier>().Grade;
-                playerInfo.GameChocoLevel = monster.GetComponent<MakeSoldier>().Level;
+                saveMgr.playerSave.SaveChocoGrade = monster.GetComponent<MakeSoldier>().Grade;
+                saveMgr.playerSave.SaveChocoLevel = monster.GetComponent<MakeSoldier>().Level;
                 break;
             default:
                 break;
         }
+
+        //switch (monster.GetComponent<MakeSoldier>().Name)
+        //{
+        //    case "√º∏Æ∏”«…":
+        //        playerInfo.GameCherryGrade= monster.GetComponent<MakeSoldier>().Grade;
+        //        playerInfo.GameCherryLevel= monster.GetComponent<MakeSoldier>().Level;
+        //        break;
+        //    case "ªÁ≈¡∏∑¥Î":
+        //        playerInfo.GameCandyGrade = monster.GetComponent<MakeSoldier>().Grade;
+        //        playerInfo.GameCandyLevel = monster.GetComponent<MakeSoldier>().Level;
+        //        break;
+        //    case "Ω∫≈∞∆≤¡Óƒ…¿Ã≈©":
+        //        playerInfo.GameSkittlesGrade= monster.GetComponent<MakeSoldier>().Grade;
+        //        playerInfo.GameSkittlesLevel = monster.GetComponent<MakeSoldier>().Level;
+        //        break;
+        //    case "µµ≥”√˜":
+        //        playerInfo.GameDonutsGrade = monster.GetComponent<MakeSoldier>().Grade;
+        //        playerInfo.GameDonutsLevel = monster.GetComponent<MakeSoldier>().Level;
+        //        break;
+        //    case "Ω¥¥œπﬂ∑ª":
+        //        playerInfo.GameSchneeballenGrade= monster.GetComponent<MakeSoldier>().Grade;
+        //        playerInfo.GameSchneeballenLevel= monster.GetComponent<MakeSoldier>().Level;
+        //        break;
+        //    case "√ ƒ⁄ƒ®ƒÌ≈∞":
+        //        playerInfo.GameChocoGrade = monster.GetComponent<MakeSoldier>().Grade;
+        //        playerInfo.GameChocoLevel = monster.GetComponent<MakeSoldier>().Level;
+        //        break;
+        //    default:
+        //        break;
+        //}
 
         //saveMgr
     }
