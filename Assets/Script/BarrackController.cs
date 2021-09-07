@@ -58,7 +58,7 @@ public class BarrackController : MonoBehaviour
             GameObject prefebSoldier = Instantiate(soldierPrefeb,new Vector3(land.position.x, land.position.y +25f), Quaternion.identity);
             prefebSoldier.transform.SetParent(land);
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
-            LevelCheck(prefebSoldier);
+            SaveLevelCheck(prefebSoldier);
             playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
 
             for (int i = 0; i < MonsterObj.Length; i++)
@@ -298,7 +298,7 @@ public class BarrackController : MonoBehaviour
     }
     #endregion
 
-    public void LevelCheck(GameObject Monster)
+    public void SaveLevelCheck(GameObject Monster)
     {
         switch (Monster.GetComponent<MakeSoldier>().Name)
         {
@@ -326,7 +326,7 @@ public class BarrackController : MonoBehaviour
 
         Monster.GetComponent<MakeSoldier>().BaseAttack += Monster.GetComponent<MakeSoldier>().RiseAttack * (Monster.GetComponent<MakeSoldier>().Level-1);
         Monster.GetComponent<MakeSoldier>().Defensive += Monster.GetComponent<MakeSoldier>().RiseDefensive * (Monster.GetComponent<MakeSoldier>().Level - 1);
-        Monster.GetComponent<MakeSoldier>().HelthPoint += Monster.GetComponent<MakeSoldier>().HelthPoint;
+        Monster.GetComponent<MakeSoldier>().HelthPoint = (int)(Monster.GetComponent<SoldierManger>().totalHp);
         Monster.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = Monster.GetComponent<MakeSoldier>().Level.ToString();
     }
 }
