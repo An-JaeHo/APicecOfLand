@@ -251,7 +251,7 @@ public class SoldierManger : MonoBehaviour
 
         if(nowExp == 1)
         {
-            LevelCheck();
+            LevelUpCheck();
         }
     }
 
@@ -348,7 +348,7 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
-    public void LevelCheck()
+    public void LevelUpCheck()
     {
         if(soldier.nowExp >= soldier.Experience)
         {
