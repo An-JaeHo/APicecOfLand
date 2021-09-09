@@ -21,23 +21,23 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
     public int playerFlour;
     public int playerSugar;
 
-    public int GameCherryLevel;
-    public int GameCherryGrade;
+    //public int GameCherryLevel;
+    //public int GameCherryGrade;
 
-    public int GameCandyLevel;
-    public int GameCandyGrade;
+    //public int GameCandyLevel;
+    //public int GameCandyGrade;
 
-    public int GameSkittlesLevel;
-    public int GameSkittlesGrade;
+    //public int GameSkittlesLevel;
+    //public int GameSkittlesGrade;
 
-    public int GameDonutsLevel;
-    public int GameDonutsGrade;
+    //public int GameDonutsLevel;
+    //public int GameDonutsGrade;
 
-    public int GameSchneeballenLevel;
-    public int GameSchneeballenGrade;
+    //public int GameSchneeballenLevel;
+    //public int GameSchneeballenGrade;
 
-    public int GameChocoLevel;
-    public int GameChocoGrade;
+    //public int GameChocoLevel;
+    //public int GameChocoGrade;
 
     public void StartGame()
     {
