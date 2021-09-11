@@ -8,9 +8,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
     public PlayerInfo playerInfo;
     public GameObject upGradeMonsterPrefeb;
     public GameObject[] MonsterObj;
+    public SaveMgr saveMgr;
+
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+        saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
         object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
         MonsterObj = new GameObject[loadMonster.Length];
 
@@ -26,240 +29,240 @@ public class UpGradeMonsterInfo : MonoBehaviour
     {
         for (int i = 0; i < MonsterObj.Length; i++)
         {
-            if (playerInfo.GameCherryGrade == 1)
+            if (saveMgr.playerSave.SaveCherryGrade == 1)
             {
                 if (MonsterObj[i].name == "Mon 1")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(-6, 1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameCherryLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveCherryLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameCherryGrade == 2)
+            else if (saveMgr.playerSave.SaveCherryGrade == 2)
             {
                 if (MonsterObj[i].name == "Mon 2")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(-6, 1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameCherryLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveCherryLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameCherryGrade == 3)
+            else if (saveMgr.playerSave.SaveCherryGrade == 3)
             {
                 if (MonsterObj[i].name == "Mon 3")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(-6, 1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameCherryLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveCherryLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
 
-            if (playerInfo.GameCandyGrade == 1)
+            if (saveMgr.playerSave.SaveCandyGrade == 1)
             {
                 if (MonsterObj[i].name == "Mon 4")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(-1, 1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameCandyLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveCandyLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameCandyGrade == 2)
+            else if (saveMgr.playerSave.SaveCandyGrade == 2)
             {
                 if (MonsterObj[i].name == "Mon 5")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(-1, 1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameCandyLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveCandyLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameCandyGrade == 3)
+            else if (saveMgr.playerSave.SaveCandyGrade == 3)
             {
                 if (MonsterObj[i].name == "Mon 6")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(-1, 1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameCandyLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveCandyLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
 
-            if (playerInfo.GameSkittlesGrade == 1)
+            if (saveMgr.playerSave.SaveSkittlesGrade == 1)
             {
                 if (MonsterObj[i].name == "Mon 7")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(4, 1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameSkittlesLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveSkittlesLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameSkittlesGrade == 2)
+            else if (saveMgr.playerSave.SaveSkittlesGrade == 2)
             {
                 if (MonsterObj[i].name == "Mon 8")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(4, 1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameSkittlesLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveSkittlesLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameSkittlesGrade == 3)
+            else if (saveMgr.playerSave.SaveSkittlesGrade == 3)
             {
                 if (MonsterObj[i].name == "Mon 9")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(4, 1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameSkittlesLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveSkittlesLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
 
-            if (playerInfo.GameDonutsGrade == 1)
+            if (saveMgr.playerSave.SaveDonutsGrade == 1)
             {
                 if (MonsterObj[i].name == "Mon 10")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(-3.5f, -1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameDonutsLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveDonutsLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameDonutsGrade == 2)
+            else if (saveMgr.playerSave.SaveDonutsGrade == 2)
             {
                 if (MonsterObj[i].name == "Mon 11")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(-3.5f, -1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameDonutsLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveDonutsLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameDonutsGrade == 3)
+            else if (saveMgr.playerSave.SaveDonutsGrade == 3)
             {
                 if (MonsterObj[i].name == "Mon 12")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(-3.5f, -1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameDonutsLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveDonutsLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
 
-            if (playerInfo.GameSchneeballenGrade == 1)
+            if (saveMgr.playerSave.SaveSchneeballenGrade == 1)
             {
                 if (MonsterObj[i].name == "Mon 13")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(1.5f, -1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameSchneeballenLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveSchneeballenLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameSchneeballenGrade == 2)
+            else if (saveMgr.playerSave.SaveSchneeballenGrade == 2)
             {
                 if (MonsterObj[i].name == "Mon 14")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(1.5f, -1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameSchneeballenLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveSchneeballenLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameSchneeballenGrade == 3)
+            else if (saveMgr.playerSave.SaveSchneeballenGrade == 3)
             {
                 if (MonsterObj[i].name == "Mon 15")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(1.5f, -1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameSchneeballenLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveSchneeballenLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
 
-            if (playerInfo.GameChocoGrade == 1)
+            if (saveMgr.playerSave.SaveChocoGrade == 1)
             {
                 if(MonsterObj[i].name == "Mon 16")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(6.5f, -1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameChocoLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveChocoLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position .y- 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameChocoGrade == 2)
+            else if (saveMgr.playerSave.SaveChocoGrade == 2)
             {
                 if (MonsterObj[i].name == "Mon 17")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(6.5f, -1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameChocoLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveChocoLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
-            else if (playerInfo.GameChocoGrade == 3)
+            else if (saveMgr.playerSave.SaveChocoGrade == 3)
             {
                 if (MonsterObj[i].name == "Mon 18")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(6.5f, -1);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
-                    LevelCheck(monster, playerInfo.GameChocoLevel);
+                    LevelCheck(monster, saveMgr.playerSave.SaveChocoLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
                     schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);

@@ -153,11 +153,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (playerInfo.GameCherryGrade == 1)
+                        if (saveMgr.playerSave.SaveCherryGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (playerInfo.GameCherryGrade == 2)
+                        else if (saveMgr.playerSave.SaveCherryGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 2");
                         }
@@ -177,11 +177,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (playerInfo.GameCandyGrade== 1)
+                        if (saveMgr.playerSave.SaveCandyGrade== 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (playerInfo.GameCandyGrade == 2)
+                        else if (saveMgr.playerSave.SaveCandyGrade== 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 5");
                         }
@@ -200,11 +200,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (playerInfo.GameSkittlesGrade == 1)
+                        if (saveMgr.playerSave.SaveSkittlesGrade== 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (playerInfo.GameSkittlesGrade== 2)
+                        else if (saveMgr.playerSave .SaveSkittlesGrade== 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 8");
                         }
@@ -223,11 +223,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (playerInfo.GameDonutsGrade == 1)
+                        if (saveMgr.playerSave.SaveDonutsGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (playerInfo.GameDonutsGrade == 2)
+                        else if (saveMgr.playerSave.SaveDonutsGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 11");
                         }
@@ -247,11 +247,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (playerInfo.GameSchneeballenGrade == 1)
+                        if (saveMgr.playerSave.SaveSchneeballenGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (playerInfo.GameSchneeballenGrade == 2)
+                        else if (saveMgr.playerSave.SaveSchneeballenGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 14");
                         }
@@ -271,11 +271,11 @@ public class BarrackController : MonoBehaviour
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (playerInfo.GameChocoGrade == 1)
+                        if (saveMgr.playerSave.SaveChocoGrade == 1)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
                         }
-                        else if (playerInfo.GameChocoGrade == 2)
+                        else if (saveMgr.playerSave.SaveChocoGrade == 2)
                         {
                             monster.GetComponent<MakeSoldier>().SuperMagic("Mon 17");
                         }
@@ -303,22 +303,22 @@ public class BarrackController : MonoBehaviour
         switch (Monster.GetComponent<MakeSoldier>().Name)
         {
             case "양초머핀":
-                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameCherryLevel;
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.SaveCherryLevel;
                 break;
             case "진저쿠키":
-                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameCandyLevel;
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.SaveCandyLevel;
                 break;
             case "스키틀즈케이크":
-                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameSkittlesLevel;
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.SaveSkittlesLevel;
                 break;
             case "도넛츠":
-                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameDonutsLevel;
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.SaveDonutsLevel;
                 break;
             case "슈니발렌":
-                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameSchneeballenLevel;
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.SaveSchneeballenLevel;
                 break;
             case "초코칩쿠키":
-                Monster.GetComponent<MakeSoldier>().Level = playerInfo.GameChocoLevel;
+                Monster.GetComponent<MakeSoldier>().Level = saveMgr.playerSave.SaveChocoLevel;
                 break;
             default:
                 break;
