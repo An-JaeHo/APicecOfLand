@@ -148,9 +148,9 @@ public class UpGradeSceneWindow : MonoBehaviour
             monster.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString(); ;
         }
 
-        playerInfo.playerMilk -= needUpGradeMilk;
-        playerInfo.playerSugar -= needUpGradeSugar;
-        playerInfo.playerFlour -= needUpGradeFlour;
+        saveMgr.playerSave.milk-= needUpGradeMilk;
+        saveMgr.playerSave.sugar -= needUpGradeSugar;
+        saveMgr.playerSave.flour -= needUpGradeFlour;
 
         supply.GetComponent<MySupplyList>().UpdateSupply();
         SaveLevelAndRank(monster);
