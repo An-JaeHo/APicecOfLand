@@ -37,6 +37,7 @@ public class BarrackController : MonoBehaviour
     {
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+        saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         inputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
@@ -85,7 +86,7 @@ public class BarrackController : MonoBehaviour
     {
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-
+        saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
         // 1 5 9 13
         for (int i = 0; i < json.information.monster.Length; i++)
         {
