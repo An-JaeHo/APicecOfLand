@@ -190,6 +190,7 @@ public class ButtonManger : MonoBehaviour
         else
         {
             barrackWindow.SetActive(true);
+            barrackWindow.GetComponent<BarrackController>().barrackMonsterSprite.gameObject.SetActive(false);
             input.mouseCheck = false;
         }
     }

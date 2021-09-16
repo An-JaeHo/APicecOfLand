@@ -7,6 +7,7 @@ public class Hwomuch : MonoBehaviour
 {
     public MakeSoldier makeSoldier;
     public GameObject need;
+    public GameObject barrack;
     public BarrackController barrackController;
 
     public void HowMuchProduce()
@@ -14,14 +15,15 @@ public class Hwomuch : MonoBehaviour
         makeSoldier = GetComponent<MakeSoldier>();
         need = GameObject.Find("ArmyNeed");
         barrackController = GameObject.FindGameObjectWithTag("Barrack").GetComponent<BarrackController>();
+        barrack = GameObject.FindGameObjectWithTag("Barrack");
 
         need.transform.GetChild(0).GetComponent<Text>().text = "식량 : "+makeSoldier.ProductionExpense.ToString();
-        barrackController.soldierInfo = makeSoldier;
-        barrackController.barrackImageComponent.sprite = makeSoldier.Picture;
+        barrackController.barrackMonsterSprite.gameObject.SetActive(true);
+        barrackController.barrackMonsterSprite.GetComponent<Image>().sprite = makeSoldier.Picture;
 
         int canUsePeople = barrackController.playerInfo.people - barrackController.usingPeople;
 
-        if (barrackController.playerInfo.milk > barrackController.soldierInfo.ProductionExpense && canUsePeople >0)
+        if (barrackController.playerInfo.milk > makeSoldier.ProductionExpense && canUsePeople >0)
         {
             barrackController.soldierMakeButton.GetComponent<Button>().interactable = true;
         }
