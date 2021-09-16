@@ -31,6 +31,7 @@ public class BarrackController : MonoBehaviour
     //StateUi
     public GameObject myContent;
     public Sprite barrackSprite;
+    public Transform barrackMonsterSprite;
     public int i;
 
     void Start()
@@ -76,6 +77,7 @@ public class BarrackController : MonoBehaviour
             buttonManger.amrys.Add(prefebSoldier);
             usingPeople++;
             supplyManger.UpdateSupply();
+            barrackMonsterSprite.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
         tileManger.CheckTile();
