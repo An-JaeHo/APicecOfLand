@@ -34,5 +34,7 @@ public class AnimationController : MonoBehaviour
             transform.parent.parent.transform.parent.GetComponent<BoxCollider2D>().enabled = true;
             Destroy(transform.parent.parent.gameObject);
         }
+
+        GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>().CheckTile();
     }
 }
