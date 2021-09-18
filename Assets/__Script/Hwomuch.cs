@@ -20,6 +20,7 @@ public class Hwomuch : MonoBehaviour
         need.transform.GetChild(0).GetComponent<Text>().text = "식량 : "+makeSoldier.ProductionExpense.ToString();
         barrackController.barrackMonsterSprite.gameObject.SetActive(true);
         barrackController.barrackMonsterSprite.GetComponent<Image>().sprite = makeSoldier.Picture;
+        barrackController.soldierInfo = makeSoldier;
 
         int canUsePeople = barrackController.playerInfo.people - barrackController.usingPeople;
 
