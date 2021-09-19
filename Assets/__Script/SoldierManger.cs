@@ -295,7 +295,7 @@ public class SoldierManger : MonoBehaviour
         else
         {
             movePoint = true;
-            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
+            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
             transform.parent.GetComponent<MakeArea>().Destroy = false;
             transform.parent.GetComponent<MakeArea>().firstBuild = false;
 
