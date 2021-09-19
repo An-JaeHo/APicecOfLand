@@ -317,7 +317,6 @@ public class TileManger : MonoBehaviour
     public void DeadBulider(GameObject builder)
     {
         List<Transform> builderLand = new List<Transform>();
-
         builder.transform.parent.GetComponent<AreaManger>().BuilderDead();
 
         for (int i = 0; i < activeChildtileList.Count; i++)
@@ -331,9 +330,10 @@ public class TileManger : MonoBehaviour
         int rand = UnityEngine.Random.Range(0, builderLand.Count - 2);
         builder.transform.position = new Vector3(builderLand[rand].GetChild(0).position.x, builderLand[rand].GetChild(0).position.y + 25f);
         builder.transform.SetParent(builderLand[rand].GetChild(0));
-        builder.GetComponent<MakeSoldier>().HelthPoint = 500;
-        builder.GetComponent<SoldierManger>().HpBarScale();
+        builder.GetComponent<SoldierManger>().ani.SetBool("Dead", false);
         builder.SetActive(true);
+        builder.GetComponent<MakeSoldier>().HelthPoint = 300;
+        builder.GetComponent<SoldierManger>().HpBarScale();
     }
 
     public void MakeBulider()
@@ -347,7 +347,6 @@ public class TileManger : MonoBehaviour
             bulider.name = "Mon 19";
             bulider.GetComponent<MakeSoldier>().SuperMagic(bulider.name);
             playerInfo.updateMilk -= bulider.GetComponent<MakeSoldier>().ConsumeFood;
-            
 
             for (int i = 0; i < MonsterObj.Length; i++)
             {

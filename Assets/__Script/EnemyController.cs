@@ -309,16 +309,16 @@ public class EnemyController : MonoBehaviour
             }
             yield return new WaitForSeconds(0.8f);
 
-
-            target.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
-
-
-            yield return new WaitForSeconds(0.7f);
-
             if (target.GetComponent<MakeSoldier>().HelthPoint <= 0)
             {
-                target.GetComponent<SoldierManger>().Dead();
+                target.GetComponent<SoldierManger>().ani.SetBool("Dead",true);
+                buttonManger.amrys.Remove(target.gameObject);
             }
+            else
+            {
+                target.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
+            }
+            
         }
         
 
@@ -466,40 +466,6 @@ public class EnemyController : MonoBehaviour
 
             
         }
-    }
-
-    public void Dead(Transform monster)
-    {
-        if(transform.tag =="Enemy")
-        {
-            if (transform.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
-            {
-                invenManger.InputCard(GetComponent<MakeEnemy>().Grade);
-                buttonManger.enemys.Remove(gameObject);
-                monster.GetComponent<MakeSoldier>().nowExp += transform.GetComponent<MakeEnemy>().DropExperiencePoint;
-                monster.GetComponent<SoldierManger>().ExpBarScale();
-                playerInfo.killingPoint++;
-                transform.parent.GetComponent<BoxCollider2D>().enabled = true;
-                Destroy(this.gameObject);
-            }
-        }
-        else
-        {
-            if (transform.GetComponent<GDController>().HelthPoint <= 0)
-            {
-                invenManger.InputCard(4);
-                buttonManger.enemys.Remove(gameObject);
-                playerInfo.killingPoint++;
-                //monster.GetComponent<MakeSoldier>().exp += transform.GetComponent<GDController>().exp;
-                monster.GetComponent<SoldierManger>().ExpBarScale();
-                tiles.bossHP.SetActive(false);
-                tiles.bossText.SetActive(false);
-                transform.parent.GetComponent<BoxCollider2D>().enabled = true;
-                Destroy(this.gameObject);
-            }
-        }
-
-        tiles.CheckTile();
     }
 
     public void HpBarScale()

@@ -100,8 +100,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5937744055638289211}
   m_Bounds:
-    m_Center: {x: 1.6220186, y: -0.12312502, z: 0}
-    m_Extent: {x: 0.6092453, y: 0.5823805, z: 0}
+    m_Center: {x: 0, y: -0.00000023841858, z: 0}
+    m_Extent: {x: 0.29500005, y: 0.43500012, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &2722471886574898984
@@ -204,8 +204,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1253563758502689935}
   m_Bounds:
-    m_Center: {x: -0.1437934, y: 0.03977534, z: 0}
-    m_Extent: {x: 0.09833359, y: 0.23341271, z: 0}
+    m_Center: {x: -0.00000012665987, y: -0.000000059604645, z: 0}
+    m_Extent: {x: 0.094999984, y: 0.24, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &3613742819145543375
@@ -342,8 +342,8 @@ MonoBehaviour:
   - {fileID: 5937744055638289211}
   - {fileID: 3682306029628099917}
   m_Bounds:
-    m_Center: {x: 0.52632576, y: -0.12509489, z: 0}
-    m_Extent: {x: 0.93676656, y: 0.8895235, z: 0}
+    m_Center: {x: -0.0011699796, y: -0.0002850294, z: 0}
+    m_Extent: {x: 0.82698, y: 0.816955, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &6254330462773044624
@@ -529,8 +529,8 @@ MonoBehaviour:
   - {fileID: 54828839554813354}
   - {fileID: 5937744055638289211}
   m_Bounds:
-    m_Center: {x: 0.48001236, y: -0.33231574, z: 0}
-    m_Extent: {x: 0.5890935, y: 0.44335914, z: 0}
+    m_Center: {x: -0.00020003319, y: 0.00000011920929, z: 0}
+    m_Extent: {x: 0.26457006, y: 0.41500005, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &6791724368361074038
@@ -633,8 +633,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 3682306029628099917}
   m_Bounds:
-    m_Center: {x: 0.05757241, y: 0.16377318, z: 0}
-    m_Extent: {x: 0.12152608, y: 0.25480467, z: 0}
+    m_Center: {x: 0.0000050887465, y: 0.000089883804, z: 0}
+    m_Extent: {x: 0.10999497, y: 0.26441005, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &6979568566750724821
@@ -763,6 +763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5400686316940088525}
   - component: {fileID: 4978652314610131261}
+  - component: {fileID: 6735704565782162847}
   m_Layer: 0
   m_Name: BirdCookie2
   m_TagString: Untagged
@@ -811,6 +812,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6735704565782162847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068100374723161041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5122d5e65fedf06418b8df3d221eb723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7237980754868591007
 GameObject:
   m_ObjectHideFlags: 0

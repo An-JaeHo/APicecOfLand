@@ -128,17 +128,20 @@ public class InputManger : MonoBehaviour
                     switch (hit.transform.tag)
                     {
                         case "Enemy":
-                            moveSoldier.enemy = hit.transform;
-                            moveSoldier.attack = true;
-                            army.transform.GetComponent<SoldierManger>().SoldierAction();
-                            ChangeLandInfo();
+                            if(hit.transform.parent.tag == "SelectLand")
+                            {
+                                moveSoldier.enemy = hit.transform;
+                                moveSoldier.attack = true;
+                                army.transform.GetComponent<SoldierManger>().SoldierAction();
+                            }
                             break;
                         case "GD":
-                            moveSoldier.enemy = hit.transform;
-                            moveSoldier.attack = true;
-                            army.transform.GetComponent<SoldierManger>().SoldierAction();
-                            ChangeLandInfo();
-
+                            if (hit.transform.parent.tag == "SelectLand")
+                            {
+                                moveSoldier.enemy = hit.transform;
+                                moveSoldier.attack = true;
+                                army.transform.GetComponent<SoldierManger>().SoldierAction();
+                            }
                             break;
                         case "SelectLand":
                             if (army.tag == "Builder")
@@ -175,8 +178,6 @@ public class InputManger : MonoBehaviour
                                     bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
                                     bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
                                 }
-
-                                ChangeLandInfo();
                             }
                             else
                             {
@@ -195,16 +196,15 @@ public class InputManger : MonoBehaviour
                                 moveSoldier.move = true;
                                 army.transform.GetComponent<SoldierManger>().SoldierAction();
                                 army.transform.GetComponent<SoldierManger>().movePoint = false;
-                                ChangeLandInfo();
                             }
-
                             break;
 
 
                         default:
-                            ChangeLandInfo();
+                            
                             break;
                     }
+                    ChangeLandInfo();
                     armyMove = true;
                 }
             }

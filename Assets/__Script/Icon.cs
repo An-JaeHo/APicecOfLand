@@ -65,8 +65,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else
         {
-            Debug.Log(inputManger.hitObj.tag);
-
             if (inputManger.hitObj.tag == skill.Type)
             {
                 card.carInfo = skill.Picture;

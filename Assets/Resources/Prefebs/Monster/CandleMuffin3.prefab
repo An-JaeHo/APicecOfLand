@@ -192,7 +192,7 @@ MonoBehaviour:
   - {fileID: 6283797238743425951}
   - {fileID: 2853878254102664911}
   m_Bounds:
-    m_Center: {x: -0.00014524162, y: 0.0004898459, z: 0}
+    m_Center: {x: -0.00014512241, y: 0.00048972666, z: 0}
     m_Extent: {x: 0.16460502, y: 0.2295101, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 8670400044022668392}
   m_Bounds:
-    m_Center: {x: 0.00030447543, y: -0.0013952255, z: 0}
+    m_Center: {x: 0.00030447543, y: -0.0013951063, z: 0}
     m_Extent: {x: 0.16442502, y: 0.22754508, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5984916880138852188}
   m_Bounds:
-    m_Center: {x: 0, y: 0, z: 0}
+    m_Center: {x: 0.000000029802322, y: 0, z: 0}
     m_Extent: {x: 0.10500001, y: 0.28000003, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -611,7 +611,7 @@ MonoBehaviour:
   - {fileID: 6283797238743425951}
   m_Bounds:
     m_Center: {x: 0.0004749298, y: 0.0017951727, z: 0}
-    m_Extent: {x: 0.56665516, y: 1.1032051, z: 0}
+    m_Extent: {x: 0.56665516, y: 1.103205, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &2879636725516028653
@@ -714,7 +714,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2853878254102664911}
   m_Bounds:
-    m_Center: {x: -0.00013567507, y: -0.0016802251, z: 0}
+    m_Center: {x: -0.00013543665, y: -0.0016802251, z: 0}
     m_Extent: {x: 0.15960504, y: 0.22670993, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1109,7 +1109,7 @@ MonoBehaviour:
   - {fileID: 7561997093547732166}
   m_Bounds:
     m_Center: {x: 0.0009648353, y: -0.0000004172325, z: 0}
-    m_Extent: {x: 0.22903511, y: 0.37500036, z: 0}
+    m_Extent: {x: 0.22903511, y: 0.3750003, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &7262335436602451566
@@ -1338,8 +1338,8 @@ MonoBehaviour:
   - {fileID: 7009176576432329143}
   - {fileID: 6484909409251336531}
   m_Bounds:
-    m_Center: {x: 0.001424849, y: 0.00059477985, z: 0}
-    m_Extent: {x: 0.29857486, y: 0.1694051, z: 0}
+    m_Center: {x: 0.0014250875, y: 0.00059479475, z: 0}
+    m_Extent: {x: 0.29857498, y: 0.16940515, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &7851811948221078465
@@ -1478,7 +1478,7 @@ MonoBehaviour:
   - {fileID: 7561997093547732166}
   m_Bounds:
     m_Center: {x: 0.00016987324, y: 0.00000011920929, z: 0}
-    m_Extent: {x: 1.0205401, y: 1.315, z: 0}
+    m_Extent: {x: 1.0205401, y: 1.3150002, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &8103797208527251926
@@ -1491,6 +1491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3210006613833581144}
   - component: {fileID: 3334839590679090435}
+  - component: {fileID: 4281567856422628983}
   m_Layer: 0
   m_Name: CandleMuffin3
   m_TagString: Untagged
@@ -1543,6 +1544,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4281567856422628983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103797208527251926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5122d5e65fedf06418b8df3d221eb723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8380820616057664330
 GameObject:
   m_ObjectHideFlags: 0

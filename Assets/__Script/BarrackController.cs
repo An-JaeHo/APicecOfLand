@@ -99,59 +99,7 @@ public class BarrackController : MonoBehaviour
             {
                 if (monsterUi.Count >= 6)
                 {
-                    //if (json.information.monster[i].Code == "Mon 1")
-                    //{
-                    //    monsterUi[0].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
-                    //    monsterUi[0].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
-                    //    monsterUi[0].transform.name = json.information.monster[i].Name;
-                    //    monsterUi[0].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    monsterUi[0].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 60, monsterUi[0].transform.parent.position.y - 70);
-                    //}
-
-                    //if (json.information.monster[i].Code == "Mon 4")
-                    //{
-                    //    monsterUi[1].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
-                    //    monsterUi[1].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
-                    //    monsterUi[1].transform.name = json.information.monster[i].Name;
-                    //    monsterUi[1].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    monsterUi[1].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 150, monsterUi[0].transform.parent.position.y - 70);
-                    //}
-
-                    //if (json.information.monster[i].Code == "Mon 7")
-                    //{
-                    //    monsterUi[2].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
-                    //    monsterUi[2].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
-                    //    monsterUi[2].transform.name = json.information.monster[i].Name;
-                    //    monsterUi[2].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    monsterUi[2].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 240, monsterUi[0].transform.parent.position.y - 70);
-                    //}
-
-                    //if (json.information.monster[i].Code == "Mon 10")
-                    //{
-                    //    monsterUi[3].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
-                    //    monsterUi[3].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
-                    //    monsterUi[3].transform.name = json.information.monster[i].Name;
-                    //    monsterUi[3].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    monsterUi[3].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 330, monsterUi[0].transform.parent.position.y - 70);
-                    //}
-
-                    //if (json.information.monster[i].Code == "Mon 13")
-                    //{
-                    //    monsterUi[4].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
-                    //    monsterUi[4].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
-                    //    monsterUi[4].transform.name = json.information.monster[i].Name;
-                    //    monsterUi[4].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    monsterUi[4].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 420, monsterUi[0].transform.parent.position.y - 70);
-                    //}
-
-                    //if (json.information.monster[i].Code == "Mon 16")
-                    //{
-                    //    monsterUi[5].transform.GetChild(0).GetComponent<Image>().sprite = json.information.monster[i].Picture;
-                    //    monsterUi[5].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = json.information.monster[i].Name;
-                    //    monsterUi[5].transform.name = json.information.monster[i].Name;
-                    //    monsterUi[5].GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    monsterUi[5].transform.position = new Vector3(monsterUi[0].transform.parent.position.x + 510, monsterUi[0].transform.parent.position.y - 70);
-                    //}
+                    
                 }
                 else
                 {

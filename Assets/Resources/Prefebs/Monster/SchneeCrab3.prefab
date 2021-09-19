@@ -256,7 +256,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 541761479343212720}
   m_Bounds:
-    m_Center: {x: -0.00000023841858, y: -0.00000014901161, z: 0}
+    m_Center: {x: -0.000000059604645, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.41500008, y: 0.41500008, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -423,8 +423,8 @@ MonoBehaviour:
   - {fileID: 6052390672080671893}
   - {fileID: 8069809952805578323}
   m_Bounds:
-    m_Center: {x: 0.000054895878, y: 0.00040957332, z: 0}
-    m_Extent: {x: 0.27994508, y: 0.30685014, z: 0}
+    m_Center: {x: 0.00005492568, y: 0.00040957332, z: 0}
+    m_Extent: {x: 0.27994505, y: 0.30685014, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &1516402162385927971
@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: 5895175405674867788}
   - component: {fileID: 3405066889941372872}
   - component: {fileID: 2443795453626227880}
+  - component: {fileID: 6088179513239490798}
   m_Layer: 0
   m_Name: SchneeCrab3
   m_TagString: Untagged
@@ -509,6 +510,18 @@ MonoBehaviour:
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!114 &6088179513239490798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516402162385927971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5122d5e65fedf06418b8df3d221eb723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2042578498362792142
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +622,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4578016150381246165}
   m_Bounds:
-    m_Center: {x: -0.00000011920929, y: 0.00000011920929, z: 0}
+    m_Center: {x: -0.000000059604645, y: 0.00000011920929, z: 0}
     m_Extent: {x: 0.535, y: 0.41500005, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1

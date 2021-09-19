@@ -10,7 +10,7 @@ public class SoldierManger : MonoBehaviour
     private int moveUpPosition;
     private int y;
     private Vector3 movePosition;
-    private ButtonManger buttonManger;
+    public ButtonManger buttonManger;
     public Animator ani;
 
     public TileManger tileManger;
@@ -199,11 +199,40 @@ public class SoldierManger : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(0.5f);
-            enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
+            
             attack = false;
             movePoint = false;
             enemy.GetComponent<EnemyController>().HpBarScale();
-            enemy.GetComponent<EnemyController>().Dead(transform);
+
+            if(enemy.tag == "Enemy")
+            {
+                if (enemy.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
+                {
+                    enemy.GetComponent<EnemyController>().ani.SetBool("Dead", true);
+                    buttonManger.enemys.Remove(enemy.gameObject);
+                    soldier.nowExp += enemy.GetComponent<MakeEnemy>().DropExperiencePoint;
+                    ExpBarScale();
+                    tileManger.CheckTile();
+                }
+                else
+                {
+                    enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
+                }
+            }
+            else
+            {
+                if (enemy.GetComponent<GDController>().HelthPoint <= 0)
+                {
+                    enemy.GetComponent<EnemyController>().ani.SetBool("Dead", true);
+                    buttonManger.enemys.Remove(enemy.gameObject);
+                    ExpBarScale();
+                    tileManger.CheckTile();
+                }
+                else
+                {
+                    enemy.GetComponent<EnemyController>().ani.SetTrigger("Damage");
+                }
+            }
         }
 
         if (cardMovePoint)
@@ -255,25 +284,6 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
-    public void Dead()
-    {
-        if (transform.GetComponent<MakeSoldier>().HelthPoint <= 0)
-        {
-            if(transform.tag == "Army")
-            {
-                buttonManger.amrys.Remove(gameObject);
-                input.BarrackUi.GetComponent<BarrackController>().usingPeople--;
-                input.BarrackUi.GetComponent<BarrackController>().supplyManger.updateFood +=  soldier.ConsumeFood;
-                input.BarrackUi.GetComponent<BarrackController>().supplyManger.JustUpdateSupply();
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                tileManger.DeadBulider(gameObject);
-            }
-        }
-    }
-
     public void CheckBuildCount()
     {
         if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
@@ -285,7 +295,7 @@ public class SoldierManger : MonoBehaviour
         else
         {
             movePoint = true;
-            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
+            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
             transform.parent.GetComponent<MakeArea>().Destroy = false;
             transform.parent.GetComponent<MakeArea>().firstBuild = false;
 
