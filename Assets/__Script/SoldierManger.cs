@@ -295,15 +295,18 @@ public class SoldierManger : MonoBehaviour
         else
         {
             movePoint = true;
-            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
+            if (transform.parent.tag == "Area")
+            {
+                transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
+            }
+            else
+            {
+                transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
+            }
+
             transform.parent.GetComponent<MakeArea>().Destroy = false;
             transform.parent.GetComponent<MakeArea>().firstBuild = false;
-
-            if (transform.parent.GetComponent<MakeArea>().BuildTurn == builderPoint
-            && !transform.parent.GetComponent<MakeArea>().Destroy)
-            {
-                transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
-            }
+            transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
 
             builderPoint = 0;
         }
