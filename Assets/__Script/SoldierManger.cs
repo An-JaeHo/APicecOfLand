@@ -295,7 +295,7 @@ public class SoldierManger : MonoBehaviour
         else
         {
             movePoint = true;
-            if (transform.parent.tag == "Area")
+            if (transform.parent.tag == "Area" || transform.parent.tag == "Barracks")
             {
                 transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
             }
