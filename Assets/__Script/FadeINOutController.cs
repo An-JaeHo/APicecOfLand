@@ -5,42 +5,64 @@ using UnityEngine.UI;
 
 public class FadeINOutController : MonoBehaviour
 {
-    public List<Image> imgs;
+    public List<Sprite> imgs;
     public Image img;
+    private bool checkEnd;
+    public int imgNum;
+    private float timer;
+
+    private void Awake()
+    {
+        imgNum = 0;
+        timer = 0;
+    }
 
     private void Start()
     {
-        //StartCoroutine(FadeImage(true));
+        
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+
+        if (checkEnd)
+        {
+            if (timer > 3f)
+            {
+                StartCoroutine(FadeImage());
+            }
+        }
+        else
+        {
+            img.color = new Color(1, 1, 1, 1);
+            img.sprite = imgs[imgNum];
+            checkEnd = true;
+        }
+        
     }
 
     public void OnButtonClick()
     {
-        StartCoroutine(FadeImage(true));
+        imgNum++;
+        timer = 0;
+        img.sprite = imgs[imgNum];
+        img.color = new Color(1, 1, 1, 1);
     }
 
-    IEnumerator FadeImage(bool fadeAway)
+    IEnumerator FadeImage()
     {
-        // fade from opaque to transparent
-        if (fadeAway)
+        // loop over 1 second backwards
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
         {
-            // loop over 1 second backwards
-            for (float i = 1; i >= 0; i -= Time.deltaTime)
-            {
-                // set color with i as alpha
-                img.color = new Color(1, 1, 1, i);
-                yield return null;
-            }
+            // set color with i as alpha
+            img.color = new Color(1, 1, 1, i);
         }
-        // fade from transparent to opaque
-        else
-        {
-            // loop over 1 second
-            for (float i = 0; i <= 1; i += Time.deltaTime)
-            {
-                // set color with i as alpha
-                img.color = new Color(1, 1, 1, i);
-                yield return null;
-            }
-        }
+
+        checkEnd = false;
+        imgNum++;
+        timer = 0;
+
+        yield return null;
     }
 }
