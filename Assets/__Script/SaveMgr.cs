@@ -45,7 +45,6 @@ public class SaveMgr : GenericSingletonClass<SaveMgr>
         fonlderPath = Application.persistentDataPath;
         sceneMgr = GetComponent<SceneMgr>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-        Load();
     }
 
     public void Save()
@@ -141,7 +140,5 @@ public class SaveMgr : GenericSingletonClass<SaveMgr>
         {
             Save();
         }
-
-        SceneMgr.GoUpGradeScene();
     }
 }

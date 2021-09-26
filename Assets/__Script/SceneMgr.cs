@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class SceneMgr : MonoBehaviour
 {
     public static SaveMgr save;
+    public static string fonlderPath;
 
     private void Start()
     {
-        
+        fonlderPath = Application.persistentDataPath;
     }
 
     public static void GoGameMainScene()
     {
         SceneManager.LoadScene(0);
-    }
-
-    public static void GoLodingScene()
-    {
-        LoadingSceneController.LoadScene("GameScene");
     }
 
     public static void GoGameScene()
@@ -36,7 +33,16 @@ public class SceneMgr : MonoBehaviour
     public static void GoUpGradeScene()
     {
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
+
+        if (!File.Exists(fonlderPath + "/save.txt"))
+        {
+            LoadingSceneController.LoadScene("Tutorial");
+        }
+        else
+        {
+            LoadingSceneController.LoadScene("UpGradeScene");
+        }
+
         save.Load();
-        SceneManager.LoadScene(1);
     }
 }

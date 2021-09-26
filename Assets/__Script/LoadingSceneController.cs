@@ -16,14 +16,13 @@ public class LoadingSceneController : MonoBehaviour
     public static void LoadScene(string sceneName)
     {
         nextScene = sceneName;
+        Debug.Log(sceneName);
         SceneManager.LoadScene("LoadingScene");
     }
 
     private void Start()
     {
         StartCoroutine(LoadSceneProgress());
-        player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        player.StartGame();
     }
 
     IEnumerator LoadSceneProgress()
