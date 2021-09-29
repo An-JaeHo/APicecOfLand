@@ -17,11 +17,6 @@ public class FadeINOutController : MonoBehaviour
         timer = 0;
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
         timer += Time.deltaTime;
@@ -46,16 +41,24 @@ public class FadeINOutController : MonoBehaviour
     {
         imgNum++;
         timer = 0;
-        img.sprite = imgs[imgNum];
-        img.color = new Color(1, 1, 1, 1);
+
+        if (imgNum> 13)
+        {
+            img.gameObject.SetActive(false);
+        }
+        else
+        {
+            
+            img.sprite = imgs[imgNum];
+            img.color = new Color(1, 1, 1, 1);
+        }
+        
     }
 
     IEnumerator FadeImage()
     {
-        // loop over 1 second backwards
         for (float i = 1; i >= 0; i -= Time.deltaTime)
         {
-            // set color with i as alpha
             img.color = new Color(1, 1, 1, i);
         }
 
