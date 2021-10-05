@@ -9,11 +9,16 @@ public class TutorialInputManger : MonoBehaviour
     public bool armyMove;
     public Transform hitObj;
     public Transform landObj;
-
+    public SoldierManger moveSoldier;
+    public RangeManger rangeManger;
+    public Transform army;
+    public GameObject bulidUpgradeUi;
+    public float time;
 
     //제작해야되는것
     public GameObject BarrackUi;
     public GameObject bulidUi;
+    public GameObject armyUpgradeUi;
 
     void Start()
     {
@@ -24,10 +29,21 @@ public class TutorialInputManger : MonoBehaviour
     
     void Update()
     {
-        
+        if (mouseCheck)
+        {
+            if (Input.touchCount > 0)
+            {
+                //TouchHit();
+                //TouchCameraMove();
+            }
+            else
+            {
+                MouseHit();
+                //MouseCameraMove();
+            }
+        }
     }
-
-    /*
+    
     private void MouseHit()
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -69,7 +85,6 @@ public class TutorialInputManger : MonoBehaviour
                                 rangeManger.PlayerMoveRange(hit.transform);
                                 armyMove = false;
                                 moveSoldier = hit.transform.GetComponent<SoldierManger>();
-                                Land.CheckTile();
                             }
 
                             break;
@@ -177,5 +192,36 @@ public class TutorialInputManger : MonoBehaviour
             }
         }
     }
-    */
+
+    public void ChangeLandInfo()
+    {
+        for (int i = 0; i < rangeManger.rangeList.Count; i++)
+        {
+            rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
+
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Area")
+            {
+                rangeManger.rangeList[i].transform.tag = "Area";
+            }
+
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
+            {
+                rangeManger.rangeList[i].transform.tag = "Barracks";
+            }
+
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Grass")
+            {
+                rangeManger.rangeList[i].transform.tag = "Grass";
+            }
+
+            if (rangeManger.rangeList[i].GetComponent<AreaManger>().pureTag == "Capital")
+            {
+                rangeManger.rangeList[i].transform.tag = "Capital";
+            }
+        }
+
+
+        rangeManger.rangeList.Clear();
+    }
+
 }

@@ -115,8 +115,7 @@ public class InputManger : MonoBehaviour
                                 moveSoldier = hit.transform.GetComponent<SoldierManger>();
                                 Land.CheckTile();
                             }
-
-                                break;
+                            break;
                         default:
                             ChangeLandInfo();
                             break;
@@ -430,7 +429,6 @@ public class InputManger : MonoBehaviour
                 rangeManger.rangeList[i].transform.tag = "Capital";
             }
         }
-
 
         rangeManger.rangeList.Clear();
     }
