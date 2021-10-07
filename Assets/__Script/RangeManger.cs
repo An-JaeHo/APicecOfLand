@@ -34,7 +34,6 @@ public class RangeManger : MonoBehaviour
                     && tileManger.tileList[nameOfLand + (1 + j)].gameObject.activeSelf == true
                     && tileManger.tileList[nameOfLand + (1 + j)].GetComponent<MakeArea>().Movement)
                 {
-
                     if (tileManger.tileList[nameOfLand + (1 + j)].childCount == 0)
                     {
                         tileManger.tileList[nameOfLand + (1 + j)].GetComponent<SpriteRenderer>().color = Color.cyan;
