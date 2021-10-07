@@ -30,6 +30,7 @@ public class MakeArea : AreaInfo
     public JsonManger areaInfo;
     public SpriteRenderer areaInfoImage;
     public AreaManger areaManger;
+    public Sprite readyBuild;
     public bool firstBuild;
 
     private void Start()
@@ -93,7 +94,7 @@ public class MakeArea : AreaInfo
 
         if(Destroy == true)
         {
-            areaInfoImage.sprite = areaManger.tileManger.sprites[2];
+            areaInfoImage.sprite = readyBuild;
         }
     }
 }
