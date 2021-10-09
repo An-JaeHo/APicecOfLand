@@ -71,6 +71,7 @@ public class TileManger : MonoBehaviour
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
+
         object[] loadedAreaBeta = Resources.LoadAll("StartArea", typeof(Sprite));
         sprites = new Sprite[loadedAreaBeta.Length];
 

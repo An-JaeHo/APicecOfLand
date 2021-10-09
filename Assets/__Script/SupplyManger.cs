@@ -13,7 +13,7 @@ public class SupplyManger : MonoBehaviour
     public int updateIron;
     public int updatePeople;
 
-    void Start()
+    void Awake()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         JustUpdateSupply();
