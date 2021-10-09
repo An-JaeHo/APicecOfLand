@@ -54,6 +54,7 @@ public class TutorialInputManger : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                Debug.Log(hit.transform.name);
                 if (armyMove)
                 {
                     hitObj = hit.transform;
@@ -186,10 +187,10 @@ public class TutorialInputManger : MonoBehaviour
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                ChangeLandInfo();
-            }
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    ChangeLandInfo();
+            //}
         }
     }
 
