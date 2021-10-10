@@ -48,6 +48,7 @@ public class PanelController : MonoBehaviour
             checkButton.GetComponent<Button>().interactable = false;
         }
 
+        Debug.Log(buttonManger.name);
         buttonManger.CreateAreaPrefab = gameObject;
     }
 }
