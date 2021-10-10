@@ -1586,6 +1586,7 @@ GameObject:
   - component: {fileID: 1614698206}
   - component: {fileID: 1614698205}
   - component: {fileID: 1614698208}
+  - component: {fileID: 1614698209}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -1661,6 +1662,23 @@ MonoBehaviour:
   BarrackUi: {fileID: 1060691317}
   bulidUi: {fileID: 164297049}
   armyUpgradeUi: {fileID: 1592141998}
+--- !u!114 &1614698209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614698204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c0fe512efa4704cb28822ebcadf4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulidUpgradeUi: {fileID: 1087300921}
+  armyUpgradeUi: {fileID: 1592141998}
+  buildUi: {fileID: 164297049}
+  barrackWindow: {fileID: 1060691317}
+  settingUi: {fileID: 0}
 --- !u!1001 &1633814476
 PrefabInstance:
   m_ObjectHideFlags: 0
