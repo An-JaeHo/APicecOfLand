@@ -15,12 +15,15 @@ public class TutorialButtonManger : MonoBehaviour
     private PanelController panel;
     private PlayerInfo playerInfo;
     public TutorialInputManger input;
+    public Transform buildTile;
+    private int checkBuildPoint;
 
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
         input = GetComponent<TutorialInputManger>();
+        checkBuildPoint = 0;
     }
 
     // Update is called once per frame
@@ -110,7 +113,9 @@ public class TutorialButtonManger : MonoBehaviour
         supplyManger.UpdateSupply();
         panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
         input.mouseCheck = true;
+        buildTile = panel.baseLand;
         panel.parentUi.SetActive(false);
+        
     }
 
     public void TurnEnd()
@@ -119,12 +124,36 @@ public class TutorialButtonManger : MonoBehaviour
         playerInfo.milk += playerInfo.updateMilk;
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
-        input.mouseCheck = false;
+        Debug.Log(checkBuildPoint);
+        checkBuildPoint++;
+
+        if (buildTile != null)
+        {
+            if (buildTile.GetComponent<MakeArea>().BuildTurn == checkBuildPoint)
+            {
+                Debug.Log(checkBuildPoint);
+
+                if (buildTile.tag == "Area" || buildTile.tag == "Barracks")
+                {
+                    buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<MakeArea>().Picture;
+                }
+                else
+                {
+                    buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<AreaManger>().pureSprite;
+                }
+
+                buildTile.GetComponent<MakeArea>().Destroy = false;
+                buildTile.GetComponent<MakeArea>().firstBuild = false;
+                buildTile.GetComponent<AreaManger>().CheckUpdateMaterial();
+
+                checkBuildPoint = 0;
+            }
+        }
 
         //if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
         //    && transform.parent.GetComponent<MakeArea>().firstBuild == true)
         //{
-            
+
         //    builderPoint++;
         //}
         //else
