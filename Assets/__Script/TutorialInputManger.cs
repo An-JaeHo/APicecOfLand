@@ -76,7 +76,6 @@ public class TutorialInputManger : MonoBehaviour
                             mouseCheck = false;
                             bulidUi.GetComponent<BuildController>().land = hit.transform;
                             bulidUi.GetComponent<BuildController>().CreateWindow();
-                            armyMove = false;
                             break;
                         case "Area":
                             break;
@@ -90,7 +89,6 @@ public class TutorialInputManger : MonoBehaviour
 
                             break;
                         default:
-                            ChangeLandInfo();
                             break;
                     }
                 }
@@ -162,7 +160,6 @@ public class TutorialInputManger : MonoBehaviour
 
                             break;
                     }
-                    ChangeLandInfo();
                     armyMove = true;
                 }
             }

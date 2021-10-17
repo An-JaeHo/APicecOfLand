@@ -93,7 +93,7 @@ public class BuildController : MonoBehaviour
                     lands[i].GetComponent<PanelController>().upgradeIron = json.information.area[j].UpgradeSugar;
                     lands[i].transform.GetChild(0).GetComponent<Image>().sprite = json.information.area[j].Picture;
 
-                    lands[i].transform.position = new Vector3(content.transform.parent.position.x + 50 + (i*90), content.transform.parent.position.y - 65);
+                    lands[i].transform.localPosition = new Vector3(100 + (i*170), 100);
                     //400 150
                     content.GetComponent<RectTransform>().sizeDelta = new Vector2(450 + (lands.Count-3)*190, content.GetComponent<RectTransform>().sizeDelta.y+ 20);
                 }
