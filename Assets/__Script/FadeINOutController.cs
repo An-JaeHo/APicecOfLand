@@ -10,31 +10,45 @@ public class FadeINOutController : MonoBehaviour
     private bool checkEnd;
     public int imgNum;
     private float timer;
+    private bool checkTalkImg;
+    
+    public GameObject partOneTalk;
 
     private void Awake()
     {
         imgNum = 0;
         timer = 0;
+        checkTalkImg = false;
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
 
-        if (checkEnd)
+        if(!checkTalkImg)
         {
-            if (timer > 3f)
+            if (imgNum != imgs.Count)
             {
-                StartCoroutine(FadeImage());
+                if (checkEnd)
+                {
+                    if (timer > 5f)
+                    {
+                        StartCoroutine(FadeImage());
+                    }
+                }
+                else
+                {
+                    img.color = new Color(1, 1, 1, 1);
+                    img.sprite = imgs[imgNum];
+                    checkEnd = true;
+                }
+            }
+            else
+            {
+                partOneTalk.SetActive(true);
+                checkTalkImg = true;
             }
         }
-        else
-        {
-            img.color = new Color(1, 1, 1, 1);
-            img.sprite = imgs[imgNum];
-            checkEnd = true;
-        }
-        
     }
 
     public void OnButtonClick()
@@ -42,13 +56,12 @@ public class FadeINOutController : MonoBehaviour
         imgNum++;
         timer = 0;
 
-        if (imgNum> 13)
+        if (imgNum> 5)
         {
             img.gameObject.SetActive(false);
         }
         else
         {
-            
             img.sprite = imgs[imgNum];
             img.color = new Color(1, 1, 1, 1);
         }

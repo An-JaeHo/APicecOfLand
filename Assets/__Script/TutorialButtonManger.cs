@@ -9,8 +9,8 @@ public class TutorialButtonManger : MonoBehaviour
     public GameObject buildUi;
     public GameObject barrackWindow;
     public GameObject settingUi;
-    public SupplyManger supplyManger;
-
+    public TutorialSupplyManger supplyManger;
+    public GameObject button;
     public GameObject CreateAreaPrefab;
     private PanelController panel;
     private PlayerInfo playerInfo;
@@ -21,7 +21,7 @@ public class TutorialButtonManger : MonoBehaviour
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
+        supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<TutorialSupplyManger>();
         input = GetComponent<TutorialInputManger>();
         checkBuildPoint = 0;
     }
@@ -124,15 +124,12 @@ public class TutorialButtonManger : MonoBehaviour
         playerInfo.milk += playerInfo.updateMilk;
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
-        Debug.Log(checkBuildPoint);
         checkBuildPoint++;
 
         if (buildTile != null)
         {
             if (buildTile.GetComponent<MakeArea>().BuildTurn == checkBuildPoint)
             {
-                Debug.Log(checkBuildPoint);
-
                 if (buildTile.tag == "Area" || buildTile.tag == "Barracks")
                 {
                     buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<MakeArea>().Picture;

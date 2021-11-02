@@ -318,9 +318,7 @@ public class EnemyController : MonoBehaviour
             {
                 target.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
             }
-            
         }
-        
 
         findArmy = false;
         tiles.CheckTile();
