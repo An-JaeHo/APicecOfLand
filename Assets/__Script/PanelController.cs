@@ -9,7 +9,7 @@ public class PanelController : MonoBehaviour
     public JsonManger json;
     public Transform baseLand;
     public GameObject parentUi;
-    public TutorialButtonManger buttonManger;
+    public ButtonManger buttonManger;
     
 
     public Sprite picture;
@@ -23,7 +23,7 @@ public class PanelController : MonoBehaviour
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-        buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialButtonManger>();
+        buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
     }
 
     public void Change()
