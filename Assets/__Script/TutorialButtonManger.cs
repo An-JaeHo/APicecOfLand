@@ -12,7 +12,7 @@ public class TutorialButtonManger : MonoBehaviour
     public TutorialSupplyManger supplyManger;
     public GameObject button;
     public GameObject CreateAreaPrefab;
-    private PanelController panel;
+    private TutorialPanalController panel;
     private PlayerInfo playerInfo;
     public TutorialInputManger input;
     public Transform buildTile;
@@ -105,13 +105,13 @@ public class TutorialButtonManger : MonoBehaviour
 
     public void CheckNeedButton()
     {
-        panel = CreateAreaPrefab.GetComponent<PanelController>();
+        panel = CreateAreaPrefab.GetComponent<TutorialPanalController>();
         playerInfo.flour -= panel.upgradeWood;
         playerInfo.sugar -= panel.upgradeIron;
 
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
         supplyManger.UpdateSupply();
-        panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
+        panel.parentUi.GetComponent<TutorialBuildController>().content.transform.position = panel.parentUi.GetComponent<TutorialBuildController>().position;
         input.mouseCheck = true;
         buildTile = panel.baseLand;
         panel.parentUi.SetActive(false);
