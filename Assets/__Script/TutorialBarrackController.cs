@@ -79,7 +79,6 @@ public class TutorialBarrackController : MonoBehaviour
             barrackMonsterSprite.gameObject.SetActive(false);
             gameObject.SetActive(false);
             inputManger.ChangeLandInfo();
-            inputManger.tileManger.arrow.SetActive(true);
         }
 
         inputManger.mouseCheck = true;
@@ -228,11 +227,11 @@ public class TutorialBarrackController : MonoBehaviour
 
                         if (saveMgr.playerSave.SaveChocoGrade == 1)
                         {
-                            monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
+                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 18");
                         }
                         else if (saveMgr.playerSave.SaveChocoGrade == 2)
                         {
-                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 17");
+                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 18");
                         }
                         else
                         {

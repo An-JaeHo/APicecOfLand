@@ -9,6 +9,8 @@ public class TutorialHowmuch : MonoBehaviour
     public GameObject need;
     public GameObject barrack;
     public TutorialBarrackController barrackController;
+    public bool talkCheck;
+    public TutorialInputManger inputManger;
 
     public void HowMuchProduce()
     {
@@ -16,6 +18,7 @@ public class TutorialHowmuch : MonoBehaviour
         need = GameObject.Find("ArmyNeed");
         barrackController = GameObject.FindGameObjectWithTag("Barrack").GetComponent<TutorialBarrackController>();
         barrack = GameObject.FindGameObjectWithTag("Barrack");
+        inputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialInputManger>();
 
         need.transform.GetChild(0).GetComponent<Text>().text = "½Ä·® : " + makeSoldier.ProductionExpense.ToString();
         barrackController.barrackMonsterSprite.gameObject.SetActive(true);
@@ -31,6 +34,14 @@ public class TutorialHowmuch : MonoBehaviour
         else
         {
             barrackController.soldierMakeButton.GetComponent<Button>().interactable = false;
+        }
+
+        if (talkCheck)
+        {
+            inputManger.talkManger.NextScriptButton();
+            inputManger.talkManger.talkCheck = true;
+            inputManger.talkManger.stopTalkNum = 4;
+            talkCheck = false;
         }
     }
 }

@@ -10,7 +10,8 @@ public class TutorialPanalController : MonoBehaviour
     public Transform baseLand;
     public GameObject parentUi;
     public TutorialButtonManger buttonManger;
-
+    public TutorialInputManger inputManger ;
+    public bool talkCheck;
 
     public Sprite picture;
     public string name;
@@ -21,9 +22,11 @@ public class TutorialPanalController : MonoBehaviour
 
     private void Start()
     {
+        talkCheck = true;
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialButtonManger>();
+        inputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialInputManger>();
     }
 
     public void Change()
@@ -39,13 +42,12 @@ public class TutorialPanalController : MonoBehaviour
         checkOutPut.transform.GetChild(0).GetComponent<Text>().text = effect.ToString();
         buildImgae.transform.GetChild(0).GetComponent<Image>().sprite = picture;
 
-        if (playerInfo.flour >= upgradeWood && playerInfo.sugar >= upgradeIron)
+        if(talkCheck)
         {
-            checkButton.GetComponent<Button>().interactable = true;
-        }
-        else
-        {
-            checkButton.GetComponent<Button>().interactable = false;
+            inputManger.talkManger.NextScriptButton();
+            inputManger.talkManger.talkCheck = true;
+            inputManger.talkManger.stopTalkNum = 3;
+            talkCheck = false;
         }
 
         buttonManger.CreateAreaPrefab = gameObject;

@@ -7,18 +7,20 @@ public class FadeINOutController : MonoBehaviour
 {
     public List<Sprite> imgs;
     public Image img;
-    private bool checkEnd;
     public int imgNum;
+    private bool checkEnd;
     private float timer;
     private bool checkTalkImg;
     
     public GameObject partOneTalk;
+    public TutorialInputManger tutorialInput;
 
     private void Awake()
     {
         imgNum = 0;
         timer = 0;
         checkTalkImg = false;
+        tutorialInput = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialInputManger>();
     }
 
     private void Update()
@@ -59,6 +61,7 @@ public class FadeINOutController : MonoBehaviour
         if (imgNum> 5)
         {
             img.gameObject.SetActive(false);
+            tutorialInput.talk = true;
         }
         else
         {

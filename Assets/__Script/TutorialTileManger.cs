@@ -10,19 +10,20 @@ public class TutorialTileManger : MonoBehaviour
     public GameObject tilePrefab;
     public TutorialSupplyManger supplyManger;
     public List<Transform> tileList;
-    public GameObject arrow;
     public GameObject enemyPrefab;
     public List<Transform> enemyMakeLand;
     public List<Transform> enemyLand;
     public TutorialTalkManger talkManger;
+
     // 타일 구분용 list
-    List<Transform> nextLand;
+    private List<Transform> nextLand;
     public Sprite[] sprites;
-    public List<String> enemy1Code;
-    public List<String> enemy2Code;
-    public List<String> enemy3Code;
-    public List<String> enemy4Code;
+    private List<String> enemy1Code;
+    private List<String> enemy2Code;
+    private List<String> enemy3Code;
+    private List<String> enemy4Code;
     public GameObject[] enemyObj;
+    public Sprite cakeCastle;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class TutorialTileManger : MonoBehaviour
 
     public void StartTile()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (i * 87f), transform.position.y), Quaternion.identity);
             land.transform.GetChild(0).tag = "Grass";
@@ -47,11 +48,15 @@ public class TutorialTileManger : MonoBehaviour
             land.name = (tileList.Count + 1).ToString();
             tileList.Add(land.transform);
             land.transform.SetParent(transform);
-            arrow.SetActive(true);
 
             if (land.name != "4")
             {
                 land.transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+            }
+
+            if (land.name == "5")
+            {
+                land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite= cakeCastle;
             }
         }
 

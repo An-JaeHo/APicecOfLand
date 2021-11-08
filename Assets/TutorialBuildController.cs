@@ -34,46 +34,16 @@ public class TutorialBuildController : MonoBehaviour
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         position = content.transform.position;
 
-        if (content.transform.childCount >= 3)
+        if (content.transform.childCount >= 5)
         {
-            if (land.GetComponent<AreaManger>().pureTag == "Grass")
-            {
-                content.transform.GetChild(0).name = "우유";
-                content.transform.GetChild(1).name = "밀가루";
-                content.transform.GetChild(2).name = "설탕";
-                content.transform.GetChild(3).name = "병영";
-                content.transform.GetChild(4).name = "집";
-
-                lands.Add(content.transform.GetChild(0).gameObject);
-                lands.Add(content.transform.GetChild(1).gameObject);
-                lands.Add(content.transform.GetChild(2).gameObject);
-                lands.Add(content.transform.GetChild(3).gameObject);
-                lands.Add(content.transform.GetChild(4).gameObject);
-            }
         }
         else
         {
             if (land.GetComponent<AreaManger>().pureTag == "Grass")
             {
-                GameObject foodInfo = Instantiate(info, content.transform);
-                foodInfo.transform.name = "우유";
-                lands.Add(foodInfo);
-
-                GameObject ironInfo = Instantiate(info, content.transform);
-                ironInfo.transform.name = "밀가루";
-                lands.Add(ironInfo);
-
-                GameObject woodInfo = Instantiate(info, content.transform);
-                woodInfo.transform.name = "설탕";
-                lands.Add(woodInfo);
-
                 GameObject barrackInfo = Instantiate(info, content.transform);
                 barrackInfo.transform.name = "병영";
                 lands.Add(barrackInfo);
-
-                GameObject houseInfo = Instantiate(info, content.transform);
-                houseInfo.transform.name = "집";
-                lands.Add(houseInfo);
             }
         }
 

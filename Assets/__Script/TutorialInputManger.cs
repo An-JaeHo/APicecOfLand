@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialInputManger : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class TutorialInputManger : MonoBehaviour
     public TutorialSoldierManger moveSoldier;
     public TutorialRangeManger rangeManger;
     public TutorialTileManger tileManger;
+    public TutorialTalkManger talkManger;
+    public TutorialButtonManger buttonManger;
     public Transform army;
     public GameObject bulidUpgradeUi;
     public float time;
@@ -21,11 +24,15 @@ public class TutorialInputManger : MonoBehaviour
     public GameObject bulidUi;
     public GameObject armyUpgradeUi;
 
+    public bool talk;
+
     void Start()
     {
         gameCamera = Camera.main;
         mouseCheck = true;
         armyMove = true;
+        talk = false;
+        buttonManger = GetComponent<TutorialButtonManger>();
     }
     
     void Update()
@@ -41,6 +48,59 @@ public class TutorialInputManger : MonoBehaviour
             {
                 MouseHit();
                 //MouseCameraMove();
+            }
+        }
+
+        if (Input.touchCount > 0)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                if (talk || talkManger.talkCheck)
+                {
+                    talkManger.NextScriptButton();
+
+                    if (talkManger.stopTalkNum == talkManger.spcriptNum)
+                    {
+                        talkManger.talkCheck = false;
+
+                        if (talkManger.stopTalkNum == 3)
+                        {
+                            buttonManger.makeBuildButton.GetComponent<Button>().interactable = true;
+                        }
+                        else if (talkManger.stopTalkNum == 6)
+                        {
+                            buttonManger.button.GetComponent<Button>().interactable = true;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (talk || talkManger.talkCheck)
+                {
+                    talkManger.NextScriptButton();
+
+                    if (talkManger.stopTalkNum == talkManger.spcriptNum)
+                    {
+                        talkManger.talkCheck = false;
+
+                        if (talkManger.stopTalkNum == 3)
+                        {
+                            buttonManger.makeBuildButton.GetComponent<Button>().interactable = true;
+                        }
+                        else if (talkManger.stopTalkNum == 4)
+                        {
+                            buttonManger.makeMonsterButton.GetComponent<Button>().interactable = true;
+                        }
+                        else if (talkManger.stopTalkNum == 6)
+                        {
+                            buttonManger.button.GetComponent<Button>().interactable = true;
+                        }
+                    }
+                }
             }
         }
     }
@@ -68,14 +128,17 @@ public class TutorialInputManger : MonoBehaviour
                                 BarrackUi.GetComponent<TutorialBarrackController>().land = hit.transform;
                                 BarrackUi.GetComponent<TutorialBarrackController>().SwordButton();
                                 mouseCheck = false;
+                                talkManger.BarrackTalk();
+                                talk = false;
                             }
                             break;
                         case "Grass":
+                            talk = false;
                             landObj = hit.transform;
                             mouseCheck = false;
                             bulidUi.GetComponent<TutorialBuildController>().land = hit.transform;
                             bulidUi.GetComponent<TutorialBuildController>().CreateWindow();
-                            tileManger.arrow.SetActive(false);
+                            talkManger.BulidTalk();
                             break;
                         case "Area":
                             break;
@@ -86,7 +149,6 @@ public class TutorialInputManger : MonoBehaviour
                                 armyMove = false;
                                 moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
                             }
-
                             break;
                         default:
                             break;
@@ -144,7 +206,6 @@ public class TutorialInputManger : MonoBehaviour
                                 moveSoldier.move = true;
                                 army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
                                 army.transform.GetComponent<TutorialSoldierManger>().movePoint = false;
-                                tileManger.arrow.SetActive(false);
                             }
                             ChangeLandInfo();
                             break;
@@ -155,6 +216,8 @@ public class TutorialInputManger : MonoBehaviour
                     }
                     armyMove = true;
                 }
+
+                
             }
 
             if (Input.GetMouseButton(0))
@@ -241,11 +304,11 @@ public class TutorialInputManger : MonoBehaviour
                             }
                             break;
                         case "Grass":
+                            talk = false;
                             landObj = hit.transform;
                             mouseCheck = false;
                             bulidUi.GetComponent<TutorialBuildController>().land = hit.transform;
                             bulidUi.GetComponent<TutorialBuildController>().CreateWindow();
-                            tileManger.arrow.SetActive(false);
                             break;
                         case "Area":
                             break;
@@ -314,7 +377,6 @@ public class TutorialInputManger : MonoBehaviour
                                 moveSoldier.move = true;
                                 army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
                                 army.transform.GetComponent<TutorialSoldierManger>().movePoint = false;
-                                tileManger.arrow.SetActive(false);
                             }
                             ChangeLandInfo();
                             break;
@@ -333,6 +395,11 @@ public class TutorialInputManger : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 ChangeLandInfo();
+
+                if (talk)
+                {
+                    talkManger.NextScriptButton();
+                }
             }
         }
     }

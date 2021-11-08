@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialButtonManger : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class TutorialButtonManger : MonoBehaviour
     public GameObject barrackWindow;
     public GameObject settingUi;
     public TutorialSupplyManger supplyManger;
-    public GameObject button;
     public GameObject CreateAreaPrefab;
     private TutorialPanalController panel;
     private PlayerInfo playerInfo;
@@ -18,12 +18,21 @@ public class TutorialButtonManger : MonoBehaviour
     public Transform buildTile;
     private int checkBuildPoint;
 
+    //빌드말하기버튼
+    public GameObject button;
+    public GameObject makeBuildButton;
+    public GameObject makeMonsterButton;
+
+
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<TutorialSupplyManger>();
         input = GetComponent<TutorialInputManger>();
         checkBuildPoint = 0;
+        button.GetComponent<Button>().interactable = false;
+        makeBuildButton.GetComponent<Button>().interactable = false;
+        makeMonsterButton.GetComponent<Button>().interactable = false;
     }
 
     // Update is called once per frame
@@ -114,6 +123,10 @@ public class TutorialButtonManger : MonoBehaviour
         panel.parentUi.GetComponent<TutorialBuildController>().content.transform.position = panel.parentUi.GetComponent<TutorialBuildController>().position;
         input.mouseCheck = true;
         buildTile = panel.baseLand;
+
+        input.talkManger.NextScriptButton();
+        input.talkManger.talkCheck = true;
+        input.talkManger.stopTalkNum = 6;
         panel.parentUi.SetActive(false);
         
     }
@@ -133,6 +146,8 @@ public class TutorialButtonManger : MonoBehaviour
                 if (buildTile.tag == "Area" || buildTile.tag == "Barracks")
                 {
                     buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<MakeArea>().Picture;
+                    input.talkManger.NextScriptButton();
+                    input.talk = true;
                 }
                 else
                 {
