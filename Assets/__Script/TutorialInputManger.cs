@@ -63,13 +63,22 @@ public class TutorialInputManger : MonoBehaviour
                     {
                         talkManger.talkCheck = false;
 
-                        if (talkManger.stopTalkNum == 3)
+                        if (talkManger.stopTalkNum == talkManger.spcriptNum)
                         {
-                            buttonManger.makeBuildButton.GetComponent<Button>().interactable = true;
-                        }
-                        else if (talkManger.stopTalkNum == 6)
-                        {
-                            buttonManger.button.GetComponent<Button>().interactable = true;
+                            talkManger.talkCheck = false;
+
+                            if (talkManger.stopTalkNum == 3)
+                            {
+                                buttonManger.makeBuildButton.GetComponent<Button>().interactable = true;
+                            }
+                            else if (talkManger.stopTalkNum == 4)
+                            {
+                                buttonManger.makeMonsterButton.GetComponent<Button>().interactable = true;
+                            }
+                            else if (talkManger.stopTalkNum == 6)
+                            {
+                                buttonManger.button.GetComponent<Button>().interactable = true;
+                            }
                         }
                     }
                 }
