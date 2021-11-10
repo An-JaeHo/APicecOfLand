@@ -15,7 +15,7 @@ public class AnimationController : MonoBehaviour
         }
         else if (transform.parent.parent.tag == "Builder")
         {
-            transform.parent.parent.GetComponent<SoldierManger>().tileManger.DeadBulider(transform.parent.parent.gameObject);
+            //transform.parent.parent.GetComponent<SoldierManger>().tileManger.DeadBulider(transform.parent.parent.gameObject);
         }
         else if (transform.parent.parent.tag == "Enemy")
         {

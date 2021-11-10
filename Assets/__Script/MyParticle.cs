@@ -21,7 +21,8 @@ public class MyParticle : MonoBehaviour
             {
                 myParticles[i].transform.localScale = new Vector3(-18f, 30f);
             }
-            myParticles[i].GetComponent<ParticleSystem>().Play();
+
+            //myParticles[i].GetComponent<ParticleSystem>().Play();
         }
     }
 }

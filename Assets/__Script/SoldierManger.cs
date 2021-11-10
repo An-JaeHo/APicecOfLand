@@ -81,6 +81,7 @@ public class SoldierManger : MonoBehaviour
                 input.armyMove = true;
                 stayTime = 0;
                 buttonManger.button.GetComponent<Button>().interactable = true;
+
                 if (transform.tag == "Builder")
                 {
                     transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
@@ -284,35 +285,33 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
-    public void CheckBuildCount()
-    {
-        if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
-            && transform.parent.GetComponent<MakeArea>().firstBuild == true)
-        {
-            movePoint = false;
-            builderPoint++;
-        }
-        else
-        {
-            movePoint = true;
-            if (transform.parent.tag == "Area" || transform.parent.tag == "Barracks")
-            {
-                transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
-            }
-            else
-            {
-                transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
-            }
+    //public void CheckBuildCount()
+    //{
+    //    if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
+    //        && transform.parent.GetComponent<MakeArea>().firstBuild == true)
+    //    {
+    //        movePoint = false;
+    //        builderPoint++;
+    //    }
+    //    else
+    //    {
+    //        movePoint = true;
+    //        if (transform.parent.tag == "Area" || transform.parent.tag == "Barracks")
+    //        {
+    //            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
+    //        }
+    //        else
+    //        {
+    //            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
+    //        }
 
-            transform.parent.GetComponent<MakeArea>().Destroy = false;
-            transform.parent.GetComponent<MakeArea>().firstBuild = false;
-            transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
+    //        transform.parent.GetComponent<MakeArea>().Destroy = false;
+    //        transform.parent.GetComponent<MakeArea>().firstBuild = false;
+    //        transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
 
-            builderPoint = 0;
-        }
-
-        
-    }
+    //        builderPoint = 0;
+    //    }
+    //}
 
     public void MakeBuffIcon(string code)
     {

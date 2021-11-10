@@ -480,6 +480,9 @@ MonoBehaviour:
   enemyMakeLand: []
   enemyLand: []
   json: {fileID: 0}
+  attackAlarm: {fileID: 675699982}
+  defendAlarm: {fileID: 240450825}
+  sirenAlarm: {fileID: 691972702}
   wight: 0
   hight: 0
   tileCount: 0
@@ -1307,6 +1310,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239182969}
   m_CullTransparentMesh: 1
+--- !u!1 &240450825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1728465096365556270, guid: 5d81b5b398e85e145b08157f2bb264b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1728465094918866358}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &287086718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,6 +2759,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &675699982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 608522872082578782, guid: 9321936f27801134c988fdd93f22871a,
+    type: 3}
+  m_PrefabInstance: {fileID: 608522870163081360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &679933187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,6 +2854,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679933187}
   m_CullTransparentMesh: 0
+--- !u!1 &691972702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4598348371785296605, guid: 08863513aaa8a2c4f97ffcabc3266d18,
+    type: 3}
+  m_PrefabInstance: {fileID: 4598348372518291877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &694390328
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,6 +4162,7 @@ MonoBehaviour:
   timer: {fileID: 0}
   buttonTimer: 0
   turnCountText: {fileID: 2128048613}
+  tiles: []
   food: 0
   wood: 0
   iron: 0

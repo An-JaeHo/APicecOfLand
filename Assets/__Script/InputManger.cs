@@ -99,14 +99,7 @@ public class InputManger : MonoBehaviour
                                 mouseCheck = false;
                             }
                             break;
-                        case "Builder":
-                            if (hit.transform.GetComponent<SoldierManger>().movePoint)
-                            {
-                                rangeManger.BuilderMoveRange(hit.transform);
-                                armyMove = false;
-                                moveSoldier = hit.transform.GetComponent<SoldierManger>();
-                            }
-                            break;
+
                         case "Army":
                             if (hit.transform.GetComponent<SoldierManger>().movePoint)
                             {
@@ -115,6 +108,29 @@ public class InputManger : MonoBehaviour
                                 moveSoldier = hit.transform.GetComponent<SoldierManger>();
                                 Land.CheckTile();
                             }
+                            break;
+
+                        case "Grass":
+                            landObj = hit.transform;
+                            mouseCheck = false;
+                            bulidUi.GetComponent<BuildController>().land = hit.transform;
+                            bulidUi.GetComponent<BuildController>().CreateWindow();
+                            break;
+                        case "Area":
+                            if (hit.transform.GetComponent<MakeArea>().Name == "우유")
+                            {
+                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
+                            }
+                            else if (hit.transform.GetComponent<MakeArea>().Name == "밀가루")
+                            {
+                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
+                            }
+                            else if (hit.transform.GetComponent<MakeArea>().Name == "설탕")
+                            {
+                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
+                            }
+                            bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
+                            bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
                             break;
                         default:
                             ChangeLandInfo();
@@ -127,7 +143,7 @@ public class InputManger : MonoBehaviour
                     switch (hit.transform.tag)
                     {
                         case "Enemy":
-                            if(hit.transform.parent.tag == "SelectLand")
+                            if (hit.transform.parent.tag == "SelectLand")
                             {
                                 moveSoldier.enemy = hit.transform;
                                 moveSoldier.attack = true;
@@ -142,65 +158,46 @@ public class InputManger : MonoBehaviour
                                 army.transform.GetComponent<SoldierManger>().SoldierAction();
                             }
                             break;
-                        case "SelectLand":
-                            if (army.tag == "Builder")
-                            {
-                                if (hit.transform.GetComponent<MakeArea>().Type == "Grass")
-                                {
-                                    if (hit.transform.GetComponent<MakeArea>().Destroy == true)
-                                    {
-
-                                    }
-                                    else
-                                    {
-                                        landObj = hit.transform;
-                                        mouseCheck = false;
-                                        bulidUi.GetComponent<BuildController>().land = hit.transform;
-                                        bulidUi.GetComponent<BuildController>().CreateWindow();
-                                    }
-                                }
-                                else if (hit.transform.GetComponent<MakeArea>().Type == "Area"
-                                    && hit.transform.GetComponent<MakeArea>().Destroy != true)
-                                {
-                                    if (hit.transform.GetComponent<MakeArea>().Name == "우유")
-                                    {
-                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
-                                    }
-                                    else if (hit.transform.GetComponent<MakeArea>().Name == "밀가루")
-                                    {
-                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
-                                    }
-                                    else if (hit.transform.GetComponent<MakeArea>().Name == "설탕")
-                                    {
-                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
-                                    }
-                                    bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
-                                    bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
-                                }
-                            }
-                            else
-                            {
-                                if (int.Parse(army.parent.parent.name) >= int.Parse(hit.transform.parent.name)
-                                         && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
-                                {
-                                    army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
-                                }
-                                else if (int.Parse(army.parent.parent.name) < int.Parse(hit.transform.parent.name)
-                                    && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
-                                {
-                                    army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
-                                }
-
-                                army.transform.SetParent(hit.transform);
-                                moveSoldier.move = true;
-                                army.transform.GetComponent<SoldierManger>().SoldierAction();
-                                army.transform.GetComponent<SoldierManger>().movePoint = false;
-                            }
+                        case "Grass":
+                            landObj = hit.transform;
+                            mouseCheck = false;
+                            bulidUi.GetComponent<BuildController>().land = hit.transform;
+                            bulidUi.GetComponent<BuildController>().CreateWindow();
                             break;
+                        case "Area":
+                            if (hit.transform.GetComponent<MakeArea>().Name == "우유")
+                            {
+                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
+                            }
+                            else if (hit.transform.GetComponent<MakeArea>().Name == "밀가루")
+                            {
+                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
+                            }
+                            else if (hit.transform.GetComponent<MakeArea>().Name == "설탕")
+                            {
+                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
+                            }
+                            bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
+                            bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
+                            break;
+                        case "SelectLand":
+                            if (int.Parse(army.parent.parent.name) >= int.Parse(hit.transform.parent.name)
+                                     && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
+                            {
+                                army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
+                            }
+                            else if (int.Parse(army.parent.parent.name) < int.Parse(hit.transform.parent.name)
+                                && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
+                            {
+                                army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
+                            }
 
-
+                            army.transform.SetParent(hit.transform);
+                            moveSoldier.move = true;
+                            army.transform.GetComponent<SoldierManger>().SoldierAction();
+                            army.transform.GetComponent<SoldierManger>().movePoint = false;
+                            break;
                         default:
-                            
                             break;
                     }
                     ChangeLandInfo();

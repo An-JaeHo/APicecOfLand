@@ -30,6 +30,12 @@ public class SceneMgr : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
+    public static void GoGameTutorial()
+    {
+        save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
+        LoadingSceneController.LoadScene("Tutorial");
+    }
+
     public static void GoUpGradeScene()
     {
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
