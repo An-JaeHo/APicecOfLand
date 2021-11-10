@@ -23,7 +23,7 @@ public class AreaManger : MonoBehaviour
     {
         rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
         player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        //tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
+        tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
         area = GetComponent<MakeArea>();
         buildTurn = 0;
         turnArea = false;
@@ -222,6 +222,7 @@ public class AreaManger : MonoBehaviour
             transform.GetComponent<SpriteRenderer>().color = Color.white;
             transform.GetComponent<SpriteRenderer>().sprite = pureSprite;
             pureColor = Color.white;
+            tileManger.enemyLand.Remove(transform);
             transform.tag = "Grass";
         }
         else
