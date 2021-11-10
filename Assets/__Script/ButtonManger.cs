@@ -634,13 +634,12 @@ public class ButtonManger : MonoBehaviour
         playerInfo.sugar += playerInfo.updateSugar;
         input.mouseCheck = false;
         buttonTimer = 0;
-        
 
         if (playerInfo.turnPoint == 50)
         {
             int rand = Random.Range(200, 270);
             playerInfo.killingPoint = rand;
-            SceneManager.LoadScene(3);
+            SceneMgr.GoGameEndScene();
         }
 
         if(tiles.Count !=0)

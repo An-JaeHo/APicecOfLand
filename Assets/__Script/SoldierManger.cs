@@ -54,7 +54,6 @@ public class SoldierManger : MonoBehaviour
         directionCheck = true;
 
         ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
-        totalHp = soldier.HelthPoint;
         stayTime = 0;
         move = false;
         movePoint = true;
@@ -160,7 +159,6 @@ public class SoldierManger : MonoBehaviour
                 directionCheck = false;
                 transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
             }
-
 
             float randnum = Random.Range(0.8f, 1.2f);
             float randCritical = Random.Range(0.7f, 1.1f);

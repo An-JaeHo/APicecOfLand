@@ -59,6 +59,7 @@ public class BarrackController : MonoBehaviour
             GameObject prefebSoldier = Instantiate(soldierPrefeb,new Vector3(land.position.x, land.position.y +25f), Quaternion.identity);
             prefebSoldier.transform.SetParent(land);
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
+            prefebSoldier.GetComponent<SoldierManger>().totalHp = prefebSoldier.GetComponent<MakeSoldier>().HelthPoint;
             SaveLevelCheck(prefebSoldier);
             playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
 

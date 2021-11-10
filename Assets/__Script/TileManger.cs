@@ -167,6 +167,8 @@ public class TileManger : MonoBehaviour
             }
         }
         SortGrade();
+        alarmCheck = true;
+        defendAlarm.SetActive(true);
     }
 
     private void Update()
@@ -406,25 +408,32 @@ public class TileManger : MonoBehaviour
         }
 
         //디펜스
-        if (playerInfo.turnPoint == 1)
+        if (playerInfo.turnPoint == 10)
         {
             alarmCheck = true;
             defendAlarm.SetActive(true);
-        }
-        else if (playerInfo.turnPoint == 10)
-        {
-            alarmCheck = true;
-            defendAlarm.SetActive(true);
+            if (enemyLand.Count != 0)
+            {
+                SceneMgr.GoGameEndScene();
+            }
         }
         else if (playerInfo.turnPoint == 25)
         {
             alarmCheck = true;
             defendAlarm.SetActive(true);
+            if (enemyLand.Count != 0)
+            {
+                SceneMgr.GoGameEndScene();
+            }
         }
         else if (playerInfo.turnPoint == 45)
         {
             alarmCheck = true;
             defendAlarm.SetActive(true);
+            if (enemyLand.Count != 0)
+            {
+                SceneMgr.GoGameEndScene();
+            }
         }
 
         //어택
