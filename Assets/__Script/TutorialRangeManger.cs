@@ -99,10 +99,11 @@ public class TutorialRangeManger : MonoBehaviour
                     if (tileManger.tileList[nameOfLand - (1 + i)].GetChild(0).GetChild(0).transform.tag == "Enemy"
                         || tileManger.tileList[nameOfLand - (1 + i)].GetChild(0).transform.tag == "GD")
                     {
-                        Debug.Log("af");
                         tileManger.tileList[nameOfLand - (1 + i)].GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
                         tileManger.tileList[nameOfLand - (1 + i)].GetChild(0).tag = "SelectLand";
                         rangeList.Add(tileManger.tileList[nameOfLand - (1 + i)]);
+                        input.talkManger.stopTalkNum = 5;
+                        input.talkManger.talkCheck = true;
                         break;
                     }
                 }

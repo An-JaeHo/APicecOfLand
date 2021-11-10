@@ -12,6 +12,11 @@ public class TutorialHowmuch : MonoBehaviour
     public bool talkCheck;
     public TutorialInputManger inputManger;
 
+    void Start()
+    {
+        talkCheck = true;
+    }
+
     public void HowMuchProduce()
     {
         makeSoldier = GetComponent<MakeSoldier>();
@@ -27,20 +32,11 @@ public class TutorialHowmuch : MonoBehaviour
 
         int canUsePeople = barrackController.playerInfo.people - barrackController.usingPeople;
 
-        if (barrackController.playerInfo.milk > makeSoldier.ProductionExpense && canUsePeople > 0)
-        {
-            barrackController.soldierMakeButton.GetComponent<Button>().interactable = true;
-        }
-        else
-        {
-            barrackController.soldierMakeButton.GetComponent<Button>().interactable = false;
-        }
-
         if (talkCheck)
         {
             inputManger.talkManger.NextScriptButton();
             inputManger.talkManger.talkCheck = true;
-            inputManger.talkManger.stopTalkNum = 4;
+            inputManger.talkManger.stopTalkNum = 3;
             talkCheck = false;
         }
     }

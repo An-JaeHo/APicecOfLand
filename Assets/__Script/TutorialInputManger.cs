@@ -18,6 +18,7 @@ public class TutorialInputManger : MonoBehaviour
     public Transform army;
     public GameObject bulidUpgradeUi;
     public float time;
+    public bool finalCheck;
 
     //제작해야되는것
     public GameObject BarrackUi;
@@ -28,6 +29,7 @@ public class TutorialInputManger : MonoBehaviour
 
     void Start()
     {
+        finalCheck = false;
         gameCamera = Camera.main;
         mouseCheck = true;
         armyMove = true;
@@ -99,15 +101,15 @@ public class TutorialInputManger : MonoBehaviour
                         if (talkManger.stopTalkNum == 3)
                         {
                             buttonManger.makeBuildButton.GetComponent<Button>().interactable = true;
-                        }
-                        else if (talkManger.stopTalkNum == 4)
-                        {
                             buttonManger.makeMonsterButton.GetComponent<Button>().interactable = true;
+                            talk = false;
                         }
-                        else if (talkManger.stopTalkNum == 6)
+                        
+                        if (talkManger.stopTalkNum == 6)
                         {
                             buttonManger.button.GetComponent<Button>().interactable = true;
                         }
+                        
                     }
                 }
             }
@@ -136,8 +138,10 @@ public class TutorialInputManger : MonoBehaviour
                                 BarrackUi.SetActive(true);
                                 BarrackUi.GetComponent<TutorialBarrackController>().land = hit.transform;
                                 BarrackUi.GetComponent<TutorialBarrackController>().SwordButton();
-                                mouseCheck = false;
+                                buttonManger.makeMonsterButton.GetComponent<Button>().interactable = false;
                                 talkManger.BarrackTalk();
+                                talkManger.talkCheck = true;
+                                talkManger.stopTalkNum =1;
                                 talk = false;
                             }
                             break;
@@ -154,10 +158,19 @@ public class TutorialInputManger : MonoBehaviour
                         case "Army":
                             if (hit.transform.GetComponent<TutorialSoldierManger>().movePoint)
                             {
+                                talk = false;
                                 rangeManger.PlayerMoveRange(hit.transform);
                                 armyMove = false;
+
+                                if(!finalCheck)
+                                {
+                                    talkManger.NextScriptButton();
+                                    talkManger.stopTalkNum = 5;
+                                    talkManger.talkCheck = true;
+                                }
                                 moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
                             }
+                            
                             break;
                         default:
                             break;
@@ -249,10 +262,14 @@ public class TutorialInputManger : MonoBehaviour
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (!talk && !talkManger.talkCheck)
             {
-                ChangeLandInfo();
+                //if (Input.GetMouseButtonDown(0))
+                //{
+                //    ChangeLandInfo();
+                //}
             }
+             
         }
     }
 
@@ -403,11 +420,12 @@ public class TutorialInputManger : MonoBehaviour
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                ChangeLandInfo();
-
-                if (talk)
+                if (!talk && !talkManger.talkCheck)
                 {
-                    talkManger.NextScriptButton();
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ChangeLandInfo();
+                    }
                 }
             }
         }
