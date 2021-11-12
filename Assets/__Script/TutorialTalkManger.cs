@@ -79,25 +79,27 @@ public class TutorialTalkManger : MonoBehaviour
     {
         inputManger.talk = true;
         scripts.Clear();
-        textNum = 5;
+        textNum = 4;
         spcriptNum = 0;
         scripts.Add("자 아까와 비슷하지?");
         scripts.Add("이번에는 저 대담하고 큰 초코칩쿠키를 눌러보자");
         scripts.Add("이번에도 왼쪽에 초코칩쿠키가 나왔어");
         scripts.Add("생산버튼을 눌러서 초코칩쿠키를 부르자");
-        scripts.Add("와 드디어 친구를 불렀어!");
+        
         spcriptText.text = scripts[spcriptNum];
     }
 
     public void MoveTalk()
     {
-        inputManger.talk = true;
+        //inputManger.talk = true;
         scripts.Clear();
-        textNum = 3;
+        textNum = 5;
         spcriptNum = 0;
+        scripts.Add("와 드디어 친구를 불렀어!");
         scripts.Add("이번에는 초코칩쿠키를 눌러볼까?");
-        scripts.Add("누르니깐 바닥에 색이 바겼네?");
-        scripts.Add("저건 쿠키들이 이동할 수 있는 범위를 나타낸거야 어서 눌러보자");
+        scripts.Add("누르니깐 바닥에 색이 달라졌네?");
+        scripts.Add("저건 쿠키들이 이동할 수 있는 범위를 나타낸거야 ");
+        scripts.Add("어서 눌러보자");
         spcriptText.text = scripts[spcriptNum];
     }
 
@@ -105,13 +107,14 @@ public class TutorialTalkManger : MonoBehaviour
     {
         inputManger.talk = true;
         scripts.Clear();
-        textNum = 5;
+        textNum = 6;
         spcriptNum = 0;
         scripts.Add("이런 쥐들이 와버렸어");
         scripts.Add("어서 공격해서 쫓아내버리자");
         scripts.Add("아까랑 같이 초코칩쿠키를 눌러보자");
-        scripts.Add("이번에는 색이 바꼇네 이건 공격할수 있는 범위를 보여주는 거야");
-        scripts.Add("어서 눌러서 멀리 보내자");
+        scripts.Add("이번에는 색이 변했어 ");
+        scripts.Add("이건 공격할수 있는 범위를 보여주는 거야");
+        scripts.Add("어서 눌러서 쥐를 몰아내자");
         spcriptText.text = scripts[spcriptNum];
     }
 
@@ -119,8 +122,12 @@ public class TutorialTalkManger : MonoBehaviour
     {
         inputManger.talk = true;
         scripts.Clear();
-        textNum = 3;
+        textNum = 7;
         spcriptNum = 0;
+        scripts.Add("자 이제 저 우주선을 파괴하자");
+        scripts.Add("그렇지 않으면 또 쥐가 나올꺼야");
+        scripts.Add("우주선 위로 올라간다면 파괴할수 있을꺼야");
+        scripts.Add("어서 움직이자");
         scripts.Add("잘했어! 우리가 쥐를 물리쳤어!");
         scripts.Add("곧 쥐들이 다시 올꺼야");
         scripts.Add("이제 다음공격에 대비해 준비를 하자");

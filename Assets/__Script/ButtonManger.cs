@@ -22,6 +22,7 @@ public class ButtonManger : MonoBehaviour
     public Timer timer;
     public float buttonTimer;
     public GameObject turnCountText;
+    public List<Transform> tiles;
 
     //타일 구매용
     public int food;
@@ -349,23 +350,6 @@ public class ButtonManger : MonoBehaviour
         playerInfo.sugar -= panel.upgradeIron;
         tileManger.CheckTile();
 
-        if (int.Parse(input.army.parent.parent.name) >= int.Parse(input.landObj.transform.parent.name)
-            && Mathf.Abs(int.Parse(input.army.parent.parent.name) - int.Parse(input.landObj.transform.parent.name)) <= 10)
-        {
-            input.army.GetChild(1).transform.localScale = new Vector3(-0.4f, 0.4f);
-        }
-        else if (int.Parse(input.army.parent.parent.name) < int.Parse(input.landObj.transform.parent.name)
-            && Mathf.Abs(int.Parse(input.army.parent.parent.name) - int.Parse(input.landObj.transform.parent.name)) <= 10)
-        {
-            input.army.GetChild(1).transform.localScale = new Vector3(0.4f, 0.4f);
-        }
-        input.army.transform.SetParent(input.landObj);
-        input.moveSoldier.move = true;
-        input.army.GetComponent<SoldierManger>().movePoint = false;
-        input.army.GetComponent<SoldierManger>().SoldierAction();
-
-        
-
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {
             rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
@@ -386,6 +370,35 @@ public class ButtonManger : MonoBehaviour
         panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
         input.mouseCheck = true;
         panel.parentUi.SetActive(false);
+        tiles.Add(panel.baseLand);
+    }
+
+    public void CheckBuildCount()
+    {
+        foreach (var tile in tiles)
+        {
+            if(tile.GetComponent<MakeArea>().BuildTurn != tile.GetComponent<AreaManger>().buildTurn
+                && tile.GetComponent<MakeArea>().firstBuild == true)
+            {
+                tile.GetComponent<AreaManger>().buildTurn++;
+            }
+            else
+            {
+                if(tile.tag == "Area" || tile.tag == "Barracks")
+                {
+                    tile.GetComponent<SpriteRenderer>().sprite = tile.GetComponent<MakeArea>().Picture;
+                }
+                else
+                {
+                    tile.GetComponent<SpriteRenderer>().sprite = tile.GetComponent<AreaManger>().pureSprite;
+                }
+
+                tile.GetComponent<MakeArea>().Destroy = false;
+                tile.GetComponent<MakeArea>().firstBuild = false;
+                tile.GetComponent<AreaManger>().CheckUpdateMaterial();
+                tile.GetComponent<AreaManger>().buildTurn = 0;
+            }
+        }
     }
 
     public void CheckUpgradeResources()
@@ -393,20 +406,6 @@ public class ButtonManger : MonoBehaviour
         if (playerInfo.flour >= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && playerInfo.sugar >= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar)
         {
             tileManger.CheckTile();
-
-            if (int.Parse(input.army.parent.parent.name) >= int.Parse(input.landObj.transform.parent.name)
-            && Mathf.Abs(int.Parse(input.army.parent.parent.name) - int.Parse(input.landObj.transform.parent.name)) <= 10)
-            {
-                input.army.GetChild(1).transform.localScale = new Vector3(-0.4f, 0.4f);
-            }
-            else if (int.Parse(input.army.parent.parent.name) < int.Parse(input.landObj.transform.parent.name)
-                && Mathf.Abs(int.Parse(input.army.parent.parent.name) - int.Parse(input.landObj.transform.parent.name)) <= 10)
-            {
-                input.army.GetChild(1).transform.localScale = new Vector3(0.4f, 0.4f);
-            }
-            input.army.transform.SetParent(UpgradeLand);
-            input.moveSoldier.move = true;
-            input.army.transform.GetComponent<SoldierManger>().SoldierAction();
             playerInfo.flour -= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour;
             playerInfo.sugar -= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar;
 
@@ -635,21 +634,17 @@ public class ButtonManger : MonoBehaviour
         playerInfo.sugar += playerInfo.updateSugar;
         input.mouseCheck = false;
         buttonTimer = 0;
-        
 
         if (playerInfo.turnPoint == 50)
         {
             int rand = Random.Range(200, 270);
             playerInfo.killingPoint = rand;
-            SceneManager.LoadScene(3);
+            SceneMgr.GoGameEndScene();
         }
 
-        if(builders.Count !=0)
+        if(tiles.Count !=0)
         {
-            foreach (var builds in builders)
-            {
-                builds.GetComponent<SoldierManger>().CheckBuildCount();
-            }
+            CheckBuildCount();
         }
 
         StartCoroutine(moveEnemy());

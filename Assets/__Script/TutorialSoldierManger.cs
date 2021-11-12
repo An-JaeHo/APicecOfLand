@@ -81,8 +81,15 @@ public class TutorialSoldierManger : MonoBehaviour
                 input.armyMove = true;
                 stayTime = 0;
                 buttonManger.button.GetComponent<Button>().interactable = true;
-                tileManger.SpawnEnemy();
-                tileManger.talkManger.NextTalk();
+
+                if (!input.finalCheck)
+                {
+                    tileManger.SpawnEnemy();
+                    tileManger.talkManger.NextTalk();
+                    tileManger.talkManger.stopTalkNum = 2;
+                    tileManger.talkManger.talkCheck = true;
+                }
+                input.talk = false;
                 movePoint = true;
 
                 if (transform.tag == "Builder")
@@ -94,8 +101,11 @@ public class TutorialSoldierManger : MonoBehaviour
 
                 if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
                 {
-                    transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
-                    transform.GetComponent<AudioSource>().Play();
+                    //transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
+                    //transform.GetComponent<AudioSource>().Play();
+                    input.talkManger.stopTalkNum = 7;
+                    input.talkManger.NextScriptButton();
+                    tileManger.talkManger.talkCheck = true;
                     transform.parent.GetComponent<AreaManger>().TurnArea();
                     transform.parent.GetComponent<MakeArea>().Name = "Grass";
                 }
@@ -205,7 +215,7 @@ public class TutorialSoldierManger : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
 
             attack = false;
-            movePoint = false;
+            movePoint = true;
             enemy.GetComponent<MakeEnemy>().BaseHelthPoint = 0;
             enemy.GetComponent<TutorialEnemyManger>().HpBarScale();
 
@@ -216,7 +226,10 @@ public class TutorialSoldierManger : MonoBehaviour
                     enemy.GetComponent<TutorialEnemyManger>().ani.SetTrigger("Damage");
                     soldier.nowExp += enemy.GetComponent<MakeEnemy>().DropExperiencePoint;
                     input.ChangeLandInfo();
+                    input.finalCheck = true;
                     tileManger.talkManger.FinalTalk();
+                    tileManger.talkManger.stopTalkNum = 3;
+                    tileManger.talkManger.talkCheck = true;
                     Destroy(enemy.gameObject);
                 }
                 else

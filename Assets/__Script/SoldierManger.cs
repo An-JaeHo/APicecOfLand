@@ -54,7 +54,6 @@ public class SoldierManger : MonoBehaviour
         directionCheck = true;
 
         ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
-        totalHp = soldier.HelthPoint;
         stayTime = 0;
         move = false;
         movePoint = true;
@@ -81,6 +80,7 @@ public class SoldierManger : MonoBehaviour
                 input.armyMove = true;
                 stayTime = 0;
                 buttonManger.button.GetComponent<Button>().interactable = true;
+
                 if (transform.tag == "Builder")
                 {
                     transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
@@ -159,7 +159,6 @@ public class SoldierManger : MonoBehaviour
                 directionCheck = false;
                 transform.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
             }
-
 
             float randnum = Random.Range(0.8f, 1.2f);
             float randCritical = Random.Range(0.7f, 1.1f);
@@ -284,35 +283,33 @@ public class SoldierManger : MonoBehaviour
         }
     }
 
-    public void CheckBuildCount()
-    {
-        if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
-            && transform.parent.GetComponent<MakeArea>().firstBuild == true)
-        {
-            movePoint = false;
-            builderPoint++;
-        }
-        else
-        {
-            movePoint = true;
-            if (transform.parent.tag == "Area" || transform.parent.tag == "Barracks")
-            {
-                transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
-            }
-            else
-            {
-                transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
-            }
+    //public void CheckBuildCount()
+    //{
+    //    if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
+    //        && transform.parent.GetComponent<MakeArea>().firstBuild == true)
+    //    {
+    //        movePoint = false;
+    //        builderPoint++;
+    //    }
+    //    else
+    //    {
+    //        movePoint = true;
+    //        if (transform.parent.tag == "Area" || transform.parent.tag == "Barracks")
+    //        {
+    //            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
+    //        }
+    //        else
+    //        {
+    //            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
+    //        }
 
-            transform.parent.GetComponent<MakeArea>().Destroy = false;
-            transform.parent.GetComponent<MakeArea>().firstBuild = false;
-            transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
+    //        transform.parent.GetComponent<MakeArea>().Destroy = false;
+    //        transform.parent.GetComponent<MakeArea>().firstBuild = false;
+    //        transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
 
-            builderPoint = 0;
-        }
-
-        
-    }
+    //        builderPoint = 0;
+    //    }
+    //}
 
     public void MakeBuffIcon(string code)
     {

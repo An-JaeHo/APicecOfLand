@@ -78,6 +78,9 @@ public class TutorialBarrackController : MonoBehaviour
             supplyManger.UpdateSupply();
             barrackMonsterSprite.gameObject.SetActive(false);
             gameObject.SetActive(false);
+            inputManger.talkManger.MoveTalk();
+            inputManger.talkManger.talkCheck = true;
+            inputManger.talkManger.stopTalkNum = 1;
             inputManger.ChangeLandInfo();
         }
 

@@ -97,7 +97,7 @@ public class TutorialButtonManger : MonoBehaviour
             barrackWindow.GetComponent<BarrackController>().barrackMonsterSprite.gameObject.SetActive(false);
         }
     }
-
+    
     public void SettingButton()
     {
         if (settingUi.activeSelf)
