@@ -116,6 +116,7 @@ public class InputManger : MonoBehaviour
                             bulidUi.GetComponent<BuildController>().land = hit.transform;
                             bulidUi.GetComponent<BuildController>().CreateWindow();
                             break;
+
                         case "Area":
                             if (hit.transform.GetComponent<MakeArea>().Name == "우유")
                             {

@@ -35,7 +35,7 @@ public class TileManger : MonoBehaviour
     public int hight;
     public int tileCount;
     public Color color;
-    private ButtonManger buttonManger;
+    public ButtonManger buttonManger;
     private PlayerInfo playerInfo;
     private SupplyManger supplyManger;
     List<GameObject> list;

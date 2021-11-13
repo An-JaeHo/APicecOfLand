@@ -9,7 +9,7 @@ public class AnimationController : MonoBehaviour
         if (transform.parent.parent.tag == "Army")
         {
             transform.parent.parent.GetComponent<SoldierManger>().input.BarrackUi.GetComponent<BarrackController>().usingPeople--;
-            transform.parent.parent.GetComponent<SoldierManger>().input.BarrackUi.GetComponent<BarrackController>().supplyManger.updateFood += transform.parent.parent.GetComponent<SoldierManger>().soldier.ConsumeFood;
+            transform.parent.parent.GetComponent<SoldierManger>().input.BarrackUi.GetComponent<BarrackController>().supplyManger.playerInfo.updateMilk += transform.parent.parent.GetComponent<SoldierManger>().soldier.ConsumeFood;
             transform.parent.parent.GetComponent<SoldierManger>().input.BarrackUi.GetComponent<BarrackController>().supplyManger.JustUpdateSupply();
             Destroy(transform.parent.parent.gameObject);
         }

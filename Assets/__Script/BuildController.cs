@@ -22,6 +22,13 @@ public class BuildController : MonoBehaviour
     public int futurePoint;
     public Transform upgradeLand;
 
+    //아이콘
+    public Sprite milkUI;
+    public Sprite flourUI;
+    public Sprite sugarUI;
+    public Sprite mosterUI;
+    public Sprite peopleUI;
+
 
     void Start()
     {
