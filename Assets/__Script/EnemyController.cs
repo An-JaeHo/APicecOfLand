@@ -61,6 +61,7 @@ public class EnemyController : MonoBehaviour
 
     public bool move;
     Vector3 targetPostion;
+
     void Start()
     {
         bottomLeft.x = -150;
@@ -77,7 +78,6 @@ public class EnemyController : MonoBehaviour
         findArmy = false;
         first = true;
         move = false;
-
 
         //HpBarScale();
         movePoint = true;
@@ -119,10 +119,10 @@ public class EnemyController : MonoBehaviour
     {
         if (movePoint)
         {
-            parentTile = transform.parent;
             tiles = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
-            int myName = int.Parse(transform.parent.parent.name);
             rangeManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<RangeManger>();
+            parentTile = transform.parent;
+            int myName = int.Parse(transform.parent.parent.name);
 
             if (parentTile)
             {
@@ -191,10 +191,6 @@ public class EnemyController : MonoBehaviour
 
                     ani.SetBool("Move", true);
                     move = true;
-                }
-                else
-                {
-
                 }
                 rangeTiles.Clear();
             }

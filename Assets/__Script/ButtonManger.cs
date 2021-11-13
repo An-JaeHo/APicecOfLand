@@ -31,7 +31,7 @@ public class ButtonManger : MonoBehaviour
     
 
     // 야만인 타일용
-    private TileManger tileManger;
+    public TileManger tileManger;
     private List<GameObject> enemyTiles;
     public List<GameObject> enemys;
     private GameObject enemyTileWls;
@@ -366,6 +366,7 @@ public class ButtonManger : MonoBehaviour
         }
 
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
+        panel.baseLand.GetComponent<BoxCollider2D>().enabled = false;
         supplyManger.UpdateSupply();
         panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
         input.mouseCheck = true;
@@ -375,29 +376,29 @@ public class ButtonManger : MonoBehaviour
 
     public void CheckBuildCount()
     {
-        foreach (var tile in tiles)
+        for (int i = 0; i < tiles.Count; i++)
         {
-            if(tile.GetComponent<MakeArea>().BuildTurn != tile.GetComponent<AreaManger>().buildTurn
-                && tile.GetComponent<MakeArea>().firstBuild == true)
+            tiles[i].GetComponent<AreaManger>().buildTurn++;
+
+            if (tiles[i].GetComponent<MakeArea>().BuildTurn == tiles[i].GetComponent<AreaManger>().buildTurn
+                 && tiles[i].GetComponent<MakeArea>().firstBuild == true)
             {
-                tile.GetComponent<AreaManger>().buildTurn++;
-            }
-            else
-            {
-                if(tile.tag == "Area" || tile.tag == "Barracks")
+                if (tiles[i].GetComponent<MakeArea>().Type == "Area")
                 {
-                    tile.GetComponent<SpriteRenderer>().sprite = tile.GetComponent<MakeArea>().Picture;
+                    tiles[i].GetComponent<SpriteRenderer>().sprite = tiles[i].GetComponent<MakeArea>().Picture;
                 }
                 else
                 {
-                    tile.GetComponent<SpriteRenderer>().sprite = tile.GetComponent<AreaManger>().pureSprite;
+                    tiles[i].GetComponent<SpriteRenderer>().sprite = tiles[i].GetComponent<AreaManger>().pureSprite;
                 }
 
-                tile.GetComponent<MakeArea>().Destroy = false;
-                tile.GetComponent<MakeArea>().firstBuild = false;
-                tile.GetComponent<AreaManger>().CheckUpdateMaterial();
-                tile.GetComponent<AreaManger>().buildTurn = 0;
+                tiles[i].GetComponent<MakeArea>().Destroy = false;
+                tiles[i].GetComponent<MakeArea>().firstBuild = false;
+                tiles[i].GetComponent<AreaManger>().CheckUpdateMaterial();
+                tiles[i].GetComponent<BoxCollider2D>().enabled = true;
+                tiles[i].GetComponent<AreaManger>().buildTurn = 0;
             }
+
         }
     }
 
@@ -484,9 +485,6 @@ public class ButtonManger : MonoBehaviour
                     break;
             }
 
-            UpgradeLand.GetComponent<MakeArea>().firstBuild = true;
-            
-
             for (int i = 0; i < rangeManger.rangeList.Count; i++)
             {
                 rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
@@ -501,7 +499,11 @@ public class ButtonManger : MonoBehaviour
                 }
             }
 
+            UpgradeLand.GetComponent<MakeArea>().firstBuild = true;
             UpgradeLand.GetComponent<AreaManger>().CheckUpdateMaterial();
+            UpgradeLand.GetComponent<BoxCollider2D>().enabled = false;
+            UpgradeLand.GetComponent<MakeArea>().BuildTurn = 1;
+            UpgradeLand.GetComponent<AreaManger>().buildTurn = 0;
             supplyManger.JustUpdateSupply();
             input.mouseCheck = true;
             bulidUpgradeUi.SetActive(false);
@@ -612,8 +614,6 @@ public class ButtonManger : MonoBehaviour
                 turnSkill.Clear();
             }
 
-
-
             amrys[i].GetComponent<SoldierManger>().movePoint = true;
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
@@ -623,15 +623,13 @@ public class ButtonManger : MonoBehaviour
         input.mouseCheck = true;
         timer.limitTime = 60;
         timer.timerCheck = true;
+        supplyManger.JustUpdateSupply();
         yield return null;
     }
 
     public void TurnEnd()
     {
         playerInfo.turnPoint++;
-        playerInfo.milk += playerInfo.updateMilk;
-        playerInfo.flour += playerInfo.updateFlour;
-        playerInfo.sugar += playerInfo.updateSugar;
         input.mouseCheck = false;
         buttonTimer = 0;
 

@@ -77,6 +77,7 @@ public class BarrackController : MonoBehaviour
             usingPeople++;
             supplyManger.UpdateSupply();
             barrackMonsterSprite.gameObject.SetActive(false);
+            inputManger.Land.CheckTile();
             gameObject.SetActive(false);
         }
         inputManger.mouseCheck = true;
