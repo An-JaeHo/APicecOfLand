@@ -95,7 +95,6 @@ public class SoldierManger : MonoBehaviour
                     transform.parent.GetComponent<AreaManger>().TurnArea();
                     transform.parent.GetComponent<MakeArea>().Name = "Grass";
                 }
-
                 move = false;
             }
         }
