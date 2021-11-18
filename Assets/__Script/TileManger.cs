@@ -23,7 +23,6 @@ public class TileManger : MonoBehaviour
     //알람용 UI
     public GameObject attackAlarm;
     public GameObject defendAlarm;
-    public GameObject sirenAlarm;
 
     //타일체크용
     private int attackTurn;
@@ -195,7 +194,6 @@ public class TileManger : MonoBehaviour
             {
                 attackAlarm.SetActive(false);
                 defendAlarm.SetActive(false);
-                sirenAlarm.SetActive(false);
                 alarmCheck = false;
                 timer = 0;
             }
@@ -441,7 +439,6 @@ public class TileManger : MonoBehaviour
         {
             if (attackTurnCheck)
             {
-                sirenAlarm.SetActive(true);
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
                 for (int i = 0; i < attackTurn; i++)
@@ -468,7 +465,6 @@ public class TileManger : MonoBehaviour
         {
             if (attackTurnCheck)
             {
-                sirenAlarm.SetActive(true);
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
                 for (int i = 0; i < attackTurn; i++)
@@ -495,7 +491,6 @@ public class TileManger : MonoBehaviour
         {
             if (attackTurnCheck)
             {
-                sirenAlarm.SetActive(true);
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
                 for (int i = 0; i < attackTurn; i++)
@@ -522,159 +517,6 @@ public class TileManger : MonoBehaviour
         {
             attackTurnCheck = true;
         }
-
-        //if (playerInfo.turnPoint % 4 == 0 && playerInfo.turnPoint >= 5)
-        //{
-        //    //if(playerInfo.turnPoint == 20)
-        //    //{
-        //    //    bossHP.SetActive(true);
-        //    //    bossText.SetActive(true);
-
-        //    //    GameObject boss = Instantiate(bossPrefeb, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
-        //    //    boss.transform.SetParent(noChildLand[rand].GetChild(0));
-        //    //    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
-        //    //    boss.GetComponent<GDController>().MakeGD("Boss 1");
-
-        //    //    for (int i = 0; i < bossObj.Length; i++)
-        //    //    {
-        //    //        if (bossObj[i].name == boss.GetComponent<GDController>().Code)
-        //    //        {
-        //    //            GameObject enemyPicture = Instantiate(bossObj[i], new Vector3(boss.transform.position.x, boss.transform.position.y - 55), Quaternion.identity);
-        //    //            enemyPicture.transform.SetParent(boss.transform);
-        //    //        }
-        //    //    }
-        //    //    enemyLand.Add(noChildLand[rand].GetChild(0));
-
-        //    //    noChildLand.Remove(noChildLand[rand]);
-        //    //    rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-        //    //    buttonManger.enemys.Add(boss);
-        //    //}
-
-        //    //GameObject enemy = Instantiate(enemyPrefab, new Vector3(noChildLand[rand].GetChild(0).position.x, noChildLand[rand].GetChild(0).position.y + 25f), Quaternion.identity);
-        //    //enemy.transform.SetParent(noChildLand[rand].GetChild(0));
-
-        //    // 8 15 30 50 70 100 120
-        //    if (playerInfo.turnPoint < 30)
-        //    {
-        //        noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
-        //        //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
-        //    }
-        //    else if (playerInfo.turnPoint < 50)
-        //    {
-        //        if (enemyRandRand > 50)
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
-        //            //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
-        //        }
-        //        else
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
-        //            //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
-        //        }
-        //    }
-        //    else if (playerInfo.turnPoint < 70)
-        //    {
-        //        if (enemyRandRand < 80)
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
-        //            //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
-        //        }
-        //        else
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
-
-        //            int enemyrand = UnityEngine.Random.Range(0, 100);
-
-        //            if(enemyrand > 90)
-        //            {
-        //                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
-        //            }
-        //            else
-        //            {
-        //                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
-        //            }
-
-        //        }
-        //    }
-        //    else if (playerInfo.turnPoint < 100)
-        //    {
-        //        if (enemyRandRand > 50)
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
-        //            //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
-        //        }
-        //        else
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
-        //            int enemyrand = UnityEngine.Random.Range(0, 100);
-
-        //            if (enemyrand > 90)
-        //            {
-        //                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
-        //            }
-        //            else
-        //            {
-        //                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
-        //            }
-        //        }
-        //    }
-        //    else if (playerInfo.turnPoint < 120)
-        //    {
-        //        if (enemyRandRand > 50)
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
-        //            //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
-        //        }
-        //        else
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
-        //            int enemyrand = UnityEngine.Random.Range(0, 100);
-
-        //            if(enemyrand > 90)
-        //            {
-        //                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
-        //            }
-        //            else
-        //            {
-        //                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (enemyRandRand > 80)
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
-        //            //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
-        //        }
-        //        else
-        //        {
-        //            noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 32");
-        //            int enemyrand = UnityEngine.Random.Range(0, 100);
-
-        //            if (enemyrand > 90)
-        //            {
-        //                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
-        //            }
-        //            else
-        //            {
-        //                //enemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
-        //            }
-        //        }
-        //    }
-
-        //    //for (int i = 0; i < enemyObj.Length; i++)
-        //    //{
-        //    //    if (enemyObj[i].name == enemy.GetComponent<MakeEnemy>().Code)
-        //    //    {
-        //    //        GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x, enemy.transform.position.y - 55), Quaternion.identity);
-        //    //        enemyPicture.transform.SetParent(enemy.transform);
-        //    //    }
-        //    //}
-        //    //LevelCheck(enemy);
-        //    //buttonManger.enemys.Add(enemy);
-        //    enemyLand.Add(noChildLand[rand].GetChild(0));
-        //}
     }
 
     public void SortGrade()
