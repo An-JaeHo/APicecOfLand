@@ -229,7 +229,7 @@ public class TileManger : MonoBehaviour
         int lengthLand = 0;
 
         //5x5
-        if (playerInfo.turnPoint == 5)
+        if (playerInfo.turnPoint == 4)
         {
             enemyMakeLand.Clear();
             startNum = 109;
@@ -406,10 +406,11 @@ public class TileManger : MonoBehaviour
         }
 
         //디펜스
-        if (playerInfo.turnPoint == 10)
+        if (playerInfo.turnPoint == 11)
         {
             alarmCheck = true;
             defendAlarm.SetActive(true);
+
             if (enemyLand.Count != 0)
             {
                 SceneMgr.GoGameEndScene();
@@ -419,15 +420,37 @@ public class TileManger : MonoBehaviour
         {
             alarmCheck = true;
             defendAlarm.SetActive(true);
+
             if (enemyLand.Count != 0)
             {
                 SceneMgr.GoGameEndScene();
             }
         }
-        else if (playerInfo.turnPoint == 45)
+        else if (playerInfo.turnPoint == 41)
         {
             alarmCheck = true;
             defendAlarm.SetActive(true);
+
+            if (enemyLand.Count != 0)
+            {
+                SceneMgr.GoGameEndScene();
+            }
+        }
+        else if (playerInfo.turnPoint == 61)
+        {
+            alarmCheck = true;
+            defendAlarm.SetActive(true);
+
+            if (enemyLand.Count != 0)
+            {
+                SceneMgr.GoGameEndScene();
+            }
+        }
+        else if (playerInfo.turnPoint == 81)
+        {
+            alarmCheck = true;
+            defendAlarm.SetActive(true);
+
             if (enemyLand.Count != 0)
             {
                 SceneMgr.GoGameEndScene();
@@ -435,7 +458,39 @@ public class TileManger : MonoBehaviour
         }
 
         //어택
-        if (5 <= playerInfo.turnPoint && 10 > playerInfo.turnPoint)
+        if (4 <= playerInfo.turnPoint && 10 > playerInfo.turnPoint)
+        {
+            if (attackTurnCheck)
+            {
+                attackAlarm.SetActive(true);
+                alarmCheck = true;
+
+                for (int i = 0; i < attackTurn; i++)
+                {
+                    int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    enemyLand.Add(noChildLand[rand].GetChild(0));
+                    noChildLand.Remove(noChildLand[rand]);
+                }
+            }
+
+            if(playerInfo.turnPoint ==4)
+            {
+                EnemyGradeSort();
+            }
+            else if(playerInfo.turnPoint == 6)
+            {
+                EnemyGradeSort();
+            }
+            // 이거 맞냐?
+            //else if (playerInfo.turnPoint == 9)
+            //{
+            //    EnemyGradeSort();
+            //}
+
+            attackTurnCheck = false;
+        }
+        else if (13 <= playerInfo.turnPoint && 25 > playerInfo.turnPoint)
         {
             if (attackTurnCheck)
             {
@@ -450,18 +505,18 @@ public class TileManger : MonoBehaviour
                 }
             }
 
-            if(playerInfo.turnPoint ==5)
+            if (playerInfo.turnPoint == 13)
             {
                 EnemyGradeSort();
             }
-            else if(playerInfo.turnPoint == 7)
+            else if (playerInfo.turnPoint == 15)
             {
                 EnemyGradeSort();
             }
 
             attackTurnCheck = false;
         }
-        else if (15 <= playerInfo.turnPoint && 25 > playerInfo.turnPoint)
+        else if (27 <= playerInfo.turnPoint && 41 > playerInfo.turnPoint)
         {
             if (attackTurnCheck)
             {
@@ -476,18 +531,18 @@ public class TileManger : MonoBehaviour
                 }
             }
 
-            if (playerInfo.turnPoint == 15)
+            if (playerInfo.turnPoint == 27)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 17)
+            else if (playerInfo.turnPoint == 29)
             {
                 EnemyGradeSort();
             }
 
             attackTurnCheck = false;
         }
-        else if (30 <= playerInfo.turnPoint && 45 > playerInfo.turnPoint)
+        else if (43 <= playerInfo.turnPoint && 61 > playerInfo.turnPoint)
         {
             if (attackTurnCheck)
             {
@@ -502,11 +557,63 @@ public class TileManger : MonoBehaviour
                 }
             }
 
-            if (playerInfo.turnPoint == 30)
+            if (playerInfo.turnPoint == 43)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 32)
+            else if (playerInfo.turnPoint == 45)
+            {
+                EnemyGradeSort();
+            }
+
+            attackTurnCheck = false;
+        }
+        else if (63 <= playerInfo.turnPoint && 81 > playerInfo.turnPoint)
+        {
+            if (attackTurnCheck)
+            {
+                attackAlarm.SetActive(true);
+                alarmCheck = true;
+                for (int i = 0; i < attackTurn; i++)
+                {
+                    int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    enemyLand.Add(noChildLand[rand].GetChild(0));
+                    noChildLand.Remove(noChildLand[rand]);
+                }
+            }
+
+            if (playerInfo.turnPoint == 63)
+            {
+                EnemyGradeSort();
+            }
+            else if (playerInfo.turnPoint == 65)
+            {
+                EnemyGradeSort();
+            }
+
+            attackTurnCheck = false;
+        }
+        else if (83 <= playerInfo.turnPoint && 101 > playerInfo.turnPoint)
+        {
+            if (attackTurnCheck)
+            {
+                attackAlarm.SetActive(true);
+                alarmCheck = true;
+                for (int i = 0; i < attackTurn; i++)
+                {
+                    int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    enemyLand.Add(noChildLand[rand].GetChild(0));
+                    noChildLand.Remove(noChildLand[rand]);
+                }
+            }
+
+            if (playerInfo.turnPoint == 83)
+            {
+                EnemyGradeSort();
+            }
+            else if (playerInfo.turnPoint == 85)
             {
                 EnemyGradeSort();
             }
