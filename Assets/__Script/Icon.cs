@@ -70,6 +70,15 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 card.carInfo = skill.Picture;
                 card.FindCard(skill.Code);
                 gameObject.SetActive(false);
+
+                //임시 태스트용
+                if(inputManger.hitObj.tag == "Army")
+                {
+                    inputManger.hitObj.transform.GetChild(2).GetChild(0).GetChild(1).GetComponent<SpriteRenderer>().sprite = card.carInfo;
+                    inputManger.hitObj.transform.GetChild(2).gameObject.SetActive(true);
+                }
+
+
             }
             else
             {
