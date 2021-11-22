@@ -75,25 +75,25 @@ public class MakeArea : AreaInfo
                 if(areaInfo.information.area[i].Code == "Area 17" || areaInfo.information.area[i].Code == "Area 18" || areaInfo.information.area[i].Code == "Area 19")
                 {
                     transform.tag = "Barracks";
-                    Destroy = true;
+                    Destroy = false;
                 }
                 else if(areaInfo.information.area[i].Code == "Area 30" || areaInfo.information.area[i].Code == "Area 31" || areaInfo.information.area[i].Code == "Area 32")
                 {
                     transform.tag = "Enemy Base";
-                    firstBuild = false;
+                    //firstBuild = false;
                 }
                 else
                 {
                     transform.tag = "Area";
-                    Destroy = true;
+                    //Destroy = true;
                 }
                 
             }
         }
 
-        if(Destroy == true)
-        {
-            areaInfoImage.sprite = readyBuild;
-        }
+        //if(Destroy == true)
+        //{
+        //    areaInfoImage.sprite = readyBuild;
+        //}
     }
 }

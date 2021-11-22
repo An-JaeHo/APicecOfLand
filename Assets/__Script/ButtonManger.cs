@@ -365,8 +365,8 @@ public class ButtonManger : MonoBehaviour
             
         }
 
+        //panel.baseLand.GetComponent<BoxCollider2D>().enabled = false;
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
-        panel.baseLand.GetComponent<BoxCollider2D>().enabled = false;
         supplyManger.UpdateSupply();
         panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
         input.mouseCheck = true;
@@ -374,33 +374,33 @@ public class ButtonManger : MonoBehaviour
         tiles.Add(panel.baseLand);
     }
 
-    public void CheckBuildCount()
-    {
-        for (int i = 0; i < tiles.Count; i++)
-        {
-            tiles[i].GetComponent<AreaManger>().buildTurn++;
+    //public void CheckBuildCount()
+    //{
+    //    for (int i = 0; i < tiles.Count; i++)
+    //    {
+    //        tiles[i].GetComponent<AreaManger>().buildTurn++;
 
-            if (tiles[i].GetComponent<MakeArea>().BuildTurn == tiles[i].GetComponent<AreaManger>().buildTurn
-                 && tiles[i].GetComponent<MakeArea>().firstBuild == true)
-            {
-                if (tiles[i].GetComponent<MakeArea>().Type == "Area")
-                {
-                    tiles[i].GetComponent<SpriteRenderer>().sprite = tiles[i].GetComponent<MakeArea>().Picture;
-                }
-                else
-                {
-                    tiles[i].GetComponent<SpriteRenderer>().sprite = tiles[i].GetComponent<AreaManger>().pureSprite;
-                }
+    //        if (tiles[i].GetComponent<MakeArea>().BuildTurn == tiles[i].GetComponent<AreaManger>().buildTurn
+    //             && tiles[i].GetComponent<MakeArea>().firstBuild == true)
+    //        {
+    //            if (tiles[i].GetComponent<MakeArea>().Type == "Area")
+    //            {
+    //                tiles[i].GetComponent<SpriteRenderer>().sprite = tiles[i].GetComponent<MakeArea>().Picture;
+    //            }
+    //            else
+    //            {
+    //                tiles[i].GetComponent<SpriteRenderer>().sprite = tiles[i].GetComponent<AreaManger>().pureSprite;
+    //            }
 
-                tiles[i].GetComponent<MakeArea>().Destroy = false;
-                tiles[i].GetComponent<MakeArea>().firstBuild = false;
-                tiles[i].GetComponent<AreaManger>().CheckUpdateMaterial();
-                tiles[i].GetComponent<BoxCollider2D>().enabled = true;
-                tiles[i].GetComponent<AreaManger>().buildTurn = 0;
-            }
+    //            tiles[i].GetComponent<MakeArea>().Destroy = false;
+    //            tiles[i].GetComponent<MakeArea>().firstBuild = false;
+    //            tiles[i].GetComponent<AreaManger>().CheckUpdateMaterial();
+    //            tiles[i].GetComponent<BoxCollider2D>().enabled = true;
+    //            tiles[i].GetComponent<AreaManger>().buildTurn = 0;
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
     public void CheckUpgradeResources()
     {
@@ -499,11 +499,13 @@ public class ButtonManger : MonoBehaviour
                 }
             }
 
-            UpgradeLand.GetComponent<MakeArea>().firstBuild = true;
+            //건설턴 유보
+            //UpgradeLand.GetComponent<MakeArea>().firstBuild = true;
+            //UpgradeLand.GetComponent<BoxCollider2D>().enabled = false;
+            //UpgradeLand.GetComponent<MakeArea>().BuildTurn = 1;
+            //UpgradeLand.GetComponent<AreaManger>().buildTurn = 0;
+
             UpgradeLand.GetComponent<AreaManger>().CheckUpdateMaterial();
-            UpgradeLand.GetComponent<BoxCollider2D>().enabled = false;
-            UpgradeLand.GetComponent<MakeArea>().BuildTurn = 1;
-            UpgradeLand.GetComponent<AreaManger>().buildTurn = 0;
             supplyManger.JustUpdateSupply();
             input.mouseCheck = true;
             bulidUpgradeUi.SetActive(false);
@@ -642,7 +644,7 @@ public class ButtonManger : MonoBehaviour
 
         if(tiles.Count !=0)
         {
-            CheckBuildCount();
+            //CheckBuildCount();
         }
 
         StartCoroutine(moveEnemy());

@@ -44,6 +44,7 @@ public class SoldierManger : MonoBehaviour
     public Sprite level3;
     public Sprite level4;
     public Sprite level5;
+    public GameObject cardImpactPrefeb;
 
     void Start()
     {
@@ -281,34 +282,6 @@ public class SoldierManger : MonoBehaviour
             LevelUpCheck();
         }
     }
-
-    //public void CheckBuildCount()
-    //{
-    //    if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
-    //        && transform.parent.GetComponent<MakeArea>().firstBuild == true)
-    //    {
-    //        movePoint = false;
-    //        builderPoint++;
-    //    }
-    //    else
-    //    {
-    //        movePoint = true;
-    //        if (transform.parent.tag == "Area" || transform.parent.tag == "Barracks")
-    //        {
-    //            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
-    //        }
-    //        else
-    //        {
-    //            transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
-    //        }
-
-    //        transform.parent.GetComponent<MakeArea>().Destroy = false;
-    //        transform.parent.GetComponent<MakeArea>().firstBuild = false;
-    //        transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
-
-    //        builderPoint = 0;
-    //    }
-    //}
 
     public void MakeBuffIcon(string code)
     {

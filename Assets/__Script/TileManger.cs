@@ -350,6 +350,7 @@ public class TileManger : MonoBehaviour
                 {
                     GameObject noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyLand[i].position.x, enemyLand[i].position.y + 25f), Quaternion.identity);
                     noChildEnemy.transform.SetParent(enemyLand[i]);
+                    int enemyrand = UnityEngine.Random.Range(0, 100);
 
                     switch (enemyLand[i].GetComponent<MakeArea>().Grade)
                     {
@@ -357,12 +358,20 @@ public class TileManger : MonoBehaviour
                             noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
                             break;
                         case 2:
-                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                            if (enemyrand < 35)
+                            {
+                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
+                            }
+                            else if(enemyrand < 65)
+                            {
+                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                            }
+                            else
+                            {
+
+                            }
                             break;
                         case 3:
-
-                            int enemyrand = UnityEngine.Random.Range(0, 100);
-
                             if (enemyrand > 90)
                             {
                                 noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
@@ -478,15 +487,6 @@ public class TileManger : MonoBehaviour
             {
                 EnemyGradeSort();
             }
-            else if(playerInfo.turnPoint == 6)
-            {
-                EnemyGradeSort();
-            }
-            // 이거 맞냐?
-            //else if (playerInfo.turnPoint == 9)
-            //{
-            //    EnemyGradeSort();
-            //}
 
             attackTurnCheck = false;
         }
@@ -539,6 +539,10 @@ public class TileManger : MonoBehaviour
             {
                 EnemyGradeSort();
             }
+            else if (playerInfo.turnPoint == 31)
+            {
+                EnemyGradeSort();
+            }
 
             attackTurnCheck = false;
         }
@@ -551,7 +555,7 @@ public class TileManger : MonoBehaviour
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
@@ -562,6 +566,10 @@ public class TileManger : MonoBehaviour
                 EnemyGradeSort();
             }
             else if (playerInfo.turnPoint == 45)
+            {
+                EnemyGradeSort();
+            }
+            else if (playerInfo.turnPoint == 47)
             {
                 EnemyGradeSort();
             }
@@ -577,7 +585,7 @@ public class TileManger : MonoBehaviour
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
@@ -588,6 +596,10 @@ public class TileManger : MonoBehaviour
                 EnemyGradeSort();
             }
             else if (playerInfo.turnPoint == 65)
+            {
+                EnemyGradeSort();
+            }
+            else if (playerInfo.turnPoint == 67)
             {
                 EnemyGradeSort();
             }
@@ -603,7 +615,7 @@ public class TileManger : MonoBehaviour
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
@@ -614,6 +626,10 @@ public class TileManger : MonoBehaviour
                 EnemyGradeSort();
             }
             else if (playerInfo.turnPoint == 85)
+            {
+                EnemyGradeSort();
+            }
+            else if (playerInfo.turnPoint == 87)
             {
                 EnemyGradeSort();
             }
