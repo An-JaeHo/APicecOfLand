@@ -35,12 +35,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 1")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(-6, 0);
+                    monster.transform.position = new Vector3(-7f, -2.5f);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveCherryLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -49,12 +49,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 2")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(-6, 0);
+                    monster.transform.position = new Vector3(-7f, -2.5f);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveCherryLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -63,12 +63,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 3")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(-6, 0);
+                    monster.transform.position = new Vector3(-7f, -2.5f);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveCherryLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -78,12 +78,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 4")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(-1, 0);
+                    monster.transform.position = new Vector3(-1, -2.5f);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveCandyLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -92,12 +92,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 5")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(-1, 0);
+                    monster.transform.position = new Vector3(-1, -2.5f);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveCandyLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -106,12 +106,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 6")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(-1,0);
+                    monster.transform.position = new Vector3(-1, -2.5f);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveCandyLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -121,12 +121,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 7")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(4, 0);
+                    monster.transform.position = new Vector3(4, -2.5f);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveSkittlesLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -135,12 +135,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 8")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(4, 0);
+                    monster.transform.position = new Vector3(4, -2.5f);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveSkittlesLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -149,12 +149,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 9")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(4, 0);
+                    monster.transform.position = new Vector3(4, -2.5f);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveSkittlesLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -164,12 +164,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 10")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(-3.5f, 0);
+                    monster.transform.position = new Vector3(-4f, 0);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveDonutsLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -178,12 +178,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 11")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(-3.5f, 0);
+                    monster.transform.position = new Vector3(-4f, 0);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveDonutsLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -192,12 +192,12 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 if (MonsterObj[i].name == "Mon 12")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
-                    monster.transform.position = new Vector3(-3.5f, 0);
+                    monster.transform.position = new Vector3(-4f, 0);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveDonutsLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -212,7 +212,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
                     LevelCheck(monster, saveMgr.playerSave.SaveSchneeballenLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -226,7 +226,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
                     LevelCheck(monster, saveMgr.playerSave.SaveSchneeballenLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -240,22 +240,22 @@ public class UpGradeMonsterInfo : MonoBehaviour
                     LevelCheck(monster, saveMgr.playerSave.SaveSchneeballenLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
 
             if (saveMgr.playerSave.SaveChocoGrade == 1)
             {
-                if(MonsterObj[i].name == "Mon 16")
+                if (MonsterObj[i].name == "Mon 16")
                 {
                     GameObject monster = Instantiate(upGradeMonsterPrefeb, transform);
                     monster.transform.position = new Vector3(6.5f, 0);
                     monster.GetComponent<MakeSoldier>().SuperMagic(MonsterObj[i].name);
                     LevelCheck(monster, saveMgr.playerSave.SaveChocoLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
-                    schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position .y- 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -269,7 +269,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
                     LevelCheck(monster, saveMgr.playerSave.SaveChocoLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }
@@ -283,7 +283,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
                     LevelCheck(monster, saveMgr.playerSave.SaveChocoLevel);
                     GameObject schneeballen = Instantiate(MonsterObj[i], monster.transform);
                     schneeballen.transform.position = new Vector3(schneeballen.transform.position.x, schneeballen.transform.position.y - 0.3f);
-                    schneeballen.transform.localScale = new Vector3(0.4f, 0.4f);
+                    schneeballen.transform.localScale = new Vector3(0.5f, 0.5f);
                     schneeballen.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
                 }
             }

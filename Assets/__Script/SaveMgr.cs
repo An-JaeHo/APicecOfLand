@@ -100,10 +100,12 @@ public class SaveMgr : GenericSingletonClass<SaveMgr>
         {
             string loadFile = File.ReadAllText(fonlderPath + "/save.txt");
             playerSave = JsonUtility.FromJson<Save>(loadFile);
-            player.playerMilk = playerSave.milk;
-            player.playerSugar = playerSave.sugar;
-            player.playerFlour = playerSave.flour;
+           
         }
+
+        player.playerMilk = playerSave.milk;
+        player.playerSugar = playerSave.sugar;
+        player.playerFlour = playerSave.flour;
     }
 
     public void DeleteSave()
