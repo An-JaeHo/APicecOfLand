@@ -13,6 +13,7 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public CardList card;
     public GameObject skillInven;
     public InvenManger invenManger;
+    public GameObject cardImpactObj;
     private bool armyCheck;
     private bool deleteCheck;
 
@@ -68,17 +69,13 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             if (inputManger.hitObj.tag == skill.Type)
             {
                 card.carInfo = skill.Picture;
-                card.FindCard(skill.Code);
+                GameObject cardImpact = Instantiate(cardImpactObj, inputManger.hitObj);
+                cardImpact.transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>().sprite = card.carInfo;
+                cardImpact.transform.localPosition = new Vector3(-0.7f, 0);
+                cardImpact.transform.localScale = new Vector3(0.5f, 0.5f);
+                cardImpact.SetActive(true);
                 gameObject.SetActive(false);
-
-                //임시 태스트용
-                if(inputManger.hitObj.tag == "Army")
-                {
-                    inputManger.hitObj.transform.GetChild(2).GetChild(0).GetChild(1).GetComponent<SpriteRenderer>().sprite = card.carInfo;
-                    inputManger.hitObj.transform.GetChild(2).gameObject.SetActive(true);
-                }
-
-
+                card.FindCard(skill.Code);
             }
             else
             {

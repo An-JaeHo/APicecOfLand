@@ -79,9 +79,6 @@ public class MakeSoldier : SoldierInfo
                 pureAttack = TroopInfo.information.monster[i].BaseAttack;
                 pureDefensive = TroopInfo.information.monster[i].Defensive;
                 pureRange = TroopInfo.information.monster[i].AttackRange;
-
-                Debug.Log(TroopInfo.information.monster[i].Critical);
-                Debug.Log(TroopInfo.information.monster[i].RiseCritical);
             }
         }
 

@@ -44,7 +44,6 @@ public class SoldierManger : MonoBehaviour
     public Sprite level3;
     public Sprite level4;
     public Sprite level5;
-    public GameObject cardImpactPrefeb;
 
     void Start()
     {

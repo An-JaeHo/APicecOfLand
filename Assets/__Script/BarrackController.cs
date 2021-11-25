@@ -69,11 +69,6 @@ public class BarrackController : MonoBehaviour
                 {
                     GameObject monsterPicture = Instantiate(MonsterObj[i], new Vector3(prefebSoldier.transform.position.x, prefebSoldier.transform.position.y - 55), Quaternion.identity);
                     monsterPicture.transform.SetParent(prefebSoldier.transform);
-
-                    GameObject cardImpactPrefeb = Instantiate(prefebSoldier.GetComponent<SoldierManger>().cardImpactPrefeb, prefebSoldier.transform);
-                    cardImpactPrefeb.transform.localPosition = new Vector3(-0.7f, 0);
-                    cardImpactPrefeb.transform.localScale = new Vector3(0.5f,0.5f);
-                    cardImpactPrefeb.SetActive(false);
                 }
             }
 
