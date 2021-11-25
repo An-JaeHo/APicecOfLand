@@ -367,7 +367,8 @@ public class ButtonManger : MonoBehaviour
 
         //panel.baseLand.GetComponent<BoxCollider2D>().enabled = false;
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
-        supplyManger.UpdateSupply();
+        panel.baseLand.GetComponent<AreaManger>().CheckUpdateMaterial();
+        supplyManger.JustUpdateSupply();
         panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
         input.mouseCheck = true;
         panel.parentUi.SetActive(false);
