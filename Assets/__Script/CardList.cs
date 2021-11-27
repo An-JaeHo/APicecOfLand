@@ -16,178 +16,296 @@ public class CardList : MonoBehaviour
         switch (CardCode)
         {
             case "Card 1":
-                Card1(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().BaseAttack += 3;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 2":
-                Card2(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().BaseAttack += 5;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 3":
-                Card3(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().BaseAttack += 7;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 4":
-                Card4(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().BaseAttack += 10;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 5":
-                Card5(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Defensive += 3;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 6":
-                Card6(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Defensive += 5;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 7":
-                Card7(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Defensive += 7;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 8":
-                Card8(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Defensive += 10;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 9":
-                Card9(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 1;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 10":
-                Card10(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 1;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 11":
-                Card11(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 1;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 12":
-                Card12(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint += 500;
+
+                if (SoldierPrefeb.GetComponent<SoldierManger>().totalHp < SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint)
+                {
+                    SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint = (int)SoldierPrefeb.GetComponent<SoldierManger>().totalHp;
+                }
+
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 13":
-                Card13(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint += 1000;
+
+                if (SoldierPrefeb.GetComponent<SoldierManger>().totalHp < SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint)
+                {
+                    SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint = (int)SoldierPrefeb.GetComponent<SoldierManger>().totalHp;
+                }
+
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 14":
-                Card14(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint += 2000;
+
+                if (SoldierPrefeb.GetComponent<SoldierManger>().totalHp < SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint)
+                {
+                    SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint = (int)SoldierPrefeb.GetComponent<SoldierManger>().totalHp;
+                }
+
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 15":
-                Card15(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 1;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 16":
-                Card16(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 2;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 17":
-                Card17(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 3;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 18":
-                Card18(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<SoldierManger>().countAttack = 0.2f;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 19":
-                Card19(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<SoldierManger>().countAttack = 0.4f;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 20":
-                Card20(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<SoldierManger>().countAttack = 0.6f;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 21":
-                Card21(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<SoldierManger>().cardMovePoint = true;
                 break;
             case "Card 22":
-                Card22(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<SoldierManger>().cardMovePoint = true;
                 break;
             case "Card 23":
-                Card23(SoldierPrefeb, CardCode);
+                SoldierPrefeb.GetComponent<SoldierManger>().cardMovePoint = true;
                 break;
             case "Card 24":
-                Card24(EnemyPrefeb, CardCode);
+                if (EnemyPrefeb.tag == "Enemy")
+                {
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseDefensive -= 3;
+                }
+                else
+                {
+                    EnemyPrefeb.GetComponent<GDController>().Defensive -= 3;
+                }
                 break;
             case "Card 25":
-                Card25(EnemyPrefeb, CardCode);
+                if (EnemyPrefeb.tag == "Enemy")
+                {
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseDefensive -= 5;
+                }
+                else
+                {
+                    EnemyPrefeb.GetComponent<GDController>().Defensive -= 5;
+                }
                 break;
             case "Card 26":
-                Card26(EnemyPrefeb, CardCode);
+                if (EnemyPrefeb.tag == "Enemy")
+                {
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseDefensive -= 7;
+                }
+                else
+                {
+                    EnemyPrefeb.GetComponent<GDController>().Defensive -= 7;
+                }
                 break;
             case "Card 27":
-                Card27(EnemyPrefeb, CardCode);
+                if (EnemyPrefeb.tag == "Enemy")
+                {
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseDefensive -= 10;
+                }
+                else
+                {
+                    EnemyPrefeb.GetComponent<GDController>().Defensive -= 10;
+                }
                 break;
             case "Card 28":
-                Card28(EnemyPrefeb, CardCode);
+                if (EnemyPrefeb.tag == "Enemy")
+                {
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= 500;
+                }
+                else
+                {
+                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= 500;
+                }
                 break;
             case "Card 29":
-                Card29(EnemyPrefeb, CardCode);
+                if (EnemyPrefeb.tag == "Enemy")
+                {
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= 1000;
+                }
+                else
+                {
+                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= 1000;
+                }
                 break;
             case "Card 30":
-                Card30(EnemyPrefeb, CardCode);
+                if (EnemyPrefeb.tag == "Enemy")
+                {
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= 1500;
+                }
+                else
+                {
+                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= 1500;
+                }
                 break;
             case "Card 31":
-                Card31(EnemyPrefeb, CardCode);
+                if (EnemyPrefeb.tag == "Enemy")
+                {
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= 2000;
+                }
+                else
+                {
+                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= 2000;
+                }
                 break;
             case "Card 32":
-                Card32(EnemyPrefeb, CardCode);
+                EnemyPrefeb.GetComponent<EnemyController>().movePoint = false;
                 break;
             case "Card 33":
-                Card33(EnemyPrefeb, CardCode);
+                EnemyPrefeb.GetComponent<EnemyController>().movePoint = false;
                 break;
             case "Card 34":
-                Card34(EnemyPrefeb, CardCode);
+                EnemyPrefeb.GetComponent<EnemyController>().movePoint = false;
                 break;
             case "Card 35":
-                Card35(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.milk += 50;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 36":
-                Card36(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.milk += 100;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 37":
-                Card37(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.milk += 200;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 38":
-                Card38(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.flour += 50;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 39":
-                Card39(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.flour += 100;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 40":
-                Card40(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.flour += 200;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 41":
-                Card41(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.sugar += 50;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 42":
-                Card42(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.sugar += 100;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 43":
-                Card43(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.sugar += 200;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 44":
-                Card44(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.people += 1;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 45":
-                Card45(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.people += 2;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 46":
-                Card46(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.people += 3;
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 47":
-                Card47(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.milk += (int)(AreaPrefeb.GetComponent<AreaManger>().player.milk * 0.1f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 48":
-                Card48(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.milk += (int)(AreaPrefeb.GetComponent<AreaManger>().player.milk * 0.2f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 49":
-                Card49(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.milk += (int)(AreaPrefeb.GetComponent<AreaManger>().player.milk * 0.3f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 50":
-                Card50(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.milk += (int)(AreaPrefeb.GetComponent<AreaManger>().player.milk * 0.5f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 51":
-                Card51(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.flour += (int)(AreaPrefeb.GetComponent<AreaManger>().player.flour * 0.1f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 52":
-                Card52(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.flour += (int)(AreaPrefeb.GetComponent<AreaManger>().player.flour * 0.2f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 53":
-                Card53(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.flour += (int)(AreaPrefeb.GetComponent<AreaManger>().player.flour * 0.3f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 54":
-                Card54(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.flour += (int)(AreaPrefeb.GetComponent<AreaManger>().player.flour * 0.5f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 55":
-                Card55(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.sugar += (int)(AreaPrefeb.GetComponent<AreaManger>().player.sugar * 0.1f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 56":
-                Card56(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.sugar += (int)(AreaPrefeb.GetComponent<AreaManger>().player.sugar * 0.2f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 57":
-                Card57(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.sugar += (int)(AreaPrefeb.GetComponent<AreaManger>().player.sugar * 0.3f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
             case "Card 58":
-                Card58(AreaPrefeb, CardCode);
+                AreaPrefeb.GetComponent<AreaManger>().player.sugar += (int)(AreaPrefeb.GetComponent<AreaManger>().player.sugar * 0.5f);
+                GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
                 break;
         }
     }
