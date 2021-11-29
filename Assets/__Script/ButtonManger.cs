@@ -513,7 +513,7 @@ public class ButtonManger : MonoBehaviour
         }
     }
 
-    IEnumerator moveEnemy()
+    void moveEnemy()
     {
         List<string> turnSkill = new List<string>();
 
@@ -523,7 +523,7 @@ public class ButtonManger : MonoBehaviour
             {
                 enemys[i].GetComponent<EnemyController>().EnemyMove();
 
-                yield return new WaitForSeconds(2f);
+                //yield return new WaitForSeconds(2f);
 
                 if (enemys[i].transform.parent.tag == "Capital")
                 {
@@ -581,7 +581,8 @@ public class ButtonManger : MonoBehaviour
                 {
                     enemys[i].GetComponent<EnemyController>().gd.Defensive= enemys[i].GetComponent<EnemyController>().pureDefend;
                 }
-                
+
+                enemys[i].GetComponent<EnemyController>().movePoint = true;
                 enemys[i].GetComponent<EnemyController>().CheckBuff();
             }
         }
@@ -622,12 +623,12 @@ public class ButtonManger : MonoBehaviour
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
         }
 
-        button.GetComponent<Button>().interactable = true;
+//        button.GetComponent<Button>().interactable = true;
         input.mouseCheck = true;
         timer.limitTime = 60;
         timer.timerCheck = true;
         supplyManger.JustUpdateSupply();
-        yield return null;
+        //yield return null;
     }
 
     public void TurnEnd()
@@ -648,7 +649,8 @@ public class ButtonManger : MonoBehaviour
             //CheckBuildCount();
         }
 
-        StartCoroutine(moveEnemy());
+        //StartCoroutine(moveEnemy());
+        moveEnemy();
         rangeManger.rangeList.Clear();
         supplyManger.UpdateSupply();
         turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();

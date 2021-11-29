@@ -191,6 +191,7 @@ public class EnemyController : MonoBehaviour
 
                     ani.SetBool("Move", true);
                     move = true;
+                    
                 }
                 rangeTiles.Clear();
             }
