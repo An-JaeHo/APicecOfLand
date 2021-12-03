@@ -22,6 +22,7 @@ public class TutorialHowmuch : MonoBehaviour
         makeSoldier = GetComponent<MakeSoldier>();
         need = GameObject.Find("ArmyNeed");
         barrackController = GameObject.FindGameObjectWithTag("Barrack").GetComponent<TutorialBarrackController>();
+        barrackController.dimmedCover.SetActive(false);
         barrack = GameObject.FindGameObjectWithTag("Barrack");
         inputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialInputManger>();
 

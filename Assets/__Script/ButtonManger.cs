@@ -22,6 +22,7 @@ public class ButtonManger : MonoBehaviour
     public Timer timer;
     public float buttonTimer;
     public GameObject turnCountText;
+    public GameObject attackContText;
     public List<Transform> tiles;
 
     //타일 구매용
@@ -637,7 +638,7 @@ public class ButtonManger : MonoBehaviour
         input.mouseCheck = false;
         buttonTimer = 0;
 
-        if (playerInfo.turnPoint == 50)
+        if (playerInfo.turnPoint == 100)
         {
             int rand = Random.Range(200, 270);
             playerInfo.killingPoint = rand;
@@ -657,5 +658,15 @@ public class ButtonManger : MonoBehaviour
         tileManger.NextLand();
         tileManger.SpawnEnemy();
         tileManger.CheckTile();
+    }
+
+    void TurnCheck()
+    {
+        int num;
+        if (tileManger.attackTurn == 0)
+        {
+            num = 3;
+
+        }
     }
 }

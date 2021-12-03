@@ -53,7 +53,6 @@ public class TutorialTileManger : MonoBehaviour
             {
                 land.transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
                 HighLightObjController.HighLight(land);
-                Debug.Log(land.name);
                 GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StartHighLightObj();
             }
 

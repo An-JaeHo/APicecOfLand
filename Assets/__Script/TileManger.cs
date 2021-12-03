@@ -25,8 +25,8 @@ public class TileManger : MonoBehaviour
     public GameObject defendAlarm;
 
     //타일체크용
-    private int attackTurn;
-    private bool attackTurnCheck;
+    public int attackTurn;
+    public bool attackTurnCheck;
     private float timer;
     private bool alarmCheck;
 
@@ -229,7 +229,7 @@ public class TileManger : MonoBehaviour
         int lengthLand = 0;
 
         //5x5
-        if (playerInfo.turnPoint == 4)
+        if (playerInfo.turnPoint == 3)
         {
             enemyMakeLand.Clear();
             startNum = 109;
@@ -237,7 +237,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 5; 
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 15)
+        else if (playerInfo.turnPoint == 27)
         {
             enemyMakeLand.Clear();
             startNum = 91;
@@ -245,7 +245,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 7;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 50)
+        else if (playerInfo.turnPoint == 63)
         {
             enemyMakeLand.Clear();
             startNum = 73;
@@ -253,7 +253,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 9;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 100)
+        else if (playerInfo.turnPoint == 123)
         {
             enemyMakeLand.Clear();
             startNum = 55;
@@ -261,7 +261,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 11;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 150)
+        else if (playerInfo.turnPoint == 181)
         {
             enemyMakeLand.Clear();
             startNum = 37;
@@ -269,14 +269,14 @@ public class TileManger : MonoBehaviour
             lengthLand = 13;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 180)
-        {
-            enemyMakeLand.Clear();
-            startNum = 19;
-            maxnum = 14;
-            lengthLand = 15;
-            attackTurn++;
-        }
+        //else if (playerInfo.turnPoint == 180)
+        //{
+        //    enemyMakeLand.Clear();
+        //    startNum = 19;
+        //    maxnum = 14;
+        //    lengthLand = 15;
+        //    attackTurn++;
+        //}
 
         pureStrartnum = startNum;
 
@@ -403,7 +403,6 @@ public class TileManger : MonoBehaviour
     public void SpawnEnemy()
     {
         List<Transform> noChildLand = enemyMakeLand;
-        
         int enemyRandRand = UnityEngine.Random.Range(0, 100);
 
         for (int i=0; i< noChildLand.Count;i++)
@@ -467,7 +466,7 @@ public class TileManger : MonoBehaviour
         }
 
         //어택
-        if (4 <= playerInfo.turnPoint && 10 > playerInfo.turnPoint)
+        if (3 <= playerInfo.turnPoint && 10 > playerInfo.turnPoint)
         {
             if (attackTurnCheck)
             {
@@ -483,7 +482,7 @@ public class TileManger : MonoBehaviour
                 }
             }
 
-            if(playerInfo.turnPoint ==4)
+            if(playerInfo.turnPoint ==3)
             {
                 EnemyGradeSort();
             }

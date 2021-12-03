@@ -15,6 +15,7 @@ public class TutorialTalkManger : MonoBehaviour
     public bool sceneCheck;
     public bool talkCheck;
     public int stopTalkNum;
+    public GameObject dimmedCover;
 
     void Start()
     {
@@ -60,16 +61,13 @@ public class TutorialTalkManger : MonoBehaviour
     public void BulidTalk()
     {
         scripts.Clear();
-        textNum = 9;
+        textNum = 6;
         spcriptNum = 0;
         
         scripts.Add("잘 했어! 그럼 저기 보이는 오븐을 눌러보자");
         scripts.Add("왼쪽 창에 오븐이 나타난 것이 보이지?");
         scripts.Add("그건 오븐이 선택이 되었다는 것을 의미해");
         scripts.Add("아래쪽 건설 버튼을 눌러서 오븐을 건설하자!");
-        scripts.Add("자 이제 건물이 건설중이야");
-        scripts.Add("오른쪽 아래에 버튼을 눌러서");
-        scripts.Add("턴을 진행해 건물을 건설해 보자!");
         scripts.Add("오븐이 생성된거 같아!");
         scripts.Add("그럼이제 친구들을 만들수 있겠다 오븐을 눌러보자");
         spcriptText.text = scripts[spcriptNum];
@@ -112,7 +110,7 @@ public class TutorialTalkManger : MonoBehaviour
         scripts.Add("이런 쥐들이 와버렸어");
         scripts.Add("어서 공격해서 쫓아내버리자");
         scripts.Add("아까랑 같이 초코칩쿠키를 눌러보자");
-        scripts.Add("이번에는 색이 변했어 ");
+        scripts.Add("이번에는 색이 변했어");
         scripts.Add("이건 공격할수 있는 범위를 보여주는 거야");
         scripts.Add("어서 눌러서 쥐를 몰아내자");
         spcriptText.text = scripts[spcriptNum];

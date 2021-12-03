@@ -10,6 +10,7 @@ public class TutorialBuildController : MonoBehaviour
     public List<GameObject> lands;
     public ButtonManger buttonManger;
     public Transform land;
+    public GameObject dimmedCover;
 
     //처음 만드는 창
     public GameObject content;
@@ -36,6 +37,7 @@ public class TutorialBuildController : MonoBehaviour
 
         if (content.transform.childCount >= 5)
         {
+
         }
         else
         {
@@ -73,8 +75,8 @@ public class TutorialBuildController : MonoBehaviour
         }
 
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().sprite = land.GetComponent<SpriteRenderer>().sprite;
-        transform.GetChild(0).GetChild(5).GetChild(0).GetComponent<Text>().text = "필요한 밀가루";
-        transform.GetChild(0).GetChild(5).GetChild(1).GetComponent<Text>().text = "필요한 설탕";
+        transform.GetChild(0).GetChild(4).GetChild(0).GetComponent<Text>().text = "필요한 밀가루";
+        transform.GetChild(0).GetChild(4).GetChild(1).GetComponent<Text>().text = "필요한 설탕";
         lands.Clear();
         gameObject.SetActive(true);
     }

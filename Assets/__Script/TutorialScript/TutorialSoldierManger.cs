@@ -92,13 +92,6 @@ public class TutorialSoldierManger : MonoBehaviour
                 input.talk = false;
                 movePoint = true;
 
-                if (transform.tag == "Builder")
-                {
-                    transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
-                    transform.GetComponent<AudioSource>().Play();
-                    //yield return new WaitForSeconds(0.5f);
-                }
-
                 if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
                 {
                     //transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;

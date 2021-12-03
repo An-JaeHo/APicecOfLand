@@ -137,30 +137,30 @@ public class TutorialButtonManger : MonoBehaviour
         playerInfo.milk += playerInfo.updateMilk;
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
-        checkBuildPoint++;
-
-        if (buildTile != null)
+        input.armyMove = true;
+        for (int i = 0; i < barrackWindow.GetComponent<TutorialBarrackController>().monsters.Count; i++)
         {
-            if (buildTile.GetComponent<MakeArea>().BuildTurn == checkBuildPoint)
-            {
-                if (buildTile.tag == "Area" || buildTile.tag == "Barracks")
-                {
-                    buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<MakeArea>().Picture;
-                    input.talkManger.NextScriptButton();
-                    input.talk = true;
-                }
-                else
-                {
-                    buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<AreaManger>().pureSprite;
-                }
-
-                buildTile.GetComponent<MakeArea>().Destroy = false;
-                buildTile.GetComponent<MakeArea>().firstBuild = false;
-                buildTile.GetComponent<AreaManger>().CheckUpdateMaterial();
-
-                checkBuildPoint = 0;
-            }
+            barrackWindow.GetComponent<TutorialBarrackController>().monsters[i].GetComponent<TutorialSoldierManger>().movePoint = true;
         }
+
+        if (buildTile.tag == "Area" || buildTile.tag == "Barracks")
+        {
+            buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<MakeArea>().Picture;
+            input.talkManger.NextScriptButton();
+            input.talk = true;
+        }
+        else
+        {
+            buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<AreaManger>().pureSprite;
+        }
+
+        buildTile.GetComponent<MakeArea>().Destroy = false;
+        buildTile.GetComponent<MakeArea>().firstBuild = false;
+        buildTile.GetComponent<AreaManger>().CheckUpdateMaterial();
+
+
+
+
 
         //if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
         //    && transform.parent.GetComponent<MakeArea>().firstBuild == true)
@@ -191,6 +191,6 @@ public class TutorialButtonManger : MonoBehaviour
         supplyManger.UpdateSupply();
         //turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         //tileManger.SpawnEnemy();
-        
+
     }
 }
