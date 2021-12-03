@@ -972,6 +972,7 @@ GameObject:
   - component: {fileID: 1614698208}
   - component: {fileID: 1614698209}
   - component: {fileID: 1614698207}
+  - component: {fileID: 1614698210}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -1058,6 +1059,7 @@ MonoBehaviour:
   army: {fileID: 0}
   bulidUpgradeUi: {fileID: 0}
   time: 0
+  finalCheck: 0
   BarrackUi: {fileID: 6237957116580542934}
   bulidUi: {fileID: 984677637820960747}
   armyUpgradeUi: {fileID: 0}
@@ -1086,6 +1088,18 @@ MonoBehaviour:
   button: {fileID: 96295666}
   makeBuildButton: {fileID: 984677637540122058}
   makeMonsterButton: {fileID: 6237957116469952678}
+--- !u!114 &1614698210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614698204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d464add4a2be67b43a17d6d2ef0680db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911140070
 GameObject:
   m_ObjectHideFlags: 0
@@ -3251,8 +3265,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984677636979593670}
   m_HandleRect: {fileID: 984677636979593669}
   m_Direction: 2
-  m_Value: 13.735294
-  m_Size: 0.932
+  m_Value: 13.735282
+  m_Size: 0.9319999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

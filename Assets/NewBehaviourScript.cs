@@ -9,7 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<HighLightObjController>().testMaterial = HighLightObjController.HighLight(game);
-        GetComponent<HighLightObjController>().test();
+       // GetComponent<HighLightObjController>().testMaterial = HighLightObjController.HighLight(game);
+        //GetComponent<HighLightObjController>().test();
     }
 }

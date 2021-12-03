@@ -149,6 +149,7 @@ public class TutorialInputManger : MonoBehaviour
                             mouseCheck = false;
                             bulidUi.GetComponent<TutorialBuildController>().land = hit.transform;
                             bulidUi.GetComponent<TutorialBuildController>().CreateWindow();
+                            GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StopHighLightObj();
                             talkManger.BulidTalk();
                             break;
                         case "Area":

@@ -52,11 +52,14 @@ public class TutorialTileManger : MonoBehaviour
             if (land.name != "4")
             {
                 land.transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+                HighLightObjController.HighLight(land);
+                Debug.Log(land.name);
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StartHighLightObj();
             }
 
             if (land.name == "5")
             {
-                land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite= cakeCastle;
+                land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = cakeCastle;
             }
         }
 
@@ -66,7 +69,7 @@ public class TutorialTileManger : MonoBehaviour
     public void SpawnEnemy()
     {
         int enemyRandRand = UnityEngine.Random.Range(0, 100);
-        
+
         for (int i = 0; i < enemyLand.Count; i++)
         {
             if (enemyLand[i].childCount == 0 && enemyLand[i].tag == "Enemy Base")

@@ -43,6 +43,8 @@ public class TutorialBuildController : MonoBehaviour
             {
                 GameObject barrackInfo = Instantiate(info, content.transform);
                 barrackInfo.transform.name = "º´¿µ";
+                //HighLightObjController.HighLight(barrackInfo);
+                //GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StartHighLightObj();
                 lands.Add(barrackInfo);
             }
         }
@@ -114,5 +116,6 @@ public class TutorialBuildController : MonoBehaviour
 
         upgradeLand.GetChild(1).GetChild(0).GetComponent<Image>().sprite = land.GetComponent<SpriteRenderer>().sprite;
         buttonManger.UpgradeLand = land;
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StopHighLightObj();
     }
 }
