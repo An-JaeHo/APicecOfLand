@@ -16,6 +16,7 @@ public class TutorialBarrackController : MonoBehaviour
     public GameObject soldierMakeButton;
     public GameObject[] MonsterObj;
     public int usingPeople;
+    public GameObject dimmedCover;
 
     //튜토리얼전용
     public TutorialSupplyManger supplyManger;

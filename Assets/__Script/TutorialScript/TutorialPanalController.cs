@@ -36,6 +36,7 @@ public class TutorialPanalController : MonoBehaviour
         GameObject checkOutPut = GameObject.Find("OutPut");
         //BuildImage
         GameObject buildImgae = GameObject.Find("BuildImage");
+        buttonManger.buildUi.GetComponent<TutorialBuildController>().dimmedCover.SetActive(false);
 
         checkUpgradeMaterial.transform.GetChild(0).GetComponent<Text>().text = "π–∞°∑Á : " + upgradeWood;
         checkUpgradeMaterial.transform.GetChild(1).GetComponent<Text>().text = "º≥≈¡ : " + upgradeIron;

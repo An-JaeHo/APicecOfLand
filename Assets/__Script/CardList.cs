@@ -60,7 +60,7 @@ public class CardList : MonoBehaviour
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 12":
-                SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint += 500;
+                SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint += (int)(SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint*0.15f);
 
                 if (SoldierPrefeb.GetComponent<SoldierManger>().totalHp < SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint)
                 {
@@ -68,25 +68,26 @@ public class CardList : MonoBehaviour
                 }
 
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
+                SoldierPrefeb.GetComponent<SoldierManger>().HpBarScale();
                 break;
             case "Card 13":
-                SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint += 1000;
+                SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint += (int)(SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint * 0.30f);
 
                 if (SoldierPrefeb.GetComponent<SoldierManger>().totalHp < SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint)
                 {
                     SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint = (int)SoldierPrefeb.GetComponent<SoldierManger>().totalHp;
                 }
-
+                SoldierPrefeb.GetComponent<SoldierManger>().HpBarScale();
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 14":
-                SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint += 2000;
+                SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint += (int)(SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint * 0.50f);
 
                 if (SoldierPrefeb.GetComponent<SoldierManger>().totalHp < SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint)
                 {
                     SoldierPrefeb.GetComponent<MakeSoldier>().HelthPoint = (int)SoldierPrefeb.GetComponent<SoldierManger>().totalHp;
                 }
-
+                SoldierPrefeb.GetComponent<SoldierManger>().HpBarScale();
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 15":
@@ -165,42 +166,46 @@ public class CardList : MonoBehaviour
             case "Card 28":
                 if (EnemyPrefeb.tag == "Enemy")
                 {
-                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= 500;
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint*0.15f);
                 }
                 else
                 {
-                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= 500;
+                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= (int)(EnemyPrefeb.GetComponent<GDController>().HelthPoint * 0.15f);
                 }
+                EnemyPrefeb.GetComponent<EnemyController>().HpBarScale();
                 break;
             case "Card 29":
                 if (EnemyPrefeb.tag == "Enemy")
                 {
-                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= 1000;
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint * 0.20f);
                 }
                 else
                 {
-                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= 1000;
+                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= (int)(EnemyPrefeb.GetComponent<GDController>().HelthPoint * 0.20f);
                 }
+                EnemyPrefeb.GetComponent<EnemyController>().HpBarScale();
                 break;
             case "Card 30":
                 if (EnemyPrefeb.tag == "Enemy")
                 {
-                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= 1500;
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint * 0.30f);
                 }
                 else
                 {
-                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= 1500;
+                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= (int)(EnemyPrefeb.GetComponent<GDController>().HelthPoint * 0.30f);
                 }
+                EnemyPrefeb.GetComponent<EnemyController>().HpBarScale();
                 break;
             case "Card 31":
                 if (EnemyPrefeb.tag == "Enemy")
                 {
-                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= 2000;
+                    EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(EnemyPrefeb.GetComponent<MakeEnemy>().BaseHelthPoint * 0.50f);
                 }
                 else
                 {
-                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= 2000;
+                    EnemyPrefeb.GetComponent<GDController>().HelthPoint -= (int)(EnemyPrefeb.GetComponent<GDController>().HelthPoint * 0.50f);
                 }
+                EnemyPrefeb.GetComponent<EnemyController>().HpBarScale();
                 break;
             case "Card 32":
                 EnemyPrefeb.GetComponent<EnemyController>().movePoint = false;

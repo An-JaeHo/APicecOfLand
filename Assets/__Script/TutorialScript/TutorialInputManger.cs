@@ -140,10 +140,12 @@ public class TutorialInputManger : MonoBehaviour
                                 talkManger.BarrackTalk();
                                 talkManger.talkCheck = true;
                                 talkManger.stopTalkNum =1;
+                                
                                 talk = false;
                             }
                             break;
                         case "Grass":
+                            GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StopHighLightObj();
                             talk = false;
                             landObj = hit.transform;
                             mouseCheck = false;
@@ -227,36 +229,27 @@ public class TutorialInputManger : MonoBehaviour
                                 army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
                                 army.transform.GetComponent<TutorialSoldierManger>().movePoint = false;
                             }
+
                             ChangeLandInfo();
                             break;
 
+                        case "Army":
+                            //if (!hit.transform.GetComponent<TutorialSoldierManger>().movePoint)
+                            //{
+                            //    talkManger.NextScriptButton();
+                            //    talkManger.dimmedCover.SetActive(true);
+                            //    talkManger.stopTalkNum = 5;
+                            //    moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
+                            //}
+
+                            break;
                         default:
 
                             break;
                     }
                     armyMove = true;
                 }
-
-                
             }
-
-            if (Input.GetMouseButton(0))
-            {
-                time += Time.deltaTime;
-
-                if (time >= 3)
-                {
-                    switch (hit.transform.tag)
-                    {
-                        case "Army":
-                            armyUpgradeUi.SetActive(true);
-                            armyUpgradeUi.GetComponent<ArmyUpgrade>().UpdateArmyInfo(hit.transform);
-                            break;
-                    }
-                    return;
-                }
-            }
-
         }
         else
         {
@@ -328,10 +321,12 @@ public class TutorialInputManger : MonoBehaviour
                                 talkManger.BarrackTalk();
                                 talkManger.talkCheck = true;
                                 talkManger.stopTalkNum = 1;
+
                                 talk = false;
                             }
                             break;
                         case "Grass":
+                            GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StopHighLightObj();
                             talk = false;
                             landObj = hit.transform;
                             mouseCheck = false;
@@ -415,9 +410,20 @@ public class TutorialInputManger : MonoBehaviour
                                 army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
                                 army.transform.GetComponent<TutorialSoldierManger>().movePoint = false;
                             }
+
                             ChangeLandInfo();
                             break;
 
+                        case "Army":
+                            //if (!hit.transform.GetComponent<TutorialSoldierManger>().movePoint)
+                            //{
+                            //    talkManger.NextScriptButton();
+                            //    talkManger.dimmedCover.SetActive(true);
+                            //    talkManger.stopTalkNum = 5;
+                            //    moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
+                            //}
+
+                            break;
                         default:
 
                             break;

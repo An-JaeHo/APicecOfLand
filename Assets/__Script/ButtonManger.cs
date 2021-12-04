@@ -22,7 +22,12 @@ public class ButtonManger : MonoBehaviour
     public Timer timer;
     public float buttonTimer;
     public GameObject turnCountText;
+    public GameObject attackContText;
     public List<Transform> tiles;
+    public int attackTurnNum;
+    //공격 방어턴 구분용
+    public Sprite attackUi;
+    public Sprite defendUi;
 
     //타일 구매용
     public int food;
@@ -62,6 +67,7 @@ public class ButtonManger : MonoBehaviour
         barrackController = barrackWindow.GetComponent<BarrackController>();
         timer = GameObject.Find("GameTime").GetComponent<Timer>();
         buttonTimer = 1;
+        TurnCheck();
     }
 
     private void Update()
@@ -637,18 +643,12 @@ public class ButtonManger : MonoBehaviour
         input.mouseCheck = false;
         buttonTimer = 0;
 
-        if (playerInfo.turnPoint == 50)
+        if (playerInfo.turnPoint == 100)
         {
             int rand = Random.Range(200, 270);
             playerInfo.killingPoint = rand;
             SceneMgr.GoGameEndScene();
         }
-
-        if(tiles.Count !=0)
-        {
-            //CheckBuildCount();
-        }
-
         //StartCoroutine(moveEnemy());
         moveEnemy();
         rangeManger.rangeList.Clear();
@@ -656,6 +656,73 @@ public class ButtonManger : MonoBehaviour
         turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
         tileManger.NextLand();
         tileManger.SpawnEnemy();
+        TurnCheck();
         tileManger.CheckTile();
+    }
+
+    void TurnCheck()
+    {
+        if(tileManger.attackTurnCheck)
+        {
+            attackContText.GetComponent<Image>().sprite = defendUi;
+            //공격턴 3 13 27 43 63 83
+            if (tileManger.attackTurn == 0)
+            {
+                attackTurnNum = 3;
+            }
+            else if (tileManger.attackTurn == 1)
+            {
+                attackTurnNum = 13;
+            }
+            else if (tileManger.attackTurn == 2)
+            {
+                attackTurnNum = 27;
+            }
+            else if (tileManger.attackTurn == 3)
+            {
+                attackTurnNum = 43;
+            }
+            else if (tileManger.attackTurn == 4)
+            {
+                attackTurnNum = 63;
+            }
+            else if (tileManger.attackTurn == 5)
+            {
+                attackTurnNum = 83;
+            }
+        }
+        else
+        {
+            attackContText.GetComponent<Image>().sprite = attackUi;
+
+            if (tileManger.attackTurn == 0)
+            {
+                attackTurnNum = 1;
+            }
+            else if (tileManger.attackTurn == 1)
+            {
+                attackTurnNum = 11;
+            }
+            else if (tileManger.attackTurn == 2)
+            {
+                attackTurnNum = 25;
+            }
+            else if (tileManger.attackTurn == 3)
+            {
+                attackTurnNum = 41;
+            }
+            else if (tileManger.attackTurn == 4)
+            {
+                attackTurnNum = 61;
+            }
+            else if (tileManger.attackTurn == 5)
+            {
+                attackTurnNum = 81;
+            }
+
+        }
+
+        attackTurnNum -= playerInfo.turnPoint;
+        attackContText.transform.GetChild(0).GetComponent<Text>().text = attackTurnNum.ToString();
     }
 }
