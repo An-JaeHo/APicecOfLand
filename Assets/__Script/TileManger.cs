@@ -237,7 +237,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 5; 
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 27)
+        else if (playerInfo.turnPoint == 13)
         {
             enemyMakeLand.Clear();
             startNum = 91;
@@ -245,7 +245,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 7;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 63)
+        else if (playerInfo.turnPoint == 27)
         {
             enemyMakeLand.Clear();
             startNum = 73;
@@ -253,7 +253,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 9;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 123)
+        else if (playerInfo.turnPoint == 63)
         {
             enemyMakeLand.Clear();
             startNum = 55;
@@ -261,7 +261,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 11;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 181)
+        else if (playerInfo.turnPoint == 123)
         {
             enemyMakeLand.Clear();
             startNum = 37;
@@ -269,14 +269,14 @@ public class TileManger : MonoBehaviour
             lengthLand = 13;
             attackTurn++;
         }
-        //else if (playerInfo.turnPoint == 180)
-        //{
-        //    enemyMakeLand.Clear();
-        //    startNum = 19;
-        //    maxnum = 14;
-        //    lengthLand = 15;
-        //    attackTurn++;
-        //}
+        else if (playerInfo.turnPoint == 181)
+        {
+            enemyMakeLand.Clear();
+            startNum = 19;
+            maxnum = 14;
+            lengthLand = 15;
+            attackTurn++;
+        }
 
         pureStrartnum = startNum;
 
@@ -365,10 +365,6 @@ public class TileManger : MonoBehaviour
                             else if(enemyrand < 65)
                             {
                                 noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
-                            }
-                            else
-                            {
-
                             }
                             break;
                         case 3:
@@ -466,7 +462,7 @@ public class TileManger : MonoBehaviour
         }
 
         //어택
-        if (3 <= playerInfo.turnPoint && 10 > playerInfo.turnPoint)
+        if (3 <= playerInfo.turnPoint && 11 > playerInfo.turnPoint)
         {
             if (attackTurnCheck)
             {
