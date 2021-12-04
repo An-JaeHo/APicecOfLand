@@ -16,6 +16,7 @@ public class TutorialTalkManger : MonoBehaviour
     public bool talkCheck;
     public int stopTalkNum;
     public GameObject dimmedCover;
+    public PlayerInfo player;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class TutorialTalkManger : MonoBehaviour
         sceneCheck = false;
         spcriptText.text = scripts[spcriptNum];
         talkCheck = false;
+        player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
     }
 
     public void NextScriptButton()
@@ -53,6 +55,7 @@ public class TutorialTalkManger : MonoBehaviour
 
             if (sceneCheck)
             {
+                player.ResetGame();
                 SceneMgr.GoUpGradeScene();
             }
         }

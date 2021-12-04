@@ -237,7 +237,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 5; 
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 13)
+        else if (playerInfo.turnPoint == 27)
         {
             enemyMakeLand.Clear();
             startNum = 91;
@@ -245,7 +245,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 7;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 27)
+        else if (playerInfo.turnPoint == 63)
         {
             enemyMakeLand.Clear();
             startNum = 73;
@@ -253,7 +253,7 @@ public class TileManger : MonoBehaviour
             lengthLand = 9;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 63)
+        else if (playerInfo.turnPoint == 123)
         {
             enemyMakeLand.Clear();
             startNum = 55;
@@ -269,14 +269,14 @@ public class TileManger : MonoBehaviour
             lengthLand = 13;
             attackTurn++;
         }
-        else if (playerInfo.turnPoint == 181)
-        {
-            enemyMakeLand.Clear();
-            startNum = 19;
-            maxnum = 14;
-            lengthLand = 15;
-            attackTurn++;
-        }
+        //else if (playerInfo.turnPoint == 181)
+        //{
+        //    enemyMakeLand.Clear();
+        //    startNum = 19;
+        //    maxnum = 14;
+        //    lengthLand = 15;
+        //    attackTurn++;
+        //}
 
         pureStrartnum = startNum;
 
