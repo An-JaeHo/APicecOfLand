@@ -235,40 +235,36 @@ public class TileManger : MonoBehaviour
             startNum = 109;
             maxnum = 4;
             lengthLand = 5; 
-            attackTurn++;
+            
         }
-        else if (playerInfo.turnPoint == 27)
+        else if (playerInfo.turnPoint == 26)
         {
             enemyMakeLand.Clear();
             startNum = 91;
             maxnum = 6;
             lengthLand = 7;
-            attackTurn++;
         }
-        else if (playerInfo.turnPoint == 63)
+        else if (playerInfo.turnPoint == 62)
         {
             enemyMakeLand.Clear();
             startNum = 73;
             maxnum = 8;
             lengthLand = 9;
-            attackTurn++;
         }
-        else if (playerInfo.turnPoint == 123)
+        else if (playerInfo.turnPoint == 122)
         {
             enemyMakeLand.Clear();
             startNum = 55;
             maxnum = 10;
             lengthLand = 11;
-            attackTurn++;
         }
-        else if (playerInfo.turnPoint == 123)
-        {
-            enemyMakeLand.Clear();
-            startNum = 37;
-            maxnum = 12;
-            lengthLand = 13;
-            attackTurn++;
-        }
+        //else if (playerInfo.turnPoint == 123)
+        //{
+        //    enemyMakeLand.Clear();
+        //    startNum = 37;
+        //    maxnum = 12;
+        //    lengthLand = 13;
+        //}
         //else if (playerInfo.turnPoint == 181)
         //{
         //    enemyMakeLand.Clear();
@@ -468,7 +464,7 @@ public class TileManger : MonoBehaviour
             {
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
-
+                attackTurn++;
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
@@ -485,10 +481,11 @@ public class TileManger : MonoBehaviour
 
             attackTurnCheck = false;
         }
-        else if (13 <= playerInfo.turnPoint && 25 > playerInfo.turnPoint)
+        else if (12 <= playerInfo.turnPoint && 25 > playerInfo.turnPoint)
         {
             if (attackTurnCheck)
             {
+                attackTurn++;
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
                 for (int i = 0; i < attackTurn; i++)
@@ -511,10 +508,11 @@ public class TileManger : MonoBehaviour
 
             attackTurnCheck = false;
         }
-        else if (27 <= playerInfo.turnPoint && 41 > playerInfo.turnPoint)
+        else if (26 <= playerInfo.turnPoint && 41 > playerInfo.turnPoint)
         {
             if (attackTurnCheck)
             {
+                attackTurn++;
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
                 for (int i = 0; i < attackTurn; i++)
@@ -541,8 +539,9 @@ public class TileManger : MonoBehaviour
 
             attackTurnCheck = false;
         }
-        else if (43 <= playerInfo.turnPoint && 61 > playerInfo.turnPoint)
+        else if (42 <= playerInfo.turnPoint && 61 > playerInfo.turnPoint)
         {
+            attackTurn++;
             if (attackTurnCheck)
             {
                 attackAlarm.SetActive(true);
@@ -571,8 +570,9 @@ public class TileManger : MonoBehaviour
 
             attackTurnCheck = false;
         }
-        else if (63 <= playerInfo.turnPoint && 81 > playerInfo.turnPoint)
+        else if (62 <= playerInfo.turnPoint && 81 > playerInfo.turnPoint)
         {
+            attackTurn++;
             if (attackTurnCheck)
             {
                 attackAlarm.SetActive(true);
@@ -601,8 +601,9 @@ public class TileManger : MonoBehaviour
 
             attackTurnCheck = false;
         }
-        else if (83 <= playerInfo.turnPoint && 101 > playerInfo.turnPoint)
+        else if (82 <= playerInfo.turnPoint && 101 > playerInfo.turnPoint)
         {
+            attackTurn++;
             if (attackTurnCheck)
             {
                 attackAlarm.SetActive(true);
