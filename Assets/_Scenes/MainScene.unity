@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &190673590
 RectTransform:
   m_ObjectHideFlags: 0
@@ -931,18 +931,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &579028425 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2430175180261222700, guid: 51c7ac8340575c7469c52c854b089005,
-    type: 3}
-  m_PrefabInstance: {fileID: 4845218307534981282}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bef7ed84d1656cd4b8cc7fceba710571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &604683883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,9 +1357,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 938187459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d464add4a2be67b43a17d6d2ef0680db, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c4f02a0e166a85419633e79b3852dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveMgr: {fileID: 0}
 --- !u!1 &946688243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,7 +1724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 742, y: -316}
+  m_AnchoredPosition: {x: 742, y: -427}
   m_SizeDelta: {x: 347.0479, y: 89.8528}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1005644643
@@ -1782,9 +1771,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 579028425}
-        m_TargetAssemblyTypeName: SceneMgr, Assembly-CSharp
-        m_MethodName: GoUpGradeScene
+      - m_Target: {fileID: 938187463}
+        m_TargetAssemblyTypeName: DeleteFile, Assembly-CSharp
+        m_MethodName: FileDelete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2672,7 +2661,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Go Upgrade Scene
+  m_Text: Save File Delete
 --- !u!222 &1388702157
 CanvasRenderer:
   m_ObjectHideFlags: 0

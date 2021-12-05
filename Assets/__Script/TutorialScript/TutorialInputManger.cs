@@ -187,6 +187,7 @@ public class TutorialInputManger : MonoBehaviour
                                 moveSoldier.enemy = hit.transform;
                                 moveSoldier.attack = true;
                                 army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
+                                buttonManger.button.GetComponent<Button>().interactable = false;
                             }
                             break;
                         case "SelectLand":
@@ -241,7 +242,6 @@ public class TutorialInputManger : MonoBehaviour
                             //    talkManger.stopTalkNum = 5;
                             //    moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
                             //}
-
                             break;
                         default:
 
@@ -368,6 +368,7 @@ public class TutorialInputManger : MonoBehaviour
                                 moveSoldier.enemy = hit.transform;
                                 moveSoldier.attack = true;
                                 army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
+                                buttonManger.button.GetComponent<Button>().interactable = false;
                             }
                             break;
                         case "SelectLand":

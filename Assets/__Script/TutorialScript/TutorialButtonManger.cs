@@ -128,7 +128,6 @@ public class TutorialButtonManger : MonoBehaviour
         input.talkManger.talkCheck = true;
         input.talkManger.stopTalkNum = 6;
         panel.parentUi.SetActive(false);
-        
     }
 
     public void TurnEnd()
@@ -138,6 +137,7 @@ public class TutorialButtonManger : MonoBehaviour
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
         input.armyMove = true;
+
         for (int i = 0; i < barrackWindow.GetComponent<TutorialBarrackController>().monsters.Count; i++)
         {
             barrackWindow.GetComponent<TutorialBarrackController>().monsters[i].GetComponent<TutorialSoldierManger>().movePoint = true;
@@ -157,40 +157,6 @@ public class TutorialButtonManger : MonoBehaviour
         buildTile.GetComponent<MakeArea>().Destroy = false;
         buildTile.GetComponent<MakeArea>().firstBuild = false;
         buildTile.GetComponent<AreaManger>().CheckUpdateMaterial();
-
-
-
-
-
-        //if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
-        //    && transform.parent.GetComponent<MakeArea>().firstBuild == true)
-        //{
-
-        //    builderPoint++;
-        //}
-        //else
-        //{
-        //    movePoint = true;
-        //    if (transform.parent.tag == "Area" || transform.parent.tag == "Barracks")
-        //    {
-        //        transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
-        //    }
-        //    else
-        //    {
-        //        transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
-        //    }
-
-        //    transform.parent.GetComponent<MakeArea>().Destroy = false;
-        //    transform.parent.GetComponent<MakeArea>().firstBuild = false;
-        //    transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
-
-        //    builderPoint = 0;
-        //}
-
-        //StartCoroutine(moveEnemy());
         supplyManger.UpdateSupply();
-        //turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
-        //tileManger.SpawnEnemy();
-
     }
 }

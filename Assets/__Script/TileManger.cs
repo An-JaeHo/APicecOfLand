@@ -406,7 +406,7 @@ public class TileManger : MonoBehaviour
         }
 
         //디펜스
-        if (playerInfo.turnPoint == 11)
+        if (playerInfo.turnPoint == 9)
         {
             alarmCheck = true;
             defendAlarm.SetActive(true);
@@ -458,7 +458,7 @@ public class TileManger : MonoBehaviour
         }
 
         //어택
-        if (3 <= playerInfo.turnPoint && 11 > playerInfo.turnPoint)
+        if (3 <= playerInfo.turnPoint && 9 > playerInfo.turnPoint)
         {
             if (attackTurnCheck)
             {
@@ -481,7 +481,7 @@ public class TileManger : MonoBehaviour
 
             attackTurnCheck = false;
         }
-        else if (12 <= playerInfo.turnPoint && 25 > playerInfo.turnPoint)
+        else if (11 <= playerInfo.turnPoint && 25 > playerInfo.turnPoint)
         {
             if (attackTurnCheck)
             {
@@ -497,11 +497,11 @@ public class TileManger : MonoBehaviour
                 }
             }
 
-            if (playerInfo.turnPoint == 13)
+            if (playerInfo.turnPoint == 11)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 15)
+            else if (playerInfo.turnPoint == 13)
             {
                 EnemyGradeSort();
             }
@@ -524,15 +524,15 @@ public class TileManger : MonoBehaviour
                 }
             }
 
-            if (playerInfo.turnPoint == 27)
+            if (playerInfo.turnPoint == 26)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 29)
+            else if (playerInfo.turnPoint == 28)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 31)
+            else if (playerInfo.turnPoint == 30)
             {
                 EnemyGradeSort();
             }
@@ -555,15 +555,15 @@ public class TileManger : MonoBehaviour
                 }
             }
 
-            if (playerInfo.turnPoint == 43)
+            if (playerInfo.turnPoint == 42)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 45)
+            else if (playerInfo.turnPoint == 44)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 47)
+            else if (playerInfo.turnPoint == 46)
             {
                 EnemyGradeSort();
             }
@@ -586,15 +586,15 @@ public class TileManger : MonoBehaviour
                 }
             }
 
-            if (playerInfo.turnPoint == 63)
+            if (playerInfo.turnPoint == 62)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 65)
+            else if (playerInfo.turnPoint == 64)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 67)
+            else if (playerInfo.turnPoint == 66)
             {
                 EnemyGradeSort();
             }
@@ -617,15 +617,15 @@ public class TileManger : MonoBehaviour
                 }
             }
 
-            if (playerInfo.turnPoint == 83)
+            if (playerInfo.turnPoint == 82)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 85)
+            else if (playerInfo.turnPoint == 84)
             {
                 EnemyGradeSort();
             }
-            else if (playerInfo.turnPoint == 87)
+            else if (playerInfo.turnPoint == 86)
             {
                 EnemyGradeSort();
             }

@@ -81,4 +81,6 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
         updatePeople = 0;
         SceneMgr.GoGameMainScene();
     }
+
+    
 }
