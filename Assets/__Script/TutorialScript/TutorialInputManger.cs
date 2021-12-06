@@ -225,6 +225,7 @@ public class TutorialInputManger : MonoBehaviour
                                     army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
                                 }
 
+                                army.transform.parent.GetComponent<BoxCollider2D>().enabled = false;
                                 army.transform.SetParent(hit.transform);
                                 moveSoldier.move = true;
                                 army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
@@ -406,6 +407,7 @@ public class TutorialInputManger : MonoBehaviour
                                     army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
                                 }
 
+                                army.transform.parent.GetComponent<BoxCollider2D>().enabled = false;
                                 army.transform.SetParent(hit.transform);
                                 moveSoldier.move = true;
                                 army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
@@ -423,7 +425,6 @@ public class TutorialInputManger : MonoBehaviour
                             //    talkManger.stopTalkNum = 5;
                             //    moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
                             //}
-
                             break;
                         default:
 

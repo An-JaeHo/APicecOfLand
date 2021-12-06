@@ -16,10 +16,6 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
 
     public int turnPoint;
     public int killingPoint;
-    //세이브용
-    public int playerMilk;
-    public int playerFlour;
-    public int playerSugar;
 
     //public int GameCherryLevel;
     //public int GameCherryGrade;

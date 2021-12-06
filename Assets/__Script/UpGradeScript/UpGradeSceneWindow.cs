@@ -34,6 +34,7 @@ public class UpGradeSceneWindow : MonoBehaviour
 
     public void UpGradeCheck(Transform obj)
     {
+        saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
         MakeSoldier nextMonster = GetComponent<ArmyUpgrade>().UpGradeFinder(obj.GetComponent<MakeSoldier>().Code);
         NeedUpGradeSouce(obj);
 
@@ -62,15 +63,15 @@ public class UpGradeSceneWindow : MonoBehaviour
         }
 
 
-        if (playerInfo.playerMilk >= needUpGradeMilk
-            && playerInfo.playerSugar >= needUpGradeSugar
-            && playerInfo.playerFlour >= needUpGradeFlour)
+        if (saveMgr.playerSave.milk >= needUpGradeMilk
+            && saveMgr.playerSave.sugar >= needUpGradeSugar
+            && saveMgr.playerSave.flour >= needUpGradeFlour)
         {
             upGradeButton.GetComponent<Button>().interactable = true;
             transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<Text>().text = needUpGradeMilk.ToString();
             transform.GetChild(6).GetChild(1).GetChild(1).GetComponent<Text>().text = needUpGradeSugar.ToString();
             transform.GetChild(6).GetChild(2).GetChild(1).GetComponent<Text>().text = needUpGradeFlour.ToString();
-            Debug.Log("aa");
+
             if (obj.GetComponent<MakeSoldier>().Level == 5
                 && obj.GetComponent<MakeSoldier>().Grade != 3)
             {
@@ -96,13 +97,6 @@ public class UpGradeSceneWindow : MonoBehaviour
             transform.GetChild(6).GetChild(1).GetChild(1).GetComponent<Text>().text = needUpGradeSugar.ToString();
             transform.GetChild(6).GetChild(2).GetChild(1).GetComponent<Text>().text = needUpGradeFlour.ToString();
             upGradeButton.GetComponent<Button>().interactable = false;
-            
-            Debug.Log("playerInfo.playerMilk : "+playerInfo.playerMilk);
-            Debug.Log("needUpGradeMilk : " + needUpGradeMilk);
-            Debug.Log("playerInfo.playerSugar : " + playerInfo.playerSugar);
-            Debug.Log("needUpGradeSugar : " + needUpGradeSugar);
-            Debug.Log("playerInfo.playerFlour : " + playerInfo.playerFlour);
-            Debug.Log("needUpGradeFlour : " + needUpGradeFlour);
 
             if (obj.GetComponent<MakeSoldier>().Level == 10)
             {
@@ -154,9 +148,9 @@ public class UpGradeSceneWindow : MonoBehaviour
             monster.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString(); ;
         }
 
-        playerInfo.playerMilk-= needUpGradeMilk;
-        playerInfo.playerSugar -= needUpGradeSugar;
-        playerInfo.playerFlour -= needUpGradeFlour;
+        saveMgr.playerSave.milk-= needUpGradeMilk;
+        saveMgr.playerSave.sugar -= needUpGradeSugar;
+        saveMgr.playerSave.flour -= needUpGradeFlour;
 
         supply.GetComponent<MySupplyList>().UpdateSupply();
         SaveLevelAndRank(monster);
