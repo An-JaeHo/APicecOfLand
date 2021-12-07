@@ -519,7 +519,7 @@ public class ButtonManger : MonoBehaviour
         }
     }
 
-    void moveEnemy()
+    IEnumerator moveEnemy()
     {
         List<string> turnSkill = new List<string>();
 
@@ -529,7 +529,7 @@ public class ButtonManger : MonoBehaviour
             {
                 enemys[i].GetComponent<EnemyController>().EnemyMove();
 
-                //yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(2f);
 
                 if (enemys[i].transform.parent.tag == "Capital")
                 {
@@ -629,12 +629,12 @@ public class ButtonManger : MonoBehaviour
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
         }
 
-//        button.GetComponent<Button>().interactable = true;
+        //button.GetComponent<Button>().interactable = true;
         input.mouseCheck = true;
         timer.limitTime = 60;
         timer.timerCheck = true;
         supplyManger.JustUpdateSupply();
-        //yield return null;
+        yield return null;
     }
 
     public void TurnEnd()
@@ -649,8 +649,8 @@ public class ButtonManger : MonoBehaviour
             playerInfo.killingPoint = rand;
             SceneMgr.GoGameEndScene();
         }
-        //StartCoroutine(moveEnemy());
-        moveEnemy();
+        StartCoroutine(moveEnemy());
+        //moveEnemy();
         rangeManger.rangeList.Clear();
         supplyManger.UpdateSupply();
         turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
@@ -665,30 +665,30 @@ public class ButtonManger : MonoBehaviour
         if(tileManger.attackTurnCheck)
         {
             attackContText.GetComponent<Image>().sprite = defendUi;
-            //공격턴 3 13 27 43 63 83
+            //공격턴 3 11 26 42 62 82
             if (tileManger.attackTurn == 0)
             {
                 attackTurnNum = 3;
             }
             else if (tileManger.attackTurn == 1)
             {
-                attackTurnNum = 13;
+                attackTurnNum = 11;
             }
             else if (tileManger.attackTurn == 2)
             {
-                attackTurnNum = 27;
+                attackTurnNum = 26;
             }
             else if (tileManger.attackTurn == 3)
             {
-                attackTurnNum = 43;
+                attackTurnNum = 42;
             }
             else if (tileManger.attackTurn == 4)
             {
-                attackTurnNum = 63;
+                attackTurnNum = 62;
             }
             else if (tileManger.attackTurn == 5)
             {
-                attackTurnNum = 83;
+                attackTurnNum = 82;
             }
         }
         else
@@ -701,7 +701,7 @@ public class ButtonManger : MonoBehaviour
             }
             else if (tileManger.attackTurn == 1)
             {
-                attackTurnNum = 11;
+                attackTurnNum = 9;
             }
             else if (tileManger.attackTurn == 2)
             {

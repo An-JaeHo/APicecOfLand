@@ -83,6 +83,7 @@ public class TutorialBarrackController : MonoBehaviour
             inputManger.talkManger.talkCheck = true;
             inputManger.talkManger.stopTalkNum = 1;
             inputManger.ChangeLandInfo();
+            land.GetComponent<BoxCollider2D>().enabled = false;
         }
 
         inputManger.mouseCheck = true;

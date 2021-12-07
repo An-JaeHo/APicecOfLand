@@ -8,15 +8,18 @@ using System.IO;
 public class SceneMgr : MonoBehaviour
 {
     public static SaveMgr save;
+    public static PlayerInfo playerInfo;
     public static string fonlderPath;
 
     private void Start()
     {
         fonlderPath = Application.persistentDataPath;
+        playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
     }
 
     public static void GoGameMainScene()
     {
+        playerInfo.StartGame();
         SceneManager.LoadScene(0);
     }
 

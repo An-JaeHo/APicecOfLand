@@ -116,12 +116,15 @@ public class CardList : MonoBehaviour
                 break;
             case "Card 21":
                 SoldierPrefeb.GetComponent<SoldierManger>().cardMovePoint = true;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 22":
                 SoldierPrefeb.GetComponent<SoldierManger>().cardMovePoint = true;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 23":
                 SoldierPrefeb.GetComponent<SoldierManger>().cardMovePoint = true;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 24":
                 if (EnemyPrefeb.tag == "Enemy")

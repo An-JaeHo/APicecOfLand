@@ -223,6 +223,7 @@ public class TutorialSoldierManger : MonoBehaviour
                     tileManger.talkManger.FinalTalk();
                     tileManger.talkManger.stopTalkNum = 3;
                     tileManger.talkManger.talkCheck = true;
+                    enemy.parent.GetComponent<BoxCollider2D>().enabled = false;
                     Destroy(enemy.gameObject);
                 }
                 else
@@ -238,7 +239,7 @@ public class TutorialSoldierManger : MonoBehaviour
             cardMovePoint = false;
         }
 
-        buttonManger.button.GetComponent<Button>().interactable = true;
+        buttonManger.button.GetComponent<Button>().interactable = false;
         yield return null;
     }
 
