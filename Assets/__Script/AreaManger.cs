@@ -250,6 +250,8 @@ public class AreaManger : MonoBehaviour
                 transform.tag = "Grass";
             }
         }
+
+        GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
     }
 
     public void ReturnUpdateSouce()

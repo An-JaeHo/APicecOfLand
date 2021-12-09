@@ -184,7 +184,7 @@ public class EnemyController : MonoBehaviour
                     }
 
                     parentTile = transform.parent;
-                    buttonManger.button.GetComponent<Button>().interactable = false;
+                    //buttonManger.button.GetComponent<Button>().interactable = false;
                     targetPostion = new Vector3(FinalNodeList[1].x, (float)(FinalNodeList[1].y + 30f), -10f);
 
                     

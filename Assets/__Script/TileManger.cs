@@ -299,15 +299,13 @@ public class TileManger : MonoBehaviour
                     tileList[i].parent.gameObject.SetActive(true);
                     tileList[i].GetComponent<MakeArea>().Movement = true;
                     activeChildtileList.Add(tileList[i].transform.parent);
-                    builderMakeLand.Add(tileList[i].transform.parent);
                     enemyMakeLand.Add(tileList[i].transform.parent);
-                    RandomLand(tileList[i].gameObject);
+                    //RandomLand(tileList[i].gameObject);
                 }
 
                 if (count == lengthLand && playerInfo.turnPoint <= 70)
                 {
                     count = 0;
-                    //MakeBulider();
                     return;
                 }
             }
@@ -395,7 +393,6 @@ public class TileManger : MonoBehaviour
     public void SpawnEnemy()
     {
         List<Transform> noChildLand = enemyMakeLand;
-        int enemyRandRand = UnityEngine.Random.Range(0, 100);
 
         for (int i=0; i< noChildLand.Count;i++)
         {
@@ -541,11 +538,13 @@ public class TileManger : MonoBehaviour
         }
         else if (42 <= playerInfo.turnPoint && 61 > playerInfo.turnPoint)
         {
-            attackTurn++;
+
             if (attackTurnCheck)
             {
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
+                attackTurn++;
+
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
@@ -572,9 +571,10 @@ public class TileManger : MonoBehaviour
         }
         else if (62 <= playerInfo.turnPoint && 81 > playerInfo.turnPoint)
         {
-            attackTurn++;
+            
             if (attackTurnCheck)
             {
+                attackTurn++;
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
                 for (int i = 0; i < attackTurn; i++)
@@ -603,9 +603,10 @@ public class TileManger : MonoBehaviour
         }
         else if (82 <= playerInfo.turnPoint && 101 > playerInfo.turnPoint)
         {
-            attackTurn++;
+            
             if (attackTurnCheck)
             {
+                attackTurn++;
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
                 for (int i = 0; i < attackTurn; i++)

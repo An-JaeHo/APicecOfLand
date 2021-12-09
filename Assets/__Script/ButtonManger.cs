@@ -557,8 +557,11 @@ public class ButtonManger : MonoBehaviour
                     {
                         turnSkill.Add(enemys[i].GetComponent<EnemyController>().buffPrefebList[j].GetComponent<InputSkill>().Code);
                     }
+                    else
+                    {
+                        Destroy(enemys[i].GetComponent<EnemyController>().buffPrefebList[j]);
+                    }
 
-                    Destroy(enemys[i].GetComponent<EnemyController>().buffPrefebList[j]);
                 }
 
                 enemys[i].GetComponent<EnemyController>().buffPrefebList.Clear();
@@ -628,8 +631,9 @@ public class ButtonManger : MonoBehaviour
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
         }
+        
 
-        //button.GetComponent<Button>().interactable = true;
+        button.GetComponent<Button>().interactable = true;
         input.mouseCheck = true;
         timer.limitTime = 60;
         timer.timerCheck = true;
@@ -642,6 +646,7 @@ public class ButtonManger : MonoBehaviour
         playerInfo.turnPoint++;
         input.mouseCheck = false;
         buttonTimer = 0;
+        button.GetComponent<Button>().interactable = false;
 
         if (playerInfo.turnPoint == 100)
         {
