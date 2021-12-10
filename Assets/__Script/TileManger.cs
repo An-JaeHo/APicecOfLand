@@ -352,11 +352,11 @@ public class TileManger : MonoBehaviour
                             noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
                             break;
                         case 2:
-                            if (enemyrand < 35)
+                            if (enemyrand < 50)
                             {
                                 noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
                             }
-                            else if(enemyrand < 65)
+                            else
                             {
                                 noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
                             }
