@@ -75,7 +75,7 @@ public class BarrackController : MonoBehaviour
             monsters.Add(prefebSoldier);
             buttonManger.amrys.Add(prefebSoldier);
             usingPeople++;
-            supplyManger.UpdateSupply();
+            supplyManger.JustUpdateSupply();
             barrackMonsterSprite.gameObject.SetActive(false);
             inputManger.Land.CheckTile();
             gameObject.SetActive(false);
