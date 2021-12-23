@@ -16,13 +16,60 @@ public class SupplyManger : MonoBehaviour
 
     public void UpdateSupply()
     {
+        if (playerInfo.updateMilk >= 1000)
+        {
+            playerInfo.updateMilk = 1000;
+        }
+
+        if (playerInfo.updateFlour >= 1000)
+        {
+            playerInfo.updateFlour = 1000;
+        }
+
+        if (playerInfo.updateSugar >= 1000)
+        {
+            playerInfo.updateSugar = 1000;
+        }
+
         playerInfo.milk += playerInfo.updateMilk;
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
 
+        if (playerInfo.milk > 3000)
+        {
+            playerInfo.milk = 3000;
+            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
+        }
+        else
+        {
+            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.white;
+        }
+
+        if (playerInfo.flour > 3000)
+        {
+            playerInfo.flour = 3000;
+            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
+        }
+        else
+        {
+            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.white;
+        }
+
+        if (playerInfo.sugar > 3000)
+        {
+            playerInfo.sugar = 3000;
+            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
+        }
+        else
+        {
+            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.white;
+        }
+
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
 
-        if (playerInfo.updateMilk > 0)
+        
+
+            if (playerInfo.updateMilk > 0)
         {
             transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " +" + playerInfo.updateMilk.ToString();
         }
@@ -64,6 +111,21 @@ public class SupplyManger : MonoBehaviour
 
     public void JustUpdateSupply()
     {
+        if (playerInfo.updateMilk >= 1000)
+        {
+            playerInfo.updateMilk = 1000;
+        }
+
+        if (playerInfo.updateFlour >= 1000)
+        {
+            playerInfo.updateFlour = 1000;
+        }
+
+        if (playerInfo.updateSugar >= 1000)
+        {
+            playerInfo.updateSugar = 1000;
+        }
+
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
 
         if (playerInfo.updateMilk > 0)
