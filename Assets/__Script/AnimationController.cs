@@ -22,6 +22,7 @@ public class AnimationController : MonoBehaviour
             transform.parent.parent.GetComponent<EnemyController>().invenManger.InputCard(transform.parent.parent.GetComponent<MakeEnemy>().Grade);
             transform.parent.parent.GetComponent<EnemyController>().playerInfo.killingPoint++;
             transform.parent.parent.GetComponent<EnemyController>().transform.parent.GetComponent<BoxCollider2D>().enabled = true;
+            transform.parent.parent.GetComponent<EnemyController>().buttonManger.enemys.Remove(transform.gameObject);
             Destroy(transform.parent.parent.gameObject);
         }
         else if (transform.parent.parent.tag == "Boss")

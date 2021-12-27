@@ -28,6 +28,8 @@ public class ButtonManger : MonoBehaviour
     //공격 방어턴 구분용
     public Sprite attackUi;
     public Sprite defendUi;
+    public Sprite monsterPicture;
+    public Sprite enemyPicture;
 
     //타일 구매용
     public int food;
@@ -561,7 +563,6 @@ public class ButtonManger : MonoBehaviour
                     {
                         Destroy(enemys[i].GetComponent<EnemyController>().buffPrefebList[j]);
                     }
-
                 }
 
                 enemys[i].GetComponent<EnemyController>().buffPrefebList.Clear();
@@ -593,7 +594,16 @@ public class ButtonManger : MonoBehaviour
 
                 enemys[i].GetComponent<EnemyController>().movePoint = true;
                 enemys[i].GetComponent<EnemyController>().CheckBuff();
+
+                if ((i+1) == enemys.Count)
+                {
+                    button.GetComponent<Button>().interactable = true;
+                }
             }
+        }
+        else
+        {
+            button.GetComponent<Button>().interactable = true;
         }
 
         for (int i = 0; i < amrys.Count; i++)
@@ -631,11 +641,10 @@ public class ButtonManger : MonoBehaviour
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
         }
-        
 
-        button.GetComponent<Button>().interactable = true;
+        
         input.mouseCheck = true;
-        timer.limitTime = 60;
+        timer.limitTime = 30;
         timer.timerCheck = true;
         supplyManger.JustUpdateSupply();
         yield return null;
@@ -654,8 +663,8 @@ public class ButtonManger : MonoBehaviour
             playerInfo.killingPoint = rand;
             SceneMgr.GoGameEndScene();
         }
+
         StartCoroutine(moveEnemy());
-        //moveEnemy();
         rangeManger.rangeList.Clear();
         supplyManger.UpdateSupply();
         turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
@@ -663,6 +672,7 @@ public class ButtonManger : MonoBehaviour
         tileManger.SpawnEnemy();
         TurnCheck();
         tileManger.CheckTile();
+        input.CheckMonsterMovePoint();
     }
 
     void TurnCheck()
@@ -670,6 +680,7 @@ public class ButtonManger : MonoBehaviour
         if(tileManger.attackTurnCheck)
         {
             attackContText.GetComponent<Image>().sprite = defendUi;
+            timer.limitTime = 60;
             //공격턴 3 11 26 42 62 82
             if (tileManger.attackTurn == 0)
             {
@@ -699,6 +710,7 @@ public class ButtonManger : MonoBehaviour
         else
         {
             attackContText.GetComponent<Image>().sprite = attackUi;
+            timer.limitTime = 30;
 
             if (tileManger.attackTurn == 0)
             {
@@ -724,10 +736,9 @@ public class ButtonManger : MonoBehaviour
             {
                 attackTurnNum = 81;
             }
-
         }
 
         attackTurnNum -= playerInfo.turnPoint;
-        attackContText.transform.GetChild(0).GetComponent<Text>().text = attackTurnNum.ToString();
+        attackContText.transform.parent.GetChild(0).GetChild(0).GetComponent<Text>().text = attackTurnNum.ToString();
     }
 }

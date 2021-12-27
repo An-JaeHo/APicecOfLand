@@ -60,6 +60,7 @@ public class BarrackController : MonoBehaviour
             prefebSoldier.transform.SetParent(land);
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
             prefebSoldier.GetComponent<SoldierManger>().totalHp = prefebSoldier.GetComponent<MakeSoldier>().HelthPoint;
+            prefebSoldier.GetComponent<SoldierManger>().movePoint = true;
             SaveLevelCheck(prefebSoldier);
             playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
 
@@ -75,12 +76,13 @@ public class BarrackController : MonoBehaviour
             monsters.Add(prefebSoldier);
             buttonManger.amrys.Add(prefebSoldier);
             usingPeople++;
-            supplyManger.UpdateSupply();
+            supplyManger.JustUpdateSupply();
             barrackMonsterSprite.gameObject.SetActive(false);
             inputManger.Land.CheckTile();
             gameObject.SetActive(false);
         }
         inputManger.mouseCheck = true;
+        inputManger.CheckMonsterMovePoint();
     }
 
     #region 검사나오는 버튼
@@ -122,7 +124,8 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 60, monster.transform.parent.position.y - 70);
+                        monster.transform.localPosition = new Vector3(100, -130);
+                        //monster.transform.position = new Vector3(monster.transform.parent.position.x + 60, monster.transform.parent.position.y - 70);
                         monsterUi.Add(monster);
                     }
 
@@ -145,7 +148,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 150, monster.transform.parent.position.y - 70);
+                        monster.transform.localPosition = new Vector3(270, -130);
                         monsterUi.Add(monster);
                     }
 
@@ -168,7 +171,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 240, monster.transform.parent.position.y - 70);
+                        monster.transform.localPosition = new Vector3(440, -130);
                         monsterUi.Add(monster);
                     }
 
@@ -191,7 +194,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 330, monster.transform.parent.position.y - 70);
+                        monster.transform.localPosition = new Vector3(610, -130);
                         monsterUi.Add(monster);
                     }
 
@@ -216,7 +219,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 420, monster.transform.parent.position.y - 70);
+                        monster.transform.localPosition = new Vector3(780, -130);
                         monsterUi.Add(monster);
                     }
 
@@ -240,7 +243,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 510, monster.transform.parent.position.y - 70);
+                        monster.transform.localPosition = new Vector3(950, -130);
                         monsterUi.Add(monster);
                     }
                 }
