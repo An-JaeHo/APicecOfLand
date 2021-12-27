@@ -22,6 +22,7 @@ public class InputManger : MonoBehaviour
     public GameObject bulidUpgradeUi;
     public GameObject BarrackUi;
     public GameObject armyUpgradeUi;
+    public Image monsterMoveCheckImgae;
     private Vector3 MouseStart;
     public float time;
 
@@ -190,7 +191,10 @@ public class InputManger : MonoBehaviour
                         default:
                             break;
                     }
+
+                    
                     ChangeLandInfo();
+                    CheckMonsterMovePoint();
                     armyMove = true;
                 }
             }
@@ -360,6 +364,7 @@ public class InputManger : MonoBehaviour
                                 break;
                         }
                         ChangeLandInfo();
+                        CheckMonsterMovePoint();
                         armyMove = true;
                     }
                 }
@@ -491,6 +496,22 @@ public class InputManger : MonoBehaviour
                 {
                     gameCamera.transform.position = new Vector3(gameCamera.transform.position.x, minPosY, -800);
                 }
+            }
+        }
+    }
+
+    public void CheckMonsterMovePoint()
+    {
+        for (int i = 0; i < BarrackUi.GetComponent<BarrackController>().monsters.Count; i++)
+        {
+            if (BarrackUi.GetComponent<BarrackController>().monsters[i].GetComponent<SoldierManger>().movePoint == true)
+            {
+                monsterMoveCheckImgae.color = Color.white;
+                return;
+            }
+            else
+            {
+                monsterMoveCheckImgae.color = Color.gray;
             }
         }
     }

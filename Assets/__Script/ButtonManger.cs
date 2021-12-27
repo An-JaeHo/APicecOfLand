@@ -561,7 +561,6 @@ public class ButtonManger : MonoBehaviour
                     {
                         Destroy(enemys[i].GetComponent<EnemyController>().buffPrefebList[j]);
                     }
-
                 }
 
                 enemys[i].GetComponent<EnemyController>().buffPrefebList.Clear();
@@ -593,7 +592,16 @@ public class ButtonManger : MonoBehaviour
 
                 enemys[i].GetComponent<EnemyController>().movePoint = true;
                 enemys[i].GetComponent<EnemyController>().CheckBuff();
+
+                if ((i+1) == enemys.Count)
+                {
+                    button.GetComponent<Button>().interactable = true;
+                }
             }
+        }
+        else
+        {
+            button.GetComponent<Button>().interactable = true;
         }
 
         for (int i = 0; i < amrys.Count; i++)
@@ -631,9 +639,8 @@ public class ButtonManger : MonoBehaviour
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
         }
-        
 
-        button.GetComponent<Button>().interactable = true;
+        
         input.mouseCheck = true;
         timer.limitTime = 60;
         timer.timerCheck = true;
@@ -654,8 +661,8 @@ public class ButtonManger : MonoBehaviour
             playerInfo.killingPoint = rand;
             SceneMgr.GoGameEndScene();
         }
+
         StartCoroutine(moveEnemy());
-        //moveEnemy();
         rangeManger.rangeList.Clear();
         supplyManger.UpdateSupply();
         turnCountText.GetComponentInChildren<Text>().text = playerInfo.turnPoint.ToString();
@@ -663,6 +670,7 @@ public class ButtonManger : MonoBehaviour
         tileManger.SpawnEnemy();
         TurnCheck();
         tileManger.CheckTile();
+        input.CheckMonsterMovePoint();
     }
 
     void TurnCheck()
@@ -724,10 +732,9 @@ public class ButtonManger : MonoBehaviour
             {
                 attackTurnNum = 81;
             }
-
         }
 
         attackTurnNum -= playerInfo.turnPoint;
-        attackContText.transform.GetChild(0).GetComponent<Text>().text = attackTurnNum.ToString();
+        attackContText.transform.parent.GetChild(0).GetChild(0).GetComponent<Text>().text = attackTurnNum.ToString();
     }
 }

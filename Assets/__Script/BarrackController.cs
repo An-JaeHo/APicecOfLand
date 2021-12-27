@@ -60,6 +60,7 @@ public class BarrackController : MonoBehaviour
             prefebSoldier.transform.SetParent(land);
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
             prefebSoldier.GetComponent<SoldierManger>().totalHp = prefebSoldier.GetComponent<MakeSoldier>().HelthPoint;
+            prefebSoldier.GetComponent<SoldierManger>().movePoint = true;
             SaveLevelCheck(prefebSoldier);
             playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
 
@@ -81,6 +82,7 @@ public class BarrackController : MonoBehaviour
             gameObject.SetActive(false);
         }
         inputManger.mouseCheck = true;
+        inputManger.CheckMonsterMovePoint();
     }
 
     #region 검사나오는 버튼
