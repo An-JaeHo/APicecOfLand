@@ -28,6 +28,8 @@ public class ButtonManger : MonoBehaviour
     //공격 방어턴 구분용
     public Sprite attackUi;
     public Sprite defendUi;
+    public Sprite monsterPicture;
+    public Sprite enemyPicture;
 
     //타일 구매용
     public int food;
@@ -642,7 +644,7 @@ public class ButtonManger : MonoBehaviour
 
         
         input.mouseCheck = true;
-        timer.limitTime = 60;
+        timer.limitTime = 30;
         timer.timerCheck = true;
         supplyManger.JustUpdateSupply();
         yield return null;
@@ -678,6 +680,7 @@ public class ButtonManger : MonoBehaviour
         if(tileManger.attackTurnCheck)
         {
             attackContText.GetComponent<Image>().sprite = defendUi;
+            timer.limitTime = 60;
             //공격턴 3 11 26 42 62 82
             if (tileManger.attackTurn == 0)
             {
@@ -707,6 +710,7 @@ public class ButtonManger : MonoBehaviour
         else
         {
             attackContText.GetComponent<Image>().sprite = attackUi;
+            timer.limitTime = 30;
 
             if (tileManger.attackTurn == 0)
             {
