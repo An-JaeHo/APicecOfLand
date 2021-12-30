@@ -124,7 +124,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.localPosition = new Vector3(100, -130);
+                        monster.transform.localPosition = new Vector3(100, -350);
                         //monster.transform.position = new Vector3(monster.transform.parent.position.x + 60, monster.transform.parent.position.y - 70);
                         monsterUi.Add(monster);
                     }
@@ -148,7 +148,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.localPosition = new Vector3(270, -130);
+                        monster.transform.localPosition = new Vector3(270, -350);
                         monsterUi.Add(monster);
                     }
 
@@ -171,7 +171,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.localPosition = new Vector3(440, -130);
+                        monster.transform.localPosition = new Vector3(440, -350);
                         monsterUi.Add(monster);
                     }
 
@@ -194,7 +194,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.localPosition = new Vector3(610, -130);
+                        monster.transform.localPosition = new Vector3(610, -350);
                         monsterUi.Add(monster);
                     }
 
@@ -219,7 +219,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.localPosition = new Vector3(780, -130);
+                        monster.transform.localPosition = new Vector3(780, -350);
                         monsterUi.Add(monster);
                     }
 
@@ -243,7 +243,7 @@ public class BarrackController : MonoBehaviour
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.localPosition = new Vector3(950, -130);
+                        monster.transform.localPosition = new Vector3(950, -350);
                         monsterUi.Add(monster);
                     }
                 }
