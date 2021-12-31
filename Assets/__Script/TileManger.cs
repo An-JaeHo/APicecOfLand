@@ -51,6 +51,7 @@ public class TileManger : MonoBehaviour
     public GameObject[] enemyObj;
     public GameObject[] MonsterObj;
     public GameObject[] bossObj;
+    public Sprite[] destroyAreaObj;
     public GameObject particlePrefeb;
 
     //보스
@@ -97,6 +98,9 @@ public class TileManger : MonoBehaviour
         object[] loadBoss = Resources.LoadAll("Boss", typeof(GameObject));
         bossObj = new GameObject[loadBoss.Length];
 
+        object[] loadDestroyArea = Resources.LoadAll("AreaBroken", typeof(Sprite));
+        destroyAreaObj = new Sprite[loadDestroyArea.Length];
+
         for (int i = 0; i < loadedAreaBeta.Length; i++)
         {
             sprites[i] = (Sprite)loadedAreaBeta[i];
@@ -115,6 +119,11 @@ public class TileManger : MonoBehaviour
         for (int i = 0; i < loadBoss.Length; i++)
         {
             bossObj[i] = (GameObject)loadBoss[i];
+        }
+
+        for (int i = 0; i < loadDestroyArea.Length; i++)
+        {
+            destroyAreaObj[i] = (Sprite)loadDestroyArea[i];
         }
 
         for (int i = 0; i < 17; i++)
