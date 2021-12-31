@@ -63,7 +63,7 @@ public class MakeArea : AreaInfo
                 FlourOutput = areaInfo.information.area[i].FlourOutput;
                 SugarOutput = areaInfo.information.area[i].SugarOutput;
                 Population = areaInfo.information.area[i].Population;
-                Destroy = areaInfo.information.area[i].Destroy;
+                Destroy = false;
                 Repair = areaInfo.information.area[i].Repair;
                 BuildTurn = areaInfo.information.area[i].BuildTurn;
                 Effect = areaInfo.information.area[i].Effect;
@@ -75,7 +75,7 @@ public class MakeArea : AreaInfo
                 if(areaInfo.information.area[i].Code == "Area 17" || areaInfo.information.area[i].Code == "Area 18" || areaInfo.information.area[i].Code == "Area 19")
                 {
                     transform.tag = "Barracks";
-                    Destroy = false;
+                    //Destroy = false;
                 }
                 else if(areaInfo.information.area[i].Code == "Area 30" || areaInfo.information.area[i].Code == "Area 31" || areaInfo.information.area[i].Code == "Area 32")
                 {
