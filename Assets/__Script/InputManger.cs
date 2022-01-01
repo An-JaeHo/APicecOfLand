@@ -22,6 +22,7 @@ public class InputManger : MonoBehaviour
     public GameObject bulidUpgradeUi;
     public GameObject BarrackUi;
     public GameObject armyUpgradeUi;
+    public GameObject repairUi;
     public Image monsterMoveCheckImgae;
     private Vector3 MouseStart;
     public float time;
@@ -117,10 +118,17 @@ public class InputManger : MonoBehaviour
                         case "Grass":
                             if (Land.attackTurnCheck)
                             {
-                                landObj = hit.transform;
-                                mouseCheck = false;
-                                bulidUi.GetComponent<BuildController>().land = hit.transform;
-                                bulidUi.GetComponent<BuildController>().CreateWindow();
+                                if(hit.transform.GetComponent<MakeArea>().Destroy != true)
+                                {
+                                    landObj = hit.transform;
+                                    mouseCheck = false;
+                                    bulidUi.GetComponent<BuildController>().land = hit.transform;
+                                    bulidUi.GetComponent<BuildController>().CreateWindow();
+                                }
+                                else
+                                {
+                                    repairUi.SetActive(true);
+                                }
                             }
                             
                             break;
