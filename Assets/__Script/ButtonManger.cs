@@ -47,6 +47,7 @@ public class ButtonManger : MonoBehaviour
     public Transform UpgradeLand;
     public GameObject bulidUpgradeUi;
     public GameObject armyUpgradeUi;
+    public GameObject repaireUi;
     public BarrackController barrackController;
     //창
     public GameObject buildUi;
@@ -99,6 +100,20 @@ public class ButtonManger : MonoBehaviour
         else
         {
             skillInven.SetActive(true);
+            input.mouseCheck = false;
+        }
+    }
+
+    public void RepairButton()
+    {
+        if (repaireUi.activeSelf)
+        {
+            repaireUi.SetActive(false);
+            input.mouseCheck = true;
+        }
+        else
+        {
+            repaireUi.SetActive(true);
             input.mouseCheck = false;
         }
     }
