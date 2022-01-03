@@ -31,6 +31,9 @@ public class Area
     public int BuildTurn;
     public string Effect;
     public int Attack;
+    public int RepairMilk;
+    public int RepairSugar;
+    public int RepairFlour;
 }
 
 [System.Serializable]

@@ -22,6 +22,9 @@ public class AreaInfo : MonoBehaviour
     public string Effect;
     public int Attack;
     public bool Movement;
+    public int repairMilk;
+    public int repairSugar;
+    public int repairFlour;
 }
 
 public class MakeArea : AreaInfo
@@ -69,6 +72,9 @@ public class MakeArea : AreaInfo
                 Effect = areaInfo.information.area[i].Effect;
                 Attack = areaInfo.information.area[i].Attack;
                 Movement = true;
+                repairMilk = areaInfo.information.area[i].RepairMilk;
+                repairSugar = areaInfo.information.area[i].RepairSugar;
+                repairFlour = areaInfo.information.area[i].RepairFlour;
 
                 areaInfoImage.sprite = areaInfo.information.area[i].Picture;
 

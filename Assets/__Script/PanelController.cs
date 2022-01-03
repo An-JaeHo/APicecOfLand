@@ -78,6 +78,10 @@ public class PanelController : MonoBehaviour
         {
             return buildController.peopleUI;
         }
+        else if (name == "치료소")
+        {
+            return buildController.mosterUI;
+        }
         else
         {
             return null;

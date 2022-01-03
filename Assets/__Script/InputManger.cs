@@ -128,6 +128,7 @@ public class InputManger : MonoBehaviour
                                 else
                                 {
                                     repairUi.SetActive(true);
+                                    repairUi.GetComponent<RepairController>().SettingRepair();
                                 }
                             }
                             

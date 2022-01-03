@@ -14,7 +14,6 @@ public class BuildController : MonoBehaviour
     //처음 만드는 창
     public GameObject content;
     public GameObject info;
-    public Vector3 position;
 
     //업그레이드를 위한 창
     public MakeArea makeArea;
@@ -39,7 +38,7 @@ public class BuildController : MonoBehaviour
     public void CreateWindow()
     {
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-        position = content.transform.position;
+        //content.transform.localPosition = new Vector3(-206f, -100f);
 
         if (content.transform.childCount >= 3)
         {
@@ -50,12 +49,14 @@ public class BuildController : MonoBehaviour
                 content.transform.GetChild(2).name = "설탕";
                 content.transform.GetChild(3).name = "병영";
                 content.transform.GetChild(4).name = "집";
+                content.transform.GetChild(5).name = "치료소";
 
                 lands.Add(content.transform.GetChild(0).gameObject);
                 lands.Add(content.transform.GetChild(1).gameObject);
                 lands.Add(content.transform.GetChild(2).gameObject);
                 lands.Add(content.transform.GetChild(3).gameObject);
                 lands.Add(content.transform.GetChild(4).gameObject);
+                lands.Add(content.transform.GetChild(5).gameObject);
             }
         }
         else
@@ -81,6 +82,10 @@ public class BuildController : MonoBehaviour
                 GameObject houseInfo = Instantiate(info, content.transform);
                 houseInfo.transform.name = "집";
                 lands.Add(houseInfo);
+
+                GameObject clinicInfo = Instantiate(info, content.transform);
+                clinicInfo.transform.name = "치료소";
+                lands.Add(clinicInfo);
             }
         }
 
@@ -102,7 +107,7 @@ public class BuildController : MonoBehaviour
 
                     lands[i].transform.localPosition = new Vector3(100 + (i*170), 100);
                     //400 150
-                    content.GetComponent<RectTransform>().sizeDelta = new Vector2(450 + (lands.Count-3)*190, content.GetComponent<RectTransform>().sizeDelta.y+ 20);
+                    content.GetComponent<RectTransform>().sizeDelta = new Vector2(450 + (lands.Count-3)*200, content.GetComponent<RectTransform>().sizeDelta.y+ 20);
                 }
             }
         }

@@ -4,36 +4,21 @@ using UnityEngine;
 
 public class PlayerInfo : GenericSingletonClass<PlayerInfo>
 {
+    [Header("Ues In Game")]
     public int milk;
     public int flour;
     public int sugar;
     public int people;
 
+    [Header("Area Make Souce")]
     public int updateMilk;
     public int updateFlour;
     public int updateSugar;
     public int updatePeople;
 
+    [Space (10f)]
     public int turnPoint;
     public int killingPoint;
-
-    //public int GameCherryLevel;
-    //public int GameCherryGrade;
-
-    //public int GameCandyLevel;
-    //public int GameCandyGrade;
-
-    //public int GameSkittlesLevel;
-    //public int GameSkittlesGrade;
-
-    //public int GameDonutsLevel;
-    //public int GameDonutsGrade;
-
-    //public int GameSchneeballenLevel;
-    //public int GameSchneeballenGrade;
-
-    //public int GameChocoLevel;
-    //public int GameChocoGrade;
 
     public void StartGame()
     {

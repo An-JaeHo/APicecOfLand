@@ -36,7 +36,7 @@ public class TileManger : MonoBehaviour
     public Color color;
     public ButtonManger buttonManger;
     private PlayerInfo playerInfo;
-    private SupplyManger supplyManger;
+    public SupplyManger supplyManger;
     List<GameObject> list;
 
     // 타일 구분용 list
@@ -52,6 +52,7 @@ public class TileManger : MonoBehaviour
     public GameObject[] MonsterObj;
     public GameObject[] bossObj;
     public Sprite[] destroyAreaObj;
+    public Sprite[] areaImges;
     public GameObject particlePrefeb;
 
     //보스
@@ -86,45 +87,8 @@ public class TileManger : MonoBehaviour
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
 
-        object[] loadedAreaBeta = Resources.LoadAll("StartArea", typeof(Sprite));
-        sprites = new Sprite[loadedAreaBeta.Length];
-
-        object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
-        MonsterObj = new GameObject[loadMonster.Length];
-
-        object[] loadEnemy = Resources.LoadAll("Enemy", typeof(GameObject));
-        enemyObj = new GameObject[loadEnemy.Length];
-
-        object[] loadBoss = Resources.LoadAll("Boss", typeof(GameObject));
-        bossObj = new GameObject[loadBoss.Length];
-
-        object[] loadDestroyArea = Resources.LoadAll("AreaBroken", typeof(Sprite));
-        destroyAreaObj = new Sprite[loadDestroyArea.Length];
-
-        for (int i = 0; i < loadedAreaBeta.Length; i++)
-        {
-            sprites[i] = (Sprite)loadedAreaBeta[i];
-        }
-
-        for (int i = 0; i < loadEnemy.Length; i++)
-        {
-            enemyObj[i] = (GameObject)loadEnemy[i];
-        }
+        LoadAllImge();
         
-        for (int i = 0; i < loadMonster.Length; i++)
-        {
-            MonsterObj[i] = (GameObject)loadMonster[i];
-        }
-
-        for (int i = 0; i < loadBoss.Length; i++)
-        {
-            bossObj[i] = (GameObject)loadBoss[i];
-        }
-
-        for (int i = 0; i < loadDestroyArea.Length; i++)
-        {
-            destroyAreaObj[i] = (Sprite)loadDestroyArea[i];
-        }
 
         for (int i = 0; i < 17; i++)
         {
@@ -478,6 +442,7 @@ public class TileManger : MonoBehaviour
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
+                buttonManger.DestroyCheckArea();
             }
 
             if(playerInfo.turnPoint ==3)
@@ -501,6 +466,8 @@ public class TileManger : MonoBehaviour
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
+
+                buttonManger.DestroyCheckArea();
             }
 
             if (playerInfo.turnPoint == 11)
@@ -528,6 +495,8 @@ public class TileManger : MonoBehaviour
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
+
+                buttonManger.DestroyCheckArea();
             }
 
             if (playerInfo.turnPoint == 26)
@@ -561,6 +530,8 @@ public class TileManger : MonoBehaviour
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
+
+                buttonManger.DestroyCheckArea();
             }
 
             if (playerInfo.turnPoint == 42)
@@ -593,6 +564,8 @@ public class TileManger : MonoBehaviour
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
+
+                buttonManger.DestroyCheckArea();
             }
 
             if (playerInfo.turnPoint == 62)
@@ -612,7 +585,6 @@ public class TileManger : MonoBehaviour
         }
         else if (82 <= playerInfo.turnPoint && 101 > playerInfo.turnPoint)
         {
-            
             if (attackTurnCheck)
             {
                 attackTurn++;
@@ -625,6 +597,8 @@ public class TileManger : MonoBehaviour
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
+
+                buttonManger.DestroyCheckArea();
             }
 
             if (playerInfo.turnPoint == 82)
@@ -704,5 +678,56 @@ public class TileManger : MonoBehaviour
         Enemy.GetComponent<MakeEnemy>().BaseHelthPoint += Enemy.GetComponent<MakeEnemy>().RiseHelthPoint * (randLevel - 1);
         Enemy.GetComponent<MakeEnemy>().Level = randLevel;
         Enemy.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = Enemy.GetComponent<MakeEnemy>().Level.ToString();
+    }
+
+    public void LoadAllImge()
+    {
+        object[] loadarea =Resources.LoadAll("Area", typeof(Sprite));
+        areaImges = new Sprite[loadarea.Length];
+
+        object[] loadedAreaBeta = Resources.LoadAll("StartArea", typeof(Sprite));
+        sprites = new Sprite[loadedAreaBeta.Length];
+
+        object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
+        MonsterObj = new GameObject[loadMonster.Length];
+
+        object[] loadEnemy = Resources.LoadAll("Enemy", typeof(GameObject));
+        enemyObj = new GameObject[loadEnemy.Length];
+
+        object[] loadBoss = Resources.LoadAll("Boss", typeof(GameObject));
+        bossObj = new GameObject[loadBoss.Length];
+
+        object[] loadDestroyArea = Resources.LoadAll("AreaBroken", typeof(Sprite));
+        destroyAreaObj = new Sprite[loadDestroyArea.Length];
+
+        for (int i = 0; i < loadarea.Length; i++)
+        {
+            areaImges[i] = (Sprite)loadarea[i];
+        }
+
+        for (int i = 0; i < loadedAreaBeta.Length; i++)
+        {
+            sprites[i] = (Sprite)loadedAreaBeta[i];
+        }
+
+        for (int i = 0; i < loadEnemy.Length; i++)
+        {
+            enemyObj[i] = (GameObject)loadEnemy[i];
+        }
+
+        for (int i = 0; i < loadMonster.Length; i++)
+        {
+            MonsterObj[i] = (GameObject)loadMonster[i];
+        }
+
+        for (int i = 0; i < loadBoss.Length; i++)
+        {
+            bossObj[i] = (GameObject)loadBoss[i];
+        }
+
+        for (int i = 0; i < loadDestroyArea.Length; i++)
+        {
+            destroyAreaObj[i] = (Sprite)loadDestroyArea[i];
+        }
     }
 }

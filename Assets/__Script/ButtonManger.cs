@@ -7,56 +7,53 @@ using System.IO;
 
 public class ButtonManger : MonoBehaviour
 {
+    [Header("Set in inspector")]
     public GameObject button;
     public GameObject skillInven;
     public GameObject turnPoint;
-    private PlayerInfo playerInfo;
-    public GameObject CreateAreaPrefab;
-    private PanelController panel;
-    private RangeManger rangeManger;
-    private GameObject game;
-    public InputManger input;
-    public SupplyManger supplyManger;
-    public List<GameObject> amrys;
-    public List<GameObject> builders;
-    public Timer timer;
-    public float buttonTimer;
-    public GameObject turnCountText;
-    public GameObject attackContText;
-    public List<Transform> tiles;
-    public int attackTurnNum;
-    //공격 방어턴 구분용
     public Sprite attackUi;
     public Sprite defendUi;
-    public Sprite monsterPicture;
-    public Sprite enemyPicture;
-
-    //타일 구매용
-    public int food;
-    public int wood;
-    public int iron;
-    
-
-    // 야만인 타일용
-    public TileManger tileManger;
-    private List<GameObject> enemyTiles;
-    public List<GameObject> enemys;
-    private GameObject enemyTileWls;
-
-    //업그레이드 용
     public Transform UpgradeLand;
     public GameObject bulidUpgradeUi;
     public GameObject armyUpgradeUi;
     public GameObject repaireUi;
-    public BarrackController barrackController;
-    //창
+    public GameObject turnCountText;
+    public GameObject attackContText;
     public GameObject buildUi;
-    public GameObject armyCheckWindow;
-    public GameObject bulidCheckWindow;
     public GameObject barrackWindow;
     public GameObject settingUi;
-    public GameObject dictionaryUi;
 
+    [Header("Set in ViusalStudio")]
+    public InputManger input;
+    public SupplyManger supplyManger;
+    public TileManger tileManger;
+    public BarrackController barrackController;
+    public GameObject CreateAreaPrefab;
+    public Sprite monsterPicture;
+    public Sprite enemyPicture;
+    public GameObject armyCheckWindow;
+    public GameObject bulidCheckWindow;
+    public GameObject dictionaryUi;
+    public Timer timer;
+    public float buttonTimer;
+    public int attackTurnNum;
+    public int food;
+    public int wood;
+    public int iron;
+    
+    public List<GameObject> amrys;
+    public List<GameObject> builders;
+    public List<Transform> tiles;
+    public List<Transform> destroyTiles;
+    public List<GameObject> enemys;
+
+
+    private PlayerInfo playerInfo;
+    private GameObject enemyTileWls;
+    private List<GameObject> enemyTiles;
+    private PanelController panel;
+    private RangeManger rangeManger;
+    private GameObject game;
 
     private void Start()
     {
@@ -388,43 +385,13 @@ public class ButtonManger : MonoBehaviour
             
         }
 
-        //panel.baseLand.GetComponent<BoxCollider2D>().enabled = false;
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
         panel.baseLand.GetComponent<AreaManger>().CheckUpdateMaterial();
         supplyManger.JustUpdateSupply();
-        panel.parentUi.GetComponent<BuildController>().content.transform.position = panel.parentUi.GetComponent<BuildController>().position;
         input.mouseCheck = true;
         panel.parentUi.SetActive(false);
         tiles.Add(panel.baseLand);
     }
-
-    //public void CheckBuildCount()
-    //{
-    //    for (int i = 0; i < tiles.Count; i++)
-    //    {
-    //        tiles[i].GetComponent<AreaManger>().buildTurn++;
-
-    //        if (tiles[i].GetComponent<MakeArea>().BuildTurn == tiles[i].GetComponent<AreaManger>().buildTurn
-    //             && tiles[i].GetComponent<MakeArea>().firstBuild == true)
-    //        {
-    //            if (tiles[i].GetComponent<MakeArea>().Type == "Area")
-    //            {
-    //                tiles[i].GetComponent<SpriteRenderer>().sprite = tiles[i].GetComponent<MakeArea>().Picture;
-    //            }
-    //            else
-    //            {
-    //                tiles[i].GetComponent<SpriteRenderer>().sprite = tiles[i].GetComponent<AreaManger>().pureSprite;
-    //            }
-
-    //            tiles[i].GetComponent<MakeArea>().Destroy = false;
-    //            tiles[i].GetComponent<MakeArea>().firstBuild = false;
-    //            tiles[i].GetComponent<AreaManger>().CheckUpdateMaterial();
-    //            tiles[i].GetComponent<BoxCollider2D>().enabled = true;
-    //            tiles[i].GetComponent<AreaManger>().buildTurn = 0;
-    //        }
-
-    //    }
-    //}
 
     public void CheckUpgradeResources()
     {
@@ -523,12 +490,6 @@ public class ButtonManger : MonoBehaviour
                 }
             }
 
-            //건설턴 유보
-            //UpgradeLand.GetComponent<MakeArea>().firstBuild = true;
-            //UpgradeLand.GetComponent<BoxCollider2D>().enabled = false;
-            //UpgradeLand.GetComponent<MakeArea>().BuildTurn = 1;
-            //UpgradeLand.GetComponent<AreaManger>().buildTurn = 0;
-
             UpgradeLand.GetComponent<AreaManger>().CheckUpdateMaterial();
             supplyManger.JustUpdateSupply();
             input.mouseCheck = true;
@@ -597,7 +558,6 @@ public class ButtonManger : MonoBehaviour
                     turnSkill.Clear();
                 }
 
-                //enemys[i].GetComponent<EnemyController>().HpBarScale();
                 if (enemys[i].tag == "Enemy")
                 {
                     enemys[i].GetComponent<EnemyController>().enemy.BaseDefensive = enemys[i].GetComponent<EnemyController>().pureDefend;
@@ -727,6 +687,8 @@ public class ButtonManger : MonoBehaviour
             attackContText.GetComponent<Image>().sprite = attackUi;
             timer.limitTime = 30;
 
+           
+
             if (tileManger.attackTurn == 0)
             {
                 attackTurnNum = 1;
@@ -755,5 +717,39 @@ public class ButtonManger : MonoBehaviour
 
         attackTurnNum -= playerInfo.turnPoint;
         attackContText.transform.parent.GetChild(0).GetChild(0).GetComponent<Text>().text = attackTurnNum.ToString();
+    }
+
+    public void DestroyCheckArea()
+    {
+        if(destroyTiles.Count !=0)
+        {
+            for (int i = 0; i < destroyTiles.Count; i++)
+            {
+                if (destroyTiles[i].GetComponent<MakeArea>().Destroy == true)
+                {
+                    destroyTiles[i].GetComponent<AreaManger>().ReturnUpdateSouce();
+                    destroyTiles[i].GetComponent<MakeArea>().Code = destroyTiles[i].GetComponent<AreaManger>().pureCode;
+                    destroyTiles[i].GetComponent<MakeArea>().Name = null;
+                    destroyTiles[i].GetComponent<MakeArea>().Type = "Grass";
+                    destroyTiles[i].GetComponent<MakeArea>().Grade = 0;
+                    destroyTiles[i].GetComponent<MakeArea>().UpgradeFlour = 0;
+                    destroyTiles[i].GetComponent<MakeArea>().UpgradeSugar = 0;
+                    destroyTiles[i].GetComponent<MakeArea>().MilkOutput = 0;
+                    destroyTiles[i].GetComponent<MakeArea>().FlourOutput = 0;
+                    destroyTiles[i].GetComponent<MakeArea>().SugarOutput = 0;
+                    destroyTiles[i].GetComponent<MakeArea>().Movement = true;
+                    destroyTiles[i].GetComponent<MakeArea>().Destroy = false;
+                    destroyTiles[i].GetComponent<MakeArea>().Repair = false;
+                    destroyTiles[i].GetComponent<MakeArea>().Effect = null;
+                    destroyTiles[i].GetComponent<SpriteRenderer>().sprite = destroyTiles[i].GetComponent<AreaManger>().pureSprite;
+                    destroyTiles[i].GetComponent<SpriteRenderer>().color = Color.white;
+                    destroyTiles[i].GetComponent<AreaManger>().pureColor = Color.white;
+                    destroyTiles[i].tag = "Grass";
+                    
+                }
+            }
+
+            destroyTiles.Clear();
+        }
     }
 }

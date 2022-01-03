@@ -11,11 +11,8 @@ public class AnimationController : MonoBehaviour
             transform.parent.parent.GetComponent<SoldierManger>().input.BarrackUi.GetComponent<BarrackController>().usingPeople--;
             transform.parent.parent.GetComponent<SoldierManger>().input.BarrackUi.GetComponent<BarrackController>().supplyManger.playerInfo.updateMilk += transform.parent.parent.GetComponent<SoldierManger>().soldier.ConsumeFood;
             transform.parent.parent.GetComponent<SoldierManger>().input.BarrackUi.GetComponent<BarrackController>().supplyManger.JustUpdateSupply();
+            transform.parent.parent.GetComponent<SoldierManger>().buttonManger.amrys.Remove(transform.parent.parent.gameObject);
             Destroy(transform.parent.parent.gameObject);
-        }
-        else if (transform.parent.parent.tag == "Builder")
-        {
-            //transform.parent.parent.GetComponent<SoldierManger>().tileManger.DeadBulider(transform.parent.parent.gameObject);
         }
         else if (transform.parent.parent.tag == "Enemy")
         {
