@@ -687,8 +687,6 @@ public class ButtonManger : MonoBehaviour
             attackContText.GetComponent<Image>().sprite = attackUi;
             timer.limitTime = 30;
 
-           
-
             if (tileManger.attackTurn == 0)
             {
                 attackTurnNum = 1;

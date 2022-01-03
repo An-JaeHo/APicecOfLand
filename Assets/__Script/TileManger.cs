@@ -180,6 +180,37 @@ public class TileManger : MonoBehaviour
             if(tileList[i].childCount !=0)
             {
                 tileList[i].GetComponent<BoxCollider2D>().enabled = false;
+
+                if(tileList[i].GetComponent<MakeArea>().Name == "치료소")
+                {
+                    float heathPoint;
+
+                    if(tileList[i].GetComponent<MakeArea>().Grade ==1)
+                    {
+                        heathPoint = 0.05f;
+                    }
+                    else if(tileList[i].GetComponent<MakeArea>().Grade == 2)
+                    {
+                        heathPoint = 0.1f;
+                    }
+                    else
+                    {
+                        heathPoint = 0.2f;
+                    }
+
+                    if(tileList[i].GetChild(0).tag == "Army")
+                    {
+                        tileList[i].GetChild(0).GetComponent<MakeSoldier>().HelthPoint += (int)(tileList[i].GetChild(0).GetComponent<SoldierManger>().totalHp * heathPoint);
+
+                        if (tileList[i].GetChild(0).GetComponent<SoldierManger>().totalHp< tileList[i].GetChild(0).GetComponent<MakeSoldier>().HelthPoint)
+                        {
+                            tileList[i].GetChild(0).GetComponent<MakeSoldier>().HelthPoint = (int)tileList[i].GetChild(0).GetComponent<SoldierManger>().totalHp;
+                        }
+
+                        
+                    }
+                    
+                }
             }
             else
             {
