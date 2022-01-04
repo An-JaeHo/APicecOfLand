@@ -37,6 +37,7 @@ public class MakeSoldier : SoldierInfo
     public JsonManger TroopInfo;
     public SpriteRenderer troopInfoImage;
     public int nowExp;
+    public Vector3 nowPosition;
 
     private void Start()
     {

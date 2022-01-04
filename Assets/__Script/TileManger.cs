@@ -29,7 +29,7 @@ public class TileManger : MonoBehaviour
     public bool attackTurnCheck;
     private float timer;
     private bool alarmCheck;
-
+    private bool makeTileCheck;
     public int wight;
     public int hight;
     public int tileCount;
@@ -78,6 +78,7 @@ public class TileManger : MonoBehaviour
         list = new List<GameObject>();
         attackTurnCheck = true;
         alarmCheck = false;
+        makeTileCheck = false;
     }
 
     private void Start()
@@ -238,8 +239,8 @@ public class TileManger : MonoBehaviour
             enemyMakeLand.Clear();
             startNum = 109;
             maxnum = 4;
-            lengthLand = 5; 
-            
+            lengthLand = 5;
+            makeTileCheck = true;
         }
         else if (playerInfo.turnPoint == 26)
         {
@@ -247,6 +248,7 @@ public class TileManger : MonoBehaviour
             startNum = 91;
             maxnum = 6;
             lengthLand = 7;
+            makeTileCheck = true;
         }
         else if (playerInfo.turnPoint == 62)
         {
@@ -254,6 +256,7 @@ public class TileManger : MonoBehaviour
             startNum = 73;
             maxnum = 8;
             lengthLand = 9;
+            makeTileCheck = true;
         }
         else if (playerInfo.turnPoint == 122)
         {
@@ -261,6 +264,7 @@ public class TileManger : MonoBehaviour
             startNum = 55;
             maxnum = 10;
             lengthLand = 11;
+            makeTileCheck = true;
         }
         //else if (playerInfo.turnPoint == 123)
         //{
@@ -268,6 +272,8 @@ public class TileManger : MonoBehaviour
         //    startNum = 37;
         //    maxnum = 12;
         //    lengthLand = 13;
+        //    attackTurn++;
+        //    makeTileCheck = true;
         //}
         //else if (playerInfo.turnPoint == 181)
         //{
@@ -276,65 +282,57 @@ public class TileManger : MonoBehaviour
         //    maxnum = 14;
         //    lengthLand = 15;
         //    attackTurn++;
+        //    makeTileCheck = true;
         //}
 
         pureStrartnum = startNum;
 
-        for (int i = 0; i < tileList.Count; i++)
+        if(makeTileCheck)
         {
-            if (tileList[i].parent.name == startNum.ToString())
+            for (int i = 0; i < tileList.Count; i++)
             {
-                if (num != maxnum)
+                if (tileList[i].parent.name == startNum.ToString())
                 {
-                    startNum++;
-                    num++;
-                }
-                else if (num == maxnum)
-                {
-                    num = 0;
-                    startNum = pureStrartnum;
-                    startNum += 17;
-                    pureStrartnum = startNum;
-                    count++;
-                }
+                    if (num != maxnum)
+                    {
+                        startNum++;
+                        num++;
+                    }
+                    else if (num == maxnum)
+                    {
+                        num = 0;
+                        startNum = pureStrartnum;
+                        startNum += 17;
+                        pureStrartnum = startNum;
+                        count++;
+                    }
 
-                if (tileList[i].parent.gameObject.activeSelf != true)
-                {
-                    tileList[i].parent.gameObject.SetActive(true);
-                    tileList[i].GetComponent<MakeArea>().Movement = true;
-                    activeChildtileList.Add(tileList[i].transform.parent);
-                    enemyMakeLand.Add(tileList[i].transform.parent);
-                    //RandomLand(tileList[i].gameObject);
-                }
+                    if (tileList[i].parent.gameObject.activeSelf != true)
+                    {
+                        tileList[i].parent.gameObject.SetActive(true);
+                        tileList[i].GetComponent<MakeArea>().Movement = true;
+                        activeChildtileList.Add(tileList[i].transform.parent);
+                        enemyMakeLand.Add(tileList[i].transform.parent);
+                    }
 
-                if (count == lengthLand && playerInfo.turnPoint <= 70)
-                {
-                    count = 0;
-                    return;
+                    if (count == lengthLand && playerInfo.turnPoint <= 70)
+                    {
+                        count = 0;
+                        return;
+                    }
                 }
             }
-        }
-    }
 
-    public void RandomLand(GameObject obj)
-    {
-        object[] loadedAreaBeta = Resources.LoadAll("StartArea", typeof(Sprite));
-        sprites = new Sprite[loadedAreaBeta.Length];
+            //int randint = UnityEngine.Random.Range(1, 4);
 
-        for (int i = 0; i < loadedAreaBeta.Length; i++)
-        {
-            sprites[i] = (Sprite)loadedAreaBeta[i];
-        }
+            //for (int i = 0; i < randint; i++)
+            //{
+            //    int randomObj = UnityEngine.Random.Range(0, enemyLand.Count);
 
-        if (sprites != null)
-        {
-            int rand = UnityEngine.Random.Range(0, 3);
+            //    //enemyLand[randomObj].GetComponent<MakeArea>().InputAreaInfo("");
+            //}
 
-            obj.transform.tag = "Grass";
-            obj.transform.GetComponent<AreaManger>().pureCode = "Grass";
-            obj.transform.GetComponent<AreaManger>().pureTag = "Grass";
-            obj.transform.GetComponent<SpriteRenderer>().sprite = sprites[0];
-            obj.transform.GetComponent<AreaManger>().pureSprite = sprites[0];
+            //makeTileCheck = false;
         }
     }
 
