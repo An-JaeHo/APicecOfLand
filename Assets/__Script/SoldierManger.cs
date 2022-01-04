@@ -7,7 +7,6 @@ using TMPro;
 public class SoldierManger : MonoBehaviour
 {
     private int stayTime;
-    private int moveUpPosition;
     private int y;
     private Vector3 movePosition;
     public ButtonManger buttonManger;

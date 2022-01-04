@@ -8,11 +8,20 @@ public class UpGradeInputManger : MonoBehaviour
     public Transform hitObj;
     public GameObject upGradeWindow;
     public bool mouseCheck;
+    public UpGradeMonsterInfo upGradeMonsterInfo;
+    private float minPosX;
+    private float maxPosX;
+    private float fristPosX;
+    private bool mouseMonsterCheck;
 
     void Start()
     {
         gameCamera = Camera.main;
         mouseCheck = true;
+        fristPosX = 540f;
+        minPosX = 50f;
+        maxPosX = 1080f;
+        mouseMonsterCheck = false;
     }
 
     // Update is called once per frame
@@ -29,28 +38,69 @@ public class UpGradeInputManger : MonoBehaviour
                 Mounshit();
             }
         }
-        
+
+        upGradeMonsterInfo.RoundMonster();
     }
 
     private void Mounshit()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition = gameCamera.ScreenToWorldPoint(mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mousePosition, gameCamera.transform.forward, 800);
+            mouseMonsterCheck = true;
+        }
 
-            if (hit)
+        if (mouseMonsterCheck)
+        {
+            if (Input.GetMouseButton(0))
             {
-                if (Input.GetMouseButtonDown(0))
+                Vector3 moveMousePos = Input.mousePosition;
+                float moveMonsterInterpolate;
+
+
+                if (moveMousePos.x < maxPosX
+                    && moveMousePos.x > minPosX)
                 {
-                    switch (hit.transform.tag)
+                    if (moveMousePos.x > 540f)
                     {
-                        case "Army":
-                            upGradeWindow.SetActive(true);
-                            upGradeWindow.GetComponent<UpGradeSceneWindow>().UpGradeCheck(hit.transform);
-                            mouseCheck = false;
-                            break;
+                        moveMonsterInterpolate = (moveMousePos.x - 540f) / (maxPosX - 540f);
+                    }
+                    else
+                    {
+                        moveMonsterInterpolate = -minPosX / moveMousePos.x;
+                    }
+
+                    upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+
+
+
+                    if (moveMonsterInterpolate > 1)
+                    {
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                        moveMonsterInterpolate = 1;
+                        mouseMonsterCheck = false;
+                    }
+
+                    if (moveMonsterInterpolate < -1)
+                    {
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                        moveMonsterInterpolate = -1;
+                        mouseMonsterCheck = false;
+                    }
+                }
+                else
+                {
+                    if (moveMousePos.x > maxPosX)
+                    {
+                        moveMonsterInterpolate = 1f;
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                        mouseMonsterCheck = false;
+                    }
+
+                    if (moveMousePos.x < minPosX)
+                    {
+                        moveMonsterInterpolate = -1f;
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                        mouseMonsterCheck = false;
                     }
                 }
             }
