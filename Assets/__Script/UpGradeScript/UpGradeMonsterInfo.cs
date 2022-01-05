@@ -343,12 +343,13 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 Vector3 nextPos = new Vector3(monsters[i].GetComponent<MakeSoldier>().nowPosition.x + 540f, monsters[i].transform.localPosition.y);
                 monsters[i].transform.localPosition = Vector3.Lerp(monsters[i].GetComponent<MakeSoldier>().nowPosition, nextPos, interporlateNum);
             }
+            
         }
         else
         {
             for (int i = 0; i < monsters.Count; i++)
             {
-                Vector3 nextPos = new Vector3(monsters[i].GetComponent<MakeSoldier>().nowPosition.x + -540f, monsters[i].transform.localPosition.y);
+                Vector3 nextPos = new Vector3(monsters[i].GetComponent<MakeSoldier>().nowPosition.x -540f, monsters[i].transform.localPosition.y);
                 monsters[i].transform.localPosition = Vector3.Lerp(monsters[i].GetComponent<MakeSoldier>().nowPosition, nextPos, -interporlateNum);
             }
         }

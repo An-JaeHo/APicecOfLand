@@ -19,12 +19,11 @@ public class UpGradeInputManger : MonoBehaviour
         gameCamera = Camera.main;
         mouseCheck = true;
         fristPosX = 540f;
-        minPosX = 50f;
+        minPosX = 1f;
         maxPosX = 1080f;
         mouseMonsterCheck = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(mouseCheck)
@@ -66,12 +65,10 @@ public class UpGradeInputManger : MonoBehaviour
                     }
                     else
                     {
-                        moveMonsterInterpolate = -minPosX / moveMousePos.x;
+                        moveMonsterInterpolate = ((moveMousePos.x - 540f) / 540f);
                     }
-
+                    
                     upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-
-
 
                     if (moveMonsterInterpolate > 1)
                     {
