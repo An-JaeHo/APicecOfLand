@@ -38,7 +38,7 @@ public class UpGradeInputManger : MonoBehaviour
             }
         }
 
-        upGradeMonsterInfo.RoundMonster();
+        
     }
 
     private void Mounshit()
@@ -54,7 +54,6 @@ public class UpGradeInputManger : MonoBehaviour
             {
                 Vector3 moveMousePos = Input.mousePosition;
                 float moveMonsterInterpolate;
-
 
                 if (moveMousePos.x < maxPosX
                     && moveMousePos.x > minPosX)
@@ -72,16 +71,18 @@ public class UpGradeInputManger : MonoBehaviour
 
                     if (moveMonsterInterpolate > 1)
                     {
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
                         moveMonsterInterpolate = 1;
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
                         mouseMonsterCheck = false;
+                        upGradeMonsterInfo.FindAndMakeMonster();
                     }
 
                     if (moveMonsterInterpolate < -1)
                     {
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
                         moveMonsterInterpolate = -1;
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
                         mouseMonsterCheck = false;
+                        upGradeMonsterInfo.FindAndMakeMonster();
                     }
                 }
                 else
@@ -91,6 +92,7 @@ public class UpGradeInputManger : MonoBehaviour
                         moveMonsterInterpolate = 1f;
                         upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
                         mouseMonsterCheck = false;
+                        upGradeMonsterInfo.FindAndMakeMonster();
                     }
 
                     if (moveMousePos.x < minPosX)
@@ -98,8 +100,11 @@ public class UpGradeInputManger : MonoBehaviour
                         moveMonsterInterpolate = -1f;
                         upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
                         mouseMonsterCheck = false;
+                        upGradeMonsterInfo.FindAndMakeMonster();
                     }
                 }
+
+                upGradeMonsterInfo.RoundMonster();
             }
         }
     }
