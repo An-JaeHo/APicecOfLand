@@ -311,6 +311,11 @@ public class TileManger : MonoBehaviour
                     {
                         tileList[i].parent.gameObject.SetActive(true);
                         tileList[i].GetComponent<MakeArea>().Movement = true;
+                        tileList[i].GetComponent<AreaManger>().pureTag = "Grass";
+                        tileList[i].GetComponent<AreaManger>().pureCode = "Grass";
+                        tileList[i].GetComponent<MakeArea>().Movement = true;
+                        tileList[i].GetComponent<SpriteRenderer>().sprite = sprites[0];
+                        tileList[i].GetComponent<AreaManger>().pureSprite = sprites[0];
                         activeChildtileList.Add(tileList[i].transform.parent);
                         enemyMakeLand.Add(tileList[i].transform.parent);
                     }
