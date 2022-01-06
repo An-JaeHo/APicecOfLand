@@ -6,10 +6,18 @@ using TMPro;
 
 public class UpGradeSceneWindow : MonoBehaviour
 {
-    public JsonManger jsonManger;
-    public PlayerInfo playerInfo;
+    [Header("Set in inspector")]
     public GameObject upGradeButton;
     public GameObject supply;
+    public Text monsterLevel;
+    public Text monsterName;
+    public Transform stateWindow;
+    public Transform needSouceWindow;
+
+
+    [Header("Set in VisualStudio")]
+    public JsonManger jsonManger;
+    public PlayerInfo playerInfo;
     public UpGradeInputManger upGradeInputManger;
     public int needUpGradeMilk;
     public int needUpGradeSugar;
@@ -38,28 +46,27 @@ public class UpGradeSceneWindow : MonoBehaviour
         MakeSoldier nextMonster = GetComponent<ArmyUpgrade>().UpGradeFinder(obj.GetComponent<MakeSoldier>().Code);
         NeedUpGradeSouce(obj);
 
-        transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = obj.GetComponent<MakeSoldier>().Picture;
-        transform.GetChild(3).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Level.ToString();
-        transform.GetChild(4).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Name;
+        monsterLevel.text = obj.GetComponent<MakeSoldier>().Level.ToString();
+        monsterName.text = obj.GetComponent<MakeSoldier>().Name;
 
-        transform.GetChild(5).GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().HelthPoint.ToString();
-        transform.GetChild(5).GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().BaseAttack.ToString();
-        transform.GetChild(5).GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Defensive.ToString();
-        transform.GetChild(5).GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Critical.ToString();
+        stateWindow.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().HelthPoint.ToString();
+        stateWindow.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().BaseAttack.ToString();
+        stateWindow.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Defensive.ToString();
+        stateWindow.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Critical.ToString();
 
         if (obj.GetComponent<MakeSoldier>().Level == 5)
         {
-            transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.HelthPoint.ToString();
-            transform.GetChild(5).GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.BaseAttack.ToString();
-            transform.GetChild(5).GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.Defensive.ToString();
-            transform.GetChild(5).GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.Critical.ToString();
+            stateWindow.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.HelthPoint.ToString();
+            stateWindow.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.BaseAttack.ToString();
+            stateWindow.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.Defensive.ToString();
+            stateWindow.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.Critical.ToString();
         }
         else
         {
-            transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().HelthPoint.ToString();
-            transform.GetChild(5).GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().BaseAttack + obj.GetComponent<MakeSoldier>().RiseAttack).ToString();
-            transform.GetChild(5).GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Defensive + obj.GetComponent<MakeSoldier>().RiseDefensive).ToString();
-            transform.GetChild(5).GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Critical + obj.GetComponent<MakeSoldier>().RiseCritical).ToString();
+            stateWindow.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().HelthPoint.ToString();
+            stateWindow.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().BaseAttack + obj.GetComponent<MakeSoldier>().RiseAttack).ToString();
+            stateWindow.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Defensive + obj.GetComponent<MakeSoldier>().RiseDefensive).ToString();
+            stateWindow.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Critical + obj.GetComponent<MakeSoldier>().RiseCritical).ToString();
         }
 
 
@@ -68,9 +75,9 @@ public class UpGradeSceneWindow : MonoBehaviour
             && saveMgr.playerSave.flour >= needUpGradeFlour)
         {
             upGradeButton.GetComponent<Button>().interactable = true;
-            transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<Text>().text = needUpGradeMilk.ToString();
-            transform.GetChild(6).GetChild(1).GetChild(1).GetComponent<Text>().text = needUpGradeSugar.ToString();
-            transform.GetChild(6).GetChild(2).GetChild(1).GetComponent<Text>().text = needUpGradeFlour.ToString();
+            needSouceWindow.GetChild(0).GetChild(1).GetComponent<Text>().text = needUpGradeMilk.ToString();
+            needSouceWindow.GetChild(1).GetChild(1).GetComponent<Text>().text = needUpGradeSugar.ToString();
+            needSouceWindow.GetChild(2).GetChild(1).GetComponent<Text>().text = needUpGradeFlour.ToString();
 
             if (obj.GetComponent<MakeSoldier>().Level == 5
                 && obj.GetComponent<MakeSoldier>().Grade != 3)
@@ -93,9 +100,9 @@ public class UpGradeSceneWindow : MonoBehaviour
         }
         else
         {
-            transform.GetChild(6).GetChild(0).GetChild(1).GetComponent<Text>().text = needUpGradeMilk.ToString();
-            transform.GetChild(6).GetChild(1).GetChild(1).GetComponent<Text>().text = needUpGradeSugar.ToString();
-            transform.GetChild(6).GetChild(2).GetChild(1).GetComponent<Text>().text = needUpGradeFlour.ToString();
+            needSouceWindow.GetChild(0).GetChild(1).GetComponent<Text>().text = needUpGradeMilk.ToString();
+            needSouceWindow.GetChild(1).GetChild(1).GetComponent<Text>().text = needUpGradeSugar.ToString();
+            needSouceWindow.GetChild(2).GetChild(1).GetComponent<Text>().text = needUpGradeFlour.ToString();
             upGradeButton.GetComponent<Button>().interactable = false;
 
             if (obj.GetComponent<MakeSoldier>().Level == 10)
@@ -145,18 +152,18 @@ public class UpGradeSceneWindow : MonoBehaviour
             monster.GetComponent<MakeSoldier>().Critical += monster.GetComponent<MakeSoldier>().RiseCritical;
             monster.GetComponent<MakeSoldier>().Defensive += monster.GetComponent<MakeSoldier>().RiseDefensive;
 
-            monster.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString(); ;
+            monsterLevel.text = monster.GetComponent<MakeSoldier>().Level.ToString();
         }
-
+        
         saveMgr.playerSave.milk-= needUpGradeMilk;
         saveMgr.playerSave.sugar -= needUpGradeSugar;
         saveMgr.playerSave.flour -= needUpGradeFlour;
-
+        //저장 하나?
+        //SaveLevelAndRank(monster);
+        //saveMgr.JustSave();
         supply.GetComponent<MySupplyList>().UpdateSupply();
-        SaveLevelAndRank(monster);
-        gameObject.SetActive(false);
         upGradeInputManger.mouseCheck = true;
-        saveMgr.JustSave();
+        UpGradeCheck(monster);
     }
 
     public void UpGradeMonster()
@@ -171,13 +178,11 @@ public class UpGradeSceneWindow : MonoBehaviour
             if (MonsterObj[i].name == nextCode)
             {
                 GameObject monsterPicture = Instantiate(MonsterObj[i], monster);
-                monsterPicture.transform.localScale = new Vector2(0.35f, 0.35f);
-                monsterPicture.transform.position = new Vector3(monsterPicture.transform.position.x+0.1f, monsterPicture.transform.position.y - 0.4f);
+                monsterPicture.transform.position = new Vector3(monsterPicture.transform.position.x, monsterPicture.transform.position.y - 0.3f);
+                monsterPicture.transform.localScale = new Vector3(0.8f, 0.8f);
             }
         }
-
         monster.GetComponent<MakeSoldier>().SuperMagic(nextCode);
-        monster.GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = monster.GetComponent<MakeSoldier>().Level.ToString();
     }
 
     public void SaveLevelAndRank(Transform monster)

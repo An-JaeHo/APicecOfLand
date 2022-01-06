@@ -9,9 +9,11 @@ public class AreaInfo : MonoBehaviour
     public string Name;
     public int Grade;
     public string Type = "Grass";
+    public int BaseFlour;
     public int UpgradeFlour;
     public int BaseSugar;
     public int UpgradeSugar;
+    public int Health;
     public int MilkOutput;
     public int FlourOutput;
     public int SugarOutput;
@@ -21,6 +23,7 @@ public class AreaInfo : MonoBehaviour
     public int BuildTurn;
     public string Effect;
     public int Attack;
+    public float Heal;
     public bool Movement;
     public int repairMilk;
     public int repairSugar;
@@ -59,6 +62,7 @@ public class MakeArea : AreaInfo
                 Name = areaInfo.information.area[i].Name;
                 Grade = areaInfo.information.area[i].Grade;
                 Type = areaInfo.information.area[i].Type;
+                BaseFlour = areaInfo.information.area[i].BaseFlour;
                 UpgradeFlour = areaInfo.information.area[i].UpgradeFlour;
                 BaseSugar = areaInfo.information.area[i].BaseSugar;
                 UpgradeSugar = areaInfo.information.area[i].UpgradeSugar;
@@ -71,6 +75,7 @@ public class MakeArea : AreaInfo
                 BuildTurn = areaInfo.information.area[i].BuildTurn;
                 Effect = areaInfo.information.area[i].Effect;
                 Attack = areaInfo.information.area[i].Attack;
+                Heal = areaInfo.information.area[i].Heal;
                 Movement = true;
                 repairMilk = areaInfo.information.area[i].RepairMilk;
                 repairSugar = areaInfo.information.area[i].RepairSugar;
@@ -78,28 +83,20 @@ public class MakeArea : AreaInfo
 
                 areaInfoImage.sprite = areaInfo.information.area[i].Picture;
 
-                if(areaInfo.information.area[i].Code == "Area 17" || areaInfo.information.area[i].Code == "Area 18" || areaInfo.information.area[i].Code == "Area 19")
+                if (areaInfo.information.area[i].Code == "Area 13" || areaInfo.information.area[i].Code == "Area 14" || areaInfo.information.area[i].Code == "Area 15")
                 {
                     transform.tag = "Barracks";
-                    //Destroy = false;
                 }
-                else if(areaInfo.information.area[i].Code == "Area 30" || areaInfo.information.area[i].Code == "Area 31" || areaInfo.information.area[i].Code == "Area 32")
+                else if (areaInfo.information.area[i].Code == "Area 23" || areaInfo.information.area[i].Code == "Area 24" || areaInfo.information.area[i].Code == "Area 25")
                 {
                     transform.tag = "Enemy Base";
-                    //firstBuild = false;
                 }
                 else
                 {
                     transform.tag = "Area";
-                    //Destroy = true;
                 }
-                
+
             }
         }
-
-        //if(Destroy == true)
-        //{
-        //    areaInfoImage.sprite = readyBuild;
-        //}
     }
 }

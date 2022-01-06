@@ -12,7 +12,7 @@ public class SoldierInfo : MonoBehaviour
     public string Specialities;
     public int MaxLevel;
     public int HelthPoint;
-    public int populationNumber;
+    public int PopulationNumber;
     public int ProductionExpense;
     public int ConsumeFood;
     public string UnderEvolutin;
@@ -25,8 +25,12 @@ public class SoldierInfo : MonoBehaviour
     public int RiseCritical;
     public int AttackRange;
     public int Movement;
-    public int Level;
     public int Experience;
+    public int RiseHealth;
+    public int AttackNumber;
+
+
+    public int Level;
     public float pureAttack;
     public float pureDefensive;
     public int pureRange;
@@ -61,7 +65,7 @@ public class MakeSoldier : SoldierInfo
                 Specialities = TroopInfo.information.monster[i].Specialities;
                 MaxLevel = TroopInfo.information.monster[i].MaxLevel;
                 HelthPoint = TroopInfo.information.monster[i].HelthPoint;
-                populationNumber = TroopInfo.information.monster[i].populationNumber;
+                PopulationNumber = TroopInfo.information.monster[i].PopulationNumber;
                 ProductionExpense = TroopInfo.information.monster[i].ProductionExpense;
                 ConsumeFood = TroopInfo.information.monster[i].ConsumeFood;
                 UnderEvolutin = TroopInfo.information.monster[i].UnderEvolutin;
@@ -75,6 +79,8 @@ public class MakeSoldier : SoldierInfo
                 AttackRange = TroopInfo.information.monster[i].AttackRange;
                 Movement = TroopInfo.information.monster[i].Movement;
                 Experience = TroopInfo.information.monster[i].Experience;
+                RiseHealth = TroopInfo.information.monster[i].RiseHealth;
+                AttackNumber = TroopInfo.information.monster[i].AttackNumber;
 
                 Level = 1;
                 pureAttack = TroopInfo.information.monster[i].BaseAttack;

@@ -38,9 +38,9 @@ public class BuildController : MonoBehaviour
     public void CreateWindow()
     {
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-        //content.transform.localPosition = new Vector3(-206f, -100f);
+        //content.transform.localPosition = new Vector3(-200f, 0f);
 
-        if (content.transform.childCount >= 3)
+        if (content.transform.childCount !=0)
         {
             if (land.GetComponent<AreaManger>().pureTag == "Grass")
             {
@@ -91,31 +91,32 @@ public class BuildController : MonoBehaviour
 
         for (int i =0;i<lands.Count;i++)
         {
-            for(int j=0;j< json.information.area.Length;j++)
+            for (int j=0;j< json.information.area.Length;j++)
             {
-                if(json.information.area[j].Name == lands[i].transform.name && json.information.area[j].Grade == 1)
+                if (json.information.area[j].Name == lands[i].transform.name && json.information.area[j].Grade == 1)
                 {
                     lands[i].GetComponent<PanelController>().picture= json.information.area[j].Picture;
                     lands[i].GetComponent<PanelController>().name = json.information.area[j].Name;
                     lands[i].GetComponent<PanelController>().code = json.information.area[j].Code;
                     lands[i].GetComponent<PanelController>().effect = json.information.area[j].Effect;
                     lands[i].GetComponent<PanelController>().baseLand = land;
+                    
                     lands[i].GetComponent<PanelController>().parentUi = gameObject;
-                    lands[i].GetComponent<PanelController>().upgradeWood = json.information.area[j].UpgradeFlour;
-                    lands[i].GetComponent<PanelController>().upgradeIron = json.information.area[j].UpgradeSugar;
+                    lands[i].GetComponent<PanelController>().upgradeWood = json.information.area[j].BaseFlour;
+                    lands[i].GetComponent<PanelController>().upgradeIron = json.information.area[j].BaseSugar;
                     lands[i].transform.GetChild(0).GetComponent<Image>().sprite = json.information.area[j].Picture;
 
                     lands[i].transform.localPosition = new Vector3(100 + (i*170), 100);
                     //400 150
-                    content.GetComponent<RectTransform>().sizeDelta = new Vector2(450 + (lands.Count-3)*200, content.GetComponent<RectTransform>().sizeDelta.y+ 20);
+                    content.GetComponent<RectTransform>().sizeDelta = new Vector2(450 + (lands.Count-3)*200, content.GetComponent<RectTransform>().sizeDelta.y);
                 }
             }
         }
 
+        lands.Clear();
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().sprite = land.GetComponent<SpriteRenderer>().sprite;
         transform.GetChild(0).GetChild(5).GetChild(0).GetComponent<Text>().text = "필요한 밀가루";
         transform.GetChild(0).GetChild(5).GetChild(1).GetComponent<Text>().text = "필요한 설탕";
-        lands.Clear();
         gameObject.SetActive(true);
     }
 

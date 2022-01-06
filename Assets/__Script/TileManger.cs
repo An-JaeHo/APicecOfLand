@@ -311,6 +311,11 @@ public class TileManger : MonoBehaviour
                     {
                         tileList[i].parent.gameObject.SetActive(true);
                         tileList[i].GetComponent<MakeArea>().Movement = true;
+                        tileList[i].GetComponent<AreaManger>().pureTag = "Grass";
+                        tileList[i].GetComponent<AreaManger>().pureCode = "Grass";
+                        tileList[i].GetComponent<MakeArea>().Movement = true;
+                        tileList[i].GetComponent<SpriteRenderer>().sprite = sprites[0];
+                        tileList[i].GetComponent<AreaManger>().pureSprite = sprites[0];
                         activeChildtileList.Add(tileList[i].transform.parent);
                         enemyMakeLand.Add(tileList[i].transform.parent);
                     }
@@ -467,7 +472,7 @@ public class TileManger : MonoBehaviour
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 23");
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
@@ -491,7 +496,7 @@ public class TileManger : MonoBehaviour
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 23");
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
@@ -520,7 +525,7 @@ public class TileManger : MonoBehaviour
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 23");
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
@@ -555,7 +560,7 @@ public class TileManger : MonoBehaviour
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 24");
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
@@ -589,7 +594,7 @@ public class TileManger : MonoBehaviour
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 24");
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
@@ -622,7 +627,7 @@ public class TileManger : MonoBehaviour
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
-                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 31");
+                    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 24");
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }

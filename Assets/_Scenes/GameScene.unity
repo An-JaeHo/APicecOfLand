@@ -1197,7 +1197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &236932654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1215,8 +1215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -345, y: 304}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 384, y: 629}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &236932655
 MonoBehaviour:
@@ -4400,37 +4400,38 @@ MonoBehaviour:
   button: {fileID: 659348047}
   skillInven: {fileID: 4445358497297734381}
   turnPoint: {fileID: 1698510746}
-  CreateAreaPrefab: {fileID: 0}
-  input: {fileID: 0}
-  supplyManger: {fileID: 0}
-  amrys: []
-  builders: []
-  timer: {fileID: 0}
-  buttonTimer: 0
-  turnCountText: {fileID: 1698510746}
-  attackContText: {fileID: 457976546}
-  tiles: []
-  attackTurnNum: 0
   attackUi: {fileID: 21300000, guid: 609ec53192d1f5948a0fdff814b41d60, type: 3}
   defendUi: {fileID: 21300000, guid: dc14a75d448d31743b5cdb76e56a1244, type: 3}
-  monsterPicture: {fileID: 0}
-  enemyPicture: {fileID: 0}
-  food: 0
-  wood: 0
-  iron: 0
-  tileManger: {fileID: 0}
-  enemys: []
   UpgradeLand: {fileID: 0}
   bulidUpgradeUi: {fileID: 515217979}
   armyUpgradeUi: {fileID: 662190638}
   repaireUi: {fileID: 5790097335878790623}
-  barrackController: {fileID: 0}
+  turnCountText: {fileID: 1698510746}
+  attackContText: {fileID: 457976546}
   buildUi: {fileID: 1120216579}
-  armyCheckWindow: {fileID: 0}
-  bulidCheckWindow: {fileID: 0}
   barrackWindow: {fileID: 1943427297}
   settingUi: {fileID: 1230224291}
+  input: {fileID: 0}
+  supplyManger: {fileID: 0}
+  tileManger: {fileID: 0}
+  barrackController: {fileID: 0}
+  CreateAreaPrefab: {fileID: 0}
+  monsterPicture: {fileID: 0}
+  enemyPicture: {fileID: 0}
+  armyCheckWindow: {fileID: 0}
+  bulidCheckWindow: {fileID: 0}
   dictionaryUi: {fileID: 0}
+  timer: {fileID: 0}
+  buttonTimer: 0
+  attackTurnNum: 0
+  food: 0
+  wood: 0
+  iron: 0
+  amrys: []
+  builders: []
+  tiles: []
+  destroyTiles: []
+  enemys: []
 --- !u!114 &1090618932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4723,6 +4724,32 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 984677637725542154}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1120216581
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120216579}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 841, y: 676}
+  m_EdgeRadius: 0
 --- !u!1 &1151475162
 GameObject:
   m_ObjectHideFlags: 0
@@ -8179,13 +8206,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984677637158698305, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 984677637158698305, guid: 1ba9bd4e36c438841a83caa9da25f613,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 984677637158698305, guid: 1ba9bd4e36c438841a83caa9da25f613,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -206.50005
       objectReference: {fileID: 0}
     - target: {fileID: 984677637158698305, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 984677637166956378, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}

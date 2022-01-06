@@ -56,6 +56,7 @@ public class BarrackController : MonoBehaviour
     {
         if (playerInfo.milk > soldierInfo.ProductionExpense)
         {
+            playerInfo.milk -= soldierInfo.ProductionExpense;
             GameObject prefebSoldier = Instantiate(soldierPrefeb,new Vector3(land.position.x, land.position.y +25f), Quaternion.identity);
             prefebSoldier.transform.SetParent(land);
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
@@ -75,12 +76,13 @@ public class BarrackController : MonoBehaviour
 
             monsters.Add(prefebSoldier);
             buttonManger.amrys.Add(prefebSoldier);
-            usingPeople++;
+            usingPeople += prefebSoldier.GetComponent<MakeSoldier>().PopulationNumber;
             supplyManger.JustUpdateSupply();
             barrackMonsterSprite.gameObject.SetActive(false);
             inputManger.Land.CheckTile();
             gameObject.SetActive(false);
         }
+
         inputManger.mouseCheck = true;
         inputManger.CheckMonsterMovePoint();
     }

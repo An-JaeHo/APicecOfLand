@@ -19,12 +19,11 @@ public class UpGradeInputManger : MonoBehaviour
         gameCamera = Camera.main;
         mouseCheck = true;
         fristPosX = 540f;
-        minPosX = 50f;
+        minPosX = 1f;
         maxPosX = 1080f;
         mouseMonsterCheck = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(mouseCheck)
@@ -38,8 +37,6 @@ public class UpGradeInputManger : MonoBehaviour
                 Mounshit();
             }
         }
-
-        upGradeMonsterInfo.RoundMonster();
     }
 
     private void Mounshit()
@@ -54,61 +51,193 @@ public class UpGradeInputManger : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 Vector3 moveMousePos = Input.mousePosition;
-                float moveMonsterInterpolate;
 
-
-                if (moveMousePos.x < maxPosX
-                    && moveMousePos.x > minPosX)
+                if (moveMousePos.y < 1050)
                 {
-                    if (moveMousePos.x > 540f)
+                    float moveMonsterInterpolate;
+
+                    if (moveMousePos.x < maxPosX
+                        && moveMousePos.x > minPosX)
                     {
-                        moveMonsterInterpolate = (moveMousePos.x - 540f) / (maxPosX - 540f);
+                        if (moveMousePos.x > 540f)
+                        {
+                            moveMonsterInterpolate = (moveMousePos.x - 540f) / (maxPosX - 540f);
+                        }
+                        else
+                        {
+                            moveMonsterInterpolate = ((moveMousePos.x - 540f) / 540f);
+                        }
+
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+
+                        if (moveMonsterInterpolate > 1)
+                        {
+                            moveMonsterInterpolate = 1;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
+
+                        if (moveMonsterInterpolate < -1)
+                        {
+                            moveMonsterInterpolate = -1;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
                     }
                     else
                     {
-                        moveMonsterInterpolate = -minPosX / moveMousePos.x;
+                        if (moveMousePos.x > maxPosX)
+                        {
+                            moveMonsterInterpolate = 1f;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
+
+                        if (moveMousePos.x < minPosX)
+                        {
+                            moveMonsterInterpolate = -1f;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
                     }
 
-                    upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-
-
-
-                    if (moveMonsterInterpolate > 1)
-                    {
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                        moveMonsterInterpolate = 1;
-                        mouseMonsterCheck = false;
-                    }
-
-                    if (moveMonsterInterpolate < -1)
-                    {
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                        moveMonsterInterpolate = -1;
-                        mouseMonsterCheck = false;
-                    }
+                    upGradeMonsterInfo.RoundMonster();
                 }
                 else
                 {
-                    if (moveMousePos.x > maxPosX)
+                    for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
                     {
-                        moveMonsterInterpolate = 1f;
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                        mouseMonsterCheck = false;
-                    }
-
-                    if (moveMousePos.x < minPosX)
-                    {
-                        moveMonsterInterpolate = -1f;
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                        mouseMonsterCheck = false;
+                        upGradeMonsterInfo.monsters[i].transform.localPosition = upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition;
                     }
                 }
             }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+                {
+                    if (upGradeMonsterInfo.monsters[i].transform.localPosition != upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition)
+                    {
+                        upGradeMonsterInfo.monsters[i].transform.localPosition = upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+            {
+                upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition = upGradeMonsterInfo.monsters[i].transform.localPosition;
+            }
+
+            upGradeMonsterInfo.upGradeSceneWindow.UpGradeCheck(upGradeMonsterInfo.monsters[2].transform);
+
         }
     }
 
     private void TouchHit()
     {
+        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            mouseMonsterCheck = true;
+        }
+
+        if (mouseMonsterCheck)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                Vector3 moveMousePos = Input.GetTouch(0).position;
+
+                if (moveMousePos.y < 1050)
+                {
+                    float moveMonsterInterpolate;
+
+                    if (moveMousePos.x < maxPosX
+                        && moveMousePos.x > minPosX)
+                    {
+                        if (moveMousePos.x > 540f)
+                        {
+                            moveMonsterInterpolate = (moveMousePos.x - 540f) / (maxPosX - 540f);
+                        }
+                        else
+                        {
+                            moveMonsterInterpolate = ((moveMousePos.x - 540f) / 540f);
+                        }
+
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+
+                        if (moveMonsterInterpolate > 1)
+                        {
+                            moveMonsterInterpolate = 1;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
+
+                        if (moveMonsterInterpolate < -1)
+                        {
+                            moveMonsterInterpolate = -1;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
+                    }
+                    else
+                    {
+                        if (moveMousePos.x > maxPosX)
+                        {
+                            moveMonsterInterpolate = 1f;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
+
+                        if (moveMousePos.x < minPosX)
+                        {
+                            moveMonsterInterpolate = -1f;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
+                    }
+
+                    upGradeMonsterInfo.RoundMonster();
+                }
+                else
+                {
+                    for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+                    {
+                        upGradeMonsterInfo.monsters[i].transform.localPosition = upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition;
+                    }
+                }
+            }
+
+            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+                {
+                    if (upGradeMonsterInfo.monsters[i].transform.localPosition != upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition)
+                    {
+                        upGradeMonsterInfo.monsters[i].transform.localPosition = upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+            {
+                upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition = upGradeMonsterInfo.monsters[i].transform.localPosition;
+            }
+
+            upGradeMonsterInfo.upGradeSceneWindow.UpGradeCheck(upGradeMonsterInfo.monsters[2].transform);
+
+        }
+
         if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Vector3 touchPosition = Input.GetTouch(0).position;

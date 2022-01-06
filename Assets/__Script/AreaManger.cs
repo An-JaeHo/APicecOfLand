@@ -16,7 +16,6 @@ public class AreaManger : MonoBehaviour
     public int buildTurn;
     public Sprite readyBuild;
     public TileManger tileManger;
-
     bool turnArea;
 
     void Awake()
@@ -41,49 +40,77 @@ public class AreaManger : MonoBehaviour
                     player.updateMilk += area.MilkOutput;
                     break;
                 case "Area 2":
-                    player.updateMilk += (area.MilkOutput-5);
+                    player.updateMilk += (area.MilkOutput);
                     break;
                 case "Area 3":
-                    player.updateMilk += (area.MilkOutput-10);
+                    player.updateMilk += (area.MilkOutput);
                     break;
                 case "Area 4":
-                    player.updateMilk += (area.MilkOutput - 15);
+                    player.updateMilk += (area.MilkOutput);
                     break;
                 case "Area 5":
                     player.updateFlour += area.FlourOutput;
                     break;
                 case "Area 6":
-                    player.updateFlour += area.FlourOutput-5;
+                    player.updateFlour += area.FlourOutput;
                     break;
                 case "Area 7":
-                    player.updateFlour += area.FlourOutput - 10;
+                    player.updateFlour += area.FlourOutput;
                     break;
                 case "Area 8":
-                    player.updateFlour += area.FlourOutput - 15;
+                    player.updateFlour += area.FlourOutput;
                     break;
                 case "Area 9":
                     player.updateSugar += area.SugarOutput;
                     break;
                 case "Area 10":
-                    player.updateSugar += area.SugarOutput-5;
+                    player.updateSugar += area.SugarOutput;
                     break;
                 case "Area 11":
-                    player.updateSugar += area.SugarOutput-10;
+                    player.updateSugar += area.SugarOutput;
                     break;
                 case "Area 12":
-                    player.updateSugar += area.SugarOutput-15;
+                    player.updateSugar += area.SugarOutput;
                     break;
                 case "Area 20":
-                    player.people += area.Population;
+                    if(player.people<15)
+                    {
+                        player.people += area.Population;
+                    }
+                    else
+                    {
+                        player.people = 15;
+                    }
                     break;
                 case "Area 21":
-                    player.people += 1;
+                    if (player.people < 15)
+                    {
+                        player.people += area.Population;
+                    }
+                    else
+                    {
+                        player.people = 15;
+                    }
                     break;
                 case "Area 22":
-                    player.people += 1;
+                    if (player.people < 15)
+                    {
+                        player.people += area.Population;
+                    }
+                    else
+                    {
+                        player.people = 15;
+                    }
                     break;
                 case "Area 23":
-                    player.people += 1;
+                    if (player.people < 15)
+                    {
+                        player.people += area.Population;
+                    }
+                    else
+                    {
+                        player.people = 15;
+                    }
                     break;
             }
         }
