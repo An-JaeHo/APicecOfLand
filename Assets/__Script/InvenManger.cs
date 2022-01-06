@@ -57,12 +57,47 @@ public class InvenManger : MonoBehaviour
 
             for (int j = 0; j < slot.transform.childCount; j++)
             {
-                if (slot.transform.GetChild(j).childCount == 0)
+                if (slot.transform.GetChild(j).childCount != 0)
+                {
+                    if (slot.transform.GetChild(j).GetChild(0).name == "Card 1")
+                    {
+                        if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().MakeCard(slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().nextCode);
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<Image>().sprite = slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Picture;
+                        }
+                        else
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack++;
+                        }
+
+                        slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().text =
+                                slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack.ToString();
+
+                        if(slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 1)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
+                        }
+                        else if(slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 2)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color = 
+                                new Color(255f/255f,127f/255f,0f/255f);
+                        }
+                        else if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.red;
+                        }
+                        break;
+                    }
+                        
+                }
+                else
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
                     cardInfo.GetComponent<InputSkill>().MakeCard(oneGradeCard[rand].Code);
-                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
+                    cardInfo.GetComponent<InputSkill>().MakeCard("Card 1");
                     cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
+                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                     cardCount++;
                     break;
                 }
@@ -74,12 +109,47 @@ public class InvenManger : MonoBehaviour
 
             for (int j = 0; j < slot.transform.childCount; j++)
             {
-                if (slot.transform.GetChild(j).childCount == 0)
+                if (slot.transform.GetChild(j).childCount != 0)
+                {
+                    if (slot.transform.GetChild(j).GetChild(0).name == twoGradeCard[rand].Code)
+                    {
+                        if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().MakeCard(slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().nextCode);
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<Image>().sprite = slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Picture;
+                        }
+                        else
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack++;
+                        }
+
+                        slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().text =
+                                slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack.ToString();
+
+                        if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 1)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
+                        }
+                        else if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 2)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color =
+                                new Color(255f / 255f, 127f / 255f, 0f / 255f);
+                        }
+                        else if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.red;
+                        }
+
+                        break;
+                    }
+
+                }
+                else
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
                     cardInfo.GetComponent<InputSkill>().MakeCard(twoGradeCard[rand].Code);
-                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                     cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
+                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                     cardCount++;
                     break;
                 }
@@ -91,12 +161,49 @@ public class InvenManger : MonoBehaviour
 
             for (int j = 0; j < slot.transform.childCount; j++)
             {
-                if (slot.transform.GetChild(j).childCount == 0)
+                if (slot.transform.GetChild(j).childCount != 0)
+                {
+                    if (slot.transform.GetChild(j).GetChild(0).name == threeGradeCard[rand].Code)
+                    {
+                        if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
+                        {
+                            if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Grade != slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().maxGrade)
+                            {
+                                slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().MakeCard(slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().nextCode);
+                            }
+
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<Image>().sprite = slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Picture;
+                        }
+                        else
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack++;
+                        }
+
+                        slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().text =
+                                slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack.ToString();
+
+                        if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 1)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
+                        }
+                        else if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 2)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color =
+                                new Color(255f / 255f, 127f / 255f, 0f / 255f);
+                        }
+                        else if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.red;
+                        }
+                        break;
+                    }
+                }
+                else
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
                     cardInfo.GetComponent<InputSkill>().MakeCard(threeGradeCard[rand].Code);
-                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                     cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
+                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                     cardCount++;
                     break;
                 }
@@ -108,29 +215,49 @@ public class InvenManger : MonoBehaviour
 
             for (int j = 0; j < slot.transform.childCount; j++)
             {
-                if (slot.transform.GetChild(j).childCount == 0)
+                if (slot.transform.GetChild(j).childCount != 0)
+                {
+                    if (slot.transform.GetChild(j).GetChild(0).name == fourGradeCard[rand].Code)
+                    {
+                        if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
+                        {
+                            if(slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Grade != slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().maxGrade)
+                            {
+                                slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().MakeCard(slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().nextCode);
+                            }
+
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<Image>().sprite = slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Picture;
+                        }
+                        else
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack++;
+                        }
+
+                        slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().text =
+                                slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack.ToString();
+
+                        if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 1)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
+                        }
+                        else if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 2)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color =
+                                new Color(255f / 255f, 127f / 255f, 0f / 255f);
+                        }
+                        else if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.red;
+                        }
+                        break;
+                    }
+                }
+                else
                 {
                     GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
                     cardInfo.GetComponent<InputSkill>().MakeCard(fourGradeCard[rand].Code);
-                    cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                     cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
-                    cardCount++;
-                    break;
-                }
-            }
-        }
-        else if (grade == 5)
-        {
-            rand = Random.Range(0, fiveGradeCard.Count - 1);
-
-            for (int j = 0; j < slot.transform.childCount; j++)
-            {
-                if (slot.transform.GetChild(j).childCount == 0)
-                {
-                    GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
-                    cardInfo.GetComponent<InputSkill>().MakeCard(fiveGradeCard[rand].Code);
                     cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
-                    cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
                     cardCount++;
                     break;
                 }

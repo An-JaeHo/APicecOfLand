@@ -68,14 +68,41 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (inputManger.hitObj.tag == skill.Type)
             {
+                if(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count !=0)
+                {
+                    for (int i = 0; i < inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count; i++)
+                    {
+                        if(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Name == skill.Name
+                            && inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Grade<= skill.Grade)
+                        {
+                            inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().card.RemoveCardEffect(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Code);
+                            Destroy(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
+                            inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Remove(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
+                        }
+                    }
+                }
+                
                 card.carInfo = skill.Picture;
                 GameObject cardImpact = Instantiate(cardImpactObj, inputManger.hitObj);
                 cardImpact.transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>().sprite = card.carInfo;
                 cardImpact.transform.localPosition = new Vector3(-0.7f, 0);
                 cardImpact.transform.localScale = new Vector3(0.5f, 0.5f);
                 cardImpact.SetActive(true);
-                gameObject.SetActive(false);
                 card.FindCard(skill.Code);
+
+                if(skill.Stack>1)
+                {
+                    transform.position = slot.transform.position;
+                    transform.SetParent(slot.transform);
+                    image.raycastTarget = true;
+                    skill.Stack--;
+                    transform.GetChild(0).GetComponent<Text>().text = skill.Stack.ToString();
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+                
             }
             else
             {

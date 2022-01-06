@@ -54,6 +54,7 @@ public class ButtonManger : MonoBehaviour
     private PanelController panel;
     private RangeManger rangeManger;
     private GameObject game;
+    private bool healCheck;
 
     private void Start()
     {
@@ -67,6 +68,7 @@ public class ButtonManger : MonoBehaviour
         barrackController = barrackWindow.GetComponent<BarrackController>();
         timer = GameObject.Find("GameTime").GetComponent<Timer>();
         buttonTimer = 1;
+        healCheck = false;
         TurnCheck();
     }
 
@@ -349,19 +351,16 @@ public class ButtonManger : MonoBehaviour
                     Destroy(armyUpgradeUi.GetComponent<ArmyUpgrade>().army.gameObject);
                     break;
 
-
                 default:
                     break;
             }
-            
-            playerInfo.people -= 1;
+
             playerInfo.milk -= armyUpgradeUi.GetComponent<ArmyUpgrade>().upgradeMilk;
             supplyManger.JustUpdateSupply();
             armyUpgradeUi.SetActive(false);
             input.mouseCheck = true;
         }
     }
-
 
     public void CheckNeedButton()
     {
@@ -376,13 +375,12 @@ public class ButtonManger : MonoBehaviour
 
             if(rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
             {
-                rangeManger.rangeList[i].tag = "Baarack";
+                rangeManger.rangeList[i].tag = "Barracks";
             }
             else
             {
                 rangeManger.rangeList[i].tag = rangeManger.rangeList[i].GetComponent<MakeArea>().Type;
             }
-            
         }
 
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
@@ -681,11 +679,28 @@ public class ButtonManger : MonoBehaviour
             {
                 attackTurnNum = 82;
             }
+
+            if(healCheck)
+            {
+                for (int i = 0; i < barrackController.monsters.Count; i++)
+                {
+                    barrackController.monsters[i].GetComponent<MakeSoldier>().HelthPoint += 
+                        (int)(barrackController.monsters[i].GetComponent<SoldierManger>().totalHp * 0.3f);
+
+                    if(barrackController.monsters[i].GetComponent<MakeSoldier>().HelthPoint >
+                        barrackController.monsters[i].GetComponent<SoldierManger>().totalHp)
+                    {
+                        barrackController.monsters[i].GetComponent<MakeSoldier>().HelthPoint = 
+                            (int)barrackController.monsters[i].GetComponent<SoldierManger>().totalHp;
+                    }
+                }
+            }
         }
         else
         {
             attackContText.GetComponent<Image>().sprite = attackUi;
             timer.limitTime = 30;
+            healCheck = true;
 
             if (tileManger.attackTurn == 0)
             {

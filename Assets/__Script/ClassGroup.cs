@@ -19,9 +19,11 @@ public class Area
     public string Name;
     public int Grade;
     public string Type;
+    public int BaseFlour;
     public int UpgradeFlour;
     public int BaseSugar;
     public int UpgradeSugar;
+    public int Health;
     public int MilkOutput;
     public int FlourOutput;
     public int SugarOutput;
@@ -31,6 +33,7 @@ public class Area
     public int BuildTurn;
     public string Effect;
     public int Attack;
+    public float Heal;
     public int RepairMilk;
     public int RepairSugar;
     public int RepairFlour;
@@ -117,7 +120,7 @@ public class Monster
     public string Specialities;
     public int MaxLevel;
     public int HelthPoint;
-    public int populationNumber;
+    public int PopulationNumber;
     public int ProductionExpense;
     public int ConsumeFood;
     public string UnderEvolutin;
@@ -131,6 +134,8 @@ public class Monster
     public int AttackRange;
     public int Movement;
     public int Experience;
+    public int RiseHealth;
+    public int AttackNumber;
 }
 
 [System.Serializable]

@@ -67,9 +67,7 @@ public class SupplyManger : MonoBehaviour
 
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
 
-        
-
-            if (playerInfo.updateMilk > 0)
+        if (playerInfo.updateMilk > 0)
         {
             transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " +" + playerInfo.updateMilk.ToString();
         }
