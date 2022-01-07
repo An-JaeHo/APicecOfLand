@@ -204,16 +204,18 @@ public class EnemyController : MonoBehaviour
 
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            if (tiles.activeChildtileList[i].GetChild(0).tag == "Area" || tiles.activeChildtileList[i].GetChild(0).tag == "Barrack")
+            if(tiles.activeChildtileList[i].GetChild(0).GetComponent<MakeArea>().Movement)
             {
-                targets.Add(tiles.activeChildtileList[i].GetChild(0));
-            }
+                if (tiles.activeChildtileList[i].GetChild(0).tag == "Area" || tiles.activeChildtileList[i].GetChild(0).tag == "Barrack")
+                {
+                    targets.Add(tiles.activeChildtileList[i].GetChild(0));
+                }
 
-            if (tiles.activeChildtileList[i].GetChild(0).tag == "Capital")
-            {
-                targets.Add(tiles.activeChildtileList[i].GetChild(0));
+                if (tiles.activeChildtileList[i].GetChild(0).tag == "Capital")
+                {
+                    targets.Add(tiles.activeChildtileList[i].GetChild(0));
+                }
             }
-
         }
 
         float num = Mathf.Infinity;
@@ -324,17 +326,20 @@ public class EnemyController : MonoBehaviour
         NodeArray = new List<Node>();
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            if (tiles.activeChildtileList[i].transform.GetChild(0).childCount ==0)
+            if (tiles.activeChildtileList[i].GetChild(0).GetComponent<MakeArea>().Movement == true)
             {
-                Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
-                NodeArray.Add(tileNode);
-            }
-            else
-            {
-                if (tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag != "Enemy" && tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag != "GD")
+                if (tiles.activeChildtileList[i].transform.GetChild(0).childCount == 0)
                 {
                     Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
                     NodeArray.Add(tileNode);
+                }
+                else
+                {
+                    if (tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag != "Enemy" && tiles.activeChildtileList[i].transform.GetChild(0).GetChild(0).tag != "GD")
+                    {
+                        Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
+                        NodeArray.Add(tileNode);
+                    }
                 }
             }
         }
@@ -355,20 +360,16 @@ public class EnemyController : MonoBehaviour
             {
                 if (OpenList[i].F <= CurNode.F && OpenList[i].H < CurNode.H)
                     CurNode = OpenList[i];
-
             }
 
             OpenList.Remove(CurNode);
             ClosedList.Add(CurNode);
 
             //TargetNode : 533, -900
-            //Debug.Log("CurNode.x : "+CurNode.x);
-
-            //Debug.Log("TargetNode.x : " + TargetNode.x + "  TargetNode.y : " + TargetNode.y);
+            
             // 마지막
             if (CurNode.x == TargetNode.x && CurNode.y == TargetNode.y)
             {
-                //Debug.Log("CurNode.x : " + CurNode.x + "  CurNode.y : " + CurNode.y);
                 TargetNode.ParentNode = CurNode.ParentNode;
                 Node TargetCurNode = TargetNode;
                 
@@ -383,9 +384,6 @@ public class EnemyController : MonoBehaviour
                     FinalNodeList.Add(StartNode);
                     FinalNodeList.Reverse();
                 }
-
-                
-                
                 return;
             }
             // ↑ → ↓ ←

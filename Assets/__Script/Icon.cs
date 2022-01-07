@@ -102,7 +102,7 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 {
                     Destroy(gameObject);
                 }
-                
+                inputManger.hitObj.GetComponent<SoldierManger>().AttachCountNumCheck();
             }
             else
             {

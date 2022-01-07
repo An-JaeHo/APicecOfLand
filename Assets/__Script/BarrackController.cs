@@ -63,6 +63,7 @@ public class BarrackController : MonoBehaviour
             prefebSoldier.GetComponent<SoldierManger>().totalHp = prefebSoldier.GetComponent<MakeSoldier>().HelthPoint;
             prefebSoldier.GetComponent<SoldierManger>().movePoint = true;
             SaveLevelCheck(prefebSoldier);
+            
             playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
 
             for (int i = 0; i < MonsterObj.Length; i++)
@@ -80,6 +81,7 @@ public class BarrackController : MonoBehaviour
             supplyManger.JustUpdateSupply();
             barrackMonsterSprite.gameObject.SetActive(false);
             inputManger.Land.CheckTile();
+            prefebSoldier.GetComponent<SoldierManger>().AttachCountNumCheck();
             gameObject.SetActive(false);
         }
 

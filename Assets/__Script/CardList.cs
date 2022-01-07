@@ -112,15 +112,18 @@ public class CardList : MonoBehaviour
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 21":
-                SoldierPrefeb.GetComponent<SoldierManger>().cardMovePoint = true;
+                SoldierPrefeb.GetComponent<MakeSoldier>().attackCount++;
+                SoldierPrefeb.GetComponent<SoldierManger>().AttachCountNumCheck();
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 22":
-                SoldierPrefeb.GetComponent<SoldierManger>().cardMovePoint = true;
+                SoldierPrefeb.GetComponent<MakeSoldier>().attackCount++;
+                SoldierPrefeb.GetComponent<SoldierManger>().AttachCountNumCheck();
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 23":
-                SoldierPrefeb.GetComponent<SoldierManger>().cardMovePoint = true;
+                SoldierPrefeb.GetComponent<MakeSoldier>().attackCount++;
+                SoldierPrefeb.GetComponent<SoldierManger>().AttachCountNumCheck();
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 24":
@@ -388,13 +391,13 @@ public class CardList : MonoBehaviour
                 SoldierPrefeb.GetComponent<SoldierManger>().countAttack = 0;
                 break;
             case "Card 21":
-                SoldierPrefeb.GetComponent<MakeSoldier>().AttackNumber -= 1;
+                SoldierPrefeb.GetComponent<MakeSoldier>().attackCount -= 1;
                 break;
             case "Card 22":
-                SoldierPrefeb.GetComponent<MakeSoldier>().AttackNumber -= 1;
+                SoldierPrefeb.GetComponent<MakeSoldier>().attackCount -= 1;
                 break;
             case "Card 23":
-                SoldierPrefeb.GetComponent<MakeSoldier>().AttackNumber -= 1;
+                SoldierPrefeb.GetComponent<MakeSoldier>().attackCount -= 1;
                 break;
             case "Card 24":
                 if (EnemyPrefeb.tag == "Enemy")

@@ -109,29 +109,32 @@ public class InputManger : MonoBehaviour
                             if (hit.transform.GetComponent<SoldierManger>().movePoint)
                             {
                                 rangeManger.PlayerMoveRange(hit.transform);
+                            }
+                                rangeManger.PlayerAttackRange(hit.transform);
                                 armyMove = false;
                                 moveSoldier = hit.transform.GetComponent<SoldierManger>();
                                 Land.CheckTile();
-                            }
                             break;
 
                         case "Grass":
                             if (Land.attackTurnCheck)
                             {
-                                if(hit.transform.GetComponent<MakeArea>().Destroy != true)
+                                if(hit.transform.GetComponent<MakeArea>().Movement == true)
                                 {
-                                    landObj = hit.transform;
-                                    mouseCheck = false;
-                                    bulidUi.GetComponent<BuildController>().land = hit.transform;
-                                    bulidUi.GetComponent<BuildController>().CreateWindow();
-                                }
-                                else
-                                {
-                                    repairUi.SetActive(true);
-                                    repairUi.GetComponent<RepairController>().SettingRepair();
+                                    if (hit.transform.GetComponent<MakeArea>().Destroy != true)
+                                    {
+                                        landObj = hit.transform;
+                                        mouseCheck = false;
+                                        bulidUi.GetComponent<BuildController>().land = hit.transform;
+                                        bulidUi.GetComponent<BuildController>().CreateWindow();
+                                    }
+                                    else
+                                    {
+                                        repairUi.SetActive(true);
+                                        repairUi.GetComponent<RepairController>().SettingRepair();
+                                    }
                                 }
                             }
-                            
                             break;
 
                         case "Area":
