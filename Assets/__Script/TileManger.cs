@@ -323,21 +323,24 @@ public class TileManger : MonoBehaviour
                     if (count == lengthLand && playerInfo.turnPoint <= 70)
                     {
                         count = 0;
+
+                        int randint = UnityEngine.Random.Range(1, 4);
+
+                        for (int f = 0; f < randint; f++)
+                        {
+                            int randomObj = UnityEngine.Random.Range(0, enemyMakeLand.Count);
+
+                            enemyMakeLand[randomObj].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 28");
+                            enemyMakeLand[randomObj].GetChild(0).GetComponent<MakeArea>().Movement = false;
+                            enemyMakeLand.Remove(enemyMakeLand[randomObj]);
+                        }
+
                         return;
                     }
                 }
             }
 
-            //int randint = UnityEngine.Random.Range(1, 4);
-
-            //for (int i = 0; i < randint; i++)
-            //{
-            //    int randomObj = UnityEngine.Random.Range(0, enemyLand.Count);
-
-            //    //enemyLand[randomObj].GetComponent<MakeArea>().InputAreaInfo("");
-            //}
-
-            //makeTileCheck = false;
+            makeTileCheck = false;
         }
     }
 

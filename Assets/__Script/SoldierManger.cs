@@ -26,6 +26,7 @@ public class SoldierManger : MonoBehaviour
     public List<Sprite> buffList;
     public List<GameObject> buffPrefebList;
     public int buffCount;
+    public TextMeshPro attackNumCount;
 
     float pureattack;
     float puredefend;
@@ -110,6 +111,8 @@ public class SoldierManger : MonoBehaviour
         if (attack)
         {
             StartCoroutine(Attack());
+            soldier.attackCount--;
+            AttachCountNumCheck();
         }
     }
 
@@ -231,12 +234,6 @@ public class SoldierManger : MonoBehaviour
                 }
             }
         }
-
-        if (cardMovePoint)
-        {
-            movePoint = true;
-            cardMovePoint = false;
-        }
         
         buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
@@ -299,6 +296,8 @@ public class SoldierManger : MonoBehaviour
         soldier.BaseAttack = pureattack;
         soldier.Defensive = puredefend;
         soldier.Movement = (int)pureMoveRange;
+        soldier.attackCount = soldier.AttackNumber;
+        AttachCountNumCheck();
     }
 
     public void CheckBuff()
@@ -310,16 +309,18 @@ public class SoldierManger : MonoBehaviour
                 switch (buffPrefebList[i].GetComponent<InputSkill>().Code)
                 {
                     case "Card 10":
-                        soldier.Movement++;
+                        soldier.AttackRange++;
                         break;
                     case "Card 11":
-                        soldier.Movement++;
+                        soldier.AttackRange++;
                         break;
                     case "Card 22":
-                        cardMovePoint = true;
+                        soldier.attackCount++;
+                        AttachCountNumCheck();
                         break;
                     case "Card 23":
-                        cardMovePoint = true;
+                        soldier.attackCount++;
+                        AttachCountNumCheck();
                         break;
                     default:
                         break;
@@ -342,5 +343,20 @@ public class SoldierManger : MonoBehaviour
         }
 
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = transform.GetComponent<MakeSoldier>().Level.ToString(); ;
+    }
+
+    public void AttachCountNumCheck()
+    {
+        soldier = GetComponent<MakeSoldier>();
+        attackNumCount.text = soldier.attackCount.ToString();
+
+        if(soldier.attackCount <= 1)
+        {
+            attackNumCount.gameObject.SetActive(false);
+        }
+        else
+        {
+            attackNumCount.gameObject.SetActive(true);
+        }
     }
 }

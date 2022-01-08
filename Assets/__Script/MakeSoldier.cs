@@ -41,6 +41,7 @@ public class MakeSoldier : SoldierInfo
     public JsonManger TroopInfo;
     public SpriteRenderer troopInfoImage;
     public int nowExp;
+    public int attackCount;
     public Vector3 nowPosition;
 
     private void Start()
@@ -83,6 +84,7 @@ public class MakeSoldier : SoldierInfo
                 AttackNumber = TroopInfo.information.monster[i].AttackNumber;
 
                 Level = 1;
+                attackCount = AttackNumber;
                 pureAttack = TroopInfo.information.monster[i].BaseAttack;
                 pureDefensive = TroopInfo.information.monster[i].Defensive;
                 pureRange = TroopInfo.information.monster[i].AttackRange;
