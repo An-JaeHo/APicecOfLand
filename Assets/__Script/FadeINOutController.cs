@@ -49,6 +49,24 @@ public class FadeINOutController : MonoBehaviour
             {
                 partOneTalk.SetActive(true);
                 checkTalkImg = true;
+                timer = 0;
+                tutorialInput.talkManger.firstTalk = true;
+                img.GetComponent<Button>().enabled = false;
+            }
+        }
+        else
+        {
+            if(tutorialInput.tileManger.cakeCastle != null)
+            {
+                float colorNum = (timer / 5f) * 255;
+
+                tutorialInput.tileManger.cakeCastle.transform.GetChild(0).GetComponent<SpriteRenderer>().color 
+                    = new Color(255f, 255f, 255f, colorNum / 255f);
+
+                if(colorNum >=255)
+                {
+                    tutorialInput.tileManger.cakeCastle = null;
+                }
             }
         }
     }
@@ -57,11 +75,13 @@ public class FadeINOutController : MonoBehaviour
     {
         imgNum++;
         timer = 0;
-
         if (imgNum> 5)
         {
             img.gameObject.SetActive(false);
             tutorialInput.talk = true;
+            tutorialInput.talkManger.tile.supplyManger.gameObject.SetActive(true);
+            tutorialInput.talkManger.settingButton.SetActive(true);
+            tutorialInput.talkManger.inputManger.buttonManger.button.SetActive(true);
         }
         else
         {

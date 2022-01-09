@@ -65,21 +65,16 @@ public class TutorialInputManger : MonoBehaviour
                     {
                         talkManger.talkCheck = false;
 
-                        if (talkManger.stopTalkNum == talkManger.spcriptNum)
+                        if (talkManger.stopTalkNum == 3)
                         {
-                            talkManger.talkCheck = false;
+                            buttonManger.makeBuildButton.GetComponent<Button>().interactable = true;
+                            buttonManger.makeMonsterButton.GetComponent<Button>().interactable = true;
+                            talk = false;
+                        }
 
-                            if (talkManger.stopTalkNum == 3)
-                            {
-                                buttonManger.makeBuildButton.GetComponent<Button>().interactable = true;
-                                buttonManger.makeMonsterButton.GetComponent<Button>().interactable = true;
-                                talk = false;
-                            }
-
-                            if (talkManger.stopTalkNum == 6)
-                            {
-                                buttonManger.button.GetComponent<Button>().interactable = true;
-                            }
+                        if (talkManger.stopTalkNum == 6)
+                        {
+                            buttonManger.button.GetComponent<Button>().interactable = true;
                         }
                     }
                 }
@@ -97,17 +92,17 @@ public class TutorialInputManger : MonoBehaviour
                     {
                         talkManger.talkCheck = false;
 
-                        if (talkManger.stopTalkNum == 3)
-                        {
-                            buttonManger.makeBuildButton.GetComponent<Button>().interactable = true;
-                            buttonManger.makeMonsterButton.GetComponent<Button>().interactable = true;
-                            talk = false;
-                        }
+                        //if (talkManger.stopTalkNum == 3)
+                        //{
+                        //    buttonManger.makeBuildButton.GetComponent<Button>().interactable = true;
+                        //    buttonManger.makeMonsterButton.GetComponent<Button>().interactable = true;
+                        //    talk = false;
+                        //}
                         
-                        if (talkManger.stopTalkNum == 6)
-                        {
-                            buttonManger.button.GetComponent<Button>().interactable = true;
-                        }
+                        //if (talkManger.stopTalkNum == 6)
+                        //{
+                        //    buttonManger.button.GetComponent<Button>().interactable = true;
+                        //}
                     }
                 }
             }
@@ -137,21 +132,19 @@ public class TutorialInputManger : MonoBehaviour
                                 BarrackUi.GetComponent<TutorialBarrackController>().land = hit.transform;
                                 BarrackUi.GetComponent<TutorialBarrackController>().SwordButton();
                                 buttonManger.makeMonsterButton.GetComponent<Button>().interactable = false;
-                                talkManger.BarrackTalk();
                                 talkManger.talkCheck = true;
-                                talkManger.stopTalkNum =1;
-                                
                                 talk = false;
                             }
                             break;
                         case "Grass":
-                            GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StopHighLightObj();
                             talk = false;
                             landObj = hit.transform;
                             mouseCheck = false;
+                            talkManger.dimmedCover.SetActive(false);
+                            talkManger.NextScriptButton();
+                            tileManger.tutorialLand.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 15;
                             bulidUi.GetComponent<TutorialBuildController>().land = hit.transform;
                             bulidUi.GetComponent<TutorialBuildController>().CreateWindow();
-                            talkManger.BulidTalk();
                             break;
                         case "Area":
                             break;
@@ -165,7 +158,6 @@ public class TutorialInputManger : MonoBehaviour
                                 if(!finalCheck)
                                 {
                                     talkManger.NextScriptButton();
-                                    talkManger.stopTalkNum = 5;
                                     talkManger.talkCheck = true;
                                 }
                                 moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
@@ -321,7 +313,6 @@ public class TutorialInputManger : MonoBehaviour
                                 buttonManger.makeMonsterButton.GetComponent<Button>().interactable = false;
                                 talkManger.BarrackTalk();
                                 talkManger.talkCheck = true;
-                                talkManger.stopTalkNum = 1;
 
                                 talk = false;
                             }
@@ -347,7 +338,6 @@ public class TutorialInputManger : MonoBehaviour
                                 if (!finalCheck)
                                 {
                                     talkManger.NextScriptButton();
-                                    talkManger.stopTalkNum = 5;
                                     talkManger.talkCheck = true;
                                 }
                                 moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
