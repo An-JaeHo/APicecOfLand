@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class TutorialBuildController : MonoBehaviour
 {
-    //공용
+    [Header("Set in Inspector")]
+    public TutorialTalkManger talkManger;
+    public GameObject content;
+    public GameObject info;
+
+    [Header("Set in ViusalStudio")]
     public JsonManger json;
     public List<GameObject> lands;
     public ButtonManger buttonManger;
     public Transform land;
     public GameObject dimmedCover;
-
-    //처음 만드는 창
-    public GameObject content;
-    public GameObject info;
     public Vector3 position;
-
-    //업그레이드를 위한 창
     public MakeArea makeArea;
     public int nowPoint;
     public int futurePoint;
@@ -41,14 +40,30 @@ public class TutorialBuildController : MonoBehaviour
         }
         else
         {
-            if (land.GetComponent<AreaManger>().pureTag == "Grass")
+            if(talkManger.buildCheck)
             {
-                GameObject barrackInfo = Instantiate(info, content.transform);
-                barrackInfo.transform.name = "병영";
-                //HighLightObjController.HighLight(barrackInfo);
-                //GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StartHighLightObj();
-                lands.Add(barrackInfo);
+                if (land.GetComponent<AreaManger>().pureTag == "Grass")
+                {
+                    GameObject barrackInfo = Instantiate(info, content.transform);
+                    barrackInfo.transform.name = "우유";
+                    //HighLightObjController.HighLight(barrackInfo);
+                    //GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StartHighLightObj();
+                    lands.Add(barrackInfo);
+                }
             }
+            else
+            {
+                if (land.GetComponent<AreaManger>().pureTag == "Grass")
+                {
+                    GameObject barrackInfo = Instantiate(info, content.transform);
+                    barrackInfo.transform.name = "병영";
+                    //HighLightObjController.HighLight(barrackInfo);
+                    //GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StartHighLightObj();
+                    lands.Add(barrackInfo);
+                }
+            }
+
+            
         }
 
         for (int i = 0; i < lands.Count; i++)

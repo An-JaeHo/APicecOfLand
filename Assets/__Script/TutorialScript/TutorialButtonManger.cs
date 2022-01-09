@@ -5,29 +5,29 @@ using UnityEngine.UI;
 
 public class TutorialButtonManger : MonoBehaviour
 {
-    public GameObject bulidUpgradeUi;
-    public GameObject armyUpgradeUi;
+    [Header ("Set in Inspector")]
+    //public GameObject bulidUpgradeUi;
+    //public GameObject armyUpgradeUi;
     public GameObject buildUi;
     public GameObject barrackWindow;
     public GameObject settingUi;
-    public TutorialSupplyManger supplyManger;
-    public GameObject CreateAreaPrefab;
-    private TutorialPanalController panel;
-    private PlayerInfo playerInfo;
-    public TutorialInputManger input;
-    public Transform buildTile;
-    private int checkBuildPoint;
-
-    //빌드말하기버튼
     public GameObject button;
     public GameObject makeBuildButton;
     public GameObject makeMonsterButton;
+    public TutorialSupplyManger supplyManger;
 
+    [Space(10f)]
+    public GameObject CreateAreaPrefab;
+    public TutorialInputManger input;
+    public Transform buildTile;
+
+    private TutorialPanalController panel;
+    private PlayerInfo playerInfo;
+    private int checkBuildPoint;
 
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<TutorialSupplyManger>();
         input = GetComponent<TutorialInputManger>();
         checkBuildPoint = 0;
         button.GetComponent<Button>().interactable = false;
@@ -57,30 +57,30 @@ public class TutorialButtonManger : MonoBehaviour
 
     public void BuildUpGreadeUiButton()
     {
-        if (bulidUpgradeUi.activeSelf)
-        {
-            bulidUpgradeUi.SetActive(false);
-            input.mouseCheck = true;
-        }
-        else
-        {
-            bulidUpgradeUi.SetActive(true);
-            input.mouseCheck = false;
-        }
+        //if (bulidUpgradeUi.activeSelf)
+        //{
+        //    bulidUpgradeUi.SetActive(false);
+        //    input.mouseCheck = true;
+        //}
+        //else
+        //{
+        //    bulidUpgradeUi.SetActive(true);
+        //    input.mouseCheck = false;
+        //}
     }
 
     public void ArmyUpgradeButton()
     {
-        if (armyUpgradeUi.activeSelf)
-        {
-            armyUpgradeUi.SetActive(false);
-            input.mouseCheck = true;
-        }
-        else
-        {
-            armyUpgradeUi.SetActive(true);
-            input.mouseCheck = false;
-        }
+        //if (armyUpgradeUi.activeSelf)
+        //{
+        //    armyUpgradeUi.SetActive(false);
+        //    input.mouseCheck = true;
+        //}
+        //else
+        //{
+        //    armyUpgradeUi.SetActive(true);
+        //    input.mouseCheck = false;
+        //}
     }
 
     public void BarrackButton()
@@ -126,7 +126,6 @@ public class TutorialButtonManger : MonoBehaviour
 
         input.talkManger.NextScriptButton();
         input.talkManger.talkCheck = true;
-        input.talkManger.stopTalkNum = 6;
         panel.parentUi.SetActive(false);
     }
 

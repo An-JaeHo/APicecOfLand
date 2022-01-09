@@ -23,7 +23,8 @@ public class TutorialTileManger : MonoBehaviour
     private List<String> enemy3Code;
     private List<String> enemy4Code;
     public GameObject[] enemyObj;
-    public Sprite cakeCastle;
+    public GameObject cakeCastle;
+    public GameObject tutorialLand;
 
     private void Start()
     {
@@ -38,30 +39,60 @@ public class TutorialTileManger : MonoBehaviour
 
     public void StartTile()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 17; i++)
         {
-            GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (i * 87f), transform.position.y), Quaternion.identity);
-            land.transform.GetChild(0).tag = "Grass";
-            land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Grass";
-            land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Grass";
-            land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
-            land.name = (tileList.Count + 1).ToString();
-            tileList.Add(land.transform);
-            land.transform.SetParent(transform);
-
-            if (land.name != "4")
+            for (int j = 0; j < 17; j++)
             {
+                GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (j * 87f), transform.position.y + (-i * 87f)), Quaternion.identity);
+                land.transform.SetParent(transform);
+                land.transform.name = (tileList.Count + 1).ToString();
+                land.GetComponent<SpriteRenderer>().sortingOrder = i * 2;
                 land.transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
-                HighLightObjController.HighLight(land);
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StartHighLightObj();
-            }
 
-            if (land.name == "5")
-            {
-                land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = cakeCastle;
+                if (land.name == "127" || land.name == "128" || land.name == "129"
+                    || land.name == "144" || land.name == "145" || land.name == "146"
+                    || land.name == "163" || land.name == "161" || land.name == "162")
+                {
+                    land.SetActive(true);
+
+                    if (land.name == "127")
+                    {
+                        tutorialLand = land;
+                        land.transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = true;
+                    }
+
+                    if (land.name == "145")
+                    {
+                        land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[1];
+                        land.transform.GetChild(0).tag = "Capital";
+                        land.GetComponentInChildren<MakeArea>().Movement = true;
+                        land.GetComponentInChildren<AreaManger>().pureTag = "Capital";
+                        cakeCastle = land;
+                        cakeCastle.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0f / 255f);
+                    }
+                    else
+                    {
+                        land.transform.GetChild(0).tag = "Grass";
+                        land.transform.GetChild(0).GetComponent<AreaManger>().pureTag = "Grass";
+                        land.transform.GetChild(0).GetComponent<AreaManger>().pureCode = "Grass";
+                        land.transform.GetChild(0).GetComponent<MakeArea>().Movement = true;
+                        land.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[0];
+                        land.transform.GetChild(0).GetComponent<AreaManger>().pureSprite = sprites[0];
+                        enemyMakeLand.Add(land.transform);
+                    }
+                }
+                else
+                {
+                    land.SetActive(false);
+                }
+
+                if (land.transform.childCount != 0)
+                    land.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = i * 2 + 1;
+
+                
+                tileList.Add(land.transform.GetChild(0));
             }
         }
-
         supplyManger.TutorialSupply();
     }
 

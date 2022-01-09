@@ -5,31 +5,45 @@ using UnityEngine.UI;
 
 public class TutorialTalkManger : MonoBehaviour
 {
-    private List< string> scripts;
+    [Header("Set in Inspector")]
+    public GameObject settingButton;
     public Text spcriptText;
-    public int spcriptNum;
-    public int textNum;
     public TutorialTileManger tile;
     public TutorialInputManger inputManger;
-    public bool check;
+    public GameObject dimmedCover;
+
+    [Header("Build Tutorial Obj")]
+    public GameObject outPutUi;
+    public GameObject consumeUi;
+    public GameObject areaUi;
+
+    [Header("Set in ViualStudio")]
+    public int spcriptNum;
+    public int textNum;
     public bool sceneCheck;
     public bool talkCheck;
     public int stopTalkNum;
-    public GameObject dimmedCover;
     public PlayerInfo player;
     public SaveMgr save;
+    public bool firstTalk;
+
+    public bool buildCheck;
+    public bool barrackCheck;
+
+
+    private List< string> scripts;
 
     void Start()
     {
         spcriptNum = 0;
+        stopTalkNum = 999;
         scripts = new List<string>();
-        textNum = 5;
-        scripts.Add("조금 있으면 쥐들이 몰려 올꺼야");
-        scripts.Add("쥐들이 우리 케이크성을 공격하기 전에");
-        scripts.Add("어서 준비 해야되!!!");
-        scripts.Add("좋아 그럼 함께 싸워줄 친구들을 불러 볼까?");
-        scripts.Add("먼저 저기 보이는 타일을 눌러보자");
-        check = true;
+        textNum = 4;
+        scripts.Add("스크립트 1-1");
+        scripts.Add("스크립트 1-2");
+        scripts.Add("스크립트 1-3");
+        scripts.Add("스크립트 1-4");
+        tile.StartTile();
         sceneCheck = false;
         spcriptText.text = scripts[spcriptNum];
         talkCheck = false;
@@ -39,27 +53,35 @@ public class TutorialTalkManger : MonoBehaviour
 
     public void NextScriptButton()
     {
-        spcriptNum++;
+        Debug.Log(stopTalkNum);
+        Debug.Log(spcriptNum);
+        if (spcriptNum!= stopTalkNum)
+        {
+            spcriptNum++;
 
-        if(spcriptNum < textNum)
-        {
-            spcriptText.text = scripts[spcriptNum];
-        }
-        else
-        {
-            if (check)
+            if (spcriptNum < textNum)
             {
-                tile.StartTile();
-                check = false;
+                spcriptText.text = scripts[spcriptNum];
             }
-
-            inputManger.talk = false;
-
-            if (sceneCheck)
+            else
             {
-                player.ResetGame();
-                save.Save();
-                SceneMgr.GoUpGradeScene();
+                inputManger.talk = false;
+
+                if (firstTalk)
+                {
+                    if (spcriptNum == 4)
+                    {
+                        BulidTalk();
+                        firstTalk = false;
+                    }
+                }
+
+                if (sceneCheck)
+                {
+                    player.ResetGame();
+                    save.Save();
+                    SceneMgr.GoUpGradeScene();
+                }
             }
         }
     }
@@ -67,15 +89,17 @@ public class TutorialTalkManger : MonoBehaviour
     public void BulidTalk()
     {
         scripts.Clear();
-        textNum = 6;
+        buildCheck = true;
+        textNum = 5;
+        dimmedCover.SetActive(true);
+        tile.tutorialLand.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 1002;
         spcriptNum = 0;
-        
-        scripts.Add("잘 했어! 그럼 저기 보이는 오븐을 눌러보자");
-        scripts.Add("왼쪽 창에 오븐이 나타난 것이 보이지?");
-        scripts.Add("그건 오븐이 선택이 되었다는 것을 의미해");
-        scripts.Add("아래쪽 건설 버튼을 눌러서 오븐을 건설하자!");
-        scripts.Add("오븐이 생성된거 같아!");
-        scripts.Add("그럼이제 친구들을 만들수 있겠다 오븐을 눌러보자");
+        stopTalkNum = 0;
+        scripts.Add("스크립트 2-1");
+        scripts.Add("스크립트 2-2");
+        scripts.Add("스크립트 2-3");
+        scripts.Add("스크립트 2-4");
+        scripts.Add("스크립트 2-5");
         spcriptText.text = scripts[spcriptNum];
     }
 
