@@ -85,7 +85,8 @@ public class TutorialBarrackController : MonoBehaviour
             inputManger.ChangeLandInfo();
             land.GetComponent<BoxCollider2D>().enabled = false;
         }
-
+        // юс╫ц
+        SceneMgr.GoUpGradeScene();
         inputManger.mouseCheck = true;
     }
 

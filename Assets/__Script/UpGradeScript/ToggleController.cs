@@ -12,7 +12,7 @@ public class ToggleController : MonoBehaviour
     [Header("Set in VisualStudio")]
     public List<Transform> images;
 
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
