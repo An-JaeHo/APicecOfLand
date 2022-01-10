@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +16,10 @@ public class TutorialTalkManger : MonoBehaviour
     public GameObject outPutUi;
     public GameObject consumeUi;
     public GameObject areaUi;
+    public GameObject makeAreaButton;
+
+    [Header("SupplyAndBarrack Tutorial Obj")]
+    public GameObject supplyObj;
 
     [Header("Set in ViualStudio")]
     public int spcriptNum;
@@ -39,10 +43,10 @@ public class TutorialTalkManger : MonoBehaviour
         stopTalkNum = 999;
         scripts = new List<string>();
         textNum = 4;
-        scripts.Add("½ºÅ©¸³Æ® 1-1");
-        scripts.Add("½ºÅ©¸³Æ® 1-2");
-        scripts.Add("½ºÅ©¸³Æ® 1-3");
-        scripts.Add("½ºÅ©¸³Æ® 1-4");
+        scripts.Add("í™˜ì˜í•©ë‹ˆë‹¤. ì œë¹µì‚¬ë‹˜â€‹");
+        scripts.Add("í˜„ì¬ ì•½íƒˆì„ ì¼ ì‚¼ëŠ” ìš°ì£¼ ì¥ë“¤ì´ ê³µê²©í•´ì˜¤ê³  ìˆìŠµë‹ˆë‹¤.â€‹");
+        scripts.Add("ì„±ì„ ì ë ¹ ë‹¹í•˜ë©´ ëª¨ë“  ì¼€ì´í¬ ì§€ì—­ì´ ë¶•ê´´ë˜ë‹ˆ â€‹ ì¼€ì´í¬ ì„±ì„ ë³´í˜¸í•´ì•¼ í•©ë‹ˆë‹¤.â€‹");
+        scripts.Add("ìš°ì„  ì €í¬ ê±´ë¬¼ë¶€í„° ì†Œê°œ í•´ë“œë¦¬ê² ìŠµë‹ˆë‹¤.â€‹");
         tile.StartTile();
         sceneCheck = false;
         spcriptText.text = scripts[spcriptNum];
@@ -53,8 +57,6 @@ public class TutorialTalkManger : MonoBehaviour
 
     public void NextScriptButton()
     {
-        Debug.Log(stopTalkNum);
-        Debug.Log(spcriptNum);
         if (spcriptNum!= stopTalkNum)
         {
             spcriptNum++;
@@ -62,6 +64,47 @@ public class TutorialTalkManger : MonoBehaviour
             if (spcriptNum < textNum)
             {
                 spcriptText.text = scripts[spcriptNum];
+
+                if(buildCheck)
+                {
+                    if(spcriptNum == 3)
+                    {
+                        outPutUi.transform.SetSiblingIndex(3);
+                        consumeUi.transform.SetAsLastSibling();
+                    }
+                    else if(spcriptNum == 4)
+                    {
+                        consumeUi.transform.SetSiblingIndex(3);
+                        makeAreaButton.transform.SetAsLastSibling();
+                        makeAreaButton.GetComponent<Button>().interactable = true;
+                    }
+                }
+
+                if(barrackCheck)
+                {
+                    if(spcriptNum == 2)
+                    {
+                        dimmedCover.SetActive(true);
+                        dimmedCover.transform.SetParent(supplyObj.transform);
+                        dimmedCover.transform.SetSiblingIndex(3);
+                        stopTalkNum = 6;
+                    }
+                    else if (spcriptNum == 6)
+                    {
+                        dimmedCover.transform.SetParent(transform.parent);
+                        stopTalkNum = 6;
+
+                        for (int i = 0; i < tile.tileList.Count; i++)
+                        {
+                            if(tile.tileList[i].parent.name == "144")
+                            {
+                                tile.tileList[i].GetComponent<BoxCollider2D>().enabled = true;
+                                tile.tileList[i].GetComponent<SpriteRenderer>().sortingOrder = 1002;
+                            }
+                        }
+                        dimmedCover.transform.SetSiblingIndex(5);
+                    }
+                }
             }
             else
             {
@@ -94,26 +137,33 @@ public class TutorialTalkManger : MonoBehaviour
         dimmedCover.SetActive(true);
         tile.tutorialLand.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 1002;
         spcriptNum = 0;
-        stopTalkNum = 0;
-        scripts.Add("½ºÅ©¸³Æ® 2-1");
-        scripts.Add("½ºÅ©¸³Æ® 2-2");
-        scripts.Add("½ºÅ©¸³Æ® 2-3");
-        scripts.Add("½ºÅ©¸³Æ® 2-4");
-        scripts.Add("½ºÅ©¸³Æ® 2-5");
+        stopTalkNum = 1;
+        scripts.Add("ë¹„ì–´ìˆëŠ” íƒ€ì¼ì„ í„°ì¹˜ í•´ë³´ì„¸ìš”.â€‹");
+        scripts.Add("ìš°ìœ  ìƒì‚°ì†Œë¥¼ í„°ì¹˜í•˜ì„¸ìš”.");
+        scripts.Add("ìƒì‚°ëŸ‰ì„ í™•ì¸ í•  ìˆ˜ ìˆì–´ìš”.â€‹");
+        scripts.Add("ì†Œëª¨ ë˜ëŠ” ìì›ì„ í™•ì¸ í•  ìˆ˜ ìˆì–´ìš”.â€‹");
+        scripts.Add("ê±´ì„¤ì„ ëˆŒëŸ¬ë³´ì„¸ìš”.");
         spcriptText.text = scripts[spcriptNum];
     }
 
-    public void BarrackTalk()
+    public void SupplyAndBarrackTalk()
     {
         inputManger.talk = true;
         scripts.Clear();
-        textNum = 4;
+        textNum = 9;
         spcriptNum = 0;
-        scripts.Add("ÀÚ ¾Æ±î¿Í ºñ½ÁÇÏÁö?");
-        scripts.Add("ÀÌ¹ø¿¡´Â Àú ´ë´ãÇÏ°í Å« ÃÊÄÚÄ¨ÄíÅ°¸¦ ´­·¯º¸ÀÚ");
-        scripts.Add("ÀÌ¹ø¿¡µµ ¿ŞÂÊ¿¡ ÃÊÄÚÄ¨ÄíÅ°°¡ ³ª¿Ô¾î");
-        scripts.Add("»ı»ê¹öÆ°À» ´­·¯¼­ ÃÊÄÚÄ¨ÄíÅ°¸¦ ºÎ¸£ÀÚ");
-        
+        buildCheck = false;
+        stopTalkNum = 2;
+        barrackCheck = true;
+        scripts.Add("ìƒì‚° ê±´ë¬¼ì´ ê±´ì„¤ ë˜ì—ˆìŠµë‹ˆë‹¤!");
+        scripts.Add("ë‹¤ìŒì€ ì œë¹µì‚¬ë‹˜ì˜ ìì› ìƒíƒœë¥¼ ì•Œì•„ë³´ê² ìŠµë‹ˆë‹¤.â€‹");
+        scripts.Add("ì™¼ìª½ì— ìˆëŠ” ìˆ«ìëŠ” ì„±ì£¼ë‹˜ì´ ë³´ìœ í•˜ê³  ìˆëŠ”â€‹ìì›ëŸ‰ì…ë‹ˆë‹¤.â€‹");
+        scripts.Add("ì˜¤ë¥¸ìª½ì— ìˆëŠ” ìˆ«ìëŠ” ì„±ì£¼ë‹˜ì´ í„´ì´ ì§€ë‚  ë•Œë§ˆë‹¤ ì–»ì„ ìˆ˜ ìˆëŠ” ìì› ì…ë‹ˆë‹¤.â€‹");
+        scripts.Add("ìƒì‚° ìì›ì„ ì˜¬ë¦´ ìˆ˜ë¡ ìƒì‚°ëŸ‰ì´ ëŠ˜ì–´ë‚˜ì§€ë§Œâ€‹ ê±´ì„¤ í•  ë•Œ ë³´ìœ  ìì›ì„ ì†Œëª¨í•©ë‹ˆë‹¤.â€‹");
+        scripts.Add("í•˜ë‚˜ì˜ ìì›ì´ë¼ë„ -150ì´ ëœë‹¤ë©´ íŒ¨ë°°í•˜ê²Œ ë©ë‹ˆë‹¤.â€‹");
+        scripts.Add("ë°°ìš°ì‹ ëŒ€ë¡œ í•´ë‹¹ íƒ€ì¼ì— ì˜¤ë¸ì„ ê±´ì„¤í•´ë³´ì„¸ìš”!â€‹");
+        scripts.Add("ìš°ì„  ì˜¤ë¸ì„ í„°ì¹˜í•´ë³´ì„¸ìš”!â€‹");
+        scripts.Add("ìœ ë‹›ì„ ìƒì‚°í•´ë³´ì„¸ìš”!â€‹");
         spcriptText.text = scripts[spcriptNum];
     }
 
@@ -123,11 +173,11 @@ public class TutorialTalkManger : MonoBehaviour
         scripts.Clear();
         textNum = 5;
         spcriptNum = 0;
-        scripts.Add("¿Í µåµğ¾î Ä£±¸¸¦ ºÒ·¶¾î!");
-        scripts.Add("ÀÌ¹ø¿¡´Â ÃÊÄÚÄ¨ÄíÅ°¸¦ ´­·¯º¼±î?");
-        scripts.Add("´©¸£´Ï±ñ ¹Ù´Ú¿¡ »öÀÌ ´Ş¶óÁ³³×?");
-        scripts.Add("Àú°Ç ÄíÅ°µéÀÌ ÀÌµ¿ÇÒ ¼ö ÀÖ´Â ¹üÀ§¸¦ ³ªÅ¸³½°Å¾ß ");
-        scripts.Add("¾î¼­ ´­·¯º¸ÀÚ");
+        scripts.Add("ì™€ ë“œë””ì–´ ì¹œêµ¬ë¥¼ ë¶ˆë €ì–´!");
+        scripts.Add("ì´ë²ˆì—ëŠ” ì´ˆì½”ì¹©ì¿ í‚¤ë¥¼ ëˆŒëŸ¬ë³¼ê¹Œ?");
+        scripts.Add("ëˆ„ë¥´ë‹ˆê¹ ë°”ë‹¥ì— ìƒ‰ì´ ë‹¬ë¼ì¡Œë„¤?");
+        scripts.Add("ì €ê±´ ì¿ í‚¤ë“¤ì´ ì´ë™í•  ìˆ˜ ìˆëŠ” ë²”ìœ„ë¥¼ ë‚˜íƒ€ë‚¸ê±°ì•¼ ");
+        scripts.Add("ì–´ì„œ ëˆŒëŸ¬ë³´ì");
         spcriptText.text = scripts[spcriptNum];
     }
 
@@ -137,12 +187,12 @@ public class TutorialTalkManger : MonoBehaviour
         scripts.Clear();
         textNum = 6;
         spcriptNum = 0;
-        scripts.Add("ÀÌ·± ÁãµéÀÌ ¿Í¹ö·È¾î");
-        scripts.Add("¾î¼­ °ø°İÇØ¼­ ÂÑ¾Æ³»¹ö¸®ÀÚ");
-        scripts.Add("¾Æ±î¶û °°ÀÌ ÃÊÄÚÄ¨ÄíÅ°¸¦ ´­·¯º¸ÀÚ");
-        scripts.Add("ÀÌ¹ø¿¡´Â »öÀÌ º¯Çß¾î");
-        scripts.Add("ÀÌ°Ç °ø°İÇÒ¼ö ÀÖ´Â ¹üÀ§¸¦ º¸¿©ÁÖ´Â °Å¾ß");
-        scripts.Add("¾î¼­ ´­·¯¼­ Áã¸¦ ¸ô¾Æ³»ÀÚ");
+        scripts.Add("ì´ëŸ° ì¥ë“¤ì´ ì™€ë²„ë ¸ì–´");
+        scripts.Add("ì–´ì„œ ê³µê²©í•´ì„œ ì«“ì•„ë‚´ë²„ë¦¬ì");
+        scripts.Add("ì•„ê¹Œë‘ ê°™ì´ ì´ˆì½”ì¹©ì¿ í‚¤ë¥¼ ëˆŒëŸ¬ë³´ì");
+        scripts.Add("ì´ë²ˆì—ëŠ” ìƒ‰ì´ ë³€í–ˆì–´");
+        scripts.Add("ì´ê±´ ê³µê²©í• ìˆ˜ ìˆëŠ” ë²”ìœ„ë¥¼ ë³´ì—¬ì£¼ëŠ” ê±°ì•¼");
+        scripts.Add("ì–´ì„œ ëˆŒëŸ¬ì„œ ì¥ë¥¼ ëª°ì•„ë‚´ì");
         spcriptText.text = scripts[spcriptNum];
     }
 
@@ -152,13 +202,13 @@ public class TutorialTalkManger : MonoBehaviour
         scripts.Clear();
         textNum = 7;
         spcriptNum = 0;
-        scripts.Add("ÀÚ ÀÌÁ¦ Àú ¿ìÁÖ¼±À» ÆÄ±«ÇÏÀÚ");
-        scripts.Add("±×·¸Áö ¾ÊÀ¸¸é ¶Ç Áã°¡ ³ª¿Ã²¨¾ß");
-        scripts.Add("¿ìÁÖ¼± À§·Î ¿Ã¶ó°£´Ù¸é ÆÄ±«ÇÒ¼ö ÀÖÀ»²¨¾ß");
-        scripts.Add("¾î¼­ ¿òÁ÷ÀÌÀÚ");
-        scripts.Add("ÀßÇß¾î! ¿ì¸®°¡ Áã¸¦ ¹°¸®ÃÆ¾î!");
-        scripts.Add("°ğ ÁãµéÀÌ ´Ù½Ã ¿Ã²¨¾ß");
-        scripts.Add("ÀÌÁ¦ ´ÙÀ½°ø°İ¿¡ ´ëºñÇØ ÁØºñ¸¦ ÇÏÀÚ");
+        scripts.Add("ì ì´ì œ ì € ìš°ì£¼ì„ ì„ íŒŒê´´í•˜ì");
+        scripts.Add("ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ ë˜ ì¥ê°€ ë‚˜ì˜¬êº¼ì•¼");
+        scripts.Add("ìš°ì£¼ì„  ìœ„ë¡œ ì˜¬ë¼ê°„ë‹¤ë©´ íŒŒê´´í• ìˆ˜ ìˆì„êº¼ì•¼");
+        scripts.Add("ì–´ì„œ ì›€ì§ì´ì");
+        scripts.Add("ì˜í–ˆì–´! ìš°ë¦¬ê°€ ì¥ë¥¼ ë¬¼ë¦¬ì³¤ì–´!");
+        scripts.Add("ê³§ ì¥ë“¤ì´ ë‹¤ì‹œ ì˜¬êº¼ì•¼");
+        scripts.Add("ì´ì œ ë‹¤ìŒê³µê²©ì— ëŒ€ë¹„í•´ ì¤€ë¹„ë¥¼ í•˜ì");
         spcriptText.text = scripts[spcriptNum];
         sceneCheck = true;
     }

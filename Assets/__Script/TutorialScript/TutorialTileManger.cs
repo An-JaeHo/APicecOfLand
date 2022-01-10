@@ -93,7 +93,6 @@ public class TutorialTileManger : MonoBehaviour
                 tileList.Add(land.transform.GetChild(0));
             }
         }
-        supplyManger.TutorialSupply();
     }
 
     public void SpawnEnemy()

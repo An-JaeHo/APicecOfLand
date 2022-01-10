@@ -5,9 +5,17 @@ using UnityEngine.UI;
 
 public class TutorialSupplyManger : MonoBehaviour
 {
-    public PlayerInfo playerInfo;
+    [Header("Set in Inspector")]
     public TutorialBarrackController barrackController;
 
+    [Header("Supply Ui")]
+    public GameObject milkUi;
+    public GameObject flourUi;
+    public GameObject sugarUi;
+    public GameObject peopleUi;
+
+    [Header("Set in VisualStuido")]
+    public PlayerInfo playerInfo;
     public int updateFood;
     public int updateWood;
     public int updateIron;
@@ -16,7 +24,6 @@ public class TutorialSupplyManger : MonoBehaviour
     void Awake()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        JustUpdateSupply();
     }
 
     public void UpdateSupply()
@@ -25,135 +32,89 @@ public class TutorialSupplyManger : MonoBehaviour
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
 
-        transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
+        peopleUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
 
         if (playerInfo.updateMilk > 0)
         {
-            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " +" + playerInfo.updateMilk.ToString();
+            milkUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " +" + playerInfo.updateMilk.ToString();
         }
         else if (playerInfo.updateMilk == 0)
         {
-            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString();
+            milkUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString();
         }
         else
         {
-            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " " + playerInfo.updateMilk.ToString();
+            milkUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " " + playerInfo.updateMilk.ToString();
         }
 
         if (playerInfo.updateFlour > 0)
         {
-            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " +" + playerInfo.updateFlour.ToString();
+            flourUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " +" + playerInfo.updateFlour.ToString();
         }
         else if (playerInfo.updateFlour <= 0)
         {
-            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString();
+            flourUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString();
         }
         else
         {
-            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " " + playerInfo.updateFlour.ToString();
+            flourUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " " + playerInfo.updateFlour.ToString();
         }
 
         if (playerInfo.updateSugar > 0)
         {
-            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " +" + playerInfo.updateSugar.ToString();
+            sugarUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " +" + playerInfo.updateSugar.ToString();
         }
         else if (playerInfo.updateSugar == 0)
         {
-            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString();
+            sugarUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString();
         }
         else
         {
-            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " " + playerInfo.updateSugar.ToString();
+            sugarUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " " + playerInfo.updateSugar.ToString();
         }
     }
 
     public void JustUpdateSupply()
     {
-        transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
+        peopleUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
 
         if (playerInfo.updateMilk > 0)
         {
-            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " +" + playerInfo.updateMilk.ToString();
+            milkUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " +" + playerInfo.updateMilk.ToString();
         }
         else if (playerInfo.updateMilk == 0)
         {
-            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString();
+            milkUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString();
         }
         else
         {
-            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " " + playerInfo.updateMilk.ToString();
+            milkUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " " + playerInfo.updateMilk.ToString();
         }
 
         if (playerInfo.updateFlour > 0)
         {
-            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " +" + playerInfo.updateFlour.ToString();
+            flourUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " +" + playerInfo.updateFlour.ToString();
         }
         else if (playerInfo.updateFlour <= 0)
         {
-            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString();
+            flourUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString();
         }
         else
         {
-            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " " + playerInfo.updateFlour.ToString();
+            flourUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " " + playerInfo.updateFlour.ToString();
         }
 
         if (playerInfo.updateSugar > 0)
         {
-            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " +" + playerInfo.updateSugar.ToString();
+            sugarUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " +" + playerInfo.updateSugar.ToString();
         }
         else if (playerInfo.updateSugar == 0)
         {
-            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString();
+            sugarUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString();
         }
         else
         {
-            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " " + playerInfo.updateSugar.ToString();
-        }
-    }
-
-    public void TutorialSupply()
-    {
-        playerInfo.StartGame();
-
-        transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();
-
-        if (playerInfo.updateMilk > 0)
-        {
-            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " +" + playerInfo.updateMilk.ToString();
-        }
-        else if (playerInfo.updateMilk == 0)
-        {
-            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString();
-        }
-        else
-        {
-            transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString() + " " + playerInfo.updateMilk.ToString();
-        }
-
-        if (playerInfo.updateFlour > 0)
-        {
-            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " +" + playerInfo.updateFlour.ToString();
-        }
-        else if (playerInfo.updateFlour <= 0)
-        {
-            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString();
-        }
-        else
-        {
-            transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString() + " " + playerInfo.updateFlour.ToString();
-        }
-
-        if (playerInfo.updateSugar > 0)
-        {
-            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " +" + playerInfo.updateSugar.ToString();
-        }
-        else if (playerInfo.updateSugar == 0)
-        {
-            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString();
-        }
-        else
-        {
-            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " " + playerInfo.updateSugar.ToString();
+            sugarUi.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString() + " " + playerInfo.updateSugar.ToString();
         }
     }
 }

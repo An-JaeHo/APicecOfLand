@@ -36,18 +36,18 @@ public class TutorialPanalController : MonoBehaviour
         GameObject checkOutPut = GameObject.Find("OutPut");
         //BuildImage
         GameObject buildImgae = GameObject.Find("BuildImage");
-        buttonManger.buildUi.GetComponent<TutorialBuildController>().dimmedCover.SetActive(false);
 
         checkUpgradeMaterial.transform.GetChild(0).GetComponent<Text>().text = "π–∞°∑Á : " + upgradeWood;
         checkUpgradeMaterial.transform.GetChild(1).GetComponent<Text>().text = "º≥≈¡ : " + upgradeIron;
         checkOutPut.transform.GetChild(0).GetComponent<Text>().text = effect.ToString();
         buildImgae.transform.GetChild(0).GetComponent<Image>().sprite = picture;
 
-        if(talkCheck)
+        //buttonManger.buildUi.GetComponent<TutorialBuildController>().dimmedCover.SetActive(false);
+        if(talkCheck && inputManger.talkManger.buildCheck)
         {
-            inputManger.talkManger.NextScriptButton();
-            inputManger.talkManger.talkCheck = true;
             inputManger.talkManger.stopTalkNum = 4;
+            inputManger.talkManger.talkCheck = true;
+            inputManger.talkManger.NextScriptButton();
             inputManger.talkManger.areaUi.transform.SetSiblingIndex(3);
             inputManger.talkManger.outPutUi.transform.SetAsLastSibling();
 

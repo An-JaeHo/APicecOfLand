@@ -82,6 +82,7 @@ public class FadeINOutController : MonoBehaviour
             tutorialInput.talkManger.tile.supplyManger.gameObject.SetActive(true);
             tutorialInput.talkManger.settingButton.SetActive(true);
             tutorialInput.talkManger.inputManger.buttonManger.button.SetActive(true);
+            tutorialInput.tileManger.supplyManger.JustUpdateSupply();
         }
         else
         {

@@ -80,7 +80,7 @@ public class InputManger : MonoBehaviour
 
         if (hit)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 if (armyMove)
                 {
@@ -211,7 +211,7 @@ public class InputManger : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 time += Time.deltaTime;
 
@@ -231,7 +231,7 @@ public class InputManger : MonoBehaviour
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 ChangeLandInfo();
             }
@@ -263,7 +263,7 @@ public class InputManger : MonoBehaviour
                     return;
                 }
 
-                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
                     if (armyMove)
                     {
@@ -292,21 +292,32 @@ public class InputManger : MonoBehaviour
                                 if (hit.transform.GetComponent<SoldierManger>().movePoint)
                                 {
                                     rangeManger.PlayerMoveRange(hit.transform);
-                                    armyMove = false;
-                                    moveSoldier = hit.transform.GetComponent<SoldierManger>();
-                                    Land.CheckTile();
                                 }
+                                rangeManger.PlayerAttackRange(hit.transform);
+                                armyMove = false;
+                                moveSoldier = hit.transform.GetComponent<SoldierManger>();
+                                Land.CheckTile();
                                 break;
 
                             case "Grass":
                                 if (Land.attackTurnCheck)
                                 {
-                                    landObj = hit.transform;
-                                    mouseCheck = false;
-                                    bulidUi.GetComponent<BuildController>().land = hit.transform;
-                                    bulidUi.GetComponent<BuildController>().CreateWindow();
+                                    if (hit.transform.GetComponent<MakeArea>().Movement == true)
+                                    {
+                                        if (hit.transform.GetComponent<MakeArea>().Destroy != true)
+                                        {
+                                            landObj = hit.transform;
+                                            mouseCheck = false;
+                                            bulidUi.GetComponent<BuildController>().land = hit.transform;
+                                            bulidUi.GetComponent<BuildController>().CreateWindow();
+                                        }
+                                        else
+                                        {
+                                            repairUi.SetActive(true);
+                                            repairUi.GetComponent<RepairController>().SettingRepair();
+                                        }
+                                    }
                                 }
-
                                 break;
 
                             case "Area":
@@ -384,7 +395,7 @@ public class InputManger : MonoBehaviour
             }
             else
             {
-                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
                     ChangeLandInfo();
                 }
