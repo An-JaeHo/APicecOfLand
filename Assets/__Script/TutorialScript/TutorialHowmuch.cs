@@ -22,7 +22,6 @@ public class TutorialHowmuch : MonoBehaviour
         makeSoldier = GetComponent<MakeSoldier>();
         need = GameObject.Find("ArmyNeed");
         barrackController = GameObject.FindGameObjectWithTag("Barrack").GetComponent<TutorialBarrackController>();
-        barrackController.dimmedCover.SetActive(false);
         barrack = GameObject.FindGameObjectWithTag("Barrack");
         inputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialInputManger>();
 
@@ -33,12 +32,18 @@ public class TutorialHowmuch : MonoBehaviour
 
         int canUsePeople = barrackController.playerInfo.people - barrackController.usingPeople;
 
+        if (barrackController.playerInfo.milk > makeSoldier.ProductionExpense && canUsePeople > 0)
+        {
+            barrackController.soldierMakeButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            barrackController.soldierMakeButton.GetComponent<Button>().interactable = false;
+        }
+
         if (talkCheck)
         {
-            inputManger.talkManger.NextScriptButton();
-            inputManger.talkManger.talkCheck = true;
-            inputManger.talkManger.stopTalkNum = 3;
-            talkCheck = false;
+            
         }
     }
 }

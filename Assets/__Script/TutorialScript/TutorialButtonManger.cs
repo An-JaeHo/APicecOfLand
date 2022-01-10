@@ -119,13 +119,26 @@ public class TutorialButtonManger : MonoBehaviour
         playerInfo.sugar -= panel.upgradeIron;
 
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
-        supplyManger.UpdateSupply();
+        panel.baseLand.GetComponent<AreaManger>().CheckUpdateMaterial();
         panel.parentUi.GetComponent<TutorialBuildController>().content.transform.position = panel.parentUi.GetComponent<TutorialBuildController>().position;
         input.mouseCheck = true;
         buildTile = panel.baseLand;
 
-        input.talkManger.NextScriptButton();
+        if(input.talkManger.buildCheck)
+        {
+            input.talkManger.SupplyAndBarrackTalk();
+            panel.baseLand.GetComponent<BoxCollider2D>().enabled = false;
+            panel.parentUi.GetComponent<TutorialBuildController>().dimmedCover.SetActive(false);
+        }
+        else if(input.talkManger.barrackCheck)
+        {
+            input.talkManger.dimmedCover.SetActive(false);
+            input.talkManger.stopTalkNum = 7;
+            input.talkManger.NextScriptButton();
+        }
+        
         input.talkManger.talkCheck = true;
+        supplyManger.JustUpdateSupply();
         panel.parentUi.SetActive(false);
     }
 

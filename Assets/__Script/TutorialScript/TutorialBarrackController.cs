@@ -79,9 +79,9 @@ public class TutorialBarrackController : MonoBehaviour
             supplyManger.UpdateSupply();
             barrackMonsterSprite.gameObject.SetActive(false);
             gameObject.SetActive(false);
-            inputManger.talkManger.MoveTalk();
-            inputManger.talkManger.talkCheck = true;
-            inputManger.talkManger.stopTalkNum = 1;
+            //inputManger.talkManger.MoveTalk();
+            //inputManger.talkManger.talkCheck = true;
+            //inputManger.talkManger.stopTalkNum = 1;
             inputManger.ChangeLandInfo();
             land.GetComponent<BoxCollider2D>().enabled = false;
         }
@@ -108,145 +108,27 @@ public class TutorialBarrackController : MonoBehaviour
                 }
                 else
                 {
-                    //if (json.information.monster[i].Code == "Mon 1")
-                    //{
-                    //    GameObject monster = Instantiate(kindofmonster, parent.transform);
-
-                    //    if (saveMgr.playerSave.SaveCherryGrade == 1)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    }
-                    //    else if (saveMgr.playerSave.SaveCherryGrade == 2)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 2");
-                    //    }
-                    //    else
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 3");
-                    //    }
-
-                    //    monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
-                    //    monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.position = new Vector3(monster.transform.parent.position.x + 60, monster.transform.parent.position.y - 70);
-                    //    monsterUi.Add(monster);
-                    //}
-
-                    //if (json.information.monster[i].Code == "Mon 4")
-                    //{
-                    //    GameObject monster = Instantiate(kindofmonster, parent.transform);
-
-                    //    if (saveMgr.playerSave.SaveCandyGrade == 1)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    }
-                    //    else if (saveMgr.playerSave.SaveCandyGrade == 2)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 5");
-                    //    }
-                    //    else
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 6");
-                    //    }
-                    //    monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
-                    //    monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.position = new Vector3(monster.transform.parent.position.x + 150, monster.transform.parent.position.y - 70);
-                    //    monsterUi.Add(monster);
-                    //}
-
-                    //if (json.information.monster[i].Code == "Mon 7")
-                    //{
-                    //    GameObject monster = Instantiate(kindofmonster, parent.transform);
-
-                    //    if (saveMgr.playerSave.SaveSkittlesGrade == 1)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    }
-                    //    else if (saveMgr.playerSave.SaveSkittlesGrade == 2)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 8");
-                    //    }
-                    //    else
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 9");
-                    //    }
-                    //    monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
-                    //    monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.position = new Vector3(monster.transform.parent.position.x + 240, monster.transform.parent.position.y - 70);
-                    //    monsterUi.Add(monster);
-                    //}
-
-                    //if (json.information.monster[i].Code == "Mon 10")
-                    //{
-                    //    GameObject monster = Instantiate(kindofmonster, parent.transform);
-
-                    //    if (saveMgr.playerSave.SaveDonutsGrade == 1)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    }
-                    //    else if (saveMgr.playerSave.SaveDonutsGrade == 2)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 11");
-                    //    }
-                    //    else
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 12");
-                    //    }
-                    //    monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
-                    //    monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.position = new Vector3(monster.transform.parent.position.x + 330, monster.transform.parent.position.y - 70);
-                    //    monsterUi.Add(monster);
-                    //}
-
-
-                    //if (json.information.monster[i].Code == "Mon 13")
-                    //{
-                    //    GameObject monster = Instantiate(kindofmonster, parent.transform);
-
-                    //    if (saveMgr.playerSave.SaveSchneeballenGrade == 1)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic(json.information.monster[i].Code);
-                    //    }
-                    //    else if (saveMgr.playerSave.SaveSchneeballenGrade == 2)
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 14");
-                    //    }
-                    //    else
-                    //    {
-                    //        monster.GetComponent<MakeSoldier>().SuperMagic("Mon 15");
-                    //    }
-
-                    //    monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
-                    //    monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                    //    monster.transform.position = new Vector3(monster.transform.parent.position.x + 420, monster.transform.parent.position.y - 70);
-                    //    monsterUi.Add(monster);
-                    //}
-
-                    if (json.information.monster[i].Code == "Mon 16")
+                    if (json.information.monster[i].Code == "Mon 1")
                     {
                         GameObject monster = Instantiate(kindofmonster, parent.transform);
 
-                        if (saveMgr.playerSave.SaveChocoGrade == 1)
+                        if (saveMgr.playerSave.SaveCandyGrade == 1)
                         {
-                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 18");
+                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 1");
                         }
-                        else if (saveMgr.playerSave.SaveChocoGrade == 2)
+                        else if (saveMgr.playerSave.SaveCandyGrade == 2)
                         {
-                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 18");
+                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 1");
                         }
                         else
                         {
-                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 18");
+                            monster.GetComponent<MakeSoldier>().SuperMagic("Mon 1");
                         }
 
                         monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;
                         monster.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = monster.GetComponent<MakeSoldier>().Name;
                         monster.transform.name = monster.GetComponent<MakeSoldier>().Name;
-                        monster.transform.position = new Vector3(monster.transform.parent.position.x + 60, monster.transform.parent.position.y - 70);
+                        monster.transform.localPosition = new Vector3(100f,-133f);
                         monsterUi.Add(monster);
 
                         //monster.transform.GetChild(0).GetComponent<Image>().sprite = monster.GetComponent<MakeSoldier>().Picture;

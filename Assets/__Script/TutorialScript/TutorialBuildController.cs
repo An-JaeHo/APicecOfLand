@@ -62,8 +62,6 @@ public class TutorialBuildController : MonoBehaviour
                     lands.Add(barrackInfo);
                 }
             }
-
-            
         }
 
         for (int i = 0; i < lands.Count; i++)
@@ -89,9 +87,10 @@ public class TutorialBuildController : MonoBehaviour
             }
         }
 
+        talkManger.outPutUi.transform.GetChild(0).GetComponent<Text>().text = "생산량";
+        talkManger.consumeUi.transform.GetChild(0).GetComponent<Text>().text = "필요한 밀가루";
+        talkManger.consumeUi.transform.GetChild(1).GetComponent<Text>().text = "필요한 밀가루";
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().sprite = land.GetComponent<SpriteRenderer>().sprite;
-        transform.GetChild(0).GetChild(4).GetChild(0).GetComponent<Text>().text = "필요한 밀가루";
-        transform.GetChild(0).GetChild(4).GetChild(1).GetComponent<Text>().text = "필요한 설탕";
         lands.Clear();
         gameObject.SetActive(true);
     }
