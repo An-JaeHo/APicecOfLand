@@ -24,13 +24,22 @@ public class Hwomuch : MonoBehaviour
 
         int canUsePeople = barrackController.playerInfo.people - barrackController.usingPeople;
 
-        if (barrackController.playerInfo.milk > makeSoldier.ProductionExpense && canUsePeople >0)
+        if (barrackController.playerInfo.milk >= makeSoldier.ProductionExpense && canUsePeople >0)
         {
             barrackController.soldierMakeButton.GetComponent<Button>().interactable = true;
         }
         else
         {
             barrackController.soldierMakeButton.GetComponent<Button>().interactable = false;
+
+            if(canUsePeople <= 0)
+            {
+                SystemMessgeController.SystemMessge("people");
+            }
+            else if(barrackController.playerInfo.milk < makeSoldier.ProductionExpense)
+            {
+                SystemMessgeController.SystemMessge("milk");
+            }
         }
     }
 }

@@ -58,9 +58,6 @@ public class TileManger : MonoBehaviour
     //보스
     public GameObject bossPrefeb;
     public GameObject bossHP;
-    public GameObject bossText;
-    float alpha = 1.0f;
-    float speed = 0.5f;
 
     private void Awake()
     {
@@ -146,20 +143,6 @@ public class TileManger : MonoBehaviour
 
     private void Update()
     {
-        if(bossText.activeSelf == true)
-        {
-            if (alpha > 0)
-            {
-                bossText.GetComponent<Image>().color = new Color(1, 1, 1, alpha);
-                bossText.transform.GetChild(0).GetComponent<Text>().color = new Color(1, 1, 1, alpha);
-                alpha -= Time.deltaTime * speed;
-            }
-            else
-            {
-                bossText.SetActive(false);
-            }
-        }
-
         if(alarmCheck)
         {
             timer += Time.deltaTime;

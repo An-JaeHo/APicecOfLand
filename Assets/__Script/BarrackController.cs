@@ -41,7 +41,7 @@ public class BarrackController : MonoBehaviour
         supplyManger = GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>();
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         inputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputManger>();
-        transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite = barrackSprite;
+        //transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite = barrackSprite;
         i = 0;
         usingPeople = 0;
         object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
@@ -95,7 +95,7 @@ public class BarrackController : MonoBehaviour
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
-        transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite = barrackSprite;
+        //transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite = barrackSprite;
 
         // 1 5 9 13
         for (int i = 0; i < json.information.monster.Length; i++)
