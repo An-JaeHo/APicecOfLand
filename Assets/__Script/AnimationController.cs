@@ -28,11 +28,15 @@ public class AnimationController : MonoBehaviour
             transform.parent.parent.GetComponent<EnemyController>().buttonManger.enemys.Remove(transform.parent.parent.gameObject);
             transform.parent.parent.GetComponent<EnemyController>().playerInfo.killingPoint++;
             transform.parent.parent.GetComponent<EnemyController>().tiles.bossHP.SetActive(false);
-            transform.parent.parent.GetComponent<EnemyController>().tiles.bossText.SetActive(false);
             transform.parent.parent.transform.parent.GetComponent<BoxCollider2D>().enabled = true;
             Destroy(transform.parent.parent.gameObject);
         }
-
         GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>().CheckTile();
+    }
+
+    public void CandleDeadAni()
+    {
+        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

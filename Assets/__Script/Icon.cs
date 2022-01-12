@@ -109,6 +109,7 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 transform.position = slot.transform.position;
                 transform.SetParent(slot.transform);
                 image.raycastTarget = true;
+                SystemMessgeController.SystemMessge("skill");
             }
         }
 

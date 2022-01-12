@@ -26,8 +26,6 @@ public class InputManger : MonoBehaviour
     public Image monsterMoveCheckImgae;
     private Vector3 MouseStart;
     public float time;
-
-
     public bool mouseCheck;
 
     //카메라이동제한
@@ -37,6 +35,8 @@ public class InputManger : MonoBehaviour
     public float maxPosX;
     public float minPosY;
     public float maxPosY;
+
+    public SpecialSkillController specialSkillController;
 
     private void Start()
     {
@@ -80,7 +80,7 @@ public class InputManger : MonoBehaviour
 
         if (hit)
         {
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 if (armyMove)
                 {
@@ -100,6 +100,7 @@ public class InputManger : MonoBehaviour
                                     BarrackUi.SetActive(true);
                                     BarrackUi.GetComponent<BarrackController>().land = hit.transform;
                                     BarrackUi.GetComponent<BarrackController>().SwordButton();
+                                    BarrackUi.GetComponent<BarrackController>().soldierMakeButton.GetComponent<Button>().enabled = false;
                                     mouseCheck = false;
                                 }
                             }
@@ -127,6 +128,7 @@ public class InputManger : MonoBehaviour
                                         mouseCheck = false;
                                         bulidUi.GetComponent<BuildController>().land = hit.transform;
                                         bulidUi.GetComponent<BuildController>().CreateWindow();
+                                        bulidUi.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
                                     }
                                     else
                                     {
@@ -170,17 +172,32 @@ public class InputManger : MonoBehaviour
                         case "Enemy":
                             if (hit.transform.parent.tag == "SelectLand")
                             {
-                                moveSoldier.enemy = hit.transform;
-                                moveSoldier.attack = true;
-                                army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                if(specialSkillController)
+                                {
+                                    rangeManger.CandelRange(hit.transform);
+                                    ChangeLandInfo();
+                                }
+                                else
+                                {
+                                    moveSoldier.enemy = hit.transform;
+                                    moveSoldier.attack = true;
+                                    army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                }
                             }
                             break;
                         case "GD":
                             if (hit.transform.parent.tag == "SelectLand")
                             {
-                                moveSoldier.enemy = hit.transform;
-                                moveSoldier.attack = true;
-                                army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                if (specialSkillController)
+                                {
+
+                                }
+                                else
+                                {
+                                    moveSoldier.enemy = hit.transform;
+                                    moveSoldier.attack = true;
+                                    army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                }
                             }
                             break;
                         case "SelectLand":
@@ -211,7 +228,7 @@ public class InputManger : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 time += Time.deltaTime;
 
@@ -231,7 +248,7 @@ public class InputManger : MonoBehaviour
         }
         else
         {
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 ChangeLandInfo();
             }
@@ -263,7 +280,7 @@ public class InputManger : MonoBehaviour
                     return;
                 }
 
-                if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     if (armyMove)
                     {
@@ -395,7 +412,7 @@ public class InputManger : MonoBehaviour
             }
             else
             {
-                if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     ChangeLandInfo();
                 }
