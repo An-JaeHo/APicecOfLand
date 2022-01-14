@@ -100,7 +100,7 @@ public class InputManger : MonoBehaviour
                                     BarrackUi.SetActive(true);
                                     BarrackUi.GetComponent<BarrackController>().land = hit.transform;
                                     BarrackUi.GetComponent<BarrackController>().SwordButton();
-                                    BarrackUi.GetComponent<BarrackController>().soldierMakeButton.GetComponent<Button>().enabled = false;
+                                    BarrackUi.GetComponent<BarrackController>().soldierMakeButton.GetComponent<Button>().interactable = false;
                                     mouseCheck = false;
                                 }
                             }
@@ -172,10 +172,10 @@ public class InputManger : MonoBehaviour
                         case "Enemy":
                             if (hit.transform.parent.tag == "SelectLand")
                             {
-                                if(specialSkillController)
+                                if (specialSkillController.skillCheck)
                                 {
                                     rangeManger.CandelRange(hit.transform);
-                                    ChangeLandInfo();
+                                    specialSkillController.gameObject.SetActive(false);
                                 }
                                 else
                                 {
@@ -188,7 +188,7 @@ public class InputManger : MonoBehaviour
                         case "GD":
                             if (hit.transform.parent.tag == "SelectLand")
                             {
-                                if (specialSkillController)
+                                if (specialSkillController.skillCheck)
                                 {
 
                                 }
@@ -232,17 +232,6 @@ public class InputManger : MonoBehaviour
             {
                 time += Time.deltaTime;
 
-                //if (time >= 3)
-                //{
-                //    switch (hit.transform.tag)
-                //    {
-                //        case "Army":
-                //            armyUpgradeUi.SetActive(true);
-                //            armyUpgradeUi.GetComponent<ArmyUpgrade>().UpdateArmyInfo(hit.transform);
-                //            break;
-                //    }
-                //    return;
-                //}
             }
 
         }
@@ -268,18 +257,6 @@ public class InputManger : MonoBehaviour
             {
                 time += Time.deltaTime;
 
-                if (time >= 3)
-                {
-                    switch (hit.transform.tag)
-                    {
-                        case "Army":
-                            armyUpgradeUi.SetActive(true);
-                            armyUpgradeUi.GetComponent<ArmyUpgrade>().UpdateArmyInfo(hit.transform);
-                            break;
-                    }
-                    return;
-                }
-
                 if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     if (armyMove)
@@ -300,6 +277,7 @@ public class InputManger : MonoBehaviour
                                         BarrackUi.SetActive(true);
                                         BarrackUi.GetComponent<BarrackController>().land = hit.transform;
                                         BarrackUi.GetComponent<BarrackController>().SwordButton();
+                                        BarrackUi.GetComponent<BarrackController>().soldierMakeButton.GetComponent<Button>().interactable = false;
                                         mouseCheck = false;
                                     }
                                 }
@@ -327,6 +305,7 @@ public class InputManger : MonoBehaviour
                                             mouseCheck = false;
                                             bulidUi.GetComponent<BuildController>().land = hit.transform;
                                             bulidUi.GetComponent<BuildController>().CreateWindow();
+                                            bulidUi.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
                                         }
                                         else
                                         {
@@ -370,17 +349,32 @@ public class InputManger : MonoBehaviour
                             case "Enemy":
                                 if (hit.transform.parent.tag == "SelectLand")
                                 {
-                                    moveSoldier.enemy = hit.transform;
-                                    moveSoldier.attack = true;
-                                    army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                    if (specialSkillController.skillCheck)
+                                    {
+                                        //rangeManger.CandelRange(hit.transform);
+                                        specialSkillController.gameObject.SetActive(false);
+                                    }
+                                    else
+                                    {
+                                        moveSoldier.enemy = hit.transform;
+                                        moveSoldier.attack = true;
+                                        army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                    }
                                 }
                                 break;
                             case "GD":
                                 if (hit.transform.parent.tag == "SelectLand")
                                 {
-                                    moveSoldier.enemy = hit.transform;
-                                    moveSoldier.attack = true;
-                                    army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                    if (specialSkillController.skillCheck)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        moveSoldier.enemy = hit.transform;
+                                        moveSoldier.attack = true;
+                                        army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                    }
                                 }
                                 break;
                             case "SelectLand":
@@ -403,6 +397,8 @@ public class InputManger : MonoBehaviour
                             default:
                                 break;
                         }
+
+
                         ChangeLandInfo();
                         CheckMonsterMovePoint();
                         armyMove = true;

@@ -22,6 +22,7 @@ public class ButtonManger : MonoBehaviour
     public GameObject buildUi;
     public GameObject barrackWindow;
     public GameObject settingUi;
+    public SpecialSkillController specialSkillController;
 
     [Header("Set in ViusalStudio")]
     public InputManger input;
@@ -630,7 +631,7 @@ public class ButtonManger : MonoBehaviour
         buttonTimer = 0;
         button.GetComponent<Button>().interactable = false;
 
-        if (playerInfo.turnPoint == 100)
+        if (playerInfo.turnPoint == 120)
         {
             int rand = Random.Range(200, 270);
             playerInfo.killingPoint = rand;
@@ -646,6 +647,7 @@ public class ButtonManger : MonoBehaviour
         TurnCheck();
         tileManger.CheckTile();
         input.CheckMonsterMovePoint();
+        specialSkillController.SpecialSkillCheck();
     }
 
     void TurnCheck()

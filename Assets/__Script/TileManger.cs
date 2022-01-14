@@ -7,6 +7,7 @@ using TMPro;
 
 public class TileManger : MonoBehaviour
 {
+    [Header("Manger")]
     public GameObject tilePrefab;
     public GameObject enemyPrefab;
     public GameObject builderPrefebs;
@@ -20,34 +21,33 @@ public class TileManger : MonoBehaviour
     private GameObject tileInfo;
     public JsonManger json;
 
-    //알람용 UI
+    [Header("Alarm")]
     public GameObject attackAlarm;
     public GameObject defendAlarm;
 
-    //타일체크용
+    [Header("Tile Check")]
     public int attackTurn;
     public bool attackTurnCheck;
-    private float timer;
-    private bool alarmCheck;
-    private bool makeTileCheck;
     public int wight;
     public int hight;
     public int tileCount;
     public Color color;
     public ButtonManger buttonManger;
-    private PlayerInfo playerInfo;
     public SupplyManger supplyManger;
     List<GameObject> list;
-
-    // 타일 구분용 list
     List<Transform> nextLand;
     public Sprite[] sprites;
     public List<String> enemy1Code;
     public List<String> enemy2Code;
     public List<String> enemy3Code;
     public List<String> enemy4Code;
+    private PlayerInfo playerInfo;
+    private float timer;
+    private bool alarmCheck;
+    private bool makeTileCheck;
 
     //아몰랑 ㅅㅂ
+    [Header("Object Imgae")]
     public GameObject[] enemyObj;
     public GameObject[] MonsterObj;
     public GameObject[] bossObj;
@@ -55,7 +55,7 @@ public class TileManger : MonoBehaviour
     public Sprite[] areaImges;
     public GameObject particlePrefeb;
 
-    //보스
+    [Header("Boss")]
     public GameObject bossPrefeb;
     public GameObject bossHP;
 
@@ -395,6 +395,8 @@ public class TileManger : MonoBehaviour
             }
         }
 
+        
+
         //디펜스
         if (playerInfo.turnPoint == 9)
         {
@@ -441,6 +443,16 @@ public class TileManger : MonoBehaviour
             alarmCheck = true;
             defendAlarm.SetActive(true);
 
+            if (enemyLand.Count != 0)
+            {
+                SceneMgr.GoGameEndScene();
+            }
+        }
+        else if (playerInfo.turnPoint == 101)
+        {
+            alarmCheck = true;
+            defendAlarm.SetActive(true);
+            SystemMessgeController.SystemMessge("boss");
             if (enemyLand.Count != 0)
             {
                 SceneMgr.GoGameEndScene();
@@ -536,7 +548,6 @@ public class TileManger : MonoBehaviour
         }
         else if (42 <= playerInfo.turnPoint && 61 > playerInfo.turnPoint)
         {
-
             if (attackTurnCheck)
             {
                 attackAlarm.SetActive(true);
@@ -571,7 +582,6 @@ public class TileManger : MonoBehaviour
         }
         else if (62 <= playerInfo.turnPoint && 81 > playerInfo.turnPoint)
         {
-            
             if (attackTurnCheck)
             {
                 attackTurn++;
@@ -633,6 +643,60 @@ public class TileManger : MonoBehaviour
             {
                 EnemyGradeSort();
             }
+
+            attackTurnCheck = false;
+        }
+        else if (102 <= playerInfo.turnPoint && 121 > playerInfo.turnPoint)
+        {
+            if (attackTurnCheck)
+            {
+                attackTurn++;
+                attackAlarm.SetActive(true);
+                alarmCheck = true;
+
+                int bossrand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
+                noChildLand[bossrand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 24");
+                enemyLand.Add(noChildLand[bossrand].GetChild(0));
+
+                GameObject noChildEnemy = Instantiate(bossPrefeb, new Vector3(noChildLand[bossrand].GetChild(0).position.x, noChildLand[bossrand].GetChild(0).position.y + 25f), Quaternion.identity);
+                noChildEnemy.transform.SetParent(noChildLand[bossrand].GetChild(0));
+                noChildLand.Remove(noChildLand[bossrand]);
+                noChildEnemy.GetComponent<GDController>().MakeGD("Boss 1");
+
+                for (int j = 0; j < bossObj.Length; j++)
+                {
+                    if (bossObj[j].name == noChildEnemy.GetComponent<GDController>().Code)
+                    {
+                        GameObject enemyPicture = Instantiate(bossObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
+                        enemyPicture.transform.SetParent(noChildEnemy.transform);
+                    }
+                }
+                bossHP.SetActive(true);
+                buttonManger.enemys.Add(noChildEnemy);
+
+                //for (int i = 0; i < attackTurn; i++)
+                //{
+                //    int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
+                //    noChildLand[rand].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 24");
+                //    enemyLand.Add(noChildLand[rand].GetChild(0));
+                //    noChildLand.Remove(noChildLand[rand]);
+                //}
+
+                buttonManger.DestroyCheckArea();
+            }
+
+            //if (playerInfo.turnPoint == 82)
+            //{
+            //    EnemyGradeSort();
+            //}
+            //else if (playerInfo.turnPoint == 84)
+            //{
+            //    EnemyGradeSort();
+            //}
+            //else if (playerInfo.turnPoint == 86)
+            //{
+            //    EnemyGradeSort();
+            //}
 
             attackTurnCheck = false;
         }

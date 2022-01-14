@@ -232,126 +232,128 @@ public class RangeManger : MonoBehaviour
     public void CandelRange(Transform hitobj)
     {
         int nameOfLand = Int32.Parse(hitobj.parent.parent.name);
+        input.specialSkillController.skillCheck = false;
+        //for (int i = 0; i < tileManger.activeChildtileList.Count; i++)
+        //{
+        //    if(tileManger.activeChildtileList[i].GetChild(0).childCount !=0)
+        //    {
+        //        Transform obj = null;
 
-        for (int i = 0; i < tileManger.activeChildtileList.Count; i++)
-        {
-            if(tileManger.activeChildtileList[i].GetChild(0).childCount !=0)
-            {
-                Transform obj = null;
+        //        if (tileManger.activeChildtileList[i].name == nameOfLand.ToString())
+        //        {
+        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
+        //        }
+        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand + 1).ToString())
+        //        {
+        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
+        //        }
+        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand - 1).ToString())
+        //        {
+        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
+        //        }
+        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand + 17).ToString())
+        //        {
+        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
+        //        }
+        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand - 17).ToString())
+        //        {
+        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
+        //        }
+        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand + 17 + 1).ToString())
+        //        {
+        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
+        //        }
+        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand + 17 - 1).ToString())
+        //        {
+        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
+        //        }
+        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand - 17 + 1).ToString())
+        //        {
+        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
+        //        }
+        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand - 17 - 1).ToString())
+        //        {
+        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
+        //        }
 
-                if (tileManger.activeChildtileList[i].name == nameOfLand.ToString())
-                {
-                    obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
-                else if (tileManger.activeChildtileList[i].name == (nameOfLand + 1).ToString())
-                {
-                    obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
-                else if (tileManger.activeChildtileList[i].name == (nameOfLand - 1).ToString())
-                {
-                    obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
-                else if (tileManger.activeChildtileList[i].name == (nameOfLand + 17).ToString())
-                {
-                    obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
-                else if (tileManger.activeChildtileList[i].name == (nameOfLand - 17).ToString())
-                {
-                    obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
-                else if (tileManger.activeChildtileList[i].name == (nameOfLand + 17 + 1).ToString())
-                {
-                    obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
-                else if (tileManger.activeChildtileList[i].name == (nameOfLand + 17 - 1).ToString())
-                {
-                    obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
-                else if (tileManger.activeChildtileList[i].name == (nameOfLand - 17 + 1).ToString())
-                {
-                    obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
-                else if (tileManger.activeChildtileList[i].name == (nameOfLand - 17 - 1).ToString())
-                {
-                    obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-                }
+        //        if(obj != null)
+        //        {
+        //            for (int z = 0; z < obj.GetComponent<EnemyController>().redTiles.Count; z++)
+        //            {
+        //                if (obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Name == "우주선")
+        //                {
+        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Name = null;
+        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Type = "Grass";
+        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Grade = 0;
+        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Movement = true;
+        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Destroy = false;
+        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Repair = false;
+        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Effect = null;
+        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<SpriteRenderer>().color = Color.white;
+        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<AreaManger>().pureColor = Color.white;
+        //                    obj.GetComponent<EnemyController>().redTiles[z].tag = "Grass";
 
-                if(obj != null)
-                {
-                    
+        //                    for (int j = 0; j < tileManger.destroyAreaObj.Length; j++)
+        //                    {
+        //                        if (obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Code==tileManger.destroyAreaObj[j].name)
+        //                        {
+        //                            obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Picture=tileManger.destroyAreaObj[j];
+        //                            obj.GetComponent<EnemyController>().redTiles[z].GetComponent<SpriteRenderer>().sprite=tileManger.destroyAreaObj[j];
+        //                        }
+        //                    }
 
-                    if (obj.tag == "Enemy")
-                    {
-                        obj.GetComponent<MakeEnemy>().BaseHelthPoint -= 500;
-                        obj.GetComponent<EnemyController>().HpBarScale();
-                        GameObject candle = Instantiate(cnadleObj, obj.parent);
-                        candle.transform.localPosition = new Vector3(0, -0.5f);
-                        candle.transform.localScale = new Vector3(0.2f, 0.2f);
-                        candle.GetComponent<SpriteRenderer>().sortingOrder = obj.parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        //                    if (obj.GetComponent<EnemyController>().redTiles[z].childCount == 0)
+        //                    {
+        //                        GameObject tileCandle = Instantiate(cnadleObj);
+        //                        tileCandle.SetActive(true);
+        //                        tileCandle.transform.parent = obj.GetComponent<EnemyController>().redTiles[z];
+        //                        tileCandle.transform.localPosition = new Vector3(0, -0.5f);
+        //                        tileCandle.transform.localScale = new Vector3(0.2f, 0.2f);
+        //                        tileCandle.GetComponent<SpriteRenderer>().sortingOrder = obj.GetComponent<EnemyController>().redTiles[z].GetComponent<SpriteRenderer>().sortingOrder + 1;
+        //                    }
 
-                        if (obj.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
-                        {
-                            obj.GetComponent<EnemyController>().ani.SetBool("Dead", true);
-                            tileManger.buttonManger.enemys.Remove(obj.gameObject);
-                        }
-                        else
-                        {
-                            obj.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
-                        }
-                    }
-                    else if (obj.tag == "Boss")
-                    {
-                        obj.GetComponent<GDController>().HelthPoint -= 500;
-                        obj.GetComponent<EnemyController>().HpBarScale();
-                        GameObject candle = Instantiate(cnadleObj, obj.parent);
-                        candle.transform.localPosition = new Vector3(0, -0.5f);
-                        candle.transform.localScale = new Vector3(0.2f, 0.2f);
-                        candle.GetComponent<SpriteRenderer>().sortingOrder = obj.parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
+        //                    tileManger.enemyLand.Remove(obj.GetComponent<EnemyController>().redTiles[z]);
+        //                }
+        //            }
 
-                        //if (obj.GetComponent<GDController>().HelthPoint <= 0)
-                        //{
-                        //    obj.GetComponent<EnemyController>().ani.SetBool("Dead", true);
-                        //    tileManger.buttonManger.enemys.Remove(obj.gameObject);
-                        //}
-                        //else
-                        //{
-                        //    obj.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
-                        //}
-                    }
-                    //if (tileManger.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Enemy")
-                    //{
-                    //    tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<MakeEnemy>().BaseHelthPoint -= 500;
-                    //    tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<EnemyController>().HpBarScale();
+        //            GameObject candle = Instantiate(cnadleObj, obj.parent);
+        //            candle.transform.localPosition = new Vector3(0, -0.5f);
+        //            candle.transform.localScale = new Vector3(0.2f, 0.2f);
+        //            candle.GetComponent<SpriteRenderer>().sortingOrder = obj.parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
-                    //    if (tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
-                    //    {
-                    //        tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<EnemyController>().ani.SetBool("Dead", true);
-                    //        tileManger.buttonManger.enemys.Remove(tileManger.activeChildtileList[i].GetChild(0).GetChild(0).gameObject);
-                    //    }
-                    //    else
-                    //    {
-                    //        tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<SoldierManger>().ani.SetTrigger("Damage");
-                    //    }
-                    //}
-                    //else if (tileManger.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Boss")
-                    //{
-                    //    tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<GDController>().HelthPoint -= 500;
-                    //    tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<EnemyController>().HpBarScale();
+        //            if (obj.tag == "Enemy")
+        //            {
+        //                obj.GetComponent<MakeEnemy>().BaseHelthPoint -= 300;
+        //                obj.GetComponent<EnemyController>().HpBarScale();
 
-                    //    if (tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<GDController>().HelthPoint <= 0)
-                    //    {
-                    //        tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<EnemyController>().ani.SetBool("Dead", true);
-                    //        tileManger.buttonManger.enemys.Remove(tileManger.activeChildtileList[i].GetChild(0).GetChild(0).gameObject);
-                    //    }
-                    //    else
-                    //    {
-                    //        tileManger.activeChildtileList[i].GetChild(0).GetChild(0).GetComponent<SoldierManger>().ani.SetTrigger("Damage");
-                    //    }
-                    //}
-                }
-            }
-            
-        }
+        //                if (obj.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
+        //                {
+        //                    obj.GetComponent<EnemyController>().ani.SetBool("Dead", true);
+        //                    tileManger.buttonManger.enemys.Remove(obj.gameObject);
+        //                }
+        //                else
+        //                {
+        //                    obj.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
+        //                }
+        //            }
+        //            else if (obj.tag == "Boss")
+        //            {
+        //                obj.GetComponent<GDController>().HelthPoint -= 500;
+        //                obj.GetComponent<EnemyController>().HpBarScale();
+
+        //                //if (obj.GetComponent<GDController>().HelthPoint <= 0)
+        //                //{
+        //                //    obj.GetComponent<EnemyController>().ani.SetBool("Dead", true);
+        //                //    tileManger.buttonManger.enemys.Remove(obj.gameObject);
+        //                //}
+        //                //else
+        //                //{
+        //                //    obj.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
+        //                //}
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
 

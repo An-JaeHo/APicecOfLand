@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour
     public bool finishMove;
     public bool findArmy;
     public Transform parentTile;
+    public List<Transform> redTiles;
     List<Transform> targets;
 
     //카드 생성
@@ -476,6 +477,7 @@ public class EnemyController : MonoBehaviour
             {
                 nowHp = 0;
             }
+
             hpBar.localScale = new Vector3(nowHp, 1f);
 
             tiles.bossHP.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = ((int)(nowHp * 100)).ToString()+"%";
