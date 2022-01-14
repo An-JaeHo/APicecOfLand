@@ -201,7 +201,6 @@ public class SoldierManger : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             
             attack = false;
-            movePoint = false;
             enemy.GetComponent<EnemyController>().HpBarScale();
 
             if(enemy.tag == "Enemy")
@@ -226,6 +225,7 @@ public class SoldierManger : MonoBehaviour
                     enemy.GetComponent<EnemyController>().ani.SetBool("Dead", true);
                     buttonManger.enemys.Remove(enemy.gameObject);
                     ExpBarScale();
+                    tileManger.bossHP.SetActive(false);
                     tileManger.CheckTile();
                 }
                 else

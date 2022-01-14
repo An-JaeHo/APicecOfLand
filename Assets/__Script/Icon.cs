@@ -115,6 +115,7 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         inputManger.mouseCheck = true;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Army")

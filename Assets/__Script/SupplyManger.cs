@@ -35,6 +35,13 @@ public class SupplyManger : MonoBehaviour
         playerInfo.flour += playerInfo.updateFlour;
         playerInfo.sugar += playerInfo.updateSugar;
 
+        if (playerInfo.milk < 0 
+            || playerInfo.flour < 0
+            || playerInfo.sugar < 0)
+        {
+            SystemMessgeController.SystemMessge("supply");
+        }
+
         //if (playerInfo.milk < -150 
         //    || playerInfo.flour < -150
         //    || playerInfo.sugar < -150)

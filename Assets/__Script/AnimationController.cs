@@ -37,6 +37,6 @@ public class AnimationController : MonoBehaviour
     public void CandleDeadAni()
     {
         gameObject.SetActive(false);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

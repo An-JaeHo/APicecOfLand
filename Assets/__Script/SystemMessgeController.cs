@@ -31,13 +31,13 @@ public class SystemMessgeController : MonoBehaviour
             
             systemaMessgeBar.SetActive(true);
 
-            if(timer>=5)
+            if(timer>=3)
             {
-                float colorA = ((timer - 5) / 5) * 255;
+                float colorA = ((timer - 3) / 3) * 255;
                 systemaMessgeBar.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, (255f-colorA)/255f);
                 systemaMessgeBar.transform.GetChild(0).GetComponent<Text>().color = new Color(0 / 255f, 0 / 255f, 0 / 255f, (255f - colorA) / 255f);
 
-                if (timer >10)
+                if (timer >6)
                 {
                     systemaMessgeBar.SetActive(false);
                     systemaMessgeBar.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
@@ -55,14 +55,8 @@ public class SystemMessgeController : MonoBehaviour
             case "boss":
                 systemaMessgeBar.transform.GetChild(0).GetComponent<Text>().text = "다음턴에 보스가 등장합니다.";
                 break;
-            case "milk":
-                systemaMessgeBar.transform.GetChild(0).GetComponent<Text>().text = "우유 자원이 마이너스 상태입니다.";
-                break;
-            case "sugar":
-                systemaMessgeBar.transform.GetChild(0).GetComponent<Text>().text = "설탕 자원이 마이너스 상태입니다.";
-                break;
-            case "flour":
-                systemaMessgeBar.transform.GetChild(0).GetComponent<Text>().text = "밀가루 자원이 마이너스 상태입니다.";
+            case "supply":
+                systemaMessgeBar.transform.GetChild(0).GetComponent<Text>().text = "재고가 부족합니다.";
                 break;
             case "people":
                 systemaMessgeBar.transform.GetChild(0).GetComponent<Text>().text = "인구가 최대입니다.";

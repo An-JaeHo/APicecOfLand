@@ -1179,7 +1179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &236932654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1656,7 +1656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &327509055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1785,6 +1785,7 @@ MonoBehaviour:
   buttonManger: {fileID: 1090618931}
   tileManger: {fileID: 103904954}
   skillCheck: 0
+  coolTime: 0
 --- !u!1 &328372814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,7 +3187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00004673, y: 577}
+  m_AnchoredPosition: {x: -0.00004673, y: 696}
   m_SizeDelta: {x: 250.446, y: 204.067}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &694390330
@@ -4463,6 +4464,7 @@ MonoBehaviour:
   buildUi: {fileID: 1120216579}
   barrackWindow: {fileID: 1943427297}
   settingUi: {fileID: 1230224291}
+  specialSkillController: {fileID: 327509059}
   input: {fileID: 0}
   supplyManger: {fileID: 0}
   tileManger: {fileID: 0}
@@ -6230,7 +6232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 364}
+  m_AnchoredPosition: {x: 0, y: 512}
   m_SizeDelta: {x: -100, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582428667
@@ -6551,7 +6553,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BOSS
+  m_Text: Boss
 --- !u!222 &1652373239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8362,7 +8364,7 @@ PrefabInstance:
     - target: {fileID: 984677637158698305, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -206.50005
+      value: -206.5
       objectReference: {fileID: 0}
     - target: {fileID: 984677637158698305, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
@@ -8562,7 +8564,7 @@ PrefabInstance:
     - target: {fileID: 984677638854026649, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.63538456
+      value: 0.3176923
       objectReference: {fileID: 0}
     - target: {fileID: 984677638854026649, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
@@ -8572,7 +8574,7 @@ PrefabInstance:
     - target: {fileID: 984677638854026649, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.000000046950113
+      value: 0.00000008785813
       objectReference: {fileID: 0}
     - target: {fileID: 984677638888839225, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
@@ -8922,7 +8924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777188964689542600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -517, y: 474, z: 0}
+  m_LocalPosition: {x: -517, y: 584, z: 0}
   m_LocalScale: {x: 100, y: 90, z: 1}
   m_Children:
   - {fileID: 71769715}
