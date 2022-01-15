@@ -15,11 +15,11 @@ D:/Ghihub/APicecOfLand
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-65249
+51859
 Successfully changed project path to: D:/Ghihub/APicecOfLand
 D:/Ghihub/APicecOfLand
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 100.17 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 93.37 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.25f1 (9b9180224418)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Resources/UnitySubsystems
@@ -35,95 +35,95 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56392
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56720
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006064 seconds.
+Registered in 0.026057 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 80.78 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 82.72 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.724 seconds
+- Completed reload, in  0.951 seconds
 Domain Reload Profiling:
-	ReloadAssembly (725ms)
-		BeginReloadAssembly (95ms)
+	ReloadAssembly (951ms)
+		BeginReloadAssembly (125ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (541ms)
-			LoadAssemblies (91ms)
+		EndReloadAssembly (616ms)
+			LoadAssemblies (130ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (159ms)
+			SetupTypeCache (182ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (39ms)
-			SetupLoadedEditorAssemblies (204ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (258ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
+				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (81ms)
-				BeforeProcessingInitializeOnLoad (16ms)
-				ProcessInitializeOnLoadAttributes (75ms)
-				ProcessInitializeOnLoadMethodAttributes (25ms)
+				RefreshPlugins (83ms)
+				BeforeProcessingInitializeOnLoad (15ms)
+				ProcessInitializeOnLoadAttributes (90ms)
+				ProcessInitializeOnLoadMethodAttributes (63ms)
 				AfterProcessingInitializeOnLoad (0ms)
-				EditorAssembliesLoaded (0ms)
+				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.015104 seconds.
+Registered in 0.019901 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 82.18 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 82.10 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.479 seconds
+- Completed reload, in  1.657 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1480ms)
-		BeginReloadAssembly (192ms)
+	ReloadAssembly (1659ms)
+		BeginReloadAssembly (247ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (18ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (20ms)
-		EndReloadAssembly (1203ms)
-			LoadAssemblies (152ms)
+			CreateAndSetChildDomain (19ms)
+		EndReloadAssembly (1333ms)
+			LoadAssemblies (156ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (409ms)
+			SetupTypeCache (418ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (53ms)
-			SetupLoadedEditorAssemblies (486ms)
+			RebuildScriptCaches (61ms)
+			SetupLoadedEditorAssemblies (545ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (82ms)
-				BeforeProcessingInitializeOnLoad (138ms)
-				ProcessInitializeOnLoadAttributes (220ms)
-				ProcessInitializeOnLoadMethodAttributes (18ms)
-				AfterProcessingInitializeOnLoad (21ms)
+				BeforeProcessingInitializeOnLoad (180ms)
+				ProcessInitializeOnLoadAttributes (243ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (15ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
-Refreshing native plugins compatible for Editor in 0.84 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.13 seconds
+Refreshing native plugins compatible for Editor in 0.97 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3441 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 223.8 MB.
 System memory in use after: 224.1 MB.
 
 Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 3866.
-Total: 3.779000 ms (FindLiveObjects: 0.301300 ms CreateObjectMapping: 0.191000 ms MarkObjects: 3.163600 ms  DeleteObjects: 0.122200 ms)
+Total: 3.891000 ms (FindLiveObjects: 0.269500 ms CreateObjectMapping: 0.132700 ms MarkObjects: 3.335600 ms  DeleteObjects: 0.152000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -138,123 +138,254 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/_Scenes/테스트용/카드뒤집기 코드버전(망함)/RewardCard_Code.prefab
-  artifactKey: Guid(0e24abed0b8a0774d85230aacc4b5bb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/테스트용/카드뒤집기 코드버전(망함)/RewardCard_Code.prefab using Guid(0e24abed0b8a0774d85230aacc4b5bb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25b433e75491c1c56c74b16e7c331488') in 0.101240 seconds 
-  Import took 0.117528 seconds .
+  path: Assets/_Scenes/테스트용/고유스킬
+  artifactKey: Guid(9d02fbe3264d3ff44b9b1a477018e211) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬 using Guid(9d02fbe3264d3ff44b9b1a477018e211) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ed7a02d82be8d99052a6b5305d59c5f') in 0.011763 seconds 
+  Import took 0.019047 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4025.649837 seconds.
-  path: Assets/_Scenes/테스트용/test.unity
-  artifactKey: Guid(3299ec5b0c06ed1448867f9f7a40492d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/테스트용/test.unity using Guid(3299ec5b0c06ed1448867f9f7a40492d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57fc2146b4b1d28abebd8804fa92ecb3') in 0.039948 seconds 
-  Import took 0.182217 seconds .
+  Time since last request: 7.126425 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb
+  artifactKey: Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb using Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15e299c1fae3073eb6b55650a4b5f421') in 0.576757 seconds 
+  Import took 0.583172 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 38.703910 seconds.
-  path: Assets/_Scenes/테스트용/고유스킬버튼UI
-  artifactKey: Guid(abf1ac26de825024ba5c4d60396f08b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/테스트용/고유스킬버튼UI using Guid(abf1ac26de825024ba5c4d60396f08b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ae16856b39678f81ee8229daac4fead') in 0.009900 seconds 
-  Import took 0.025070 seconds .
+  Time since last request: 631.686646 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb
+  artifactKey: Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb using Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58f04280e3341ff4ae598717c45c3cac') in 0.311352 seconds 
+  Import took 0.318436 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 111.059555 seconds.
-  path: Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn (1).png
-  artifactKey: Guid(2d2b83a60693645438b81c850cc6e454) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn (1).png using Guid(2d2b83a60693645438b81c850cc6e454) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5375c368fe56b60a45b51f6e590f093') in 0.279371 seconds 
-  Import took 0.288970 seconds .
+  Time since last request: 44.816545 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb
+  artifactKey: Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb using Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1024a0c8a43c38db43353b83f37c3154') in 0.253822 seconds 
+  Import took 0.261296 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000344 seconds.
-  path: Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_icon.png
-  artifactKey: Guid(4013763aadcb0784eaab15c01ccd60b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_icon.png using Guid(4013763aadcb0784eaab15c01ccd60b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50397dce981b89e8b12562b9d5f09645') in 0.029271 seconds 
-  Import took 0.034482 seconds .
+  Time since last request: 10.620506 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb
+  artifactKey: Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb using Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92f40f6187619ed9a35d03e380cf6b3e') in 0.267083 seconds 
+  Import took 0.281270 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000366 seconds.
-  path: Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn.png
-  artifactKey: Guid(e2d3dc8907b36f042946c6db38d9f705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn.png using Guid(e2d3dc8907b36f042946c6db38d9f705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2772704f9c9d1864e15788b16b5651c') in 0.021238 seconds 
-  Import took 0.034533 seconds .
+  Time since last request: 49.688771 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb
+  artifactKey: Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb using Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f66fccece8a7b9b7f8c4dad998e22d9') in 0.254260 seconds 
+  Import took 0.269919 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000367 seconds.
-  path: Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn (3).png
-  artifactKey: Guid(dc53c9d306f6e2a45b21886588f3f5f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn (3).png using Guid(dc53c9d306f6e2a45b21886588f3f5f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef6597430d86c631e95e5ab836c67670') in 0.019521 seconds 
-  Import took 0.034562 seconds .
+  Time since last request: 24.178626 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.prefab
+  artifactKey: Guid(d9f044b27c11c7d47a2a5204ef652d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.prefab using Guid(d9f044b27c11c7d47a2a5204ef652d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a2780f93ac35fd236ba9d50f4a53418') in 0.080528 seconds 
+  Import took 0.087540 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000439 seconds.
-  path: Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn (2).png
-  artifactKey: Guid(5de31cfef5055a34d9e8eca6716a8495) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn (2).png using Guid(5de31cfef5055a34d9e8eca6716a8495) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebba7600b20b9d60217730793971e885') in 0.022220 seconds 
-  Import took 0.037930 seconds .
+  Time since last request: 656.915394 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.prefab
+  artifactKey: Guid(d9f044b27c11c7d47a2a5204ef652d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.prefab using Guid(d9f044b27c11c7d47a2a5204ef652d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The Animator Controller (candle_skilleff) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:Internal_InstantiateRemoveAllNonAnimationComponentsSingle (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateRemoveAllNonAnimationComponents (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 333]
+
+The Animator Controller (candle_skilleff) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:InitInstantiatedPreviewRecursive (UnityEngine.GameObject)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 333]
+
+ -> (artifact id: 'd00720c04283fac16baaaf050ad0b814') in 0.128999 seconds 
+  Import took 0.141457 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000319 seconds.
-  path: Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn (4).png
-  artifactKey: Guid(6be69ea1939a486459a8a44dbcc96906) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/테스트용/고유스킬버튼UI/Skill_btn (4).png using Guid(6be69ea1939a486459a8a44dbcc96906) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '665c40538dc0bae0c1be54d3c2b36ef6') in 0.019145 seconds 
-  Import took 0.032763 seconds .
+  Time since last request: 2.231520 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candleSkill_Appear.anim
+  artifactKey: Guid(acc0f0e15d998f645a7060567a1dba23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candleSkill_Appear.anim using Guid(acc0f0e15d998f645a7060567a1dba23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e63eaf255823ccd1fe6b902923066afb') in 0.021007 seconds 
+  Import took 0.033472 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.152242 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candleSkill_Idle.anim
+  artifactKey: Guid(55ca5e183b050df4896810922f35097e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candleSkill_Idle.anim using Guid(55ca5e183b050df4896810922f35097e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0663a5b3effff6899960a30daba64e22') in 0.014659 seconds 
+  Import took 0.021458 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.593943 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.controller
+  artifactKey: Guid(46296ef6425a4584f84f5ec041577ab3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.controller using Guid(46296ef6425a4584f84f5ec041577ab3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcde465282a95210524bb4ae80f4bd77') in 0.010577 seconds 
+  Import took 0.019841 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.001678 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb
+  artifactKey: Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb using Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a027cfcfa580bedbee2432227491cf35') in 0.282095 seconds 
+  Import took 0.289180 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.258172 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb
+  artifactKey: Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb using Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11bef99d5a3b372e61e8f4a9f45e5de5') in 0.261165 seconds 
+  Import took 0.269104 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 483.317011 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb
+  artifactKey: Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.psb using Guid(084206af8382ccb47bf6a5b6753da502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ab544d253cc6a5a18c765f8672afc22') in 0.310881 seconds 
+  Import took 0.319421 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 57.251328 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.prefab
+  artifactKey: Guid(d9f044b27c11c7d47a2a5204ef652d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.prefab using Guid(d9f044b27c11c7d47a2a5204ef652d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The Animator Controller (candle_skilleff) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:Internal_InstantiateRemoveAllNonAnimationComponentsSingle (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateRemoveAllNonAnimationComponents (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 333]
+
+The Animator Controller (candle_skilleff) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:InitInstantiatedPreviewRecursive (UnityEngine.GameObject)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 333]
+
+ -> (artifact id: '9abcf1c24df5eb1f79492e2363e4b8f1') in 0.082208 seconds 
+  Import took 0.090082 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 922.702876 seconds.
+  path: Assets/_Scenes/테스트용/고유스킬/candle_skilleff.prefab
+  artifactKey: Guid(d9f044b27c11c7d47a2a5204ef652d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/테스트용/고유스킬/candle_skilleff.prefab using Guid(d9f044b27c11c7d47a2a5204ef652d40) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The Animator Controller (candle_skilleff) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:Internal_InstantiateRemoveAllNonAnimationComponentsSingle (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateRemoveAllNonAnimationComponents (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 333]
+
+The Animator Controller (candle_skilleff) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:InitInstantiatedPreviewRecursive (UnityEngine.GameObject)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 333]
+
+ -> (artifact id: 'fcb9f0208d953038bb7de422403f23a9') in 0.075643 seconds 
+  Import took 0.083618 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014435 seconds.
+Registered in 0.170118 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.14 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.86 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.399 seconds
+- Completed reload, in  1.888 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1400ms)
-		BeginReloadAssembly (247ms)
+	ReloadAssembly (1888ms)
+		BeginReloadAssembly (182ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (10ms)
+			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (107ms)
-		EndReloadAssembly (1071ms)
-			LoadAssemblies (175ms)
+			CreateAndSetChildDomain (58ms)
+		EndReloadAssembly (1629ms)
+			LoadAssemblies (173ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (398ms)
+			SetupTypeCache (777ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (55ms)
-			SetupLoadedEditorAssemblies (336ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (413ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
+				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (106ms)
-				ProcessInitializeOnLoadAttributes (197ms)
+				BeforeProcessingInitializeOnLoad (136ms)
+				ProcessInitializeOnLoadAttributes (243ms)
 				ProcessInitializeOnLoadMethodAttributes (11ms)
-				AfterProcessingInitializeOnLoad (13ms)
+				AfterProcessingInitializeOnLoad (14ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (11ms)
+			AwakeInstancesAfterBackupRestoration (17ms)
 Platform modules already initialized, skipping
 Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 1.08 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.85 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3317 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 216.5 MB.
-System memory in use after: 216.7 MB.
+Unloading 3318 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 219.2 MB.
+System memory in use after: 219.4 MB.
 
-Unloading 36 unused Assets to reduce memory usage. Loaded Objects now: 3876.
-Total: 4.024700 ms (FindLiveObjects: 0.304400 ms CreateObjectMapping: 0.153200 ms MarkObjects: 3.500400 ms  DeleteObjects: 0.065500 ms)
+Unloading 36 unused Assets to reduce memory usage. Loaded Objects now: 3937.
+Total: 6.840100 ms (FindLiveObjects: 0.780300 ms CreateObjectMapping: 0.378900 ms MarkObjects: 5.636100 ms  DeleteObjects: 0.043500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
