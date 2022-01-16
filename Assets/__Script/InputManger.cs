@@ -351,7 +351,7 @@ public class InputManger : MonoBehaviour
                                 {
                                     if (specialSkillController.skillCheck)
                                     {
-                                        //rangeManger.CandelRange(hit.transform);
+                                        rangeManger.CandelRange(hit.transform);
                                         specialSkillController.gameObject.SetActive(false);
                                     }
                                     else

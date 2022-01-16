@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class GameEndController : MonoBehaviour
 {
+    [Header("Save")]
     public PlayerInfo playerInfo;
-    int killingPoint;
-    int turnPoint;
     public GameObject supply;
     public List<Sprite> rankSprites;
     public GameObject rankImage;
     public SaveMgr saveMgr;
+
+    [Header("Bonus Obj")]
+    public GameObject[] bonuses;
     int sumPoint;
+    int killingPoint;
+    int turnPoint;
 
     void Start()
     {
@@ -21,18 +25,18 @@ public class GameEndController : MonoBehaviour
         CheckPoint();
         CheckRank();
         ResulttGame();
+        //BonusCheck();
     }
 
     public void CheckRank()
     {
-        sumPoint = killingPoint + turnPoint;
-
+        //sumPoint = killingPoint + turnPoint;
 
         if (sumPoint <= 3)
         {
             rankImage.GetComponent<Image>().sprite = rankSprites[0];
         }
-        else if (3< sumPoint
+        else if (3 < sumPoint
             && sumPoint <= 4)
         {
             rankImage.GetComponent<Image>().sprite = rankSprites[1];
@@ -72,14 +76,9 @@ public class GameEndController : MonoBehaviour
         {
             rankImage.GetComponent<Image>().sprite = rankSprites[8];
         }
-        //else if (3 < sumPoint
-        //    && sumPoint <= 27)
-        //{
-        //    rankImage.GetComponent<Image>().sprite = rankSprites[9];
-        //}
     }
 
-    public void CheckPoint()
+    private void CheckPoint()
     {
         int playerkillPoint = playerInfo.killingPoint;
         int playerturnPoit = playerInfo.turnPoint;
@@ -88,7 +87,7 @@ public class GameEndController : MonoBehaviour
         {
             turnPoint = 0;
         }
-        else if(15 < playerturnPoit
+        else if (15 < playerturnPoit
            && playerturnPoit <= 30)
         {
             turnPoint = 1;
@@ -139,7 +138,7 @@ public class GameEndController : MonoBehaviour
         {
             killingPoint = 0;
         }
-        else if (10< playerkillPoint
+        else if (10 < playerkillPoint
             && playerkillPoint <= 20)
         {
             killingPoint = 1;
@@ -186,7 +185,7 @@ public class GameEndController : MonoBehaviour
         }
     }
 
-    public void ResulttGame()
+    private void ResulttGame()
     {
         float percentage = new float();
 
@@ -226,26 +225,50 @@ public class GameEndController : MonoBehaviour
                 break;
         }
 
-        playerInfo.milk = (int)(playerInfo.milk*percentage);
-        playerInfo.sugar = (int)(playerInfo.sugar * percentage);
-        playerInfo.flour = (int)(playerInfo.flour * percentage);
+        if (playerInfo.milk > 0)
+        {
+            saveMgr.playerSave.milk += (int)(playerInfo.milk * percentage);
+        }
 
-        supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = playerInfo.milk.ToString();
-        supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = playerInfo.sugar.ToString();
-        supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = playerInfo.flour.ToString();
+        if (playerInfo.sugar > 0)
+        {
+            saveMgr.playerSave.sugar += (int)(playerInfo.sugar * percentage);
+        }
+
+        if (playerInfo.flour > 0)
+        {
+            saveMgr.playerSave.flour += (int)(playerInfo.flour * percentage);
+        }
+
+        supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.milk.ToString();
+        supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.sugar.ToString();
+        supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.flour.ToString();
     }
 
-    public void ResetGame()
+    private void ResetGame()
     {
         saveMgr.Save();
         playerInfo.ResetGame();
     }
 
-    public void TestButton()
+    private void TestButton()
     {
         int rand = Random.Range(5, 21);
         sumPoint = rand;
+
         CheckRank();
         ResulttGame();
+        BonusCheck();
+    }
+
+    private void BonusCheck()
+    {
+        if(sumPoint >= 12)
+        {
+            for (int i = 0; i < bonuses.Length; i++)
+            {
+                bonuses[i].GetComponent<BonusCardController>().RandomSupply();
+            }
+        }
     }
 }

@@ -73,12 +73,6 @@ public class SaveMgr : GenericSingletonClass<SaveMgr>
             playerSave.SaveChocoGrade = 1;
             playerSave.SaveChocoLevel = 1;
         }
-        else
-        {
-            playerSave.flour += player.flour;
-            playerSave.sugar += player.sugar;
-            playerSave.milk += player.milk;
-        }
 
         string saveString = JsonUtility.ToJson(playerSave);
         File.WriteAllText(fonlderPath + "/save.txt", saveString);
