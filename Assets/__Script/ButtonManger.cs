@@ -47,9 +47,9 @@ public class ButtonManger : MonoBehaviour
     public List<Transform> tiles;
     public List<Transform> destroyTiles;
     public List<GameObject> enemys;
+    public PlayerInfo playerInfo;
 
 
-    private PlayerInfo playerInfo;
     private GameObject enemyTileWls;
     private List<GameObject> enemyTiles;
     private PanelController panel;
@@ -646,6 +646,7 @@ public class ButtonManger : MonoBehaviour
         tileManger.SpawnEnemy();
         TurnCheck();
         tileManger.CheckTile();
+        tileManger.HospitalCheck();
         input.CheckMonsterMovePoint();
         specialSkillController.SpecialSkillCheck();
     }

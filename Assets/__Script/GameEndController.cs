@@ -263,12 +263,19 @@ public class GameEndController : MonoBehaviour
 
     private void BonusCheck()
     {
-        if(sumPoint >= 12)
+        for (int i = 0; i < bonuses.Length; i++)
         {
-            for (int i = 0; i < bonuses.Length; i++)
+            if (sumPoint >= 12)
             {
+                bonuses[i].SetActive(true);
                 bonuses[i].GetComponent<BonusCardController>().RandomSupply();
             }
+            else
+            {
+                //나중에 OTL나오면 적용할 예정
+                bonuses[i].SetActive(false);
+            }
         }
+
     }
 }

@@ -72,7 +72,7 @@ public class AreaManger : MonoBehaviour
                 case "Area 12":
                     player.updateSugar += area.SugarOutput;
                     break;
-                case "Area 20":
+                case "Area 16":
                     if(player.people<15)
                     {
                         player.people += area.Population;
@@ -82,7 +82,7 @@ public class AreaManger : MonoBehaviour
                         player.people = 15;
                     }
                     break;
-                case "Area 21":
+                case "Area 17":
                     if (player.people < 15)
                     {
                         player.people += area.Population;
@@ -92,7 +92,7 @@ public class AreaManger : MonoBehaviour
                         player.people = 15;
                     }
                     break;
-                case "Area 22":
+                case "Area 18":
                     if (player.people < 15)
                     {
                         player.people += area.Population;
@@ -102,7 +102,7 @@ public class AreaManger : MonoBehaviour
                         player.people = 15;
                     }
                     break;
-                case "Area 23":
+                case "Area 19":
                     if (player.people < 15)
                     {
                         player.people += area.Population;
@@ -160,14 +160,8 @@ public class AreaManger : MonoBehaviour
             case "Area 11":
                 Code = "Area 12";
                 break;
-            case "Area 13":
-                Code = "Area 14";
-                break;
-            case "Area 14":
-                Code = "Area 15";
-                break;
-            case "Area 15":
-                Code = "Area 16";
+            case "Area 16":
+                Code = "Area 17";
                 break;
             case "Area 17":
                 Code = "Area 18";
@@ -180,27 +174,6 @@ public class AreaManger : MonoBehaviour
                 break;
             case "Area 21":
                 Code = "Area 22";
-                break;
-            case "Area 22":
-                Code = "Area 23";
-                break;
-            case "Area 24":
-                Code = "Area 25";
-                break;
-            case "Area 25":
-                Code = "Area 26";
-                break;
-            case "Area 27":
-                Code = "Area 28";
-                break;
-            case "Area 28":
-                Code = "Area 29";
-                break;
-            case "Area 30":
-                Code = "Area 31";
-                break;
-            case "Area 31":
-                Code = "Area 32";
                 break;
         }
 
@@ -259,7 +232,6 @@ public class AreaManger : MonoBehaviour
             {
                 transform.GetComponent<MakeArea>().Picture = tileManger.destroyAreaObj[i];
                 transform.GetComponent<SpriteRenderer>().sprite = tileManger.destroyAreaObj[i];
-                
             }
         }
 

@@ -11,6 +11,7 @@ public class RangeManger : MonoBehaviour
     public GameObject rangePrefeb;
     public List<Transform> rangeList;
     public List<Transform> enemyRangeList;
+    public GameObject specialSkillPreFeb;
 
     void Start()
     {
@@ -233,127 +234,94 @@ public class RangeManger : MonoBehaviour
     {
         int nameOfLand = Int32.Parse(hitobj.parent.parent.name);
         input.specialSkillController.skillCheck = false;
-        //for (int i = 0; i < tileManger.activeChildtileList.Count; i++)
-        //{
-        //    if(tileManger.activeChildtileList[i].GetChild(0).childCount !=0)
-        //    {
-        //        Transform obj = null;
 
-        //        if (tileManger.activeChildtileList[i].name == nameOfLand.ToString())
-        //        {
-        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-        //        }
-        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand + 1).ToString())
-        //        {
-        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-        //        }
-        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand - 1).ToString())
-        //        {
-        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-        //        }
-        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand + 17).ToString())
-        //        {
-        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-        //        }
-        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand - 17).ToString())
-        //        {
-        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-        //        }
-        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand + 17 + 1).ToString())
-        //        {
-        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-        //        }
-        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand + 17 - 1).ToString())
-        //        {
-        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-        //        }
-        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand - 17 + 1).ToString())
-        //        {
-        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-        //        }
-        //        else if (tileManger.activeChildtileList[i].name == (nameOfLand - 17 - 1).ToString())
-        //        {
-        //            obj = tileManger.activeChildtileList[i].GetChild(0).GetChild(0);
-        //        }
+        List<Transform> redTiles = hitobj.GetComponent<EnemyController>().redTiles;
 
-        //        if(obj != null)
-        //        {
-        //            for (int z = 0; z < obj.GetComponent<EnemyController>().redTiles.Count; z++)
-        //            {
-        //                if (obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Name == "우주선")
-        //                {
-        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Name = null;
-        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Type = "Grass";
-        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Grade = 0;
-        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Movement = true;
-        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Destroy = false;
-        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Repair = false;
-        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Effect = null;
-        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<SpriteRenderer>().color = Color.white;
-        //                    obj.GetComponent<EnemyController>().redTiles[z].GetComponent<AreaManger>().pureColor = Color.white;
-        //                    obj.GetComponent<EnemyController>().redTiles[z].tag = "Grass";
+        if(redTiles.Count != 0)
+        {
+            for (int i = 0; i < redTiles.Count; i++)
+            {
+                if (redTiles[i].childCount != 0)
+                {
+                    if (redTiles[i].GetChild(0).tag == "Enemy")
+                    {
+                        GameObject specialSkill = Instantiate(specialSkillPreFeb, redTiles[i].GetChild(0).transform);
+                        specialSkill.transform.localPosition = new Vector3(0, -0.9f);
+                        specialSkill.transform.localScale = new Vector3(0.4f, 0.4f);
 
-        //                    for (int j = 0; j < tileManger.destroyAreaObj.Length; j++)
-        //                    {
-        //                        if (obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Code==tileManger.destroyAreaObj[j].name)
-        //                        {
-        //                            obj.GetComponent<EnemyController>().redTiles[z].GetComponent<MakeArea>().Picture=tileManger.destroyAreaObj[j];
-        //                            obj.GetComponent<EnemyController>().redTiles[z].GetComponent<SpriteRenderer>().sprite=tileManger.destroyAreaObj[j];
-        //                        }
-        //                    }
+                        if (redTiles[i].GetChild(0).tag == "Enemy")
+                        {
+                            redTiles[i].GetChild(0).GetComponent<MakeEnemy>().BaseHelthPoint -= 300;
 
-        //                    if (obj.GetComponent<EnemyController>().redTiles[z].childCount == 0)
-        //                    {
-        //                        GameObject tileCandle = Instantiate(cnadleObj);
-        //                        tileCandle.SetActive(true);
-        //                        tileCandle.transform.parent = obj.GetComponent<EnemyController>().redTiles[z];
-        //                        tileCandle.transform.localPosition = new Vector3(0, -0.5f);
-        //                        tileCandle.transform.localScale = new Vector3(0.2f, 0.2f);
-        //                        tileCandle.GetComponent<SpriteRenderer>().sortingOrder = obj.GetComponent<EnemyController>().redTiles[z].GetComponent<SpriteRenderer>().sortingOrder + 1;
-        //                    }
+                            if (redTiles[i].GetChild(0).GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
+                            {
+                                redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetBool("Dead", true);
+                                tileManger.buttonManger.enemys.Remove(redTiles[i].GetChild(0).gameObject);
+                                tileManger.CheckTile();
+                            }
+                            else
+                            {
+                                redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetTrigger("Damage");
+                            }
+                        }
+                        else
+                        {
+                            redTiles[i].GetChild(0).GetComponent<GDController>().HelthPoint -= 300;
 
-        //                    tileManger.enemyLand.Remove(obj.GetComponent<EnemyController>().redTiles[z]);
-        //                }
-        //            }
+                            if (redTiles[i].GetChild(0).GetComponent<GDController>().HelthPoint <= 0)
+                            {
+                                redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetBool("Dead", true);
+                                tileManger.buttonManger.enemys.Remove(redTiles[i].gameObject);
+                                tileManger.bossHP.SetActive(false);
+                                tileManger.CheckTile();
+                            }
+                            else
+                            {
+                                redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetTrigger("Damage");
+                            }
+                        }
 
-        //            GameObject candle = Instantiate(cnadleObj, obj.parent);
-        //            candle.transform.localPosition = new Vector3(0, -0.5f);
-        //            candle.transform.localScale = new Vector3(0.2f, 0.2f);
-        //            candle.GetComponent<SpriteRenderer>().sortingOrder = obj.parent.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                        redTiles[i].GetChild(0).GetComponent<EnemyController>().HpBarScale();
 
-        //            if (obj.tag == "Enemy")
-        //            {
-        //                obj.GetComponent<MakeEnemy>().BaseHelthPoint -= 300;
-        //                obj.GetComponent<EnemyController>().HpBarScale();
+                    }
+                }
 
-        //                if (obj.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
-        //                {
-        //                    obj.GetComponent<EnemyController>().ani.SetBool("Dead", true);
-        //                    tileManger.buttonManger.enemys.Remove(obj.gameObject);
-        //                }
-        //                else
-        //                {
-        //                    obj.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
-        //                }
-        //            }
-        //            else if (obj.tag == "Boss")
-        //            {
-        //                obj.GetComponent<GDController>().HelthPoint -= 500;
-        //                obj.GetComponent<EnemyController>().HpBarScale();
+                if (redTiles[i].GetComponent<MakeArea>().Name == "우주선")
+                {
+                    GameObject specialSkill = Instantiate(specialSkillPreFeb, redTiles[i]);
+                    specialSkill.transform.localPosition = new Vector3(0, -0.6f);
+                    specialSkill.transform.localScale = new Vector3(0.4f, 0.4f);
 
-        //                //if (obj.GetComponent<GDController>().HelthPoint <= 0)
-        //                //{
-        //                //    obj.GetComponent<EnemyController>().ani.SetBool("Dead", true);
-        //                //    tileManger.buttonManger.enemys.Remove(obj.gameObject);
-        //                //}
-        //                //else
-        //                //{
-        //                //    obj.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
-        //                //}
-        //            }
-        //        }
-        //    }
-        //}
+                    for (int j = 0; j < tileManger.destroyAreaObj.Length; j++)
+                    {
+                        if (redTiles[i].GetComponent<MakeArea>().Code == tileManger.destroyAreaObj[j].name)
+                        {
+                            redTiles[i].GetComponent<MakeArea>().Picture = tileManger.destroyAreaObj[j];
+                            redTiles[i].GetComponent<SpriteRenderer>().sprite = tileManger.destroyAreaObj[j];
+                        }
+                    }
+
+                    redTiles[i].GetComponent<MakeArea>().Name = null;
+                    redTiles[i].GetComponent<MakeArea>().Type = "Grass";
+                    redTiles[i].GetComponent<MakeArea>().Grade = 0;
+                    redTiles[i].GetComponent<MakeArea>().UpgradeFlour = 0;
+                    redTiles[i].GetComponent<MakeArea>().UpgradeSugar = 0;
+                    redTiles[i].GetComponent<MakeArea>().MilkOutput = 0;
+                    redTiles[i].GetComponent<MakeArea>().FlourOutput = 0;
+                    redTiles[i].GetComponent<MakeArea>().SugarOutput = 0;
+                    redTiles[i].GetComponent<MakeArea>().Movement = true;
+                    redTiles[i].GetComponent<MakeArea>().Destroy = false;
+                    redTiles[i].GetComponent<MakeArea>().Repair = false;
+                    redTiles[i].GetComponent<MakeArea>().Effect = null;
+                    redTiles[i].GetComponent<SpriteRenderer>().color = Color.white;
+                    redTiles[i].GetComponent<AreaManger>().pureColor = Color.white;
+                    tileManger.enemyLand.Remove(redTiles[i]);
+                    redTiles[i].tag = "Grass";
+                }
+
+
+            }
+        }
     }
 }
 

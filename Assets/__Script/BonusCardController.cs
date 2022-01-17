@@ -61,11 +61,15 @@ public class BonusCardController : MonoBehaviour
     {
         buttonCheck = true;
         animator.SetTrigger("Flip");
-        //cardFront.gameObject.SetActive(true);
+        cardFront.gameObject.SetActive(true);
 
-        //for (int i = 0; i < gameEndController.bonuses.Length; i++)
-        //{
-        //    gameEndController.bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().interactable = false;
-        //}
+        gameEndController.saveMgr.playerSave.milk += milk;
+        gameEndController.saveMgr.playerSave.sugar += sugar;
+        gameEndController.saveMgr.playerSave.flour += flour;
+
+        for (int i = 0; i < gameEndController.bonuses.Length; i++)
+        {
+            gameEndController.bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
+        }
     }
 }
