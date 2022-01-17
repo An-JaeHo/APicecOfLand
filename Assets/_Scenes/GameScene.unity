@@ -1656,7 +1656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &327509055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4486,6 +4486,7 @@ MonoBehaviour:
   tiles: []
   destroyTiles: []
   enemys: []
+  playerInfo: {fileID: 0}
 --- !u!114 &1090618932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4586,6 +4587,8 @@ MonoBehaviour:
     type: 3}
   rangeList: []
   enemyRangeList: []
+  specialSkillPreFeb: {fileID: 3887622059564052968, guid: d9f044b27c11c7d47a2a5204ef652d40,
+    type: 3}
 --- !u!114 &1090618936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8564,7 +8567,7 @@ PrefabInstance:
     - target: {fileID: 984677638854026649, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.3176923
+      value: 0.63538456
       objectReference: {fileID: 0}
     - target: {fileID: 984677638854026649, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
@@ -8574,7 +8577,7 @@ PrefabInstance:
     - target: {fileID: 984677638854026649, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.00000008785813
+      value: 0.000000046950113
       objectReference: {fileID: 0}
     - target: {fileID: 984677638888839225, guid: 1ba9bd4e36c438841a83caa9da25f613,
         type: 3}

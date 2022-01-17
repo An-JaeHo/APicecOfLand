@@ -154,6 +154,12 @@ public class InputManger : MonoBehaviour
                                 {
                                     bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
                                 }
+                                else if (hit.transform.GetComponent<MakeArea>().Name == "집")
+                                {
+                                    bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().Population;
+                                }
+
+                                Land.buttonManger.UpgradeLand = hit.transform;
                                 bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
                                 bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
                             }
@@ -351,7 +357,7 @@ public class InputManger : MonoBehaviour
                                 {
                                     if (specialSkillController.skillCheck)
                                     {
-                                        //rangeManger.CandelRange(hit.transform);
+                                        rangeManger.CandelRange(hit.transform);
                                         specialSkillController.gameObject.SetActive(false);
                                     }
                                     else

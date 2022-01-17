@@ -20,6 +20,7 @@ public class BuildController : MonoBehaviour
     public int nowPoint;
     public int futurePoint;
     public Transform upgradeLand;
+    public Button upGradeButton;
 
     //아이콘
     public Sprite milkUI;
@@ -128,14 +129,14 @@ public class BuildController : MonoBehaviour
 
         for (int i = 0; i < json.information.area.Length; i++)
         {
-            if(land.GetComponent<MakeArea>().Code == json.information.area[i].Code)
+            if (land.GetComponent<MakeArea>().Code == json.information.area[i].Code)
             {
                 upgradeLand.GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = json.information.area[i].Picture;
-                upgradeLand.GetChild(3).GetChild(0).GetComponent<Text>().text =  "밀가루 : " + json.information.area[i].UpgradeFlour;
+                upgradeLand.GetChild(3).GetChild(0).GetComponent<Text>().text = "밀가루 : " + json.information.area[i].UpgradeFlour;
                 upgradeLand.GetChild(3).GetChild(1).GetComponent<Text>().text = "설탕 : " + json.information.area[i].UpgradeSugar;
             }
 
-            if(land.GetComponent<AreaManger>().FindNextGrade(land.GetComponent<MakeArea>().Code) == json.information.area[i].Code)
+            if (land.GetComponent<AreaManger>().FindNextGrade(land.GetComponent<MakeArea>().Code) == json.information.area[i].Code)
             {
                 upgradeLand.GetChild(2).GetChild(1).GetChild(0).GetComponent<Image>().sprite = json.information.area[i].Picture;
             }
@@ -154,6 +155,15 @@ public class BuildController : MonoBehaviour
         upgradeLand.GetChild(4).GetChild(1).GetChild(0).GetComponent<Text>().text = ((land.GetComponent<MakeArea>().Grade+1)*5).ToString();
 
         gameObject.SetActive(true);
+
+        if (buttonManger.playerInfo.flour >= buttonManger.UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && buttonManger.playerInfo.sugar >= buttonManger.UpgradeLand.GetComponent<MakeArea>().UpgradeSugar)
+        {
+            upGradeButton.interactable = true;
+        }
+        else
+        {
+            upGradeButton.interactable = false;
+        }
 
         upgradeLand.GetChild(1).GetChild(0).GetComponent<Image>().sprite = land.GetComponent<SpriteRenderer>().sprite;
         buttonManger.UpgradeLand = land;
