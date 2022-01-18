@@ -229,6 +229,7 @@ public class RangeManger : MonoBehaviour
         input.army = hitobj;
     }
 
+
     public void CandelRange(Transform hitobj)
     {
         int nameOfLand = Int32.Parse(hitobj.parent.parent.name);

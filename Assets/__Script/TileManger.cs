@@ -92,7 +92,7 @@ public class TileManger : MonoBehaviour
         {
             for (int j = 0; j < 17; j++)
             {
-                GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (j * 90f), transform.position.y + (-i * 87f)), Quaternion.identity);
+                GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (j * 87f), transform.position.y + (-i * 87f)), Quaternion.identity);
                 land.transform.SetParent(transform);
                 land.transform.name = (tileList.Count + 1).ToString();
                 land.GetComponent<SpriteRenderer>().sortingOrder = i * 2;
@@ -745,41 +745,25 @@ public class TileManger : MonoBehaviour
     {
         int randLevel = new int();
 
-        if (playerInfo.turnPoint <= 50)
+        if (playerInfo.turnPoint <= 20)
         {
             randLevel = UnityEngine.Random.Range(1, 6);
         }
-        else if (playerInfo.turnPoint > 50
-            || playerInfo.turnPoint <= 100)
+        else if (playerInfo.turnPoint <= 50)
         {
-            if(Enemy.GetComponent<MakeEnemy>().Grade ==1 )
-            {
-                randLevel = UnityEngine.Random.Range(1, 11);
-            }
-            else if(Enemy.GetComponent<MakeEnemy>().Grade == 2)
-            {
-                randLevel = UnityEngine.Random.Range(1, 6);
-            }
-            else if (Enemy.GetComponent<MakeEnemy>().Grade == 3)
-            {
-                randLevel = UnityEngine.Random.Range(1, 4);
-            }
+            randLevel = UnityEngine.Random.Range(5, 21);
         }
-        else if (playerInfo.turnPoint > 100
-            || playerInfo.turnPoint <= 200)
+        else if (playerInfo.turnPoint <= 100)
         {
-            if (Enemy.GetComponent<MakeEnemy>().Grade == 2)
-            {
-                randLevel = UnityEngine.Random.Range(1, 11);
-            }
-            else if (Enemy.GetComponent<MakeEnemy>().Grade == 3)
-            {
-                randLevel = UnityEngine.Random.Range(1, 6);
-            }
-            else if (Enemy.GetComponent<MakeEnemy>().Grade == 4)
-            {
-                randLevel = UnityEngine.Random.Range(1, 6);
-            }
+            randLevel = UnityEngine.Random.Range(15, 31);
+        }
+        else if (playerInfo.turnPoint <= 150)
+        {
+            randLevel = UnityEngine.Random.Range(20, 51);
+        }
+        else if (playerInfo.turnPoint <= 200)
+        {
+            randLevel = UnityEngine.Random.Range(30, 50);
         }
 
         Enemy.GetComponent<MakeEnemy>().BaseAttack += Enemy.GetComponent<MakeEnemy>().RiseAttack * (randLevel-1);
