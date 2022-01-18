@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 [System.Serializable]
 public class Node
@@ -133,28 +134,6 @@ public class EnemyController : MonoBehaviour
             Sword();
             PathFinding();
 
-            for (int i = 0; i < tiles.activeChildtileList.Count; i++)
-            {
-                //위아래 17 양옆 1
-                if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
-                {
-                    if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
-                        || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
-                    {
-                        if(tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag =="Army" || tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Builder")
-                        {
-                            findArmy = true;
-                            target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
-                            break;
-                        }
-                        else
-                        {
-                            target = null;
-                        }
-                    }
-                }
-            }
-
             if (findArmy)
             {
                 StartCoroutine(Attack());
@@ -202,42 +181,87 @@ public class EnemyController : MonoBehaviour
     private void Sword()
     {
         targets = new List<Transform>();
+        List<Transform> monsters = new List<Transform>();
+        int monsterHp = new int();
 
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
-            if(tiles.activeChildtileList[i].GetChild(0).GetComponent<MakeArea>().Movement)
+            if (tiles.activeChildtileList[i].GetChild(0).tag == "Capital")
             {
-                if (tiles.activeChildtileList[i].GetChild(0).tag == "Area" || tiles.activeChildtileList[i].GetChild(0).tag == "Barrack")
-                {
-                    targets.Add(tiles.activeChildtileList[i].GetChild(0));
-                }
+                targetPos = new Vector2Int((int)tiles.activeChildtileList[i].position.x, (int)tiles.activeChildtileList[i].position.y);
+            }
 
-                if (tiles.activeChildtileList[i].GetChild(0).tag == "Capital")
+            int nameOfLand = Int32.Parse(transform.parent.parent.name);
+
+            if(tiles.activeChildtileList[i].GetChild(0).childCount !=0)
+            {
+                if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Army")
                 {
-                    targets.Add(tiles.activeChildtileList[i].GetChild(0));
+                    if (tiles.activeChildtileList[i].name == nameOfLand.ToString())
+                    {
+                        monsters.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
+                    }
+                    else if (tiles.activeChildtileList[i].name == (nameOfLand + 1).ToString())
+                    {
+                        monsters.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
+                    }
+                    else if (tiles.activeChildtileList[i].name == (nameOfLand - 1).ToString())
+                    {
+                        monsters.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
+                    }
+                    else if (tiles.activeChildtileList[i].name == (nameOfLand + 17).ToString())
+                    {
+                        monsters.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
+                    }
+                    else if (tiles.activeChildtileList[i].name == (nameOfLand - 17).ToString())
+                    {
+                        monsters.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
+                    }
+                    else if (tiles.activeChildtileList[i].name == (nameOfLand + 17 + 1).ToString())
+                    {
+                        monsters.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
+                    }
+                    else if (tiles.activeChildtileList[i].name == (nameOfLand + 17 - 1).ToString())
+                    {
+                        monsters.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
+                    }
+                    else if (tiles.activeChildtileList[i].name == (nameOfLand - 17 + 1).ToString())
+                    {
+                        monsters.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
+                    }
+                    else if (tiles.activeChildtileList[i].name == (nameOfLand - 17 - 1).ToString())
+                    {
+                        monsters.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
+                    }
+                }
+                else
+                {
+                    target = null;
                 }
             }
         }
 
-        float num = Mathf.Infinity;
-
-        for(int i=0; i< targets.Count; i++)
+        if(monsters.Count !=0)
         {
-            if (num > (int)Vector2.Distance(transform.position, targets[i].position))
+            monsterHp = monsters[0].GetComponent<MakeSoldier>().HelthPoint;
+        }
+
+        for (int i = 0; i < monsters.Count; i++)
+        {
+            if(monsterHp > monsters[i].GetComponent<MakeSoldier>().HelthPoint)
             {
-                num = (int)Vector2.Distance(transform.position, targets[i].position);
-                targetPos = new Vector2Int((int)targets[i].position.x, (int)targets[i].position.y);
+                monsterHp = monsters[i].GetComponent<MakeSoldier>().HelthPoint;
+                targetPos = new Vector2Int((int)monsters[i].parent.transform.position.x, (int)monsters[i].parent.transform.position.y);
+                findArmy = true;
+                target = monsters[i];
             }
         }
     }
     #endregion
 
-
-    
-
     IEnumerator Attack()
     {
-        float randnum = Random.Range(0.8f, 1.2f);
+        float randnum = UnityEngine.Random.Range(0.8f, 1.2f);
         buttonManger.button.GetComponent<Button>().interactable = false;
 
         //AenemyhelthPoint – (((Atack_sum/Defend_sum)*30)*치명타대미지))
@@ -248,7 +272,7 @@ public class EnemyController : MonoBehaviour
         //
         //치명타 대미지:(치명타 확률)> (Atack_sum * (0.7~11))
 
-        float randCritical = Random.Range(0.7f, 1.1f);
+        float randCritical = UnityEngine.Random.Range(0.7f, 1.1f);
 
         float defendSum = target.GetComponent<MakeSoldier>().Defensive + (target.GetComponent<MakeSoldier>().RiseDefensive * target.GetComponent<MakeSoldier>().Level);
 
@@ -325,13 +349,16 @@ public class EnemyController : MonoBehaviour
     {
         //타일정보를 가져와서 안에 넣는다
         NodeArray = new List<Node>();
+        StartNode = new Node((int)transform.parent.position.x, (int)transform.parent.position.y);
+        TargetNode = new Node(targetPos.x, targetPos.y);
+
         for (int i = 0; i < tiles.activeChildtileList.Count; i++)
         {
             if (tiles.activeChildtileList[i].GetChild(0).GetComponent<MakeArea>().Movement == true)
             {
                 if (tiles.activeChildtileList[i].transform.GetChild(0).childCount == 0)
                 {
-                    Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y);
+                    Node tileNode = new Node((int)tiles.activeChildtileList[i].GetChild(0).position.x, (int)tiles.activeChildtileList[i].transform.GetChild(0).position.y); 
                     NodeArray.Add(tileNode);
                 }
                 else
@@ -346,11 +373,12 @@ public class EnemyController : MonoBehaviour
         }
         
         // 시작과 끝 노드, 열린리스트와 닫힌리스트, 마지막리스트 초기화
-        StartNode = new Node((int)transform.parent.position.x, (int)transform.parent.position.y);
-        TargetNode = new Node(targetPos.x, targetPos.y);
+        
         OpenList = new List<Node>() { StartNode };
         ClosedList = new List<Node>();
         FinalNodeList = new List<Node>();
+        StartNode.H = (int)Vector2.Distance(new Vector2(StartNode.x, StartNode.y), new Vector2(TargetNode.x, TargetNode.y));
+        StartNode.G = 0;
 
         while (OpenList.Count > 0)
         {
@@ -365,15 +393,15 @@ public class EnemyController : MonoBehaviour
 
             OpenList.Remove(CurNode);
             ClosedList.Add(CurNode);
+            //Debug.Log("CurNode.x : " + CurNode.x + " TargetNode.x : " + TargetNode.x);
+            //Debug.Log("CurNode.y : " + CurNode.y + " TargetNode.y : " + TargetNode.y);
 
-            //TargetNode : 533, -900
-            
             // 마지막
             if (CurNode.x == TargetNode.x && CurNode.y == TargetNode.y)
             {
                 TargetNode.ParentNode = CurNode.ParentNode;
                 Node TargetCurNode = TargetNode;
-                
+
                 if (TargetCurNode.ParentNode != null)
                 {
                     while (TargetCurNode != StartNode)
@@ -381,24 +409,26 @@ public class EnemyController : MonoBehaviour
                         FinalNodeList.Add(TargetCurNode);
                         TargetCurNode = TargetCurNode.ParentNode;
                     }
-                    
+
                     FinalNodeList.Add(StartNode);
                     FinalNodeList.Reverse();
                 }
                 return;
             }
+
             // ↑ → ↓ ←
             // 이것도 위치에 따라 바꾸자
             for (int a = 0; a < NodeArray.Count; a++)
             {
+                //Debug.Log("NodeArray.x : " + NodeArray[a].x + " NodeArray.y : " + NodeArray[a].x);
                 if (NodeArray[a].x == CurNode.x && NodeArray[a].y == CurNode.y + 87)
                 {
                     OpenListAdd(CurNode.x, CurNode.y + 87, NodeArray[a]);
                 }
 
-                if (NodeArray[a].x == CurNode.x + 87 && NodeArray[a].y == CurNode.y)
+                if (NodeArray[a].x == CurNode.x + 90 && NodeArray[a].y == CurNode.y)
                 {
-                    OpenListAdd(CurNode.x + 87, CurNode.y, NodeArray[a]);
+                    OpenListAdd(CurNode.x + 90, CurNode.y, NodeArray[a]);
                 }
 
                 if (NodeArray[a].x == CurNode.x && NodeArray[a].y == CurNode.y - 87)
@@ -406,9 +436,9 @@ public class EnemyController : MonoBehaviour
                     OpenListAdd(CurNode.x, CurNode.y - 87, NodeArray[a]);
                 }
 
-                if (NodeArray[a].x == CurNode.x - 87 && NodeArray[a].y == CurNode.y)
+                if (NodeArray[a].x == CurNode.x - 90 && NodeArray[a].y == CurNode.y)
                 {
-                    OpenListAdd(CurNode.x - 87, CurNode.y, NodeArray[a]);
+                    OpenListAdd(CurNode.x - 90, CurNode.y, NodeArray[a]);
                 }
             }
         }
@@ -418,7 +448,7 @@ public class EnemyController : MonoBehaviour
     {
         //&& ClosedList.Contains(node)
         // 상하좌우 범위를 벗어나지 않고, 벽이 아니면서, 닫힌리스트에 없다면
-        if (checkX >= bottomLeft.x && checkX < topRight.x + 87 && checkY >= bottomLeft.y && checkY < topRight.y + 87 && !ClosedList.Contains(node))
+        if (checkX >= bottomLeft.x && checkX < topRight.x + 90 && checkY >= bottomLeft.y && checkY < topRight.y + 90 && !ClosedList.Contains(node))
         {
             for (int i = 0; i < tiles.activeChildtileList.Count; i++)
             {
@@ -436,13 +466,38 @@ public class EnemyController : MonoBehaviour
                     //{
                     //    return;
                     //}
+
+                    // G : 이동거리 , H : 목표까지의 거리 , F = G+H
                     Node NeighborNode = node;
-                    int MoveCost = CurNode.G + (CurNode.x - checkX == 0 || CurNode.y - checkY == 0 ? 100 : 140);
+                    //int MoveCost = CurNode.G + (CurNode.x - checkX == 0 || CurNode.y - checkY == 0 ? 100 : 140);
+                    int MoveCost = new int();
+
+                    if(CurNode.x - checkX == 0)
+                    {
+                        MoveCost = CurNode.G + 90;
+                    }
+                    else if(CurNode.y - checkY == 0)
+                    {
+                        MoveCost = CurNode.G + 87;
+                    }
+                    
+                    //NeighborNode.G = CurNode.G + 90;
+
                     // 이동비용이 이웃노드G보다 작거나 또는 열린리스트에 이웃노드가 없다면 G, H, ParentNode를 설정 후 열린리스트에 추가
+                    //if (MoveCost < NeighborNode.G || !OpenList.Contains(NeighborNode))
+                    //{
+                    //    NeighborNode.G = MoveCost;
+                    //    NeighborNode.H = (Mathf.Abs(NeighborNode.x - TargetNode.x) + Mathf.Abs(NeighborNode.y - TargetNode.y));
+                    //    NeighborNode.ParentNode = CurNode;
+                    //    OpenList.Add(NeighborNode);
+                    //}
+
+                    //Debug.Log("MoveCost : " + MoveCost + " NeighborNode.G : " + NeighborNode.G);
+
                     if (MoveCost < NeighborNode.G || !OpenList.Contains(NeighborNode))
                     {
                         NeighborNode.G = MoveCost;
-                        NeighborNode.H = (Mathf.Abs(NeighborNode.x - TargetNode.x) + Mathf.Abs(NeighborNode.y - TargetNode.y)) * 10;
+                        NeighborNode.H = (Mathf.Abs(NeighborNode.x - TargetNode.x) + Mathf.Abs(NeighborNode.y - TargetNode.y));
                         NeighborNode.ParentNode = CurNode;
                         OpenList.Add(NeighborNode);
                     }
