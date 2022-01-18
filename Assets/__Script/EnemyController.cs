@@ -207,11 +207,6 @@ public class EnemyController : MonoBehaviour
         {
             if(tiles.activeChildtileList[i].GetChild(0).GetComponent<MakeArea>().Movement)
             {
-                if (tiles.activeChildtileList[i].GetChild(0).tag == "Area" || tiles.activeChildtileList[i].GetChild(0).tag == "Barrack")
-                {
-                    targets.Add(tiles.activeChildtileList[i].GetChild(0));
-                }
-
                 if (tiles.activeChildtileList[i].GetChild(0).tag == "Capital")
                 {
                     targets.Add(tiles.activeChildtileList[i].GetChild(0));
@@ -396,9 +391,9 @@ public class EnemyController : MonoBehaviour
                     OpenListAdd(CurNode.x, CurNode.y + 87, NodeArray[a]);
                 }
 
-                if (NodeArray[a].x == CurNode.x + 87 && NodeArray[a].y == CurNode.y)
+                if (NodeArray[a].x == CurNode.x + 89 && NodeArray[a].y == CurNode.y)
                 {
-                    OpenListAdd(CurNode.x + 87, CurNode.y, NodeArray[a]);
+                    OpenListAdd(CurNode.x + 89, CurNode.y, NodeArray[a]);
                 }
 
                 if (NodeArray[a].x == CurNode.x && NodeArray[a].y == CurNode.y - 87)
@@ -406,9 +401,9 @@ public class EnemyController : MonoBehaviour
                     OpenListAdd(CurNode.x, CurNode.y - 87, NodeArray[a]);
                 }
 
-                if (NodeArray[a].x == CurNode.x - 87 && NodeArray[a].y == CurNode.y)
+                if (NodeArray[a].x == CurNode.x - 89 && NodeArray[a].y == CurNode.y)
                 {
-                    OpenListAdd(CurNode.x - 87, CurNode.y, NodeArray[a]);
+                    OpenListAdd(CurNode.x - 89, CurNode.y, NodeArray[a]);
                 }
             }
         }
@@ -424,18 +419,6 @@ public class EnemyController : MonoBehaviour
             {
                 if (tiles.activeChildtileList[i].GetChild(0).childCount == 0 )
                 {
-                    //tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag != "Builder"
-                    //if (node.x == tiles.activeChildtileList[i].transform.position.x && node.y == tiles.activeChildtileList[i].transform.position.y)
-                    //{
-                    //    return;
-                    //}
-
-                    //if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Enemy" 
-                    //    && node.x == tiles.activeChildtileList[i].GetChild(0).transform.position.x 
-                    //    && node.y == tiles.activeChildtileList[i].GetChild(0).transform.position.y)
-                    //{
-                    //    return;
-                    //}
                     Node NeighborNode = node;
                     int MoveCost = CurNode.G + (CurNode.x - checkX == 0 || CurNode.y - checkY == 0 ? 100 : 140);
                     // 이동비용이 이웃노드G보다 작거나 또는 열린리스트에 이웃노드가 없다면 G, H, ParentNode를 설정 후 열린리스트에 추가
