@@ -92,8 +92,7 @@ public class TileManger : MonoBehaviour
         {
             for (int j = 0; j < 17; j++)
             {
-                GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (j * 87f), transform.position.y + (-i * 87f)), Quaternion.identity);
-                //GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (j * 90f), transform.position.y + (-i * 87f)), Quaternion.identity);
+                GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (j * 89f), transform.position.y + (-i * 87f)), Quaternion.identity);
                 land.transform.SetParent(transform);
                 land.transform.name = (tileList.Count + 1).ToString();
                 land.GetComponent<SpriteRenderer>().sortingOrder = i * 2;
