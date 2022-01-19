@@ -10,12 +10,15 @@ public class BonusCardController : MonoBehaviour
     public Image bonusImgae;
     public Text bonusText;
     public Animator animator;
+    [Header("Set in Code")]
     public GameEndController gameEndController;
 
     [Header("Bonus Card Composition")]
     public Sprite[] bonusImgaes;
     public GameObject cardBack;
     public GameObject cardFront;
+    public Sprite BonusImage;
+    public Sprite noBonusImage;
 
     [Space(10f)]
     public int milk;
@@ -26,6 +29,7 @@ public class BonusCardController : MonoBehaviour
     private void Start()
     {
         buttonCheck = false;
+        gameEndController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameEndController>();
     }
 
     public void RandomSupply()

@@ -116,7 +116,7 @@ public class UpGradeInputManger : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
                 {
@@ -141,78 +141,71 @@ public class UpGradeInputManger : MonoBehaviour
 
     private void TouchHit()
     {
+
         if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            mouseMonsterCheck = true;
-        }
+            Vector3 moveMousePos = Input.GetTouch(0).position;
 
-        if (mouseMonsterCheck)
-        {
-            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            if (moveMousePos.y < 1050)
             {
-                Vector3 moveMousePos = Input.GetTouch(0).position;
+                float moveMonsterInterpolate;
 
-                if (moveMousePos.y < 1050)
+                if (moveMousePos.x < maxPosX
+                    && moveMousePos.x > minPosX)
                 {
-                    float moveMonsterInterpolate;
-
-                    if (moveMousePos.x < maxPosX
-                        && moveMousePos.x > minPosX)
+                    if (moveMousePos.x > 540f)
                     {
-                        if (moveMousePos.x > 540f)
-                        {
-                            moveMonsterInterpolate = (moveMousePos.x - 540f) / (maxPosX - 540f);
-                        }
-                        else
-                        {
-                            moveMonsterInterpolate = ((moveMousePos.x - 540f) / 540f);
-                        }
-
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-
-                        if (moveMonsterInterpolate > 1)
-                        {
-                            moveMonsterInterpolate = 1;
-                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                            mouseMonsterCheck = false;
-                            upGradeMonsterInfo.FindAndMakeMonster();
-                        }
-
-                        if (moveMonsterInterpolate < -1)
-                        {
-                            moveMonsterInterpolate = -1;
-                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                            mouseMonsterCheck = false;
-                            upGradeMonsterInfo.FindAndMakeMonster();
-                        }
+                        moveMonsterInterpolate = (moveMousePos.x - 540f) / (maxPosX - 540f);
                     }
                     else
                     {
-                        if (moveMousePos.x > maxPosX)
-                        {
-                            moveMonsterInterpolate = 1f;
-                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                            mouseMonsterCheck = false;
-                            upGradeMonsterInfo.FindAndMakeMonster();
-                        }
-
-                        if (moveMousePos.x < minPosX)
-                        {
-                            moveMonsterInterpolate = -1f;
-                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                            mouseMonsterCheck = false;
-                            upGradeMonsterInfo.FindAndMakeMonster();
-                        }
+                        moveMonsterInterpolate = ((moveMousePos.x - 540f) / 540f);
                     }
 
-                    upGradeMonsterInfo.RoundMonster();
+                    upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+
+                    if (moveMonsterInterpolate > 1)
+                    {
+                        moveMonsterInterpolate = 1;
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                        mouseMonsterCheck = false;
+                        upGradeMonsterInfo.FindAndMakeMonster();
+                    }
+
+                    if (moveMonsterInterpolate < -1)
+                    {
+                        moveMonsterInterpolate = -1;
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                        mouseMonsterCheck = false;
+                        upGradeMonsterInfo.FindAndMakeMonster();
+                    }
                 }
                 else
                 {
-                    for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+                    if (moveMousePos.x > maxPosX)
                     {
-                        upGradeMonsterInfo.monsters[i].transform.localPosition = upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition;
+                        moveMonsterInterpolate = 1f;
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                        mouseMonsterCheck = false;
+                        upGradeMonsterInfo.FindAndMakeMonster();
                     }
+
+                    if (moveMousePos.x < minPosX)
+                    {
+                        moveMonsterInterpolate = -1f;
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                        mouseMonsterCheck = false;
+                        upGradeMonsterInfo.FindAndMakeMonster();
+                    }
+                }
+
+                upGradeMonsterInfo.RoundMonster();
+            }
+            else
+            {
+                for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+                {
+                    upGradeMonsterInfo.monsters[i].transform.localPosition = upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition;
                 }
             }
 
