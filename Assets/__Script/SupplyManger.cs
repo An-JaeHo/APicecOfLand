@@ -49,19 +49,9 @@ public class SupplyManger : MonoBehaviour
         //    SceneMgr.GoGameEndScene();
         //}
 
-        if (playerInfo.milk > 3000)
+        if (playerInfo.milk >= 3000)
         {
             playerInfo.milk = 3000;
-            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
-        }
-        else
-        {
-            transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.white;
-        }
-
-        if (playerInfo.flour > 3000)
-        {
-            playerInfo.flour = 3000;
             transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
         }
         else
@@ -69,14 +59,24 @@ public class SupplyManger : MonoBehaviour
             transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.white;
         }
 
-        if (playerInfo.sugar > 3000)
+        if (playerInfo.flour >= 3000)
         {
-            playerInfo.sugar = 3000;
+            playerInfo.flour = 3000;
             transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
         }
         else
         {
             transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.white;
+        }
+
+        if (playerInfo.sugar >= 3000)
+        {
+            playerInfo.sugar = 3000;
+            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.green;
+        }
+        else
+        {
+            transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().color = Color.white;
         }
 
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = barrackController.usingPeople.ToString() + " / " + playerInfo.people.ToString();

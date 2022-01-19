@@ -12,6 +12,7 @@ public class RangeManger : MonoBehaviour
     public List<Transform> rangeList;
     public List<Transform> enemyRangeList;
     public GameObject specialSkillPreFeb;
+    public SpecialSkillController specialSkillController;
 
     void Start()
     {
@@ -229,12 +230,11 @@ public class RangeManger : MonoBehaviour
         input.army = hitobj;
     }
 
-
     public void CandelRange(Transform hitobj)
     {
         int nameOfLand = Int32.Parse(hitobj.parent.parent.name);
         input.specialSkillController.skillCheck = false;
-
+        specialSkillController.coolTime = 0;
         List<Transform> redTiles = hitobj.GetComponent<EnemyController>().redTiles;
 
         if(redTiles.Count != 0)

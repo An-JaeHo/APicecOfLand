@@ -399,6 +399,7 @@ public class ButtonManger : MonoBehaviour
             tileManger.CheckTile();
             playerInfo.flour -= UpgradeLand.GetComponent<MakeArea>().UpgradeFlour;
             playerInfo.sugar -= UpgradeLand.GetComponent<MakeArea>().UpgradeSugar;
+            UpgradeLand.GetComponent<AreaManger>().ReturnUpdateSouce();
 
             switch (UpgradeLand.GetComponent<MakeArea>().Code)
             {
@@ -442,9 +443,9 @@ public class ButtonManger : MonoBehaviour
                     UpgradeLand.GetComponent<MakeArea>().InputAreaInfo("Area 15");
                     break;
                 case "Area 15":
-                    UpgradeLand.GetComponent<MakeArea>().InputAreaInfo("Area 16");
                     break;
                 case "Area 16":
+                    UpgradeLand.GetComponent<MakeArea>().InputAreaInfo("Area 17");
                     break;
                 case "Area 17":
                     UpgradeLand.GetComponent<MakeArea>().InputAreaInfo("Area 18");
@@ -459,19 +460,6 @@ public class ButtonManger : MonoBehaviour
                     break;
                 case "Area 21":
                     UpgradeLand.GetComponent<MakeArea>().InputAreaInfo("Area 22");
-                    break;
-                case "Area 22":
-                    UpgradeLand.GetComponent<MakeArea>().InputAreaInfo("Area 23");
-                    break;
-                case "Area 23":
-                    break;
-                case "Area 24":
-                    UpgradeLand.GetComponent<MakeArea>().InputAreaInfo("Area 25");
-                    break;
-                case "Area 25":
-                    UpgradeLand.GetComponent<MakeArea>().InputAreaInfo("Area 26");
-                    break;
-                case "Area 26":
                     break;
             }
 

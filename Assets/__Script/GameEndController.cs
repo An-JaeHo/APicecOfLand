@@ -25,12 +25,12 @@ public class GameEndController : MonoBehaviour
         CheckPoint();
         CheckRank();
         ResulttGame();
-        //BonusCheck();
+        BonusCheck();
     }
 
     public void CheckRank()
     {
-        //sumPoint = killingPoint + turnPoint;
+        sumPoint = killingPoint + turnPoint;
 
         if (sumPoint <= 3)
         {
