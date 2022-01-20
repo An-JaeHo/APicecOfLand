@@ -188,10 +188,14 @@ public class TileManger : MonoBehaviour
                         {
                             tileList[i].GetChild(0).GetComponent<MakeSoldier>().HelthPoint = (int)tileList[i].GetChild(0).GetComponent<SoldierManger>().totalHp;
                         }
+
+                        tileList[i].GetChild(0).GetComponent<SoldierManger>().HpBarScale();
                     }
+
+                    
                 }
 
-                tileList[i].GetChild(0).GetComponent<SoldierManger>().HpBarScale();
+                
             }
         }
     }
