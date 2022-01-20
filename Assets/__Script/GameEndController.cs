@@ -25,12 +25,12 @@ public class GameEndController : MonoBehaviour
         CheckPoint();
         CheckRank();
         ResulttGame();
-        //BonusCheck();
+        BonusCheck();
     }
 
     public void CheckRank()
     {
-        //sumPoint = killingPoint + turnPoint;
+        sumPoint = killingPoint + turnPoint;
 
         if (sumPoint <= 3)
         {
@@ -225,18 +225,10 @@ public class GameEndController : MonoBehaviour
                 break;
         }
 
-        if (playerInfo.milk > 0)
+        if (playerInfo.milk > 0 && playerInfo.sugar > 0 && playerInfo.flour > 0)
         {
             saveMgr.playerSave.milk += (int)(playerInfo.milk * percentage);
-        }
-
-        if (playerInfo.sugar > 0)
-        {
             saveMgr.playerSave.sugar += (int)(playerInfo.sugar * percentage);
-        }
-
-        if (playerInfo.flour > 0)
-        {
             saveMgr.playerSave.flour += (int)(playerInfo.flour * percentage);
         }
 
@@ -269,11 +261,14 @@ public class GameEndController : MonoBehaviour
             {
                 bonuses[i].SetActive(true);
                 bonuses[i].GetComponent<BonusCardController>().RandomSupply();
+                bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Image>().sprite = bonuses[i].GetComponent<BonusCardController>().BonusImage;
+                bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = true;
             }
             else
             {
-                //나중에 OTL나오면 적용할 예정
-                bonuses[i].SetActive(false);
+                bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Image>().sprite = bonuses[i].GetComponent<BonusCardController>().noBonusImage;
+
+                bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
             }
         }
 

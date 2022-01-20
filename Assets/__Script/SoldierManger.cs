@@ -268,14 +268,18 @@ public class SoldierManger : MonoBehaviour
         if(nowExp >= 1)
         {
             nowExp = 1;
+
+            if (nowExp == 1)
+            {
+                LevelUpCheck();
+                nowExp = 0;
+                expBar.localScale = new Vector3(nowExp, 1f);
+            }
         }
-        
+
+
         expBar.localScale = new Vector3(nowExp, 1f);
 
-        if(nowExp == 1)
-        {
-            LevelUpCheck();
-        }
     }
 
     public void MakeBuffIcon(string code)
@@ -341,7 +345,6 @@ public class SoldierManger : MonoBehaviour
             soldier.HelthPoint = (int)totalHp;
             soldier.nowExp = 0;
         }
-
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = transform.GetComponent<MakeSoldier>().Level.ToString(); ;
     }
 
