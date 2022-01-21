@@ -248,42 +248,42 @@ public class RangeManger : MonoBehaviour
                         GameObject specialSkill = Instantiate(specialSkillPreFeb, redTiles[i].GetChild(0).transform);
                         specialSkill.transform.localPosition = new Vector3(0, -0.9f);
                         specialSkill.transform.localScale = new Vector3(0.4f, 0.4f);
+                        redTiles[i].GetChild(0).GetComponent<MakeEnemy>().BaseHelthPoint -= 300;
 
-                        if (redTiles[i].GetChild(0).tag == "Enemy")
+                        if (redTiles[i].GetChild(0).GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
                         {
-                            redTiles[i].GetChild(0).GetComponent<MakeEnemy>().BaseHelthPoint -= 300;
-
-                            if (redTiles[i].GetChild(0).GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
-                            {
-                                redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetBool("Dead", true);
-                                tileManger.buttonManger.enemys.Remove(redTiles[i].GetChild(0).gameObject);
-                                tileManger.CheckTile();
-                            }
-                            else
-                            {
-                                redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetTrigger("Damage");
-                            }
+                            redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetBool("Dead", true);
+                            tileManger.buttonManger.enemys.Remove(redTiles[i].GetChild(0).gameObject);
+                            tileManger.CheckTile();
                         }
                         else
                         {
-                            redTiles[i].GetChild(0).GetComponent<GDController>().HelthPoint -= 300;
-
-                            if (redTiles[i].GetChild(0).GetComponent<GDController>().HelthPoint <= 0)
-                            {
-                                redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetBool("Dead", true);
-                                tileManger.buttonManger.enemys.Remove(redTiles[i].gameObject);
-                                tileManger.bossHP.SetActive(false);
-                                tileManger.CheckTile();
-                            }
-                            else
-                            {
-                                redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetTrigger("Damage");
-                            }
+                            redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetTrigger("Damage");
                         }
-
                         redTiles[i].GetChild(0).GetComponent<EnemyController>().HpBarScale();
-
                     }
+                    else if (redTiles[i].GetChild(0).tag == "GD")
+                    {
+                        GameObject specialSkill = Instantiate(specialSkillPreFeb, redTiles[i].GetChild(0).transform);
+                        specialSkill.transform.localPosition = new Vector3(0, -0.9f);
+                        specialSkill.transform.localScale = new Vector3(0.4f, 0.4f);
+                        redTiles[i].GetChild(0).GetComponent<GDController>().HelthPoint -= 300;
+
+                        if (redTiles[i].GetChild(0).GetComponent<GDController>().HelthPoint <= 0)
+                        {
+                            redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetBool("Dead", true);
+                            tileManger.buttonManger.enemys.Remove(redTiles[i].gameObject);
+                            tileManger.bossHP.SetActive(false);
+                            tileManger.CheckTile();
+                        }
+                        else
+                        {
+                            redTiles[i].GetChild(0).GetComponent<EnemyController>().ani.SetTrigger("Damage");
+                        }
+                        redTiles[i].GetChild(0).GetComponent<EnemyController>().HpBarScale();
+                    }
+
+                    
                 }
 
                 if (redTiles[i].GetComponent<MakeArea>().Name == "우주선")

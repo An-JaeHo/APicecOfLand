@@ -155,16 +155,29 @@ public class TutorialButtonManger : MonoBehaviour
             barrackWindow.GetComponent<TutorialBarrackController>().monsters[i].GetComponent<TutorialSoldierManger>().movePoint = true;
         }
 
-        if (buildTile.tag == "Area" || buildTile.tag == "Barracks")
+        if(input.talkManger.moveCheck)
         {
-            buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<MakeArea>().Picture;
-            input.talkManger.NextScriptButton();
-            input.talk = true;
+            input.talkManger.attackUi.SetActive(true);
+            input.talkManger.stopTalkNum = 2;
+
+            if(input.talkManger.spcriptNum ==1)
+            {
+                input.talkManger.NextScriptButton();
+            }
+            
         }
-        else
-        {
-            buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<AreaManger>().pureSprite;
-        }
+        
+
+        //if (buildTile.tag == "Area" || buildTile.tag == "Barracks")
+        //{
+        //    buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<MakeArea>().Picture;
+        //    input.talkManger.NextScriptButton();
+        //    input.talk = true;
+        //}
+        //else
+        //{
+        //    buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<AreaManger>().pureSprite;
+        //}
 
         buildTile.GetComponent<MakeArea>().Destroy = false;
         buildTile.GetComponent<MakeArea>().firstBuild = false;

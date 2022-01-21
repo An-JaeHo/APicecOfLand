@@ -144,7 +144,7 @@ public class SoldierManger : MonoBehaviour
         //
         //치명타 대미지:(치명타 확률)> (Atack_sum * (0.7~11))
 
-        float attackSum = soldier.BaseAttack + (soldier.RiseAttack * soldier.Level);
+        int attackSum = (int)(soldier.BaseAttack + (soldier.RiseAttack * soldier.Level));
 
         if (enemy != null)
         {
@@ -166,24 +166,27 @@ public class SoldierManger : MonoBehaviour
             //적이 받는 데미지
             if (enemy.tag == "Enemy")
             {
-                float defendSum = enemy.GetComponent<MakeEnemy>().BaseDefensive + (enemy.GetComponent<MakeEnemy>().RiseAttack * enemy.GetComponent<MakeEnemy>().Level);
+                int defendSum = (int)(enemy.GetComponent<MakeEnemy>().BaseDefensive + (enemy.GetComponent<MakeEnemy>().RiseDefensive * enemy.GetComponent<MakeEnemy>().Level));
                 enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)((((attackSum / defendSum) * 30))) ;
 
+                Debug.Log(attackSum);
+                Debug.Log(defendSum);
+                Debug.Log((int)(((attackSum / defendSum) * 30)));
                 float randCri= Random.Range(0,100);
                 if (randCri <= soldier.Critical)
                 {
-                    enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(attackSum+randCritical);
+                    enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(attackSum*randCritical);
                 }
             }
-            else
+            else if (enemy.tag == "GD")
             {
-                float defendSum = enemy.GetComponent<GDController>().Defensive + (enemy.GetComponent<GDController>().RiseAttack);
+                float defendSum = enemy.GetComponent<GDController>().HelthPoint + (enemy.GetComponent<GDController>().RiseDefensive);
                 enemy.GetComponent<GDController>().HelthPoint-= (int)((((attackSum / defendSum) * 30)));
 
                 float randCri = Random.Range(0, 100);
                 if (randCri <= soldier.Critical)
                 {
-                    enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(attackSum + randCritical);
+                    enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(attackSum * randCritical);
                 }
             }
             

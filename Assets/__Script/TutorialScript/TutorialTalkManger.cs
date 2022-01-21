@@ -21,6 +21,11 @@ public class TutorialTalkManger : MonoBehaviour
     [Header("SupplyAndBarrack Tutorial Obj")]
     public GameObject supplyObj;
 
+    [Header("Move Tutorial Obj")]
+    public GameObject attackUi;
+    public GameObject DefendUi;
+    public bool moveCheck;
+
     [Header("Set in ViualStudio")]
     public int spcriptNum;
     public int textNum;
@@ -42,6 +47,7 @@ public class TutorialTalkManger : MonoBehaviour
         spcriptNum = 0;
         stopTalkNum = 999;
         scripts = new List<string>();
+        moveCheck = false;
         textNum = 4;
         scripts.Add("환영합니다. 제빵사님​");
         scripts.Add("현재 약탈을 일 삼는 우주 쥐들이 공격해오고 있습니다.​");
@@ -86,12 +92,13 @@ public class TutorialTalkManger : MonoBehaviour
                     {
                         dimmedCover.SetActive(true);
                         dimmedCover.transform.SetParent(supplyObj.transform);
-                        dimmedCover.transform.SetSiblingIndex(3);
+                        dimmedCover.transform.SetSiblingIndex(5);
                         stopTalkNum = 6;
                     }
                     else if (spcriptNum == 6)
                     {
                         dimmedCover.transform.SetParent(transform.parent);
+                        supplyObj.transform.GetChild(5).SetSiblingIndex(3);
                         stopTalkNum = 6;
 
                         for (int i = 0; i < tile.tileList.Count; i++)
@@ -105,6 +112,17 @@ public class TutorialTalkManger : MonoBehaviour
                         dimmedCover.transform.SetSiblingIndex(5);
                     }
                 }
+
+                if(moveCheck)
+                {
+                    if(stopTalkNum == 2)
+                    {
+                        dimmedCover.transform.SetParent(supplyObj.transform);
+                        dimmedCover.transform.SetSiblingIndex(3);
+                        stopTalkNum = 5;
+                    }
+                }
+
             }
             else
             {
@@ -169,15 +187,22 @@ public class TutorialTalkManger : MonoBehaviour
 
     public void MoveTalk()
     {
-        //inputManger.talk = true;
+        inputManger.talk = true;
         scripts.Clear();
-        textNum = 5;
+        textNum = 6;
         spcriptNum = 0;
-        scripts.Add("와 드디어 친구를 불렀어!");
-        scripts.Add("이번에는 초코칩쿠키를 눌러볼까?");
-        scripts.Add("누르니깐 바닥에 색이 달라졌네?");
-        scripts.Add("저건 쿠키들이 이동할 수 있는 범위를 나타낸거야 ");
-        scripts.Add("어서 눌러보자");
+        buildCheck = false;
+        barrackCheck = false;
+        moveCheck = true;
+        stopTalkNum = 0;
+        inputManger.buttonManger.button.GetComponent<Button>().interactable = true;
+
+        scripts.Add("턴을 넘겨보세요!");
+        scripts.Add("공격 턴이 시작되었습니다.적군이 공격해옵니다.대비하세요.");
+        scripts.Add("공격턴에서는 더 이상 유닛 생산과 건물 건설이 불가능합니다.");
+        scripts.Add("공격 턴이 0이되면 휴식 턴이 돌아옵니다!");
+        scripts.Add("공격 턴이 0이 되기 전에 모든 적군과 모든 적기지를 처치해야 합니다.");
+        scripts.Add("공격 턴이 0이 되기 전에 모든 적군과 모든 적기지를 처치하지 못하면 패배하게 됩니다.");
         spcriptText.text = scripts[spcriptNum];
     }
 

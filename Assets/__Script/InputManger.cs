@@ -173,6 +173,7 @@ public class InputManger : MonoBehaviour
                 else
                 {
                     hitObj = hit.transform;
+
                     switch (hit.transform.tag)
                     {
                         case "Enemy":
@@ -196,7 +197,8 @@ public class InputManger : MonoBehaviour
                             {
                                 if (specialSkillController.skillCheck)
                                 {
-
+                                    rangeManger.CandelRange(hit.transform);
+                                    specialSkillController.gameObject.SetActive(false);
                                 }
                                 else
                                 {
@@ -356,6 +358,7 @@ public class InputManger : MonoBehaviour
                     else
                     {
                         hitObj = hit.transform;
+                        
                         switch (hit.transform.tag)
                         {
                             case "Enemy":
@@ -375,11 +378,14 @@ public class InputManger : MonoBehaviour
                                 }
                                 break;
                             case "GD":
+                                
                                 if (hit.transform.parent.tag == "SelectLand")
                                 {
+                                    Debug.Log("ss");
                                     if (specialSkillController.skillCheck)
                                     {
-
+                                        rangeManger.CandelRange(hit.transform);
+                                        specialSkillController.gameObject.SetActive(false);
                                     }
                                     else
                                     {

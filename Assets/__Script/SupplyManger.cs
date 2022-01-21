@@ -14,6 +14,15 @@ public class SupplyManger : MonoBehaviour
         JustUpdateSupply();
     }
 
+    public void ManySupply()
+    {
+        playerInfo.milk = 3000;
+        playerInfo.flour = 3000;
+        playerInfo.sugar = 3000;
+        playerInfo.people = 99;
+    }
+
+
     public void UpdateSupply()
     {
         if (playerInfo.updateMilk >= 1000)

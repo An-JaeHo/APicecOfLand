@@ -30,10 +30,7 @@ public class EnemyInfo : MonoBehaviour
 public class MakeEnemy : EnemyInfo
 {
     public JsonManger enemyInfo;
-    private void Start()
-    {
-        Level = 1;
-    }
+
     public void InputEnemyInfo(string code)
     {
         enemyInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();

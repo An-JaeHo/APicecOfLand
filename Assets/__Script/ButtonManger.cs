@@ -670,8 +670,12 @@ public class ButtonManger : MonoBehaviour
             {
                 attackTurnNum = 82;
             }
+            else if (tileManger.attackTurn == 6)
+            {
+                attackTurnNum = 102;
+            }
 
-            if(healCheck)
+            if (healCheck)
             {
                 for (int i = 0; i < barrackController.monsters.Count; i++)
                 {
@@ -699,7 +703,7 @@ public class ButtonManger : MonoBehaviour
             }
             else if (tileManger.attackTurn == 1)
             {
-                attackTurnNum = 9;
+                attackTurnNum = 8;
             }
             else if (tileManger.attackTurn == 2)
             {
@@ -716,6 +720,14 @@ public class ButtonManger : MonoBehaviour
             else if (tileManger.attackTurn == 5)
             {
                 attackTurnNum = 81;
+            }
+            else if (tileManger.attackTurn == 6)
+            {
+                attackTurnNum = 101;
+            }
+            else if (tileManger.attackTurn == 7)
+            {
+                attackTurnNum = 121;
             }
         }
 

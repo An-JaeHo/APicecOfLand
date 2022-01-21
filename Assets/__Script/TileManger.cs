@@ -191,11 +191,7 @@ public class TileManger : MonoBehaviour
 
                         tileList[i].GetChild(0).GetComponent<SoldierManger>().HpBarScale();
                     }
-
-                    
                 }
-
-                
             }
         }
     }
@@ -346,7 +342,8 @@ public class TileManger : MonoBehaviour
         {
             for (int i = 0; i < enemyLand.Count; i++)
             {
-                if (enemyLand[i].childCount == 0 && enemyLand[i].tag == "Enemy Base")
+                if (enemyLand[i].childCount == 0 
+                    && enemyLand[i].tag == "Enemy Base")
                 {
                     GameObject noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyLand[i].position.x, enemyLand[i].position.y + 25f), Quaternion.identity);
                     noChildEnemy.transform.SetParent(enemyLand[i]);
@@ -389,6 +386,7 @@ public class TileManger : MonoBehaviour
                             enemyPicture.transform.SetParent(noChildEnemy.transform);
                         }
                     }
+
                     LevelCheck(noChildEnemy);
                     buttonManger.enemys.Add(noChildEnemy);
                 }
@@ -407,8 +405,6 @@ public class TileManger : MonoBehaviour
                 noChildLand.RemoveAt(i);
             }
         }
-
-        
 
         //디펜스
         if (playerInfo.turnPoint == 9)
@@ -480,6 +476,7 @@ public class TileManger : MonoBehaviour
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
                 attackTurn++;
+
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
@@ -487,6 +484,7 @@ public class TileManger : MonoBehaviour
                     enemyLand.Add(noChildLand[rand].GetChild(0));
                     noChildLand.Remove(noChildLand[rand]);
                 }
+
                 buttonManger.DestroyCheckArea();
             }
 
@@ -633,6 +631,7 @@ public class TileManger : MonoBehaviour
                 attackTurn++;
                 attackAlarm.SetActive(true);
                 alarmCheck = true;
+
                 for (int i = 0; i < attackTurn; i++)
                 {
                     int rand = UnityEngine.Random.Range(0, noChildLand.Count - 1);
@@ -786,9 +785,7 @@ public class TileManger : MonoBehaviour
             }
         }
 
-        Enemy.GetComponent<MakeEnemy>().BaseAttack += Enemy.GetComponent<MakeEnemy>().RiseAttack * (randLevel - 1);
-        Enemy.GetComponent<MakeEnemy>().BaseDefensive += Enemy.GetComponent<MakeEnemy>().RiseDefensive * (randLevel - 1);
-        Enemy.GetComponent<MakeEnemy>().BaseHelthPoint += Enemy.GetComponent<MakeEnemy>().RiseHelthPoint * (randLevel - 1);
+        Enemy.GetComponent<MakeEnemy>().BaseHelthPoint += Enemy.GetComponent<MakeEnemy>().RiseHelthPoint * (randLevel);
         Enemy.GetComponent<MakeEnemy>().Level = randLevel;
         Enemy.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = Enemy.GetComponent<MakeEnemy>().Level.ToString();
     }

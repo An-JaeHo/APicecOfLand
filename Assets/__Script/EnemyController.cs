@@ -161,22 +161,18 @@ public class EnemyController : MonoBehaviour
                         if (tiles.activeChildtileList[i].name == (myName - 17).ToString())
                         {
                             targetMonster.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
-                            Debug.Log("아래");
                         }
                         else if (tiles.activeChildtileList[i].name == (myName + 17).ToString())
                         {
                             targetMonster.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
-                            Debug.Log("위");
                         }
                         else if (tiles.activeChildtileList[i].name == (myName - 1).ToString())
                         {
                             targetMonster.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
-                            Debug.Log("왼");
                         }
                         else if (tiles.activeChildtileList[i].name == (myName + 1).ToString())
                         {
                             targetMonster.Add(tiles.activeChildtileList[i].GetChild(0).GetChild(0));
-                            Debug.Log("오른");
                         }
                     }
                 }

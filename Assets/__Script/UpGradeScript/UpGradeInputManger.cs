@@ -116,7 +116,7 @@ public class UpGradeInputManger : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
                 {
@@ -141,81 +141,87 @@ public class UpGradeInputManger : MonoBehaviour
 
     private void TouchHit()
     {
-
         if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            Vector3 moveMousePos = Input.GetTouch(0).position;
+            mouseMonsterCheck = true;
+        }
 
-            if (moveMousePos.y < 1050)
+        if (mouseMonsterCheck)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
             {
-                float moveMonsterInterpolate;
+                Vector3 moveMousePos = Input.GetTouch(0).position;
 
-                if (moveMousePos.x < maxPosX
-                    && moveMousePos.x > minPosX)
+                if (moveMousePos.y < 1050)
                 {
-                    if (moveMousePos.x > 540f)
+                    float moveMonsterInterpolate;
+                    if (moveMousePos.x < maxPosX
+                        && moveMousePos.x > minPosX)
                     {
-                        moveMonsterInterpolate = (moveMousePos.x - 540f) / (maxPosX - 540f);
+                        if (moveMousePos.x > 540f)
+                        {
+                            moveMonsterInterpolate = (moveMousePos.x - 540f) / (maxPosX - 540f);
+                        }
+                        else
+                        {
+                            moveMonsterInterpolate = ((moveMousePos.x - 540f) / 540f);
+                        }
+
+                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+
+                        if (moveMonsterInterpolate > 0.6f)
+                        {
+                            moveMonsterInterpolate = 1;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
+
+                        if (moveMonsterInterpolate < -1)
+                        {
+                            moveMonsterInterpolate = -1;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
                     }
                     else
                     {
-                        moveMonsterInterpolate = ((moveMousePos.x - 540f) / 540f);
+                        if (moveMousePos.x > maxPosX)
+                        {
+                            moveMonsterInterpolate = 1f;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
+
+                        if (moveMousePos.x < minPosX)
+                        {
+                            moveMonsterInterpolate = -1f;
+                            upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
+                            mouseMonsterCheck = false;
+                            upGradeMonsterInfo.FindAndMakeMonster();
+                        }
                     }
 
-                    upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-
-                    if (moveMonsterInterpolate > 1)
-                    {
-                        moveMonsterInterpolate = 1;
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                        mouseMonsterCheck = false;
-                        upGradeMonsterInfo.FindAndMakeMonster();
-                    }
-
-                    if (moveMonsterInterpolate < -1)
-                    {
-                        moveMonsterInterpolate = -1;
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                        mouseMonsterCheck = false;
-                        upGradeMonsterInfo.FindAndMakeMonster();
-                    }
+                    upGradeMonsterInfo.RoundMonster();
                 }
                 else
                 {
-                    if (moveMousePos.x > maxPosX)
-                    {
-                        moveMonsterInterpolate = 1f;
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                        mouseMonsterCheck = false;
-                        upGradeMonsterInfo.FindAndMakeMonster();
-                    }
-
-                    if (moveMousePos.x < minPosX)
-                    {
-                        moveMonsterInterpolate = -1f;
-                        upGradeMonsterInfo.interporlateNum = moveMonsterInterpolate;
-                        mouseMonsterCheck = false;
-                        upGradeMonsterInfo.FindAndMakeMonster();
-                    }
-                }
-
-                upGradeMonsterInfo.RoundMonster();
-            }
-            else
-            {
-                for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
-                {
-                    upGradeMonsterInfo.monsters[i].transform.localPosition = upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition;
-                }
-            }
-
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
-                {
-                    if (upGradeMonsterInfo.monsters[i].transform.localPosition != upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition)
+                    for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
                     {
                         upGradeMonsterInfo.monsters[i].transform.localPosition = upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition;
+                    }
+                }
+
+                if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                {
+                    for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+                    {
+                        if (upGradeMonsterInfo.monsters[i].transform.localPosition != upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition)
+                        {
+                            upGradeMonsterInfo.monsters[i].transform.localPosition = upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition;
+                        }
                     }
                 }
             }
@@ -228,31 +234,6 @@ public class UpGradeInputManger : MonoBehaviour
             }
 
             upGradeMonsterInfo.upGradeSceneWindow.UpGradeCheck(upGradeMonsterInfo.monsters[2].transform);
-
-        }
-
-        if (Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            Vector3 touchPosition = Input.GetTouch(0).position;
-            touchPosition = gameCamera.ScreenToWorldPoint(touchPosition);
-            RaycastHit2D hit = Physics2D.Raycast(touchPosition, gameCamera.transform.forward, 800);
-
-            if (hit)
-            {
-                if (Input.GetTouch(0).phase == TouchPhase.Began)
-                {
-                    hitObj = hit.transform;
-
-                    switch (hit.transform.tag)
-                    {
-                        case "Army":
-                            upGradeWindow.SetActive(true);
-                            upGradeWindow.GetComponent<UpGradeSceneWindow>().UpGradeCheck(hit.transform);
-                            mouseCheck = false;
-                            break;
-                    }
-                }
-            }
 
         }
     }
