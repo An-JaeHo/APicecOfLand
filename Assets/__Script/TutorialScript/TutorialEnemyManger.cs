@@ -22,12 +22,22 @@ public class TutorialEnemyManger : MonoBehaviour
     public List<Sprite> buffList;
     public List<GameObject> buffPrefebList;
     public int buffCount;
+    public GameObject moveTile;
+    public Sprite[] destroyAreaObj;
 
     private void Start()
     {
         ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TutorialTileManger>();
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialButtonManger>();
+        input = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialInputManger>();
+        object[] loadDestroyArea = Resources.LoadAll("AreaBroken", typeof(Sprite));
+        destroyAreaObj = new Sprite[loadDestroyArea.Length];
+
+        for (int i = 0; i < loadDestroyArea.Length; i++)
+        {
+            destroyAreaObj[i] = (Sprite)loadDestroyArea[i];
+        }
     }
 
     private void Update()
@@ -40,6 +50,34 @@ public class TutorialEnemyManger : MonoBehaviour
             {
                 ani.SetBool("Move", false);
                 buttonManger.button.GetComponent<Button>().interactable = true;
+                transform.parent.GetComponent<AreaManger>().ReturnUpdateSouce();
+
+                transform.parent.GetComponent<MakeArea>().Name = null;
+                transform.parent.GetComponent<MakeArea>().Type = "Grass";
+                transform.parent.GetComponent<MakeArea>().Grade = 0;
+                transform.parent.GetComponent<MakeArea>().UpgradeFlour = 0;
+                transform.parent.GetComponent<MakeArea>().UpgradeSugar = 0;
+                transform.parent.GetComponent<MakeArea>().MilkOutput = 0;
+                transform.parent.GetComponent<MakeArea>().FlourOutput = 0;
+                transform.parent.GetComponent<MakeArea>().SugarOutput = 0;
+                transform.parent.GetComponent<MakeArea>().Movement = true;
+                transform.parent.GetComponent<MakeArea>().Destroy = true;
+                transform.parent.GetComponent<MakeArea>().Repair = false;
+                transform.parent.GetComponent<MakeArea>().Effect = null;
+                transform.parent.GetComponent<SpriteRenderer>().color = Color.white;
+                transform.parent.tag = "Grass";
+
+                for (int i = 0; i < destroyAreaObj.Length; i++)
+                {
+                    if (transform.parent.GetComponent<MakeArea>().Code == destroyAreaObj[i].name)
+                    {
+                        transform.parent.GetComponent<MakeArea>().Picture = destroyAreaObj[i];
+                        transform.parent.GetComponent<SpriteRenderer>().sprite = destroyAreaObj[i];
+                        input.talkManger.stopTalkNum = 8;
+                        input.talkManger.NextScriptButton();
+                        input.BarrackUi.GetComponent<TutorialBarrackController>().monsters[0].GetComponent<BoxCollider2D>().enabled = true;
+                    }
+                }
 
                 move = false;
             }
@@ -48,10 +86,8 @@ public class TutorialEnemyManger : MonoBehaviour
 
     public void SoldierAction()
     {
-        if (move)
-        {
-            StartCoroutine(Move());
-        }
+        move = true;
+        StartCoroutine(Move());
     }
 
     public IEnumerator Move()
@@ -59,7 +95,7 @@ public class TutorialEnemyManger : MonoBehaviour
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialButtonManger>();
         tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TutorialTileManger>();
         ani = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
-        transform.SetParent(tileManger.tileList[1].GetChild(0));
+        transform.SetParent(moveTile.transform);
         buttonManger.button.GetComponent<Button>().interactable = false;
         ani.SetBool("Move", true);
         movePosition = new Vector3(transform.parent.position.x, transform.parent.position.y + 25, transform.parent.position.z - 10);

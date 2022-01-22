@@ -158,9 +158,9 @@ public class TutorialButtonManger : MonoBehaviour
         if(input.talkManger.moveCheck)
         {
             input.talkManger.attackUi.SetActive(true);
-            input.talkManger.stopTalkNum = 2;
+            input.talkManger.stopTalkNum = 1;
 
-            if(input.talkManger.spcriptNum ==1)
+            if(input.talkManger.spcriptNum ==0)
             {
                 input.talkManger.NextScriptButton();
             }

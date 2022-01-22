@@ -38,6 +38,7 @@ public class TutorialTalkManger : MonoBehaviour
 
     public bool buildCheck;
     public bool barrackCheck;
+    public bool enemyCheck;
 
 
     private List< string> scripts;
@@ -57,6 +58,7 @@ public class TutorialTalkManger : MonoBehaviour
         sceneCheck = false;
         spcriptText.text = scripts[spcriptNum];
         talkCheck = false;
+        enemyCheck = false;
         player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
     }
@@ -115,11 +117,37 @@ public class TutorialTalkManger : MonoBehaviour
 
                 if(moveCheck)
                 {
-                    if(stopTalkNum == 2)
+                    if(spcriptNum == 1)
                     {
                         dimmedCover.transform.SetParent(supplyObj.transform);
-                        dimmedCover.transform.SetSiblingIndex(3);
+                        dimmedCover.transform.SetSiblingIndex(5);
+                        dimmedCover.SetActive(true);
                         stopTalkNum = 5;
+
+                        for (int i = 0; i < tile.tileList.Count; i++)
+                        {
+                            if (tile.tileList[i].parent.name == "109" || tile.tileList[i].parent.name == "110" || tile.tileList[i].parent.name == "111" || tile.tileList[i].parent.name == "112" || tile.tileList[i].parent.name == "113" || tile.tileList[i].parent.name == "126" || tile.tileList[i].parent.name == "130" || tile.tileList[i].parent.name == "143" || tile.tileList[i].parent.name == "147" || tile.tileList[i].parent.name == "160" || tile.tileList[i].parent.name == "164" || tile.tileList[i].parent.name == "177" || tile.tileList[i].parent.name == "178" || tile.tileList[i].parent.name == "179" || tile.tileList[i].parent.name == "180" || tile.tileList[i].parent.name == "181")
+                            {
+                                tile.tileList[i].parent.gameObject.SetActive(true);
+                            }
+                        }
+
+                        tile.enemyTile.transform.GetComponent<MakeArea>().InputAreaInfo("Area 23");
+                    }
+
+                    if(spcriptNum == 5)
+                    {
+                        dimmedCover.SetActive(false);
+                        dimmedCover.transform.SetParent(transform.parent);
+                        EnemyTalk();
+                    }
+                }
+
+                if(enemyCheck)
+                {
+                    if(spcriptNum == 1)
+                    {
+                        tile.tutorialEnemy.GetComponent<TutorialEnemyManger>().SoldierAction();
                     }
                 }
 
@@ -206,18 +234,35 @@ public class TutorialTalkManger : MonoBehaviour
         spcriptText.text = scripts[spcriptNum];
     }
 
-    public void NextTalk()
+    public void EnemyTalk()
     {
         inputManger.talk = true;
         scripts.Clear();
-        textNum = 6;
+        textNum = 8;
         spcriptNum = 0;
-        scripts.Add("이런 쥐들이 와버렸어");
-        scripts.Add("어서 공격해서 쫓아내버리자");
-        scripts.Add("아까랑 같이 초코칩쿠키를 눌러보자");
-        scripts.Add("이번에는 색이 변했어");
-        scripts.Add("이건 공격할수 있는 범위를 보여주는 거야");
-        scripts.Add("어서 눌러서 쥐를 몰아내자");
+        stopTalkNum = 1;
+        moveCheck = false;
+        enemyCheck = true;
+        tile.SpawnEnemy();
+
+        for (int i = 0; i < tile.tileList.Count; i++)
+        {
+            if(tile.tileList[i].parent.name == "127")
+            {
+                tile.tutorialEnemy.GetComponent<TutorialEnemyManger>().moveTile = tile.tileList[i].gameObject;
+            }
+        }
+
+        //건물 부수는 파트
+        scripts.Add("적 기지에서 우주 쥐가 출현했습니다.");
+        scripts.Add("적군이 아군의 건물을 점령하게 되면 파괴 상태가 됩니다.");
+        scripts.Add("파괴 상태가 된 건물은 건물 효과가 발동 되지 않습니다.");
+        scripts.Add("파괴 상태의 건물은 휴식 턴에서 수리가 가능합니다.");
+        scripts.Add("파괴 상태의 건물을 다음 턴에 수리하지 못하면 영구적으로 파괴됩니다.");
+        scripts.Add("적군이 행동력을 모두 소모했습니다.");
+        scripts.Add("이제는 반격 할 때 입니다.");
+        scripts.Add("적을 공격하세요.");
+       
         spcriptText.text = scripts[spcriptNum];
     }
 
@@ -227,6 +272,10 @@ public class TutorialTalkManger : MonoBehaviour
         scripts.Clear();
         textNum = 7;
         spcriptNum = 0;
+        scripts.Add("아군을 터치 해보세요.");
+        scripts.Add("유닛을 이동시키세요.");
+        scripts.Add("어서 눌러서 쥐를 몰아내자");
+        scripts.Add("어서 눌러서 쥐를 몰아내자");
         scripts.Add("자 이제 저 우주선을 파괴하자");
         scripts.Add("그렇지 않으면 또 쥐가 나올꺼야");
         scripts.Add("우주선 위로 올라간다면 파괴할수 있을꺼야");

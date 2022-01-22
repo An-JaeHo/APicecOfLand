@@ -26,6 +26,9 @@ public class TutorialTileManger : MonoBehaviour
     public GameObject cakeCastle;
     public GameObject tutorialLand;
 
+    public Transform enemyTile;
+    public Transform tutorialEnemy;
+
     private void Start()
     {
         object[] loadEnemy = Resources.LoadAll("Enemy", typeof(GameObject));
@@ -43,15 +46,20 @@ public class TutorialTileManger : MonoBehaviour
         {
             for (int j = 0; j < 17; j++)
             {
-                GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (j * 87f), transform.position.y + (-i * 87f)), Quaternion.identity);
+                GameObject land = Instantiate(tilePrefab, new Vector3(transform.position.x + (j * 89f), transform.position.y + (-i * 87f)), Quaternion.identity);
                 land.transform.SetParent(transform);
                 land.transform.name = (tileList.Count + 1).ToString();
                 land.GetComponent<SpriteRenderer>().sortingOrder = i * 2;
                 land.transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
 
+                if (land.name == "110")
+                {
+                    enemyTile = land.transform.GetChild(0);
+                }
+
                 if (land.name == "127" || land.name == "128" || land.name == "129"
-                    || land.name == "144" || land.name == "145" || land.name == "146"
-                    || land.name == "163" || land.name == "161" || land.name == "162")
+                || land.name == "144" || land.name == "145" || land.name == "146"
+                || land.name == "163" || land.name == "161" || land.name == "162")
                 {
                     land.SetActive(true);
 
@@ -89,7 +97,7 @@ public class TutorialTileManger : MonoBehaviour
                 if (land.transform.childCount != 0)
                     land.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = i * 2 + 1;
 
-                
+
                 tileList.Add(land.transform.GetChild(0));
             }
         }
@@ -99,63 +107,60 @@ public class TutorialTileManger : MonoBehaviour
     {
         int enemyRandRand = UnityEngine.Random.Range(0, 100);
 
-        for (int i = 0; i < enemyLand.Count; i++)
+        GameObject noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyTile.position.x, enemyTile.position.y + 25f), Quaternion.identity);
+        noChildEnemy.transform.SetParent(enemyTile.transform);
+        tutorialEnemy = noChildEnemy.transform;
+
+        switch (enemyTile.GetComponent<MakeArea>().Grade)
         {
-            if (enemyLand[i].childCount == 0 && enemyLand[i].tag == "Enemy Base")
+            case 1:
+                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
+                break;
+            case 2:
+                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 2");
+                break;
+            case 3:
+
+                int enemyrand = UnityEngine.Random.Range(0, 100);
+
+                if (enemyrand > 90)
+                {
+                    noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 3");
+                }
+                else
+                {
+                    noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 4");
+                }
+                break;
+            default:
+                break;
+        }
+
+        for (int j = 0; j < enemyObj.Length; j++)
+        {
+            if (enemyObj[j].name == noChildEnemy.GetComponent<MakeEnemy>().Code)
             {
-                GameObject noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyLand[i].position.x, enemyLand[i].position.y + 25f), Quaternion.identity);
-                noChildEnemy.transform.SetParent(enemyLand[i]);
-
-                switch (enemyLand[i].GetComponent<MakeArea>().Grade)
-                {
-                    case 1:
-                        noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
-                        break;
-                    case 2:
-                        noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 2");
-                        break;
-                    case 3:
-
-                        int enemyrand = UnityEngine.Random.Range(0, 100);
-
-                        if (enemyrand > 90)
-                        {
-                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 3");
-                        }
-                        else
-                        {
-                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 4");
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-                for (int j = 0; j < enemyObj.Length; j++)
-                {
-                    if (enemyObj[j].name == noChildEnemy.GetComponent<MakeEnemy>().Code)
-                    {
-                        GameObject enemyPicture = Instantiate(enemyObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
-                        enemyPicture.transform.SetParent(noChildEnemy.transform);
-                    }
-                }
+                GameObject enemyPicture = Instantiate(enemyObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
+                enemyPicture.transform.SetParent(noChildEnemy.transform);
             }
         }
 
-        GameObject enemy = Instantiate(enemyPrefab, new Vector3(tileList[0].GetChild(0).position.x, tileList[0].GetChild(0).position.y + 25f), Quaternion.identity);
-        enemy.transform.SetParent(tileList[0].GetChild(0));
-        tileList[0].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
-        enemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
 
-        for (int i = 0; i < enemyObj.Length; i++)
-        {
-            if (enemyObj[i].name == enemy.GetComponent<MakeEnemy>().Code)
-            {
-                GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x, enemy.transform.position.y - 55), Quaternion.identity);
-                enemyPicture.transform.SetParent(enemy.transform);
-            }
-        }
-        enemy.GetComponent<TutorialEnemyManger>().move = true;
-        enemy.GetComponent<TutorialEnemyManger>().SoldierAction();
+
+        //GameObject enemy = Instantiate(enemyPrefab, new Vector3(tileList[0].GetChild(0).position.x, tileList[0].GetChild(0).position.y + 25f), Quaternion.identity);
+        //enemy.transform.SetParent(tileList[0].GetChild(0));
+        //tileList[0].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
+        //enemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
+
+        //for (int i = 0; i < enemyObj.Length; i++)
+        //{
+        //    if (enemyObj[i].name == enemy.GetComponent<MakeEnemy>().Code)
+        //    {
+        //        GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x, enemy.transform.position.y - 55), Quaternion.identity);
+        //        enemyPicture.transform.SetParent(enemy.transform);
+        //    }
+        //}
+        //enemy.GetComponent<TutorialEnemyManger>().move = true;
+        //enemy.GetComponent<TutorialEnemyManger>().SoldierAction();
     }
 }

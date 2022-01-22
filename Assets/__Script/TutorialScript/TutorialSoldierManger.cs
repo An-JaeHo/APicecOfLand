@@ -81,14 +81,6 @@ public class TutorialSoldierManger : MonoBehaviour
                 input.armyMove = true;
                 stayTime = 0;
                 buttonManger.button.GetComponent<Button>().interactable = true;
-
-                if (!input.finalCheck)
-                {
-                    tileManger.SpawnEnemy();
-                    tileManger.talkManger.NextTalk();
-                    tileManger.talkManger.stopTalkNum = 2;
-                    tileManger.talkManger.talkCheck = true;
-                }
                 input.talk = false;
                 movePoint = true;
 
@@ -216,19 +208,10 @@ public class TutorialSoldierManger : MonoBehaviour
             {
                 if (enemy.GetComponent<MakeEnemy>().BaseHelthPoint <= 0)
                 {
-                    enemy.GetComponent<TutorialEnemyManger>().ani.SetTrigger("Damage");
+                    enemy.GetComponent<TutorialEnemyManger>().ani.SetTrigger("Dead");
                     soldier.nowExp += enemy.GetComponent<MakeEnemy>().DropExperiencePoint;
                     input.ChangeLandInfo();
-                    input.finalCheck = true;
-                    tileManger.talkManger.FinalTalk();
-                    tileManger.talkManger.stopTalkNum = 3;
-                    tileManger.talkManger.talkCheck = true;
-                    enemy.parent.GetComponent<BoxCollider2D>().enabled = false;
-                    Destroy(enemy.gameObject);
-                }
-                else
-                {
-                    enemy.GetComponent<TutorialEnemyManger>().ani.SetTrigger("Damage");
+                    //Destroy(enemy.gameObject);
                 }
             }
         }

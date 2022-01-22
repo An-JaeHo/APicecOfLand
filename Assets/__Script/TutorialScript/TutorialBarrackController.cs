@@ -64,7 +64,7 @@ public class TutorialBarrackController : MonoBehaviour
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
             SaveLevelCheck(prefebSoldier);
             playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
-
+            prefebSoldier.GetComponent<BoxCollider2D>().enabled = false;
             for (int i = 0; i < MonsterObj.Length; i++)
             {
                 if (MonsterObj[i].name == prefebSoldier.GetComponent<MakeSoldier>().Code)

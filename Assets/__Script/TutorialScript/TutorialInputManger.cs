@@ -130,18 +130,12 @@ public class TutorialInputManger : MonoBehaviour
                         case "Army":
                             if (hit.transform.GetComponent<TutorialSoldierManger>().movePoint)
                             {
-                                talk = false;
                                 rangeManger.PlayerMoveRange(hit.transform);
-                                armyMove = false;
-
-                                if(!finalCheck)
-                                {
-                                    talkManger.NextScriptButton();
-                                    talkManger.talkCheck = true;
-                                }
-                                moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
                             }
-                            
+                            rangeManger.PlayerAttackRange(hit.transform);
+                            armyMove = false;
+                            moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
+
                             break;
                         default:
                             break;
@@ -240,29 +234,28 @@ public class TutorialInputManger : MonoBehaviour
     {
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {
-            rangeManger.rangeList[i].GetChild(0).GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetChild(0).GetComponent<AreaManger>().pureColor;
+            rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
 
-            if (rangeManger.rangeList[i].GetChild(0).GetComponent<MakeArea>().Type == "Area")
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Area")
             {
-                rangeManger.rangeList[i].GetChild(0).transform.tag = "Area";
+                rangeManger.rangeList[i].transform.tag = "Area";
             }
 
-            if (rangeManger.rangeList[i].GetChild(0).GetComponent<MakeArea>().Name == "병영")
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Name == "병영")
             {
-                rangeManger.rangeList[i].GetChild(0).transform.tag = "Barracks";
+                rangeManger.rangeList[i].transform.tag = "Barracks";
             }
 
-            if (rangeManger.rangeList[i].GetChild(0).GetComponent<MakeArea>().Type == "Grass")
+            if (rangeManger.rangeList[i].GetComponent<MakeArea>().Type == "Grass")
             {
-                rangeManger.rangeList[i].GetChild(0).transform.tag = "Grass";
+                rangeManger.rangeList[i].transform.tag = "Grass";
             }
 
-            if (rangeManger.rangeList[i].GetChild(0).GetComponent<AreaManger>().pureTag == "Capital")
+            if (rangeManger.rangeList[i].GetComponent<AreaManger>().pureTag == "Capital")
             {
-                rangeManger.rangeList[i].GetChild(0).transform.tag = "Capital";
+                rangeManger.rangeList[i].transform.tag = "Capital";
             }
         }
-
 
         rangeManger.rangeList.Clear();
     }
