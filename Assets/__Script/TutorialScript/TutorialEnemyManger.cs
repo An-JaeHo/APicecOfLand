@@ -33,6 +33,7 @@ public class TutorialEnemyManger : MonoBehaviour
         input = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialInputManger>();
         object[] loadDestroyArea = Resources.LoadAll("AreaBroken", typeof(Sprite));
         destroyAreaObj = new Sprite[loadDestroyArea.Length];
+        GetComponent<MakeEnemy>().tutorialCheck = true;
 
         for (int i = 0; i < loadDestroyArea.Length; i++)
         {
@@ -75,7 +76,6 @@ public class TutorialEnemyManger : MonoBehaviour
                         transform.parent.GetComponent<SpriteRenderer>().sprite = destroyAreaObj[i];
                         input.talkManger.stopTalkNum = 8;
                         input.talkManger.NextScriptButton();
-                        input.BarrackUi.GetComponent<TutorialBarrackController>().monsters[0].GetComponent<BoxCollider2D>().enabled = true;
                     }
                 }
 

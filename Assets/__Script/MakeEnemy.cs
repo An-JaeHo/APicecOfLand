@@ -30,6 +30,12 @@ public class EnemyInfo : MonoBehaviour
 public class MakeEnemy : EnemyInfo
 {
     public JsonManger enemyInfo;
+    public bool tutorialCheck;
+
+    private void Start()
+    {
+        tutorialCheck = false;
+    }
 
     public void InputEnemyInfo(string code)
     {

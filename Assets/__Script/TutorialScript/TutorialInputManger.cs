@@ -18,7 +18,6 @@ public class TutorialInputManger : MonoBehaviour
     public Transform army;
     public GameObject bulidUpgradeUi;
     public float time;
-    public bool finalCheck;
 
     //제작해야되는것
     public GameObject BarrackUi;
@@ -26,10 +25,10 @@ public class TutorialInputManger : MonoBehaviour
     public GameObject armyUpgradeUi;
 
     public bool talk;
+    public GameObject inven;
 
     void Start()
     {
-        finalCheck = false;
         gameCamera = Camera.main;
         mouseCheck = true;
         armyMove = true;
@@ -136,6 +135,12 @@ public class TutorialInputManger : MonoBehaviour
                             armyMove = false;
                             moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
 
+                            if(talkManger.finalCheck)
+                            {
+                                talkManger.stopTalkNum = 1;
+                                talkManger.NextScriptButton();
+                            }
+
                             break;
                         default:
                             break;
@@ -144,6 +149,7 @@ public class TutorialInputManger : MonoBehaviour
                 else
                 {
                     hitObj = hit.transform;
+
                     switch (hit.transform.tag)
                     {
                         case "Enemy":
@@ -153,64 +159,31 @@ public class TutorialInputManger : MonoBehaviour
                                 moveSoldier.attack = true;
                                 army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
                                 buttonManger.button.GetComponent<Button>().interactable = false;
+                                hit.transform.parent.GetComponent<BoxCollider2D>().enabled = true;
+                                talkManger.FinalTalk();
                             }
                             break;
+
                         case "SelectLand":
-                            if (army.tag == "Builder")
+                            if (int.Parse(army.parent.parent.name) >= int.Parse(hit.transform.parent.name)
+                                     && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
                             {
-                                if (hit.transform.GetComponent<MakeArea>().Type == "Area"
-                                    && hit.transform.GetComponent<MakeArea>().Destroy != true)
-                                {
-                                    if (hit.transform.GetComponent<MakeArea>().Name == "우유")
-                                    {
-                                        bulidUpgradeUi.GetComponent<TutorialBuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
-                                    }
-                                    else if (hit.transform.GetComponent<MakeArea>().Name == "밀가루")
-                                    {
-                                        bulidUpgradeUi.GetComponent<TutorialBuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
-                                    }
-                                    else if (hit.transform.GetComponent<MakeArea>().Name == "설탕")
-                                    {
-                                        bulidUpgradeUi.GetComponent<TutorialBuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
-                                    }
-                                    bulidUpgradeUi.GetComponent<TutorialBuildController>().land = hit.transform;
-                                    bulidUpgradeUi.GetComponent<TutorialBuildController>().ReadAreaInfo();
-                                }
+                                army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
                             }
-                            else
+                            else if (int.Parse(army.parent.parent.name) < int.Parse(hit.transform.parent.name)
+                                && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
                             {
-                                if (int.Parse(army.parent.parent.name) >= int.Parse(hit.transform.parent.name)
-                                         && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
-                                {
-                                    army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
-                                }
-                                else if (int.Parse(army.parent.parent.name) < int.Parse(hit.transform.parent.name)
-                                    && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
-                                {
-                                    army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
-                                }
-
-                                army.transform.parent.GetComponent<BoxCollider2D>().enabled = false;
-                                army.transform.SetParent(hit.transform);
-                                moveSoldier.move = true;
-                                army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
-                                army.transform.GetComponent<TutorialSoldierManger>().movePoint = false;
+                                army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
                             }
-
+                            army.transform.parent.GetComponent<BoxCollider2D>().enabled = false;
+                            army.transform.SetParent(hit.transform);
+                            moveSoldier.move = true;
+                            army.transform.GetComponent<TutorialSoldierManger>().SoldierAction();
+                            army.transform.GetComponent<TutorialSoldierManger>().movePoint = false;
+                            //tileManger.enemyTile.GetComponent<BoxCollider2D>().enabled = true;
                             ChangeLandInfo();
                             break;
-
-                        case "Army":
-                            //if (!hit.transform.GetComponent<TutorialSoldierManger>().movePoint)
-                            //{
-                            //    talkManger.NextScriptButton();
-                            //    talkManger.dimmedCover.SetActive(true);
-                            //    talkManger.stopTalkNum = 5;
-                            //    moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
-                            //}
-                            break;
                         default:
-
                             break;
                     }
                     armyMove = true;
@@ -309,12 +282,6 @@ public class TutorialInputManger : MonoBehaviour
                                 rangeManger.PlayerMoveRange(hit.transform);
                                 armyMove = false;
 
-                                if (!finalCheck)
-                                {
-                                    talkManger.NextScriptButton();
-                                    talkManger.talkCheck = true;
-                                }
-                                moveSoldier = hit.transform.GetComponent<TutorialSoldierManger>();
                             }
 
                             break;

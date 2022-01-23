@@ -26,6 +26,10 @@ public class TutorialTalkManger : MonoBehaviour
     public GameObject DefendUi;
     public bool moveCheck;
 
+    [Header("Final Talk")]
+    public bool finalCheck;
+    public TutorialInvenController tutorialInvenController;
+
     [Header("Set in ViualStudio")]
     public int spcriptNum;
     public int textNum;
@@ -39,6 +43,7 @@ public class TutorialTalkManger : MonoBehaviour
     public bool buildCheck;
     public bool barrackCheck;
     public bool enemyCheck;
+
 
 
     private List< string> scripts;
@@ -56,6 +61,7 @@ public class TutorialTalkManger : MonoBehaviour
         scripts.Add("우선 저희 건물부터 소개 해드리겠습니다.​");
         tile.StartTile();
         sceneCheck = false;
+        finalCheck = false;
         spcriptText.text = scripts[spcriptNum];
         talkCheck = false;
         enemyCheck = false;
@@ -148,6 +154,18 @@ public class TutorialTalkManger : MonoBehaviour
                     if(spcriptNum == 1)
                     {
                         tile.tutorialEnemy.GetComponent<TutorialEnemyManger>().SoldierAction();
+                    }
+                    else if (spcriptNum == 7)
+                    {
+                        inputManger.army.GetComponent<BoxCollider2D>().enabled = true;
+                    }
+                }
+
+                if(finalCheck)
+                {
+                    if (spcriptNum == 1)
+                    {
+                        
                     }
                 }
 
@@ -272,8 +290,13 @@ public class TutorialTalkManger : MonoBehaviour
         scripts.Clear();
         textNum = 7;
         spcriptNum = 0;
+        stopTalkNum = 0;
+        enemyCheck = false;
+        finalCheck = true;
+        // 유닛 이동
         scripts.Add("아군을 터치 해보세요.");
         scripts.Add("유닛을 이동시키세요.");
+        // 카드 사용
         scripts.Add("어서 눌러서 쥐를 몰아내자");
         scripts.Add("어서 눌러서 쥐를 몰아내자");
         scripts.Add("자 이제 저 우주선을 파괴하자");

@@ -60,6 +60,7 @@ public class TutorialBarrackController : MonoBehaviour
         if (playerInfo.milk > soldierInfo.ProductionExpense)
         {
             GameObject prefebSoldier = Instantiate(soldierPrefeb, new Vector3(land.position.x, land.position.y + 25f), Quaternion.identity);
+            inputManger.army = prefebSoldier.transform;
             prefebSoldier.transform.SetParent(land);
             prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
             SaveLevelCheck(prefebSoldier);

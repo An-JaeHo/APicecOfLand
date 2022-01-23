@@ -16,10 +16,19 @@ public class AnimationController : MonoBehaviour
         }
         else if (transform.parent.parent.tag == "Enemy")
         {
-            transform.parent.parent.GetComponent<EnemyController>().invenManger.InputCard(transform.parent.parent.GetComponent<MakeEnemy>().Grade);
-            transform.parent.parent.GetComponent<EnemyController>().playerInfo.killingPoint++;
-            transform.parent.parent.GetComponent<EnemyController>().transform.parent.GetComponent<BoxCollider2D>().enabled = true;
-            transform.parent.parent.GetComponent<EnemyController>().buttonManger.enemys.Remove(transform.gameObject);
+            if(transform.parent.parent.GetComponent<MakeEnemy>().tutorialCheck)
+            {
+
+            }
+            else
+            {
+                transform.parent.parent.GetComponent<EnemyController>().invenManger.InputCard(transform.parent.parent.GetComponent<MakeEnemy>().Grade);
+                transform.parent.parent.GetComponent<EnemyController>().playerInfo.killingPoint++;
+                transform.parent.parent.GetComponent<EnemyController>().transform.parent.GetComponent<BoxCollider2D>().enabled = true;
+                transform.parent.parent.GetComponent<EnemyController>().buttonManger.enemys.Remove(transform.gameObject);
+                GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>().CheckTile();
+            }
+
             Destroy(transform.parent.parent.gameObject);
         }
         else if (transform.parent.parent.tag == "Boss")
@@ -30,8 +39,9 @@ public class AnimationController : MonoBehaviour
             transform.parent.parent.GetComponent<EnemyController>().tiles.bossHP.SetActive(false);
             transform.parent.parent.transform.parent.GetComponent<BoxCollider2D>().enabled = true;
             Destroy(transform.parent.parent.gameObject);
+            GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>().CheckTile();
         }
-        GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>().CheckTile();
+        
     }
 
     public void CandleDeadAni()

@@ -82,7 +82,7 @@ public class TutorialSoldierManger : MonoBehaviour
                 stayTime = 0;
                 buttonManger.button.GetComponent<Button>().interactable = true;
                 input.talk = false;
-                movePoint = true;
+                movePoint = false;
 
                 if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
                 {
@@ -93,6 +93,15 @@ public class TutorialSoldierManger : MonoBehaviour
                     tileManger.talkManger.talkCheck = true;
                     transform.parent.GetComponent<AreaManger>().TurnArea();
                     transform.parent.GetComponent<MakeArea>().Name = "Grass";
+                }
+
+                if(input.talkManger.finalCheck)
+                {
+                    input.talkManger.tutorialInvenController.monsterTurnImage.color = Color.gray;
+                    //lerp로 변화도 고려
+                    input.talkManger.GetComponent<RectTransform>().anchoredPosition =new Vector2(input.talkManger.GetComponent<RectTransform>().anchoredPosition.x, 426);
+                    input.buttonManger.button.GetComponent<RectTransform>().anchoredPosition = new Vector2(-100, -314);
+                    input.inven.SetActive(true);
                 }
 
                 move = false;

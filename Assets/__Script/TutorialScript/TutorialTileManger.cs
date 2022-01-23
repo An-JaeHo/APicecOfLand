@@ -144,23 +144,5 @@ public class TutorialTileManger : MonoBehaviour
                 enemyPicture.transform.SetParent(noChildEnemy.transform);
             }
         }
-
-
-
-        //GameObject enemy = Instantiate(enemyPrefab, new Vector3(tileList[0].GetChild(0).position.x, tileList[0].GetChild(0).position.y + 25f), Quaternion.identity);
-        //enemy.transform.SetParent(tileList[0].GetChild(0));
-        //tileList[0].GetChild(0).GetComponent<MakeArea>().InputAreaInfo("Area 30");
-        //enemy.GetComponent<MakeEnemy>().InputEnemyInfo("Enemy 1");
-
-        //for (int i = 0; i < enemyObj.Length; i++)
-        //{
-        //    if (enemyObj[i].name == enemy.GetComponent<MakeEnemy>().Code)
-        //    {
-        //        GameObject enemyPicture = Instantiate(enemyObj[i], new Vector3(enemy.transform.position.x, enemy.transform.position.y - 55), Quaternion.identity);
-        //        enemyPicture.transform.SetParent(enemy.transform);
-        //    }
-        //}
-        //enemy.GetComponent<TutorialEnemyManger>().move = true;
-        //enemy.GetComponent<TutorialEnemyManger>().SoldierAction();
     }
 }
