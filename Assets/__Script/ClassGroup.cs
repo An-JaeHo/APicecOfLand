@@ -136,6 +136,7 @@ public class Monster
     public int Experience;
     public int RiseHealth;
     public int AttackNumber;
+    public int MovementNumber;
 }
 
 [System.Serializable]

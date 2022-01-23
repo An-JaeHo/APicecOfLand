@@ -16,7 +16,7 @@ public class TutorialInvenController : MonoBehaviour
     public List<Card> fourGradeCard;
     public List<Card> fiveGradeCard;
 
-    public string cardName;
+    [Space(10f)]
     public GameObject iconPrefeb;
     public GameObject slot;
 
@@ -66,7 +66,8 @@ public class TutorialInvenController : MonoBehaviour
         for (int j = 0; j < slot.transform.childCount; j++)
         {
             GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
-            cardInfo.GetComponent<InputSkill>().MakeCard("Card 1");
+            cardInfo.GetComponent<InputSkill>().MakeCard("Card 15");
+            cardInfo.GetComponent<Icon>().tutorialCheck = true;
             cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
             cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
             cardCount++;

@@ -45,6 +45,8 @@ public class TutorialSoldierManger : MonoBehaviour
     public Sprite level4;
     public Sprite level5;
 
+    public Sprite[] destroyAreaObj;
+
     void Start()
     {
         tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TutorialTileManger>();
@@ -66,6 +68,15 @@ public class TutorialSoldierManger : MonoBehaviour
         puredefend = transform.GetComponent<MakeSoldier>().Defensive;
         pureMoveRange = transform.GetComponent<MakeSoldier>().Movement;
         builderPoint = 0;
+
+
+        object[] loadDestroyArea = Resources.LoadAll("AreaBroken", typeof(Sprite));
+        destroyAreaObj = new Sprite[loadDestroyArea.Length];
+
+        for (int i = 0; i < loadDestroyArea.Length; i++)
+        {
+            destroyAreaObj[i] = (Sprite)loadDestroyArea[i];
+        }
     }
 
     private void Update()
@@ -83,6 +94,7 @@ public class TutorialSoldierManger : MonoBehaviour
                 buttonManger.button.GetComponent<Button>().interactable = true;
                 input.talk = false;
                 movePoint = false;
+                soldier.MovementNumber--;
 
                 if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
                 {
@@ -90,22 +102,50 @@ public class TutorialSoldierManger : MonoBehaviour
                     //transform.GetComponent<AudioSource>().Play();
                     input.talkManger.stopTalkNum = 7;
                     input.talkManger.NextScriptButton();
-                    tileManger.talkManger.talkCheck = true;
-                    transform.parent.GetComponent<AreaManger>().TurnArea();
-                    transform.parent.GetComponent<MakeArea>().Name = "Grass";
-                }
 
-                if(input.talkManger.finalCheck)
+                    transform.parent.GetComponent<MakeArea>().Name = null;
+                    transform.parent.GetComponent<MakeArea>().Type = "Grass";
+                    transform.parent.GetComponent<MakeArea>().Grade = 0;
+                    transform.parent.GetComponent<MakeArea>().UpgradeFlour = 0;
+                    transform.parent.GetComponent<MakeArea>().UpgradeSugar = 0;
+                    transform.parent.GetComponent<MakeArea>().MilkOutput = 0;
+                    transform.parent.GetComponent<MakeArea>().FlourOutput = 0;
+                    transform.parent.GetComponent<MakeArea>().SugarOutput = 0;
+                    transform.parent.GetComponent<MakeArea>().Movement = true;
+                    transform.parent.GetComponent<MakeArea>().Destroy = false;
+                    transform.parent.GetComponent<MakeArea>().Repair = false;
+                    transform.parent.GetComponent<MakeArea>().Effect = null;
+                    transform.parent.GetComponent<SpriteRenderer>().color = Color.white;
+                    transform.parent.tag = "Grass";
+
+                    for (int i = 0; i < destroyAreaObj.Length; i++)
+                    {
+                        if (transform.parent.GetComponent<MakeArea>().Code == destroyAreaObj[i].name)
+                        {
+                            transform.parent.GetComponent<MakeArea>().Picture = destroyAreaObj[i];
+                            transform.parent.GetComponent<SpriteRenderer>().sprite = destroyAreaObj[i];
+                            input.talkManger.stopTalkNum = 12;
+                            input.talkManger.NextScriptButton();
+                            input.buttonManger.button.GetComponent<Button>().enabled = true;
+                        }
+                    }
+                }
+                move = false;
+
+                if (input.talkManger.finalCheck)
                 {
                     input.talkManger.tutorialInvenController.monsterTurnImage.color = Color.gray;
                     //lerp로 변화도 고려
-                    input.talkManger.GetComponent<RectTransform>().anchoredPosition =new Vector2(input.talkManger.GetComponent<RectTransform>().anchoredPosition.x, 426);
+                    input.talkManger.GetComponent<RectTransform>().anchoredPosition = new Vector2(input.talkManger.GetComponent<RectTransform>().anchoredPosition.x, 426);
                     input.buttonManger.button.GetComponent<RectTransform>().anchoredPosition = new Vector2(-100, -314);
                     input.inven.SetActive(true);
+                    input.talkManger.stopTalkNum = 7;
+                    input.talkManger.NextScriptButton();
+                    input.talkManger.finalCheck = false;
                 }
-
-                move = false;
             }
+
+            
         }
 
     }
@@ -274,36 +314,6 @@ public class TutorialSoldierManger : MonoBehaviour
         }
     }
 
-    public void CheckBuildCount()
-    {
-        if (transform.parent.GetComponent<MakeArea>().BuildTurn != builderPoint
-            && transform.parent.GetComponent<MakeArea>().firstBuild == true)
-        {
-            movePoint = false;
-            builderPoint++;
-        }
-        else
-        {
-            movePoint = true;
-            if (transform.parent.tag == "Area" || transform.parent.tag == "Barracks")
-            {
-                transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<MakeArea>().Picture;
-            }
-            else
-            {
-                transform.parent.GetComponent<SpriteRenderer>().sprite = transform.parent.GetComponent<AreaManger>().pureSprite;
-            }
-
-            transform.parent.GetComponent<MakeArea>().Destroy = false;
-            transform.parent.GetComponent<MakeArea>().firstBuild = false;
-            transform.parent.GetComponent<AreaManger>().CheckUpdateMaterial();
-
-            builderPoint = 0;
-        }
-
-
-    }
-
     public void MakeBuffIcon(string code)
     {
         int i = buffPrefebList.Count;
@@ -314,6 +324,10 @@ public class TutorialSoldierManger : MonoBehaviour
         buffCount = icon.GetComponent<InputSkill>().Turn;
 
         icon.transform.position = new Vector3(icon.transform.position.x - 10 + ((i - 1) * 15), transform.GetChild(0).position.y + 100);
+        input.talkManger.stopTalkNum = 10;
+        input.talkManger.NextScriptButton();
+        input.tileManger.enemyTile.GetComponent<BoxCollider2D>().enabled = true;
+        input.talkManger.tutorialInvenController.monsterTurnImage.color = Color.white;
         buffPrefebList.Add(icon);
     }
 

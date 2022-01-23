@@ -18,7 +18,7 @@ public class AnimationController : MonoBehaviour
         {
             if(transform.parent.parent.GetComponent<MakeEnemy>().tutorialCheck)
             {
-
+                transform.parent.parent.GetComponent<TutorialEnemyManger>().buttonManger.GetComponent<TutorialInvenController>().InputCard(1);
             }
             else
             {

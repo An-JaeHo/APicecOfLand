@@ -107,7 +107,7 @@ public class InputManger : MonoBehaviour
                             break;
 
                         case "Army":
-                            if (hit.transform.GetComponent<SoldierManger>().movePoint)
+                            if (hit.transform.GetComponent<SoldierManger>().movePoint || hit.transform.GetComponent<MakeSoldier>().MovementNumber !=0)
                             {
                                 rangeManger.PlayerMoveRange(hit.transform);
                             }
@@ -292,7 +292,7 @@ public class InputManger : MonoBehaviour
                                 break;
 
                             case "Army":
-                                if (hit.transform.GetComponent<SoldierManger>().movePoint)
+                                if (hit.transform.GetComponent<SoldierManger>().movePoint || hit.transform.GetComponent<MakeSoldier>().MovementNumber != 0)
                                 {
                                     rangeManger.PlayerMoveRange(hit.transform);
                                 }

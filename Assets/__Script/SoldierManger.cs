@@ -80,6 +80,7 @@ public class SoldierManger : MonoBehaviour
                 input.armyMove = true;
                 stayTime = 0;
                 buttonManger.button.GetComponent<Button>().interactable = true;
+                soldier.MovementNumber--;
 
                 if (transform.tag == "Builder")
                 {

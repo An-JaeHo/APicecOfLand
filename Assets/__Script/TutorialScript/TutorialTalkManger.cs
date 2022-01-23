@@ -279,7 +279,7 @@ public class TutorialTalkManger : MonoBehaviour
         scripts.Add("파괴 상태의 건물을 다음 턴에 수리하지 못하면 영구적으로 파괴됩니다.");
         scripts.Add("적군이 행동력을 모두 소모했습니다.");
         scripts.Add("이제는 반격 할 때 입니다.");
-        scripts.Add("적을 공격하세요.");
+        scripts.Add("적군을 터치하여 공격해보세요.");
        
         spcriptText.text = scripts[spcriptNum];
     }
@@ -288,24 +288,28 @@ public class TutorialTalkManger : MonoBehaviour
     {
         inputManger.talk = true;
         scripts.Clear();
-        textNum = 7;
+        textNum = 13;
         spcriptNum = 0;
         stopTalkNum = 0;
         enemyCheck = false;
         finalCheck = true;
-        // 유닛 이동
+        // 유닛 이동 2 
         scripts.Add("아군을 터치 해보세요.");
         scripts.Add("유닛을 이동시키세요.");
-        // 카드 사용
-        scripts.Add("어서 눌러서 쥐를 몰아내자");
-        scripts.Add("어서 눌러서 쥐를 몰아내자");
-        scripts.Add("자 이제 저 우주선을 파괴하자");
-        scripts.Add("그렇지 않으면 또 쥐가 나올꺼야");
-        scripts.Add("우주선 위로 올라간다면 파괴할수 있을꺼야");
-        scripts.Add("어서 움직이자");
-        scripts.Add("잘했어! 우리가 쥐를 물리쳤어!");
-        scripts.Add("곧 쥐들이 다시 올꺼야");
-        scripts.Add("이제 다음공격에 대비해 준비를 하자");
+        // 카드 사용 8 
+        scripts.Add("현재 턴에 모든 유닛의 공격 및 행동이 끝나면아이콘이 회색 상태가 되어 알려줍니다.");
+        scripts.Add("적군을 처치하고 카드를 획득했습니다!");
+        scripts.Add("하나의 스킬을 3개 모으면 상위 카드로 진화합니다.");
+        scripts.Add("한 번에 5 종류 이상의 카드는 보유 할 수 없습니다!");
+        scripts.Add("스킬 카드는 파란색은 아군 빨간색은 적군하얀색은 케이크에서 사용 가능합니다.");
+        scripts.Add("스킬 카드를 터치하여 원하는 유닛에 사용하세요.");
+        //카드 사용후 11
+        scripts.Add("아군의 이동력이 상승했습니다.");
+        scripts.Add("적 기지를 파괴하세요!");
+        scripts.Add("적 기지까지 파괴해야 패배하지 않습니다!");
+        //이동 후 턴 on 13
+        scripts.Add("모든 공격과 이동을 소모했습니다.");
+        scripts.Add("턴을 넘겨야 행동력을 모두 회복합니다.");
         spcriptText.text = scripts[spcriptNum];
         sceneCheck = true;
     }

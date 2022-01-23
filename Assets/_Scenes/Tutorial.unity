@@ -1440,6 +1440,7 @@ GameObject:
   - component: {fileID: 1614698207}
   - component: {fileID: 1614698210}
   - component: {fileID: 1614698211}
+  - component: {fileID: 1614698212}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -1583,10 +1584,27 @@ MonoBehaviour:
   threeGradeCard: []
   fourGradeCard: []
   fiveGradeCard: []
-  cardName: 
-  iconPrefeb: {fileID: 0}
-  slot: {fileID: 0}
+  iconPrefeb: {fileID: 8689413950977551159, guid: 0afd45cd2fef2444bab21288b083fd43,
+    type: 3}
+  slot: {fileID: 7375806273813756161}
   cardCount: 0
+--- !u!114 &1614698212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614698204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99b3c7853e832b4d9ae45922d5da32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carInfo: {fileID: 0}
+  SoldierPrefeb: {fileID: 0}
+  EnemyPrefeb: {fileID: 0}
+  AreaPrefeb: {fileID: 0}
+  tutorialCheck: 0
 --- !u!1 &1706185314
 GameObject:
   m_ObjectHideFlags: 0
@@ -10970,7 +10988,6 @@ GameObject:
   - component: {fileID: 7375806274223760983}
   - component: {fileID: 7375806274223760969}
   - component: {fileID: 7375806274223760968}
-  - component: {fileID: 7375806274223760981}
   m_Layer: 5
   m_Name: SkillInven
   m_TagString: GameUI
@@ -10978,28 +10995,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &7375806274223760981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375806274223760980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b701d75f75cad34b9182e19ea5ae1cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oneGradeCard: []
-  twoGradeCard: []
-  threeGradeCard: []
-  fourGradeCard: []
-  fiveGradeCard: []
-  cardName: Skill 3
-  iconPrefeb: {fileID: 8689413950977551159, guid: 0afd45cd2fef2444bab21288b083fd43,
-    type: 3}
-  slot: {fileID: 7375806273813756161}
-  cardCount: 0
 --- !u!224 &7375806274223760983
 RectTransform:
   m_ObjectHideFlags: 0

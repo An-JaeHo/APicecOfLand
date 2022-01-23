@@ -166,18 +166,11 @@ public class TutorialButtonManger : MonoBehaviour
             }
             
         }
-        
 
-        //if (buildTile.tag == "Area" || buildTile.tag == "Barracks")
-        //{
-        //    buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<MakeArea>().Picture;
-        //    input.talkManger.NextScriptButton();
-        //    input.talk = true;
-        //}
-        //else
-        //{
-        //    buildTile.GetComponent<SpriteRenderer>().sprite = buildTile.GetComponent<AreaManger>().pureSprite;
-        //}
+        if(input.talkManger.spcriptNum == 12)
+        {
+            SceneMgr.GoUpGradeScene();
+        }
 
         buildTile.GetComponent<MakeArea>().Destroy = false;
         buildTile.GetComponent<MakeArea>().firstBuild = false;

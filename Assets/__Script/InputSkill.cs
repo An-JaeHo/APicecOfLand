@@ -32,7 +32,6 @@ public class InputSkill : CardInfo
     public JsonManger skillList;
     public CardList card;
     public Image image;
-    public InvenManger test;
     public string nextCode;
     public int maxGrade ;
 
@@ -43,11 +42,9 @@ public class InputSkill : CardInfo
 
     public void MakeCard(string code)
     {
-        test = GameObject.FindGameObjectWithTag("GameController").GetComponent<InvenManger>();
         skillList = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         card = GameObject.FindGameObjectWithTag("GameController").GetComponent<CardList>();
         image = GetComponent<Image>();
-        transform.name = test.cardName;
 
         for (int i = 0; i < skillList.information.card.Length; i++)
         {

@@ -9,6 +9,7 @@ public class CardList : MonoBehaviour
     public GameObject SoldierPrefeb;
     public GameObject EnemyPrefeb;
     public GameObject AreaPrefeb;
+    public bool tutorialCheck;
 
     public void FindCard(string CardCode)
     {
@@ -89,14 +90,26 @@ public class CardList : MonoBehaviour
                 break;
             case "Card 15":
                 SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 1;
-                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
+                SoldierPrefeb.GetComponent<MakeSoldier>().MovementNumber++;
+
+                if(tutorialCheck)
+                {
+                    SoldierPrefeb.GetComponent<TutorialSoldierManger>().MakeBuffIcon(CardCode);
+                }
+                else
+                {
+                    SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
+                }
+                
                 break;
             case "Card 16":
                 SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 2;
+                SoldierPrefeb.GetComponent<MakeSoldier>().MovementNumber++;
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 17":
                 SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 3;
+                SoldierPrefeb.GetComponent<MakeSoldier>().MovementNumber++;
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 18":
