@@ -10,7 +10,6 @@ public class BarrackController : MonoBehaviour
     public GameObject kindofmonster;
     public GameObject parent;
     public List<GameObject> monsterUi;
-    public List<GameObject> monsters;
     public MakeSoldier soldierInfo;
     public PlayerInfo playerInfo;
     public GameObject soldierMakeButton;
@@ -75,7 +74,6 @@ public class BarrackController : MonoBehaviour
                 }
             }
 
-            monsters.Add(prefebSoldier);
             buttonManger.amrys.Add(prefebSoldier);
             usingPeople += prefebSoldier.GetComponent<MakeSoldier>().PopulationNumber;
             supplyManger.JustUpdateSupply();

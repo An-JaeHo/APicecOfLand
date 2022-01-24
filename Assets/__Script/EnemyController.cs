@@ -139,8 +139,6 @@ public class EnemyController : MonoBehaviour
                 //위아래 17 양옆 1
                 if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
                 {
-                    
-
                     //if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
                     //    || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
                     //{

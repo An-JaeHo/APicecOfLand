@@ -79,8 +79,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
-
         if (deleteCheck)
         {
             invenManger.cardCount--;

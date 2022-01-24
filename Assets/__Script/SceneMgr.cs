@@ -25,6 +25,9 @@ public class SceneMgr : MonoBehaviour
 
     public static void GoGameScene()
     {
+        playerInfo.updateFlour = 0;
+        playerInfo.updateMilk = 0;
+        playerInfo.updateSugar = 0;
         SceneManager.LoadScene(3);
     }
 

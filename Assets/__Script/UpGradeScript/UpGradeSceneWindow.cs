@@ -11,9 +11,10 @@ public class UpGradeSceneWindow : MonoBehaviour
     public GameObject supply;
     public Text monsterLevel;
     public Text monsterName;
+
+    [Header("State")]
     public Transform stateWindow;
     public Transform needSouceWindow;
-
 
     [Header("Set in VisualStudio")]
     public JsonManger jsonManger;
@@ -52,21 +53,21 @@ public class UpGradeSceneWindow : MonoBehaviour
         stateWindow.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().HelthPoint.ToString();
         stateWindow.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().BaseAttack.ToString();
         stateWindow.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Defensive.ToString();
-        stateWindow.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Critical.ToString();
+        stateWindow.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Critical.ToString()+ "%";
 
         if (obj.GetComponent<MakeSoldier>().Level == 5)
         {
             stateWindow.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.HelthPoint.ToString();
             stateWindow.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.BaseAttack.ToString();
             stateWindow.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.Defensive.ToString();
-            stateWindow.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.Critical.ToString();
+            stateWindow.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.Critical.ToString()+"%";
         }
         else
         {
-            stateWindow.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().HelthPoint.ToString();
-            stateWindow.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().BaseAttack + obj.GetComponent<MakeSoldier>().RiseAttack).ToString();
-            stateWindow.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Defensive + obj.GetComponent<MakeSoldier>().RiseDefensive).ToString();
-            stateWindow.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Critical + obj.GetComponent<MakeSoldier>().RiseCritical).ToString();
+            stateWindow.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().HelthPoint + obj.GetComponent<MakeSoldier>().RiseHelth * obj.GetComponent<MakeSoldier>().Level).ToString();
+            stateWindow.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().BaseAttack + obj.GetComponent<MakeSoldier>().RiseAttack* obj.GetComponent<MakeSoldier>().Level).ToString();
+            stateWindow.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Defensive + obj.GetComponent<MakeSoldier>().RiseDefensive * obj.GetComponent<MakeSoldier>().Level).ToString();
+            stateWindow.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Critical + obj.GetComponent<MakeSoldier>().RiseCritical * obj.GetComponent<MakeSoldier>().Level).ToString()+"%";
         }
 
 

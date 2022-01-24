@@ -135,45 +135,59 @@ public class AreaManger : MonoBehaviour
         {
             case "Area 1":
                 Code = "Area 2";
+                area.maxGrade = 4;
                 break;
             case "Area 2":
                 Code = "Area 3";
+                area.maxGrade = 4;
                 break;
             case "Area 3":
                 Code = "Area 4";
+                area.maxGrade = 4;
                 break;
             case "Area 5":
                 Code = "Area 6";
+                area.maxGrade = 4;
                 break;
             case "Area 6":
                 Code = "Area 7";
+                area.maxGrade = 4;
                 break;
             case "Area 7":
                 Code = "Area 8";
+                area.maxGrade = 4;
                 break;
             case "Area 9":
                 Code = "Area 10";
+                area.maxGrade = 4;
                 break;
             case "Area 10":
                 Code = "Area 11";
+                area.maxGrade = 4;
                 break;
             case "Area 11":
                 Code = "Area 12";
+                area.maxGrade = 4;
                 break;
             case "Area 16":
                 Code = "Area 17";
+                area.maxGrade = 4;
                 break;
             case "Area 17":
                 Code = "Area 18";
+                area.maxGrade = 4;
                 break;
             case "Area 18":
                 Code = "Area 19";
+                area.maxGrade = 4;
                 break;
             case "Area 20":
                 Code = "Area 21";
+                area.maxGrade = 3;
                 break;
             case "Area 21":
                 Code = "Area 22";
+                area.maxGrade = 3;
                 break;
         }
 

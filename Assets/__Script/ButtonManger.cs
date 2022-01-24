@@ -77,7 +77,7 @@ public class ButtonManger : MonoBehaviour
     {
         buttonTimer += Time.deltaTime;
 
-        if (playerInfo.turnPoint < 9)
+        if (playerInfo.turnPoint < 4)
         {
             if (buttonTimer > 1f)
             {
@@ -224,12 +224,21 @@ public class ButtonManger : MonoBehaviour
         if (settingUi.activeSelf)
         {
             settingUi.SetActive(false);
-            input.mouseCheck = true;
         }
         else
         {
             settingUi.SetActive(true);
+        }
+
+        if (Time.timeScale != 0)
+        {
+            Time.timeScale = 0;
             input.mouseCheck = false;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            input.mouseCheck = true;
         }
     }
 
@@ -563,10 +572,6 @@ public class ButtonManger : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            button.GetComponent<Button>().interactable = true;
-        }
 
         for (int i = 0; i < amrys.Count; i++)
         {
@@ -641,7 +646,7 @@ public class ButtonManger : MonoBehaviour
 
     void TurnCheck()
     {
-        if(tileManger.attackTurnCheck)
+        if (tileManger.attackTurnCheck)
         {
             attackContText.GetComponent<Image>().sprite = defendUi;
             timer.limitTime = 60;
@@ -677,16 +682,16 @@ public class ButtonManger : MonoBehaviour
 
             if (healCheck)
             {
-                for (int i = 0; i < barrackController.monsters.Count; i++)
+                for (int i = 0; i < amrys.Count; i++)
                 {
-                    barrackController.monsters[i].GetComponent<MakeSoldier>().HelthPoint += 
-                        (int)(barrackController.monsters[i].GetComponent<SoldierManger>().totalHp * 0.3f);
+                    amrys[i].GetComponent<MakeSoldier>().HelthPoint +=
+                        (int)(amrys[i].GetComponent<SoldierManger>().totalHp * 0.3f);
 
-                    if(barrackController.monsters[i].GetComponent<MakeSoldier>().HelthPoint >
-                        barrackController.monsters[i].GetComponent<SoldierManger>().totalHp)
+                    if (amrys[i].GetComponent<MakeSoldier>().HelthPoint >
+                        amrys[i].GetComponent<SoldierManger>().totalHp)
                     {
-                        barrackController.monsters[i].GetComponent<MakeSoldier>().HelthPoint = 
-                            (int)barrackController.monsters[i].GetComponent<SoldierManger>().totalHp;
+                        amrys[i].GetComponent<MakeSoldier>().HelthPoint =
+                            (int)amrys[i].GetComponent<SoldierManger>().totalHp;
                     }
                 }
             }

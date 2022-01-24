@@ -54,10 +54,12 @@ public class TileManger : MonoBehaviour
     public Sprite[] destroyAreaObj;
     public Sprite[] areaImges;
     public GameObject particlePrefeb;
+    List<Transform> noChildLand;
 
     [Header("Boss")]
     public GameObject bossPrefeb;
     public GameObject bossHP;
+    
 
     private void Awake()
     {
@@ -340,63 +342,75 @@ public class TileManger : MonoBehaviour
     {
         if (enemyLand.Count != 0)
         {
+            GameObject noChildEnemy = new GameObject();
+
             for (int i = 0; i < enemyLand.Count; i++)
             {
-                if (enemyLand[i].childCount == 0 
-                    && enemyLand[i].tag == "Enemy Base")
+                int enemyrand = UnityEngine.Random.Range(0, 100);
+
+                if (enemyLand[i].childCount == 0)
                 {
-                    GameObject noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyLand[i].position.x, enemyLand[i].position.y + 25f), Quaternion.identity);
+                    noChildEnemy = Instantiate(enemyPrefab, new Vector3(enemyLand[i].position.x, enemyLand[i].position.y + 25f), Quaternion.identity);
                     noChildEnemy.transform.SetParent(enemyLand[i]);
-                    int enemyrand = UnityEngine.Random.Range(0, 100);
-
-                    switch (enemyLand[i].GetComponent<MakeArea>().Grade)
-                    {
-                        case 1:
-                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
-                            break;
-                        case 2:
-                            if (enemyrand < 50)
-                            {
-                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
-                            }
-                            else
-                            {
-                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
-                            }
-                            break;
-                        case 3:
-                            if (enemyrand > 90)
-                            {
-                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
-                            }
-                            else
-                            {
-                                noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-
-                    for (int j = 0; j < enemyObj.Length; j++)
-                    {
-                        if (enemyObj[j].name == noChildEnemy.GetComponent<MakeEnemy>().Code)
-                        {
-                            GameObject enemyPicture = Instantiate(enemyObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
-                            enemyPicture.transform.SetParent(noChildEnemy.transform);
-                        }
-                    }
-
-                    LevelCheck(noChildEnemy);
-                    buttonManger.enemys.Add(noChildEnemy);
                 }
+                else
+                {
+                    for (int j = 0; j < noChildLand.Count; j++)
+                    {
+                        int noChildEnemyLand = UnityEngine.Random.Range(0, noChildLand.Count);
+                        noChildEnemy = Instantiate(enemyPrefab, new Vector3(noChildLand[noChildEnemyLand].GetChild(0).position.x, noChildLand[noChildEnemyLand].GetChild(0).position.y + 25f), Quaternion.identity);
+                        noChildEnemy.transform.SetParent(noChildLand[noChildEnemyLand].GetChild(0));
+                        break;
+                    }
+                }
+
+                switch (enemyLand[i].GetComponent<MakeArea>().Grade)
+                {
+                    case 1:
+                        noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
+                        break;
+                    case 2:
+                        if (enemyrand < 50)
+                        {
+                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
+                        }
+                        else
+                        {
+                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                        }
+                        break;
+                    case 3:
+                        if (enemyrand > 90)
+                        {
+                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy3Code[0]);
+                        }
+                        else
+                        {
+                            noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy4Code[0]);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                for (int j = 0; j < enemyObj.Length; j++)
+                {
+                    if (enemyObj[j].name == noChildEnemy.GetComponent<MakeEnemy>().Code)
+                    {
+                        GameObject enemyPicture = Instantiate(enemyObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
+                        enemyPicture.transform.SetParent(noChildEnemy.transform);
+                    }
+                }
+
+                LevelCheck(noChildEnemy);
+                buttonManger.enemys.Add(noChildEnemy);
             }
         }
     }
 
     public void SpawnEnemy()
     {
-        List<Transform> noChildLand = enemyMakeLand;
+        noChildLand = enemyMakeLand;
 
         for (int i=0; i< noChildLand.Count;i++)
         {
@@ -489,6 +503,11 @@ public class TileManger : MonoBehaviour
             }
 
             if(playerInfo.turnPoint ==3)
+            {
+                EnemyGradeSort();
+            }
+            //테스트
+            if (playerInfo.turnPoint == 5)
             {
                 EnemyGradeSort();
             }

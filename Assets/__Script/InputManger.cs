@@ -14,7 +14,7 @@ public class InputManger : MonoBehaviour
     public Button button;
     public Transform army;
     public RangeManger rangeManger;
-
+    public ButtonManger buttonManger;
     public bool armyMove;
     public SoldierManger moveSoldier;
 
@@ -42,6 +42,7 @@ public class InputManger : MonoBehaviour
     {
         gameCamera = Camera.main;
         Land = GameObject.FindGameObjectWithTag("Tile").GetComponent<TileManger>();
+        buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<ButtonManger>();
         rangeManger = GetComponent<RangeManger>();
         armyMove = true;
         minPosX = -200;
@@ -142,26 +143,31 @@ public class InputManger : MonoBehaviour
                         case "Area":
                             if (Land.attackTurnCheck)
                             {
-                                if (hit.transform.GetComponent<MakeArea>().Name == "우유")
+                                if(hit.transform.GetComponent<MakeArea>().Grade != hit.transform.GetComponent<MakeArea>().maxGrade)
                                 {
-                                    bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
-                                }
-                                else if (hit.transform.GetComponent<MakeArea>().Name == "밀가루")
-                                {
-                                    bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
-                                }
-                                else if (hit.transform.GetComponent<MakeArea>().Name == "설탕")
-                                {
-                                    bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
-                                }
-                                else if (hit.transform.GetComponent<MakeArea>().Name == "집")
-                                {
-                                    bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().Population;
-                                }
+                                    mouseCheck = false;
 
-                                Land.buttonManger.UpgradeLand = hit.transform;
-                                bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
-                                bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
+                                    if (hit.transform.GetComponent<MakeArea>().Name == "우유")
+                                    {
+                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
+                                    }
+                                    else if (hit.transform.GetComponent<MakeArea>().Name == "밀가루")
+                                    {
+                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
+                                    }
+                                    else if (hit.transform.GetComponent<MakeArea>().Name == "설탕")
+                                    {
+                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
+                                    }
+                                    else if (hit.transform.GetComponent<MakeArea>().Name == "집")
+                                    {
+                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().Population;
+                                    }
+
+                                    Land.buttonManger.UpgradeLand = hit.transform;
+                                    bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
+                                    bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
+                                }
                             }
                            
                             break;
@@ -219,7 +225,7 @@ public class InputManger : MonoBehaviour
                             {
                                 army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
                             }
-
+                            mouseCheck = false;
                             army.transform.SetParent(hit.transform);
                             moveSoldier.move = true;
                             army.transform.GetComponent<SoldierManger>().SoldierAction();
@@ -228,7 +234,6 @@ public class InputManger : MonoBehaviour
                         default:
                             break;
                     }
-
                     
                     ChangeLandInfo();
                     CheckMonsterMovePoint();
@@ -267,159 +272,164 @@ public class InputManger : MonoBehaviour
 
                 if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
-                    if (armyMove)
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        hitObj = hit.transform;
-                        if (hitObjPreFeb != null && hitObjPreFeb.GetComponent<SpriteRenderer>().color == Color.red)
+                        if (armyMove)
                         {
-                            hitObjPreFeb.GetComponent<SpriteRenderer>().color = Color.white;
-                        }
+                            hitObj = hit.transform;
+                            if (hitObjPreFeb != null && hitObjPreFeb.GetComponent<SpriteRenderer>().color == Color.red)
+                            {
+                                hitObjPreFeb.GetComponent<SpriteRenderer>().color = Color.white;
+                            }
 
-                        switch (hit.transform.tag)
-                        {
-                            case "Barracks":
-                                if (Land.attackTurnCheck)
-                                {
-                                    if (hit.transform.GetComponent<MakeArea>().Destroy == false)
+                            switch (hit.transform.tag)
+                            {
+                                case "Barracks":
+                                    if (Land.attackTurnCheck)
                                     {
-                                        BarrackUi.SetActive(true);
-                                        BarrackUi.GetComponent<BarrackController>().land = hit.transform;
-                                        BarrackUi.GetComponent<BarrackController>().SwordButton();
-                                        BarrackUi.GetComponent<BarrackController>().soldierMakeButton.GetComponent<Button>().interactable = false;
-                                        mouseCheck = false;
-                                    }
-                                }
-                                break;
-
-                            case "Army":
-                                if (hit.transform.GetComponent<SoldierManger>().movePoint || hit.transform.GetComponent<MakeSoldier>().MovementNumber != 0)
-                                {
-                                    rangeManger.PlayerMoveRange(hit.transform);
-                                }
-                                rangeManger.PlayerAttackRange(hit.transform);
-                                armyMove = false;
-                                moveSoldier = hit.transform.GetComponent<SoldierManger>();
-                                Land.CheckTile();
-                                break;
-
-                            case "Grass":
-                                if (Land.attackTurnCheck)
-                                {
-                                    if (hit.transform.GetComponent<MakeArea>().Movement == true)
-                                    {
-                                        if (hit.transform.GetComponent<MakeArea>().Destroy != true)
+                                        if (hit.transform.GetComponent<MakeArea>().Destroy == false)
                                         {
-                                            landObj = hit.transform;
+                                            BarrackUi.SetActive(true);
+                                            BarrackUi.GetComponent<BarrackController>().land = hit.transform;
+                                            BarrackUi.GetComponent<BarrackController>().SwordButton();
+                                            BarrackUi.GetComponent<BarrackController>().soldierMakeButton.GetComponent<Button>().interactable = false;
                                             mouseCheck = false;
-                                            bulidUi.GetComponent<BuildController>().land = hit.transform;
-                                            bulidUi.GetComponent<BuildController>().CreateWindow();
-                                            bulidUi.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
+                                        }
+                                    }
+                                    break;
+
+                                case "Army":
+                                    if (hit.transform.GetComponent<SoldierManger>().movePoint || hit.transform.GetComponent<MakeSoldier>().MovementNumber != 0)
+                                    {
+                                        rangeManger.PlayerMoveRange(hit.transform);
+                                    }
+                                    rangeManger.PlayerAttackRange(hit.transform);
+                                    armyMove = false;
+                                    moveSoldier = hit.transform.GetComponent<SoldierManger>();
+                                    Land.CheckTile();
+                                    break;
+
+                                case "Grass":
+                                    if (Land.attackTurnCheck)
+                                    {
+                                        if (hit.transform.GetComponent<MakeArea>().Movement == true)
+                                        {
+                                            if (hit.transform.GetComponent<MakeArea>().Destroy != true)
+                                            {
+                                                landObj = hit.transform;
+                                                mouseCheck = false;
+                                                bulidUi.GetComponent<BuildController>().land = hit.transform;
+                                                bulidUi.GetComponent<BuildController>().CreateWindow();
+                                                bulidUi.transform.GetChild(0).GetChild(1).GetComponent<Button>().interactable = false;
+                                            }
+                                            else
+                                            {
+                                                repairUi.SetActive(true);
+                                                repairUi.GetComponent<RepairController>().SettingRepair();
+                                            }
+                                        }
+                                    }
+                                    break;
+
+                                case "Area":
+                                    if (Land.attackTurnCheck)
+                                    {
+                                        if (hit.transform.GetComponent<MakeArea>().Grade != hit.transform.GetComponent<MakeArea>().maxGrade)
+                                        {
+                                            mouseCheck = false;
+
+                                            if (hit.transform.GetComponent<MakeArea>().Name == "우유")
+                                            {
+                                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
+                                            }
+                                            else if (hit.transform.GetComponent<MakeArea>().Name == "밀가루")
+                                            {
+                                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
+                                            }
+                                            else if (hit.transform.GetComponent<MakeArea>().Name == "설탕")
+                                            {
+                                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
+                                            }
+                                            else if (hit.transform.GetComponent<MakeArea>().Name == "집")
+                                            {
+                                                bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().Population;
+                                            }
+
+                                            Land.buttonManger.UpgradeLand = hit.transform;
+                                            bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
+                                            bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
+                                        }
+                                    }
+
+                                    break;
+                                default:
+                                    ChangeLandInfo();
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            hitObj = hit.transform;
+
+                            switch (hit.transform.tag)
+                            {
+                                case "Enemy":
+                                    if (hit.transform.parent.tag == "SelectLand")
+                                    {
+                                        if (specialSkillController.skillCheck)
+                                        {
+                                            rangeManger.CandelRange(hit.transform);
+                                            specialSkillController.gameObject.SetActive(false);
                                         }
                                         else
                                         {
-                                            repairUi.SetActive(true);
-                                            repairUi.GetComponent<RepairController>().SettingRepair();
+                                            moveSoldier.enemy = hit.transform;
+                                            moveSoldier.attack = true;
+                                            army.transform.GetComponent<SoldierManger>().SoldierAction();
                                         }
                                     }
-                                }
-                                break;
+                                    break;
+                                case "GD":
+                                    if (hit.transform.parent.tag == "SelectLand")
+                                    {
+                                        if (specialSkillController.skillCheck)
+                                        {
+                                            rangeManger.CandelRange(hit.transform);
+                                            specialSkillController.gameObject.SetActive(false);
+                                        }
+                                        else
+                                        {
+                                            moveSoldier.enemy = hit.transform;
+                                            moveSoldier.attack = true;
+                                            army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                        }
+                                    }
+                                    break;
+                                case "SelectLand":
+                                    if (int.Parse(army.parent.parent.name) >= int.Parse(hit.transform.parent.name)
+                                             && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
+                                    {
+                                        army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
+                                    }
+                                    else if (int.Parse(army.parent.parent.name) < int.Parse(hit.transform.parent.name)
+                                        && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
+                                    {
+                                        army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
+                                    }
+                                    mouseCheck = false;
+                                    army.transform.SetParent(hit.transform);
+                                    moveSoldier.move = true;
+                                    army.transform.GetComponent<SoldierManger>().SoldierAction();
+                                    army.transform.GetComponent<SoldierManger>().movePoint = false;
+                                    break;
+                                default:
+                                    break;
+                            }
 
-                            case "Area":
-                                if (Land.attackTurnCheck)
-                                {
-                                    if (hit.transform.GetComponent<MakeArea>().Name == "우유")
-                                    {
-                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().MilkOutput;
-                                    }
-                                    else if (hit.transform.GetComponent<MakeArea>().Name == "밀가루")
-                                    {
-                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().FlourOutput;
-                                    }
-                                    else if (hit.transform.GetComponent<MakeArea>().Name == "설탕")
-                                    {
-                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().SugarOutput;
-                                    }
-                                    else if (hit.transform.GetComponent<MakeArea>().Name == "집")
-                                    {
-                                        bulidUpgradeUi.GetComponent<BuildController>().nowPoint = hit.transform.GetComponent<MakeArea>().Population;
-                                    }
-
-                                    Land.buttonManger.UpgradeLand = hit.transform;
-                                    bulidUpgradeUi.GetComponent<BuildController>().land = hit.transform;
-                                    bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
-                                }
-
-                                break;
-                            default:
-                                ChangeLandInfo();
-                                break;
+                            ChangeLandInfo();
+                            CheckMonsterMovePoint();
+                            armyMove = true;
                         }
-                    }
-                    else
-                    {
-                        hitObj = hit.transform;
-                        
-                        switch (hit.transform.tag)
-                        {
-                            case "Enemy":
-                                if (hit.transform.parent.tag == "SelectLand")
-                                {
-                                    if (specialSkillController.skillCheck)
-                                    {
-                                        rangeManger.CandelRange(hit.transform);
-                                        specialSkillController.gameObject.SetActive(false);
-                                    }
-                                    else
-                                    {
-                                        moveSoldier.enemy = hit.transform;
-                                        moveSoldier.attack = true;
-                                        army.transform.GetComponent<SoldierManger>().SoldierAction();
-                                    }
-                                }
-                                break;
-                            case "GD":
-                                
-                                if (hit.transform.parent.tag == "SelectLand")
-                                {
-                                    Debug.Log("ss");
-                                    if (specialSkillController.skillCheck)
-                                    {
-                                        rangeManger.CandelRange(hit.transform);
-                                        specialSkillController.gameObject.SetActive(false);
-                                    }
-                                    else
-                                    {
-                                        moveSoldier.enemy = hit.transform;
-                                        moveSoldier.attack = true;
-                                        army.transform.GetComponent<SoldierManger>().SoldierAction();
-                                    }
-                                }
-                                break;
-                            case "SelectLand":
-                                if (int.Parse(army.parent.parent.name) >= int.Parse(hit.transform.parent.name)
-                                         && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
-                                {
-                                    army.transform.GetChild(1).localScale = new Vector3(-0.4f, 0.4f);
-                                }
-                                else if (int.Parse(army.parent.parent.name) < int.Parse(hit.transform.parent.name)
-                                    && Mathf.Abs(int.Parse(army.parent.parent.name) - int.Parse(hit.transform.parent.name)) <= 10)
-                                {
-                                    army.transform.GetChild(1).localScale = new Vector3(0.4f, 0.4f);
-                                }
-
-                                army.transform.SetParent(hit.transform);
-                                moveSoldier.move = true;
-                                army.transform.GetComponent<SoldierManger>().SoldierAction();
-                                army.transform.GetComponent<SoldierManger>().movePoint = false;
-                                break;
-                            default:
-                                break;
-                        }
-
-
-                        ChangeLandInfo();
-                        CheckMonsterMovePoint();
-                        armyMove = true;
                     }
                 }
 
@@ -556,9 +566,10 @@ public class InputManger : MonoBehaviour
 
     public void CheckMonsterMovePoint()
     {
-        for (int i = 0; i < BarrackUi.GetComponent<BarrackController>().monsters.Count; i++)
+        
+        for (int i = 0; i < buttonManger.amrys.Count; i++)
         {
-            if (BarrackUi.GetComponent<BarrackController>().monsters[i].GetComponent<SoldierManger>().movePoint == true)
+            if (buttonManger.amrys[i].GetComponent<SoldierManger>().movePoint == true)
             {
                 monsterMoveCheckImgae.color = Color.white;
                 return;

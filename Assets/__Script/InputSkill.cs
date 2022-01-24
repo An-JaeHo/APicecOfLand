@@ -38,13 +38,14 @@ public class InputSkill : CardInfo
     private void Start()
     {
         maxGrade = 0;
+        image = GetComponent<Image>();
     }
 
     public void MakeCard(string code)
     {
         skillList = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
         card = GameObject.FindGameObjectWithTag("GameController").GetComponent<CardList>();
-        image = GetComponent<Image>();
+        
 
         for (int i = 0; i < skillList.information.card.Length; i++)
         {

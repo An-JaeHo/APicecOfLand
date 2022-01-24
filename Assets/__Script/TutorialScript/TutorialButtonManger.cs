@@ -103,12 +103,21 @@ public class TutorialButtonManger : MonoBehaviour
         if (settingUi.activeSelf)
         {
             settingUi.SetActive(false);
-            input.mouseCheck = true;
         }
         else
         {
             settingUi.SetActive(true);
+        }
+
+        if (Time.timeScale != 0)
+        {
+            Time.timeScale = 0;
             input.mouseCheck = false;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            input.mouseCheck = true;
         }
     }
 

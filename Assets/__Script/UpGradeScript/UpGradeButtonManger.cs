@@ -49,11 +49,20 @@ public class UpGradeButtonManger : MonoBehaviour
         if(settingButton.activeSelf == false)
         {
             settingButton.SetActive(true);
-            upGradeInputManger.mouseCheck = false;
         }
         else
         {
             settingButton.SetActive(false);
+        }
+
+        if (Time.timeScale != 0)
+        {
+            Time.timeScale = 0;
+            upGradeInputManger.mouseCheck = false;
+        }
+        else
+        {
+            Time.timeScale = 1;
             upGradeInputManger.mouseCheck = true;
         }
     }

@@ -156,7 +156,8 @@ public class BuildController : MonoBehaviour
 
         gameObject.SetActive(true);
 
-        if (buttonManger.playerInfo.flour >= buttonManger.UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && buttonManger.playerInfo.sugar >= buttonManger.UpgradeLand.GetComponent<MakeArea>().UpgradeSugar)
+        if (buttonManger.playerInfo.flour >= buttonManger.UpgradeLand.GetComponent<MakeArea>().UpgradeFlour && buttonManger.playerInfo.sugar >= buttonManger.UpgradeLand.GetComponent<MakeArea>().UpgradeSugar &&
+            buttonManger.UpgradeLand.GetComponent<MakeArea>().Grade != buttonManger.UpgradeLand.GetComponent<MakeArea>().maxGrade)
         {
             upGradeButton.interactable = true;
         }

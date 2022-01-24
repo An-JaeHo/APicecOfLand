@@ -78,6 +78,7 @@ public class SoldierManger : MonoBehaviour
             {
                 ani.SetBool("Move", false);
                 input.armyMove = true;
+                input.mouseCheck = true;
                 stayTime = 0;
                 buttonManger.button.GetComponent<Button>().interactable = true;
                 soldier.MovementNumber--;
@@ -170,10 +171,11 @@ public class SoldierManger : MonoBehaviour
                 int defendSum = (int)(enemy.GetComponent<MakeEnemy>().BaseDefensive + (enemy.GetComponent<MakeEnemy>().RiseDefensive * enemy.GetComponent<MakeEnemy>().Level));
                 enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)((((attackSum / defendSum) * 30))) ;
 
-                Debug.Log(attackSum);
-                Debug.Log(defendSum);
-                Debug.Log((int)(((attackSum / defendSum) * 30)));
+                //Debug.Log(attackSum);
+                //Debug.Log(defendSum);
+                //Debug.Log((int)(((attackSum / defendSum) * 30)));
                 float randCri= Random.Range(0,100);
+
                 if (randCri <= soldier.Critical)
                 {
                     enemy.GetComponent<MakeEnemy>().BaseHelthPoint -= (int)(attackSum*randCritical);
@@ -238,8 +240,8 @@ public class SoldierManger : MonoBehaviour
                 }
             }
         }
-        
-        buttonManger.button.GetComponent<Button>().interactable = true;
+
+        input.mouseCheck = true;
         yield return null;
     }
 
@@ -346,10 +348,12 @@ public class SoldierManger : MonoBehaviour
             soldier.Critical += soldier.RiseCritical;
             soldier.Defensive += soldier.RiseDefensive;
             soldier.Critical += soldier.RiseCritical;
+            totalHp += soldier.RiseHelth;
             soldier.HelthPoint = (int)totalHp;
             soldier.nowExp = 0;
         }
         transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = transform.GetComponent<MakeSoldier>().Level.ToString(); ;
+        HpBarScale();
     }
 
     public void AttachCountNumCheck()

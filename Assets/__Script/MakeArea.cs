@@ -38,6 +38,7 @@ public class MakeArea : AreaInfo
     public AreaManger areaManger;
     public Sprite readyBuild;
     public bool firstBuild;
+    public int maxGrade;
 
     private void Start()
     {

@@ -51,7 +51,7 @@ public class InvenManger : MonoBehaviour
     {
         int rand = new int();
         string code = null;
-
+        InputSkill inputSkill = new InputSkill();
         if (grade == 1)
         {
             rand = Random.Range(0, oneGradeCard.Count - 1);
@@ -74,18 +74,29 @@ public class InvenManger : MonoBehaviour
             code = fourGradeCard[rand].Code;
         }
 
+        inputSkill.MakeCard(code);
+
         for (int j = 0; j < slot.transform.childCount; j++)
         {
             if (slot.transform.GetChild(j).childCount != 0)
             {
-                if (slot.transform.GetChild(j).GetChild(0).name == "Card 1")
+                if (slot.transform.GetChild(j).GetChild(0).name == "Card 1" &&
+                    slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Grade == inputSkill.Grade)
                 {
                     if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
                     {
-                        slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().MakeCard(slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().nextCode);
-                        slot.transform.GetChild(j).GetChild(0).GetComponent<Image>().sprite = slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Picture;
+                        if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().maxGrade != slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Grade)
+                        {
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().MakeCard(slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().nextCode);
+                            slot.transform.GetChild(j).GetChild(0).GetComponent<Image>().sprite = slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Picture;
 
-                        SameCardCheck(j);
+                            SameCardCheck(j);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                        
                     }
                     else
                     {
@@ -142,15 +153,23 @@ public class InvenManger : MonoBehaviour
                     {
                         if (slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().Stack == 3)
                         {
-                            slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().MakeCard(slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().nextCode);
-                            slot.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().Picture;
-                            SameCardCheck(i);
+                            if(slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().maxGrade != slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().Grade)
+                            {
+                                slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().MakeCard(slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().nextCode);
+                                slot.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().Picture;
+                                SameCardCheck(i);
+                            }
+                            else
+                            {
+                                continue;
+                            }
                         }
                         else
                         {
                             slot.transform.GetChild(i).GetChild(0).GetComponent<InputSkill>().Stack++;
                         }
 
+                        
                         Destroy(slot.transform.GetChild(slotNum).GetChild(0).gameObject);
 
                         slot.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text =

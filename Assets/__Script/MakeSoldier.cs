@@ -26,7 +26,7 @@ public class SoldierInfo : MonoBehaviour
     public int AttackRange;
     public int Movement;
     public int Experience;
-    public int RiseHealth;
+    public int RiseHelth;
     public int AttackNumber;
     public int MovementNumber;
 
@@ -81,7 +81,7 @@ public class MakeSoldier : SoldierInfo
                 AttackRange = TroopInfo.information.monster[i].AttackRange;
                 Movement = TroopInfo.information.monster[i].Movement;
                 Experience = TroopInfo.information.monster[i].Experience;
-                RiseHealth = TroopInfo.information.monster[i].RiseHealth;
+                RiseHelth = TroopInfo.information.monster[i].RiseHelth;
                 AttackNumber = TroopInfo.information.monster[i].AttackNumber;
                 MovementNumber = TroopInfo.information.monster[i].MovementNumber;
 

@@ -134,7 +134,7 @@ public class Monster
     public int AttackRange;
     public int Movement;
     public int Experience;
-    public int RiseHealth;
+    public int RiseHelth;
     public int AttackNumber;
     public int MovementNumber;
 }
