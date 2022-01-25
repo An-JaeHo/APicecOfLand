@@ -10,7 +10,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
     public GameObject upGradeMonsterPrefeb;
     public UpGradeSceneWindow upGradeSceneWindow;
     public ToggleController toggleController;
-
+    public UpGradeButtonManger buttonManger;
     [Header("Set in VisualStudio")]
     public PlayerInfo playerInfo;
     public GameObject[] MonsterObj;
@@ -589,6 +589,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
             }
         }
 
+        
         toggleController.CheckToggle();
     }
 }

@@ -324,6 +324,14 @@ public class SoldierManger : MonoBehaviour
                     case "Card 11":
                         soldier.AttackRange++;
                         break;
+
+                    case "Card 16":
+                        soldier.MovementNumber++;
+                        break;
+
+                    case "Card 17":
+                        soldier.MovementNumber++;
+                        break;
                     case "Card 22":
                         soldier.attackCount++;
                         AttachCountNumCheck();

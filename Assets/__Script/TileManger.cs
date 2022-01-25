@@ -399,6 +399,7 @@ public class TileManger : MonoBehaviour
                     {
                         GameObject enemyPicture = Instantiate(enemyObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
                         enemyPicture.transform.SetParent(noChildEnemy.transform);
+                        enemyPicture.transform.localScale = new Vector3(0.4f, 0.4f);
                     }
                 }
 
@@ -503,11 +504,6 @@ public class TileManger : MonoBehaviour
             }
 
             if(playerInfo.turnPoint ==3)
-            {
-                EnemyGradeSort();
-            }
-            //테스트
-            if (playerInfo.turnPoint == 5)
             {
                 EnemyGradeSort();
             }
@@ -699,6 +695,7 @@ public class TileManger : MonoBehaviour
                     if (bossObj[j].name == noChildEnemy.GetComponent<GDController>().Code)
                     {
                         GameObject enemyPicture = Instantiate(bossObj[j], new Vector3(noChildEnemy.transform.position.x, noChildEnemy.transform.position.y - 55), Quaternion.identity);
+                        enemyPicture.transform.localScale = new Vector3(0.4f, 0.4f);
                         enemyPicture.transform.SetParent(noChildEnemy.transform);
                     }
                 }

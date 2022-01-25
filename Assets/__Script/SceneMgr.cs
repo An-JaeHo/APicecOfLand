@@ -28,6 +28,7 @@ public class SceneMgr : MonoBehaviour
         playerInfo.updateFlour = 0;
         playerInfo.updateMilk = 0;
         playerInfo.updateSugar = 0;
+        playerInfo.StartGame();
         SceneManager.LoadScene(3);
     }
 
@@ -39,13 +40,14 @@ public class SceneMgr : MonoBehaviour
     public static void GoGameTutorial()
     {
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
+        playerInfo.StartGame();
         LoadingSceneController.LoadScene("Tutorial");
     }
 
     public static void GoUpGradeScene()
     {
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
-
+        playerInfo.StartGame();
         if (!File.Exists(fonlderPath + "/save.txt"))
         {
             LoadingSceneController.LoadScene("Tutorial");

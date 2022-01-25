@@ -89,7 +89,6 @@ public class CardList : MonoBehaviour
                 SoldierPrefeb.GetComponent<SoldierManger>().HpBarScale();
                 break;
             case "Card 15":
-                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 1;
                 SoldierPrefeb.GetComponent<MakeSoldier>().MovementNumber++;
 
                 if(tutorialCheck)
@@ -103,12 +102,10 @@ public class CardList : MonoBehaviour
                 
                 break;
             case "Card 16":
-                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 2;
                 SoldierPrefeb.GetComponent<MakeSoldier>().MovementNumber++;
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
             case "Card 17":
-                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 3;
                 SoldierPrefeb.GetComponent<MakeSoldier>().MovementNumber++;
                 SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
@@ -344,6 +341,21 @@ public class CardList : MonoBehaviour
             case "Card 58":
                 AreaPrefeb.GetComponent<AreaManger>().player.sugar += (int)(AreaPrefeb.GetComponent<AreaManger>().player.sugar * 0.5f);
                 GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+                break;
+
+            case "Card 59":
+                SoldierPrefeb.GetComponent<MakeSoldier>().Movement +=1;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
+                break;
+
+            case "Card 60":
+                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 2;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
+                break;
+
+            case "Card 61":
+                SoldierPrefeb.GetComponent<MakeSoldier>().Movement += 3;
+                SoldierPrefeb.GetComponent<SoldierManger>().MakeBuffIcon(CardCode);
                 break;
         }
     }

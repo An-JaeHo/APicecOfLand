@@ -34,20 +34,6 @@ public class PlayerInfo : GenericSingletonClass<PlayerInfo>
         updatePeople = 0;
     }
 
-    private void Awake()
-    {
-        milk = 150;
-        flour = 150;
-        sugar = 150;
-        people = 3;
-        turnPoint = 0;
-        killingPoint = 0;
-        updateMilk = 0;
-        updateFlour = 0;
-        updateSugar = 0;
-        updatePeople = 0;
-    }
-
     public void ResetGame()
     {
         milk = 150;

@@ -77,7 +77,7 @@ public class ButtonManger : MonoBehaviour
     {
         buttonTimer += Time.deltaTime;
 
-        if (playerInfo.turnPoint < 4)
+        if (playerInfo.turnPoint < 4 || enemys.Count ==0)
         {
             if (buttonTimer > 1f)
             {
@@ -94,8 +94,8 @@ public class ButtonManger : MonoBehaviour
     {
         if(skillInven.activeSelf)
         {
-            skillInven.SetActive(false);
             input.mouseCheck = true;
+            skillInven.SetActive(false);
         }
         else
         {
@@ -108,13 +108,13 @@ public class ButtonManger : MonoBehaviour
     {
         if (repaireUi.activeSelf)
         {
-            repaireUi.SetActive(false);
             input.mouseCheck = true;
+            repaireUi.SetActive(false);
         }
         else
         {
-            repaireUi.SetActive(true);
             input.mouseCheck = false;
+            repaireUi.SetActive(true);
         }
     }
 
@@ -122,8 +122,8 @@ public class ButtonManger : MonoBehaviour
     {
         if (buildUi.activeSelf)
         {
-            buildUi.SetActive(false);
             input.mouseCheck = true;
+            buildUi.SetActive(false);
         }
         else
         {
@@ -142,8 +142,8 @@ public class ButtonManger : MonoBehaviour
     {
         if (bulidUpgradeUi.activeSelf)
         {
-            bulidUpgradeUi.SetActive(false);
             input.mouseCheck = true;
+            bulidUpgradeUi.SetActive(false);
         }
         else
         {
@@ -156,8 +156,8 @@ public class ButtonManger : MonoBehaviour
     {
         if (bulidCheckWindow.activeSelf)
         {
-            bulidCheckWindow.SetActive(false);
             input.mouseCheck = true;
+            bulidCheckWindow.SetActive(false);
         }
         else
         {
@@ -172,8 +172,8 @@ public class ButtonManger : MonoBehaviour
     {
         if (armyCheckWindow.activeSelf)
         {
-            armyCheckWindow.SetActive(false);
             input.mouseCheck = true;
+            armyCheckWindow.SetActive(false);
         }
         else
         {
@@ -192,8 +192,8 @@ public class ButtonManger : MonoBehaviour
     {
         if (armyUpgradeUi.activeSelf)
         {
-            armyUpgradeUi.SetActive(false);
             input.mouseCheck = true;
+            armyUpgradeUi.SetActive(false);
             input.time = 0;
         }
         else
@@ -208,8 +208,8 @@ public class ButtonManger : MonoBehaviour
     {
         if (barrackWindow.activeSelf)
         {
-            barrackWindow.SetActive(false);
             input.mouseCheck = true;
+            barrackWindow.SetActive(false);
         }
         else
         {
@@ -232,8 +232,8 @@ public class ButtonManger : MonoBehaviour
 
         if (Time.timeScale != 0)
         {
-            Time.timeScale = 0;
             input.mouseCheck = false;
+            Time.timeScale = 0;
         }
         else
         {
@@ -501,6 +501,9 @@ public class ButtonManger : MonoBehaviour
         {
             for (int i = 0; i < enemys.Count; i++)
             {
+                //너무 이상하다
+                Camera.main.transform.position = new Vector3(enemys[i].transform.position.x, enemys[i].transform.position.y,-800f);
+                yield return new WaitForSeconds(1f);
                 enemys[i].GetComponent<EnemyController>().EnemyMove();
 
                 yield return new WaitForSeconds(2f);
@@ -605,6 +608,7 @@ public class ButtonManger : MonoBehaviour
             }
 
             amrys[i].GetComponent<SoldierManger>().movePoint = true;
+            amrys[i].GetComponent<MakeSoldier>().MovementNumber = 1;
             amrys[i].GetComponent<SoldierManger>().ReturnPure();
             amrys[i].GetComponent<SoldierManger>().CheckBuff();
         }
@@ -630,6 +634,8 @@ public class ButtonManger : MonoBehaviour
             playerInfo.killingPoint = rand;
             SceneMgr.GoGameEndScene();
         }
+
+        
 
         StartCoroutine(moveEnemy());
         rangeManger.rangeList.Clear();

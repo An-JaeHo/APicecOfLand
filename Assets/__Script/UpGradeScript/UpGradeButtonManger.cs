@@ -11,9 +11,13 @@ public class UpGradeButtonManger : MonoBehaviour
     public Slider bgmBar;
     public float bgmVolume;
     public UpGradeButtonManger buttonManger;
+    public UpGradeMonsterInfo upGradeMonsterInfo;
     public UpGradeInputManger upGradeInputManger;
 
     public bool check;
+    public bool nextMonsterRightCheck;
+    public bool nextMonsterLeftCheck;
+
 
     private void Start()
     {
@@ -21,6 +25,8 @@ public class UpGradeButtonManger : MonoBehaviour
         upGradeInputManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<UpGradeInputManger>();
         bgmVolume = 1f;
         check = true;
+        nextMonsterRightCheck = false;
+        nextMonsterLeftCheck = false;
     }
 
     void Update()
@@ -30,6 +36,33 @@ public class UpGradeButtonManger : MonoBehaviour
 
         }
         soundBgm.volume = bgmBar.value;
+
+        if(nextMonsterRightCheck)
+        {
+            upGradeMonsterInfo.interporlateNum += Time.deltaTime;
+
+            if(upGradeMonsterInfo.interporlateNum > 1)
+            {
+                upGradeMonsterInfo.interporlateNum = 1;
+                nextMonsterRightCheck = false;
+            }
+            
+            upGradeMonsterInfo.RoundMonster();
+            upGradeMonsterInfo.FindAndMakeMonster();
+        }
+
+        if(nextMonsterLeftCheck)
+        {
+            upGradeMonsterInfo.interporlateNum -= Time.deltaTime;
+            if (upGradeMonsterInfo.interporlateNum < -1)
+            {
+                upGradeMonsterInfo.interporlateNum = -1;
+                nextMonsterLeftCheck = false;
+            }
+            
+            upGradeMonsterInfo.RoundMonster();
+            upGradeMonsterInfo.FindAndMakeMonster();
+        }
     }
 
     public void Cancel()
@@ -42,6 +75,16 @@ public class UpGradeButtonManger : MonoBehaviour
     {
         SettingWindowButton();
         bgmVolume = soundBgm.volume;
+    }
+
+    public void TestRight()
+    {
+        nextMonsterRightCheck = true;
+    }
+
+    public void TestLeft()
+    {
+        nextMonsterLeftCheck = true;
     }
 
     public void SettingWindowButton()

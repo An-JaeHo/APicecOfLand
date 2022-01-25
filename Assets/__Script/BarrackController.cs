@@ -71,6 +71,7 @@ public class BarrackController : MonoBehaviour
                 {
                     GameObject monsterPicture = Instantiate(MonsterObj[i], new Vector3(prefebSoldier.transform.position.x, prefebSoldier.transform.position.y - 55), Quaternion.identity);
                     monsterPicture.transform.SetParent(prefebSoldier.transform);
+                    monsterPicture.transform.localScale = new Vector3(0.4f, 0.4f);
                 }
             }
 

@@ -80,7 +80,7 @@ public class InvenManger : MonoBehaviour
         {
             if (slot.transform.GetChild(j).childCount != 0)
             {
-                if (slot.transform.GetChild(j).GetChild(0).name == "Card 1" &&
+                if (slot.transform.GetChild(j).GetChild(0).name == code &&
                     slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Grade == inputSkill.Grade)
                 {
                     if (slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Stack == 3)
@@ -132,7 +132,7 @@ public class InvenManger : MonoBehaviour
             else
             {
                 GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
-                cardInfo.GetComponent<InputSkill>().MakeCard("Card 1");
+                cardInfo.GetComponent<InputSkill>().MakeCard("Card 16");
                 cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
                 cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                 cardCount++;
