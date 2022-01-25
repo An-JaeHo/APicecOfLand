@@ -132,7 +132,7 @@ public class InvenManger : MonoBehaviour
             else
             {
                 GameObject cardInfo = Instantiate(iconPrefeb, slot.transform.GetChild(j).transform);
-                cardInfo.GetComponent<InputSkill>().MakeCard("Card 16");
+                cardInfo.GetComponent<InputSkill>().MakeCard(code);
                 cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
                 cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
                 cardCount++;
