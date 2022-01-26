@@ -48,6 +48,8 @@ public class SceneMgr : MonoBehaviour
     {
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
         playerInfo.StartGame();
+        save.Load();
+
         if (!File.Exists(fonlderPath + "/save.txt"))
         {
             LoadingSceneController.LoadScene("Tutorial");
@@ -57,6 +59,6 @@ public class SceneMgr : MonoBehaviour
             LoadingSceneController.LoadScene("UpGradeScene");
         }
 
-        save.Load();
+        
     }
 }

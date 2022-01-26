@@ -14,14 +14,15 @@ public class GameEndController : MonoBehaviour
 
     [Header("Bonus Obj")]
     public GameObject[] bonuses;
-    int sumPoint;
-    int killingPoint;
-    int turnPoint;
+    public int sumPoint;
+    public int killingPoint;
+    public int turnPoint;
 
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
+
         CheckPoint();
         CheckRank();
         ResulttGame();
@@ -30,6 +31,7 @@ public class GameEndController : MonoBehaviour
 
     public void CheckRank()
     {
+
         sumPoint = killingPoint + turnPoint;
 
         if (sumPoint <= 3)
@@ -76,112 +78,121 @@ public class GameEndController : MonoBehaviour
         {
             rankImage.GetComponent<Image>().sprite = rankSprites[8];
         }
+        else if (20 < sumPoint)
+        {
+            rankImage.GetComponent<Image>().sprite = rankSprites[9];
+        }
+
+
     }
 
     private void CheckPoint()
     {
-        int playerkillPoint = playerInfo.killingPoint;
-        int playerturnPoit = playerInfo.turnPoint;
+        saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
         //≈œ
-        if (playerturnPoit <= 15)
+        if (playerInfo.turnPoint <= 15)
         {
             turnPoint = 0;
         }
-        else if (15 < playerturnPoit
-           && playerturnPoit <= 30)
+        else if (15 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 30)
         {
             turnPoint = 1;
+            
         }
-        else if (30 < playerturnPoit
-           && playerturnPoit <= 80)
+        else if (30 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 80)
         {
             turnPoint = 2;
         }
-        else if (80 < playerturnPoit
-           && playerturnPoit <= 110)
+        else if (80 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 110)
         {
             turnPoint = 3;
         }
-        else if (110 < playerturnPoit
-           && playerturnPoit <= 130)
+        else if (110 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 130)
         {
             turnPoint = 4;
         }
-        else if (130 < playerturnPoit
-           && playerturnPoit <= 150)
+        else if (130 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 150)
         {
             turnPoint = 5;
         }
-        else if (150 < playerturnPoit
-           && playerturnPoit <= 170)
+        else if (150 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 170)
         {
             turnPoint = 6;
         }
-        else if (170 < playerturnPoit
-           && playerturnPoit <= 180)
+        else if (170 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 180)
         {
             turnPoint = 7;
         }
-        else if (180 < playerturnPoit
-           && playerturnPoit <= 190)
+        else if (180 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 190)
         {
             turnPoint = 8;
         }
-        else if (190 < playerturnPoit
-           && playerturnPoit <= 200)
+        else if (190 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 200)
         {
             turnPoint = 10;
         }
+        else if (200 < playerInfo.turnPoint)
+        {
+            turnPoint = 22;
+        }
 
         //≈≥
-        if (playerkillPoint <= 10)
+        if (playerInfo.killingPoint <= 10)
         {
             killingPoint = 0;
         }
-        else if (10 < playerkillPoint
-            && playerkillPoint <= 20)
+        else if (10 < playerInfo.killingPoint
+            && playerInfo.killingPoint <= 20)
         {
             killingPoint = 1;
         }
-        else if (20 < playerkillPoint
-            && playerkillPoint <= 30)
+        else if (20 < playerInfo.killingPoint
+            && playerInfo.killingPoint <= 30)
         {
             killingPoint = 2;
         }
-        else if (30 < playerkillPoint
-            && playerkillPoint <= 40)
+        else if (30 < playerInfo.killingPoint
+            && playerInfo.killingPoint <= 40)
         {
             killingPoint = 3;
         }
-        else if (40 < playerkillPoint
-            && playerkillPoint <= 60)
+        else if (40 < playerInfo.killingPoint
+            && playerInfo.killingPoint <= 60)
         {
             killingPoint = 4;
         }
-        else if (60 < playerkillPoint
-            && playerkillPoint <= 80)
+        else if (60 < playerInfo.killingPoint
+            && playerInfo.killingPoint <= 80)
         {
             killingPoint = 5;
         }
-        else if (80 < playerkillPoint
-            && playerkillPoint <= 100)
+        else if (80 < playerInfo.killingPoint
+            && playerInfo.killingPoint <= 100)
         {
             killingPoint = 6;
         }
-        else if (100 < playerkillPoint
-            && playerkillPoint <= 130)
+        else if (100 < playerInfo.killingPoint
+            && playerInfo.killingPoint <= 130)
         {
             killingPoint = 7;
         }
-        else if (130 < playerkillPoint
-            && playerkillPoint <= 200)
+        else if (130 < playerInfo.killingPoint
+            && playerInfo.killingPoint <= 200)
         {
             killingPoint = 8;
         }
-        else if (200 < playerkillPoint)
+        else if (200 == playerInfo.killingPoint)
         {
-            //s∑©≈©? ss∑©≈©?
-            //killingPoint = 9;
+            killingPoint = 22;
         }
     }
 

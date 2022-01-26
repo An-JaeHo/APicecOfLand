@@ -136,8 +136,6 @@ public class SoldierManger : MonoBehaviour
 
     IEnumerator Attack()
     {
-        buttonManger.button.GetComponent<Button>().interactable = false;
-
         //AenemyhelthPoint – (((Atack_sum/Defend_sum)*30)+치명타대미지))
         //
         //공격자: (BaseAttack + (RiseAttack * Level)) = Atack_sum
@@ -242,6 +240,7 @@ public class SoldierManger : MonoBehaviour
         }
 
         input.mouseCheck = true;
+        buttonManger.button.GetComponent<Button>().interactable = true;
         yield return null;
     }
 

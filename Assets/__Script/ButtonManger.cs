@@ -572,8 +572,14 @@ public class ButtonManger : MonoBehaviour
                 if ((i+1) == enemys.Count)
                 {
                     button.GetComponent<Button>().interactable = true;
+                    Camera.main.transform.position = new Vector3(565, -900, -800);
+                    timer.timerCheck = true;
                 }
             }
+        }
+        else
+        {
+            timer.timerCheck = true;
         }
 
         for (int i = 0; i < amrys.Count; i++)
@@ -616,7 +622,7 @@ public class ButtonManger : MonoBehaviour
         
         input.mouseCheck = true;
         timer.limitTime = 30;
-        timer.timerCheck = true;
+        //timer.timerCheck = true;
         supplyManger.JustUpdateSupply();
         yield return null;
     }
@@ -627,6 +633,7 @@ public class ButtonManger : MonoBehaviour
         input.mouseCheck = false;
         buttonTimer = 0;
         button.GetComponent<Button>().interactable = false;
+        timer.timerCheck = false;
 
         if (playerInfo.turnPoint == 120)
         {
@@ -700,6 +707,8 @@ public class ButtonManger : MonoBehaviour
                             (int)amrys[i].GetComponent<SoldierManger>().totalHp;
                     }
                 }
+
+                healCheck = false;
             }
         }
         else

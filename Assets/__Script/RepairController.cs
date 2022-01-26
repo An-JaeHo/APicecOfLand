@@ -8,9 +8,9 @@ public class RepairController : MonoBehaviour
     [Header ("Set in Inspector")]
     public TileManger tileManger;
     public InputManger inputManger;
-    public PlayerInfo playerInfo;
 
     [Space(10f)]
+    public PlayerInfo playerInfo;
     public Image destoryArea;
     public Image repairArea;
     public Text repairMilk;
@@ -20,11 +20,17 @@ public class RepairController : MonoBehaviour
 
     [Header("Set in VisualStudio")]
     private Transform hitArea;
-    
+
+    private void Start()
+    {
+        playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+    }
 
     public void SettingRepair()
     {
         hitArea = inputManger.hitObj;
+        playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+
         for (int i = 0; i < tileManger.areaImges.Length; i++)
         {
             if (hitArea.GetComponent<MakeArea>().Code == tileManger.areaImges[i].name)

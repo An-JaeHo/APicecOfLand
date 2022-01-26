@@ -345,6 +345,8 @@ public class EnemyController : MonoBehaviour
             {
                 target.GetComponent<SoldierManger>().ani.SetTrigger("Damage");
             }
+
+            HpBarScale();
         }
 
         findArmy = false;

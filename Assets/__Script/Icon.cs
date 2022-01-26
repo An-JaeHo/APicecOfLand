@@ -140,22 +140,26 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 if (inputManger.hitObj.tag == skill.Type)
                 {
-                    if (inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count != 0)
+                    if(inputManger.hitObj.tag != "Capital")
                     {
-                        for (int i = 0; i < inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count; i++)
+                        if (inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count != 0)
                         {
-                            if (inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Name == skill.Name
-                                && inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Grade <= skill.Grade)
+                            for (int i = 0; i < inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count; i++)
                             {
-                                inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().card.RemoveCardEffect(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Code);
-                                Destroy(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
-                                inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Remove(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
+                                if (inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Name == skill.Name
+                                    && inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Grade <= skill.Grade)
+                                {
+                                    inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().card.RemoveCardEffect(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Code);
+                                    Destroy(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
+                                    inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Remove(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
+                                }
                             }
                         }
+
+                        inputManger.hitObj.GetComponent<SoldierManger>().AttachCountNumCheck();
                     }
 
                     card.carInfo = skill.Picture;
-                    
                     GameObject cardImpact = Instantiate(cardImpactObj, inputManger.hitObj);
                     cardImpact.transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>().sprite = card.carInfo;
                     cardImpact.transform.localPosition = new Vector3(-0.7f, 0);
@@ -175,7 +179,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     {
                         Destroy(gameObject);
                     }
-                    inputManger.hitObj.GetComponent<SoldierManger>().AttachCountNumCheck();
                 }
                 else
                 {
@@ -186,10 +189,12 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 }
 
                 inputManger.mouseCheck = true;
+
+
             }
         }
 
-        
+        invenManger.CardNameCheck();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

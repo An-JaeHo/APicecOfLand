@@ -15,8 +15,10 @@ public class InvenManger : MonoBehaviour
     public string cardName;
     public GameObject iconPrefeb;
     public GameObject slot;
-
     public int cardCount;
+
+    [Header("Inven Name Text")]
+    public Text[] invenObjName;
 
     private void Start()
     {
@@ -45,6 +47,8 @@ public class InvenManger : MonoBehaviour
                 fiveGradeCard.Add(card);
             }
         }
+
+        CardNameCheck();
     }
 
     public void InputCard(int grade)
@@ -52,6 +56,7 @@ public class InvenManger : MonoBehaviour
         int rand = new int();
         string code = null;
         InputSkill inputSkill = new InputSkill();
+
         if (grade == 1)
         {
             rand = Random.Range(0, oneGradeCard.Count - 1);
@@ -96,7 +101,6 @@ public class InvenManger : MonoBehaviour
                         {
                             continue;
                         }
-                        
                     }
                     else
                     {
@@ -139,6 +143,8 @@ public class InvenManger : MonoBehaviour
                 break;
             }
         }
+
+        CardNameCheck();
     }
 
     public void SameCardCheck(int slotNum)
@@ -180,5 +186,20 @@ public class InvenManger : MonoBehaviour
         }
 
         
+    }
+
+    public void CardNameCheck()
+    {
+        for (int j = 0; j < slot.transform.childCount; j++)
+        {
+            if(slot.transform.GetChild(j).childCount == 0)
+            {
+                invenObjName[j].text = null;
+            }
+            else
+            {
+                invenObjName[j].text = slot.transform.GetChild(j).GetChild(0).GetComponent<InputSkill>().Name;
+            }
+        }
     }
 }

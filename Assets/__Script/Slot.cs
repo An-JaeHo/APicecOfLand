@@ -17,4 +17,6 @@ public class Slot : MonoBehaviour, IDropHandler
             icon.slot = this;
         }
     }
+
+    
 }
