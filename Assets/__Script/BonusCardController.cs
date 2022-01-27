@@ -10,6 +10,8 @@ public class BonusCardController : MonoBehaviour
     public Image bonusImgae;
     public Text bonusText;
     public Animator animator;
+    public addMobManger addmobManger;
+
     [Header("Set in Code")]
     public GameEndController gameEndController;
 
@@ -19,6 +21,7 @@ public class BonusCardController : MonoBehaviour
     public GameObject cardFront;
     public Sprite BonusImage;
     public Sprite noBonusImage;
+    public bool addCheck;
 
     [Space(10f)]
     public int milk;
@@ -66,6 +69,7 @@ public class BonusCardController : MonoBehaviour
         buttonCheck = true;
         animator.SetTrigger("Flip");
         cardFront.gameObject.SetActive(true);
+        addmobManger.bonusCard = gameObject;
 
         gameEndController.saveMgr.playerSave.milk += milk;
         gameEndController.saveMgr.playerSave.sugar += sugar;

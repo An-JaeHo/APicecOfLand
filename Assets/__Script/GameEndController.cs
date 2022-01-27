@@ -14,6 +14,7 @@ public class GameEndController : MonoBehaviour
 
     [Header("Bonus Obj")]
     public GameObject[] bonuses;
+    public GameObject addButton;
     public int sumPoint;
     public int killingPoint;
     public int turnPoint;
@@ -31,8 +32,7 @@ public class GameEndController : MonoBehaviour
 
     public void CheckRank()
     {
-
-        sumPoint = killingPoint + turnPoint;
+        //sumPoint = killingPoint + turnPoint;
 
         if (sumPoint <= 3)
         {
@@ -248,20 +248,21 @@ public class GameEndController : MonoBehaviour
         supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.flour.ToString();
     }
 
-    private void ResetGame()
-    {
-        saveMgr.Save();
-        playerInfo.ResetGame();
-    }
-
     private void TestButton()
     {
         int rand = Random.Range(5, 21);
         sumPoint = rand;
 
+        //CheckPoint();
         CheckRank();
         ResulttGame();
         BonusCheck();
+    }
+
+    private void ResetGame()
+    {
+        saveMgr.Save();
+        playerInfo.ResetGame();
     }
 
     private void BonusCheck()
@@ -274,14 +275,17 @@ public class GameEndController : MonoBehaviour
                 bonuses[i].GetComponent<BonusCardController>().RandomSupply();
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Image>().sprite = bonuses[i].GetComponent<BonusCardController>().BonusImage;
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = true;
+                addButton.GetComponent<Button>().enabled = true;
+                addButton.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
+                
             }
             else
             {
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Image>().sprite = bonuses[i].GetComponent<BonusCardController>().noBonusImage;
-
+                addButton.GetComponent<Button>().enabled = false;
+                addButton.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 155f / 255f);
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
             }
         }
-
     }
 }
