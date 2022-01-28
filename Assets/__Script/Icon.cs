@@ -140,23 +140,39 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 if (inputManger.hitObj.tag == skill.Type)
                 {
-                    if(inputManger.hitObj.tag != "Capital")
+                    if (inputManger.hitObj.tag != "Capital")
                     {
-                        if (inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count != 0)
+                        if (inputManger.hitObj.tag == "Enemy")
                         {
-                            for (int i = 0; i < inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count; i++)
+                            for (int i = 0; i < inputManger.hitObj.GetComponent<EnemyController>().buffPrefebList.Count; i++)
                             {
-                                if (inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Name == skill.Name
-                                    && inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Grade <= skill.Grade)
+                                if (inputManger.hitObj.GetComponent<EnemyController>().buffPrefebList[i].GetComponent<InputSkill>().Name == skill.Name
+                                    && inputManger.hitObj.GetComponent<EnemyController>().buffPrefebList[i].GetComponent<InputSkill>().Grade <= skill.Grade)
                                 {
-                                    inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().card.RemoveCardEffect(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Code);
-                                    Destroy(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
-                                    inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Remove(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
+                                    inputManger.hitObj.GetComponent<EnemyController>().buffPrefebList[i].GetComponent<InputSkill>().card.RemoveCardEffect(inputManger.hitObj.GetComponent<EnemyController>().buffPrefebList[i].GetComponent<InputSkill>().Code);
+                                    Destroy(inputManger.hitObj.GetComponent<EnemyController>().buffPrefebList[i]);
+                                    inputManger.hitObj.GetComponent<EnemyController>().buffPrefebList.Remove(inputManger.hitObj.GetComponent<EnemyController>().buffPrefebList[i]);
                                 }
                             }
                         }
+                        else
+                        {
+                            if (inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count != 0)
+                            {
+                                for (int i = 0; i < inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Count; i++)
+                                {
+                                    if (inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Name == skill.Name
+                                        && inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Grade <= skill.Grade)
+                                    {
+                                        inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().card.RemoveCardEffect(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i].GetComponent<InputSkill>().Code);
+                                        Destroy(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
+                                        inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList.Remove(inputManger.hitObj.GetComponent<SoldierManger>().buffPrefebList[i]);
+                                    }
+                                }
 
-                        inputManger.hitObj.GetComponent<SoldierManger>().AttachCountNumCheck();
+                                inputManger.hitObj.GetComponent<SoldierManger>().AttachCountNumCheck();
+                            }
+                        }
                     }
 
                     card.carInfo = skill.Picture;

@@ -35,8 +35,6 @@ public class LoadingSceneController : MonoBehaviour
         {
             yield return null;
 
-            
-
             if (op.progress < 0.9f)
             {
                 prgressBar.fillAmount = op.progress;
