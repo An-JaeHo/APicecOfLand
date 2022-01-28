@@ -75,6 +75,10 @@ public class BonusCardController : MonoBehaviour
         gameEndController.saveMgr.playerSave.sugar += sugar;
         gameEndController.saveMgr.playerSave.flour += flour;
 
+        gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.milk.ToString();
+        gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.sugar.ToString();
+        gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.flour.ToString();
+
         for (int i = 0; i < gameEndController.bonuses.Length; i++)
         {
             gameEndController.bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;

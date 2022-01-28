@@ -30,9 +30,12 @@ public class LoadingSceneController : MonoBehaviour
         op.allowSceneActivation = false;
 
         float timer = 0f;
+
         while (!op.isDone)
         {
             yield return null;
+
+            
 
             if (op.progress < 0.9f)
             {
@@ -40,8 +43,10 @@ public class LoadingSceneController : MonoBehaviour
             }
             else
             {
+                Time.timeScale = 1;
                 timer += Time.deltaTime;
                 prgressBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
+
                 if (prgressBar.fillAmount >= 1f)
                 {
                     op.allowSceneActivation = true;
