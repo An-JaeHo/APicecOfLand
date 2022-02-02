@@ -129,7 +129,7 @@ public class TutorialButtonManger : MonoBehaviour
 
         panel.baseLand.GetComponent<MakeArea>().InputAreaInfo(panel.code);
         panel.baseLand.GetComponent<AreaManger>().CheckUpdateMaterial();
-        panel.parentUi.GetComponent<TutorialBuildController>().content.transform.position = panel.parentUi.GetComponent<TutorialBuildController>().position;
+        //panel.parentUi.GetComponent<TutorialBuildController>().content.transform.position = panel.parentUi.GetComponent<TutorialBuildController>().position;
         input.mouseCheck = true;
         buildTile = panel.baseLand;
 

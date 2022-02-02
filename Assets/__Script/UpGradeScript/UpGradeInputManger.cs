@@ -34,7 +34,7 @@ public class UpGradeInputManger : MonoBehaviour
             }
             else
             {
-                Mounshit();
+                //Mounshit();
             }
         }
     }
@@ -134,7 +134,7 @@ public class UpGradeInputManger : MonoBehaviour
                 upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition = upGradeMonsterInfo.monsters[i].transform.localPosition;
             }
 
-            upGradeMonsterInfo.upGradeSceneWindow.UpGradeCheck(upGradeMonsterInfo.monsters[2].transform);
+            //upGradeMonsterInfo.upGradeSceneWindow.UpGradeCheck(upGradeMonsterInfo.monsters[2].transform);
 
         }
     }

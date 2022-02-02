@@ -107,7 +107,7 @@ public class TutorialInputManger : MonoBehaviour
                             talk = false;
                             landObj = hit.transform;
                             mouseCheck = false;
-                            //talkManger.dimmedCover.SetActive(false);
+                            talkManger.dimmedCover.SetActive(false);
                             talkManger.NextScriptButton();
                             tileManger.tutorialLand.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 15;
                             landObj.GetComponent<SpriteRenderer>().sortingOrder = 17;

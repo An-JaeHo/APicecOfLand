@@ -1,0 +1,233 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.25f1 (9b9180224418) revision 10195328'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19042) 64bit Core' Language: 'ko' Physical Memory: 16342 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+D:\UnityVer\2020.3.25f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Coco/Documents/GitHub/APicecOfLand
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+60123
+Successfully changed project path to: C:/Users/Coco/Documents/GitHub/APicecOfLand
+C:/Users/Coco/Documents/GitHub/APicecOfLand
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 206.11 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.25f1 (9b9180224418)
+[Subsystems] Discovering subsystems at path D:/UnityVer/2020.3.25f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Coco/Documents/GitHub/APicecOfLand/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1070 (ID=0x1b81)
+    Vendor:   
+    VRAM:     8088 MB
+    Driver:   27.21.14.6097
+Initialize mono
+Mono path[0] = 'D:/UnityVer/2020.3.25f1/Editor/Data/Managed'
+Mono path[1] = 'D:/UnityVer/2020.3.25f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/UnityVer/2020.3.25f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56812
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/UnityVer/2020.3.25f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002704 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 121.71 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.817 seconds
+Domain Reload Profiling:
+	ReloadAssembly (817ms)
+		BeginReloadAssembly (94ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (647ms)
+			LoadAssemblies (94ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (177ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (275ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (122ms)
+				BeforeProcessingInitializeOnLoad (21ms)
+				ProcessInitializeOnLoadAttributes (93ms)
+				ProcessInitializeOnLoadMethodAttributes (31ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.050064 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 109.19 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+GPGSUpgrader start
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+GooglePlayGames.Editor.GPGSUpgrader:.cctor () (at Assets/GooglePlayGames/Editor/GPGSUpgrader.cs:38)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/GooglePlayGames/Editor/GPGSUpgrader.cs Line: 38)
+
+GPGSUpgrader done
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+GooglePlayGames.Editor.GPGSUpgrader:.cctor () (at Assets/GooglePlayGames/Editor/GPGSUpgrader.cs:57)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/GooglePlayGames/Editor/GPGSUpgrader.cs Line: 57)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.846 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1847ms)
+		BeginReloadAssembly (205ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (25ms)
+		EndReloadAssembly (1566ms)
+			LoadAssemblies (213ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (439ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (76ms)
+			SetupLoadedEditorAssemblies (598ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (109ms)
+				BeforeProcessingInitializeOnLoad (139ms)
+				ProcessInitializeOnLoadAttributes (317ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.13 seconds
+Refreshing native plugins compatible for Editor in 3.42 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3623 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 152.7 MB.
+System memory in use after: 153.0 MB.
+
+Unloading 156 unused Assets to reduce memory usage. Loaded Objects now: 3945.
+Total: 4.610900 ms (FindLiveObjects: 0.278600 ms CreateObjectMapping: 0.178700 ms MarkObjects: 3.997900 ms  DeleteObjects: 0.154800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: ProjectSettings/ProjectSettings.asset
+  artifactKey: Guid(00000000000000004000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing ProjectSettings/ProjectSettings.asset using Guid(00000000000000004000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de40839dac60e8124f11ec7c8c4df465') in 0.073868 seconds 
+  Import took 0.082565 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 293.939695 seconds.
+  path: Assets/google-services (5).json
+  artifactKey: Guid(499e33c7899b166429369386baaa848f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/google-services (5).json using Guid(499e33c7899b166429369386baaa848f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a90522f773486560a42ae01d468fa47') in 0.022031 seconds 
+  Import took 0.030678 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.892653 seconds.
+  path: Assets/google-services.json
+  artifactKey: Guid(499e33c7899b166429369386baaa848f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/google-services.json using Guid(499e33c7899b166429369386baaa848f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '473fe0b381fb658ea792435e03136dd7') in 0.006459 seconds 
+  Import took 0.014849 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 185.582952 seconds.
+  path: Assets/GoogleLoginManger.cs
+  artifactKey: Guid(5b769a3057fdaf945a5dccf72954f195) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoogleLoginManger.cs using Guid(5b769a3057fdaf945a5dccf72954f195) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ff14a8cefe2f5ab36ad4933363ea5ae') in 0.036836 seconds 
+  Import took 0.044040 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.355139 seconds.
+  path: Assets/addMobManger.cs
+  artifactKey: Guid(bf367850054e08a408a348300f0ed4eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/addMobManger.cs using Guid(bf367850054e08a408a348300f0ed4eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '453e2d26287687d37a1f3862e30523e4') in 0.004576 seconds 
+  Import took 0.011652 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.925679 seconds.
+  path: Assets/TutorialInvenController.cs
+  artifactKey: Guid(2f9eed10355e41d4fbf0c13cc518ec3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialInvenController.cs using Guid(2f9eed10355e41d4fbf0c13cc518ec3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7baa1351f5c3e412fcc041185b87ae22') in 0.006366 seconds 
+  Import took 0.013193 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 470.306303 seconds.
+  path: Assets/google-services (7).json
+  artifactKey: Guid(ac7fb68aa2b753a46b025bd468b59055) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/google-services (7).json using Guid(ac7fb68aa2b753a46b025bd468b59055) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3da056655c33a764fc59b36688def438') in 0.007940 seconds 
+  Import took 0.016063 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.102822 seconds.
+  path: Assets/google-services.json
+  artifactKey: Guid(ac7fb68aa2b753a46b025bd468b59055) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/google-services.json using Guid(ac7fb68aa2b753a46b025bd468b59055) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6412dc929151facaf911d2cc797ad66') in 0.005960 seconds 
+  Import took 0.016403 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 485.489985 seconds.
+  path: Assets/google-services (8).json
+  artifactKey: Guid(e16935eae43066f4eb25cf53541ed1b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/google-services (8).json using Guid(e16935eae43066f4eb25cf53541ed1b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bd9aaee6c761b36b12925724e25bb41') in 0.008271 seconds 
+  Import took 0.018713 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.950435 seconds.
+  path: Assets/google-services.json
+  artifactKey: Guid(e16935eae43066f4eb25cf53541ed1b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/google-services.json using Guid(e16935eae43066f4eb25cf53541ed1b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '870d4a93cb23ebb32d29970a5754d349') in 0.005542 seconds 
+  Import took 0.011860 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

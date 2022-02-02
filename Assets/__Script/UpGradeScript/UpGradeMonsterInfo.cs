@@ -455,7 +455,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 }
             }
 
-            monster.transform.localPosition = new Vector3(-1640f, -900f);
+            monster.transform.localPosition = new Vector3(-1100f, -900f);
             monster.GetComponent<MakeSoldier>().nowPosition = monster.transform.localPosition;
             monsters.Insert(0, monster);
         }
@@ -573,7 +573,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
                 }
             }
             
-            monster.transform.localPosition = new Vector3(1640f, -900f);
+            monster.transform.localPosition = new Vector3(1100f, -900f);
             monster.GetComponent<MakeSoldier>().nowPosition = monster.transform.localPosition;
             monsters.Add(monster);
         }
@@ -589,7 +589,11 @@ public class UpGradeMonsterInfo : MonoBehaviour
             }
         }
 
+        interporlateNum = 0;
         
+
+
+        upGradeSceneWindow.UpGradeCheck(monsters[2].transform);
         toggleController.CheckToggle();
     }
 }

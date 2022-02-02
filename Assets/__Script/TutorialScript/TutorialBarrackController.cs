@@ -57,35 +57,34 @@ public class TutorialBarrackController : MonoBehaviour
 
     public void MakeSoldierInPlace()
     {
-        if (playerInfo.milk > soldierInfo.ProductionExpense)
-        {
-            GameObject prefebSoldier = Instantiate(soldierPrefeb, new Vector3(land.position.x, land.position.y + 25f), Quaternion.identity);
-            inputManger.army = prefebSoldier.transform;
-            prefebSoldier.transform.SetParent(land);
-            prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
-            SaveLevelCheck(prefebSoldier);
-            playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
-            prefebSoldier.GetComponent<BoxCollider2D>().enabled = false;
-            for (int i = 0; i < MonsterObj.Length; i++)
-            {
-                if (MonsterObj[i].name == prefebSoldier.GetComponent<MakeSoldier>().Code)
-                {
-                    GameObject monsterPicture = Instantiate(MonsterObj[i], new Vector3(prefebSoldier.transform.position.x, prefebSoldier.transform.position.y - 55), Quaternion.identity);
-                    monsterPicture.transform.SetParent(prefebSoldier.transform);
-                }
-            }
 
-            monsters.Add(prefebSoldier);
-            usingPeople++;
-            supplyManger.UpdateSupply();
-            barrackMonsterSprite.gameObject.SetActive(false);
-            gameObject.SetActive(false);
-            //inputManger.talkManger.MoveTalk();
-            //inputManger.talkManger.talkCheck = true;
-            //inputManger.talkManger.stopTalkNum = 1;
-            inputManger.ChangeLandInfo();
-            land.GetComponent<BoxCollider2D>().enabled = false;
+        GameObject prefebSoldier = Instantiate(soldierPrefeb, new Vector3(land.position.x, land.position.y + 25f), Quaternion.identity);
+        inputManger.army = prefebSoldier.transform;
+        prefebSoldier.transform.SetParent(land);
+        prefebSoldier.GetComponent<MakeSoldier>().SuperMagic(soldierInfo.Code);
+        SaveLevelCheck(prefebSoldier);
+        playerInfo.updateMilk -= prefebSoldier.GetComponent<MakeSoldier>().ConsumeFood;
+        prefebSoldier.GetComponent<BoxCollider2D>().enabled = false;
+        for (int i = 0; i < MonsterObj.Length; i++)
+        {
+            if (MonsterObj[i].name == prefebSoldier.GetComponent<MakeSoldier>().Code)
+            {
+                GameObject monsterPicture = Instantiate(MonsterObj[i], new Vector3(prefebSoldier.transform.position.x, prefebSoldier.transform.position.y - 55), Quaternion.identity);
+                monsterPicture.transform.SetParent(prefebSoldier.transform);
+            }
         }
+
+        monsters.Add(prefebSoldier);
+        usingPeople++;
+        supplyManger.UpdateSupply();
+        barrackMonsterSprite.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        //inputManger.talkManger.MoveTalk();
+        //inputManger.talkManger.talkCheck = true;
+        //inputManger.talkManger.stopTalkNum = 1;
+        inputManger.ChangeLandInfo();
+        land.GetComponent<BoxCollider2D>().enabled = false;
+
 
         inputManger.talkManger.MoveTalk();
         inputManger.mouseCheck = true;

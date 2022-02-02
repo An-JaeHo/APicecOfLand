@@ -39,7 +39,7 @@ public class BuildController : MonoBehaviour
     public void CreateWindow()
     {
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-        //content.transform.localPosition = new Vector3(-200f, 0f);
+        content.transform.localPosition = new Vector3(-0f, -220f);
 
         if (content.transform.childCount !=0)
         {

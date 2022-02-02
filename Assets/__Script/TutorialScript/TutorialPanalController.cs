@@ -50,7 +50,6 @@ public class TutorialPanalController : MonoBehaviour
             inputManger.talkManger.NextScriptButton();
             inputManger.talkManger.areaUi.transform.SetSiblingIndex(3);
             inputManger.talkManger.outPutUi.transform.SetAsLastSibling();
-
             talkCheck = false;
         }
 

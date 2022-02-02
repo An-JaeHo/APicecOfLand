@@ -32,11 +32,32 @@ public class TutorialBuildController : MonoBehaviour
     public void CreateWindow()
     {
         json = GameObject.FindGameObjectWithTag("GameManger").GetComponent<JsonManger>();
-        position = content.transform.position;
+        content.transform.localPosition = new Vector3(-0f, -220f);
 
-        if (content.transform.childCount >= 5)
+        if (content.transform.childCount >= 1)
         {
-
+            if (talkManger.buildCheck)
+            {
+                if (land.GetComponent<AreaManger>().pureTag == "Grass")
+                {
+                    GameObject barrackInfo = Instantiate(info, content.transform);
+                    barrackInfo.transform.name = "우유";
+                    //HighLightObjController.HighLight(barrackInfo);
+                    //GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StartHighLightObj();
+                    lands.Add(barrackInfo);
+                }
+            }
+            else
+            {
+                if (land.GetComponent<AreaManger>().pureTag == "Grass")
+                {
+                    GameObject barrackInfo = Instantiate(info, content.transform);
+                    barrackInfo.transform.name = "병영";
+                    //HighLightObjController.HighLight(barrackInfo);
+                    //GameObject.FindGameObjectWithTag("GameController").GetComponent<HighLightObjController>().StartHighLightObj();
+                    lands.Add(barrackInfo);
+                }
+            }
         }
         else
         {

@@ -195,7 +195,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984677638461566756}
   m_HandleRect: {fileID: 984677638461566759}
   m_Direction: 2
-  m_Value: 13.735298
+  m_Value: 0.79412305
   m_Size: 0.932
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -344,7 +344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -206.5, y: -100}
+  m_AnchoredPosition: {x: -206.5, y: 120}
   m_SizeDelta: {x: 650, y: 250}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &984677637166956357
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 730f31609a915ed40959004ccbdcaa8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b903460c64fe97a419d9947f0249904e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6392157, g: 0.8392157, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984677638854026654}
   m_HandleRect: {fileID: 984677638854026649}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 0.00000012876615
   m_Size: 0.6353846
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1905,6 +1905,7 @@ GameObject:
   - component: {fileID: 984677638752956684}
   - component: {fileID: 984677638752956687}
   - component: {fileID: 984677638752956685}
+  - component: {fileID: 1120216581}
   m_Layer: 5
   m_Name: BuildUI
   m_TagString: Untagged
@@ -1953,7 +1954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6392157, g: 0.8392157, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1999,6 +2000,32 @@ MonoBehaviour:
   mosterUI: {fileID: 21300000, guid: 8301a35dd97aec0478071807726edde6, type: 3}
   peopleUI: {fileID: -6029090441470849421, guid: 9fb9d616e72bed64096ee4abbe8a73c1,
     type: 3}
+--- !u!61 &1120216581
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984677638752956681}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 841, y: 676}
+  m_EdgeRadius: 0
 --- !u!1 &984677638825121652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,7 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6392157, g: 0.8392157, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
