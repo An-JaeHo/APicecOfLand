@@ -45,23 +45,38 @@ public class UpGradeButtonManger : MonoBehaviour
             {
                 upGradeMonsterInfo.interporlateNum = 1;
                 nextMonsterRightCheck = false;
+
+                for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+                {
+                    upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition = upGradeMonsterInfo.monsters[i].transform.localPosition;
+                }
+
+                upGradeMonsterInfo.FindAndMakeMonster();
+
             }
             
             upGradeMonsterInfo.RoundMonster();
-            upGradeMonsterInfo.FindAndMakeMonster();
+            
         }
 
         if(nextMonsterLeftCheck)
         {
             upGradeMonsterInfo.interporlateNum -= Time.deltaTime;
+
             if (upGradeMonsterInfo.interporlateNum < -1)
             {
                 upGradeMonsterInfo.interporlateNum = -1;
+
+                for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
+                {
+                    upGradeMonsterInfo.monsters[i].GetComponent<MakeSoldier>().nowPosition = upGradeMonsterInfo.monsters[i].transform.localPosition;
+                }
+
+                upGradeMonsterInfo.FindAndMakeMonster();
                 nextMonsterLeftCheck = false;
             }
             
             upGradeMonsterInfo.RoundMonster();
-            upGradeMonsterInfo.FindAndMakeMonster();
         }
     }
 

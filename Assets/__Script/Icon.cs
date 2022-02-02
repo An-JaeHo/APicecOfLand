@@ -15,7 +15,7 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public GameObject skillInven;
     public InvenManger invenManger;
     public GameObject cardImpactObj;
-    private bool armyCheck;
+    
     private bool deleteCheck;
 
     public bool tutorialCheck;
@@ -23,7 +23,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     void Awake()
     {
         image = GetComponent<Image>();
-        armyCheck = false;
         skillInven = GameObject.Find("SkillInven");
         invenManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<InvenManger>();
     }
@@ -237,10 +236,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             deleteCheck = true;
         }
-        else
-        {
-            armyCheck = true;
-        }
 
         if (tutorialCheck)
         {
@@ -256,10 +251,6 @@ public class Icon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform.tag == "WasteBasket")
-        {
-            deleteCheck = false;
-        }
-        else
         {
             deleteCheck = false;
         }

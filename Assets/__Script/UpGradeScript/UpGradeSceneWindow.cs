@@ -160,8 +160,8 @@ public class UpGradeSceneWindow : MonoBehaviour
         saveMgr.playerSave.sugar -= needUpGradeSugar;
         saveMgr.playerSave.flour -= needUpGradeFlour;
         //저장 하나?
-        //SaveLevelAndRank(monster);
-        //saveMgr.JustSave();
+        SaveLevelAndRank(monster);
+        
         supply.GetComponent<MySupplyList>().UpdateSupply();
         upGradeInputManger.mouseCheck = true;
         UpGradeCheck(monster);
@@ -217,5 +217,7 @@ public class UpGradeSceneWindow : MonoBehaviour
             default:
                 break;
         }
+
+        saveMgr.JustSave();
     }
 }

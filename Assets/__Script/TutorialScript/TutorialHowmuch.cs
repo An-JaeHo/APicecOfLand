@@ -31,15 +31,15 @@ public class TutorialHowmuch : MonoBehaviour
         barrackController.soldierInfo = makeSoldier;
 
         int canUsePeople = barrackController.playerInfo.people - barrackController.usingPeople;
-
-        if (barrackController.playerInfo.milk > makeSoldier.ProductionExpense && canUsePeople > 0)
-        {
-            barrackController.soldierMakeButton.GetComponent<Button>().interactable = true;
-        }
-        else
-        {
-            barrackController.soldierMakeButton.GetComponent<Button>().interactable = false;
-        }
+        barrackController.soldierMakeButton.GetComponent<Button>().interactable = true;
+        //if (barrackController.playerInfo.milk > makeSoldier.ProductionExpense && canUsePeople > 0)
+        //{
+        //    barrackController.soldierMakeButton.GetComponent<Button>().interactable = true;
+        //}
+        //else
+        //{
+        //    barrackController.soldierMakeButton.GetComponent<Button>().interactable = false;
+        //}
 
         if (talkCheck)
         {
