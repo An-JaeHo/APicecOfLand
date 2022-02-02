@@ -3,50 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GooglePlayGames;
-using GooglePlayGames.BasicApi;
 
 public class GoogleLoginManger : MonoBehaviour
 {
-    [SerializeField] Text _status;
+    public Text LogText;
 
-    void Awake()
+    void Start()
     {
-        //구성 및 초기화
-        PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder().Build());
-        //디버깅에 권장됨
         PlayGamesPlatform.DebugLogEnabled = true;
-        //PlayGamesPlatform 활성화
         PlayGamesPlatform.Activate();
-    }
-
-    private void Start()
-    {
-        PlayLogin();
+        LogIn();
     }
 
 
-    public void PlayLogin()
+    public void LogIn()
     {
-        //현재 사용자가 인증되었는지 확인합니다
-        if (!Social.localUser.authenticated)
+        Social.localUser.Authenticate((bool success) =>
         {
-            //현재 활성 Social API 구현에 대한 로컬 사용자를 인증하고 그의 프로필 데이터를 가져옵니다
-            //첫번째 인자 : 성공여부 / 두번째 인자 : 실패시 오류 로그
-            Social.localUser.Authenticate((bool isOk, string error) =>
-            {
-                if (isOk)
-                    _status.text = Social.localUser.userName;
-                else
-                    _status.text = error;
-            });
-        }
+            if (success) LogText.text = Social.localUser.id + " \n " + Social.localUser.userName;
+            else LogText.text = "구글 로그인 실패";
+        });
     }
 
-    public void PlayLogout()
+
+    public void LogOut()
     {
-        //Social.Active : 현재 활성화된 소셜 플랫폼(지금 상황에서는 PlayGamesPlatform)을 반환
-        PlayGamesPlatform platform = Social.Active as PlayGamesPlatform;
-        platform.SignOut();
-        _status.text = "Logout";
+        ((PlayGamesPlatform)Social.Active).SignOut();
+        LogText.text = "구글 로그아웃";
     }
 }
