@@ -183,6 +183,7 @@ public class UpGradeSceneWindow : MonoBehaviour
                 monsterPicture.transform.localScale = new Vector3(0.8f, 0.8f);
             }
         }
+
         monster.GetComponent<MakeSoldier>().SuperMagic(nextCode);
     }
 
