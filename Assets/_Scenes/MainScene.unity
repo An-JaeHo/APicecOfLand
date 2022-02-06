@@ -1220,7 +1220,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 4.5905e-41, y: 0, z: 0, w: 1e-45}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1438,10 +1438,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 938187459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b769a3057fdaf945a5dccf72954f195, type: 3}
+  m_Script: {fileID: 11500000, guid: 02becc53c042a5f418849687ee43c635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _status: {fileID: 1855155098}
+  LogText: {fileID: 1855155098}
 --- !u!114 &938187463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2914,8 +2914,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 938187462}
-        m_TargetAssemblyTypeName: GoogleLoginManger, Assembly-CSharp
-        m_MethodName: PlayLogin
+        m_TargetAssemblyTypeName: GoogleManager, Assembly-CSharp
+        m_MethodName: LogIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4315,8 +4315,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 938187462}
-        m_TargetAssemblyTypeName: GoogleLoginManger, Assembly-CSharp
-        m_MethodName: PlayLogout
+        m_TargetAssemblyTypeName: GoogleManager, Assembly-CSharp
+        m_MethodName: LogOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
