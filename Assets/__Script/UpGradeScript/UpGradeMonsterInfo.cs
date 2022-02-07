@@ -590,9 +590,6 @@ public class UpGradeMonsterInfo : MonoBehaviour
         }
 
         interporlateNum = 0;
-        
-
-
         upGradeSceneWindow.UpGradeCheck(monsters[2].transform);
         toggleController.CheckToggle();
     }

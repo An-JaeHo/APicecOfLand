@@ -8,8 +8,7 @@ public class GoogleManager : MonoBehaviour
 {
     public Text LogText;
 
-
-    void Start()
+    void Awake()
     {
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();

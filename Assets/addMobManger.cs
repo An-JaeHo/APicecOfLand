@@ -104,6 +104,10 @@ public class addMobManger : MonoBehaviour
             bonusCard.GetComponent<BonusCardController>().gameEndController.saveMgr.playerSave.sugar += bonusCard.GetComponent<BonusCardController>().sugar;
 
             bonusCard.GetComponent<BonusCardController>().gameEndController.saveMgr.playerSave.flour += bonusCard.GetComponent<BonusCardController>().flour;
+
+            gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.milk.ToString();
+            gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.sugar.ToString();
+            gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.flour.ToString();
         };
     }
 
