@@ -82,6 +82,7 @@ public class BonusCardController : MonoBehaviour
         for (int i = 0; i < gameEndController.bonuses.Length; i++)
         {
             gameEndController.bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
+            gameEndController.bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = false;
         }
     }
 }

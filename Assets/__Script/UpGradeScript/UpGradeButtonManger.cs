@@ -17,7 +17,8 @@ public class UpGradeButtonManger : MonoBehaviour
     public bool check;
     public bool nextMonsterRightCheck;
     public bool nextMonsterLeftCheck;
-
+    public Button rightbutton;
+    public Button leftbutton;
 
     private void Start()
     {
@@ -40,9 +41,14 @@ public class UpGradeButtonManger : MonoBehaviour
         if(nextMonsterRightCheck)
         {
             upGradeMonsterInfo.interporlateNum += Time.deltaTime;
+            leftbutton.enabled = false;
+            rightbutton.enabled = false;
 
-            if(upGradeMonsterInfo.interporlateNum > 1)
+            if (upGradeMonsterInfo.interporlateNum > 1)
             {
+                leftbutton.enabled = true;
+                rightbutton.enabled = true;
+
                 upGradeMonsterInfo.interporlateNum = 1;
                 nextMonsterRightCheck = false;
 
@@ -62,9 +68,13 @@ public class UpGradeButtonManger : MonoBehaviour
         if(nextMonsterLeftCheck)
         {
             upGradeMonsterInfo.interporlateNum -= Time.deltaTime;
+            leftbutton.enabled = false;
+            rightbutton.enabled = false;
 
             if (upGradeMonsterInfo.interporlateNum < -1)
             {
+                leftbutton.enabled = true;
+                rightbutton.enabled = true;
                 upGradeMonsterInfo.interporlateNum = -1;
 
                 for (int i = 0; i < upGradeMonsterInfo.monsters.Count; i++)
