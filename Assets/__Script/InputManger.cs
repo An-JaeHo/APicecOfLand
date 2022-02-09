@@ -284,9 +284,12 @@ public class InputManger : MonoBehaviour
 
             if (hit && touchCheck)
             {
+                touchCheck = false;
+
                 if (armyMove)
                 {
                     hitObj = hit.transform;
+
                     if (hitObjPreFeb != null && hitObjPreFeb.GetComponent<SpriteRenderer>().color == Color.red)
                     {
                         hitObjPreFeb.GetComponent<SpriteRenderer>().color = Color.white;
@@ -441,11 +444,11 @@ public class InputManger : MonoBehaviour
                     armyMove = true;
                 }
 
-                touchCheck = false;
+                
             }
             else
             {
-                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                if (Input.GetTouch(0).phase == TouchPhase.Began && !touchCheck)
                 {
                     ChangeLandInfo();
                 }

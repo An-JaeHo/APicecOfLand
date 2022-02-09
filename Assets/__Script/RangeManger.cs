@@ -28,7 +28,7 @@ public class RangeManger : MonoBehaviour
         MakeSoldier soldier = hitobj.GetComponent<MakeSoldier>();
 
         int nameOfLand = Int32.Parse(hitobj.parent.parent.name) - 1;
-
+        Debug.Log("PlayerMoveRange");
         // 오른쪽 
         if (hitobj.GetComponent<MakeSoldier>().Movement >= 1)
         {
@@ -115,6 +115,7 @@ public class RangeManger : MonoBehaviour
         }
 
         input.army = hitobj;
+        input.touchCheck = true;
     }
 
     public void PlayerAttackRange(Transform hitobj)
@@ -123,6 +124,7 @@ public class RangeManger : MonoBehaviour
         MakeSoldier soldier = hitobj.GetComponent<MakeSoldier>();
         int nameOfLand = Int32.Parse(hitobj.parent.parent.name) - 1;
 
+        input.touchCheck = true;
         // 오른쪽 
         if (hitobj.GetComponent<MakeSoldier>().attackCount >= 1)
         {
@@ -236,8 +238,8 @@ public class RangeManger : MonoBehaviour
         input.specialSkillController.skillCheck = false;
         specialSkillController.coolTime = 0;
         List<Transform> redTiles = hitobj.GetComponent<EnemyController>().redTiles;
-
-        if(redTiles.Count != 0)
+        input.touchCheck = true;
+        if (redTiles.Count != 0)
         {
             for (int i = 0; i < redTiles.Count; i++)
             {
