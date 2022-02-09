@@ -18,16 +18,63 @@ public class GameEndController : MonoBehaviour
     public int sumPoint;
     public int killingPoint;
     public int turnPoint;
+    private bool supplyCheck;
+    private int pureMilkSupply;
+    private int pureFlourSupply;
+    private int pureSugarSupply;
+    private int sumMilkSupply;
+    private int sumFlourSupply;
+    private int sumSugarSupply;
+    private float times;
 
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
-
+        supplyCheck = false;
         CheckPoint();
         CheckRank();
         ResulttGame();
         BonusCheck();
+    }
+
+    private void Update()
+    {
+        if (supplyCheck)
+        {
+            times += Time.deltaTime;
+
+            supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureMilkSupply, sumMilkSupply, times / 3)).ToString();
+            supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureSugarSupply, sumSugarSupply, times / 3)).ToString();
+            supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureFlourSupply, sumFlourSupply, times / 3)).ToString();
+
+            for (int i = 0; i < bonuses.Length; i++)
+            {
+                bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
+                bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = false;
+            }
+
+            if (times / 3 >= 1)
+            {
+                if(sumPoint >= 12)
+                {
+                    for (int i = 0; i < bonuses.Length; i++)
+                    {
+                        bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = true;
+                        bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = true;
+                    }
+                }
+
+                supplyCheck = false;
+                saveMgr.playerSave.milk = sumMilkSupply;
+                saveMgr.playerSave.sugar = sumFlourSupply;
+                saveMgr.playerSave.flour = sumSugarSupply;
+            }
+        }
+        else
+        {
+            times = 0;
+        }
     }
 
     public void CheckRank()
@@ -98,7 +145,7 @@ public class GameEndController : MonoBehaviour
            && playerInfo.turnPoint <= 30)
         {
             turnPoint = 1;
-            
+
         }
         else if (30 < playerInfo.turnPoint
            && playerInfo.turnPoint <= 80)
@@ -236,16 +283,25 @@ public class GameEndController : MonoBehaviour
                 break;
         }
 
-        if (playerInfo.milk > 0 && playerInfo.sugar > 0 && playerInfo.flour > 0)
-        {
-            saveMgr.playerSave.milk += (int)(playerInfo.milk * percentage);
-            saveMgr.playerSave.sugar += (int)(playerInfo.sugar * percentage);
-            saveMgr.playerSave.flour += (int)(playerInfo.flour * percentage);
-        }
+        //if (playerInfo.milk > 0 && playerInfo.sugar > 0 && playerInfo.flour > 0)
+        //{
+        //    saveMgr.playerSave.milk += (int)(playerInfo.milk * percentage);
+        //    saveMgr.playerSave.sugar += (int)(playerInfo.sugar * percentage);
+        //    saveMgr.playerSave.flour += (int)(playerInfo.flour * percentage);
+        //}
 
-        supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.milk.ToString();
-        supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.sugar.ToString();
-        supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.flour.ToString();
+        pureMilkSupply = saveMgr.playerSave.milk;
+        pureSugarSupply = saveMgr.playerSave.sugar;
+        pureFlourSupply = saveMgr.playerSave.flour;
+
+        sumMilkSupply = saveMgr.playerSave.milk + (int)(playerInfo.milk * percentage);
+        sumSugarSupply = saveMgr.playerSave.sugar + (int)(playerInfo.sugar * percentage);
+        sumFlourSupply = saveMgr.playerSave.flour + (int)(playerInfo.flour * percentage);
+        
+        //supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.milk.ToString();
+        //supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.sugar.ToString();
+        //supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.flour.ToString();
+        supplyCheck = true;
     }
 
     private void TestButton()
@@ -275,9 +331,10 @@ public class GameEndController : MonoBehaviour
                 bonuses[i].GetComponent<BonusCardController>().RandomSupply();
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Image>().sprite = bonuses[i].GetComponent<BonusCardController>().BonusImage;
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = true;
+                bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = true;
                 addButton.GetComponent<Button>().enabled = true;
                 addButton.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
-                
+
             }
             else
             {
@@ -285,6 +342,7 @@ public class GameEndController : MonoBehaviour
                 addButton.GetComponent<Button>().enabled = false;
                 addButton.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 155f / 255f);
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
+                bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = false;
             }
         }
     }

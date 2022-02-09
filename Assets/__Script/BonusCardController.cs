@@ -29,10 +29,43 @@ public class BonusCardController : MonoBehaviour
     public int sugar;
     private bool buttonCheck;
 
+    private bool supplyCheck;
+    private int pureMilkSupply;
+    private int pureFlourSupply;
+    private int pureSugarSupply;
+    private int sumMilkSupply;
+    private int sumFlourSupply;
+    private int sumSugarSupply;
+    private float times;
+
     private void Start()
     {
         buttonCheck = false;
         gameEndController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameEndController>();
+    }
+
+    private void Update()
+    {
+        if (supplyCheck)
+        {
+            times += Time.deltaTime;
+
+            gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureMilkSupply, sumMilkSupply, times / 3)).ToString();
+            gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureSugarSupply, sumSugarSupply, times / 3)).ToString();
+            gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureFlourSupply, sumFlourSupply, times / 3)).ToString();
+
+            if (times / 3 >= 1)
+            {
+                gameEndController.saveMgr.playerSave.milk = sumMilkSupply;
+                gameEndController.saveMgr.playerSave.sugar = sumFlourSupply;
+                gameEndController.saveMgr.playerSave.flour = sumSugarSupply;
+                supplyCheck = false;
+            }
+        }
+        else
+        {
+            times = 0;
+        }
     }
 
     public void RandomSupply()
@@ -70,19 +103,29 @@ public class BonusCardController : MonoBehaviour
         animator.SetTrigger("Flip");
         cardFront.gameObject.SetActive(true);
         addmobManger.bonusCard = gameObject;
+        gameEndController.addButton.GetComponent<Button>().interactable = true;
+        //gameEndController.saveMgr.playerSave.milk += milk;
+        //gameEndController.saveMgr.playerSave.sugar += sugar;
+        //gameEndController.saveMgr.playerSave.flour += flour;
 
-        gameEndController.saveMgr.playerSave.milk += milk;
-        gameEndController.saveMgr.playerSave.sugar += sugar;
-        gameEndController.saveMgr.playerSave.flour += flour;
+        //gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.milk.ToString();
+        //gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.sugar.ToString();
+        //gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.flour.ToString();
 
-        gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.milk.ToString();
-        gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.sugar.ToString();
-        gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.flour.ToString();
+        pureMilkSupply = gameEndController.saveMgr.playerSave.milk;
+        pureSugarSupply = gameEndController.saveMgr.playerSave.sugar;
+        pureFlourSupply = gameEndController.saveMgr.playerSave.flour;
 
+        sumMilkSupply = gameEndController.saveMgr.playerSave.milk + milk;
+        sumSugarSupply = gameEndController.saveMgr.playerSave.sugar + sugar;
+        sumFlourSupply = gameEndController.saveMgr.playerSave.flour +flour;
+        
         for (int i = 0; i < gameEndController.bonuses.Length; i++)
         {
-            gameEndController.bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
-            gameEndController.bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = false;
+            gameEndController.bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().interactable = false;
+            gameEndController.bonuses[i].transform.GetChild(1).GetComponent<Button>().interactable = false;
         }
+
+        supplyCheck = true;
     }
 }

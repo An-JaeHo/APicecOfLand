@@ -12,6 +12,14 @@ public class addMobManger : MonoBehaviour
     public GameEndController gameEndController;
     public GameObject bonusCard;
 
+    private bool supplyCheck;
+    private int pureMilkSupply;
+    private int pureFlourSupply;
+    private int pureSugarSupply;
+    private int sumMilkSupply;
+    private int sumFlourSupply;
+    private int sumSugarSupply;
+    private float times;
 
     void Start()
     {
@@ -30,7 +38,29 @@ public class addMobManger : MonoBehaviour
     void Update()
     {
         //FrontAdsBtn.interactable = frontAd.IsLoaded();
-        RewardAdsBtn.interactable = rewardAd.IsLoaded();
+        //RewardAdsBtn.interactable = rewardAd.IsLoaded();
+
+        if (supplyCheck)
+        {
+            times += Time.deltaTime;
+            //gameEndController.addButton.GetComponent<Button>().interactable = true;
+            gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureMilkSupply, sumMilkSupply, times / 3)).ToString();
+            gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureSugarSupply, sumSugarSupply, times / 3)).ToString();
+            gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureFlourSupply, sumFlourSupply, times / 3)).ToString();
+            gameEndController.addButton.GetComponent<Button>().interactable = false;
+
+            if (times / 3 >= 1)
+            {
+                gameEndController.saveMgr.playerSave.milk = sumMilkSupply;
+                gameEndController.saveMgr.playerSave.sugar = sumFlourSupply;
+                gameEndController.saveMgr.playerSave.flour = sumSugarSupply;
+                supplyCheck = false;
+            }
+        }
+        else
+        {
+            times = 0;
+        }
     }
 
     AdRequest GetAdRequest()
@@ -108,6 +138,15 @@ public class addMobManger : MonoBehaviour
             gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.milk.ToString();
             gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.sugar.ToString();
             gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.flour.ToString();
+
+            pureMilkSupply = gameEndController.saveMgr.playerSave.milk;
+            pureSugarSupply = gameEndController.saveMgr.playerSave.sugar;
+            pureFlourSupply = gameEndController.saveMgr.playerSave.flour;
+
+            sumMilkSupply = gameEndController.saveMgr.playerSave.milk + bonusCard.GetComponent<BonusCardController>().milk;
+            sumSugarSupply = gameEndController.saveMgr.playerSave.sugar + bonusCard.GetComponent<BonusCardController>().sugar;
+            sumFlourSupply = gameEndController.saveMgr.playerSave.flour + bonusCard.GetComponent<BonusCardController>().flour;
+            supplyCheck = true;
         };
     }
 
