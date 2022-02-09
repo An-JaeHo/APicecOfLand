@@ -196,7 +196,8 @@ MonoBehaviour:
   skillList: {fileID: 0}
   card: {fileID: 0}
   image: {fileID: 4685464986201776183}
-  test: {fileID: 0}
+  nextCode: 
+  maxGrade: 0
 --- !u!114 &-6248469702872598784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,12 +213,14 @@ MonoBehaviour:
   slot: {fileID: 0}
   image: {fileID: 0}
   inputManger: {fileID: 0}
+  tutorialInputManger: {fileID: 0}
   skill: {fileID: 0}
   card: {fileID: 0}
   skillInven: {fileID: 0}
   invenManger: {fileID: 0}
   cardImpactObj: {fileID: 7795615931487843532, guid: 3cddb4f434efaef4fbd11a7c7a761d11,
     type: 3}
+  tutorialCheck: 0
 --- !u!114 &4685464986201776183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +261,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
