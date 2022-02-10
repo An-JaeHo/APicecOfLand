@@ -383,7 +383,7 @@ public class InputManger : MonoBehaviour
                 else
                 {
                     hitObj = hit.transform;
-
+                    
                     switch (hit.transform.tag)
                     {
                         case "Enemy":
@@ -400,6 +400,8 @@ public class InputManger : MonoBehaviour
                                     moveSoldier.attack = true;
                                     army.transform.GetComponent<SoldierManger>().SoldierAction();
                                 }
+                                ChangeLandInfo();
+                                armyMove = true;
                             }
                             break;
                         case "GD":
@@ -416,6 +418,8 @@ public class InputManger : MonoBehaviour
                                     moveSoldier.attack = true;
                                     army.transform.GetComponent<SoldierManger>().SoldierAction();
                                 }
+                                ChangeLandInfo();
+                                armyMove = true;
                             }
                             break;
                         case "SelectLand":
@@ -434,17 +438,16 @@ public class InputManger : MonoBehaviour
                             moveSoldier.move = true;
                             army.transform.GetComponent<SoldierManger>().SoldierAction();
                             army.transform.GetComponent<SoldierManger>().movePoint = false;
+                            ChangeLandInfo();
+                            armyMove = true;
                             break;
                         default:
                             break;
                     }
 
-                    ChangeLandInfo();
+                    
                     CheckMonsterMovePoint();
-                    armyMove = true;
                 }
-
-                
             }
             else
             {
@@ -453,8 +456,6 @@ public class InputManger : MonoBehaviour
                     ChangeLandInfo();
                 }
             }
-
-            
         }
         else if (Input.touchCount == 2)
         {
@@ -465,6 +466,7 @@ public class InputManger : MonoBehaviour
 
     public void ChangeLandInfo()
     {
+        
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {
             rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;

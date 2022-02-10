@@ -186,7 +186,6 @@ public class TutorialTalkManger : MonoBehaviour
                 if (sceneCheck)
                 {
                     player.ResetGame();
-                    save.Save();
                     SceneMgr.GoUpGradeScene();
                 }
             }

@@ -706,8 +706,11 @@ public class ButtonManger : MonoBehaviour
                         amrys[i].GetComponent<MakeSoldier>().HelthPoint =
                             (int)amrys[i].GetComponent<SoldierManger>().totalHp;
                     }
+
+                    amrys[i].GetComponent<SoldierManger>().HpBarScale();
                 }
 
+                
                 healCheck = false;
             }
         }
