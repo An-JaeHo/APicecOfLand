@@ -449,8 +449,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -50, y: -45}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: -65, y: -45}
+  m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &366117840
 MonoBehaviour:
@@ -695,11 +695,11 @@ RectTransform:
   m_Children:
   - {fileID: 1055358774}
   m_Father: {fileID: 1380534799}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -28, y: 40}
+  m_AnchoredPosition: {x: -70, y: 40}
   m_SizeDelta: {x: 324.67, y: 122.98}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &466134065
@@ -2075,7 +2075,7 @@ RectTransform:
   m_Children:
   - {fileID: 255019405}
   m_Father: {fileID: 1380534799}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2128,7 +2128,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2146187192}
         m_TargetAssemblyTypeName: UpGradeButtonManger, Assembly-CSharp
-        m_MethodName: TestRight
+        m_MethodName: TestLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2281,7 +2281,6 @@ RectTransform:
   m_Children:
   - {fileID: 1544794938}
   - {fileID: 1097611572}
-  - {fileID: 278415551}
   - {fileID: 466134064}
   - {fileID: 2251516085230011936}
   - {fileID: 1968270937}
@@ -2561,12 +2560,13 @@ RectTransform:
   - {fileID: 2115551766}
   - {fileID: 366117839}
   - {fileID: 2134692402}
+  - {fileID: 278415551}
   m_Father: {fileID: 1380534799}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 18}
+  m_AnchoredPosition: {x: 15, y: 18}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1544794939
@@ -2770,7 +2770,7 @@ RectTransform:
   m_Children:
   - {fileID: 538855175}
   m_Father: {fileID: 1380534799}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2823,7 +2823,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2146187192}
         m_TargetAssemblyTypeName: UpGradeButtonManger, Assembly-CSharp
-        m_MethodName: TestLeft
+        m_MethodName: TestRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2978,7 +2978,7 @@ RectTransform:
   m_Children:
   - {fileID: 1602266943}
   m_Father: {fileID: 1380534799}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3347,7 +3347,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -370, y: -38.99999}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2115551767
 MonoBehaviour:
@@ -3438,8 +3438,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 271, y: -45}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: 240, y: -45}
+  m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2134692403
 MonoBehaviour:
@@ -3505,7 +3505,6 @@ GameObject:
   - component: {fileID: 2146187191}
   - component: {fileID: 2146187192}
   - component: {fileID: 2146187193}
-  - component: {fileID: 2146187194}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -3569,24 +3568,12 @@ MonoBehaviour:
   upGradeWindow: {fileID: 2251516085230011937}
   mouseCheck: 0
   upGradeMonsterInfo: {fileID: 897799070}
---- !u!114 &2146187194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146187190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01fc2f8826501a148b3800493ca2b6c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &69108600568295649
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1380534799}
+    m_TransformParent: {fileID: 1544794938}
     m_Modifications:
     - target: {fileID: 69108600292014112, guid: 06ac2a14e16ca49479d25160c54711e7,
         type: 3}
@@ -3612,7 +3599,7 @@ PrefabInstance:
     - target: {fileID: 69108600292014174, guid: 06ac2a14e16ca49479d25160c54711e7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 69108600292014174, guid: 06ac2a14e16ca49479d25160c54711e7,
         type: 3}
@@ -3667,27 +3654,27 @@ PrefabInstance:
     - target: {fileID: 69108600292014174, guid: 06ac2a14e16ca49479d25160c54711e7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 69108600292014174, guid: 06ac2a14e16ca49479d25160c54711e7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 69108600292014174, guid: 06ac2a14e16ca49479d25160c54711e7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 69108600292014174, guid: 06ac2a14e16ca49479d25160c54711e7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -28
+      value: 470
       objectReference: {fileID: 0}
     - target: {fileID: 69108600292014174, guid: 06ac2a14e16ca49479d25160c54711e7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100.29999
+      value: -118.29999
       objectReference: {fileID: 0}
     - target: {fileID: 69108600292014174, guid: 06ac2a14e16ca49479d25160c54711e7,
         type: 3}
@@ -5330,7 +5317,7 @@ RectTransform:
   - {fileID: 773121250}
   - {fileID: 2251516084000931537}
   m_Father: {fileID: 1380534799}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6743,7 +6730,7 @@ RectTransform:
   - {fileID: 8965089948346795547}
   - {fileID: 8965089948921505860}
   m_Father: {fileID: 1380534799}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

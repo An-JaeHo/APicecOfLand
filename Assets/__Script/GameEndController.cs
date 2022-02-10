@@ -79,7 +79,7 @@ public class GameEndController : MonoBehaviour
 
     public void CheckRank()
     {
-        //sumPoint = killingPoint + turnPoint;
+        sumPoint = killingPoint + turnPoint;
 
         if (sumPoint <= 3)
         {
@@ -148,44 +148,49 @@ public class GameEndController : MonoBehaviour
 
         }
         else if (30 < playerInfo.turnPoint
-           && playerInfo.turnPoint <= 80)
+           && playerInfo.turnPoint <= 50)
         {
             turnPoint = 2;
+        }
+        else if (50 < playerInfo.turnPoint
+           && playerInfo.turnPoint <= 80)
+        {
+            turnPoint = 3;
         }
         else if (80 < playerInfo.turnPoint
            && playerInfo.turnPoint <= 110)
         {
-            turnPoint = 3;
+            turnPoint = 5;
         }
         else if (110 < playerInfo.turnPoint
            && playerInfo.turnPoint <= 130)
         {
-            turnPoint = 4;
+            turnPoint = 6;
         }
         else if (130 < playerInfo.turnPoint
            && playerInfo.turnPoint <= 150)
         {
-            turnPoint = 5;
+            turnPoint = 8;
         }
         else if (150 < playerInfo.turnPoint
            && playerInfo.turnPoint <= 170)
         {
-            turnPoint = 6;
+            turnPoint = 8;
         }
         else if (170 < playerInfo.turnPoint
            && playerInfo.turnPoint <= 180)
         {
-            turnPoint = 7;
+            turnPoint = 10;
         }
         else if (180 < playerInfo.turnPoint
            && playerInfo.turnPoint <= 190)
         {
-            turnPoint = 8;
+            turnPoint = 11;
         }
         else if (190 < playerInfo.turnPoint
            && playerInfo.turnPoint <= 200)
         {
-            turnPoint = 10;
+            turnPoint = 12;
         }
         else if (200 < playerInfo.turnPoint)
         {
@@ -283,13 +288,6 @@ public class GameEndController : MonoBehaviour
                 break;
         }
 
-        //if (playerInfo.milk > 0 && playerInfo.sugar > 0 && playerInfo.flour > 0)
-        //{
-        //    saveMgr.playerSave.milk += (int)(playerInfo.milk * percentage);
-        //    saveMgr.playerSave.sugar += (int)(playerInfo.sugar * percentage);
-        //    saveMgr.playerSave.flour += (int)(playerInfo.flour * percentage);
-        //}
-
         pureMilkSupply = saveMgr.playerSave.milk;
         pureSugarSupply = saveMgr.playerSave.sugar;
         pureFlourSupply = saveMgr.playerSave.flour;
@@ -297,10 +295,6 @@ public class GameEndController : MonoBehaviour
         sumMilkSupply = saveMgr.playerSave.milk + (int)(playerInfo.milk * percentage);
         sumSugarSupply = saveMgr.playerSave.sugar + (int)(playerInfo.sugar * percentage);
         sumFlourSupply = saveMgr.playerSave.flour + (int)(playerInfo.flour * percentage);
-        
-        //supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.milk.ToString();
-        //supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.sugar.ToString();
-        //supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = saveMgr.playerSave.flour.ToString();
         supplyCheck = true;
     }
 
@@ -334,7 +328,6 @@ public class GameEndController : MonoBehaviour
                 bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = true;
                 addButton.GetComponent<Button>().enabled = true;
                 addButton.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
-
             }
             else
             {

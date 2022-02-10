@@ -47,15 +47,16 @@ public class SceneMgr : MonoBehaviour
     public static void GoUpGradeScene()
     {
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
-        playerInfo.StartGame();
-        save.Load();
+        
 
         if (!File.Exists(fonlderPath + "/save.txt"))
         {
-            LoadingSceneController.LoadScene("Tutorial");
+            save.Save();
+            GoGameTutorial();
         }
         else
         {
+            playerInfo.StartGame();
             LoadingSceneController.LoadScene("UpGradeScene");
         }
 

@@ -26,9 +26,8 @@ public class RangeManger : MonoBehaviour
     {
         Transform rect = hitobj.parent.GetComponent<Transform>();
         MakeSoldier soldier = hitobj.GetComponent<MakeSoldier>();
-
         int nameOfLand = Int32.Parse(hitobj.parent.parent.name) - 1;
-        Debug.Log("PlayerMoveRange");
+        
         // 오른쪽 
         if (hitobj.GetComponent<MakeSoldier>().Movement >= 1)
         {
@@ -239,6 +238,7 @@ public class RangeManger : MonoBehaviour
         specialSkillController.coolTime = 0;
         List<Transform> redTiles = hitobj.GetComponent<EnemyController>().redTiles;
         input.touchCheck = true;
+
         if (redTiles.Count != 0)
         {
             for (int i = 0; i < redTiles.Count; i++)
@@ -284,8 +284,6 @@ public class RangeManger : MonoBehaviour
                         }
                         redTiles[i].GetChild(0).GetComponent<EnemyController>().HpBarScale();
                     }
-
-                    
                 }
 
                 if (redTiles[i].GetComponent<MakeArea>().Name == "우주선")
