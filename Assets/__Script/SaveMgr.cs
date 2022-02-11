@@ -51,9 +51,9 @@ public class SaveMgr : GenericSingletonClass<SaveMgr>
     {
         if (!File.Exists(fonlderPath + "/save.txt"))
         {
-            playerSave.flour = player.flour;
-            playerSave.sugar = player.sugar;
-            playerSave.milk = player.milk;
+            playerSave.flour = 150;
+            playerSave.sugar = 150;
+            playerSave.milk = 150;
 
             playerSave.SaveCherryGrade = 1;
             playerSave.SaveCherryLevel = 1;

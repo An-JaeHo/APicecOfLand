@@ -5,24 +5,25 @@ using UnityEngine.UI;
 
 public class BuildController : MonoBehaviour
 {
-    //공용
+    [Header("Common Build Obj")]
     public JsonManger json;
     public List<GameObject> lands;
     public ButtonManger buttonManger;
     public Transform land;
-
-    //처음 만드는 창
     public GameObject content;
     public GameObject info;
 
-    //업그레이드를 위한 창
+
+    [Header("UpGradeBuild Obj")]
     public MakeArea makeArea;
     public int nowPoint;
     public int futurePoint;
     public Transform upgradeLand;
     public Button upGradeButton;
+    public GameObject nextProduction;
+    public GameObject upGradeResouce;
 
-    //아이콘
+    [Header("Build Icon")]
     public Sprite milkUI;
     public Sprite flourUI;
     public Sprite sugarUI;
@@ -132,27 +133,26 @@ public class BuildController : MonoBehaviour
             if (land.GetComponent<MakeArea>().Code == json.information.area[i].Code)
             {
                 upgradeLand.GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = json.information.area[i].Picture;
-                upgradeLand.GetChild(3).GetChild(0).GetComponent<Text>().text = "밀가루 : " + json.information.area[i].UpgradeFlour;
-                upgradeLand.GetChild(3).GetChild(1).GetComponent<Text>().text = "설탕 : " + json.information.area[i].UpgradeSugar;
+                //upgradeLand.GetChild(3).GetChild(0).GetComponent<Text>().text = "밀가루 : " + json.information.area[i].UpgradeFlour;
+                //upgradeLand.GetChild(3).GetChild(1).GetComponent<Text>().text = "설탕 : " + json.information.area[i].UpgradeSugar;
+                upGradeResouce.transform.GetChild(0).GetComponent<Text>().text = " 필요 밀가루 : "+json.information.area[i].UpgradeFlour.ToString();
+                upGradeResouce.transform.GetChild(1).GetComponent<Text>().text = " 필요 설탕 : " + json.information.area[i].UpgradeSugar.ToString();
+
+                upGradeResouce.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = CheckEffetToName("밀가루");
+                upGradeResouce.transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = CheckEffetToName("설탕");
+
             }
 
             if (land.GetComponent<AreaManger>().FindNextGrade(land.GetComponent<MakeArea>().Code) == json.information.area[i].Code)
             {
                 upgradeLand.GetChild(2).GetChild(1).GetChild(0).GetComponent<Image>().sprite = json.information.area[i].Picture;
+                nextProduction.transform.GetChild(0).GetComponent<Text>().text = json.information.area[i].Effect;
+                nextProduction.transform.GetChild(1).GetComponent<Image>().sprite = CheckEffetToName(json.information.area[i].Name);
             }
         }
 
-        if (makeArea.Repair)
-        {
-            upgradeLand.GetChild(5).GetComponent<Button>().interactable = true;
-        }
-        else
-        {
-            upgradeLand.GetChild(5).GetComponent<Button>().interactable = false;
-        }
-
-        upgradeLand.GetChild(4).GetChild(0).GetChild(0).GetComponent<Text>().text = (land.GetComponent<MakeArea>().Grade * 5).ToString();
-        upgradeLand.GetChild(4).GetChild(1).GetChild(0).GetComponent<Text>().text = ((land.GetComponent<MakeArea>().Grade+1)*5).ToString();
+        //upgradeLand.GetChild(4).GetChild(0).GetChild(0).GetComponent<Text>().text = (land.GetComponent<MakeArea>().Grade * 5).ToString();
+        //upgradeLand.GetChild(4).GetChild(1).GetChild(0).GetComponent<Text>().text = ((land.GetComponent<MakeArea>().Grade+1)*5).ToString();
 
         gameObject.SetActive(true);
 
@@ -168,5 +168,38 @@ public class BuildController : MonoBehaviour
 
         upgradeLand.GetChild(1).GetChild(0).GetComponent<Image>().sprite = land.GetComponent<SpriteRenderer>().sprite;
         buttonManger.UpgradeLand = land;
+    }
+
+    private Sprite CheckEffetToName(string name)
+    {
+        if (name == "우유")
+        {
+            return milkUI;
+        }
+        else if (name == "밀가루")
+        {
+            return flourUI;
+        }
+        else if (name == "설탕")
+        {
+            return sugarUI;
+        }
+        else if (name == "병영")
+        {
+            return mosterUI;
+        }
+        else if (name == "집")
+        {
+            return peopleUI;
+        }
+        else if (name == "치료소")
+        {
+            return mosterUI;
+        }
+        else
+        {
+            return null;
+        }
+
     }
 }

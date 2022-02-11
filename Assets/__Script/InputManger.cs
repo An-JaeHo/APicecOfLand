@@ -442,6 +442,7 @@ public class InputManger : MonoBehaviour
                             armyMove = true;
                             break;
                         default:
+                            ChangeLandInfo();
                             break;
                     }
 
@@ -459,14 +460,12 @@ public class InputManger : MonoBehaviour
         }
         else if (Input.touchCount == 2)
         {
-            
-            TouchCameraZoom();
+            //TouchCameraZoom();
         }
     }
 
     public void ChangeLandInfo()
     {
-        
         for (int i = 0; i < rangeManger.rangeList.Count; i++)
         {
             rangeManger.rangeList[i].GetComponent<SpriteRenderer>().color = rangeManger.rangeList[i].GetComponent<AreaManger>().pureColor;
@@ -492,6 +491,7 @@ public class InputManger : MonoBehaviour
             }
         }
 
+        armyMove = true;
         rangeManger.rangeList.Clear();
     }
 
