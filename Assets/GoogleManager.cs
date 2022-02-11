@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using GooglePlayGames;
 using UnityEngine.UI;
+using Firebase.Analytics;
+using Firebase;
 
 public class GoogleManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class GoogleManager : MonoBehaviour
     {
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
+
         LogIn();
     }
 
