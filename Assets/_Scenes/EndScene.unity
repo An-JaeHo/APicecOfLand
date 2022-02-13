@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 46264214}
   - component: {fileID: 46264216}
   - component: {fileID: 46264217}
+  - component: {fileID: 46264218}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -170,6 +171,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1dcdf28f232197041ac91968c32475f8, type: 3}
   rankImage: {fileID: 1433441997}
   saveMgr: {fileID: 0}
+  fireBaseManger: {fileID: 46264218}
   bonuses:
   - {fileID: 319123644}
   - {fileID: 1123964394}
@@ -222,6 +224,18 @@ MonoBehaviour:
   RewardAdsBtn: {fileID: 474059833}
   gameEndController: {fileID: 46264214}
   bonusCard: {fileID: 0}
+--- !u!114 &46264218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46264213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91905cfc812d3d84693434308b9c6a3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &276438498
 GameObject:
   m_ObjectHideFlags: 0

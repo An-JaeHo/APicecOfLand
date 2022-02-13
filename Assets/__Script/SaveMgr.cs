@@ -28,6 +28,8 @@ public class Save
 
     public int SaveChocoLevel;
     public int SaveChocoGrade;
+
+    public bool firstGame = false;
 }
 
 public class SaveMgr : GenericSingletonClass<SaveMgr>
@@ -72,6 +74,8 @@ public class SaveMgr : GenericSingletonClass<SaveMgr>
 
             playerSave.SaveChocoGrade = 1;
             playerSave.SaveChocoLevel = 1;
+
+            playerSave.firstGame = true;
         }
 
         string saveString = JsonUtility.ToJson(playerSave);
