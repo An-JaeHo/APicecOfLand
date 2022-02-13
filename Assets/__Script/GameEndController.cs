@@ -11,6 +11,7 @@ public class GameEndController : MonoBehaviour
     public List<Sprite> rankSprites;
     public GameObject rankImage;
     public SaveMgr saveMgr;
+    public FireBaseManger fireBaseManger;
 
     [Header("Bonus Obj")]
     public GameObject[] bonuses;
@@ -252,6 +253,10 @@ public class GameEndController : MonoBehaviour
     {
         float percentage = new float();
 
+        if(saveMgr.playerSave.firstGame)
+        {
+            fireBaseManger.LogEvent("First Reward");
+        }
         switch (rankImage.GetComponent<Image>().sprite.name)
         {
             case "FAIL":

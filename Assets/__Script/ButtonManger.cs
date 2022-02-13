@@ -56,6 +56,7 @@ public class ButtonManger : MonoBehaviour
     private RangeManger rangeManger;
     private GameObject game;
     private bool healCheck;
+    private FireBaseManger fireBaseManger;
 
     private void Start()
     {
@@ -68,6 +69,7 @@ public class ButtonManger : MonoBehaviour
         input = GetComponent<InputManger>();
         barrackController = barrackWindow.GetComponent<BarrackController>();
         timer = GameObject.Find("GameTime").GetComponent<Timer>();
+        fireBaseManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<FireBaseManger>();
         buttonTimer = 1;
         healCheck = false;
         TurnCheck();
@@ -635,14 +637,16 @@ public class ButtonManger : MonoBehaviour
         button.GetComponent<Button>().interactable = false;
         timer.timerCheck = false;
 
-        if (playerInfo.turnPoint == 120)
+        if (playerInfo.turnPoint == 100)
+        {
+            fireBaseManger.LogEvent("100Turn");
+        }
+        else if (playerInfo.turnPoint == 120)
         {
             int rand = Random.Range(200, 270);
             playerInfo.killingPoint = rand;
             SceneMgr.GoGameEndScene();
         }
-
-        
 
         StartCoroutine(moveEnemy());
         rangeManger.rangeList.Clear();

@@ -6,27 +6,18 @@ using Firebase.Analytics;
 
 public class FireBaseManger : MonoBehaviour
 {
-    FirebaseApp app;
+     FirebaseApp app;
 
    
     void Start()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
+            Debug.Log(task.Result);
             if (task.Result == DependencyStatus.Available)
             {
-                Debug.Log(task.Result);
+                
                 app = FirebaseApp.DefaultInstance;
-
-                LogEvent("test");
-
-                LogEvent("param_test_int", "IntParam",111);
-
-                LogEvent("param_test_float","FloatParam",2.22f);
-
-                LogEvent("param_test_string","StringParam","TEXT");
-
-                LogEvent("param_test_int");
             }
             else
             {
