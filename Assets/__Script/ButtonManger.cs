@@ -56,7 +56,6 @@ public class ButtonManger : MonoBehaviour
     private RangeManger rangeManger;
     private GameObject game;
     private bool healCheck;
-    private FireBaseManger fireBaseManger;
 
     private void Start()
     {
@@ -69,7 +68,6 @@ public class ButtonManger : MonoBehaviour
         input = GetComponent<InputManger>();
         barrackController = barrackWindow.GetComponent<BarrackController>();
         timer = GameObject.Find("GameTime").GetComponent<Timer>();
-        fireBaseManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<FireBaseManger>();
         buttonTimer = 1;
         healCheck = false;
         TurnCheck();
@@ -639,7 +637,6 @@ public class ButtonManger : MonoBehaviour
 
         if (playerInfo.turnPoint == 100)
         {
-            fireBaseManger.LogEvent("100Turn");
         }
         else if (playerInfo.turnPoint == 120)
         {

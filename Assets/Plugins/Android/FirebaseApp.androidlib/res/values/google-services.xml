@@ -1,10 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://a-piece-of-land-85125095-default-rtdb.firebaseio.com</string>
   <string name="gcm_defaultSenderId" translatable="false">269466304542</string>
   <string name="google_storage_bucket" translatable="false">a-piece-of-land-85125095.appspot.com</string>
   <string name="project_id" translatable="false">a-piece-of-land-85125095</string>
   <string name="google_api_key" translatable="false">AIzaSyBOHFomIvbjsde8cVNtQ0ge5w5kqXtSads</string>
   <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBOHFomIvbjsde8cVNtQ0ge5w5kqXtSads</string>
   <string name="google_app_id" translatable="false">1:269466304542:android:aa8dbc5ee3f375e2f76e0f</string>
+  <string name="default_android_client_id" translatable="false">269466304542-6io01jv9brpe9s13anukq4ds8bh7et6j.apps.googleusercontent.com</string>
   <string name="default_web_client_id" translatable="false">269466304542-ee1gkj94812beeelnpdohj25s9lak9kr.apps.googleusercontent.com</string>
 </resources>

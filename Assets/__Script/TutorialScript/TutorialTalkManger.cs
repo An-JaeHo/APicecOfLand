@@ -39,7 +39,6 @@ public class TutorialTalkManger : MonoBehaviour
     public PlayerInfo player;
     public SaveMgr save;
     public bool firstTalk;
-    public FireBaseManger fireBaseManger;
 
     public bool buildCheck;
     public bool barrackCheck;
@@ -68,7 +67,6 @@ public class TutorialTalkManger : MonoBehaviour
         enemyCheck = false;
         player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
-        fireBaseManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<FireBaseManger>();
     }
 
     public void NextScriptButton()
@@ -188,7 +186,6 @@ public class TutorialTalkManger : MonoBehaviour
                 if (sceneCheck)
                 {
                     player.ResetGame();
-                    fireBaseManger.LogEvent("Tutorial End");
                     SceneMgr.GoUpGradeScene();
                 }
             }
