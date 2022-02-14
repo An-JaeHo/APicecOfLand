@@ -10,13 +10,11 @@ public class SceneMgr : MonoBehaviour
     public static SaveMgr save;
     public static PlayerInfo playerInfo;
     public static string fonlderPath;
-    public static FireBaseManger fireBaseManger;
 
     private void Start()
     {
         fonlderPath = Application.persistentDataPath;
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
-        fireBaseManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<FireBaseManger>();
     }
 
     public static void GoGameMainScene()
@@ -35,11 +33,9 @@ public class SceneMgr : MonoBehaviour
 
         if(save.playerSave.firstGame)
         {
-            fireBaseManger.LogEvent("FirstGame Start");
         }
         else
         {
-            fireBaseManger.LogEvent("Next Game Start");
         }
 
         SceneManager.LoadScene(3);
@@ -60,7 +56,6 @@ public class SceneMgr : MonoBehaviour
     public static void GoUpGradeScene()
     {
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
-        fireBaseManger.LogEvent("Main Scene");
 
         if (!File.Exists(fonlderPath + "/save.txt"))
         {

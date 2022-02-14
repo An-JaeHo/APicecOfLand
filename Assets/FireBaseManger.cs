@@ -13,11 +13,13 @@ public class FireBaseManger : MonoBehaviour
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
-            Debug.Log(task.Result);
             if (task.Result == DependencyStatus.Available)
             {
-                
                 app = FirebaseApp.DefaultInstance;
+
+                LogEvent("Test Log");
+                LogEvent("Test Log 2","IntParam",111);
+                LogEvent("Test Log 3", "FloatParam",2.22f);
             }
             else
             {
