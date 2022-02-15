@@ -51,12 +51,12 @@ public class SupplyManger : MonoBehaviour
             SystemMessgeController.SystemMessge("supply");
         }
 
-        //if (playerInfo.milk < -150 
-        //    || playerInfo.flour < -150
-        //    || playerInfo.sugar < -150)
-        //{
-        //    SceneMgr.GoGameEndScene();
-        //}
+        if (playerInfo.milk < -150 
+            || playerInfo.flour < -150
+            || playerInfo.sugar < -150)
+        {
+            SceneMgr.GoGameEndScene();
+        }
 
         if (playerInfo.milk >= 3000)
         {

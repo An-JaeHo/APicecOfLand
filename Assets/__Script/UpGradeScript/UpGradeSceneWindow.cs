@@ -55,7 +55,7 @@ public class UpGradeSceneWindow : MonoBehaviour
         stateWindow.GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Defensive.ToString();
         stateWindow.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = obj.GetComponent<MakeSoldier>().Critical.ToString()+ "%";
 
-        if (obj.GetComponent<MakeSoldier>().Level == 5)
+        if (obj.GetComponent<MakeSoldier>().Level == 5 && obj.GetComponent<MakeSoldier>().Grade != 3)
         {
             stateWindow.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.HelthPoint.ToString();
             stateWindow.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = nextMonster.BaseAttack.ToString();
@@ -64,10 +64,10 @@ public class UpGradeSceneWindow : MonoBehaviour
         }
         else
         {
-            stateWindow.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().HelthPoint + obj.GetComponent<MakeSoldier>().RiseHelth * obj.GetComponent<MakeSoldier>().Level).ToString();
-            stateWindow.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().BaseAttack + obj.GetComponent<MakeSoldier>().RiseAttack* obj.GetComponent<MakeSoldier>().Level).ToString();
-            stateWindow.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Defensive + obj.GetComponent<MakeSoldier>().RiseDefensive * obj.GetComponent<MakeSoldier>().Level).ToString();
-            stateWindow.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Critical + obj.GetComponent<MakeSoldier>().RiseCritical * obj.GetComponent<MakeSoldier>().Level).ToString()+"%";
+            stateWindow.GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().HelthPoint + obj.GetComponent<MakeSoldier>().RiseHelth).ToString();
+            stateWindow.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().BaseAttack + obj.GetComponent<MakeSoldier>().RiseAttack).ToString();
+            stateWindow.GetChild(2).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Defensive + obj.GetComponent<MakeSoldier>().RiseDefensive).ToString();
+            stateWindow.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = (obj.GetComponent<MakeSoldier>().Critical + obj.GetComponent<MakeSoldier>().RiseCritical).ToString()+"%";
         }
 
 
@@ -152,6 +152,7 @@ public class UpGradeSceneWindow : MonoBehaviour
             monster.GetComponent<MakeSoldier>().BaseAttack += monster.GetComponent<MakeSoldier>().RiseAttack;
             monster.GetComponent<MakeSoldier>().Critical += monster.GetComponent<MakeSoldier>().RiseCritical;
             monster.GetComponent<MakeSoldier>().Defensive += monster.GetComponent<MakeSoldier>().RiseDefensive;
+            monster.GetComponent<MakeSoldier>().HelthPoint += monster.GetComponent<MakeSoldier>().RiseHelth;
 
             monsterLevel.text = monster.GetComponent<MakeSoldier>().Level.ToString();
         }
@@ -181,6 +182,7 @@ public class UpGradeSceneWindow : MonoBehaviour
                 GameObject monsterPicture = Instantiate(MonsterObj[i], monster);
                 monsterPicture.transform.position = new Vector3(monsterPicture.transform.position.x, monsterPicture.transform.position.y - 0.3f);
                 monsterPicture.transform.localScale = new Vector3(0.8f, 0.8f);
+                monsterPicture.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Waiting");
             }
         }
 

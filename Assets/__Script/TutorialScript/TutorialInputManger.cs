@@ -118,7 +118,7 @@ public class TutorialInputManger : MonoBehaviour
                             break;
                         case "Army":
                             if (hit.transform.GetComponent<TutorialSoldierManger>().movePoint 
-                                || hit.transform.GetComponent<MakeSoldier>().MovementNumber != 0)
+                                || hit.transform.GetComponent<MakeSoldier>().MovementNumber > 0)
                             {
                                 rangeManger.PlayerMoveRange(hit.transform);
                             }
@@ -246,7 +246,7 @@ public class TutorialInputManger : MonoBehaviour
                             talk = false;
                             landObj = hit.transform;
                             mouseCheck = false;
-                            //talkManger.dimmedCover.SetActive(false);
+                            talkManger.dimmedCover.SetActive(false);
                             talkManger.NextScriptButton();
                             tileManger.tutorialLand.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 15;
                             landObj.GetComponent<SpriteRenderer>().sortingOrder = 17;
@@ -257,7 +257,7 @@ public class TutorialInputManger : MonoBehaviour
                             break;
                         case "Army":
                             if (hit.transform.GetComponent<TutorialSoldierManger>().movePoint
-                                || hit.transform.GetComponent<MakeSoldier>().MovementNumber != 0)
+                                || hit.transform.GetComponent<MakeSoldier>().MovementNumber > 0)
                             {
                                 rangeManger.PlayerMoveRange(hit.transform);
                             }

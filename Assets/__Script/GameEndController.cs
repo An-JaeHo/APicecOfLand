@@ -26,11 +26,13 @@ public class GameEndController : MonoBehaviour
     private int sumFlourSupply;
     private int sumSugarSupply;
     private float times;
+    private FireBaseManger fireBaseManger;
 
     void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
+        fireBaseManger = GameObject.FindGameObjectWithTag("GameManger").GetComponent<FireBaseManger>();
         supplyCheck = false;
         CheckPoint();
         CheckRank();
@@ -254,6 +256,7 @@ public class GameEndController : MonoBehaviour
 
         if(saveMgr.playerSave.firstGame)
         {
+            fireBaseManger.LogEvent("firstreward");
         }
 
         switch (rankImage.GetComponent<Image>().sprite.name)

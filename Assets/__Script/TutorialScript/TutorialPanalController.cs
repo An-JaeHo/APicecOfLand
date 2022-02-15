@@ -20,6 +20,12 @@ public class TutorialPanalController : MonoBehaviour
     public int upgradeWood;
     public int upgradeIron;
 
+    public Sprite flourUI;
+    public Sprite sugarUI;
+    public Sprite milkUI;
+    public Sprite peopleUI;
+    public Sprite mosterUI;
+
     private void Start()
     {
         talkCheck = true;
@@ -37,13 +43,17 @@ public class TutorialPanalController : MonoBehaviour
         //BuildImage
         GameObject buildImgae = GameObject.Find("BuildImage");
 
-        checkUpgradeMaterial.transform.GetChild(0).GetComponent<Text>().text = "밀가루 : " + upgradeWood;
-        checkUpgradeMaterial.transform.GetChild(1).GetComponent<Text>().text = "설탕 : " + upgradeIron;
+        checkUpgradeMaterial.transform.GetChild(0).GetComponent<Text>().text = "필요 밀가루 : " + upgradeWood;
+        checkUpgradeMaterial.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = flourUI;
+        checkUpgradeMaterial.transform.GetChild(1).GetComponent<Text>().text = "필요 설탕 : " + upgradeIron;
+        checkUpgradeMaterial.transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = sugarUI;
+
         checkOutPut.transform.GetChild(0).GetComponent<Text>().text = effect.ToString();
+        checkOutPut.transform.GetChild(1).GetComponent<Image>().sprite = CheckEffetToName();
         buildImgae.transform.GetChild(0).GetComponent<Image>().sprite = picture;
 
-        //buttonManger.buildUi.GetComponent<TutorialBuildController>().dimmedCover.SetActive(false);
-        if(talkCheck && inputManger.talkManger.buildCheck)
+        
+        if (talkCheck && inputManger.talkManger.buildCheck)
         {
             inputManger.talkManger.stopTalkNum = 4;
             inputManger.talkManger.talkCheck = true;
@@ -53,6 +63,42 @@ public class TutorialPanalController : MonoBehaviour
             talkCheck = false;
         }
 
+
+
+
         buttonManger.CreateAreaPrefab = gameObject;
+    }
+
+    private Sprite CheckEffetToName()
+    {
+        if (name == "우유")
+        {
+            return milkUI;
+        }
+        else if (name == "밀가루")
+        {
+            return flourUI;
+        }
+        else if (name == "설탕")
+        {
+            return sugarUI;
+        }
+        else if (name == "병영")
+        {
+            return mosterUI;
+        }
+        else if (name == "집")
+        {
+            return peopleUI;
+        }
+        else if (name == "치료소")
+        {
+            return mosterUI;
+        }
+        else
+        {
+            return null;
+        }
+
     }
 }

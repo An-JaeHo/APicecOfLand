@@ -105,37 +105,14 @@ public class SaveMgr : GenericSingletonClass<SaveMgr>
     public void DeleteSave()
     {
         File.Delete(fonlderPath + "/save.txt");
-        
-        //if (File.Exists(fonlderPath + "/save.txt"))
-        //{
-        //    playerSave.flour = 0;
-        //    playerSave.sugar = 0;
-        //    playerSave.milk = 0;
+    }
 
-        //    playerSave.SaveCherryGrade = 1;
-        //    playerSave.SaveCherryLevel = 1;
-
-        //    playerSave.SaveCandyGrade = 1;
-        //    playerSave.SaveCandyLevel = 1;
-
-        //    playerSave.SaveSkittlesGrade = 1;
-        //    playerSave.SaveSkittlesLevel = 1;
-
-        //    playerSave.SaveDonutsGrade = 1;
-        //    playerSave.SaveDonutsLevel = 1;
-
-        //    playerSave.SaveSchneeballenGrade = 1;
-        //    playerSave.SaveSchneeballenLevel = 1;
-
-        //    playerSave.SaveChocoGrade = 1;
-        //    playerSave.SaveChocoLevel = 1;
-
-        //    string saveString = JsonUtility.ToJson(playerSave);
-        //    File.WriteAllText(fonlderPath + "/save.txt", saveString);
-        //}
-        //else
-        //{
-        //    Save();
-        //}
+    public void FullSave()
+    {
+        Load();
+        playerSave.flour = 9999999;
+        playerSave.sugar = 9999999;
+        playerSave.milk = 9999999;
+        Save();
     }
 }

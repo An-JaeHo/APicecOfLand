@@ -137,14 +137,14 @@ public class TutorialBuildController : MonoBehaviour
             }
         }
 
-        if (makeArea.Repair)
-        {
-            upgradeLand.GetChild(5).GetComponent<Button>().interactable = true;
-        }
-        else
-        {
-            upgradeLand.GetChild(5).GetComponent<Button>().interactable = false;
-        }
+        //if (makeArea.Repair)
+        //{
+        //    upgradeLand.GetChild(5).GetComponent<Button>().interactable = true;
+        //}
+        //else
+        //{
+        //    upgradeLand.GetChild(5).GetComponent<Button>().interactable = false;
+        //}
 
         upgradeLand.GetChild(4).GetChild(0).GetChild(0).GetComponent<Text>().text = (land.GetComponent<MakeArea>().Grade * 5).ToString();
         upgradeLand.GetChild(4).GetChild(1).GetChild(0).GetComponent<Text>().text = ((land.GetComponent<MakeArea>().Grade + 1) * 5).ToString();

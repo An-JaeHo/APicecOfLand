@@ -56,10 +56,12 @@ public class ButtonManger : MonoBehaviour
     private RangeManger rangeManger;
     private GameObject game;
     private bool healCheck;
+    private FireBaseManger fireBaseManger;
 
     private void Start()
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+        fireBaseManger = GameObject.FindGameObjectWithTag("GameManger").GetComponent<FireBaseManger>();
         rangeManger = transform.GetComponent<RangeManger>();
         enemys = new List<GameObject>();
         enemyTiles = new List<GameObject>();
@@ -637,6 +639,7 @@ public class ButtonManger : MonoBehaviour
 
         if (playerInfo.turnPoint == 100)
         {
+            fireBaseManger.LogEvent("100trun");
         }
         else if (playerInfo.turnPoint == 120)
         {

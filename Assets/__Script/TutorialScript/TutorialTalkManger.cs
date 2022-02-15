@@ -44,8 +44,7 @@ public class TutorialTalkManger : MonoBehaviour
     public bool barrackCheck;
     public bool enemyCheck;
 
-
-
+    private FireBaseManger fireBaseManger;
     private List< string> scripts;
 
     void Start()
@@ -67,6 +66,7 @@ public class TutorialTalkManger : MonoBehaviour
         enemyCheck = false;
         player = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
+        fireBaseManger = GameObject.FindGameObjectWithTag("GameManger").GetComponent<FireBaseManger>();
     }
 
     public void NextScriptButton()
@@ -186,6 +186,7 @@ public class TutorialTalkManger : MonoBehaviour
                 if (sceneCheck)
                 {
                     player.ResetGame();
+                    fireBaseManger.LogEvent("tutirial_end");
                     SceneMgr.GoUpGradeScene();
                 }
             }
@@ -220,9 +221,9 @@ public class TutorialTalkManger : MonoBehaviour
         barrackCheck = true;
         scripts.Add("생산 건물이 건설 되었습니다!");
         scripts.Add("다음은 제빵사님의 자원 상태를 알아보겠습니다.​");
-        scripts.Add("왼쪽에 있는 숫자는 성주님이 보유하고 있는​자원량입니다.​");
-        scripts.Add("오른쪽에 있는 숫자는 성주님이 턴이 지날 때마다 얻을 수 있는 자원 입니다.​");
-        scripts.Add("생산 자원을 올릴 수록 생산량이 늘어나지만​ 건설 할 때 보유 자원을 소모합니다.​");
+        scripts.Add("왼쪽에 있는 숫자는 제빵사님이 보유하고 있는 ​자원량입니다.​");
+        scripts.Add("오른쪽에 있는 숫자는 제빵사님이 턴이 지날 때마다 얻을 수 있는 자원량입니다.​");
+        scripts.Add("생산 자원을 올릴 수록 생산량이 늘어나고​ 건설 할 때는 보유 자원을 소모합니다.​");
         scripts.Add("하나의 자원이라도 -150이 된다면 패배하게 됩니다.​");
         scripts.Add("배우신대로 해당 타일에 오븐을 건설해보세요!​");
         scripts.Add("우선 오븐을 터치해보세요!​");
@@ -294,16 +295,16 @@ public class TutorialTalkManger : MonoBehaviour
         finalCheck = true;
         // 유닛 이동 2 
         scripts.Add("아군을 터치 해보세요.");
-        scripts.Add("유닛을 이동시키세요.");
+        scripts.Add("유닛을 위로 이동시키세요.");
         // 카드 사용 8 
         scripts.Add("현재 턴에 모든 유닛의 공격 및 행동이 끝나면아이콘이 회색 상태가 되어 알려줍니다.");
         scripts.Add("적군을 처치하고 카드를 획득했습니다!");
         scripts.Add("하나의 스킬을 3개 모으면 상위 카드로 진화합니다.");
         scripts.Add("한 번에 5 종류 이상의 카드는 보유 할 수 없습니다!");
         scripts.Add("스킬 카드는 파란색은 아군 빨간색은 적군하얀색은 케이크에서 사용 가능합니다.");
-        scripts.Add("스킬 카드를 터치하여 원하는 유닛에 사용하세요.");
+        scripts.Add("스킬 카드를 드래그하여 원하는 유닛에 사용하세요.");
         //카드 사용후 11
-        scripts.Add("아군의 이동력이 상승했습니다.");
+        scripts.Add("아군의 이동횟수가 상승했습니다.");
         scripts.Add("적 기지를 파괴하세요!");
         scripts.Add("적 기지까지 파괴해야 패배하지 않습니다!");
         //이동 후 턴 on 13

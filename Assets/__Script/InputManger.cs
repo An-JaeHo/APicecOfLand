@@ -37,6 +37,8 @@ public class InputManger : MonoBehaviour
     public float maxPosX;
     public float minPosY;
     public float maxPosY;
+    private int distance;
+    private int moveDistance;
 
     public SpecialSkillController specialSkillController;
 
@@ -460,7 +462,7 @@ public class InputManger : MonoBehaviour
         }
         else if (Input.touchCount == 2)
         {
-            //TouchCameraZoom();
+            TouchCameraZoom();
         }
     }
 
@@ -612,10 +614,17 @@ public class InputManger : MonoBehaviour
         Vector3 touchOne;
         Vector3 touchTwo;
         int speed = 3;
-        int distance = new int();
-        int moveDistance;
+        
 
         if (Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            touchOne = Input.GetTouch(0).position;
+            touchTwo = Input.GetTouch(1).position;
+
+            distance = (int)Vector3.Distance(touchOne, touchTwo);
+        }
+
+        if(Input.GetTouch(0).phase == TouchPhase.Stationary)
         {
             touchOne = Input.GetTouch(0).position;
             touchTwo = Input.GetTouch(1).position;
@@ -627,16 +636,24 @@ public class InputManger : MonoBehaviour
         {
             touchOne = Input.GetTouch(0).position;
             touchTwo = Input.GetTouch(1).position;
-
+            
             moveDistance = (int)Vector3.Distance(touchOne, touchTwo);
 
-            if(moveDistance > distance)
+            Debug.Log("distance : " + distance + "  moveDistance : " + moveDistance);
+
+            if (moveDistance > distance)
             {
-                Camera.main.orthographicSize += speed;
+                if (Camera.main.orthographicSize > 100)
+                {
+                    Camera.main.orthographicSize -= speed;
+                }
             }
             else
             {
-                Camera.main.orthographicSize -= speed;
+                if (Camera.main.orthographicSize < 500)
+                {
+                    Camera.main.orthographicSize += speed;
+                }
             }
         }
     }

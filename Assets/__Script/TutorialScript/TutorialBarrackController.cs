@@ -57,7 +57,6 @@ public class TutorialBarrackController : MonoBehaviour
 
     public void MakeSoldierInPlace()
     {
-
         GameObject prefebSoldier = Instantiate(soldierPrefeb, new Vector3(land.position.x, land.position.y + 25f), Quaternion.identity);
         inputManger.army = prefebSoldier.transform;
         prefebSoldier.transform.SetParent(land);
@@ -79,9 +78,6 @@ public class TutorialBarrackController : MonoBehaviour
         supplyManger.UpdateSupply();
         barrackMonsterSprite.gameObject.SetActive(false);
         gameObject.SetActive(false);
-        //inputManger.talkManger.MoveTalk();
-        //inputManger.talkManger.talkCheck = true;
-        //inputManger.talkManger.stopTalkNum = 1;
         inputManger.ChangeLandInfo();
         land.GetComponent<BoxCollider2D>().enabled = false;
 

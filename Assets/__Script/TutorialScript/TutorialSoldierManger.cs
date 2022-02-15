@@ -46,12 +46,14 @@ public class TutorialSoldierManger : MonoBehaviour
     public Sprite level5;
 
     public Sprite[] destroyAreaObj;
+    public Image monsterMoveSprite;
 
     void Start()
     {
         tileManger = GameObject.FindGameObjectWithTag("Tile").GetComponent<TutorialTileManger>();
         buttonManger = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialButtonManger>();
         input = GameObject.FindGameObjectWithTag("GameController").GetComponent<TutorialInputManger>();
+        monsterMoveSprite = GameObject.FindGameObjectWithTag("Supply").transform.GetChild(5).GetChild(1).GetComponent<Image>();
         soldier = GetComponent<MakeSoldier>();
         directionCheck = true;
 
@@ -95,6 +97,8 @@ public class TutorialSoldierManger : MonoBehaviour
                 input.talk = false;
                 movePoint = false;
                 soldier.MovementNumber--;
+                monsterMoveSprite.color = Color.gray;
+                transform.parent.GetComponent<BoxCollider2D>().enabled = false;
 
                 if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
                 {
