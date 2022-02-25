@@ -145,7 +145,7 @@ public class TutorialSoldierManger : MonoBehaviour
                     input.inven.SetActive(true);
                     input.talkManger.stopTalkNum = 7;
                     input.talkManger.NextScriptButton();
-                    //input.talkManger.finalCheck = false;
+                    input.talkManger.finalCheck = false;
                 }
             }
 

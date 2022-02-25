@@ -70,7 +70,6 @@ public class TutorialInvenController : MonoBehaviour
             cardInfo.GetComponent<Icon>().tutorialCheck = true;
             cardInfo.name = cardInfo.GetComponent<InputSkill>().Code;
             cardInfo.GetComponent<Image>().sprite = cardInfo.GetComponent<InputSkill>().Picture;
-            //cardInfo.GetComponent<BoxCollider2D>().enabled = false;
             cardCount++;
             break;
         }

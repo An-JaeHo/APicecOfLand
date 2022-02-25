@@ -92,10 +92,6 @@ public class MakeArea : AreaInfo
                 {
                     transform.tag = "Enemy Base";
                 }
-                else if (areaInfo.information.area[i].Code == "Area 28")
-                {
-                    transform.tag = "River";
-                }
                 else
                 {
                     transform.tag = "Area";
