@@ -29,6 +29,7 @@ public class TutorialTalkManger : MonoBehaviour
     [Header("Final Talk")]
     public bool finalCheck;
     public TutorialInvenController tutorialInvenController;
+    public GameObject card;
 
     [Header("Set in ViualStudio")]
     public int spcriptNum;
@@ -39,7 +40,7 @@ public class TutorialTalkManger : MonoBehaviour
     public PlayerInfo player;
     public SaveMgr save;
     public bool firstTalk;
-
+    
     public bool buildCheck;
     public bool barrackCheck;
     public bool enemyCheck;
@@ -163,9 +164,9 @@ public class TutorialTalkManger : MonoBehaviour
 
                 if(finalCheck)
                 {
-                    if (spcriptNum == 1)
+                    if (spcriptNum == 7)
                     {
-                        
+                        tutorialInvenController.slot.transform.GetChild(0).GetChild(0).GetComponent<Icon>().tutorialMoveCheck = true;
                     }
                 }
 

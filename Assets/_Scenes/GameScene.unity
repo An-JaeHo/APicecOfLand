@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236932653}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1951,11 +1951,11 @@ GameObject:
   - component: {fileID: 327509060}
   m_Layer: 5
   m_Name: SpecialSkill
-  m_TagString: Untagged
+  m_TagString: sibal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &327509055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2084,6 +2084,7 @@ MonoBehaviour:
   buttonManger: {fileID: 1090618931}
   tileManger: {fileID: 103904954}
   skillCheck: 0
+  touchCheck: 0
   coolTime: 0
 --- !u!61 &327509060
 BoxCollider2D:
