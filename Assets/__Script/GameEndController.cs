@@ -138,6 +138,8 @@ public class GameEndController : MonoBehaviour
     private void CheckPoint()
     {
         saveMgr = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
+        playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+
         //ео
         if (playerInfo.turnPoint <= 15)
         {
@@ -259,6 +261,8 @@ public class GameEndController : MonoBehaviour
             fireBaseManger.LogEvent("firstreward");
         }
 
+        Debug.Log(rankImage.GetComponent<Image>().sprite.name);
+
         switch (rankImage.GetComponent<Image>().sprite.name)
         {
             case "FAIL":
@@ -302,15 +306,16 @@ public class GameEndController : MonoBehaviour
         sumMilkSupply = saveMgr.playerSave.milk + (int)(playerInfo.milk * percentage);
         sumSugarSupply = saveMgr.playerSave.sugar + (int)(playerInfo.sugar * percentage);
         sumFlourSupply = saveMgr.playerSave.flour + (int)(playerInfo.flour * percentage);
+        
         supplyCheck = true;
     }
 
     private void TestButton()
     {
-        int rand = Random.Range(5, 21);
-        sumPoint = rand;
+        //int rand = Random.Range(5, 21);
+        //sumPoint = rand;
 
-        //CheckPoint();
+        CheckPoint();
         CheckRank();
         ResulttGame();
         BonusCheck();

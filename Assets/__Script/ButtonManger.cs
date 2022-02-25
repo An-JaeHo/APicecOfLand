@@ -518,10 +518,9 @@ public class ButtonManger : MonoBehaviour
                 if (enemys[i].transform.parent.tag == "Area" 
                     || enemys[i].transform.parent.tag == "Barracks")
                 {
-                    //효과음
                     if (!enemys[i].transform.parent.GetComponent<MakeArea>().Destroy)
                     {
-                        enemys[i].transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
+                        enemys[i].transform.GetComponent<AudioSource>().clip = SoundController.FindAndPlayAudio("Destroy");
                         enemys[i].transform.GetComponent<AudioSource>().Play();
                     }
 

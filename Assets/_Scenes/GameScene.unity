@@ -503,7 +503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &111515239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -726,36 +726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ce70f6281e0db4fbaa153254eef804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildSounds:
-  - name: build
-    audio: {fileID: 8300000, guid: a7df7e3c25666034d9c2a4d74cd22fc6, type: 3}
-  - name: fire
-    audio: {fileID: 8300000, guid: ddbf18b9385b5bf4d92a7150f96d51bd, type: 3}
-  - name: destruction
-    audio: {fileID: 8300000, guid: 84044660428ee41478c385f31edeed58, type: 3}
-  bossSounds: []
-  monsterSounds:
-  - name: "\uCCB4\uB9AC\uBA38\uD540"
-    audio: {fileID: 8300000, guid: 30dced883ddb074418f98cee9deb14be, type: 3}
-  - name: "\uC0AC\uD0D5\uB9C9\uB300"
-    audio: {fileID: 8300000, guid: 10b14a4b68a2ac64eb3778c167311af5, type: 3}
-  - name: "\uC2A4\uD0A4\uD2C0\uC988\uCF00\uC774\uD06C"
-    audio: {fileID: 8300000, guid: 770106e5c2c2fd545b9cd205f149d4e6, type: 3}
-  - name: "\uB3C4\uB11B\uCE20"
-    audio: {fileID: 8300000, guid: 81c0a8835426f5d4ba5b044a0a5bd31f, type: 3}
-  - name: "\uC0AC\uD0D5\uBD09\uC9C0"
-    audio: {fileID: 8300000, guid: efa74cc605095be49adb4648910105e9, type: 3}
-  - name: "\uCD08\uCF54\uCE69\uCFE0\uD0A4"
-    audio: {fileID: 8300000, guid: 60e5376f3a07ff04c9986974111a63e6, type: 3}
-  enemySounds:
-  - name: Enemy 1
-    audio: {fileID: 8300000, guid: bc3c5822c7f68494b8b650d1f72144a0, type: 3}
-  - name: Enemy 2
-    audio: {fileID: 8300000, guid: 4121245fc71146944ab4ffc1164f1838, type: 3}
-  - name: Enemy 3
-    audio: {fileID: 8300000, guid: ec21e5fcd3abbbd4d99851bc9fc5b70b, type: 3}
-  - name: Enemy 4
-    audio: {fileID: 8300000, guid: 87c3e93f8f629a14c99064e1359d083c, type: 3}
   setting: {fileID: 1230224295}
 --- !u!4 &129595516
 Transform:
@@ -1366,7 +1336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &236932654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1955,7 +1925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &327509055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2084,6 +2054,7 @@ MonoBehaviour:
   buttonManger: {fileID: 1090618931}
   tileManger: {fileID: 103904954}
   skillCheck: 0
+  touchCheck: 0
   coolTime: 0
 --- !u!61 &327509060
 BoxCollider2D:
@@ -2208,7 +2179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &345311437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6328,8 +6299,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -118.7, y: -117.6}
-  m_SizeDelta: {x: 177.267, y: 71.3665}
+  m_AnchoredPosition: {x: 0, y: -106}
+  m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1396547228
 MonoBehaviour:
@@ -8327,11 +8298,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d33a96fc232bcd8429a830c2f2eedc73, type: 3}
-    m_FontSize: 30
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

@@ -85,14 +85,14 @@ public class SoldierManger : MonoBehaviour
 
                 if (transform.tag == "Builder")
                 {
-                    transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
+                    //transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[0].audio;
                     transform.GetComponent<AudioSource>().Play();
                     //yield return new WaitForSeconds(0.5f);
                 }
 
                 if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
                 {
-                    transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
+                    //transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
                     transform.GetComponent<AudioSource>().Play();
                     transform.parent.GetComponent<AreaManger>().TurnArea();
                     transform.parent.GetComponent<MakeArea>().Name = "Grass";
@@ -193,15 +193,9 @@ public class SoldierManger : MonoBehaviour
             
             ani.SetTrigger("Attack");
 
-            for (int i = 0; i < SoundController.instance.monsterSounds.Length; i++)
-            {
-                if(SoundController.instance.monsterSounds[i].name == transform.GetComponent<MakeSoldier>().Name)
-                {
-                    AudioClip audio = SoundController.instance.monsterSounds[i].audio;
-                    transform.GetComponent<AudioSource>().clip = audio;
-                    transform.GetComponent<AudioSource>().Play();
-                }
-            }
+
+            transform.GetComponent<AudioSource>().clip = SoundController.FindAndPlayAudio(transform.GetComponent<MakeSoldier>().Code);
+            transform.GetComponent<AudioSource>().Play();
             yield return new WaitForSeconds(0.5f);
             
             attack = false;

@@ -17,6 +17,7 @@ public class SceneMgr : MonoBehaviour
         fonlderPath = Application.persistentDataPath;
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         fireBaseManger = GameObject.FindGameObjectWithTag("GameManger").GetComponent<FireBaseManger>();
+        save = GameObject.FindGameObjectWithTag("GameManger").GetComponent<SaveMgr>();
     }
 
     public static void GoGameMainScene()

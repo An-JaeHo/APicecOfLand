@@ -267,15 +267,17 @@ public class InputManger : MonoBehaviour
     {
         if (Input.touchCount == 1)
         {
+            RaycastHit2D hit = new RaycastHit2D();
+
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 touchCheck = true;
                 time = 0;
+                specialSkillController.touchCheck = false;
             }
 
             TouchCameraMove();
 
-            RaycastHit2D hit = new RaycastHit2D();
 
             if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
@@ -378,7 +380,10 @@ public class InputManger : MonoBehaviour
 
                             break;
                         default:
-                            ChangeLandInfo();
+                            if (!specialSkillController.touchCheck)
+                            {
+                                ChangeLandInfo();
+                            }
                             break;
                     }
                 }
@@ -444,7 +449,10 @@ public class InputManger : MonoBehaviour
                             armyMove = true;
                             break;
                         default:
-                            ChangeLandInfo();
+                            if (!specialSkillController.touchCheck)
+                            {
+                                ChangeLandInfo();
+                            }
                             break;
                     }
 

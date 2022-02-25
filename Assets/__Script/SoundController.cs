@@ -5,16 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class Sound
 {
-    public string name;
     public AudioClip audio;
 }
 
 public class SoundController : MonoBehaviour
 {
-    [SerializeField] public Sound[] buildSounds;
-    [SerializeField] public Sound[] bossSounds;
-    [SerializeField] public Sound[] monsterSounds;
-    [SerializeField] public Sound[] enemySounds;
+    [SerializeField] static public AudioClip[] Sounds;
 
     public static SoundController instance;
 
@@ -23,22 +19,31 @@ public class SoundController : MonoBehaviour
     private void Start()
     {
         instance = this;
+        object[] loadedSound = Resources.LoadAll("Sound", typeof(AudioClip));
 
-        for(int i=0; i< buildSounds.Length;i++)
+        Sounds = new AudioClip[loadedSound.Length];
+
+        for (int i = 0; i < loadedSound.Length; i++)
         {
-            setting.soundEffects.Add(buildSounds[i].audio);
+            Sounds[i] = (AudioClip)loadedSound[i];
         }
-        for (int i = 0; i < bossSounds.Length; i++)
+
+        for (int i=0; i< Sounds.Length;i++)
         {
-            setting.soundEffects.Add(bossSounds[i].audio);
+            setting.soundEffects.Add(Sounds[i]);
         }
-        for (int i = 0; i < monsterSounds.Length; i++)
+    }
+
+    static public AudioClip FindAndPlayAudio(string code)
+    {
+        for (int i = 0; i < Sounds.Length; i++)
         {
-            setting.soundEffects.Add(monsterSounds[i].audio);
+            if(Sounds[i].name == code)
+            {
+                return Sounds[i];
+            }
         }
-        for (int i = 0; i < enemySounds.Length; i++)
-        {
-            setting.soundEffects.Add(enemySounds[i].audio);
-        }
+
+        return null;
     }
 }

@@ -9,11 +9,13 @@ public class SpecialSkillController : MonoBehaviour
     public ButtonManger buttonManger;
     public TileManger tileManger;
     public bool skillCheck;
+    public bool touchCheck;
     public int coolTime;
 
     private void Start()
     {
         coolTime = 0;
+        touchCheck = true;
     }
 
     public void SpecialSkillCheck()
@@ -33,6 +35,7 @@ public class SpecialSkillController : MonoBehaviour
 
     public void CandleSkillButton()
     {
+        touchCheck = true;
         for (int j = 0; j < buttonManger.enemys.Count; j++)
         {
             int nameOfLand = Int32.Parse(buttonManger.enemys[j].transform.parent.parent.name);

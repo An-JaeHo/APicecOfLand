@@ -324,16 +324,14 @@ public class EnemyController : MonoBehaviour
 
             if (transform.tag == "Enemy")
             {
-                for (int i = 0; i < SoundController.instance.enemySounds.Length; i++)
-                {
-                    if (SoundController.instance.enemySounds[i].name == transform.GetComponent<MakeEnemy>().Code)
-                    {
-                        AudioClip audio = SoundController.instance.enemySounds[i].audio;
-                        transform.GetComponent<AudioSource>().clip = audio;
-                        transform.GetComponent<AudioSource>().Play();
-                    }
-                }
+                transform.GetComponent<AudioSource>().clip = SoundController.FindAndPlayAudio(transform.GetComponent<MakeEnemy>().Code);
             }
+            else
+            {
+                transform.GetComponent<AudioSource>().clip = SoundController.FindAndPlayAudio(transform.GetComponent<GDController>().Code);
+            }
+
+            transform.GetComponent<AudioSource>().Play();
             yield return new WaitForSeconds(0.8f);
 
             if (target.GetComponent<MakeSoldier>().HelthPoint <= 0)
