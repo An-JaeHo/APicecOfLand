@@ -1344,7 +1344,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 1630
 --- !u!222 &1322192629
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1455,7 +1455,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 800
 --- !u!222 &1327965778
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2693,7 +2693,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!222 &2053173098
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2818,6 +2818,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2640121383826606843, guid: 51c7ac8340575c7469c52c854b089005,
+        type: 3}
+      propertyPath: playerSave.milk
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4845218308681100752, guid: 51c7ac8340575c7469c52c854b089005,
         type: 3}
       propertyPath: m_Name
@@ -2881,17 +2886,17 @@ PrefabInstance:
     - target: {fileID: 4845218308681100759, guid: 51c7ac8340575c7469c52c854b089005,
         type: 3}
       propertyPath: milk
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4845218308681100759, guid: 51c7ac8340575c7469c52c854b089005,
         type: 3}
       propertyPath: flour
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4845218308681100759, guid: 51c7ac8340575c7469c52c854b089005,
         type: 3}
       propertyPath: sugar
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51c7ac8340575c7469c52c854b089005, type: 3}
