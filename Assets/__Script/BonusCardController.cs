@@ -57,8 +57,8 @@ public class BonusCardController : MonoBehaviour
             if (times / 3 >= 1)
             {
                 gameEndController.saveMgr.playerSave.milk = sumMilkSupply;
-                gameEndController.saveMgr.playerSave.sugar = sumFlourSupply;
-                gameEndController.saveMgr.playerSave.flour = sumSugarSupply;
+                gameEndController.saveMgr.playerSave.sugar = sumSugarSupply;
+                gameEndController.saveMgr.playerSave.flour = sumFlourSupply;
                 supplyCheck = false;
             }
         }
@@ -104,13 +104,6 @@ public class BonusCardController : MonoBehaviour
         cardFront.gameObject.SetActive(true);
         addmobManger.bonusCard = gameObject;
         gameEndController.addButton.GetComponent<Button>().interactable = true;
-        //gameEndController.saveMgr.playerSave.milk += milk;
-        //gameEndController.saveMgr.playerSave.sugar += sugar;
-        //gameEndController.saveMgr.playerSave.flour += flour;
-
-        //gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.milk.ToString();
-        //gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.sugar.ToString();
-        //gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = gameEndController.saveMgr.playerSave.flour.ToString();
 
         pureMilkSupply = gameEndController.saveMgr.playerSave.milk;
         pureSugarSupply = gameEndController.saveMgr.playerSave.sugar;

@@ -178,6 +178,7 @@ MonoBehaviour:
   sumPoint: 0
   killingPoint: 0
   turnPoint: 0
+  supplyCheck: 0
 --- !u!4 &46264215
 Transform:
   m_ObjectHideFlags: 0
@@ -216,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf367850054e08a408a348300f0ed4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTestMode: 1
+  isTestMode: 0
   LogText: {fileID: 0}
   FrontAdsBtn: {fileID: 0}
   RewardAdsBtn: {fileID: 474059833}
@@ -2898,6 +2899,16 @@ PrefabInstance:
       propertyPath: sugar
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4845218308681100759, guid: 51c7ac8340575c7469c52c854b089005,
+        type: 3}
+      propertyPath: turnPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845218308681100759, guid: 51c7ac8340575c7469c52c854b089005,
+        type: 3}
+      propertyPath: killingPoint
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51c7ac8340575c7469c52c854b089005, type: 3}
 --- !u!1001 &5971575637695170314
@@ -2907,6 +2918,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1168112037}
     m_Modifications:
+    - target: {fileID: 1129700560, guid: c764f7bc4cbc2684fba687abb058d6aa, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1129700560, guid: c764f7bc4cbc2684fba687abb058d6aa, type: 3}
       propertyPath: m_Interactable
       value: 1

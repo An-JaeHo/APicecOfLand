@@ -18,7 +18,7 @@ public class GameEndController : MonoBehaviour
     public int sumPoint;
     public int killingPoint;
     public int turnPoint;
-    private bool supplyCheck;
+    public bool supplyCheck;
     private int pureMilkSupply;
     private int pureFlourSupply;
     private int pureSugarSupply;
@@ -52,25 +52,26 @@ public class GameEndController : MonoBehaviour
 
             for (int i = 0; i < bonuses.Length; i++)
             {
-                bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
-                bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = false;
+                bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().interactable = false;
+                bonuses[i].transform.GetChild(1).GetComponent<Button>().interactable = false;
             }
 
             if (times / 3 >= 1)
             {
-                if(sumPoint >= 12)
+                if(sumPoint >= 4)
                 {
                     for (int i = 0; i < bonuses.Length; i++)
                     {
-                        bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = true;
-                        bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = true;
+                        bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().interactable = true;
+                        bonuses[i].transform.GetChild(1).GetComponent<Button>().interactable = true;
                     }
                 }
+                saveMgr.playerSave.milk = sumMilkSupply;
+                saveMgr.playerSave.sugar = sumSugarSupply;
+                saveMgr.playerSave.flour = sumFlourSupply;
 
                 supplyCheck = false;
-                saveMgr.playerSave.milk = sumMilkSupply;
-                saveMgr.playerSave.sugar = sumFlourSupply;
-                saveMgr.playerSave.flour = sumSugarSupply;
+                
             }
         }
         else
@@ -261,8 +262,6 @@ public class GameEndController : MonoBehaviour
             fireBaseManger.LogEvent("firstreward");
         }
 
-        Debug.Log(rankImage.GetComponent<Image>().sprite.name);
-
         switch (rankImage.GetComponent<Image>().sprite.name)
         {
             case "FAIL":
@@ -331,23 +330,21 @@ public class GameEndController : MonoBehaviour
     {
         for (int i = 0; i < bonuses.Length; i++)
         {
-            if (sumPoint >= 12)
+            if (sumPoint >= 4)
             {
                 bonuses[i].SetActive(true);
                 bonuses[i].GetComponent<BonusCardController>().RandomSupply();
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Image>().sprite = bonuses[i].GetComponent<BonusCardController>().BonusImage;
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = true;
                 bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = true;
-                addButton.GetComponent<Button>().enabled = true;
-                addButton.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
+
             }
             else
             {
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Image>().sprite = bonuses[i].GetComponent<BonusCardController>().noBonusImage;
-                addButton.GetComponent<Button>().enabled = false;
-                addButton.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 155f / 255f);
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
                 bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = false;
+                Debug.Log("ss");
             }
         }
     }

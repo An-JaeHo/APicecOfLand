@@ -52,8 +52,8 @@ public class addMobManger : MonoBehaviour
             if (times / 3 >= 1)
             {
                 gameEndController.saveMgr.playerSave.milk = sumMilkSupply;
-                gameEndController.saveMgr.playerSave.sugar = sumFlourSupply;
-                gameEndController.saveMgr.playerSave.flour = sumSugarSupply;
+                gameEndController.saveMgr.playerSave.sugar = sumSugarSupply;
+                gameEndController.saveMgr.playerSave.flour = sumFlourSupply;
                 supplyCheck = false;
             }
         }
