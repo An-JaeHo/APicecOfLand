@@ -367,7 +367,7 @@ public class TileManger : MonoBehaviour
                 switch (enemyLand[i].GetComponent<MakeArea>().Grade)
                 {
                     case 1:
-                        noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy2Code[0]);
+                        noChildEnemy.GetComponent<MakeEnemy>().InputEnemyInfo(enemy1Code[0]);
                         break;
                     case 2:
                         if (enemyrand < 50)
