@@ -92,7 +92,7 @@ public class SoldierManger : MonoBehaviour
 
                 if (transform.parent.GetComponent<MakeArea>().Name == "우주선")
                 {
-                    //transform.GetComponent<AudioSource>().clip = SoundController.instance.buildSounds[2].audio;
+                    transform.GetComponent<AudioSource>().clip = SoundController.FindAndPlayAudio("Destroy");
                     transform.GetComponent<AudioSource>().Play();
                     transform.parent.GetComponent<AreaManger>().TurnArea();
                     transform.parent.GetComponent<MakeArea>().Name = "Grass";

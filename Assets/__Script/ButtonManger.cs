@@ -631,6 +631,7 @@ public class ButtonManger : MonoBehaviour
     public void TurnEnd()
     {
         playerInfo.turnPoint++;
+        input.ChangeLandInfo();
         input.mouseCheck = false;
         buttonTimer = 0;
         button.GetComponent<Button>().interactable = false;
