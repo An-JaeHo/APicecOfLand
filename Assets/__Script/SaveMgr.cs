@@ -98,7 +98,6 @@ public class SaveMgr : GenericSingletonClass<SaveMgr>
         {
             string loadFile = File.ReadAllText(fonlderPath + "/save.txt");
             playerSave = JsonUtility.FromJson<Save>(loadFile);
-           
         }
     }
 
