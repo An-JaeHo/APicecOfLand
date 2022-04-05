@@ -5,23 +5,32 @@ using UnityEngine.UI;
 
 public class ArmyUpgrade : MonoBehaviour
 {
+    [Header("Army Information")]
     public MakeSoldier armyinfo;
-    public Transform army;
     public MakeSoldier upgradeArmy;
     public GameObject button;
     public PlayerInfo playerInfo;
+    public Transform army;
     public int upgradeMilk;
+
+    private Transform grade;
+    private Transform helthPoint;
+    private Transform baseAttack;
+    private Transform defensive;
+    private Transform critical;
+
 
     private void Start()
     {
         upgradeMilk = new int();
+
     }
 
     public void UpdateArmyInfo(Transform info)
     {
         playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         army = info;
-        armyinfo = info.GetComponent<MakeSoldier>();
+        MakeSoldier armyinfo = info.GetComponent<MakeSoldier>();
         upgradeArmy = new MakeSoldier();
         upgradeArmy = UpGradeFinder(armyinfo.Code);
 
@@ -90,10 +99,7 @@ public class ArmyUpgrade : MonoBehaviour
 
             button.GetComponent<Button>().interactable = false;
         }
-
-        
     }
-
 
     public MakeSoldier UpGradeFinder(string armyCode)
     {

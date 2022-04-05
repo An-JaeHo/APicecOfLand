@@ -5336,7 +5336,6 @@ GameObject:
   - component: {fileID: 2251516085230011966}
   - component: {fileID: 2251516085230011967}
   - component: {fileID: 2251516085230011938}
-  - component: {fileID: 2251516085230011939}
   - component: {fileID: 2251516085230011940}
   m_Layer: 5
   m_Name: ArmyUpgradeUI
@@ -5372,24 +5371,6 @@ MonoBehaviour:
   monster: {fileID: 0}
   MonsterObj: []
   saveMgr: {fileID: 0}
---- !u!114 &2251516085230011939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2251516085230011937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b875370cc349e4ca7752789d70b34a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armyinfo: {fileID: 0}
-  army: {fileID: 0}
-  upgradeArmy: {fileID: 0}
-  button: {fileID: 0}
-  playerInfo: {fileID: 0}
-  upgradeMilk: 0
 --- !u!61 &2251516085230011940
 BoxCollider2D:
   m_ObjectHideFlags: 0

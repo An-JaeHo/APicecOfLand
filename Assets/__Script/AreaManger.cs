@@ -198,45 +198,19 @@ public class AreaManger : MonoBehaviour
     {
         if(area.Name == "우주선")
         {
-            transform.GetComponent<MakeArea>().Name = null;
-            transform.GetComponent<MakeArea>().Type = "Grass";
-            transform.GetComponent<MakeArea>().Grade = 0;
-            transform.GetComponent<MakeArea>().UpgradeFlour = 0;
-            transform.GetComponent<MakeArea>().UpgradeSugar = 0;
-            transform.GetComponent<MakeArea>().MilkOutput = 0;
-            transform.GetComponent<MakeArea>().FlourOutput = 0;
-            transform.GetComponent<MakeArea>().SugarOutput = 0;
-            transform.GetComponent<MakeArea>().Movement = true;
-            transform.GetComponent<MakeArea>().Destroy = false;
-            transform.GetComponent<MakeArea>().Repair = false;
-            transform.GetComponent<MakeArea>().Effect = null;
-            transform.GetComponent<SpriteRenderer>().color = Color.white;
-            pureColor = Color.white;
+            ResetAreaInfo();
             tileManger.enemyLand.Remove(transform);
-            transform.tag = "Grass";
+            transform.GetComponent<MakeArea>().Destroy = false;
         }
         else
         {
             if (transform.tag != "Capital")
             {
                 ReturnUpdateSouce();
-                transform.GetComponent<MakeArea>().Name = null;
-                transform.GetComponent<MakeArea>().Type = "Grass";
-                transform.GetComponent<MakeArea>().Grade = 0;
-                transform.GetComponent<MakeArea>().UpgradeFlour = 0;
-                transform.GetComponent<MakeArea>().UpgradeSugar = 0;
-                transform.GetComponent<MakeArea>().MilkOutput = 0;
-                transform.GetComponent<MakeArea>().FlourOutput = 0;
-                transform.GetComponent<MakeArea>().SugarOutput = 0;
-                transform.GetComponent<MakeArea>().Movement = true;
-                transform.GetComponent<MakeArea>().Destroy = true;
-                transform.GetComponent<MakeArea>().Repair = false;
-                transform.GetComponent<MakeArea>().Effect = null;
-                transform.GetComponent<SpriteRenderer>().color = Color.white;
-                pureColor = Color.white;
+                ResetAreaInfo();
                 tileManger.buttonManger.destroyTiles.Add(transform);
                 tileManger.buttonManger.tiles.Remove(transform);
-                transform.tag = "Grass";
+                transform.GetComponent<MakeArea>().Destroy = true;
             }
         }
 
@@ -250,6 +224,24 @@ public class AreaManger : MonoBehaviour
         }
 
         GameObject.FindGameObjectWithTag("Supply").GetComponent<SupplyManger>().JustUpdateSupply();
+    }
+
+    private void ResetAreaInfo()
+    {
+        transform.GetComponent<MakeArea>().Name = null;
+        transform.GetComponent<MakeArea>().Type = "Grass";
+        transform.GetComponent<MakeArea>().Grade = 0;
+        transform.GetComponent<MakeArea>().UpgradeFlour = 0;
+        transform.GetComponent<MakeArea>().UpgradeSugar = 0;
+        transform.GetComponent<MakeArea>().MilkOutput = 0;
+        transform.GetComponent<MakeArea>().FlourOutput = 0;
+        transform.GetComponent<MakeArea>().SugarOutput = 0;
+        transform.GetComponent<MakeArea>().Movement = true;
+        transform.GetComponent<MakeArea>().Repair = false;
+        transform.GetComponent<MakeArea>().Effect = null;
+        transform.GetComponent<SpriteRenderer>().color = Color.white;
+        pureColor = Color.white;
+        transform.tag = "Grass";
     }
 
     public void ReturnUpdateSouce()

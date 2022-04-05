@@ -11,6 +11,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
     public UpGradeSceneWindow upGradeSceneWindow;
     public ToggleController toggleController;
     public UpGradeButtonManger buttonManger;
+
     [Header("Set in VisualStudio")]
     public PlayerInfo playerInfo;
     public GameObject[] MonsterObj;
