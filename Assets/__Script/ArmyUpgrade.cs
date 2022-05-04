@@ -7,32 +7,22 @@ public class ArmyUpgrade : MonoBehaviour
 {
     [Header("Army Information")]
     public MakeSoldier armyinfo;
-    public MakeSoldier upgradeArmy;
     public GameObject button;
-    public PlayerInfo playerInfo;
     public Transform army;
     public int upgradeMilk;
-
-    private Transform grade;
-    private Transform helthPoint;
-    private Transform baseAttack;
-    private Transform defensive;
-    private Transform critical;
 
 
     private void Start()
     {
         upgradeMilk = new int();
-
     }
 
     public void UpdateArmyInfo(Transform info)
     {
-        playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
+        PlayerInfo playerInfo = GameObject.FindGameObjectWithTag("GameManger").GetComponent<PlayerInfo>();
         army = info;
-        MakeSoldier armyinfo = info.GetComponent<MakeSoldier>();
-        upgradeArmy = new MakeSoldier();
-        upgradeArmy = UpGradeFinder(armyinfo.Code);
+        armyinfo = info.GetComponent<MakeSoldier>();
+        MakeSoldier upgradeArmy = UpGradeFinder(armyinfo.Code);
 
         transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = armyinfo.Picture;
         transform.GetChild(2).GetChild(0).GetComponent<Text>().text = armyinfo.Level.ToString();
@@ -42,6 +32,7 @@ public class ArmyUpgrade : MonoBehaviour
             && armyinfo.Level != armyinfo.EvolutionLevel)
         {
             button.GetComponent<Button>().interactable = false;
+
             if (armyinfo.Grade != 3)
             {
                 transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "우유가 " + (upgradeMilk - playerInfo.milk) + "만 큼 부족합니다.";
