@@ -139,21 +139,6 @@ public class EnemyController : MonoBehaviour
                 //위아래 17 양옆 1
                 if (tiles.activeChildtileList[i].GetChild(0).childCount != 0)
                 {
-                    //if (tiles.activeChildtileList[i].name == (myName - 17).ToString() || tiles.activeChildtileList[i].name == (myName + 17).ToString()
-                    //    || tiles.activeChildtileList[i].name == (myName - 1).ToString() || tiles.activeChildtileList[i].name == (myName + 1).ToString())
-                    //{
-                    //    if(tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag =="Army" || tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Builder")
-                    //    {
-                    //        findArmy = true;
-                    //        target = tiles.activeChildtileList[i].GetChild(0).GetChild(0);
-                    //        break;
-                    //    }
-                    //    else
-                    //    {
-                    //        target = null;
-                    //    }
-                    //}
-
                     if (tiles.activeChildtileList[i].GetChild(0).GetChild(0).tag == "Army")
                     {
                         if (tiles.activeChildtileList[i].name == (myName - 17).ToString())
@@ -220,7 +205,6 @@ public class EnemyController : MonoBehaviour
                     }
 
                     parentTile = transform.parent;
-                    //buttonManger.button.GetComponent<Button>().interactable = false;
                     targetPostion = new Vector3(FinalNodeList[1].x, (float)(FinalNodeList[1].y + 30f), -10f);
 
                     ani.SetBool("Move", true);
@@ -385,7 +369,6 @@ public class EnemyController : MonoBehaviour
 
         while (OpenList.Count > 0)
         {
-            // 열린리스트 중 가장 F가 작고 F가 같다면 H가 작은 걸 현재노드로 하고 열린리스트에서 닫힌리스트로 옮기기
             CurNode = OpenList[0];
 
             for (int i = 1; i < OpenList.Count; i++)
@@ -397,8 +380,6 @@ public class EnemyController : MonoBehaviour
             OpenList.Remove(CurNode);
             ClosedList.Add(CurNode);
 
-            //TargetNode : 533, -900
-            
             // 마지막
             if (CurNode.x == TargetNode.x && CurNode.y == TargetNode.y)
             {
@@ -418,8 +399,8 @@ public class EnemyController : MonoBehaviour
                 }
                 return;
             }
+
             // ↑ → ↓ ←
-            // 이것도 위치에 따라 바꾸자
             for (int a = 0; a < NodeArray.Count; a++)
             {
                 if (NodeArray[a].x == CurNode.x && NodeArray[a].y == CurNode.y + 87)
@@ -447,7 +428,6 @@ public class EnemyController : MonoBehaviour
 
     void OpenListAdd(int checkX, int checkY, Node node)
     {
-        //&& ClosedList.Contains(node)
         // 상하좌우 범위를 벗어나지 않고, 벽이 아니면서, 닫힌리스트에 없다면
         if (checkX >= bottomLeft.x && checkX < topRight.x + 87 && checkY >= bottomLeft.y && checkY < topRight.y + 87 && !ClosedList.Contains(node))
         {
@@ -467,10 +447,6 @@ public class EnemyController : MonoBehaviour
                     }
                 }
             }
-
-            // 코너를 가로질러 가지 않을시, 이동 중에 수직수평 장애물이 있으면 안됨
-            //if (dontCrossCorner) if (NodeArray[CurNode.x - bottomLeft.x, checkY - bottomLeft.y].isWall || NodeArray[checkX - bottomLeft.x, CurNode.y - bottomLeft.y].isWall) return;
-            // 이웃노드에 넣고, 직선은 10, 대각선은 14비용
         }
     }
 

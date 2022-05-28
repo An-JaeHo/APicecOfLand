@@ -503,7 +503,6 @@ public class ButtonManger : MonoBehaviour
         {
             for (int i = 0; i < enemys.Count; i++)
             {
-                //너무 이상하다
                 Camera.main.transform.position = new Vector3(enemys[i].transform.position.x, enemys[i].transform.position.y,-800f);
                 yield return new WaitForSeconds(1f);
                 enemys[i].GetComponent<EnemyController>().EnemyMove();
