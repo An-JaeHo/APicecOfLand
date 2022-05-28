@@ -11,7 +11,6 @@ public class ArmyUpgrade : MonoBehaviour
     public Transform army;
     public int upgradeMilk;
 
-
     private void Start()
     {
         upgradeMilk = new int();
@@ -51,8 +50,6 @@ public class ArmyUpgrade : MonoBehaviour
             transform.GetChild(4).GetChild(2).GetChild(0).GetChild(0).GetComponent<Text>().text = armyinfo.BaseAttack.ToString();
             transform.GetChild(4).GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = armyinfo.Defensive.ToString();
             transform.GetChild(4).GetChild(4).GetChild(0).GetChild(0).GetComponent<Text>().text = armyinfo.Critical.ToString();
-
-            
 
             //변경 후
             transform.GetChild(4).GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = upgradeArmy.Grade.ToString();

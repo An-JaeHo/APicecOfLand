@@ -344,7 +344,6 @@ public class GameEndController : MonoBehaviour
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Image>().sprite = bonuses[i].GetComponent<BonusCardController>().noBonusImage;
                 bonuses[i].GetComponent<BonusCardController>().cardBack.GetComponent<Button>().enabled = false;
                 bonuses[i].transform.GetChild(1).GetComponent<Button>().enabled = false;
-                Debug.Log("ss");
             }
         }
     }

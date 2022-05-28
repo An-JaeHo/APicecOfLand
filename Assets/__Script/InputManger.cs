@@ -66,7 +66,6 @@ public class InputManger : MonoBehaviour
 
             if (Input.touchCount > 0)
             {
-                //TouchCameraMove();
                 TouchHit();
             }
             else
@@ -249,9 +248,7 @@ public class InputManger : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 time += Time.deltaTime;
-
             }
-
         }
         else
         {
@@ -277,7 +274,6 @@ public class InputManger : MonoBehaviour
             }
 
             TouchCameraMove();
-
 
             if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
@@ -377,7 +373,6 @@ public class InputManger : MonoBehaviour
                                     bulidUpgradeUi.GetComponent<BuildController>().ReadAreaInfo();
                                 }
                             }
-
                             break;
                         default:
                             if (!specialSkillController.touchCheck)
@@ -455,7 +450,6 @@ public class InputManger : MonoBehaviour
                             }
                             break;
                     }
-
                     
                     CheckMonsterMovePoint();
                 }
