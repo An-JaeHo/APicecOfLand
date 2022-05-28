@@ -27,6 +27,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
         object[] loadMonster = Resources.LoadAll("Monster", typeof(GameObject));
         MonsterObj = new GameObject[loadMonster.Length];
         arrayMonsters = new GameObject[5];
+
         for (int i = 0; i < loadMonster.Length; i++)
         {
             MonsterObj[i] = (GameObject)loadMonster[i];
@@ -34,6 +35,7 @@ public class UpGradeMonsterInfo : MonoBehaviour
 
         saveMgr.Load();
         LoadMonsterInfo();
+
         monsters.AddRange(arrayMonsters);
 
         upGradeSceneWindow.UpGradeCheck(monsters[2].transform);
