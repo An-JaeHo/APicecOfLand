@@ -50,9 +50,12 @@ public class BonusCardController : MonoBehaviour
         {
             times += Time.deltaTime;
 
-            gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureMilkSupply, sumMilkSupply, times / 3)).ToString();
-            gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureSugarSupply, sumSugarSupply, times / 3)).ToString();
-            gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = ((int)Mathf.Lerp(pureFlourSupply, sumFlourSupply, times / 3)).ToString();
+            gameEndController.supply.transform.GetChild(0).GetChild(0).GetComponent<Text>().text 
+                = ((int)Mathf.Lerp(pureMilkSupply, sumMilkSupply, times / 3)).ToString();
+            gameEndController.supply.transform.GetChild(1).GetChild(0).GetComponent<Text>().text 
+                = ((int)Mathf.Lerp(pureSugarSupply, sumSugarSupply, times / 3)).ToString();
+            gameEndController.supply.transform.GetChild(2).GetChild(0).GetComponent<Text>().text 
+                = ((int)Mathf.Lerp(pureFlourSupply, sumFlourSupply, times / 3)).ToString();
 
             if (times / 3 >= 1)
             {
