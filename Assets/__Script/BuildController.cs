@@ -133,8 +133,6 @@ public class BuildController : MonoBehaviour
             if (land.GetComponent<MakeArea>().Code == json.information.area[i].Code)
             {
                 upgradeLand.GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>().sprite = json.information.area[i].Picture;
-                //upgradeLand.GetChild(3).GetChild(0).GetComponent<Text>().text = "밀가루 : " + json.information.area[i].UpgradeFlour;
-                //upgradeLand.GetChild(3).GetChild(1).GetComponent<Text>().text = "설탕 : " + json.information.area[i].UpgradeSugar;
                 upGradeResouce.transform.GetChild(0).GetComponent<Text>().text = " 필요 밀가루 : "+json.information.area[i].UpgradeFlour.ToString();
                 upGradeResouce.transform.GetChild(1).GetComponent<Text>().text = " 필요 설탕 : " + json.information.area[i].UpgradeSugar.ToString();
 
@@ -150,9 +148,6 @@ public class BuildController : MonoBehaviour
                 nextProduction.transform.GetChild(1).GetComponent<Image>().sprite = CheckEffetToName(json.information.area[i].Name);
             }
         }
-
-        //upgradeLand.GetChild(4).GetChild(0).GetChild(0).GetComponent<Text>().text = (land.GetComponent<MakeArea>().Grade * 5).ToString();
-        //upgradeLand.GetChild(4).GetChild(1).GetChild(0).GetComponent<Text>().text = ((land.GetComponent<MakeArea>().Grade+1)*5).ToString();
 
         gameObject.SetActive(true);
 

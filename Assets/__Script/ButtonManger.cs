@@ -505,8 +505,8 @@ public class ButtonManger : MonoBehaviour
             {
                 Camera.main.transform.position = new Vector3(enemys[i].transform.position.x, enemys[i].transform.position.y,-800f);
                 yield return new WaitForSeconds(1f);
-                enemys[i].GetComponent<EnemyController>().EnemyMove();
 
+                enemys[i].GetComponent<EnemyController>().EnemyMove();
                 yield return new WaitForSeconds(2f);
 
                 if (enemys[i].transform.parent.tag == "Capital")
