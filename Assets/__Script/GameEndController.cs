@@ -82,7 +82,7 @@ public class GameEndController : MonoBehaviour
 
     public void CheckRank()
     {
-        sumPoint = killingPoint + turnPoint;
+        //sumPoint = killingPoint + turnPoint;
 
         if (sumPoint <= 3)
         {
@@ -311,10 +311,10 @@ public class GameEndController : MonoBehaviour
 
     private void TestButton()
     {
-        //int rand = Random.Range(5, 21);
-        //sumPoint = rand;
+        int rand = Random.Range(5, 21);
+        sumPoint = rand;
 
-        CheckPoint();
+        //CheckPoint();
         CheckRank();
         ResulttGame();
         BonusCheck();
